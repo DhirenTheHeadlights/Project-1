@@ -3,11 +3,14 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <math.h>
 
 sf::RenderWindow window(sf::VideoMode(1920, 1080), "RANGER WINDOW");
 
 sf::Event event;
-sf::Clock clockington;
+sf::Clock mainTime;
+sf::Clock speedClock;
+
 sf::Text text;
 sf::Font font;
 
@@ -29,44 +32,50 @@ int atLeast20(int input) {
     }
 }
 
+double acceleration = 1.0;  // Starts at 1.0 and increases while keys are pressed
 
-double exponential(double x) {
-    return exp(x);
+double speedup() {
+    if (speedClock.getElapsedTime().asSeconds() >= 2) {
+        acceleration = 1.0;  // Reset acceleration if no key pressed for 2 seconds
+    }
+    return acceleration;
 }
 
-double speedup(double seconds) {
-    double distance = 2.00;
-    if (seconds < 2) {
-        distance = exponential(distance);
-        clockington.restart();
+void updateAcceleration() {
+    if (acceleration < 5.0) {  // Cap the maximum acceleration value at 5.0
+        acceleration += 0.001;  // Increase acceleration while key is pressed
     }
-    else {
-        distance = 2;
-    }
-    return distance;
 }
 
 void moveUp(double distance) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) and y > 0) {
-        y -= distance;
+        y -= distance + acceleration;
+        speedClock.restart();
+        updateAcceleration();
     }
 }
 
 void moveDown(double distance) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) and y < 1080 - circlesize) {
-        y += distance;
+        y += distance + acceleration;
+        speedClock.restart();
+        updateAcceleration();
     }
 }
 
 void moveRight(double distance) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) and x < 1920 - circlesize) {
-        x += distance;
+        x += distance + acceleration;
+        speedClock.restart();
+        updateAcceleration();
     }
 }
 
 void moveLeft(double distance) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) and x > 0) {
-        x -= distance;
+        x -= distance + acceleration;
+        speedClock.restart();
+        updateAcceleration();
     }
 }
 
@@ -76,13 +85,9 @@ void esc() {
     }
 }
 
-
 int main() {
-
-
     shape.setPosition(originx, originy);
     shape.setFillColor(sf::Color::Blue);
-
 
     if (!font.loadFromFile("times_new_roman.ttf")) {
         window.close();
@@ -92,38 +97,28 @@ int main() {
     text.setCharacterSize(18);
     text.setFillColor(sf::Color::Red);
 
-    double distance = 1;
+    double baseSpeed = 2.0;  // Base speed in pixels per frame
 
     while (window.isOpen()) {
-
-        
         while (window.pollEvent(event)) {
-
             switch (event.type) {
-
             case sf::Event::Closed:
                 window.close();
                 break;
-
             case sf::Event::KeyPressed:
-
-                sf::Time elapsed = clockington.getElapsedTime();
-
-                distance = speedup(elapsed.asSeconds());
-
-                moveUp(distance);
-                moveDown(distance);
-                moveLeft(distance);
-                moveRight(distance);
-                esc();
-
                 circlesize = atLeast20(circlesize);
                 shape.setRadius(circlesize);
-
                 break;
-
             }
         }
+
+        acceleration = speedup();  // Update acceleration
+
+        moveUp(baseSpeed);
+        moveDown(baseSpeed);
+        moveLeft(baseSpeed);
+        moveRight(baseSpeed);
+        esc();
 
         window.clear();
         window.draw(shape);
@@ -133,9 +128,9 @@ int main() {
         text.setPosition(x, y);
         window.draw(text);
         window.display();
-
     }
 
     return 0;
 }
+
 
