@@ -1,136 +1,109 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <iostream>
 #include <chrono>
-#include <thread>
-#include <math.h>
 
-sf::RenderWindow window(sf::VideoMode(1920, 1080), "RANGER WINDOW");
+// Constants
+const int SCREEN_WIDTH = 1920;
+const int SCREEN_HEIGHT = 1080;
+const float MAX_ACCELERATION = 10.0f;
+const float BASE_SPEED = 0.01f;
 
-sf::Event event;
-sf::Clock mainTime;
-sf::Clock speedClock;
-
-sf::Text text;
-sf::Font font;
-
-sf::CircleShape shape(300.f);
-int originx{ 0 };
-int originy{ 0 };
-
-int x{ originx };
-int y{ originy };
-
-float circlesize = 300;
-
-int atLeast20(int input) {
-    if (input > 20) {
-        return input - 20;
+class Circle {
+public:
+    Circle(float radius) : shape(radius), circlesize(radius) {
+        shape.setPosition(x, y);
+        shape.setFillColor(sf::Color::Blue);
     }
-    else {
-        return input;
+
+    void move(float dx, float dy) {
+        x += dx;
+        y += dy;
+        // Boundary checks
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        if (x > SCREEN_WIDTH - 2 * circlesize) x = SCREEN_WIDTH - 2 * circlesize;
+        if (y > SCREEN_HEIGHT - 2 * circlesize) y = SCREEN_HEIGHT - 2 * circlesize;
+        shape.setPosition(x, y);
     }
-}
 
-double acceleration = 1.0;  // Starts at 1.0 and increases while keys are pressed
-
-double speedup() {
-    if (speedClock.getElapsedTime().asSeconds() >= 2) {
-        acceleration = 1.0;  // Reset acceleration if no key pressed for 2 seconds
+    void draw(sf::RenderWindow& window) {
+        window.draw(shape);
     }
-    return acceleration;
-}
 
-void updateAcceleration() {
-    if (acceleration < 5.0) {  // Cap the maximum acceleration value at 5.0
-        acceleration += 0.001;  // Increase acceleration while key is pressed
+    float getCirclesize() const {
+        return circlesize;
     }
-}
 
-void moveUp(double distance) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) and y > 0) {
-        y -= distance + acceleration;
-        speedClock.restart();
-        updateAcceleration();
-    }
-}
+private:
+    sf::CircleShape shape;
+    float x{ 0 };
+    float y{ 0 };
+    float circlesize;
+};
 
-void moveDown(double distance) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) and y < 1080 - circlesize) {
-        y += distance + acceleration;
-        speedClock.restart();
-        updateAcceleration();
-    }
-}
-
-void moveRight(double distance) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) and x < 1920 - circlesize) {
-        x += distance + acceleration;
-        speedClock.restart();
-        updateAcceleration();
-    }
-}
-
-void moveLeft(double distance) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) and x > 0) {
-        x -= distance + acceleration;
-        speedClock.restart();
-        updateAcceleration();
-    }
-}
-
-void esc() {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-        window.close();
-    }
-}
-
-int main() {
-    shape.setPosition(originx, originy);
-    shape.setFillColor(sf::Color::Blue);
+int main() { 
+    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "RANGER WINDOW");
+    Circle circle(30.f);
+    sf::Clock mainTime;
+    sf::Clock speedClock;
+    sf::Clock deltaClock;  // Clock to measure time since last frame
+    double acceleration = 0.0;
+    double speed = BASE_SPEED;
+    sf::Font font;
+    sf::Text text;
 
     if (!font.loadFromFile("times_new_roman.ttf")) {
-        window.close();
+        std::cerr << "Failed to load font\n";
+        return 1;
     }
 
     text.setFont(font);
     text.setCharacterSize(18);
     text.setFillColor(sf::Color::Red);
 
-    double baseSpeed = 2.0;  // Base speed in pixels per frame
-
     while (window.isOpen()) {
+        float deltaTime = deltaClock.restart().asSeconds();  // Time since last frame in seconds
+        sf::Event event;
         while (window.pollEvent(event)) {
-            switch (event.type) {
-            case sf::Event::Closed:
+            if (event.type == sf::Event::Closed) {
                 window.close();
-                break;
-            case sf::Event::KeyPressed:
-                circlesize = atLeast20(circlesize);
-                shape.setRadius(circlesize);
-                break;
             }
         }
+        if (speedClock.getElapsedTime().asSeconds() >= 2) { // Update acceleration and speed
+            acceleration = 0.0;
+        }
+        else {
+            acceleration += 0.0001;  // Smaller increment value
+            if (acceleration > MAX_ACCELERATION) acceleration = MAX_ACCELERATION;
+        }
+        speed = BASE_SPEED + acceleration;
 
-        acceleration = speedup();  // Update acceleration
+        // Movement
+        float moveSpeed = speed * deltaTime * 2000;  // Multiply by deltaTime and a scaling factor for control
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && circle.getCirclesize() > 0) circle.move(0, -moveSpeed);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && circle.getCirclesize() < SCREEN_HEIGHT) circle.move(0, moveSpeed);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && circle.getCirclesize() > 0) circle.move(-moveSpeed, 0);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && circle.getCirclesize() < SCREEN_WIDTH) circle.move(moveSpeed, 0);
 
-        moveUp(baseSpeed);
-        moveDown(baseSpeed);
-        moveLeft(baseSpeed);
-        moveRight(baseSpeed);
-        esc();
+        // Reset speedClock if any movement key is pressed
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) ||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::A) ||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::S) ||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            speedClock.restart();
+        }
+
+        // Close window on Esc key
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            window.close();
+        }
 
         window.clear();
-        window.draw(shape);
-        shape.setPosition(float(x), float(y));
-        std::string position = std::to_string(x) + "," + std::to_string(y);
-        text.setString(position);
-        text.setPosition(x, y);
+        circle.draw(window);
+        text.setString("Speed: " + std::to_string(speed) + ", Accel: " + std::to_string(acceleration));
         window.draw(text);
         window.display();
     }
 
     return 0;
 }
-
-
