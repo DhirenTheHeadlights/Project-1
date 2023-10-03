@@ -1,10 +1,8 @@
-﻿  Pellet.cpp
-  World.cpp
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(17,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(18,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+﻿  Hashmap.cpp
+  Map.cpp
   Generating code
-  10 of 296 functions ( 3.4%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  34 of 324 functions (10.5%) were compiled, the rest were copied from previous compilation.
+    28 functions were new in current compilation
+    40 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFML Project 1.vcxproj -> C:\Users\Dhiren\Source\Repos\DhirenTheHeadlights\Project-1\x64\Release\SFML Project 1.exe

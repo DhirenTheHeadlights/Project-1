@@ -133,7 +133,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Hashmap.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pellet.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -143,6 +145,8 @@
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Hashmap.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Pellet.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
