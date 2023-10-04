@@ -57,4 +57,8 @@ float Circle::getCirclesize() const {
     return circlesize;
 }
 
+sf::Vector2f Circle::getPosition() const {
+    return shape.getPosition();
+}
+
 

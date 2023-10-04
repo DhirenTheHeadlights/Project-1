@@ -10,6 +10,7 @@ public:
     void draw(sf::RenderWindow& window);
     float getCirclesize() const;
     double getCurrentSpeed() const;
+    sf::Vector2f getPosition() const;
 private:
     sf::CircleShape shape;
     sf::Clock accelClock;

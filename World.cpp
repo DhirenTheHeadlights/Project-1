@@ -1,6 +1,4 @@
 #include "World.h"
-#include "Pellet.h"
-#include "Globals.h"
 
 std::vector<sf::Color> colors = {
 sf::Color::Red,
@@ -11,7 +9,7 @@ sf::Color::Cyan,
 sf::Color::Magenta,
 sf::Color::White };
 
-void World::drawPellets(sf::RenderWindow& window) {
+void World::drawPellets(sf::RenderWindow& window, Hashmap hashmap) {
     if (pellets.empty()) {  // Create pellets only once
         for (int i = 0; i < 100; i++) {
             float x = std::rand() % SCREEN_WIDTH;
@@ -21,5 +19,12 @@ void World::drawPellets(sf::RenderWindow& window) {
     }
     for (auto& pellet : pellets) {
         pellet.draw(window);
+        hashmap.assignPellet(pellet);
+    }
+}
+
+void World::RemovePelletWhenCollision(Pellet pellet, Circle& circle, Hashmap& hashmap) {
+    if (!hashmap.checkCollision(circle, pellet, hashmap)) {
+        pellet.RemovePellet(pellet);
     }
 }

@@ -4,19 +4,22 @@
 #include "Circle.h"
 #include "World.h"
 #include "Globals.h"
+#include "Hashmap.h"
 
 
 int main() { 
-
-    sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
-    sf::RenderWindow window(desktop, "RANGER WINDOW", sf::Style::Fullscreen);
-
-
+    initializeGlobals();
     std::srand(std::time(0));
+
     Circle circle(30.f);
     sf::Font font;
     sf::Text text;
     World world;
+    Map map;
+    Hashmap hashmap;
+
+    map.grid(10000, 10000, 10);
+    
 
     if (!font.loadFromFile("times_new_roman.ttf")) {
         std::cerr << "Failed to load font\n";
@@ -35,7 +38,7 @@ int main() {
             }
         }
         
-        circle.move(circle.getCirclesize(), 0.01, 50);
+        circle.move(circle.getCirclesize(), 0.01, 2);
 
         // Close window on Esc key
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
@@ -46,7 +49,8 @@ int main() {
         circle.draw(window);
         text.setString("Speed: " + std::to_string(circle.getCurrentSpeed()));
         window.draw(text);
-        world.drawPellets(window);
+        world.drawPellets(window, hashmap);
+        hashmap.assignCircle(circle);
         window.display();
     }
 

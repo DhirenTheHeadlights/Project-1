@@ -1,8 +1,8 @@
-﻿  Hashmap.cpp
-  Map.cpp
+﻿  Pellet.cpp
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Pellet.cpp(7,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  34 of 324 functions (10.5%) were compiled, the rest were copied from previous compilation.
-    28 functions were new in current compilation
-    40 functions had inline decision re-evaluated but remain unchanged
+  0 of 707 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFML Project 1.vcxproj -> C:\Users\Dhiren\Source\Repos\DhirenTheHeadlights\Project-1\x64\Release\SFML Project 1.exe
