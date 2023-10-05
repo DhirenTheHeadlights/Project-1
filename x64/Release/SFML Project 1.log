@@ -1,8 +1,9 @@
-﻿  Pellet.cpp
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Pellet.cpp(7,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating code
-  0 of 707 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  SFML Project 1.vcxproj -> C:\Users\Dhiren\Source\Repos\DhirenTheHeadlights\Project-1\x64\Release\SFML Project 1.exe
+﻿  World.cpp
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(15,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(16,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\main.cpp(12,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\main.cpp(53,14): error C2660: 'World::RemovePelletWhenCollision': function does not take 0 arguments
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.h(20,10): message : see declaration of 'World::RemovePelletWhenCollision'
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\main.cpp(53,14): message : while trying to match the argument list '()'
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\main.cpp(54,9): error C2146: syntax error: missing ';' before identifier 'hashmap'

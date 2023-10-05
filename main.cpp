@@ -50,6 +50,7 @@ int main() {
         text.setString("Speed: " + std::to_string(circle.getCurrentSpeed()));
         window.draw(text);
         world.drawPellets(window, hashmap);
+        world.RemovePelletWhenCollision()
         hashmap.assignCircle(circle);
         window.display();
     }

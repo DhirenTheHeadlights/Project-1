@@ -1,7 +1,7 @@
 #include "Globals.h"
 
-Map map;
-sf::VideoMode desktop;
+Map map; // Global Map
+sf::VideoMode desktop; // Globals for Window
 sf::RenderWindow window;
 
 void initializeGlobals() {

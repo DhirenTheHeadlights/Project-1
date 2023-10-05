@@ -23,8 +23,6 @@ void World::drawPellets(sf::RenderWindow& window, Hashmap hashmap) {
     }
 }
 
-void World::RemovePelletWhenCollision(Pellet pellet, Circle& circle, Hashmap& hashmap) {
-    if (!hashmap.checkCollision(circle, pellet, hashmap)) {
-        pellet.RemovePellet(pellet);
-    }
+void World::RemovePelletWhenCollision(std::vector) {
+ 
 }
