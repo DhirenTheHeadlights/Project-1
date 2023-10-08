@@ -1,6 +1,4 @@
 #include "Pellet.h"
-#include "World.h"
-#include "Globals.h"
 
 Pellet::Pellet(float x, float y) {
     shape.setPosition(x, y);
@@ -22,7 +20,7 @@ void Pellet::draw(sf::RenderWindow& window) {
     window.draw(shape);
 }
 
-void Pellet::RemovePellet() {
+void Pellet::RemovePellet(sf::RenderWindow& window) {
     sf::CircleShape shape;
     shape.setPosition(x, y);
     shape.setFillColor(sf::Color::Black);

@@ -6,19 +6,21 @@
 #include "Pellet.h"
 #include "Circle.h"
 #include <variant>
-#include "Globals.h"
+
+class Pellet;
+class Circle;
 
 struct GridObject {
-    std::variant<Pellet, Circle> object;
+    std::variant<Pellet, Circle> object; 
 };
 
 class Hashmap {
 public:
-    Hashmap();
-    void assignPellet(const Pellet& pellet);
-    void assignCircle(const Circle& circle);
-    void checkCollision(Circle& circle, Hashmap hashmap);
-    std::vector<Pellet> getPelletsInSameCell(float x, float y) const;
+    Hashmap(Map& map, sf::RenderWindow& window);
+    void assignPellet(const Pellet& pellet, Map& map);
+    void assignCircle(const Circle& circle, Map& map);
+    void checkCollision(Circle& circle, Hashmap& hashmap, Map& map, sf::RenderWindow& window);
+    std::vector<Pellet> getPelletsInSameCell(float x, float y, Map& map) const;
 private:
     std::unordered_map<std::string, std::vector<GridObject>> hashmap;
     std::string generateKey(int x, int y) const;
