@@ -5,7 +5,7 @@ class Pellet {
 public:
     Pellet(float x, float y);  // constructor to initialize position
     void draw(sf::RenderWindow& window);  // method to draw the pellet on the screen
-    void RemovePellet(Pellet pellet);
+    void RemovePellet();
     sf::Vector2f getPosition() const;
     int getRadius() const;
 private:

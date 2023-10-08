@@ -9,9 +9,9 @@ Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initialliz
 
 void Circle::move(double radius, double moveSpeed, double MaxSpeed) { // Movement Controls
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && radius > 0) Circle::direction(0, -moveSpeed, MaxSpeed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && radius < SCREEN_HEIGHT) Circle::direction(0, moveSpeed, MaxSpeed);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && radius < window.getSize().y) Circle::direction(0, moveSpeed, MaxSpeed);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && radius > 0) Circle::direction(-moveSpeed, 0, MaxSpeed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && radius < SCREEN_WIDTH) Circle::direction(moveSpeed, 0, MaxSpeed);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && radius < window.getSize().x) Circle::direction(moveSpeed, 0, MaxSpeed);
 }
 
 void Circle::direction(float dx, float dy, double MaxSpeed) {
@@ -26,8 +26,8 @@ void Circle::direction(float dx, float dy, double MaxSpeed) {
     // Boundary checks so circle does not go out of bounds
     if (x < 0) x = 0;
     if (y < 0) y = 0;
-    if (x > SCREEN_WIDTH - 2 * circlesize) x = SCREEN_WIDTH - 2 * circlesize;
-    if (y > SCREEN_HEIGHT - 2 * circlesize) y = SCREEN_HEIGHT - 2 * circlesize;
+    if (x > window.getSize().x - 2 * circlesize) x = window.getSize().x - 2 * circlesize;
+    if (y > window.getSize().y - 2 * circlesize) y = window.getSize().y - 2 * circlesize;
     shape.setPosition(x, y);
 }
 

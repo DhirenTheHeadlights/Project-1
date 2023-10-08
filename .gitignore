@@ -31,3 +31,8 @@
 *.out
 *.app
 /.vs/SFML Project 1/v17/Browse.VC.db
+/.vs/SFML Project 1/v17/Browse.VC.opendb
+
+# Debug folders
+/debug/
+/x64/

@@ -1,8 +1,16 @@
 #include "Hashmap.h"
-#include "Pellet.h"
-#include "Globals.h"
-#include "World.h"
 
+Hashmap::Hashmap() {
+	// Initialize the hashmap with the number of cells in the grid
+	int numCellsX = window.getSize().x / map.getCellSize();  // Calculate the number of cells in the x direction
+	int numCellsY = window.getSize().y / map.getCellSize(); // Calculate the number of cells in the y direction
+	for (int i = 0; i < numCellsX; i++) {              // Iterate through the cells in the x direction
+    		for (int j = 0; j < numCellsY; j++) {          // Iterate through the cells in the y direction
+            			std::string key = generateKey(i, j);       // Generate a key based on the grid indices
+            			hashmap[key] = {};                         // Initialize the vector at the key to be empty
+            		}
+    	}
+}
 
 void Hashmap::assignPellet(const Pellet& pellet) {
     float x = pellet.getPosition().x;           
@@ -45,21 +53,20 @@ std::vector<Pellet> Hashmap::getPelletsInSameCell(float x, float y) const {
     return {};                                            // If the key is not found in the hashmap, return an empty vector
 }
 
-bool Hashmap::checkCollision(Circle& circle, Pellet& pellet, Hashmap hashmap, World world) {
+void Hashmap::checkCollision(Circle& circle, Hashmap hashmap) {
     float x = circle.getPosition().x;                  
     float y = circle.getPosition().y;                    
     std::vector<Pellet> nearbyPellets = hashmap.getPelletsInSameCell(x, y);  // Get the pellets in the same cell as the circle
-    std::vector<std::vector<int>> pelletsToBeDeleted(nearbyPellets.size(), std::vector<int>(2, 0));
-    for (const auto& pellet : nearbyPellets) {           // Iterate through the nearby pellets
+    for (auto& pellet : nearbyPellets) {           // Iterate through the nearby pellets
         float dx = pellet.getPosition().x - x;           // Calculate the x-distance between the circle and the pellet
         float dy = pellet.getPosition().y - y;           // Calculate the y-distance between the circle and the pellet
         float distanceSquared = dx * dx + dy * dy;       // Calculate the squared distance between the circle and the pellet
         float sumRadii = circle.getCirclesize() + pellet.getRadius();  // Calculate the sum of the radii of the circle and pellet
         if (distanceSquared <= sumRadii * sumRadii) {    // Check for a collision by comparing the squared distance to the square of the sum of the radii
-            world.RemovePelletWhenCollision(pelletsToBeDeleted);
+            pellet.RemovePellet();
         }
         else {
-            return false;
+
         }
     }
 }

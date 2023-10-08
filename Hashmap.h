@@ -6,6 +6,7 @@
 #include "Pellet.h"
 #include "Circle.h"
 #include <variant>
+#include "Globals.h"
 
 struct GridObject {
     std::variant<Pellet, Circle> object;
@@ -13,9 +14,10 @@ struct GridObject {
 
 class Hashmap {
 public:
+    Hashmap();
     void assignPellet(const Pellet& pellet);
     void assignCircle(const Circle& circle);
-    bool checkCollision(Circle& circle, Pellet& pellet, Hashmap hashmap);
+    void checkCollision(Circle& circle, Hashmap hashmap);
     std::vector<Pellet> getPelletsInSameCell(float x, float y) const;
 private:
     std::unordered_map<std::string, std::vector<GridObject>> hashmap;

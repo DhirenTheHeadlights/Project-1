@@ -22,9 +22,9 @@ void Pellet::draw(sf::RenderWindow& window) {
     window.draw(shape);
 }
 
-void Pellet::RemovePellet(Pellet pellet) {
+void Pellet::RemovePellet() {
     sf::CircleShape shape;
-    shape.setPosition(pellet.getPosition().x, pellet.getPosition().y);
+    shape.setPosition(x, y);
     shape.setFillColor(sf::Color::Black);
     window.draw(shape);
 }
