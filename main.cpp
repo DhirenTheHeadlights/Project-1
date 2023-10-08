@@ -1,19 +1,20 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <chrono>
-#include "World.h"
 #include "Globals.h"
+#include "World.h"
 
 
 int main() { 
     initializeGlobals();
+    World world(map, window);
+    Hashmap hashmap(map, window);
     std::srand(std::time(0));
+
     sf::Font font;
     sf::Text text;
-    World world;
-
-    map.grid(10000, 10000, 10);
     
+
     if (!font.loadFromFile("times_new_roman.ttf")) {
         std::cerr << "Failed to load font\n";
         return 1;
@@ -31,14 +32,16 @@ int main() {
             }
         }
 
-        // Close window on Esc key
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
             window.close();
         }
 
         window.clear();
         text.setString("Speed: ");
+        
         window.draw(text);
+        world.drawCircle(window, hashmap, map);
+        world.drawPellets(window, map, hashmap);
         window.display();
     }
 

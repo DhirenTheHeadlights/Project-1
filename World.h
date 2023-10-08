@@ -4,19 +4,19 @@
 #include "SFML/Graphics.hpp"
 #include "Pellet.h"
 #include "Circle.h"
-#include "Globals.h"
 #include "Hashmap.h"
+
 const float MAX_ACCELERATION = 10.0f;
 const float BASE_SPEED = 0.01f;
 
-extern std::vector<sf::Color> colors;
-extern Hashmap hashmap; // Added semicolon to resolve the error
-
+class Hashmap;
+class Circle;
 
 class World {
 public:
-    World();
-    void drawPellets(sf::RenderWindow& window);
+    World(Map& map, sf::RenderWindow& window);
+    void drawCircle(sf::RenderWindow& window, Hashmap& hashmap, Map& map);
+    void drawPellets(sf::RenderWindow& window, Map& map, Hashmap& hashmap);
 private:
     std::vector<Pellet> pellets;
 };

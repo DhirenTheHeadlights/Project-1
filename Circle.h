@@ -4,8 +4,8 @@
 class Circle {
 public:
     Circle(float radius);
-    void move(double radius, double moveSpeed, double MaxSpeed);
-    void direction(float dx, float dy, double MaxSpeed);
+    void move(double radius, double moveSpeed, double MaxSpeed, sf::RenderWindow& window);
+    void direction(float dx, float dy, double MaxSpeed, sf::RenderWindow& window);
     double acceleration(double MaxSpeed);
     void draw(sf::RenderWindow& window);
     float getCirclesize() const;

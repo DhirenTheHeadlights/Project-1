@@ -1,25 +1,18 @@
 #include "World.h"
 
-std::vector<sf::Color> colors = {
-sf::Color::Red,
-sf::Color::Green,
-sf::Color::Blue,
-sf::Color::Yellow,
-sf::Color::Cyan,
-sf::Color::Magenta,
-sf::Color::White };
+Circle circle(30.f);
 
-Hashmap hashmap;
-
-World::World() {
-    Circle circle(30.f);
-    circle.move(circle.getCirclesize(), 0.01, 2);
-    World::drawPellets(window);
-    circle.draw(window);
-    hashmap.checkCollision(circle, hashmap);
+World::World(Map& map, sf::RenderWindow& window) {
+    map.grid(10000, 10000, 10);  // Initialize the map
 }
 
-void World::drawPellets(sf::RenderWindow& window) {
+void World::drawCircle(sf::RenderWindow& window, Hashmap& hashmap, Map& map) {
+    circle.move(circle.getCirclesize(), 0.01, 2, window);
+    hashmap.checkCollision(circle, hashmap, map, window);
+    circle.draw(window);
+}
+
+void World::drawPellets(sf::RenderWindow& window, Map& map, Hashmap& hashmap) {
     if (pellets.empty()) {  // Create pellets only once
         for (int i = 0; i < 100; i++) {
             float x = std::rand() % window.getSize().x;
@@ -29,6 +22,6 @@ void World::drawPellets(sf::RenderWindow& window) {
     }
     for (auto& pellet : pellets) {
         pellet.draw(window);
-        hashmap.assignPellet(pellet);
+        hashmap.assignPellet(pellet, map);
     }
 }

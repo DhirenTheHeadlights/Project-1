@@ -1,5 +1,4 @@
 #include "Circle.h"
-#include "World.h"
 
 
 Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initiallizes the circle with a radius
@@ -7,20 +6,19 @@ Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initialliz
     shape.setFillColor(sf::Color::Blue);
 }
 
-void Circle::move(double radius, double moveSpeed, double MaxSpeed) { // Movement Controls
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && radius > 0) Circle::direction(0, -moveSpeed, MaxSpeed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && radius < window.getSize().y) Circle::direction(0, moveSpeed, MaxSpeed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && radius > 0) Circle::direction(-moveSpeed, 0, MaxSpeed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && radius < window.getSize().x) Circle::direction(moveSpeed, 0, MaxSpeed);
+void Circle::move(double radius, double moveSpeed, double MaxSpeed, sf::RenderWindow& window) { // Movement Controls
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && radius > 0) Circle::direction(0, -moveSpeed, MaxSpeed, window);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && radius < window.getSize().y) Circle::direction(0, moveSpeed, MaxSpeed, window);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && radius > 0) Circle::direction(-moveSpeed, 0, MaxSpeed, window);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && radius < window.getSize().x) Circle::direction(moveSpeed, 0, MaxSpeed, window);
 }
 
-void Circle::direction(float dx, float dy, double MaxSpeed) {
+void Circle::direction(float dx, float dy, double MaxSpeed, sf::RenderWindow& window) {
     int currentDirection = (dx != 0) ? (dx > 0 ? 1 : -1) : (dy > 0 ? 2 : -2);  // 1:right, -1:left, 2:down, -2:up
     if (currentDirection + lastDirection == 0) {  // Direction changed
         currentSpeed = 1.0;
     }
     lastDirection = currentDirection;
-
     x += dx * acceleration(MaxSpeed);
     y += dy * acceleration(MaxSpeed);
     // Boundary checks so circle does not go out of bounds
