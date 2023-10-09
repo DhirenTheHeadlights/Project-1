@@ -1,22 +1,20 @@
 #pragma once
-#include <iostream>
-#include <vector>
-#include "SFML/Graphics.hpp"
-#include "Pellet.h"
 #include "Circle.h"
+#include "Pellet.h"
+#include "Map.h"
 #include "Hashmap.h"
-
-const float MAX_ACCELERATION = 10.0f;
-const float BASE_SPEED = 0.01f;
-
-class Hashmap;
-class Circle;
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <algorithm>
+#include <iostream>
 
 class World {
 public:
     World(Map& map, sf::RenderWindow& window);
-    void drawCircle(sf::RenderWindow& window, Hashmap& hashmap, Map& map);
+    void createWorld(sf::RenderWindow& window, Hashmap& hashmap, Map& map);
     void drawPellets(sf::RenderWindow& window, Map& map, Hashmap& hashmap);
+    void removePelletWhenCollision(Circle& circle, Hashmap& hashmap, Map& map, sf::RenderWindow& window);
+    int getCircleSize() const;
 private:
-    std::vector<Pellet> pellets;
+    std::vector<Pellet> activePellets;
 };

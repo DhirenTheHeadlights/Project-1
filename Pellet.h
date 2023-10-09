@@ -1,17 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Globals.h"
+#include <vector>
 
 class Pellet {
 public:
-    Pellet(float x, float y);  // constructor to initialize position
-    void draw(sf::RenderWindow& window);  // method to draw the pellet on the screen
-    void RemovePellet(sf::RenderWindow& window);
+    Pellet(float x, float y);
     sf::Vector2f getPosition() const;
     int getRadius() const;
+    void draw(sf::RenderWindow& window);
+    bool deActivate();
+    bool isActive() const;
+
 private:
     sf::CircleShape shape;
     int radius = 5;
-    double x;
-    double y;
+    bool active = true;
+    static const std::vector<sf::Color> colors;
 };

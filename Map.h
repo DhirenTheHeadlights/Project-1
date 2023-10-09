@@ -3,7 +3,7 @@
 
 class Map {
 public:
-    void grid(int boardWidth, int boardHeight, int cellSize);
+    void grid(int boardLength, int boardHeight, int cellSize);
     int getCellSize() const;
 private:
     int rows, cols, cellSize;

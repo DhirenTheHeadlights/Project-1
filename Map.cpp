@@ -3,9 +3,9 @@
 #include "Map.h"
 #include "Globals.h"
 
-void Map::grid(int boardWidth, int boardHeight, int cellSize) {
+void Map::grid(int boardLength, int boardHeight, int cellSize) {
     rows = boardHeight / cellSize;
-    cols = boardWidth / cellSize;
+    cols = boardLength / cellSize;
     this->cellSize = cellSize;
 }
 

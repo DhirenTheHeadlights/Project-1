@@ -1,6 +1,4 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include <chrono>
 #include "Globals.h"
 #include "World.h"
 
@@ -9,7 +7,7 @@ int main() {
     initializeGlobals();
     World world(map, window);
     Hashmap hashmap(map, window);
-    std::srand(std::time(0));
+    
 
     sf::Font font;
     sf::Text text;
@@ -36,12 +34,10 @@ int main() {
             window.close();
         }
 
-        window.clear();
-        text.setString("Speed: ");
-        
+        window.clear();    
         window.draw(text);
-        world.drawCircle(window, hashmap, map);
-        world.drawPellets(window, map, hashmap);
+        world.createWorld(window, hashmap, map);
+        text.setString("Size: " + std::to_string(world.getCircleSize()));
         window.display();
     }
 
