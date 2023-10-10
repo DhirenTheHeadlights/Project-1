@@ -5,7 +5,7 @@ int addSize = 0;
 Circle circle(5);
 
 World::World(Map& map, sf::RenderWindow& window) {
-    map.grid(1920, 1080, 50);
+    map.grid(1920, 1080, 5);
 }
 
 void World::createWorld(sf::RenderWindow& window, Hashmap& hashmap, Map& map) {
@@ -25,9 +25,9 @@ void World::removePelletWhenCollision(Circle& circle, Hashmap& hashmap, Map& map
     if (hasCollided) {
         addSize += 1;
         circle.setCircleSize(static_cast<float>(5 + addSize));
+        map.setCellSize(5 * static_cast<float>(5 + addSize));
         std::cout << "Collided with " << collidedPellets.size() << " pellets. addSize: " << addSize << std::endl;
     }
-
     // Now, remove inactive pellets from activePellets vector
     activePellets.erase(
         std::remove_if(activePellets.begin(), activePellets.end(), [](Pellet& pellet) {

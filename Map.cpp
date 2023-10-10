@@ -9,6 +9,10 @@ void Map::grid(int boardLength, int boardHeight, int cellSize) {
     this->cellSize = cellSize;
 }
 
+void Map::setCellSize(int cellSize) {
+	this->cellSize = cellSize;
+}
+
 int Map::getCellSize() const {
     return cellSize;
 }
