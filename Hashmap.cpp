@@ -4,21 +4,10 @@ Hashmap::Hashmap(Map& map, sf::RenderWindow& window) {
 }
 
 void Hashmap::assignPellet(Pellet& pellet, Map& map) {
-    float x = pellet.getPosition().x;
-    float y = pellet.getPosition().y;
-    int gridX = x / map.getCellSize();
-    int gridY = y / map.getCellSize();
-    std::string key = generateKey(gridX, gridY);
+    std::string key = generateKey
+        (static_cast<int>(pellet.getPosition().x / map.getCellSize()), 
+        static_cast<int>(pellet.getPosition().y / map.getCellSize()));
     hashmap[key].push_back(&pellet); 
-}
-
-void Hashmap::assignCircle(Circle& circle, Map& map) {
-    float x = circle.getPosition().x;              
-    float y = circle.getPosition().y;             
-    int gridX = x / map.getCellSize();            
-    int gridY = y / map.getCellSize();           
-    std::string key = generateKey(gridX, gridY);            
-    hashmap[key].push_back(&circle);           
 }
 
 std::string Hashmap::generateKey(int x, int y) const {
@@ -26,31 +15,24 @@ std::string Hashmap::generateKey(int x, int y) const {
 }
 
 std::vector<Pellet*> Hashmap::getPelletsInSameCell(float x, float y, Map& map) const {
-    int gridX = x / map.getCellSize();
-    int gridY = y / map.getCellSize();
-    std::string key = generateKey(gridX, gridY);
-    std::vector<Pellet*> pellets;
+    std::string key = generateKey
+        (static_cast<int>(x / map.getCellSize()), 
+        static_cast<int>(y / map.getCellSize()));
     if (hashmap.count(key)) {
-        for (const auto& variant : hashmap.at(key)) {
-            if (auto pelletPtr = std::get_if<Pellet*>(&variant)) {
-                pellets.push_back(*pelletPtr);
-            }
-        }
+        return hashmap.at(key);
     }
-    return pellets;
+    else {
+        return std::vector<Pellet*>(); // return an empty vector if no key found
+    }
 }
 
-
-std::vector<Pellet*> Hashmap::checkCollision(Circle& circle, Hashmap& hashmap, Map& map, sf::RenderWindow& window) {
-    float x = circle.getPosition().x;
-    float y = circle.getPosition().y;
-    std::vector<Pellet*> nearbyPellets = hashmap.getPelletsInSameCell(x, y, map);
+std::vector<Pellet*> Hashmap::checkCollision(Circle& circle, Map& map) {
+    std::vector<Pellet*> nearbyPellets = getPelletsInSameCell(circle.getPosition().x, circle.getPosition().y, map);
     std::vector<Pellet*> collidedPellets;
-
     for (Pellet* pelletPtr : nearbyPellets) {
         Pellet& pellet = *pelletPtr;
-        float dx = pellet.getPosition().x - x;
-        float dy = pellet.getPosition().y - y;
+        float dx = pellet.getPosition().x - circle.getPosition().x;
+        float dy = pellet.getPosition().y - circle.getPosition().y;
         float distanceSquared = dx * dx + dy * dy;
         float sumRadii = circle.getCirclesize() + pellet.getRadius();
 

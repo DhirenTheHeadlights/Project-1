@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <vector>
 
 class Pellet {
@@ -10,7 +11,7 @@ public:
     void draw(sf::RenderWindow& window);
     bool deActivate();
     bool isActive() const;
-
+    void printActiveStatus();
 private:
     sf::CircleShape shape;
     int radius = 5;

@@ -33,9 +33,19 @@ void Pellet::draw(sf::RenderWindow& window) {
 }
 
 bool Pellet::deActivate() {
-    return active = false;
+    active = false;
+    return active;
 }
 
 bool Pellet::isActive() const {
     return active;
+}
+
+void Pellet::printActiveStatus() {
+    if (active) {
+		std::cout << "Pellet at (" << shape.getPosition().x << ", " << shape.getPosition().y << ") is active" << std::endl;
+	}
+    else {
+		std::cout << "Pellet at (" << shape.getPosition().x << ", " << shape.getPosition().y << ") is inactive" << std::endl;
+	}
 }
