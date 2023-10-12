@@ -10,15 +10,16 @@
 
 class World {
 public:
-    World(Map& map, sf::RenderWindow& window);
-    void createWorld(sf::RenderWindow& window, Map& map);
-    void drawPellets(sf::RenderWindow& window, Map& map, Hashmap& hashmap);
-    void removePelletWhenCollision(Circle& circle, Hashmap& hashmap, Map& map, sf::RenderWindow& window);
+    World(sf::RenderWindow& window);
+    void createWorld(sf::RenderWindow& window);
+    void drawPellets(sf::RenderWindow& window);
+    void removePelletWhenCollision();
     int getCircleSize() const;
     void drawInformation(sf::RenderWindow& window);
-    void growCircle(Map& map);
-    void printActivePellets() const;
+    void growCircle();
+    std::string printActivePellets() const;
 private:
     std::vector<Pellet> activePellets;
     Hashmap hashmap;
+    Map map;
 };

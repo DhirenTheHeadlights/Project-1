@@ -1,22 +1,22 @@
 #include "World.h"
 
 int addSize = 0;
-
 Circle circle(5);
+Map map;
 
-World::World(Map& map, sf::RenderWindow& window) : hashmap(map, window) {
+World::World(sf::RenderWindow& window) : hashmap(map, window) {
     map.grid(1920, 1080, 5);
 }
 
-void World::createWorld(sf::RenderWindow& window, Map& map) {
+void World::createWorld(sf::RenderWindow& window) {
     circle.move(circle.getCirclesize(), 100, 5, window);
-    removePelletWhenCollision(circle, hashmap, map, window);
-    drawPellets(window, map, hashmap);
+    removePelletWhenCollision();
+    drawPellets(window);
     circle.draw(window);
     drawInformation(window);
 }
 
-void World::removePelletWhenCollision(Circle& circle, Hashmap& hashmap, Map& map, sf::RenderWindow& window) {
+void World::removePelletWhenCollision() {
     std::vector<Pellet*> collidedPellets = hashmap.checkCollision(circle, map); // Gets a vector of collided pellets
     bool hasCollided = false; // To track if at least one collision occurred
     for (Pellet* collidedPelletPtr : collidedPellets) {
@@ -25,7 +25,7 @@ void World::removePelletWhenCollision(Circle& circle, Hashmap& hashmap, Map& map
         }
         collidedPelletPtr->deActivate();
         if (!hasCollided) {
-            growCircle(map); // Apply the increase circle size function only once per frame
+            growCircle(); // Apply the increase circle size function only once per frame
             hasCollided = true; // Set flag to true since a collision was detected
             printActivePellets();
         }
@@ -34,23 +34,20 @@ void World::removePelletWhenCollision(Circle& circle, Hashmap& hashmap, Map& map
     activePellets.erase( // Now, remove inactive pellets from activePellets vector
         std::remove_if(activePellets.begin(), activePellets.end(), [](Pellet& pellet) {
             return !pellet.isActive();
-            }),
-        activePellets.end()
+            }), activePellets.end()
     );
     if (hasCollided) {
         std::cout << "Collided with " << collidedPellets.size() << " pellets. addSize: " << addSize << std::endl;
     }
 }
 
-
-
-void World::growCircle(Map& map) {
+void World::growCircle() {
     map.setCellSize(5 * static_cast<float>(5 + addSize));
     addSize += 1;
     circle.setCircleSize(static_cast<float>(5 + addSize));
 }
 
-void World::drawPellets(sf::RenderWindow& window, Map& map, Hashmap& hashmap) {
+void World::drawPellets(sf::RenderWindow& window) {
     if (activePellets.empty()) {
         for (int i = 0; i < 100; i++) {
             float x = std::rand() % window.getSize().x;
@@ -64,16 +61,20 @@ void World::drawPellets(sf::RenderWindow& window, Map& map, Hashmap& hashmap) {
     }
 }
 
-void World::printActivePellets() const{ // For debugging
+std::string World::printActivePellets() const{ // For debugging
+    std::string returnString;
     for (auto& pellet : activePellets) {
-        std::cout << "Pellet at (" << pellet.getPosition().x << ", " << pellet.getPosition().y << ") ";
+        std::string string = "Pellet at(" + std::to_string(pellet.getPosition().x) 
+                                + ", " + std::to_string(pellet.getPosition().y) + ") ";
         if (pellet.isActive()) {
-            std::cout << "is active" << std::endl;
+            returnString += string + "is ACTIVE";
         }
         else {
-            std::cout << "is inactive" << std::endl;
-        }
-    }
+			returnString += string + "is INACTIVE";
+		}
+		returnString += "\n";
+	}
+	return returnString;
 }
 
 void World::drawInformation(sf::RenderWindow& window) {
@@ -84,8 +85,8 @@ void World::drawInformation(sf::RenderWindow& window) {
     }
     else {
 		text.setFont(font);
-		text.setString("Size: " + std::to_string(circle.getCirclesize()));
-		text.setCharacterSize(18);
+		text.setString(printActivePellets());
+		text.setCharacterSize(12);
 		text.setFillColor(sf::Color::Red);
 		text.setPosition(10, 10);
 		window.draw(text);

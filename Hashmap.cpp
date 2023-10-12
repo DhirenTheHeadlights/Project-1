@@ -4,10 +4,18 @@ Hashmap::Hashmap(Map& map, sf::RenderWindow& window) {
 }
 
 void Hashmap::assignPellet(Pellet& pellet, Map& map) {
-    std::string key = generateKey
-        (static_cast<int>(pellet.getPosition().x / map.getCellSize()), 
+    std::string key = generateKey(
+        static_cast<int>(pellet.getPosition().x / map.getCellSize()),
         static_cast<int>(pellet.getPosition().y / map.getCellSize()));
-    hashmap[key].push_back(&pellet); 
+    if (pellet.isActive()) {
+        hashmap[key].push_back(&pellet);
+    }
+    else {
+        if (hashmap.count(key)) {
+            auto& cell = hashmap[key];
+            cell.erase(std::remove(cell.begin(), cell.end(), &pellet), cell.end());
+        }
+    }
 }
 
 std::string Hashmap::generateKey(int x, int y) const {

@@ -5,7 +5,7 @@
 
 int main() { 
     initializeGlobals();
-    World world(map, window);
+    World world(window);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -18,7 +18,7 @@ int main() {
             window.close();
         }
         window.clear();    
-        world.createWorld(window, map);
+        world.createWorld(window);
         window.display();
     }
     return 0;
