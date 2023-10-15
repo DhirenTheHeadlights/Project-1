@@ -11,7 +11,7 @@
 class World {
 public:
     World(sf::RenderWindow& window);
-    void createWorld(sf::RenderWindow& window);
+    void createWorld(sf::RenderWindow& window, sf::Event& event);
     void drawPellets(sf::RenderWindow& window, int numPellets);
     void removePelletWhenCollision(sf::RenderWindow& window);
     int getCircleSize() const;
@@ -22,4 +22,8 @@ private:
     Hashmap hashmap;
     Map map;
     sf::View view;
+    sf::Font font;
+    sf::Clock mainTime;
+    float addSize = 0;
+    double collidedPellets_size = 0;
 };

@@ -1,11 +1,11 @@
 ﻿  World.cpp
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(47,37): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(70,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(71,21): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(98,14): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(42,37): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(63,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(64,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\World.cpp(91,14): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
   Generating code
-  2 of 709 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  2 of 715 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFML Project 1.vcxproj -> C:\Users\Dhiren\Source\Repos\DhirenTheHeadlights\Project-1\x64\Release\SFML Project 1.exe

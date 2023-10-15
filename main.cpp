@@ -17,7 +17,7 @@ int main() {
             window.close();
         }
         window.clear();    
-        world.createWorld(window);
+        world.createWorld(window, event);
         window.display();
     }
     return 0;

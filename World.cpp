@@ -1,36 +1,33 @@
 #include "World.h"
 
-float addSize = 0;
 Circle circle(5);
-Map map;
-double collidedPellets_size = 0;
 
-World::World(sf::RenderWindow& window) : hashmap(map, window) {
+World::World(sf::RenderWindow& window) : hashmap(map, window), view(window.getDefaultView()) {
     map.grid(10000, 10000, 100);
+    // Load font here for efficiency
+    if (!font.loadFromFile("times_new_roman.ttf")) {
+        std::cerr << "Failed to load font\n";
+    }
 }
 
-void World::createWorld(sf::RenderWindow& window) {
+void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     circle.move(circle.getCircleSize(), 100, 5, map, window);
     removePelletWhenCollision(window);
     drawPellets(window, 10000);
     circle.draw(window);
     map.drawGrid(window);
-    drawInformation(window, std::to_string(circle.getPosition().x) + ", " + std::to_string(circle.getPosition().y), 10);
-
-    // Set the view's center to the circle's position
-    sf::View view(window.getView());
-    view.setCenter(circle.getPosition().x + circle.getCircleSize(), circle.getPosition().y + circle.getCircleSize());
-
-    // Adjust the view's size if needed (e.g., for zooming)
-    view.setSize(window.getDefaultView().getSize() * (static_cast<float>(0.1) * log(circle.getCircleSize())));
-
-    // Set the modified view to the window
-    window.setView(view);
-
-    //to debug
-    if (map.getLength() != 10000) {
-		std::cout << "Map length is not 10000" << std::endl;
+    drawInformation(window, "Mass: " + std::to_string(circle.getCircleSize()), 10);
+    view.setCenter(circle.getPosition().x + circle.getCircleSize(), circle.getPosition().y + circle.getCircleSize());  // Set the view's center to the circle's position
+    view.setSize(window.getDefaultView().getSize() * (static_cast<float>(0.2) * log(circle.getCircleSize())));  // Adjust the view's size if needed (e.g., for zooming)
+    if (event.mouseWheelScroll.delta > 0) {
+        // Zoom out
+        view.zoom(0.9f);
     }
+    else {
+        // Zoom in
+        view.zoom(1.1f);
+    }
+    window.setView(view);
 }
 
 
@@ -63,33 +60,31 @@ void World::growCircle(float numCollisions) {
 }
 
 void World::drawPellets(sf::RenderWindow& window, int numPellets) { // Draws pellets
+    float x = std::rand() % map.getLength();
+    float y = std::rand() % map.getLength();
     if (activePellets.empty()) {
         for (int i = 0; i < numPellets; i++) {
-            float x = std::rand() % map.getLength();
-            float y = std::rand() % map.getLength();
             activePellets.emplace_back(x, y);
         }
     }
+    if (mainTime.getElapsedTime().asSeconds() > 0.1) {
+        activePellets.emplace_back(x, y);
+		mainTime.restart();
+	}
     for (auto& pellet : activePellets) {     // Iterate through active pellets
         pellet.draw(window);
         hashmap.assignPellet(pellet, map);
     }
 }
 
-void World::drawInformation(sf::RenderWindow& window, std::string info, int textSize) { // For debugging
+void World::drawInformation(sf::RenderWindow& window, std::string info, int textSize) {
     sf::Text text;
-    sf::Font font;
-    if (!font.loadFromFile("times_new_roman.ttf")) {
-        std::cerr << "Failed to load font\n";
-    }
-    else {
-		text.setFont(font);
-		text.setString(info);
-		text.setCharacterSize(textSize);
-		text.setFillColor(sf::Color::Red);
-		text.setPosition(circle.getPosition().x, circle.getPosition().y);
-		window.draw(text);
-    }
+    text.setFont(font);  // Use the preloaded font
+    text.setString(info);
+    text.setCharacterSize(textSize);
+    text.setFillColor(sf::Color::Red);
+    text.setPosition(circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y);
+    window.draw(text);
 }
 
 int World::getCircleSize() const {
