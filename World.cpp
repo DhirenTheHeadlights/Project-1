@@ -1,34 +1,48 @@
 #include "World.h"
 
-int addSize = 0;
+float addSize = 0;
 Circle circle(5);
 Map map;
 double collidedPellets_size = 0;
 
 World::World(sf::RenderWindow& window) : hashmap(map, window) {
-    map.grid(1920, 1080, 20);
+    map.grid(10000, 10000, 100);
 }
 
-void World::createWorld(sf::RenderWindow& window) { // Creates the world
-    circle.move(circle.getCirclesize(), 100, 5, window);
+void World::createWorld(sf::RenderWindow& window) {
+    circle.move(circle.getCircleSize(), 100, 5, map, window);
     removePelletWhenCollision(window);
-    drawPellets(window);
+    drawPellets(window, 10000);
     circle.draw(window);
-    //drawInformation(window, std::to_string(collidedPellets_size) + " pellets collided");
     map.drawGrid(window);
-    drawInformation(window, std::to_string(circle.getPosition().x) + ", " + std::to_string(circle.getPosition().y));
+    drawInformation(window, std::to_string(circle.getPosition().x) + ", " + std::to_string(circle.getPosition().y), 10);
+
+    // Set the view's center to the circle's position
+    sf::View view(window.getView());
+    view.setCenter(circle.getPosition().x + circle.getCircleSize(), circle.getPosition().y + circle.getCircleSize());
+
+    // Adjust the view's size if needed (e.g., for zooming)
+    view.setSize(window.getDefaultView().getSize() * (static_cast<float>(0.1) * log(circle.getCircleSize())));
+
+    // Set the modified view to the window
+    window.setView(view);
+
+    //to debug
+    if (map.getLength() != 10000) {
+		std::cout << "Map length is not 10000" << std::endl;
+    }
 }
+
 
 void World::removePelletWhenCollision(sf::RenderWindow& window) {
     std::set<Pellet*> collidedPellets = hashmap.checkCollision(circle, map);
-    int numActiveCollisions = 0;  // to keep track of number of active collisions this frame
+    float numActiveCollisions = 0;  // to keep track of number of active collisions this frame
     for (Pellet* collidedPelletPtr : collidedPellets) {
-        //collidedPelletPtr->printActiveStatus();
         if (!collidedPelletPtr->isActive()) {
             continue; // Skip pellets that have already been deactivated in a previous collision
         }
         collidedPelletPtr->deActivate();
-        numActiveCollisions++;
+        numActiveCollisions += (0.1 * collidedPelletPtr->getRadius());
     }
     activePellets.erase( // Now, remove inactive pellets from activePellets vector
         std::remove_if(activePellets.begin(), activePellets.end(), [](Pellet& pellet) {
@@ -36,23 +50,23 @@ void World::removePelletWhenCollision(sf::RenderWindow& window) {
     if (numActiveCollisions > 0) {
         growCircle(numActiveCollisions);
         collidedPellets_size = numActiveCollisions; // For debugging
+        std::cout << circle.getCircleSize() << ", " << numActiveCollisions << std::endl;
     }
 }
 
-void World::growCircle(int numCollisions) {
-    int growthAmount = 1 * numCollisions; // adjust growth based on numCollisions
-    //map.setCellSize(static_cast<float>(5 + addSize));
+void World::growCircle(float numCollisions) {
+    float growthAmount = numCollisions; // adjust growth based on numCollisions
     if (addSize < 100) {
         addSize += growthAmount;
 	}
     circle.setCircleSize(static_cast<float>(5 + addSize));
 }
 
-void World::drawPellets(sf::RenderWindow& window) { // Draws pellets
+void World::drawPellets(sf::RenderWindow& window, int numPellets) { // Draws pellets
     if (activePellets.empty()) {
-        for (int i = 0; i < 1000; i++) {
-            float x = std::rand() % window.getSize().x;
-            float y = std::rand() % window.getSize().y;
+        for (int i = 0; i < numPellets; i++) {
+            float x = std::rand() % map.getLength();
+            float y = std::rand() % map.getLength();
             activePellets.emplace_back(x, y);
         }
     }
@@ -62,7 +76,7 @@ void World::drawPellets(sf::RenderWindow& window) { // Draws pellets
     }
 }
 
-void World::drawInformation(sf::RenderWindow& window, std::string info) { // For debugging
+void World::drawInformation(sf::RenderWindow& window, std::string info, int textSize) { // For debugging
     sf::Text text;
     sf::Font font;
     if (!font.loadFromFile("times_new_roman.ttf")) {
@@ -71,9 +85,9 @@ void World::drawInformation(sf::RenderWindow& window, std::string info) { // For
     else {
 		text.setFont(font);
 		text.setString(info);
-		text.setCharacterSize(20);
+		text.setCharacterSize(textSize);
 		text.setFillColor(sf::Color::Red);
-		text.setPosition(10, 10);
+		text.setPosition(circle.getPosition().x, circle.getPosition().y);
 		window.draw(text);
     }
 }

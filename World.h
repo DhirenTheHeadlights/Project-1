@@ -12,13 +12,14 @@ class World {
 public:
     World(sf::RenderWindow& window);
     void createWorld(sf::RenderWindow& window);
-    void drawPellets(sf::RenderWindow& window);
+    void drawPellets(sf::RenderWindow& window, int numPellets);
     void removePelletWhenCollision(sf::RenderWindow& window);
     int getCircleSize() const;
-    void drawInformation(sf::RenderWindow& window, std::string info);
-    void growCircle(int numCollisions);
+    void drawInformation(sf::RenderWindow& window, std::string info, int textSize);
+    void growCircle(float numCollisions);
 private:
     std::vector<Pellet> activePellets;
     Hashmap hashmap;
     Map map;
+    sf::View view;
 };

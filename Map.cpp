@@ -18,17 +18,21 @@ int Map::getCellSize() const {
 }
 
 void Map::drawGrid(sf::RenderWindow& window) {
-    sf::RectangleShape line(sf::Vector2f(window.getSize().x, 1)); // Horizontal line
-    line.setFillColor(sf::Color::White);
+    sf::RectangleShape line(sf::Vector2f(getLength(), 1)); // Horizontal line
+    line.setFillColor(sf::Color::Green);
     for (int i = 0; i <= rows; i++) {
         line.setPosition(0, i * cellSize);
         window.draw(line);
     }
-    line.setSize(sf::Vector2f(1, window.getSize().y)); // Vertical line
+    line.setSize(sf::Vector2f(1, getLength())); // Vertical line
     for (int i = 0; i <= cols; i++) {
         line.setPosition(i * cellSize, 0);
         window.draw(line);
     }
+}
+
+int Map::getLength() const {
+	return rows * cellSize;
 }
 
 std::pair<int, int> Map::getGridCoordinates(float x, float y) const {

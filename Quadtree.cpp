@@ -79,6 +79,6 @@ bool QuadTree::collidesWith(const Circle& circle, Pellet* pellet) const {
     float distance = std::sqrt((circlePos.x - pelletPos.x) * (circlePos.x - pelletPos.x) +
         (circlePos.y - pelletPos.y) * (circlePos.y - pelletPos.y));
 
-    return distance <= circle.getCirclesize();
+    return distance <= circle.getCircleSize();
 }
 

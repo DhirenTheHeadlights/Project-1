@@ -40,9 +40,9 @@ std::set<Pellet*> Hashmap::checkCollision(Circle& circle, Map& map) {
 
     // Get the bounding box of the circle
     float left = circle.getPosition().x;
-    float right = circle.getPosition().x + 2 * circle.getCirclesize();
+    float right = circle.getPosition().x + 2 * circle.getCircleSize();
     float top = circle.getPosition().y;
-    float bottom = circle.getPosition().y + 2 * circle.getCirclesize();
+    float bottom = circle.getPosition().y + 2 * circle.getCircleSize();
 
     // Convert the bounding box corners to grid coordinates
     auto topLeft = map.getGridCoordinates(left, top);
@@ -54,14 +54,14 @@ std::set<Pellet*> Hashmap::checkCollision(Circle& circle, Map& map) {
             std::string key = generateKey(i, j);
             if (hashmap.find(key) != hashmap.end()) {
                 for (Pellet* pellet : hashmap[key]) {
-                    float circleCenterX = circle.getPosition().x + circle.getCirclesize();
-                    float circleCenterY = circle.getPosition().y + circle.getCirclesize();
+                    float circleCenterX = circle.getPosition().x + circle.getCircleSize();
+                    float circleCenterY = circle.getPosition().y + circle.getCircleSize();
                     float dx = pellet->getPosition().x - circleCenterX;
                     float dy = pellet->getPosition().y - circleCenterY;
                     float distance = std::sqrt(dx * dx + dy * dy);
 
                     // Check for collision
-                    if (distance < pellet->getRadius() + circle.getCirclesize()) {
+                    if (distance < pellet->getRadius() + circle.getCircleSize()) {
                         collidedPellets.insert(pellet);
                     }
                 }
