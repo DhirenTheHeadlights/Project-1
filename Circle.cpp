@@ -10,43 +10,30 @@ Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initialliz
 
 void Circle::move(double radius, double moveSpeed, double MaxSpeed, sf::RenderWindow& window) {
     float elapsed = deltaTime.restart().asSeconds();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && y > 0)
-        Circle::direction(0, -moveSpeed, MaxSpeed, window, elapsed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && y < window.getSize().y - circlesize)
-        Circle::direction(0, moveSpeed, MaxSpeed, window, elapsed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && x > 0)
-        Circle::direction(-moveSpeed, 0, MaxSpeed, window, elapsed);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && x < window.getSize().x - circlesize)
-        Circle::direction(moveSpeed, 0, MaxSpeed, window, elapsed);
+    sf::Vector2f dirToMouse = sf::Vector2f(sf::Mouse::getPosition(window)) - shape.getPosition();
+    if (dirToMouse.x == 0 && dirToMouse.y == 0) return; // Return if the mouse is already on the circle.
+    float length = sqrt(dirToMouse.x * dirToMouse.x + dirToMouse.y * dirToMouse.y);
+    dirToMouse.x /= length;
+    dirToMouse.y /= length;
+    direction(dirToMouse.x * moveSpeed, dirToMouse.y * moveSpeed, MaxSpeed, window, elapsed);
 }
 
 void Circle::direction(float dx, float dy, double MaxSpeed, sf::RenderWindow& window, float elapsed) {
-    int currentDirection = (dx != 0) ? (dx > 0 ? 1 : -1) : (dy > 0 ? 2 : -2);  // 1:right, -1:left, 2:down, -2:up
-    if (currentDirection + lastDirection == 0) {  // Direction changed
-        currentSpeed = 1.0;
-    }
-    lastDirection = currentDirection;
     x += dx * acceleration(MaxSpeed) * elapsed;
     y += dy * acceleration(MaxSpeed) * elapsed;
-    // Boundary checks so circle does not go out of bounds
-    if (x < 0) x = 0;
-    if (y < 0) y = 0;
-    if (x > window.getSize().x - 2 * circlesize) x = window.getSize().x - 2 * circlesize;
-    if (y > window.getSize().y - 2 * circlesize) y = window.getSize().y - 2 * circlesize;
+    // Boundary checks
+    if (x < circlesize) x = circlesize;
+    if (y < circlesize) y = circlesize;
+    if (x > window.getSize().x - circlesize) x = window.getSize().x - circlesize;
+    if (y > window.getSize().y - circlesize) y = window.getSize().y - circlesize;
     shape.setPosition(x, y);
 }
 
+
 double Circle::acceleration(double MaxSpeed) { // Adds to speed you keep moving
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::S)
-        || sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        if (currentSpeed < MaxSpeed) {
-            currentSpeed += 0.001;
-        }
-        deltaTime.restart();
-    }
-    else if (deltaTime.getElapsedTime().asSeconds() >= 1) { // If you hold still for a second, the circle stops moving.
-        currentSpeed = 1.0;
-    }
+    double maxSpeed = MaxSpeed * 1 / (0.25 * getCirclesize());
+    if (currentSpeed < maxSpeed) currentSpeed += 0.001;
+    deltaTime.restart();
     return currentSpeed;
 }
 

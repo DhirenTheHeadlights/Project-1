@@ -6,7 +6,6 @@
 int main() { 
     initializeGlobals();
     World world(window);
-
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
