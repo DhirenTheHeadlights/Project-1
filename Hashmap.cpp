@@ -35,7 +35,7 @@ std::vector<Pellet*> Hashmap::getPelletsInSameCell(float x, float y, Map& map) c
 }
 
 
-std::set<Pellet*> Hashm (Circle& circle, Map& map) { // Checks for collisions between the circle and pellets
+std::set<Pellet*> Hashmap::checkCollision(Circle& circle, Map& map) { // Checks for collisions between the circle and pellets
     std::vector<Pellet*> nearbyPellets = getPelletsInSameCell(circle.getPosition().x, circle.getPosition().y, map);
     std::set<Pellet*> collidedPellets;        
     for (Pellet* pelletPtr : nearbyPellets) {
