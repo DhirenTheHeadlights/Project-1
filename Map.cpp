@@ -30,3 +30,7 @@ void Map::drawGrid(sf::RenderWindow& window) {
         window.draw(line);
     }
 }
+
+std::pair<int, int> Map::getGridCoordinates(float x, float y) const {
+    return { static_cast<int>(x / cellSize), static_cast<int>(y / cellSize) };
+}

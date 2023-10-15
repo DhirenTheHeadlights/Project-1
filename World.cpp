@@ -6,7 +6,7 @@ Map map;
 double collidedPellets_size = 0;
 
 World::World(sf::RenderWindow& window) : hashmap(map, window) {
-    map.grid(1920, 1080, 1920);
+    map.grid(1920, 1080, 20);
 }
 
 void World::createWorld(sf::RenderWindow& window) { // Creates the world
@@ -14,8 +14,9 @@ void World::createWorld(sf::RenderWindow& window) { // Creates the world
     removePelletWhenCollision(window);
     drawPellets(window);
     circle.draw(window);
-    drawInformation(window, std::to_string(collidedPellets_size) + " pellets collided");
+    //drawInformation(window, std::to_string(collidedPellets_size) + " pellets collided");
     map.drawGrid(window);
+    drawInformation(window, std::to_string(circle.getPosition().x) + ", " + std::to_string(circle.getPosition().y));
 }
 
 void World::removePelletWhenCollision(sf::RenderWindow& window) {
@@ -38,11 +39,12 @@ void World::removePelletWhenCollision(sf::RenderWindow& window) {
     }
 }
 
-
 void World::growCircle(int numCollisions) {
     int growthAmount = 1 * numCollisions; // adjust growth based on numCollisions
     //map.setCellSize(static_cast<float>(5 + addSize));
-    addSize += growthAmount;
+    if (addSize < 100) {
+        addSize += growthAmount;
+	}
     circle.setCircleSize(static_cast<float>(5 + addSize));
 }
 
@@ -69,7 +71,7 @@ void World::drawInformation(sf::RenderWindow& window, std::string info) { // For
     else {
 		text.setFont(font);
 		text.setString(info);
-		text.setCharacterSize(12);
+		text.setCharacterSize(20);
 		text.setFillColor(sf::Color::Red);
 		text.setPosition(10, 10);
 		window.draw(text);
