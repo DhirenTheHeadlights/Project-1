@@ -32,7 +32,7 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
 
 
 void World::removePelletWhenCollision(sf::RenderWindow& window) {
-    std::set<Pellet*> collidedPellets = hashmap.checkCollision(circle, map);
+    std::set<Pellet*> collidedPellets = hashmap.checkCollisionWithinBoundsOfCircle(circle, map);
     float numActiveCollisions = 0;  // to keep track of number of active collisions this frame
     for (Pellet* collidedPelletPtr : collidedPellets) {
         if (!collidedPelletPtr->isActive()) {

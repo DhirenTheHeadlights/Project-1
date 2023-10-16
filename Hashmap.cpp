@@ -35,9 +35,8 @@ std::vector<Pellet*> Hashmap::getPelletsInSameCell(float x, float y, Map& map) c
 }
 
 
-std::set<Pellet*> Hashmap::checkCollision(Circle& circle, Map& map) {
+std::set<Pellet*> Hashmap::checkCollisionWithinBoundsOfCircle(Circle& circle, Map& map) {
     std::set<Pellet*> collidedPellets;
-
     // Get the bounding box of the circle
     float left = circle.getPosition().x;
     float right = circle.getPosition().x + 2 * circle.getCircleSize();
@@ -52,22 +51,25 @@ std::set<Pellet*> Hashmap::checkCollision(Circle& circle, Map& map) {
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
             std::string key = generateKey(i, j);
-            if (hashmap.find(key) != hashmap.end()) {
-                for (Pellet* pellet : hashmap[key]) {
-                    float circleCenterX = circle.getPosition().x + circle.getCircleSize();
-                    float circleCenterY = circle.getPosition().y + circle.getCircleSize();
-                    float dx = pellet->getPosition().x - circleCenterX;
-                    float dy = pellet->getPosition().y - circleCenterY;
-                    float distance = std::sqrt(dx * dx + dy * dy);
+            collidedPellets = checkCollision(key, circle, collidedPellets);
+        }
+    }
+    return collidedPellets;
+}
 
-                    // Check for collision
-                    if (distance < pellet->getRadius() + circle.getCircleSize()) {
-                        collidedPellets.insert(pellet);
-                    }
-                }
+std::set<Pellet*> Hashmap::checkCollision(std::string& key, Circle& circle, std::set<Pellet*>& collidedPellets) {
+    if (hashmap.find(key) != hashmap.end()) {
+        for (Pellet* pellet : hashmap[key]) {
+            float circleCenterX = circle.getPosition().x + circle.getCircleSize();
+            float circleCenterY = circle.getPosition().y + circle.getCircleSize();
+            float dx = pellet->getPosition().x - circleCenterX;
+            float dy = pellet->getPosition().y - circleCenterY;
+            float distance = std::sqrt(dx * dx + dy * dy);
+            // Check for collision
+            if (distance < pellet->getRadius() + circle.getCircleSize()) {
+                collidedPellets.insert(pellet);
             }
         }
     }
-
     return collidedPellets;
 }
