@@ -13,20 +13,19 @@ void Circle::move(double radius, double moveSpeed, double MaxSpeed, Map& map, sf
 
     sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
     sf::Vector2f viewPos = window.mapPixelToCoords(pixelPos);
-
     sf::Vector2f dirToMouse = viewPos - (shape.getPosition() + sf::Vector2f(circlesize, circlesize));
 
     if (dirToMouse.x == 0 && dirToMouse.y == 0) return; // Return if the mouse is already on the circle.
     float length = sqrt(dirToMouse.x * dirToMouse.x + dirToMouse.y * dirToMouse.y);
     dirToMouse.x /= length;
     dirToMouse.y /= length;
-    direction(dirToMouse.x * moveSpeed, dirToMouse.y * moveSpeed, MaxSpeed, elapsed, map);
+    direction(dirToMouse.x * static_cast<float>(moveSpeed), dirToMouse.y * static_cast<float>(moveSpeed), MaxSpeed, elapsed, map);
 }
 
 
 void Circle::direction(float dx, float dy, double MaxSpeed, float elapsed, Map& map) {
-    x += dx * acceleration(MaxSpeed) * elapsed;
-    y += dy * acceleration(MaxSpeed) * elapsed;
+    x += dx * static_cast<float>(acceleration(MaxSpeed)) * elapsed;
+    y += dy * static_cast<float>(acceleration(MaxSpeed)) * elapsed;
     // Boundary checks
     if (x < 0) x = 0;
     if (y < 0) y = 0;

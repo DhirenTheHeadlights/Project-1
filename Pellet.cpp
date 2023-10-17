@@ -12,7 +12,7 @@ const std::vector<sf::Color> Pellet::colors = {
 
 Pellet::Pellet(float x, float y) {
     shape.setPosition(x, y);
-    shape.setRadius(radius);
+    shape.setRadius(static_cast<float>(radius));
     int randomIndex = std::rand() % colors.size();
     sf::Color randomColor = colors[randomIndex];
     shape.setFillColor(randomColor);

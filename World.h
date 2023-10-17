@@ -25,5 +25,6 @@ private:
     sf::Font font;
     sf::Clock mainTime;
     float addSize = 0;
+    float zoomMultiplier = 1.0f;
     double collidedPellets_size = 0;
 };
