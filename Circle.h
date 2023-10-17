@@ -9,10 +9,11 @@ public:
     Circle(float radius);
     void move(double radius, double moveSpeed, double MaxSpeed, Map& map, sf::RenderWindow& window);
     void draw(sf::RenderWindow& window);
+    void setCircleSize(float newSize);
+    void setPosition(float x, float y);
     float getCircleSize() const;
     sf::Vector2f getPosition() const;
     double getCurrentSpeed() const;
-    void setCircleSize(float newSize);
 private:
     sf::CircleShape shape;
     float circlesize;

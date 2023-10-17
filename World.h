@@ -14,9 +14,11 @@ public:
     void createWorld(sf::RenderWindow& window, sf::Event& event);
     void drawPellets(sf::RenderWindow& window, int numPellets);
     void removePelletWhenCollision(sf::RenderWindow& window);
-    int getCircleSize() const;
-    void drawInformation(sf::RenderWindow& window, std::string info, int textSize);
+    void drawInformation(sf::RenderWindow& window, std::string info, int textSize, float setPosX, float setPosY);
     void growCircle(float numCollisions);
+    void restart();
+    int getCircleSize() const;
+    bool isGameOver() const;
 private:
     std::vector<Pellet> activePellets;
     Hashmap hashmap;
@@ -27,4 +29,5 @@ private:
     float addSize = 0;
     float zoomMultiplier = 1.0f;
     double collidedPellets_size = 0;
+    bool gameOver = false;
 };

@@ -2,9 +2,6 @@
 
 
 Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initiallizes the circle with a radius
-    x = 0;
-    y = 0;
-    shape.setPosition(x, y);
     shape.setFillColor(sf::Color::Blue);
 }
 
@@ -21,7 +18,6 @@ void Circle::move(double radius, double moveSpeed, double MaxSpeed, Map& map, sf
     dirToMouse.y /= length;
     direction(dirToMouse.x * static_cast<float>(moveSpeed), dirToMouse.y * static_cast<float>(moveSpeed), MaxSpeed, elapsed, map);
 }
-
 
 void Circle::direction(float dx, float dy, double MaxSpeed, float elapsed, Map& map) {
     x += dx * static_cast<float>(acceleration(MaxSpeed)) * elapsed;
@@ -53,6 +49,10 @@ void Circle::draw(sf::RenderWindow& window) {
 void Circle::setCircleSize(float newSize) {
     circlesize = newSize;
     shape.setRadius(newSize); 
+}
+
+void Circle::setPosition(float x, float y) {
+	shape.setPosition(x, y); // Set the position
 }
 
 float Circle::getCircleSize() const {

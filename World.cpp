@@ -1,6 +1,6 @@
 #include "World.h"
 
-Circle circle(5);
+Circle circle(5.0f);
 
 World::World(sf::RenderWindow& window) : hashmap(map, window), view(window.getDefaultView()) {
     map.grid(10000, 10000, 100);
@@ -15,19 +15,17 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     removePelletWhenCollision(window);
     drawPellets(window, 10000);
     map.drawGrid(window);
+    if (gameOver == true) {
+        drawInformation(window, "Game Over! Press R to restart", 50, 100, 100);
+        return;
+    }
     circle.draw(window);
-    drawInformation(window, "Mass: " + std::to_string(circle.getCircleSize()), 10);
+    drawInformation(window, "Mass: " + std::to_string(circle.getCircleSize()), 10, circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y);
     view.setCenter(circle.getPosition().x + circle.getCircleSize(), circle.getPosition().y + circle.getCircleSize());  // Set the view's center to the circle's position
     view.setSize(window.getDefaultView().getSize() * zoomMultiplier * (static_cast<float>(0.2) * log(circle.getCircleSize())));  // Adjust the view's size if needed (e.g., for zooming)
     if (event.type == sf::Event::MouseWheelScrolled) {
-        if (event.mouseWheelScroll.delta > 0) {
-            // Zoom out
-            zoomMultiplier *= 0.99f;
-        }
-        else {
-            // Zoom in
-            zoomMultiplier *= 1.01f;
-        }
+        if (event.mouseWheelScroll.delta > 0) zoomMultiplier *= 0.99f; // Zoom out
+		else zoomMultiplier *= 1.01f; // Zoom in
     }
     window.setView(view);
 }
@@ -38,7 +36,8 @@ void World::removePelletWhenCollision(sf::RenderWindow& window) {
     float numActiveCollisions = 0;  // to keep track of number of active collisions this frame
     for (Pellet* collidedPelletPtr : collidedPellets) {
         if (collidedPelletPtr->getRadius() > circle.getCircleSize()) {
-			continue; // Skip pellets that are bigger than the circle
+            gameOver = true; // Game over if a pellet is larger than the circle
+			continue; 
 		}
         if (!collidedPelletPtr->isActive()) {
             continue; // Skip pellets that have already been deactivated in a previous collision
@@ -82,16 +81,26 @@ void World::drawPellets(sf::RenderWindow& window, int numPellets) { // Draws pel
     }
 }
 
-void World::drawInformation(sf::RenderWindow& window, std::string info, int textSize) {
+void World::drawInformation(sf::RenderWindow& window, std::string info, int textSize, float setPosX, float setPosY) {
     sf::Text text;
     text.setFont(font);  // Use the preloaded font
     text.setString(info);
     text.setCharacterSize(textSize);
     text.setFillColor(sf::Color::Red);
-    text.setPosition(circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y);
+    text.setPosition(setPosX, setPosY);
     window.draw(text);
+}
+
+void World::restart() {
+	gameOver = false;
+	circle.setCircleSize(5.0f);
+	addSize = 0;
 }
 
 int World::getCircleSize() const {
     return 5.f + addSize;
+}
+
+bool World::isGameOver() const {
+	return gameOver;
 }
