@@ -19,7 +19,7 @@ Pellet::Pellet(float x, float y) {
 }
 
 sf::Vector2f Pellet::getPosition() const {
-    return shape.getPosition();
+    return shape.getPosition() + sf::Vector2f(radius, radius);
 }
 
 int Pellet::getRadius() const {
@@ -27,9 +27,7 @@ int Pellet::getRadius() const {
 }
 
 void Pellet::draw(sf::RenderWindow& window) {
-    if (active) {
-        window.draw(shape);
-    }
+    if (active) window.draw(shape);
 }
 
 bool Pellet::deActivate() {
@@ -42,10 +40,6 @@ bool Pellet::isActive() const {
 }
 
 void Pellet::printActiveStatus() {
-    if (active) {
-		std::cout << "Pellet at (" << shape.getPosition().x << ", " << shape.getPosition().y << ") is active" << std::endl;
-	}
-    else {
-		std::cout << "Pellet at (" << shape.getPosition().x << ", " << shape.getPosition().y << ") is inactive" << std::endl;
-	}
+    if (active) std::cout << "Pellet at (" << shape.getPosition().x << ", " << shape.getPosition().y << ") is active" << std::endl;
+    else std::cout << "Pellet at (" << shape.getPosition().x << ", " << shape.getPosition().y << ") is inactive" << std::endl;
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include "Circle.h"
+#pragma once
+
+#include "Circle.h"
 #include "Pellet.h"
 #include "Map.h"
 #include "Hashmap.h"
@@ -7,6 +10,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <memory>
 
 class World {
 public:
@@ -14,13 +18,13 @@ public:
     void createWorld(sf::RenderWindow& window, sf::Event& event);
     void drawPellets(sf::RenderWindow& window, int numPellets);
     void removePelletWhenCollision(sf::RenderWindow& window);
-    void drawInformation(sf::RenderWindow& window, std::string info, int textSize, float setPosX, float setPosY);
+    void drawInformation(sf::RenderWindow& window, const std::string& info, int textSize, float setPosX, float setPosY);
     void growCircle(float numCollisions);
     void restart();
-    int getCircleSize() const;
     bool isGameOver() const;
+
 private:
-    std::vector<Pellet> activePellets;
+    std::vector<std::shared_ptr<Pellet>> activePellets;
     Hashmap hashmap;
     Map map;
     sf::View view;
@@ -28,6 +32,8 @@ private:
     sf::Clock mainTime;
     float addSize = 0;
     float zoomMultiplier = 1.0f;
-    double collidedPellets_size = 0;
+    double collidedPelletsSize = 0;
     bool gameOver = false;
+    float startingCircleSize = 15.0f;
+    Circle circle = Circle(startingCircleSize);
 };

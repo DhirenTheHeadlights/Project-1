@@ -7,7 +7,7 @@
 class Circle {
 public:
     Circle(float radius);
-    void move(double radius, double moveSpeed, double MaxSpeed, Map& map, sf::RenderWindow& window);
+    void move(double radius, double moveSpeed, Map& map, sf::RenderWindow& window);
     void draw(sf::RenderWindow& window);
     void setCircleSize(float newSize);
     void setPosition(float x, float y);
@@ -21,8 +21,7 @@ private:
     double currentSpeed = 1.0;
     int lastDirection = 0;
     sf::Clock deltaTime;
-    void direction(float dx, float dy, double MaxSpeed, float elapsed, Map& map);
-    double acceleration(double MaxSpeed);
+    void direction(float dx, float dy, float elapsed, Map& map);
 };
 
 
