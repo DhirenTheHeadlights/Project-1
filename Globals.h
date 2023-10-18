@@ -5,6 +5,4 @@
 
 extern sf::VideoMode desktop;
 extern sf::RenderWindow window;
-extern std::vector<sf::Color> colors;
-
 void initializeGlobals();

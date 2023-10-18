@@ -21,7 +21,8 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     }
 
     circle.draw(window);
-    drawInformation(window, "Mass: " + std::to_string(circle.getCircleSize()), 10, circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y);
+    //drawInformation(window, "Mass: " + std::to_string(circle.getCircleSize()), 10, circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y);
+    drawInformation(window, "Pos: (" + std::to_string(circle.getPosition().x) + ", " + std::to_string(circle.getPosition().y) + ")", 10, circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y + 2 * circle.getCircleSize());
 
     view.setCenter(circle.getPosition().x + circle.getCircleSize(), circle.getPosition().y + circle.getCircleSize());
     view.setSize(window.getDefaultView().getSize() * zoomMultiplier * (0.2f * log(circle.getCircleSize())));
@@ -38,8 +39,8 @@ void World::removePelletWhenCollision(sf::RenderWindow& window) {
     float numActiveCollisions = 0;  // to keep track of number of active collisions this frame
     for (Pellet* collidedPelletPtr : collidedPellets) {
         if (collidedPelletPtr->getRadius() > circle.getCircleSize()) {
-            gameOver = true; // Game over if a pellet is larger than the circle
-			continue; 
+            if (0.7 * collidedPelletPtr->getRadius() > circle.getCircleSize()) gameOver = true;
+            else continue;
 		}
         if (!collidedPelletPtr->isActive()) {
             continue; // Skip pellets that have already been deactivated in a previous collision
@@ -61,7 +62,7 @@ void World::growCircle(float numCollisions) {
     if (addSize < 2250) {
         addSize += growthAmount;
 	}
-    circle.setCircleSize(static_cast<float>(5 + addSize));
+    circle.setCircleSize(static_cast<float>(startingCircleSize + addSize));
 }
 
 void World::drawPellets(sf::RenderWindow& window, int numPellets) {

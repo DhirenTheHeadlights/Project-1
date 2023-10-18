@@ -48,15 +48,11 @@ void Hashmap::checkCollision(const std::string& key, Circle& circle, std::set<Pe
     if (hashmap.find(key) != hashmap.end()) {
         for (Pellet* pellet : hashmap[key]) {
             // Get the center of the circle and the pellet and calculate the distance between them.
-            float circleCenterX = circle.getPosition().x + circle.getCircleSize();
-            float circleCenterY = circle.getPosition().y + circle.getCircleSize();
-            float dx = pellet->getPosition().x - circleCenterX;
-            float dy = pellet->getPosition().y - circleCenterY;
+            float dx = pellet->getPosition().x - circle.getPosition().x;
+            float dy = pellet->getPosition().y - circle.getPosition().y;
             float distance = std::sqrt(dx * dx + dy * dy);
             // Check for collision
-            if (distance < pellet->getRadius() + circle.getCircleSize()) {
-                collidedPellets.insert(pellet); 
-            }
+            if (distance < pellet->getRadius() + circle.getCircleSize()) collidedPellets.insert(pellet);
         }
     }
 }

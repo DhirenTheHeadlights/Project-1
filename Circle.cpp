@@ -10,7 +10,7 @@ void Circle::move(double radius, double moveSpeed, Map& map, sf::RenderWindow& w
 
     sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
     sf::Vector2f viewPos = window.mapPixelToCoords(pixelPos);
-    sf::Vector2f dirToMouse = viewPos - (shape.getPosition() + sf::Vector2f(circlesize, circlesize));
+    sf::Vector2f dirToMouse = viewPos - shape.getPosition();
 
     if (dirToMouse.x == 0 && dirToMouse.y == 0) return; // Return if the mouse is already on the circle.
     float length = sqrt(dirToMouse.x * dirToMouse.x + dirToMouse.y * dirToMouse.y);
