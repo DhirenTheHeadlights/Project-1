@@ -1,5 +1,4 @@
-﻿  Circle.cpp
-  Hashmap.cpp
+﻿  Hashmap.cpp
 C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Hashmap.cpp(20,38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Hashmap.cpp(20,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Hashmap.cpp(62,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
@@ -15,8 +14,8 @@ C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Hashmap.cpp(62,51): w
 C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Hashmap.cpp(64,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Dhiren\source\repos\DhirenTheHeadlights\Project-1\Hashmap.cpp(64,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating code
-  6 of 674 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+  2 of 674 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFML Project 1.vcxproj -> C:\Users\Dhiren\Source\Repos\DhirenTheHeadlights\Project-1\x64\Release\SFML Project 1.exe

@@ -25,10 +25,10 @@ std::set<Pellet*> Hashmap::getPelletsInSameCell(float x, float y) const {
 std::set<Pellet*> Hashmap::checkCollisionWithinBoundsOfCircle(Circle& circle, Map& map) {
     std::set<Pellet*> collidedPellets;
     // Get the bounding box of the circle
-    float left = circle.getPosition().x;
-    float right = circle.getPosition().x + 2 * circle.getCircleSize();
-    float top = circle.getPosition().y;
-    float bottom = circle.getPosition().y + 2 * circle.getCircleSize();
+    float left = circle.getPosition().x - circle.getCircleSize();
+    float right = circle.getPosition().x + circle.getCircleSize();
+    float top = circle.getPosition().y - circle.getCircleSize();
+    float bottom = circle.getPosition().y + circle.getCircleSize();
     // Convert the bounding box corners to grid coordinates
     auto topLeft = map.getGridCoordinates(left, top);
     auto bottomRight = map.getGridCoordinates(right, bottom);
