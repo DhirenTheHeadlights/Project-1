@@ -1,8 +1,6 @@
 #pragma once
-#include "Circle.h"
-#pragma once
 
-#include "Circle.h"
+#include "CellGroup.h"
 #include "Pellet.h"
 #include "Map.h"
 #include "Hashmap.h"
@@ -17,10 +15,11 @@ public:
     World(sf::RenderWindow& window);
     void createWorld(sf::RenderWindow& window, sf::Event& event);
     void drawPellets(sf::RenderWindow& window, int numPellets);
-    void removePelletWhenCollision(sf::RenderWindow& window);
+    void checkCollisionForEveryCell();
+    void removePelletWhenCollision(Circle* cell);
     void drawInformation(sf::RenderWindow& window, const std::string& info, int textSize, float setPosX, float setPosY);
-    void growCircle(float numCollisions);
     void restart();
+    void drawVector(const sf::Vector2f& start, const sf::Vector2f& direction, sf::RenderWindow& window, float magnitude, sf::Color color);
     bool isGameOver() const;
 
 private:
@@ -32,8 +31,9 @@ private:
     sf::Clock mainTime;
     float addSize = 0;
     float zoomMultiplier = 1.0f;
-    double collidedPelletsSize = 0;
-    bool gameOver = false;
     float startingCircleSize = 15.0f;
-    Circle circle = Circle(startingCircleSize);
+    float maxSize = 1000.0f;
+    float timeBetweenPelletsSpawning = 0.1f;
+    bool gameOver = false;
+    CellGroup cellGroup = CellGroup(startingCircleSize, map);
 };

@@ -7,10 +7,8 @@ Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initialliz
 
 void Circle::move(double radius, double moveSpeed, Map& map, sf::RenderWindow& window) {
     float elapsed = deltaTime.restart().asSeconds();
-
-    sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
-    sf::Vector2f viewPos = window.mapPixelToCoords(pixelPos);
-    sf::Vector2f dirToMouse = viewPos - shape.getPosition();
+    sf::Vector2f viewPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+    dirToMouse = viewPos - this->getPosition();
 
     if (dirToMouse.x == 0 && dirToMouse.y == 0) return; // Return if the mouse is already on the circle.
     float length = sqrt(dirToMouse.x * dirToMouse.x + dirToMouse.y * dirToMouse.y);
@@ -20,18 +18,14 @@ void Circle::move(double radius, double moveSpeed, Map& map, sf::RenderWindow& w
 }
 
 void Circle::direction(float dx, float dy, float elapsed, Map& map) {
-    x += dx * elapsed;
-    y += dy * elapsed;
+    x += dx * elapsed * static_cast<float>(log(static_cast<double>(circlesize)));
+    y += dy * elapsed * static_cast<float>(log(static_cast<double>(circlesize)));
     // Boundary checks
     if (x < 0) x = 0;
     if (y < 0) y = 0;
     if (x > map.getLength() - 2 * circlesize) x = map.getLength() - 2 * circlesize;
     if (y > map.getLength() - 2 * circlesize) y = map.getLength() - 2 * circlesize;
     shape.setPosition(x - circlesize, y - circlesize);
-}
-
-double Circle::getCurrentSpeed() const {
-    return currentSpeed;  // Return the current speed value
 }
 
 void Circle::draw(sf::RenderWindow& window) {
@@ -55,5 +49,19 @@ sf::Vector2f Circle::getPosition() const {
     return shape.getPosition() + sf::Vector2f(circlesize, circlesize);
 }
 
+sf::Vector2f Circle::getDirection() const {
+    return dirToMouse;
+}
+
+bool Circle::operator==(const Circle& other) const {
+    return this->getPosition() == other.getPosition() && this->circlesize == other.circlesize;
+}
+
+bool Circle::checkCollision(const Circle& other) const {
+    float dx = other.getPosition().x - this->getPosition().x;
+    float dy = other.getPosition().y - this->getPosition().y;
+    float distance = sqrt(dx * dx + dy * dy);
+    return distance < (this->getCircleSize() + other.getCircleSize());
+}
 
 

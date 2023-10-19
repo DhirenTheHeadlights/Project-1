@@ -14,7 +14,7 @@ public:
     void printActiveStatus();
 private:
     sf::CircleShape shape;
-    int radius = std::rand() % 50 + 2;
+    int radius = std::rand() % 5 + 2;
     bool active = true;
     static const std::vector<sf::Color> colors;
 };

@@ -12,7 +12,7 @@ void Hashmap::assignPellet(Pellet& pellet, Map& map) {
     else hashmap[key].erase(&pellet);
 }
 
-std::string Hashmap::generateKey(int x, int y) const { // Generates a key for the hashmap
+std::string Hashmap::generateKey(int x, int y) const {
     return std::to_string(x) + "," + std::to_string(y);
 }
 
@@ -22,37 +22,31 @@ std::set<Pellet*> Hashmap::getPelletsInSameCell(float x, float y) const {
     return {};
 }
 
-std::set<Pellet*> Hashmap::checkCollisionWithinBoundsOfCircle(Circle& circle, Map& map) {
+std::set<Pellet*> Hashmap::checkCollisionWithinBoundsOfCircle(Circle* circle, Map& map) {
     std::set<Pellet*> collidedPellets;
-    // Get the bounding box of the circle
-    float left = circle.getPosition().x - circle.getCircleSize();
-    float right = circle.getPosition().x + circle.getCircleSize();
-    float top = circle.getPosition().y - circle.getCircleSize();
-    float bottom = circle.getPosition().y + circle.getCircleSize();
-    // Convert the bounding box corners to grid coordinates
+    float left = circle->getPosition().x - circle->getCircleSize();
+    float right = circle->getPosition().x + circle->getCircleSize();
+    float top = circle->getPosition().y - circle->getCircleSize();
+    float bottom = circle->getPosition().y + circle->getCircleSize();
     auto topLeft = map.getGridCoordinates(left, top);
     auto bottomRight = map.getGridCoordinates(right, bottom);
-    // Loop through all cells covered by the circle bounding box
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
             std::string key = generateKey(i, j);
             checkCollision(key, circle, collidedPellets);
-            drawCell(i, j, map, sf::Color::White); // Draw cell in red
+            drawCell(i, j, map, sf::Color::White);
         }
     }
     return collidedPellets;
 }
 
-void Hashmap::checkCollision(const std::string& key, Circle& circle, std::set<Pellet*>& collidedPellets) {
-    // Check if the key exists in the hashmap
+void Hashmap::checkCollision(const std::string& key, Circle* circle, std::set<Pellet*>& collidedPellets) {
     if (hashmap.find(key) != hashmap.end()) {
         for (Pellet* pellet : hashmap[key]) {
-            // Get the center of the circle and the pellet and calculate the distance between them.
-            float dx = pellet->getPosition().x - circle.getPosition().x;
-            float dy = pellet->getPosition().y - circle.getPosition().y;
+            float dx = pellet->getPosition().x - circle->getPosition().x;
+            float dy = pellet->getPosition().y - circle->getPosition().y;
             float distance = std::sqrt(dx * dx + dy * dy);
-            // Check for collision
-            if (distance < pellet->getRadius() + circle.getCircleSize()) collidedPellets.insert(pellet);
+            if (distance < (pellet->getRadius() * minDistForCollision + circle->getCircleSize())) collidedPellets.insert(pellet);
         }
     }
 }

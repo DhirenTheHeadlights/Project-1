@@ -13,14 +13,17 @@ public:
     void setPosition(float x, float y);
     float getCircleSize() const;
     sf::Vector2f getPosition() const;
+    sf::Vector2f getDirection() const;
+    std::vector<sf::Vector2f> getPixelsInCircumfrence();
     double getCurrentSpeed() const;
+    bool operator==(const Circle& other) const;
+    bool checkCollision(const Circle& other) const;
 private:
     sf::CircleShape shape;
     float circlesize;
     float x = 0, y = 0;
-    double currentSpeed = 1.0;
-    int lastDirection = 0;
     sf::Clock deltaTime;
+    sf::Vector2f dirToMouse;
     void direction(float dx, float dy, float elapsed, Map& map);
 };
 

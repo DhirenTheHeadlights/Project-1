@@ -36,6 +36,9 @@
     <ClCompile Include="Globals.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="CellGroup.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\Downloads\times_new_roman.ttf">
@@ -59,6 +62,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CellGroup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

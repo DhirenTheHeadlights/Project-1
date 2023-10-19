@@ -1,7 +1,5 @@
 #include "World.h"
 
-#include "World.h"
-
 World::World(sf::RenderWindow& window) : hashmap(window), view(window.getDefaultView()) {
     map.grid(10000, 10000, 100);
     if (!font.loadFromFile("times_new_roman.ttf")) {
@@ -10,8 +8,8 @@ World::World(sf::RenderWindow& window) : hashmap(window), view(window.getDefault
 }
 
 void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
-    circle.move(circle.getCircleSize(), 100, map, window);
-    removePelletWhenCollision(window);
+    cellGroup.move(100, map, window);
+    checkCollisionForEveryCell();
     drawPellets(window, 10000);
     map.drawGrid(window);
 
@@ -20,49 +18,54 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
         return;
     }
 
-    circle.draw(window);
-    //drawInformation(window, "Mass: " + std::to_string(circle.getCircleSize()), 10, circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y);
-    drawInformation(window, "Pos: (" + std::to_string(circle.getPosition().x) + ", " + std::to_string(circle.getPosition().y) + ")", 10, circle.getPosition().x - circle.getCircleSize(), circle.getPosition().y + 2 * circle.getCircleSize());
+    cellGroup.draw(window);
+    Circle* cellPos = cellGroup.getCellGroup()[0];
+    drawInformation(window, "Mass: " + std::to_string(cellPos->getCircleSize()), 10, cellPos->getPosition().x, cellPos->getPosition().y);
+    drawVector(cellPos->getPosition(), cellPos->getDirection(), window, 100.0f, sf::Color::Red);
 
-    view.setCenter(circle.getPosition().x + circle.getCircleSize(), circle.getPosition().y + circle.getCircleSize());
-    view.setSize(window.getDefaultView().getSize() * zoomMultiplier * (0.2f * log(circle.getCircleSize())));
+    view.setCenter(cellPos->getPosition().x, cellPos->getPosition().y);
+    view.setSize(window.getDefaultView().getSize() * zoomMultiplier);
 
     if (event.type == sf::Event::MouseWheelScrolled) {
         zoomMultiplier *= (event.mouseWheelScroll.delta > 0) ? 0.99f : 1.01f;
+        zoomMultiplier = std::clamp(zoomMultiplier, 0.5f, 2.0f);  // Assuming these as min and max values.
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        cellGroup.split();
     }
 
     window.setView(view);
 }
 
-void World::removePelletWhenCollision(sf::RenderWindow& window) {
-    std::set<Pellet*> collidedPellets = hashmap.checkCollisionWithinBoundsOfCircle(circle, map);
+void World::checkCollisionForEveryCell() {
+    for (Circle* cell : cellGroup.getCellGroup()) removePelletWhenCollision(cell);
+}
+
+
+void World::removePelletWhenCollision(Circle* cell) {
+    std::set<Pellet*> collidedPellets = hashmap.checkCollisionWithinBoundsOfCircle(cell, map);
     float numActiveCollisions = 0;  // to keep track of number of active collisions this frame
     for (Pellet* collidedPelletPtr : collidedPellets) {
-        if (collidedPelletPtr->getRadius() > circle.getCircleSize()) {
-            if (0.7 * collidedPelletPtr->getRadius() > circle.getCircleSize()) gameOver = true;
+        if (collidedPelletPtr->getRadius() > cell->getCircleSize()) {
+            if (0.7 * collidedPelletPtr->getRadius() > cell->getCircleSize()) gameOver = true;
             else continue;
 		}
         if (!collidedPelletPtr->isActive()) {
             continue; // Skip pellets that have already been deactivated in a previous collision
         }
         collidedPelletPtr->deActivate();
-        numActiveCollisions += (static_cast<float>(0.1 * collidedPelletPtr->getRadius()));
+        numActiveCollisions += static_cast<float>(0.1 * collidedPelletPtr->getRadius());
     }
     activePellets.erase( // Remove all inactive pellets from the activePellets vector
         std::remove_if(activePellets.begin(), activePellets.end(), [](const std::shared_ptr<Pellet>& pelletPtr) {
             return !pelletPtr->isActive();}), activePellets.end());
     if (numActiveCollisions > 0) {
-        growCircle(numActiveCollisions);
-        collidedPelletsSize = numActiveCollisions; // For debugging
+        if (addSize < maxSize) {
+            addSize += numActiveCollisions;
+        }
+        cell->setCircleSize(startingCircleSize + addSize);
     }
-}
-
-void World::growCircle(float numCollisions) {
-    float growthAmount = numCollisions; // adjust growth based on numCollisions
-    if (addSize < 2250) {
-        addSize += growthAmount;
-	}
-    circle.setCircleSize(static_cast<float>(startingCircleSize + addSize));
 }
 
 void World::drawPellets(sf::RenderWindow& window, int numPellets) {
@@ -74,7 +77,7 @@ void World::drawPellets(sf::RenderWindow& window, int numPellets) {
         }
     }
 
-    if (mainTime.getElapsedTime().asSeconds() > 0.1) {
+    if (mainTime.getElapsedTime().asSeconds() > timeBetweenPelletsSpawning) {
         float x = static_cast<float>(std::rand() % map.getLength());
         float y = static_cast<float>(std::rand() % map.getLength());
         activePellets.push_back(std::make_shared<Pellet>(x, y));
@@ -104,10 +107,22 @@ void World::drawInformation(sf::RenderWindow& window, const std::string& info, i
     window.draw(text);
 }
 
+void World::drawVector(const sf::Vector2f & start, const sf::Vector2f & direction, sf::RenderWindow & window, float magnitude, sf::Color color) {
+    sf::VertexArray lines(sf::Lines, 2);
+
+    lines[0].position = start; // start position
+    lines[0].color = color;
+
+    // calculate end position by adding the direction (normalized) multiplied by the magnitude
+    lines[1].position = start + direction / std::sqrt(direction.x * direction.x + direction.y * direction.y) * magnitude;
+    lines[1].color = color;
+
+    window.draw(lines);
+}
 
 void World::restart() {
 	gameOver = false;
-	circle.setCircleSize(startingCircleSize);
+	cellGroup.reset();
 	addSize = 0;
 }
 

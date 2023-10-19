@@ -2,7 +2,6 @@
 #include "Globals.h"
 #include "World.h"
 
-
 int main() { 
     initializeGlobals();
     World world(window);

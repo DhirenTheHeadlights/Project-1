@@ -11,5 +11,5 @@ public:
     int getCellSize() const;
     int getLength() const;
 private:
-    int rows, cols, cellSize;
+    int rows = 1, cols = 1, cellSize = 1;
 };
