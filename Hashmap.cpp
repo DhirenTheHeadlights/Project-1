@@ -1,6 +1,6 @@
 #include "Hashmap.h"
 
-Hashmap::Hashmap(sf::RenderWindow& window) : window(window) {
+Hashmap::Hashmap(sf::RenderWindow& window) {
 }
 
 std::string Hashmap::generateKey(int x, int y) const {
@@ -56,39 +56,20 @@ std::set<Circle*> Hashmap::getCellsInSameCell(Circle* circle, Map& map) const {
     return cellsNearby;
 }
 
-std::set<Pellet*> Hashmap::pelletCollisionWithinBoundsOfCircle(Circle* circle, Map& map) {
-    std::set<Pellet*> collidedPellets;
-    float left = circle->getPosition().x - circle->getCircleSize();
-    float right = circle->getPosition().x + circle->getCircleSize();
-    float top = circle->getPosition().y - circle->getCircleSize();
-    float bottom = circle->getPosition().y + circle->getCircleSize();
-    auto topLeft = map.getGridCoordinates(left, top);
-    auto bottomRight = map.getGridCoordinates(right, bottom);
-    for (int i = topLeft.first; i <= bottomRight.first; i++) {
-        for (int j = topLeft.second; j <= bottomRight.second; j++) {
-            std::string key = generateKey(i, j);
-            checkCollision(key, circle, collidedPellets);
-            drawCell(i, j, map, sf::Color::White);
-        }
-    }
-    return collidedPellets;
+const std::unordered_map<std::string, std::set<Pellet*>>& Hashmap::getPelletHashmap() const {
+	return pelletHashmap;
 }
 
-void Hashmap::checkCollision(const std::string& key, Circle* circle, std::set<Pellet*>& collidedPellets) {
-    if (pelletHashmap.find(key) != pelletHashmap.end()) {
-        for (Pellet* pellet : pelletHashmap[key]) {
-            float dx = pellet->getPosition().x - circle->getPosition().x;
-            float dy = pellet->getPosition().y - circle->getPosition().y;
-            float distance = std::sqrt(dx * dx + dy * dy);
-            if (distance < (pellet->getRadius() * minDistForCollision + circle->getCircleSize())) collidedPellets.insert(pellet);
-        }
-    }
+const std::unordered_map<std::string, std::set<Circle*>>& Hashmap::getCellHashmap() const {
+	return cellHashmap;
 }
 
-void Hashmap::drawCell(int x, int y, Map& map, sf::Color color) {
+void Hashmap::drawCell(sf::RenderWindow& window, int x, int y, Map& map, sf::Color color) {
     sf::RectangleShape rectangle;
     rectangle.setSize(sf::Vector2f(map.getCellSize(), map.getCellSize()));
     rectangle.setFillColor(color);
     rectangle.setPosition(x * map.getCellSize(), y * map.getCellSize());
     window.draw(rectangle);
+
+    std::cout << "Drawing cell\n";
 }

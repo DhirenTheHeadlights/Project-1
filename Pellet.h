@@ -11,7 +11,6 @@ public:
     void draw(sf::RenderWindow& window);
     bool deActivate();
     bool isActive() const;
-    void printActiveStatus();
 private:
     sf::CircleShape shape;
     int radius = std::rand() % 5 + 2;

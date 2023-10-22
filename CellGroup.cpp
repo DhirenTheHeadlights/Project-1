@@ -22,7 +22,7 @@ void CellGroup::split() {
 			continue;
 		}
 		cell->setCircleSize(newSize);
-		Circle* newCell = new Circle(newSize);
+		Circle* newCell = new Circle(newSize); 
 
 		newCell->setPosition(cell->getPosition().x + newSize, cell->getPosition().y + newSize);
 		newCells.push_back(newCell);
@@ -49,7 +49,6 @@ void CellGroup::move(double moveSpeed, Map& map, sf::RenderWindow& window) {
 		cell->move(moveSpeed, dirToMouse, map, window);
 	}
 }
-
 
 void CellGroup::reset() {
 	cells.clear();

@@ -39,6 +39,15 @@
     <ClCompile Include="CellGroup.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PelletHandler.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Debugger.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\Downloads\times_new_roman.ttf">
@@ -65,6 +74,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CellGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PelletHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Debugger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,6 +28,7 @@ void Circle::direction(float dx, float dy, float elapsed, Map& map) {
 
 void Circle::draw(sf::RenderWindow& window) {
     window.draw(shape); // Draw the shape
+    std::cout << "Drawing circle at: " << x << ", " << y << std::endl;
 }
 
 void Circle::setCircleSize(float newSize) {
