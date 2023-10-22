@@ -23,6 +23,7 @@ void CellGroup::split() {
 		}
 		cell->setCircleSize(newSize);
 		Circle* newCell = new Circle(newSize);
+
 		newCell->setPosition(cell->getPosition().x + newSize, cell->getPosition().y + newSize);
 		newCells.push_back(newCell);
 	}
@@ -42,18 +43,13 @@ void CellGroup::draw(sf::RenderWindow& window) {
 }
 
 void CellGroup::move(double moveSpeed, Map& map, sf::RenderWindow& window) {
+	sf::Vector2f viewPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 	for (Circle* cell : cells) {
-		if (!collision()) cell->move(cell->getCircleSize(), moveSpeed, map, window);
+		sf::Vector2f dirToMouse = viewPos - cell->getPosition();
+		cell->move(moveSpeed, dirToMouse, map, window);
 	}
 }
 
-bool CellGroup::collision() {
-	for (auto it1 = cells.begin(); it1 != cells.end(); ++it1) {
-		for (auto it2 = it1 + 1; it2 != cells.end(); ++it2) {
-			if ((*it1)->checkCollision(**it2)) return true;
-		}
-	}
-}
 
 void CellGroup::reset() {
 	cells.clear();

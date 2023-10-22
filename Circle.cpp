@@ -5,11 +5,9 @@ Circle::Circle(float radius) : shape(radius), circlesize(radius) { // Initialliz
     shape.setFillColor(sf::Color::Blue);
 }
 
-void Circle::move(double radius, double moveSpeed, Map& map, sf::RenderWindow& window) {
+void Circle::move(double moveSpeed, sf::Vector2f dir, Map& map, sf::RenderWindow& window) {
+    dirToMouse = dir;
     float elapsed = deltaTime.restart().asSeconds();
-    sf::Vector2f viewPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
-    dirToMouse = viewPos - this->getPosition();
-
     if (dirToMouse.x == 0 && dirToMouse.y == 0) return; // Return if the mouse is already on the circle.
     float length = sqrt(dirToMouse.x * dirToMouse.x + dirToMouse.y * dirToMouse.y);
     dirToMouse.x /= length;
@@ -64,4 +62,7 @@ bool Circle::checkCollision(const Circle& other) const {
     return distance < (this->getCircleSize() + other.getCircleSize());
 }
 
+void Circle::setColor(sf::Color color) {
+	shape.setFillColor(color);
+}
 

@@ -17,7 +17,7 @@ public:
 private:
 	float x, y;
 	float cellSize = 0.0f;
-	float minSize = 32.0f;
+	float minSize = 16.0f;
 	std::vector<Circle*> cells;
 	int numSplits = 1;
 	int numCells = 1;

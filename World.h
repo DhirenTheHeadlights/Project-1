@@ -21,6 +21,7 @@ public:
     void restart();
     void drawVector(const sf::Vector2f& start, const sf::Vector2f& direction, sf::RenderWindow& window, float magnitude, sf::Color color);
     bool isGameOver() const;
+    void separateCells(Circle* cell);
 
 private:
     std::vector<std::shared_ptr<Pellet>> activePellets;
@@ -34,6 +35,7 @@ private:
     float startingCircleSize = 15.0f;
     float maxSize = 1000.0f;
     float timeBetweenPelletsSpawning = 0.1f;
+    float avgX = 0.0f, avgY = 0.0f;
     bool gameOver = false;
     CellGroup cellGroup = CellGroup(startingCircleSize, map);
 };

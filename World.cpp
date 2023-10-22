@@ -12,18 +12,30 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     checkCollisionForEveryCell();
     drawPellets(window, 10000);
     map.drawGrid(window);
+    cellGroup.draw(window);
 
     if (gameOver) {
         drawInformation(window, "Game Over! Press R to restart", 50, view.getCenter().x, view.getCenter().y);
         return;
     }
 
-    cellGroup.draw(window);
-    Circle* cellPos = cellGroup.getCellGroup()[0];
-    drawInformation(window, "Mass: " + std::to_string(cellPos->getCircleSize()), 10, cellPos->getPosition().x, cellPos->getPosition().y);
-    drawVector(cellPos->getPosition(), cellPos->getDirection(), window, 100.0f, sf::Color::Red);
+    avgX = 0.0f;
+    avgY = 0.0f;
 
-    view.setCenter(cellPos->getPosition().x, cellPos->getPosition().y);
+    for (Circle* cell : cellGroup.getCellGroup()) {
+        cell->setColor(sf::Color::Blue);
+        hashmap.assignCell(*cell, map);
+        separateCells(cell);
+        drawVector(cell->getPosition(), cell->getDirection(), window, 100.0f, sf::Color::Red);
+        avgX += cell->getPosition().x;
+        avgY += cell->getPosition().y;
+        drawInformation(window, "Mass: " + std::to_string(cell->getCircleSize()), 10, cell->getPosition().x, cell->getPosition().y);
+    }
+
+    avgX /= cellGroup.getCellGroup().size();
+    avgY /= cellGroup.getCellGroup().size();
+
+    view.setCenter(avgX, avgY);
     view.setSize(window.getDefaultView().getSize() * zoomMultiplier);
 
     if (event.type == sf::Event::MouseWheelScrolled) {
@@ -42,15 +54,37 @@ void World::checkCollisionForEveryCell() {
     for (Circle* cell : cellGroup.getCellGroup()) removePelletWhenCollision(cell);
 }
 
+void World::separateCells(Circle* cell) {
+    // Identify the cells that are in close proximity to the current cell
+    std::set<Circle*> nearbyCells = hashmap.getCellsInSameCell(cell, map);
+    for (Circle* nearbyCell : nearbyCells) {
+        float dx = nearbyCell->getPosition().x - cell->getPosition().x;
+        float dy = nearbyCell->getPosition().y - cell->getPosition().y;
+        float distance = std::sqrt(dx * dx + dy * dy);
+        if (distance < nearbyCell->getCircleSize() + cell->getCircleSize()) {
+            float adjustMultiplier = 15.f;
+            float overlap = (nearbyCell->getCircleSize() + cell->getCircleSize()) - distance;
+            float adjustX = ((dx / distance) * overlap) + 0.5f;
+            float adjustY = ((dy / distance) * overlap) + 0.5f;
+            nearbyCell->setPosition(nearbyCell->getPosition().x + adjustX * adjustMultiplier, nearbyCell->getPosition().y + adjustY * adjustMultiplier);
+            cell->setPosition(cell->getPosition().x - adjustX * adjustMultiplier, cell->getPosition().y - adjustY * adjustMultiplier);
+            std::cout << "overlap: " << overlap << std::endl;
+            nearbyCell->setColor(sf::Color::Red);
+            cell->setColor(sf::Color::Red);
+        }
+        hashmap.assignCell(*nearbyCell, map);
+        hashmap.assignCell(*cell, map);
+    }
+}
 
 void World::removePelletWhenCollision(Circle* cell) {
-    std::set<Pellet*> collidedPellets = hashmap.checkCollisionWithinBoundsOfCircle(cell, map);
+    std::set<Pellet*> collidedPellets = hashmap.pelletCollisionWithinBoundsOfCircle(cell, map);
     float numActiveCollisions = 0;  // to keep track of number of active collisions this frame
     for (Pellet* collidedPelletPtr : collidedPellets) {
         if (collidedPelletPtr->getRadius() > cell->getCircleSize()) {
             if (0.7 * collidedPelletPtr->getRadius() > cell->getCircleSize()) gameOver = true;
             else continue;
-		}
+        }
         if (!collidedPelletPtr->isActive()) {
             continue; // Skip pellets that have already been deactivated in a previous collision
         }
@@ -59,12 +93,9 @@ void World::removePelletWhenCollision(Circle* cell) {
     }
     activePellets.erase( // Remove all inactive pellets from the activePellets vector
         std::remove_if(activePellets.begin(), activePellets.end(), [](const std::shared_ptr<Pellet>& pelletPtr) {
-            return !pelletPtr->isActive();}), activePellets.end());
+            return !pelletPtr->isActive(); }), activePellets.end());
     if (numActiveCollisions > 0) {
-        if (addSize < maxSize) {
-            addSize += numActiveCollisions;
-        }
-        cell->setCircleSize(startingCircleSize + addSize);
+        cell->setCircleSize(cell->getCircleSize() + numActiveCollisions);
     }
 }
 
@@ -107,7 +138,7 @@ void World::drawInformation(sf::RenderWindow& window, const std::string& info, i
     window.draw(text);
 }
 
-void World::drawVector(const sf::Vector2f & start, const sf::Vector2f & direction, sf::RenderWindow & window, float magnitude, sf::Color color) {
+void World::drawVector(const sf::Vector2f& start, const sf::Vector2f& direction, sf::RenderWindow& window, float magnitude, sf::Color color) {
     sf::VertexArray lines(sf::Lines, 2);
 
     lines[0].position = start; // start position
@@ -121,11 +152,11 @@ void World::drawVector(const sf::Vector2f & start, const sf::Vector2f & directio
 }
 
 void World::restart() {
-	gameOver = false;
-	cellGroup.reset();
-	addSize = 0;
+    gameOver = false;
+    cellGroup.reset();
+    addSize = 0;
 }
 
 bool World::isGameOver() const {
-	return gameOver;
+    return gameOver;
 }
