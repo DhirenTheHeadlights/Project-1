@@ -1,6 +1,6 @@
 #include "CollisionManager.h"
 
-CollisionManager::CollisionManager(sf::RenderWindow& window, Map& map) : hashmap(window) {
+CollisionManager::CollisionManager(sf::RenderWindow& window, Map& map) : hashmap(window), debugger(window) {
 
 }
 
@@ -30,7 +30,7 @@ std::set<Pellet*> CollisionManager::pelletCollisionWithinBoundsOfCircle(sf::Rend
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
             std::string key = hashmap.generateKey(i, j);
             checkCollisionWithPellet(key, circle, collidedPellets);
-            hashmap.drawCell(window, i, j, map, sf::Color::White);
+            debugger.drawCell(window, i, j, map, sf::Color::White);
         }
     }
     //std::cout << "Collided pellets: " << collidedPellets.size() << std::endl; // For debugging

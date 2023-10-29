@@ -18,7 +18,6 @@ public:
     std::string generateKey(int x, int y) const;
     const std::unordered_map<std::string, std::set<Pellet*>>& getPelletHashmap() const;
     const std::unordered_map<std::string, std::set<Circle*>>& getCellHashmap() const;
-    void drawCell(sf::RenderWindow& window, int x, int y, Map& map, sf::Color color);
 private:
     std::unordered_map<std::string, std::set<Pellet*>> pelletHashmap;
     std::unordered_map<std::string, std::set<Circle*>> cellHashmap;

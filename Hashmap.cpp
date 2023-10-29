@@ -63,13 +63,3 @@ const std::unordered_map<std::string, std::set<Pellet*>>& Hashmap::getPelletHash
 const std::unordered_map<std::string, std::set<Circle*>>& Hashmap::getCellHashmap() const {
 	return cellHashmap;
 }
-
-void Hashmap::drawCell(sf::RenderWindow& window, int x, int y, Map& map, sf::Color color) {
-    sf::RectangleShape rectangle;
-    rectangle.setSize(sf::Vector2f(map.getCellSize(), map.getCellSize()));
-    rectangle.setFillColor(color);
-    rectangle.setPosition(x * map.getCellSize(), y * map.getCellSize());
-    window.draw(rectangle);
-
-    std::cout << "Drawing cell\n";
-}

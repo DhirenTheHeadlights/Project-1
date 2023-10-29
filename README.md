@@ -21,11 +21,11 @@ To streamline the setup process, we will be setting an environment variable name
 
 - **Include Directories**:
   1. Go to `Project -> Properties -> C++ -> General -> Additional Include Directories`.
-  2. Add `%SFML_PATH%\include`.
+  2. Add `$(SFML_PATH)\include`.
      
 - **Lib Directories**:
   1. Go to `Project -> Properties -> Linker -> General -> Additional Library Directories`.
-  2. Add `%SFML_PATH%\lib`.
+  2. Add `$(SFML_PATH)\lib`.
      
 - **Linking Libraries**:
   1. Go to `Project -> Properties -> Linker -> Input -> Additional Dependencies`.
