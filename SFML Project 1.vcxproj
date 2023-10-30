@@ -140,6 +140,7 @@
     <ClCompile Include="Debugger.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hashmap.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pellet.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Debugger.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hashmap.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Pellet.h" />
     <ClInclude Include="PelletHandler.h" />

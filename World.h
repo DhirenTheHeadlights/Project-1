@@ -4,6 +4,7 @@
 #include "CollisionManager.h"
 #include "PelletHandler.h"
 #include "Debugger.h"
+#include "InputHandler.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <iostream>
@@ -19,10 +20,10 @@ private:
     CollisionManager colMan;
     PelletHandler pelHan;
     Debugger debug;
+    InputHandler input;
     sf::View view;
     sf::Font font;
     float addSize = 0;
-    float zoomMultiplier = 1.0f;
     float startingCircleSize = 15.0f;
     float maxSize = 1000.0f;
     float avgX = 0.0f, avgY = 0.0f;

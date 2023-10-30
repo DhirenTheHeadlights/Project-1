@@ -27,11 +27,13 @@ void InputHandler::splitLogic(CellGroup& cellGroup) {
 	cells.insert(cells.end(), newCells.begin(), newCells.end());
 }
 
-float InputHandler::zoomWithScrollWheel(sf::Event event) {
-	float zoomOffset = 0.0f;
+void InputHandler::zoomWithScrollWheel(sf::Event event) {
 	if (event.type == sf::Event::MouseWheelScrolled) {
 		zoomOffset *= (event.mouseWheelScroll.delta > 0) ? 0.99f : 1.01f;
 		zoomOffset = std::clamp(zoomOffset, zoomMin, zoomMax);
 	}
+}
+
+float InputHandler::getZoomOffset() const {
 	return zoomOffset;
 }

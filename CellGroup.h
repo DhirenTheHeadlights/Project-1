@@ -14,6 +14,7 @@ public:
 	void move(double moveSpeed, Map& map, sf::RenderWindow& window);
 	void reset();
 	std::vector<Circle*> getCellGroup();
+	const float getMinSize() const;
 private:
 	float x, y;
 	float cellSize = 0.0f;
@@ -21,5 +22,4 @@ private:
 	std::vector<Circle*> cells;
 	int numSplits = 1;
 	int numCells = 1;
-	bool collision();
 };

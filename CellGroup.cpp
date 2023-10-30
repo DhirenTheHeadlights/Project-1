@@ -59,3 +59,7 @@ void CellGroup::reset() {
 std::vector<Circle*> CellGroup::getCellGroup() {
 	return cells;
 }
+
+const float CellGroup::getMinSize() const {
+	return minSize;
+}	

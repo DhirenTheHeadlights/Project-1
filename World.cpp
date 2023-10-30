@@ -1,10 +1,7 @@
 #include "World.h"
 
-World::World(sf::RenderWindow& window) : colMan(window, map), view(window.getDefaultView()), pelHan(window), debug(window) {
+World::World(sf::RenderWindow& window) : colMan(window, map), view(window.getDefaultView()), pelHan(window), debug(window), input(window) {
     map.grid(10000, 10000, 100);
-    if (!font.loadFromFile("times_new_roman.ttf")) {
-        std::cerr << "Failed to load font\n";
-    }
 }
 
 void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
@@ -25,7 +22,7 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     avgY = 0.0f;
 
     colMan.assignCells(cellGroup, map);
-    //colMan.separateAllCells(cellGroup, map);
+    colMan.separateAllCells(cellGroup, map);
 
     for (Circle* cell : cellGroup.getCellGroup()) {
         cell->setColor(sf::Color::Blue);
@@ -39,17 +36,11 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     avgY /= cellGroup.getCellGroup().size();
 
     view.setCenter(avgX, avgY);
-    view.setSize(window.getDefaultView().getSize() * zoomMultiplier);
+    view.setSize(window.getDefaultView().getSize() * input.getZoomOffset());
 
-    if (event.type == sf::Event::MouseWheelScrolled) {
-        zoomMultiplier *= (event.mouseWheelScroll.delta > 0) ? 0.99f : 1.01f;
-        zoomMultiplier = std::clamp(zoomMultiplier, 0.5f, 2.0f);  // Assuming these as min and max values.
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        cellGroup.split();
-    }
-
+    input.zoomWithScrollWheel(event);
+    input.split(cellGroup);
+    
     window.setView(view);
 }
 
