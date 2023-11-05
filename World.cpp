@@ -5,7 +5,9 @@ World::World(sf::RenderWindow& window) : colMan(window, map), view(window.getDef
 }
 
 void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
-    cellGroup.move(100, map, window);
+    colMan.moveAndSeparateCells(cellGroup, map, window, 200);
+    //std::cout << "After move: Cell A Position: " << cellGroup.getCellGroup()[0]->getPosition().x << ", " << cellGroup.getCellGroup()[0]->getPosition().y << std::endl;
+
     colMan.checkPelletCollisionForEveryCell(window, cellGroup, map, pelHan.getActivePellets());
     colMan.assignPellets(pelHan.getActivePellets(), map);
     pelHan.drawPellets(window, map, 10000);
@@ -18,30 +20,27 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
         return;
     }
 
-    avgX = 0.0f;
-    avgY = 0.0f;
+    displayInfo(window);
 
     colMan.assignCells(cellGroup, map);
-    colMan.separateAllCells(cellGroup, map);
 
-    for (Circle* cell : cellGroup.getCellGroup()) {
-        cell->setColor(sf::Color::Blue);
-        debug.drawVector(cell->getPosition(), cell->getDirection(), window, 100.0f, sf::Color::Red);
-        avgX += cell->getPosition().x;
-        avgY += cell->getPosition().y;
-        debug.drawInformation(window, "Mass: " + std::to_string(cell->getCircleSize()), 10, cell->getPosition().x, cell->getPosition().y);
-    }
+    //std::cout << "After separation: Cell A Position: " << cellGroup.getCellGroup()[0]->getPosition().x << ", " << cellGroup.getCellGroup()[0]->getPosition().y << std::endl;
 
-    avgX /= cellGroup.getCellGroup().size();
-    avgY /= cellGroup.getCellGroup().size();
-
-    view.setCenter(avgX, avgY);
+    view.setCenter(cellGroup.getAvgPos().x, cellGroup.getAvgPos().y);
     view.setSize(window.getDefaultView().getSize() * input.getZoomOffset());
 
     input.zoomWithScrollWheel(event);
     input.split(cellGroup);
     
     window.setView(view);
+}
+
+void World::displayInfo(sf::RenderWindow& window) {
+    for (Circle* cell : cellGroup.getCellGroup()) {
+        cell->setColor(sf::Color::Blue);
+        debug.drawVector(cell->getPosition(), cell->getDirection(), window, 100.0f, sf::Color::Red);
+        debug.drawInformation(window, "Mass: " + std::to_string(cell->getCircleSize()), 10, cell->getPosition().x, cell->getPosition().y);
+    }
 }
 
 void World::restart() {

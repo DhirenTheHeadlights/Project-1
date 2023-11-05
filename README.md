@@ -30,6 +30,8 @@ To streamline the setup process, we will be setting an environment variable name
 - **Linking Libraries**:
   1. Go to `Project -> Properties -> Linker -> Input -> Additional Dependencies`.
   2. Make sure the names of the required SFML `.lib` files, like `sfml-graphics.lib`, `sfml-window.lib`, etc are in there. Note: If you're statically linking, ensure you link against the `-s` suffixed versions, e.g., `sfml-graphics-s.lib`.
+  
+Make sure you run the program in "Release" configuration. It will not run in "Debug" configuration.
 
 ## Troubleshooting
 

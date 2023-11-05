@@ -1,7 +1,14 @@
 #include "CollisionManager.h"
 
 CollisionManager::CollisionManager(sf::RenderWindow& window, Map& map) : hashmap(window), debugger(window) {
+}
 
+void CollisionManager::moveAndSeparateCells(CellGroup& cells, Map& map, sf::RenderWindow& window, float moveSpeed) { // Moves and separates all cells
+    cells.move(moveSpeed, map, window);
+	for (int i = 0; i < 5; i++) {
+        separateAllCells(cells, map);
+    }
+	//std::cout << "Cells moved and separated" << std::endl; // For debugging
 }
 
 void CollisionManager::assignCells(CellGroup& cells, Map& map) {
@@ -10,7 +17,6 @@ void CollisionManager::assignCells(CellGroup& cells, Map& map) {
 	}
     //std::cout << "Cells assigned" << std::endl;  // for debug
 }
-
 void CollisionManager::assignPellets(std::vector<std::shared_ptr<Pellet>> activePellets, Map& map) { // Assigns all pellets to the hashmap
     for (std::shared_ptr<Pellet> pelletPtr : activePellets) {
 		hashmap.assignPellet(*pelletPtr, map);
@@ -68,7 +74,7 @@ void CollisionManager::separateCells(Circle* cell, Map& map) { // Separates a si
         float dy = nearbyCell->getPosition().y - cell->getPosition().y;
         float distance = std::sqrt(dx * dx + dy * dy);
         if (distance < nearbyCell->getCircleSize() + cell->getCircleSize()) {
-            float adjustMultiplier = 1.0f;
+            float adjustMultiplier = 0.5f;
             float overlap = (nearbyCell->getCircleSize() + cell->getCircleSize()) - distance;
             float adjustX = ((dx / distance) * overlap) + 0.5f;
             float adjustY = ((dy / distance) * overlap) + 0.5f;
@@ -78,8 +84,6 @@ void CollisionManager::separateCells(Circle* cell, Map& map) { // Separates a si
             nearbyCell->setColor(sf::Color::Red);
             cell->setColor(sf::Color::Red);
         }
-        hashmap.assignCell(*nearbyCell, map);
-        hashmap.assignCell(*cell, map);
     }
     //std::cout << "Cells separated" << std::endl; // For debugging
 }

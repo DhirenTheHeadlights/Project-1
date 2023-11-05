@@ -5,13 +5,19 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="Agario Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="Agario Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="AimTrainer Header Files">
+      <UniqueIdentifier>{7cebdde7-1599-4492-a1ee-ddc6d08dbc9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AimTrainer Resource Files">
+      <UniqueIdentifier>{2e432e30-f6a5-4bd3-a370-48b40581d0c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,37 +25,49 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Circle.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Pellet.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Hashmap.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Globals.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="CellGroup.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="PelletHandler.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Debugger.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="InputHandler.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Agario Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Arena.cpp">
+      <Filter>AimTrainer Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Crosshair.cpp">
+      <Filter>AimTrainer Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Target.cpp">
+      <Filter>AimTrainer Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainerHashmap.cpp">
+      <Filter>AimTrainer Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,37 +77,49 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="World.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pellet.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hashmap.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CellGroup.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PelletHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Debugger.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Agario Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Target.h">
+      <Filter>AimTrainer Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Crosshair.h">
+      <Filter>AimTrainer Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Arena.h">
+      <Filter>AimTrainer Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainerHashmap.h">
+      <Filter>AimTrainer Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

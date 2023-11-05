@@ -16,8 +16,8 @@ void Circle::move(double moveSpeed, sf::Vector2f dir, Map& map, sf::RenderWindow
 }
 
 void Circle::direction(float dx, float dy, float elapsed, Map& map) {
-    x += dx * elapsed * static_cast<float>(log(static_cast<double>(circlesize)));
-    y += dy * elapsed * static_cast<float>(log(static_cast<double>(circlesize)));
+    x += dx * elapsed; //* static_cast<float>(1 / circlesize);
+    y += dy * elapsed; //* static_cast<float>(1 / circlesize);
     // Boundary checks
     if (x < 0) x = 0;
     if (y < 0) y = 0;

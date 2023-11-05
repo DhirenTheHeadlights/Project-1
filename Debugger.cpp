@@ -21,7 +21,7 @@ void Debugger::drawInformation(sf::RenderWindow& window, const std::string& info
 
     window.draw(text);
 
-    std::cout << "Drawing text\n";
+    //std::cout << "Drawing text\n";
 }
 
 void Debugger::drawVector(const sf::Vector2f& start, const sf::Vector2f& direction, sf::RenderWindow& window, float magnitude, sf::Color color) {
@@ -36,7 +36,7 @@ void Debugger::drawVector(const sf::Vector2f& start, const sf::Vector2f& directi
 
     window.draw(lines);
 
-    std::cout << "Drawing vector\n";
+    //std::cout << "Drawing vector\n";
 }
 
 void Debugger::drawCell(sf::RenderWindow& window, int x, int y, Map& map, sf::Color color) {
@@ -46,5 +46,5 @@ void Debugger::drawCell(sf::RenderWindow& window, int x, int y, Map& map, sf::Co
     rectangle.setPosition(x * map.getCellSize(), y * map.getCellSize());
     window.draw(rectangle);
 
-    std::cout << "Drawing cell\n";
+    //std::cout << "Drawing cell\n";
 }

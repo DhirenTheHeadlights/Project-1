@@ -14,6 +14,7 @@ public:
     World(sf::RenderWindow& window);
     void createWorld(sf::RenderWindow& window, sf::Event& event);
     void restart();
+    void displayInfo(sf::RenderWindow& window);
     bool isGameOver() const;
 private:
     Map map;
@@ -26,7 +27,6 @@ private:
     float addSize = 0;
     float startingCircleSize = 15.0f;
     float maxSize = 1000.0f;
-    float avgX = 0.0f, avgY = 0.0f;
     bool gameOver = false;
     CellGroup cellGroup = CellGroup(startingCircleSize, map);
 };

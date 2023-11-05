@@ -134,9 +134,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AimTrainerHashmap.cpp" />
+    <ClCompile Include="Arena.cpp" />
     <ClCompile Include="CellGroup.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="Debugger.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hashmap.cpp" />
@@ -145,15 +148,19 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pellet.cpp" />
     <ClCompile Include="PelletHandler.cpp" />
+    <ClCompile Include="Target.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\Downloads\times_new_roman.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AimTrainerHashmap.h" />
+    <ClInclude Include="Arena.h" />
     <ClInclude Include="CellGroup.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Crosshair.h" />
     <ClInclude Include="Debugger.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hashmap.h" />
@@ -161,6 +168,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Pellet.h" />
     <ClInclude Include="PelletHandler.h" />
+    <ClInclude Include="Target.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

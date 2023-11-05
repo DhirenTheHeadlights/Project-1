@@ -15,6 +15,7 @@ public:
 	void reset();
 	std::vector<Circle*> getCellGroup();
 	const float getMinSize() const;
+	const sf::Vector2f getAvgPos() const;
 private:
 	float x, y;
 	float cellSize = 0.0f;

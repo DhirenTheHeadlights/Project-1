@@ -21,9 +21,11 @@ public:
 	void checkPelletCollisionForEveryCell(sf::RenderWindow& window, CellGroup& cells, Map& map, std::vector<std::shared_ptr<Pellet>> activePellets);
 	void assignCells(CellGroup& cells, Map& map);
 	void assignPellets(std::vector<std::shared_ptr<Pellet>> activePellets, Map& map);
+	void moveAndSeparateCells(CellGroup& cells, Map& map, sf::RenderWindow& window, float moveSpeed);
 private:
 	void separateCells(Circle* cell, Map& map);
 	float minDistForCollision = 0.5f;
+	sf::Clock separateClock;
 	Hashmap hashmap;
 	Debugger debugger;
 };

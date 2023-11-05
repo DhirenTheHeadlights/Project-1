@@ -62,4 +62,16 @@ std::vector<Circle*> CellGroup::getCellGroup() {
 
 const float CellGroup::getMinSize() const {
 	return minSize;
-}	
+}
+
+const sf::Vector2f CellGroup::getAvgPos() const {
+	sf::Vector2f avgPos;
+	for (Circle* cell : cells) {
+		avgPos.x += cell->getPosition().x;
+		avgPos.y += cell->getPosition().y;
+	}
+	avgPos.x /= cells.size();
+	avgPos.y /= cells.size();
+
+	return avgPos;
+}
