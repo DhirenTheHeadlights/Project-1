@@ -94,6 +94,9 @@ void aimTrainer() { // Aim Trainer
                 window.close();
             }
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            window.close();
+        }
         arena.createArena();
         window.display();
     }
@@ -104,7 +107,10 @@ void snake() { // Snake or some other game idk
 }
 
 int main() {
+    std::cout << "Creating window..." << std::endl;
     sf::RenderWindow window(sf::VideoMode(800, 600), "Game Selection Menu");
+    std::cout << "Window created." << std::endl;
+
     window.setVerticalSyncEnabled(true);
 
     std::vector<Game> games = {

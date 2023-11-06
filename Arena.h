@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
 
 #include "Target.h"
 #include "AimTrainerHashmap.h"
@@ -16,9 +17,11 @@ private:
 	float size = 10;
 	float maxTargets = 10;
 
-	void drawTargets();
+	Target* createTarget();
 	void updateTargets();
 	void checkCollision();
+	void drawTarget();
+	void assignTargetsToHashmap();
 
 	hashmap hashmap;
 };
