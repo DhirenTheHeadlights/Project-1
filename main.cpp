@@ -7,6 +7,9 @@
 #include "Globals.h"
 #include "World.h"
 #include "Arena.h"
+#include "Room.h"
+#include "Player.h"
+#include "Enemy.h"
 
 // Define a type alias for a function that takes no arguments and returns void
 using GameFunction = std::function<void()>;
@@ -106,6 +109,100 @@ void snake() { // Snake or some other game idk
 	// TODO
 }
 
+void dungeonGame() {
+    // Initialization code for the Dungeon game will go here
+    sf::RenderWindow gameWindow(sf::VideoMode(800, 600), "Dungeon Game", sf::Style::Titlebar | sf::Style::Close);
+
+    // Create the room
+    Room startingArea(800, 600); // Default size as per constructor or specify your own
+
+    // Create the player
+    Player hero;
+    hero.init(400.f, 300.f, 25.f, 25.f); // Start position x, y and size w, h
+
+    sf::Clock clock; // Starts the clock
+
+    // Create enemies
+    std::vector<Enemy> enemies;
+    sf::Clock enemySpawnTimer;
+    sf::Time enemySpawnRate = sf::seconds(2.0f);
+    float enemyWidth = 50.0f;  // Example width
+    float enemyHeight = 50.0f; // Example height
+    float enemySpeed = 100.0f; // Pixels per second, as an example
+    int windowWidth = static_cast<int>(gameWindow.getSize().x);
+    int enemyWidthInt = static_cast<int>(enemyWidth); // Assuming enemyWidth is a float, it needs to be an int for modulus operation.
+
+
+
+    // Game loop
+    while (gameWindow.isOpen()) {
+        sf::Time dt = clock.restart(); // Restart the clock and save the elapsed time into dt
+
+        sf::Event event;
+        while (gameWindow.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                gameWindow.close();
+            }
+            // Additional event handling here if necessary
+        }
+
+        hero.update(dt); // Update the player's position/attack based on input
+        hero.checkCollisionWithRoom(startingArea); // Check for collision with the room
+        hero.updateBullets(dt, gameWindow);
+
+        
+
+        if (enemySpawnTimer.getElapsedTime() >= enemySpawnRate) {
+            int maxEnemyX = static_cast<int>(gameWindow.getSize().x - static_cast<int>(enemyWidth));
+            int enemyX = rand() % (maxEnemyX + 1);
+            float enemyPosX = static_cast<float>(enemyX);
+            float enemyY = -enemyHeight;
+
+            sf::Vector2f enemyPosition(enemyPosX, enemyY);
+            sf::Vector2f enemySize(enemyWidth, enemyHeight);
+            enemies.push_back(Enemy(enemyPosition, enemySize, enemySpeed));
+            enemySpawnTimer.restart();
+        }
+
+        // Update enemies
+        for (auto& enemy : enemies) {
+            enemy.update(dt);
+        }
+
+        // Collision detection
+        for (auto& bullet : hero.getBullets()) {
+            for (auto& enemy : enemies) {
+                if (bullet.getShape().getGlobalBounds().intersects(enemy.getShape().getGlobalBounds())) {
+                    enemy.takeDamage(10); // Enemy takes 10 damage
+                    // Remove bullet...
+                }
+            }
+        }
+
+        // Remove dead enemies
+        enemies.erase(std::remove_if(enemies.begin(), enemies.end(),
+            [](const Enemy& enemy) { return !enemy.isAlive(); }),
+            enemies.end());
+
+        // Rendering
+        gameWindow.clear(sf::Color::Black); // Clear the screen
+
+        // Draw the room
+        startingArea.draw(gameWindow);
+        hero.draw(gameWindow);
+
+        for (auto& enemy : enemies) {
+            enemy.draw(gameWindow);
+        }
+
+        for (Bullet& bullet : hero.getBullets()) {
+            bullet.draw(gameWindow);
+        }
+
+        gameWindow.display(); // Display what we've drawn to the screen
+    }
+}
+
 int main() {
     std::cout << "Creating window..." << std::endl;
     sf::RenderWindow window(sf::VideoMode(800, 600), "Game Selection Menu");
@@ -116,7 +213,8 @@ int main() {
     std::vector<Game> games = {
         Game("Agar.io", agario),
         Game("Aim Trainer", aimTrainer),
-        Game("Snake", snake)
+        Game("Snake", snake),
+        Game("Dungeon", dungeonGame)
         // Add more games here...
     };
 

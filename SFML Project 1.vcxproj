@@ -136,11 +136,13 @@
   <ItemGroup>
     <ClCompile Include="AimTrainerHashmap.cpp" />
     <ClCompile Include="Arena.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CellGroup.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Crosshair.cpp" />
     <ClCompile Include="Debugger.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hashmap.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -148,6 +150,8 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Pellet.cpp" />
     <ClCompile Include="PelletHandler.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="Target.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -157,17 +161,21 @@
   <ItemGroup>
     <ClInclude Include="AimTrainerHashmap.h" />
     <ClInclude Include="Arena.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="CellGroup.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Crosshair.h" />
     <ClInclude Include="Debugger.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Hashmap.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Pellet.h" />
     <ClInclude Include="PelletHandler.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="Target.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

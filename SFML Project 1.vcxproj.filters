@@ -19,6 +19,12 @@
     <Filter Include="AimTrainer Resource Files">
       <UniqueIdentifier>{2e432e30-f6a5-4bd3-a370-48b40581d0c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dungeon Header Files">
+      <UniqueIdentifier>{e6ca8916-c279-4c14-ac32-60b05e917c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dungeon Resource Files">
+      <UniqueIdentifier>{317ff49f-f351-47d2-aeb6-3dafa2ef48ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +74,18 @@
     </ClCompile>
     <ClCompile Include="AimTrainerHashmap.cpp">
       <Filter>AimTrainer Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Dungeon Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Dungeon Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Dungeon Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Dungeon Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +138,18 @@
     </ClInclude>
     <ClInclude Include="AimTrainerHashmap.h">
       <Filter>AimTrainer Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Dungeon Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Dungeon Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Dungeon Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Dungeon Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
