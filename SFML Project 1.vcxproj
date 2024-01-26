@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{18be35c0-638a-4573-b762-e0f67124565d}</ProjectGuid>
+    <RootNamespace>SFMLProject1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SFML_PATH)\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SFML_PATH)\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>SFML_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SFML_PATH)\include;$(ProjectDir)AgarGame\Header;$(ProjectDir)AimTrainer\Header;$(ProjectDir)PirateGame\Header;$(ProjectDir)LightAndShadow\Header;$(ProjectDir)Globals\Header;$(ProjectDir)Fonts;$(ProjectDir)Sounds</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SFML_PATH)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AgarGame\Resource\CellGroup.cpp" />
+    <ClCompile Include="AgarGame\Resource\Circle.cpp" />
+    <ClCompile Include="AgarGame\Resource\CollisionManager.cpp" />
+    <ClCompile Include="AgarGame\Resource\Debugger.cpp" />
+    <ClCompile Include="AgarGame\Resource\Hashmap.cpp" />
+    <ClCompile Include="AgarGame\Resource\InputHandler.cpp" />
+    <ClCompile Include="AgarGame\Resource\Pellet.cpp" />
+    <ClCompile Include="AgarGame\Resource\PelletHandler.cpp" />
+    <ClCompile Include="AgarGame\Resource\World.cpp" />
+    <ClCompile Include="AimTrainer\Resource\AimTrainerHashmap.cpp" />
+    <ClCompile Include="AimTrainer\Resource\Arena.cpp" />
+    <ClCompile Include="AimTrainer\Resource\Crosshair.cpp" />
+    <ClCompile Include="AimTrainer\Resource\EndMenu.cpp" />
+    <ClCompile Include="AimTrainer\Resource\InsetNameMenu.cpp" />
+    <ClCompile Include="AimTrainer\Resource\Interactables.cpp" />
+    <ClCompile Include="AimTrainer\Resource\LeaderBoardMenu.cpp" />
+    <ClCompile Include="AimTrainer\Resource\Menu.cpp" />
+    <ClCompile Include="AimTrainer\Resource\MenuHandler.cpp" />
+    <ClCompile Include="AimTrainer\Resource\OptionsMenu.cpp" />
+    <ClCompile Include="AimTrainer\Resource\PlayerInputBox.cpp" />
+    <ClCompile Include="AimTrainer\Resource\SaveData.cpp" />
+    <ClCompile Include="AimTrainer\Resource\StartMenu.cpp" />
+    <ClCompile Include="AimTrainer\Resource\Target.cpp" />
+    <ClCompile Include="Globals\Resource\Globals.cpp" />
+    <ClCompile Include="Globals\Resource\Map.cpp" />
+    <ClCompile Include="Globals\Resource\Quadtree.cpp" />
+    <ClCompile Include="LightAndShadow\Resource\Obsticles_LS.cpp" />
+    <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\LandMass.cpp" />
+    <ClCompile Include="PirateGame\Resource\LandMassHandler.cpp" />
+    <ClCompile Include="PirateGame\Resource\Player.cpp" />
+    <ClCompile Include="PirateGame\Resource\Ship.cpp" />
+    <ClCompile Include="PirateGame\Resource\SoundManager.cpp" />
+    <ClCompile Include="PirateGame\Resource\Textures.cpp" />
+    <ClCompile Include="PirateGame\Resource\View.cpp" />
+    <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AgarGame\Header\CellGroup.h" />
+    <ClInclude Include="AgarGame\Header\Circle.h" />
+    <ClInclude Include="AgarGame\Header\CollisionManager.h" />
+    <ClInclude Include="AgarGame\Header\Debugger.h" />
+    <ClInclude Include="AgarGame\Header\Hashmap.h" />
+    <ClInclude Include="AgarGame\Header\InputHandler.h" />
+    <ClInclude Include="AgarGame\Header\Pellet.h" />
+    <ClInclude Include="AgarGame\Header\PelletHandler.h" />
+    <ClInclude Include="AgarGame\Header\World.h" />
+    <ClInclude Include="AimTrainer\Header\AimTrainerHashmap.h" />
+    <ClInclude Include="AimTrainer\Header\Arena.h" />
+    <ClInclude Include="AimTrainer\Header\Crosshair.h" />
+    <ClInclude Include="AimTrainer\Header\EndMenu.h" />
+    <ClInclude Include="AimTrainer\Header\GameStateManager.h" />
+    <ClInclude Include="AimTrainer\Header\InsertNameMenu.h" />
+    <ClInclude Include="AimTrainer\Header\Interactables.h" />
+    <ClInclude Include="AimTrainer\Header\LeaderBoardMenu.h" />
+    <ClInclude Include="AimTrainer\Header\Menu.h" />
+    <ClInclude Include="AimTrainer\Header\MenuHandler.h" />
+    <ClInclude Include="AimTrainer\Header\OptionsMenu.h" />
+    <ClInclude Include="AimTrainer\Header\PlayerInputBox.h" />
+    <ClInclude Include="AimTrainer\Header\SaveData.h" />
+    <ClInclude Include="AimTrainer\Header\StartMenu.h" />
+    <ClInclude Include="AimTrainer\Header\Target.h" />
+    <ClInclude Include="Globals\Header\Globals.h" />
+    <ClInclude Include="Globals\Header\Map.h" />
+    <ClInclude Include="Globals\Header\Quadtree.h" />
+    <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
+    <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
+    <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
+    <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
+    <ClInclude Include="PirateGame\Header\LandMass.h" />
+    <ClInclude Include="PirateGame\Header\LandMassHandler.h" />
+    <ClInclude Include="PirateGame\Header\Player.h" />
+    <ClInclude Include="PirateGame\Header\Ship.h" />
+    <ClInclude Include="PirateGame\Header\SoundManager.h" />
+    <ClInclude Include="PirateGame\Header\Textures.h" />
+    <ClInclude Include="PirateGame\Header\View.h" />
+    <ClInclude Include="PirateGame\Header\World_PG.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\MGS2.ttf" />
+    <Font Include="Fonts\times_new_roman.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\bonk.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="PirateGameSprites\pg_island_1.png" />
+    <Image Include="PirateGameSprites\pg_island_2.png" />
+    <Image Include="PirateGameSprites\pg_misc_cannonball.png" />
+    <Image Include="PirateGameSprites\pg_rock_1.png" />
+    <Image Include="PirateGameSprites\pg_rock_2.png" />
+    <Image Include="PirateGameSprites\pg_rock_3.png" />
+    <Image Include="PirateGameSprites\pg_rock_4.png" />
+    <Image Include="PirateGameSprites\pg_rock_5.png" />
+    <Image Include="PirateGameSprites\pg_rock_6.png" />
+    <Image Include="PirateGameSprites\pg_rock_7.png" />
+    <Image Include="PirateGameSprites\pg_rock_8.png" />
+    <Image Include="PirateGameSprites\pg_rock_9.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine.png" />
+    <Image Include="PirateGameSprites\pg_ship_frigate.png" />
+    <Image Include="PirateGameSprites\pg_ship_galleon.png" />
+    <Image Include="PirateGameSprites\pg_ship_manowar.png" />
+    <Image Include="PirateGameSprites\pg_ship_sloop.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
