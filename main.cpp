@@ -8,7 +8,7 @@
 
 #include "Globals/Header/Globals.h"
 #include "AgarGame/Header/World_AG.h"
-#include "AimTrainer/Header/Arena_AT.h"
+#include "AimTrainer/Header/World_AT.h"
 #include "LightAndShadow/Header/WorldLS.h"
 #include "PirateGame/Header/World_PG.h"
 
@@ -20,7 +20,9 @@ public:
     Game(const std::string& n, GameFunction func) : name(n), gameFunc(func) {} // Constructor
 
     std::string getName() const { return name; }
-    void run() const { gameFunc(); }  
+    void run() const {
+        gameFunc();
+    }  
 
 private:
     std::string name;
@@ -65,7 +67,7 @@ private:
 
 void agario() { // Agar.io
     initializeGlobals("Agar.io Window");
-    World world(window);
+    AgarGame::World world(window);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -79,7 +81,7 @@ void agario() { // Agar.io
         // This shouldnt be here, it should really be in the while loop above
         // but it doesnt work there for some reason. It causes stuttering :(|
         window.clear();
-        world.createWorld(window, event);
+        world.createWorld(event);
         window.display();
     }
 }
@@ -87,7 +89,7 @@ void agario() { // Agar.io
 void aimTrainer() { // Aim Trainer
     initializeGlobals("Aim Trainer Window");
 
-    Arena arena(window); // Create the arena
+    AimTrainer::World world(window); // Create the arena
 
     while (window.isOpen()) {
         sf::Event event;
@@ -96,7 +98,7 @@ void aimTrainer() { // Aim Trainer
                 window.close();
             }
             // Create the arena; where all of the action happens
-            arena.createArena(event);
+            world.createWorld(event);
         }
     }
 }
@@ -108,7 +110,7 @@ void snake() { // Snake or some other game idk
 void pirateGame() { // Pirate Game
     initializeGlobals("Pirate Game Window");
 	
-    World_PG world(window);
+    PirateGame::World world(window);
 
     while (window.isOpen()) {
 		sf::Event event;
@@ -117,25 +119,25 @@ void pirateGame() { // Pirate Game
 				window.close();
 			}
         }
-        world.createWorld();
+        world.createWorld(event);
     }
 }
 
 void lightAndShadow() {
     initializeGlobals("Light and Shadow Game Window");
 
-    LightAndShadow world(window);
+    LightAndShadow::World world(window);
 
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) { // Close the window if the user clicks the X button
-            				window.close();
+            	window.close();
             }
 		}
 		window.clear();
-		world.run(event);
-		window.display(); 
+		world.createWorld(event);
+		window.display();
     }
 }
 

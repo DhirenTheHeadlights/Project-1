@@ -144,7 +144,7 @@
     <ClCompile Include="AgarGame\Resource\Pellet_AG.cpp" />
     <ClCompile Include="AgarGame\Resource\World_AG.cpp" />
     <ClCompile Include="AimTrainer\Resource\AimTrainerHashmap_AT.cpp" />
-    <ClCompile Include="AimTrainer\Resource\Arena_AT.cpp" />
+    <ClCompile Include="AimTrainer\Resource\World_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Crosshair_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\EndMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\InsetNameMenu_AT.cpp" />
@@ -157,6 +157,7 @@
     <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
+    <ClCompile Include="GameTemplate.cpp" />
     <ClCompile Include="Globals\Resource\Globals.cpp" />
     <ClCompile Include="Globals\Resource\Map.cpp" />
     <ClCompile Include="Globals\Resource\Quadtree.cpp" />
@@ -185,7 +186,7 @@
     <ClInclude Include="AgarGame\Header\Pellet_AG.h" />
     <ClInclude Include="AgarGame\Header\World_AG.h" />
     <ClInclude Include="AimTrainer\Header\AimTrainerHashmap_AT.h" />
-    <ClInclude Include="AimTrainer\Header\Arena_AT.h" />
+    <ClInclude Include="AimTrainer\Header\World_AT.h" />
     <ClInclude Include="AimTrainer\Header\Crosshair_AT.h" />
     <ClInclude Include="AimTrainer\Header\EndMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\GameStateManager_AT.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
+    <ClInclude Include="GameTemplate.h" />
     <ClInclude Include="Globals\Header\Globals.h" />
     <ClInclude Include="Globals\Header\Map.h" />
     <ClInclude Include="Globals\Header\Quadtree.h" />

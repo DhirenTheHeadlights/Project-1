@@ -1,15 +1,17 @@
 #include "WorldLS.h"
 
-LightAndShadow::LightAndShadow(sf::RenderWindow& window) : window(window) {
+using namespace LightAndShadow;
+
+World::World(sf::RenderWindow& window) : window(window) {
 	initializeGameEntities();
 }
 
-void LightAndShadow::run(sf::Event event) {
+void World::createWorld(sf::Event event) {
 	update();
 	render();
 }
 
-void LightAndShadow::update() {
+void World::update() {
 	// Center the emitter in the window
 	float x = window.getSize().x / 2 - lightEmitter.getRadius();
 	float y = window.getSize().y / 2 - lightEmitter.getRadius();
@@ -44,7 +46,7 @@ void LightAndShadow::update() {
 }
 
 
-void LightAndShadow::render() {
+void World::render() {
 	window.draw(background);
 	window.draw(lightEmitter);
 	window.draw(lightShape);
@@ -78,7 +80,7 @@ void LightAndShadow::render() {
 	}
 }
 
-void LightAndShadow::initializeGameEntities() {
+void World::initializeGameEntities() {
 
 	background.setSize(sf::Vector2f(window.getSize().x, window.getSize().y));
 	background.setFillColor(sf::Color(50, 50, 50)); // Dark gray
@@ -93,7 +95,7 @@ void LightAndShadow::initializeGameEntities() {
 	generateObstacles();
 }
 
-void LightAndShadow::generateObstacles() {
+void World::generateObstacles() {
 
 	int numObstacles = std::rand() % 2 + 6;
 	float minDistanceFromWall = playerSize;
@@ -129,7 +131,7 @@ void LightAndShadow::generateObstacles() {
 }
 
 // Function to calculate the shadow polygon for a single rectangle
-std::vector<sf::Vector2f> LightAndShadow::calculateShadow(const sf::RectangleShape& box, const sf::Vector2f& lightPos) {
+std::vector<sf::Vector2f> World::calculateShadow(const sf::RectangleShape& box, const sf::Vector2f& lightPos) {
 	std::vector<sf::Vector2f> cornerPoints;
 	std::vector<sf::Vector2f> castDirections;
 
@@ -180,7 +182,7 @@ std::vector<sf::Vector2f> LightAndShadow::calculateShadow(const sf::RectangleSha
 }
 
 // Function to create a shadow shape from points
-sf::ConvexShape LightAndShadow::createShadowShape(const std::vector<sf::Vector2f>& points) {
+sf::ConvexShape World::createShadowShape(const std::vector<sf::Vector2f>& points) {
 	sf::ConvexShape shadow;
 	shadow.setPointCount(points.size());
 	for (size_t i = 0; i < points.size(); ++i) {

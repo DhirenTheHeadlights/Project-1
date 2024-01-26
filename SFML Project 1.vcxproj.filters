@@ -124,7 +124,7 @@
     <ClCompile Include="AimTrainer\Resource\AimTrainerHashmap_AT.cpp">
       <Filter>Source Files\AimTrainer\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\Arena_AT.cpp">
+    <ClCompile Include="AimTrainer\Resource\World_AT.cpp">
       <Filter>Source Files\AimTrainer\Resource</Filter>
     </ClCompile>
     <ClCompile Include="AimTrainer\Resource\Crosshair_AT.cpp">
@@ -184,6 +184,9 @@
     <ClCompile Include="PirateGame\Resource\View_PG.cpp">
       <Filter>Source Files\PirateGame\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="GameTemplate.cpp">
+      <Filter>Source Files\Globals\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h">
@@ -240,7 +243,7 @@
     <ClInclude Include="AimTrainer\Header\AimTrainerHashmap_AT.h">
       <Filter>Source Files\AimTrainer\Header</Filter>
     </ClInclude>
-    <ClInclude Include="AimTrainer\Header\Arena_AT.h">
+    <ClInclude Include="AimTrainer\Header\World_AT.h">
       <Filter>Source Files\AimTrainer\Header</Filter>
     </ClInclude>
     <ClInclude Include="AimTrainer\Header\Crosshair_AT.h">
@@ -302,6 +305,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\View_PG.h">
       <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTemplate.h">
+      <Filter>Source Files\Globals\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

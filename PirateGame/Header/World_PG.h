@@ -13,45 +13,47 @@
 #include "GameStateManager_PG.h"
 #include "Map.h"
 
-class World_PG {
-public:
-	World_PG(sf::RenderWindow& window);
-	~World_PG();
+namespace PirateGame {
+	class World {
+	public:
+		World(sf::RenderWindow& window);
+		~World();
 
-	void createWorld();
-	void gameLoop();
+		void createWorld(sf::Event event);
+		void gameLoop();
 
-private:
-	// Variables to store the world's values
-	int width = 10000;
-	int height = 10000;
-	int cellSize = 10;
+	private:
+		// Variables to store the world's values
+		int width = 10000;
+		int height = 10000;
+		int cellSize = 10;
 
-	// Map size
-	sf::Vector2f worldMap = sf::Vector2f(width, height);
+		// Map size
+		sf::Vector2f worldMap = sf::Vector2f(width, height);
 
-	// Main clock
-	sf::Clock mainClock;
+		// Main clock
+		sf::Clock mainClock;
 
-	// This will be implemented later
-	Player player;
+		// This will be implemented later
+		Player player;
 
-	// This will be implemented later
-	Ship ship;
+		// This will be implemented later
+		Ship ship;
 
-	// This will be implemented later
-	View view;
+		// This will be implemented later
+		View view;
 
-	// LandMass Handler
-	LandMassHandler LMHandler;
+		// LandMass Handler
+		LandMassHandler LMHandler;
 
-	// GameState Manager
-	GameStateManager_PG GSM;
+		// GameState Manager
+		GameStateManager_PG GSM;
 
-	// This will be implemented later
-	sf::RenderWindow& window;
+		// This will be implemented later
+		sf::RenderWindow& window;
 
-	// Map
-	Map map;
-};
+		// Map
+		Map map;
+	};
+}
 

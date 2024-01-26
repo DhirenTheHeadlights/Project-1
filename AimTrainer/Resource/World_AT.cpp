@@ -1,6 +1,8 @@
-#include "Arena_AT.h"
+#include "World_AT.h"
 
-Arena::Arena(sf::RenderWindow& window) : window(window), hashmap(), crosshair(window), leaderboardData("HighScores.txt") {
+using namespace AimTrainer;
+
+World::World(sf::RenderWindow& window) : window(window), hashmap(), crosshair(window), leaderboardData("HighScores.txt") {
 
     // initialize the font
     if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
@@ -30,7 +32,7 @@ Arena::Arena(sf::RenderWindow& window) : window(window), hashmap(), crosshair(wi
 // This function is called from main.cpp //////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void Arena::createArena(sf::Event eventFromMain) {
+void World::createWorld(sf::Event eventFromMain) {
     // Clear the window and assign eventFromMain to currentEvent
     window.clear();
 
@@ -87,7 +89,7 @@ void Arena::createArena(sf::Event eventFromMain) {
     window.display();
 }
 
-void Arena::gameLoop(sf::Event event) {
+void World::gameLoop(sf::Event event) {
 
 	// The game loop
 	window.draw(arenaBox);
@@ -101,7 +103,7 @@ void Arena::gameLoop(sf::Event event) {
 
 // This function updates the targets on the screen
 
-void Arena::updateTargets() {
+void World::updateTargets() {
     // Remove all deactivated targets from the activeTargets vector
     activeTargets.erase(
         std::remove_if(
@@ -123,7 +125,7 @@ void Arena::updateTargets() {
 
 // This function creates a new target and adds it to the activeTargets vector
 
-Target* Arena::createTarget() {
+Target* World::createTarget() {
     // Get the position and size of the arenaBox
     sf::Vector2f arenaPos = arenaBox.getPosition();
     sf::Vector2f arenaSize = arenaBox.getSize();
@@ -142,7 +144,7 @@ Target* Arena::createTarget() {
 
 // This function handles mouse events
 
-void Arena::handleTargetCollision(sf::Event event) {
+void World::handleTargetCollision(sf::Event event) {
     sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
     sf::Vector2f windowSize = sf::Vector2f(window.getSize());
 
@@ -171,7 +173,7 @@ void Arena::handleTargetCollision(sf::Event event) {
 
 // This function displays the timer and score
 
-void Arena::showTimer() {
+void World::showTimer() {
 
     if (currentGameState == GameState::GameLoop) {
 
@@ -200,7 +202,7 @@ void Arena::showTimer() {
 
 // This function ends the game
 
-void Arena::endGame() {
+void World::endGame() {
     if (score != 0) {
 		scores.push_back(std::make_pair(name, score));
         leaderboardData.addData(scores);
@@ -212,23 +214,23 @@ void Arena::endGame() {
 // Functions for handling different game Menus ////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void Arena::handleTitleScreen(sf::Event event) {
+void World::handleTitleScreen(sf::Event event) {
     menuHandler->drawStartMenu(event, mainClock, crosshair);
 }
 
-void Arena::handleEndScreen(sf::Event event) {
+void World::handleEndScreen(sf::Event event) {
     menuHandler->drawEndMenu(event, mainClock, crosshair);
 }
 
-void Arena::handleLeaderBoardScreen(sf::Event event) {
+void World::handleLeaderBoardScreen(sf::Event event) {
     menuHandler->drawLeaderBoardMenu(event, mainClock, crosshair);
 }
 
-void Arena::handleOptionsMenu(sf::Event event) {
+void World::handleOptionsMenu(sf::Event event) {
     menuHandler->drawOptionsMenu(event, mainClock, crosshair);
 }
 
-void Arena::handleInsertNameMenu(sf::Event event) {
+void World::handleInsertNameMenu(sf::Event event) {
 	menuHandler->drawInsertNameMenu(event, mainClock, crosshair);
 }
 
@@ -236,47 +238,47 @@ void Arena::handleInsertNameMenu(sf::Event event) {
 // Overridden Functions for the game //////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-void Arena::changeGameState(GameState newState) {
+void World::changeGameState(GameState newState) {
 	currentGameState = newState;
 }
 
-GameState Arena::getCurrentGameState() const {
+GameState World::getCurrentGameState() const {
 	return currentGameState;
 }
 
-void Arena::startGame() {
+void World::startGame() {
 	currentGameState = GameState::GameLoop;
 	mainClock.restart();
     scores.push_back(std::make_pair(name, score));
     score = 0;
 }
 
-void Arena::setName(std::string name_in) {
+void World::setName(std::string name_in) {
     if (name_in != "") {
         name = name_in;
     }
 }
 
-void Arena::openLeaderBoardMenu() {
+void World::openLeaderBoardMenu() {
 	currentGameState = GameState::LeaderBoardScreen;
 }
 
-void Arena::openOptionsMenu() {
+void World::openOptionsMenu() {
 	currentGameState = GameState::OptionsMenu;
 }
 
-void Arena::openStartMenu() {
+void World::openStartMenu() {
 	currentGameState = GameState::TitleScreen;
 }
 
-void Arena::openEndScreen() {
+void World::openEndScreen() {
 	currentGameState = GameState::EndScreen;
 }
 
-void Arena::openInsertNameMenu() {
+void World::openInsertNameMenu() {
 	currentGameState = GameState::InsertNameMenu;
 }
 
-void Arena::exit() {
+void World::exit() {
 	endGame();
 }

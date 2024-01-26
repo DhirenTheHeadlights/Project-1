@@ -1,10 +1,12 @@
 #include "World_AG.h"
 
-World::World(sf::RenderWindow& window) : colMan(window, map), view(window.getDefaultView()), pelHan(window), debug(window), input(window) {
+using namespace AgarGame;
+
+World::World(sf::RenderWindow& window) : colMan(window, map), view(window.getDefaultView()), pelHan(window), debug(window), input(window), window(window) {
     map.grid(10000, 10000, 100);
 }
 
-void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
+void World::createWorld(sf::Event& event) {
 
     colMan.moveAndSeparateCells(cellGroup, map, window, 200);
     //std::cout << "After move: Cell A Position: " << cellGroup.getCellGroup()[0]->getPosition().x << ", " << cellGroup.getCellGroup()[0]->getPosition().y << std::endl;
@@ -21,7 +23,7 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
         return;
     }
 
-    displayInfo(window);
+    displayInfo();
 
     colMan.assignCells(cellGroup, map);
 
@@ -36,7 +38,7 @@ void World::createWorld(sf::RenderWindow& window, sf::Event& event) {
     window.setView(view);
 }
 
-void World::displayInfo(sf::RenderWindow& window) {
+void World::displayInfo() {
     for (Circle* cell : cellGroup.getCellGroup()) {
         cell->setColor(sf::Color::Blue);
         debug.drawVector(cell->getPosition(), cell->getDirection(), window, 100.0f, sf::Color::Red);

@@ -1,15 +1,17 @@
 #include "World_PG.h"
 
-World_PG::World_PG(sf::RenderWindow& window) : window(window), view(window), ship(window), LMHandler(map) {
+using namespace PirateGame;
+
+World::World(sf::RenderWindow& window) : window(window), view(window), ship(window), LMHandler(map) {
 	map.grid(height, width, cellSize);
 	ship.createShip(ShipType::Player, ShipClass::Galleon);
 	LMHandler.addLandMasses(100, 500.f);
 }
 
-World_PG::~World_PG() {
+World::~World() {
 }
 
-void World_PG::createWorld() {
+void World::createWorld(sf::Event event) {
 	window.clear();
 
 	// Handle the different game states
@@ -37,7 +39,7 @@ void World_PG::createWorld() {
 	window.display();
 }
 
-void World_PG::gameLoop() {
+void World::gameLoop() {
 	// Temporary code to draw a grid
 	map.drawGrid(window);
 
