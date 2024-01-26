@@ -1,6 +1,6 @@
 #pragma once
-#include "Pellet.h"
-#include "Circle.h"
+#include "Pellet_AG.h"
+#include "Circle_AG.h"
 #include <vector>
 #include <memory>
 

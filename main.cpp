@@ -7,8 +7,8 @@
 
 
 #include "Globals/Header/Globals.h"
-#include "AgarGame/Header/World.h"
-#include "AimTrainer/Header/Arena.h"
+#include "AgarGame/Header/World_AG.h"
+#include "AimTrainer/Header/Arena_AT.h"
 #include "LightAndShadow/Header/WorldLS.h"
 #include "PirateGame/Header/World_PG.h"
 

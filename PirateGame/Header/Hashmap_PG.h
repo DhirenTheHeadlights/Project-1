@@ -4,8 +4,8 @@
 #include <unordered_map>
 #include <set>
 
-#include "LandMass.h"
-#include "Ship.h"
+#include "LandMass_PG.h"
+#include "Ship_PG.h"
 #include "Map.h"
 
 /// <summary>

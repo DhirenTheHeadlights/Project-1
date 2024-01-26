@@ -17,12 +17,6 @@
     <Filter Include="Source Files\AgarGame">
       <UniqueIdentifier>{16689273-69bb-4788-9fd8-db57fc3ec44f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\AgarGame\Header">
-      <UniqueIdentifier>{5abeb778-ed3e-4c2f-92cc-569fa63dc9d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\AgarGame\Resource">
-      <UniqueIdentifier>{438069d4-3651-41ff-8ede-273442ce9a3a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\AimTrainer">
       <UniqueIdentifier>{a28c3933-c1ec-4249-b116-fdb2710846e3}</UniqueIdentifier>
     </Filter>
@@ -31,9 +25,6 @@
     </Filter>
     <Filter Include="Source Files\AimTrainer\Resource">
       <UniqueIdentifier>{b21a73cf-a25b-4a9a-bcac-45f8964cf15c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\AimTrainer\Header\Menus">
-      <UniqueIdentifier>{5b32837b-6da9-49b4-a4cc-bc34ad62486a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\AimTrainer\Resource\Menus">
       <UniqueIdentifier>{b9e13cb0-4f3f-468e-bf1e-2455ec519e4d}</UniqueIdentifier>
@@ -65,6 +56,15 @@
     <Filter Include="Source Files\PirateGame\Sprites">
       <UniqueIdentifier>{dc65aab2-fe6a-4de2-9f0d-f92ec7bb5670}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\AgarGame\Header">
+      <UniqueIdentifier>{967d6b3b-faf9-4e47-8ba1-bfca2db39d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AgarGame\Resource">
+      <UniqueIdentifier>{6f93d334-d648-43ea-993f-7a05789b9810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AimTrainer\Header\Menus">
+      <UniqueIdentifier>{4711c023-2f2a-4980-bf08-0d32011f64a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -76,98 +76,8 @@
     <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp">
       <Filter>Source Files\PirateGame\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\LandMass.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\LandMassHandler.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Player.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Ship.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\SoundManager.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Textures.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\View.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\World_PG.cpp">
       <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\CellGroup.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\Circle.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\CollisionManager.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\Debugger.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\Hashmap.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\InputHandler.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\Pellet.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\PelletHandler.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AgarGame\Resource\World.cpp">
-      <Filter>Source Files\AgarGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\AimTrainerHashmap.cpp">
-      <Filter>Source Files\AimTrainer\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\Arena.cpp">
-      <Filter>Source Files\AimTrainer\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\Crosshair.cpp">
-      <Filter>Source Files\AimTrainer\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\Interactables.cpp">
-      <Filter>Source Files\AimTrainer\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\SaveData.cpp">
-      <Filter>Source Files\AimTrainer\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\Target.cpp">
-      <Filter>Source Files\AimTrainer\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\EndMenu.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\PlayerInputBox.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\OptionsMenu.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\MenuHandler.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\Menu.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\LeaderBoardMenu.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\InsetNameMenu.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="AimTrainer\Resource\StartMenu.cpp">
-      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
     </ClCompile>
     <ClCompile Include="Globals\Resource\Globals.cpp">
       <Filter>Source Files\Globals\Resource</Filter>
@@ -184,6 +94,96 @@
     <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp">
       <Filter>Source Files\LightAndShadow\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="AgarGame\Resource\CellGroup_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\Circle_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\CollisionManager_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\Debugger_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\Hashmap_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\InputHandler_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\Pellet_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\PelletHandler_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AgarGame\Resource\World_AG.cpp">
+      <Filter>Source Files\AgarGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\AimTrainerHashmap_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\Arena_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\Crosshair_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\Target_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\EndMenu_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\InsetNameMenu_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\Interactables_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\LeaderBoardMenu_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\Menu_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\MenuHandler_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\OptionsMenu_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\PlayerInputBox_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp">
+      <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Player_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Ship_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Textures_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\View_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h">
@@ -192,95 +192,8 @@
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h">
       <Filter>Source Files\PirateGame\Header</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMass.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMassHandler.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Player.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Ship.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Textures.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\SoundManager.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\World_PG.h">
       <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\View.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\CellGroup.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\Circle.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\CollisionManager.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\Debugger.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\Hashmap.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\InputHandler.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\Pellet.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\PelletHandler.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AgarGame\Header\World.h">
-      <Filter>Source Files\AgarGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\AimTrainerHashmap.h">
-      <Filter>Source Files\AimTrainer\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\Arena.h">
-      <Filter>Source Files\AimTrainer\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\Crosshair.h">
-      <Filter>Source Files\AimTrainer\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\GameStateManager.h">
-      <Filter>Source Files\AimTrainer\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\SaveData.h">
-      <Filter>Source Files\AimTrainer\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\Target.h">
-      <Filter>Source Files\AimTrainer\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\EndMenu.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\LeaderBoardMenu.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\Menu.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\MenuHandler.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\OptionsMenu.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\StartMenu.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="AimTrainer\Header\InsertNameMenu.h">
-      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
     </ClInclude>
     <ClInclude Include="Globals\Header\Globals.h">
       <Filter>Source Files\Globals\Header</Filter>
@@ -297,11 +210,98 @@
     <ClInclude Include="LightAndShadow\Header\WorldLS.h">
       <Filter>Source Files\LightAndShadow\Header</Filter>
     </ClInclude>
-    <ClInclude Include="AimTrainer\Header\PlayerInputBox.h">
+    <ClInclude Include="AgarGame\Header\CellGroup_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\Circle_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\CollisionManager_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\Debugger_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\Hashmap_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\InputHandler_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\Pellet_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\PelletHandler_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AgarGame\Header\World_AG.h">
+      <Filter>Source Files\AgarGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\AimTrainerHashmap_AT.h">
+      <Filter>Source Files\AimTrainer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\Arena_AT.h">
+      <Filter>Source Files\AimTrainer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\Crosshair_AT.h">
+      <Filter>Source Files\AimTrainer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\GameStateManager_AT.h">
+      <Filter>Source Files\AimTrainer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\SaveData_AT.h">
+      <Filter>Source Files\AimTrainer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\Target_AT.h">
+      <Filter>Source Files\AimTrainer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\EndMenu_AT.h">
       <Filter>Source Files\AimTrainer\Header\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="AimTrainer\Header\Interactables.h">
+    <ClInclude Include="AimTrainer\Header\InsertNameMenu_AT.h">
       <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\Interactables_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\LeaderBoardMenu_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\Menu_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\MenuHandler_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\OptionsMenu_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\PlayerInputBox_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="AimTrainer\Header\StartMenu_AT.h">
+      <Filter>Source Files\AimTrainer\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Player_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Ship_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\SoundManager_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Textures_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\View_PG.h">
+      <Filter>Source Files\PirateGame\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

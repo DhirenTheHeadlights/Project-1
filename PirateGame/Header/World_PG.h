@@ -6,10 +6,10 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Player.h"
-#include "View.h"
-#include "Ship.h"
-#include "LandMassHandler.h"
+#include "Player_PG.h"
+#include "View_PG.h"
+#include "Ship_PG.h"
+#include "LandMassHandler_PG.h"
 #include "GameStateManager_PG.h"
 #include "Map.h"
 
