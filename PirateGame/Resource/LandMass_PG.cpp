@@ -8,17 +8,11 @@ void LandMass::createLandMass(LandMassType type, Textures& texture) {
 	switch (type) {
 		case LandMassType::Island:
 			selectIslandSprite(texture);
-			landMass.setSize(sf::Vector2f(500.f, 500.f));
-			landMass.setFillColor(sf::Color::Red);
 			break;
 		case LandMassType::Rock:
 			selectRockSprite(texture);
-			landMass.setSize(sf::Vector2f(50.f, 50.f));
-			landMass.setFillColor(sf::Color::Green);
 			break;
 		case LandMassType::Shipwreck:
-			landMass.setSize(sf::Vector2f(100.f, 100.f));
-			landMass.setFillColor(sf::Color::Blue);
 			break;
 	}
 }
@@ -36,14 +30,12 @@ void LandMass::selectRockSprite(Textures& texture) {
 
 // Set the position of the land mass
 void LandMass::setPosition(sf::Vector2f pos) {
-	landMass.setPosition(pos);
 	interactablePoint.setPosition(pos);
 	sprite.setPosition(pos);
 }
 
 // Draw the land mass
 void LandMass::draw(sf::RenderWindow& window) {
-	window.draw(landMass);
 	window.draw(interactablePoint);
 	window.draw(sprite);
 }

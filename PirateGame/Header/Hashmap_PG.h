@@ -26,7 +26,7 @@ public:
 	std::string generateKey(sf::Vector2f position);
 
 	// Find landmass near player
-	std::set<LandMass*> findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window);
+	std::set<LandMass*> findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug = false);
 private:
 	// Hashmap
 	std::unordered_map<std::string, LandMass*> hashmap;

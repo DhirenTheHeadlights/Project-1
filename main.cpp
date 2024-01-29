@@ -6,6 +6,7 @@
 #include <vector>
 
 
+// Include all of the game headers
 #include "Globals/Header/Globals.h"
 #include "AgarGame/Header/World_AG.h"
 #include "AimTrainer/Header/World_AT.h"
@@ -188,21 +189,15 @@ int main() {
 			window.close();
 		}
 
-        // Check if any button is clicked
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            for (auto& button : buttons) {
-                if (button.isMouseOver(window)) {
-                    window.close();          // Close the menu window before launching the game
-                    button.getGame().run();  // Run the selected game, which will create its own window
-                    initializeGlobals(name); // Recreate the menu window if needed after the game exits
-                }
-            }
-        }
-
         window.clear();
 
         // Draw buttons
         for (auto& button : buttons) {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && button.isMouseOver(window)) {
+                window.close();          // Close the menu window before launching the game
+                button.getGame().run();  // Run the selected game, which will create its own window
+                initializeGlobals(name); // Recreate the menu window if needed after the game exits
+			}
             button.draw(window);
         }
 

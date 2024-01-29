@@ -3,7 +3,6 @@
 #include <vector>
 #include <iostream>
 
-#include "GameTemplate.h"
 #include "CellGroup_AG.h"
 #include "Map.h"
 #include "CollisionManager_AG.h"
@@ -13,10 +12,10 @@
 
 
 namespace AgarGame {
-    class World : public GameTemplate {
+    class World {
     public:
         World(sf::RenderWindow& window);
-        void createWorld(sf::Event& event) override;
+        void createWorld(sf::Event& event);
         void restart();
         void displayInfo();
         bool isGameOver() const;

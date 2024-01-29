@@ -25,6 +25,7 @@ private:
 	// Handle collisions between ship and land masses
 	void handleCollisions(Ship& ship, sf::RenderWindow& window);
 	int determineCollisionAxis(Ship& ship, LandMass* landMass);
+	bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 0);
 
 	// Vector to store the land masses
 	std::vector<LandMass*> landMasses;
@@ -42,7 +43,7 @@ private:
 	SoundManager soundManager;
 
 	// Temp function for bounds drawing
-	void drawBounds(sf::RenderWindow& window, const sf::RectangleShape& rect);
+	void drawBounds(sf::RenderWindow& window, const sf::Sprite& rect);
 
 	Textures texture;
 };

@@ -100,9 +100,10 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	// Set the maximum health
 	maxHealth = health;
 
-	// For now, we will just use a rectangle to represent the ship
-	ship.setSize(sf::Vector2f(100, 100));
-	ship.setFillColor(sf::Color::Green);
+	// Set constant values for the sprite len and height
+	float spriteLen = sprite.getGlobalBounds().width;
+	float spriteHeight = sprite.getGlobalBounds().height;
+	constSpriteBounds = sf::Vector2f(spriteLen, spriteHeight);
 }
 
 // Move the ship
@@ -113,7 +114,7 @@ void Ship::move(sf::Vector2f map) {
 	sf::Vector2f viewPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
 	// Get the direction to the mouse
-	sf::Vector2f dirToMouse = viewPos - getPosition();
+	sf::Vector2f dirToMouse = viewPos - getSpritePosition();
 
 	// Get the elapsed time
 	float elapsed = deltaTime.restart().asSeconds();
@@ -137,13 +138,14 @@ void Ship::move(sf::Vector2f map) {
 	float angleRad = std::atan2(dirToMouse.y, dirToMouse.x);
 	const float pi = 3.1415926f;
 	float angleDeg = angleRad * 180.0f / pi;
+	rotation = angleDeg + 90;
 
 	// In SFML, 0 degrees is along the positive X-axis.
 	// Rotate the sprite to align with the direction to the mouse
-	sprite.setRotation(angleDeg + 90); // Adding 90 degrees if the sprite's up is its top
+	sprite.setRotation(rotation); // Adding 90 degrees if the sprite's up is its top
 
 	// Draw the velocity vector
-	drawVector(getPosition(), velocity, sf::Color::Red);
+	drawVector(getSpritePosition(), velocity, sf::Color::Red);
 
 	// Move the ship
 	direction(velocity, elapsed, map);
@@ -161,15 +163,15 @@ void Ship::direction(sf::Vector2f velocity, float elapsed, sf::Vector2f map) {
 	// Boundary checks
 	if (position.x < 0) position.x = 0;
 	if (position.y < 0) position.y = 0;
-	float size = ship.getSize().x;
-	if (position.x > map.x) position.x = map.x - size;
-	if (position.y > map.x) position.y = map.x - size;
+	float sizeX = sprite.getGlobalBounds().width;
+	float sizeY = sprite.getGlobalBounds().height;
+	if (position.x > map.x) position.x = map.x;
+	if (position.y > map.x) position.y = map.x;
 
 	// Set the position of the ship
-	float x = position.x - size;
-	float y = position.y - size;
-	ship.setPosition(x, y);
-	sprite.setPosition(x + size * 0.5, y + size * 0.5);
+	float x = position.x - sizeX;
+	float y = position.y - sizeY;
+	sprite.setPosition(x + sizeX * 0.5, y + sizeY * 0.5);
 }
 
 // Draw the ship
@@ -189,29 +191,44 @@ void Ship::draw(sf::Vector2f map) {
 	healthBarGreen.setSize(sf::Vector2f(100 * health / maxHealth, 10));
 	healthBarGreen.setFillColor(sf::Color::Green);
 
-	// Set the position centered below the ship
-	healthBarGreen.setPosition(ship.getPosition().x, ship.getPosition().y + ship.getSize().y + 10);
-
 	// Determine the size of the health bar red based on health
 	healthBarRed.setSize(sf::Vector2f(100, 10));
 	healthBarRed.setFillColor(sf::Color::Red);
 
-	// Set the position centered below the ship
-	healthBarRed.setPosition(ship.getPosition().x, ship.getPosition().y + ship.getSize().y + 10);
+	// Define the fixed offset from the center of the ship to the health bar
+	float healthBarOffsetDistance = constSpriteBounds.x / 2 + 20.0f;  // Adjust as needed
 
-	// Draw the health bars
+	// Calculate the rotation angle in radians
+	float angleRad = (rotation - 90) * 3.1415926f / 180.0f;  // Subtract 90 to align with the ship's back
+
+	// Calculate the rotated offset
+	sf::Vector2f rotatedOffset(cos(angleRad) * healthBarOffsetDistance, sin(angleRad) * healthBarOffsetDistance);
+
+	// Calculate the position of the health bar's center
+	sf::Vector2f healthBarCenterPos = sprite.getPosition() - rotatedOffset;
+
+	// Set the position of the health bars
+	healthBarGreen.setPosition(healthBarCenterPos - sf::Vector2f(healthBarGreen.getSize().x / 2, healthBarGreen.getSize().y / 2));
+	healthBarRed.setPosition(healthBarCenterPos - sf::Vector2f(healthBarRed.getSize().x / 2, healthBarRed.getSize().y / 2));
+
+	// Rotate the health bars with the ship
+	healthBarGreen.setRotation(rotation);
+	healthBarRed.setRotation(rotation);
+
+	// Draw the health bars first to ensure they are behind the ship
 	window.draw(healthBarRed);
 	window.draw(healthBarGreen);
 
-	// Draw the ship
+	// Move and draw the ship
 	move(map);
-	window.draw(ship);
 	window.draw(sprite);
 }
 
 // Get the ship's position as the center of the ship
-sf::Vector2f Ship::getPosition() {
-return sf::Vector2f(ship.getPosition().x + ship.getSize().x / 2, ship.getPosition().y + ship.getSize().y / 2);
+sf::Vector2f Ship::getSpritePosition() {
+	float x = sprite.getPosition().x ;
+	float y = sprite.getPosition().y ;
+	return sf::Vector2f(x, y);
 }
 
 // Apply collision movement to the ship; 0 = x-axis, 1 = y-axis
@@ -230,8 +247,14 @@ void Ship::collisionMovement(int axis) {
 	}
 
 	// Set the position of the ship
-	float size = ship.getSize().x;
-	ship.setPosition(position.x - size, position.y - size);
+	float sizeX = sprite.getGlobalBounds().width;
+	float sizeY = sprite.getGlobalBounds().height;
+	sprite.setPosition(position.x - sizeX / 2, position.y - sizeY / 2);
+}
+
+// Stop the ship
+void Ship::stop() {
+	setPosition(lastValidPos);
 }
 
 // Draw a vector

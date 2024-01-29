@@ -72,7 +72,6 @@ std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
             if (!tooClose) {
                 activeList.push_back(newPoint);
                 samplePoints.push_back(newPoint);
-                std::cout << "Valid point found" << std::endl;
                 return newPoint; // Return the new valid point
             }
         }
@@ -80,8 +79,6 @@ std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
 
     // Remove the point from the active list after all attempts have failed
     activeList.erase(activeList.begin() + randIndex);
-
-    std::cout << "No valid point found" << std::endl;
 
     return std::nullopt;
 }

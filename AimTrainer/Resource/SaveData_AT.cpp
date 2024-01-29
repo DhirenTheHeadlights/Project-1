@@ -47,6 +47,7 @@ std::vector<std::pair<std::string, int>> SaveData::file_read() {
     std::fstream indata(filename);
     std::vector<std::pair<std::string, int>> data;
     if (!indata) {
+        std::cout << "Error: file could not be opened" << std::endl;
         return data; // If the file couldn't be opened or doesn't exist, return an empty vector
     }
 

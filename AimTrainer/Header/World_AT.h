@@ -4,7 +4,6 @@
 #include <iostream>
 #include <algorithm>
 
-#include "GameTemplate.h"
 #include "Target_AT.h"
 #include "AimTrainerHashmap_AT.h"
 #include "Crosshair_AT.h"

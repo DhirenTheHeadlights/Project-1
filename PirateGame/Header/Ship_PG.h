@@ -30,23 +30,23 @@ public:
 	void move(sf::Vector2f map);
 	void direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
 	void collisionMovement(int axis); 
+	void stop();
 
 	// Draw functions
 	void draw(sf::Vector2f map);
 	void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
 
 	// Setters
-	void setPosition(sf::Vector2f pos) { ship.setPosition(pos); }
+	void setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
 	void setHealth(float hp) { health = hp; }
 	void setFriction(bool friction) { this->friction = friction;}
 
 	// Getters
-	sf::Vector2f getPosition();
-	sf::Vector2f getSize() { return ship.getSize(); }
-	sf::RectangleShape& getShape() { return ship; }
+	sf::Vector2f getSpritePosition();
 	sf::Vector2f getVelocity() { return velocity; }
 	int getCollisionAxis() { return axis; }
 	float getHealth() { return health; }
+	sf::Sprite& getSprite() { return sprite; }
 private:
 	// Window reference
 	sf::RenderWindow& window;
@@ -58,17 +58,17 @@ private:
 	sf::Sprite sprite;
 	sf::Texture texture;
 
-	// Temporary rectangle to represent the ship
-	sf::RectangleShape ship;
-
 	// Variables to store the ship's values
 	float health;
 	float maxHealth;
 	float baseSpeed;
 	float speed;
-	sf::Vector2f velocity;
 	float regenRate;
 	float scaling = 1;
+	float rotation;
+
+	sf::Vector2f velocity;
+	sf::Vector2f constSpriteBounds;
 
 	// Variables to store the ship's position and last valid position
 	sf::Vector2f position;

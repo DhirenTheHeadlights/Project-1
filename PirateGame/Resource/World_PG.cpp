@@ -48,7 +48,7 @@ void World::gameLoop() {
 
 	// Draw the ship
 	ship.draw(worldMap);
-	view.setCenter(ship.getPosition());
+	view.setCenter(ship.getSpritePosition());
 
 
 

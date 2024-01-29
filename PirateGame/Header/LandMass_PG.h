@@ -24,10 +24,11 @@ public:
 
 	// Getters
 	std::vector<std::pair<std::string, int>> getMarket() { return market; }
-	sf::Vector2f getPos() { return landMass.getPosition(); }
-	sf::RectangleShape getShape() { return landMass; }
 	sf::RectangleShape getInteractablePoint() { return interactablePoint; }
 	LandMassType getType() { return type; }
+	sf::Sprite& getSprite() { return sprite; }
+	sf::Vector2f getSpritePos() { return sprite.getPosition(); }
+	sf::Vector2f getSpriteSize() { return sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);  }
 
 	// Draw the land mass
 	void draw(sf::RenderWindow& window);
@@ -43,9 +44,6 @@ private:
 
 	// Variable to store the land mass's type
 	LandMassType type;
-
-	// Temporary rectangle to represent the land mass
-	sf::RectangleShape landMass;
 	
 	// Temporary rectangle to represent interactable point
 	sf::RectangleShape interactablePoint;
