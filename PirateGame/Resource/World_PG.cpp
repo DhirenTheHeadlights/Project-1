@@ -40,8 +40,14 @@ void World::createWorld(sf::Event event) {
 }
 
 void World::gameLoop() {
+	// Temp background rect for water
+	sf::RectangleShape background(sf::Vector2f(10000, 10000));
+	background.setFillColor(sf::Color(0, 158, 163));
+	window.draw(background);
+
+
 	// Temporary code to draw a grid
-	map.drawGrid(window);
+	//map.drawGrid(window);
 
 	// Draw the land masses
 	LMHandler.drawLandMasses(window, ship);

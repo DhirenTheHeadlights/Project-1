@@ -68,19 +68,40 @@
     <Filter Include="Source Files\AimTrainer\Misc">
       <UniqueIdentifier>{4c0c7a49-4eb5-45a7-870b-d13d770c94d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game Objects">
+      <UniqueIdentifier>{bc09c8c4-0bcd-4cd3-a6b2-745d49618a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Game Objects">
+      <UniqueIdentifier>{b018a1f3-c6cc-43ad-a07a-44d2d3ddd862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Handlers">
+      <UniqueIdentifier>{b5b06178-7c86-4a7c-8fcc-636d71394a0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Handler">
+      <UniqueIdentifier>{abcba486-6300-4a62-b5ea-27c459d6a44f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game World">
+      <UniqueIdentifier>{39aa1abd-10d4-411c-853f-915669bd08b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Game World">
+      <UniqueIdentifier>{d5e76b90-b09e-4d55-8822-3d3acc7277df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Menus">
+      <UniqueIdentifier>{1c8ae4b1-1511-4606-96f2-814a97c9eacc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Menus">
+      <UniqueIdentifier>{768869b6-abaf-4fc8-bcc5-6b3f27f3af23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Menus\Interactables">
+      <UniqueIdentifier>{3aea67d1-c4ac-4fff-8243-069954349ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Menus\Interactables">
+      <UniqueIdentifier>{aee0c4e9-d1f5-4b71-8308-851c11c16a77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\World_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Globals\Resource\Globals.cpp">
       <Filter>Source Files\Globals\Resource</Filter>
@@ -166,41 +187,62 @@
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp">
       <Filter>Source Files\AimTrainer\Resource\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Player_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Ship_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Textures_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\View_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource</Filter>
-    </ClCompile>
     <ClCompile Include="Globals\Resource\GameTemplate.cpp">
       <Filter>Source Files\Globals\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Player_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Ship_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Textures_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\View_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\World_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Slider_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="TextInpuBox_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="TextDisplayBoxd_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactable_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PirateGame\Header\GameStateManager_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Hashmap_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\World_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Globals\Header\Globals.h">
       <Filter>Source Files\Globals\Header</Filter>
     </ClInclude>
@@ -288,29 +330,59 @@
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h">
       <Filter>Source Files\AimTrainer\Header\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Player_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Ship_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\SoundManager_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\Textures_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\View_PG.h">
-      <Filter>Source Files\PirateGame\Header</Filter>
-    </ClInclude>
     <ClInclude Include="Globals\Header\GameTemplate.h">
       <Filter>Source Files\Globals\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Ship_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Player_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\GameStateManager_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\SoundManager_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Hashmap_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Textures_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\View_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\World_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Slider_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="TextInpuBox_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="TextDisplayBox_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactable_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

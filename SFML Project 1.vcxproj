@@ -157,13 +157,17 @@
     <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
+    <ClCompile Include="Button_PG.cpp" />
     <ClCompile Include="Globals\Resource\GameTemplate.cpp" />
     <ClCompile Include="Globals\Resource\Globals.cpp" />
     <ClCompile Include="Globals\Resource\Map.cpp" />
     <ClCompile Include="Globals\Resource\Quadtree.cpp" />
+    <ClCompile Include="Interactable_PG.cpp" />
     <ClCompile Include="LightAndShadow\Resource\Obsticles_LS.cpp" />
     <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuHandler_PG.cpp" />
+    <ClCompile Include="Menu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp" />
@@ -174,6 +178,9 @@
     <ClCompile Include="PirateGame\Resource\Textures_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
+    <ClCompile Include="Slider_PG.cpp" />
+    <ClCompile Include="TextDisplayBoxd_PG.cpp" />
+    <ClCompile Include="TextInpuBox_PG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgarGame\Header\CellGroup_AG.h" />
@@ -200,12 +207,16 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
+    <ClInclude Include="Button_PG.h" />
     <ClInclude Include="Globals\Header\GameTemplate.h" />
     <ClInclude Include="Globals\Header\Globals.h" />
     <ClInclude Include="Globals\Header\Map.h" />
     <ClInclude Include="Globals\Header\Quadtree.h" />
+    <ClInclude Include="Interactable_PG.h" />
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
+    <ClInclude Include="MenuHandler_PG.h" />
+    <ClInclude Include="Menu_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h" />
@@ -216,6 +227,9 @@
     <ClInclude Include="PirateGame\Header\Textures_PG.h" />
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
+    <ClInclude Include="Slider_PG.h" />
+    <ClInclude Include="TextDisplayBox_PG.h" />
+    <ClInclude Include="TextInpuBox_PG.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf" />

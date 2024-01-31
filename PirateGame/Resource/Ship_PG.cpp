@@ -195,23 +195,22 @@ void Ship::draw(sf::Vector2f map) {
 	healthBarRed.setSize(sf::Vector2f(100, 10));
 	healthBarRed.setFillColor(sf::Color::Red);
 
-	// Define the fixed offset from the center of the ship to the health bar
-	float healthBarOffsetDistance = constSpriteBounds.x / 2 + 20.0f;  // Adjust as needed
+	// Define the offset from the center of the ship to where the health bar should be
+	float healthBarOffsetX = -constSpriteBounds.x / 2; // Offset to the left of the sprite
+	float healthBarOffsetY = constSpriteBounds.y / 2; // Offset above the sprite
 
-	// Calculate the rotation angle in radians
-	float angleRad = (rotation - 90) * 3.1415926f / 180.0f;  // Subtract 90 to align with the ship's back
+	// Calculate the health bar's position based on the ship's rotation
+	float angleRad = rotation * 3.1415926f / 180.0f;
+	sf::Transform rotationTransform;
+	rotationTransform.rotate(rotation, sprite.getPosition());
 
-	// Calculate the rotated offset
-	sf::Vector2f rotatedOffset(cos(angleRad) * healthBarOffsetDistance, sin(angleRad) * healthBarOffsetDistance);
+	float x = sprite.getPosition().x + healthBarOffsetX;
+	float y = sprite.getPosition().y + healthBarOffsetY;
+	sf::Vector2f healthBarPosition = rotationTransform.transformPoint(x, y);
 
-	// Calculate the position of the health bar's center
-	sf::Vector2f healthBarCenterPos = sprite.getPosition() - rotatedOffset;
-
-	// Set the position of the health bars
-	healthBarGreen.setPosition(healthBarCenterPos - sf::Vector2f(healthBarGreen.getSize().x / 2, healthBarGreen.getSize().y / 2));
-	healthBarRed.setPosition(healthBarCenterPos - sf::Vector2f(healthBarRed.getSize().x / 2, healthBarRed.getSize().y / 2));
-
-	// Rotate the health bars with the ship
+	// Set the position and rotation of the health bars
+	healthBarGreen.setPosition(healthBarPosition);
+	healthBarRed.setPosition(healthBarPosition);
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
 

@@ -212,7 +212,6 @@ bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spri
 }
 
 
-
 void LandMassHandler::drawBounds(sf::RenderWindow& window, const sf::Sprite& sprite) {
 	sf::FloatRect bounds = sprite.getGlobalBounds();
 	sf::RectangleShape frame(sf::Vector2f(bounds.width, bounds.height));

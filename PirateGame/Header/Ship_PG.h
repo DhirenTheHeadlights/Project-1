@@ -70,6 +70,9 @@ private:
 	sf::Vector2f velocity;
 	sf::Vector2f constSpriteBounds;
 
+	// Collision rectangle
+	sf::RectangleShape collisionRect;
+
 	// Variables to store the ship's position and last valid position
 	sf::Vector2f position;
 	sf::Vector2f lastValidPos;
