@@ -15,7 +15,7 @@ public:
 
 	virtual void setUpMenu();
 	virtual void draw(sf::RenderWindow& window);
-	virtual void addInteractable();
+	virtual void addInteractable(std::unique_ptr<Interactable> interactable);
 	virtual void setInteractablePositions() = 0;
 	virtual void interactWithMenuItems();
 

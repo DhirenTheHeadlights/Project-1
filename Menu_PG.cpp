@@ -17,11 +17,9 @@ Menu::Menu(sf::RenderWindow& window, sf::Font& font) : window(window), font(font
 }
 
 // Add an interactable to the menu
-void Menu::addInteractable() {
-	// Create a new interactable and add it to the vector if there is room
-	std::unique_ptr<Interactable> interactable = std::make_unique<Interactable>(font);
-	interactable->addInteractable(interactableSize);
-	interactables.push_back(std::move(interactable));
+void Menu::addInteractable(std::unique_ptr<Interactable> interactable) {
+	// Add the interactable to the list of interactables
+	interactables.push_back(interactable);
 }
 
 // Set up the menu
@@ -54,6 +52,6 @@ void Menu::draw(sf::RenderWindow& window) {
 void Menu::interactWithMenuItems() {
 	// Check if the mouse is hovering over any of the interactables
 	for (auto& interactable : interactables) {
-		interactable->interact();
+		interactable->interact(window);
 	}
 }

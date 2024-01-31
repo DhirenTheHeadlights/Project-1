@@ -77,7 +77,7 @@ private:
     // Interactable properties and actions
     InteractableFunction interactableFunc;  // Function to call on interaction
     Type interactableType;                  // Type of the interactable (Button, Slider, InfoBox)
-    PlayerInputBox sliderInputBox;           // Input box for the sliders only. This is used to be more precise with the slider movement.
+    PlayerInputBox sliderInputBox;          // Input box for the sliders only. This is used to be more precise with the slider movement.
 
     // Dimensions and offset
     float length = 1;             // Length of the interactable
