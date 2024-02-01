@@ -16,19 +16,19 @@ void World::createWorld(sf::Event event) {
 
 	// Handle the different game states
 	switch (GSM.getCurrentGameState()) {
-		case GameState_PG::Start:
+		case GameState::Start:
 			// Draw the main menu
 			break;
-		case GameState_PG::OptionsMenu:
+		case GameState::OptionsMenu:
 			// Draw the options menu
 			break;
-		case GameState_PG::LandMassInteraction:
+		case GameState::LandMassInteraction:
 			// Interact with the land masses
 			break;
-		case GameState_PG::End:
+		case GameState::End:
 			// End the game
 			break;
-		case GameState_PG::GameLoop:
+		case GameState::GameLoop:
 			// Run the game loop
 			gameLoop();
 			break;

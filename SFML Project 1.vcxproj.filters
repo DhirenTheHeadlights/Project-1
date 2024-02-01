@@ -77,9 +77,6 @@
     <Filter Include="Source Files\PirateGame\Header\Handlers">
       <UniqueIdentifier>{b5b06178-7c86-4a7c-8fcc-636d71394a0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PirateGame\Resource\Handler">
-      <UniqueIdentifier>{abcba486-6300-4a62-b5ea-27c459d6a44f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\PirateGame\Header\Game World">
       <UniqueIdentifier>{39aa1abd-10d4-411c-853f-915669bd08b3}</UniqueIdentifier>
     </Filter>
@@ -97,6 +94,15 @@
     </Filter>
     <Filter Include="Source Files\PirateGame\Resource\Menus\Interactables">
       <UniqueIdentifier>{aee0c4e9-d1f5-4b71-8308-851c11c16a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Menus\Specific Menus">
+      <UniqueIdentifier>{f86961d1-4727-4511-b093-6828b75f8f7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Menus\Specific Menus">
+      <UniqueIdentifier>{5e03704d-56e7-4951-8bc0-0eb6b96d7c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Handlers">
+      <UniqueIdentifier>{abcba486-6300-4a62-b5ea-27c459d6a44f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -194,13 +200,13 @@
       <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
@@ -239,7 +245,10 @@
       <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
     </ClCompile>
     <ClCompile Include="MenuHandler_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handler</Filter>
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="StartMenu_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -383,6 +392,9 @@
     </ClInclude>
     <ClInclude Include="MenuHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="StartMenu_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Specific Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

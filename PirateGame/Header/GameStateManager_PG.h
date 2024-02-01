@@ -6,7 +6,7 @@
 /// </summary>
 
 // Enum class for game states
-enum class GameState_PG {
+enum class GameState {
 	Start,
 	GameLoop,
 	LandMassInteraction,
@@ -14,14 +14,14 @@ enum class GameState_PG {
 	End
 };
 
-class GameStateManager_PG {
+class GameStateManager {
 public:
 	// Change the GameState
-	void changeGameState(GameState_PG gameState) { this->currGameState; }
+	void changeGameState(GameState gameState) { this->currGameState; }
 
 	// Grab the GameState
-	GameState_PG getCurrentGameState() { return currGameState; }
+	GameState getCurrentGameState() { return currGameState; }
 private:
 	// Variable that stores the GameState
-	GameState_PG currGameState;
+	GameState currGameState;
 };

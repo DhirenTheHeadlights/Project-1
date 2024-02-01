@@ -24,6 +24,7 @@ public:
 	void setSize(sf::Vector2f size) { this->size = size; }
 	void setScale(sf::Vector2f scale) { this->scale = scale; }
 	void setTexture(const std::string& textureFile) { if (!texture.loadFromFile(textureFile)) std::cout << "Error Loading File"; };
+	void setString(const std::string& string) { text.setString(string); }
 
 	// Setters for colors
 	void setBackgroundColor(sf::Color color) { this->backgroundColor = color; }

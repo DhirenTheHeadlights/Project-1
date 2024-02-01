@@ -11,6 +11,7 @@
 #include "Ship_PG.h"
 #include "LandMassHandler_PG.h"
 #include "GameStateManager_PG.h"
+#include "MenuHandler_PG.h"
 #include "Map.h"
 
 namespace PirateGame {
@@ -47,7 +48,10 @@ namespace PirateGame {
 		LandMassHandler LMHandler;
 
 		// GameState Manager
-		GameStateManager_PG GSM;
+		GameStateManager GSM;
+
+		// Menu Handler
+		MenuHandler MH;
 
 		// This will be implemented later
 		sf::RenderWindow& window;

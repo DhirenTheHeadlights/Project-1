@@ -5,7 +5,7 @@
 /// It also contains every menu object and their respective functions.
 /// </summary>
 
-#include "Menu_PG.h"
+#include "StartMenu_PG.h"
 
 // Enum for the different types of menus
 enum class MenuType {
@@ -14,12 +14,20 @@ enum class MenuType {
 
 class MenuHandler {
 public:
-	MenuHandler(sf::RenderWindow& window, sf::Font& font);
-	~MenuHandler();
+	MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM);
+	~MenuHandler() {};
 
-	void openMenu(MenuHandler::MenuType& menuType);
+	void openMenu(MenuType menuType);
 private:
 	// Pointers to the different menus
 	std::unique_ptr<StartMenu> startMenu;
+	//...
+
+	// SFML objects
+	sf::RenderWindow& window;
+	sf::Font& font;
+
+	// GameStateManager
+	GameStateManager& GSM;
 };
 

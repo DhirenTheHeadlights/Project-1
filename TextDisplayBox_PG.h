@@ -1,5 +1,4 @@
 #pragma once
-class TextDisplayBox
-{
+class TextDisplayBox {
 };
 

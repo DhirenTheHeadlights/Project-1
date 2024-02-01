@@ -15,7 +15,7 @@ void Interactable::addInteractable(sf::Vector2f& size) {
 	// Set the position of the interactable objects
 	background.setPosition(position);
 	foreground.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
-	text.setPosition(sf::Vector2f(position.x + padding, position.y + padding);
+	text.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
 }
 
 // Draw the interactable object

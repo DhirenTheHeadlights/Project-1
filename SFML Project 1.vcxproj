@@ -179,6 +179,7 @@
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
     <ClCompile Include="Slider_PG.cpp" />
+    <ClCompile Include="StartMenu_PG.cpp" />
     <ClCompile Include="TextDisplayBoxd_PG.cpp" />
     <ClCompile Include="TextInpuBox_PG.cpp" />
   </ItemGroup>
@@ -228,6 +229,7 @@
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
     <ClInclude Include="Slider_PG.h" />
+    <ClInclude Include="StartMenu_PG.h" />
     <ClInclude Include="TextDisplayBox_PG.h" />
     <ClInclude Include="TextInpuBox_PG.h" />
   </ItemGroup>
