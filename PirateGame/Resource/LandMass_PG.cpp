@@ -1,5 +1,7 @@
 #include "LandMass_PG.h"
 
+using namespace PirateGame;
+
 void LandMass::createLandMass(LandMassType type, Textures& texture) {
 	// Set the type of landmass
 	this->type = type;
@@ -25,7 +27,7 @@ void LandMass::selectIslandSprite(Textures& texture) {
 void LandMass::selectRockSprite(Textures& texture) {
 
 	sprite.setTexture(texture.grabRockTexture());
-	sprite.setScale(0.125 * scaling, 0.125 * scaling);
+	sprite.setScale(0.125f * scaling, 0.125f * scaling);
 }
 
 // Set the position of the land mass

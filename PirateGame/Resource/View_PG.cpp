@@ -1,5 +1,7 @@
 #include "View_PG.h"
 
+using namespace PirateGame;
+
 View::View(sf::RenderWindow& window) : window(window) {
 	view = window.getDefaultView();
 }

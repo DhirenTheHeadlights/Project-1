@@ -1,5 +1,7 @@
 #include "Interactable_PG.h"
 
+using namespace PirateGame;
+
 // Create a new interactable object
 void Interactable::addInteractable(sf::Vector2f& size) {
 	// Set the size of all the interactable objects

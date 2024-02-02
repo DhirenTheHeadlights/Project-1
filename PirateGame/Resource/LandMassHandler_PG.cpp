@@ -1,5 +1,7 @@
 #include "LandMassHandler_PG.h"
 
+using namespace PirateGame;
+
 LandMassHandler::LandMassHandler(Map& map) : hashmap(map), map(map), soundManager(soundFile) {
 }
 
@@ -192,11 +194,11 @@ bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spri
 	sf::IntRect rect2 = sprite2.getTextureRect();
 
 	// Loop through the intersection of the sprites
-	for (int i = intersection.left; i < intersection.left + intersection.width; i++) {
-		for (int j = intersection.top; j < intersection.top + intersection.height; j++) {
+	for (int i = static_cast<int>(intersection.left); i < intersection.left + intersection.width; i++) {
+		for (int j = static_cast<int>(intersection.top); j < intersection.top + intersection.height; j++) {
 			// Get the local positions of the sprites
-			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(i, j);
-			sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(i, j);
+			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
+			sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 
 			// Get the indices of the pixels
 			int idx1 = ((int)(rect1.top + localPos1.y) * rect1.width + (int)(rect1.left + localPos1.x)) * 4;

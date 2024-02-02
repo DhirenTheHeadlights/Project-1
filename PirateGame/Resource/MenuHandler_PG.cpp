@@ -1,5 +1,7 @@
 #include "MenuHandler_PG.h"
 
+using namespace PirateGame;
+
 MenuHandler::MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM) : window(window), font(font), GSM(GSM) {
 	// Initialize the menu pointers
 	startMenu = std::make_unique<StartMenu>(window, font, GSM);

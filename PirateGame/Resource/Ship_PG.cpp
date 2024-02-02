@@ -1,6 +1,8 @@
 #include "Ship_PG.h"
 #include <cmath>
 
+using namespace PirateGame;
+
 // Constructor
 Ship::Ship(sf::RenderWindow& window) : window(window) {
 	position = sf::Vector2f(0, 0);
@@ -33,8 +35,8 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the values
 		speed = 95.f;
 		health = 133;
-		regenRate = 1.48;
-		regenRate = 1.48;
+		regenRate = 1.48f;
+		regenRate = 1.48f;
 
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_brigantine.png")) std::cout << "Failed to load Brigantine texture." << std::endl;
@@ -45,8 +47,8 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	case ShipClass::Frigate:
 		// Load the values
 		speed = 82.f;
-		health = 192;
-		regenRate = 2.15;
+		health = 192.f;
+		regenRate = 2.15f;
 
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_frigate.png")) std::cout << "Failed to load Frigate texture." << std::endl;
@@ -57,8 +59,8 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	case ShipClass::ManOWar:
 		// Load the values
 		speed = 77.f;
-		health = 250;
-		regenRate = 3;
+		health = 250.f;
+		regenRate = 3.f;
 
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_manowar.png")) std::cout << "Failed to load Man O'War texture." << std::endl;
@@ -69,8 +71,8 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	case ShipClass::Galleon:
 		// Load the values
 		speed = 63.f;
-		health = 380;
-		regenRate = 4.6;
+		health = 380.f;
+		regenRate = 4.6f;
 
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_galleon.png")) std::cout << "Failed to load Galleon texture." << std::endl;
@@ -171,7 +173,7 @@ void Ship::direction(sf::Vector2f velocity, float elapsed, sf::Vector2f map) {
 	// Set the position of the ship
 	float x = position.x - sizeX;
 	float y = position.y - sizeY;
-	sprite.setPosition(x + sizeX * 0.5, y + sizeY * 0.5);
+	sprite.setPosition(x + sizeX * 0.5f, y + sizeY * 0.5f);
 }
 
 // Draw the ship

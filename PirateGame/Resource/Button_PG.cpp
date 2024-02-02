@@ -1,5 +1,7 @@
 #include "Button_PG.h"
 
+using namespace PirateGame;
+
 // Interact with the button
 void Button::interact(sf::RenderWindow& window) {
 	// If the mouse button is not pressed, return

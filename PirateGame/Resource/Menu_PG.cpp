@@ -1,8 +1,10 @@
 #include "Menu_PG.h"
 
+using namespace PirateGame;
+
 Menu::Menu(sf::RenderWindow& window, sf::Font& font) : window(window), font(font) {
 	// Set up the background rectangle
-	backgroundRect = sf::RectangleShape(sf::Vector2f(window.getSize().x, window.getSize().y));
+	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
 	backgroundRect.setFillColor(backgroundColor);
 
 	// Set up the menu rectangle
@@ -11,7 +13,7 @@ Menu::Menu(sf::RenderWindow& window, sf::Font& font) : window(window), font(font
 
 	// Set up the title text
 	titleText = sf::Text(title, font);
-	titleText.setCharacterSize(textSize);
+	titleText.setCharacterSize(static_cast<unsigned int>(textSize));
 	titleText.setFillColor(textColor);
 	titleText.setStyle(sf::Text::Bold);
 }
@@ -19,7 +21,7 @@ Menu::Menu(sf::RenderWindow& window, sf::Font& font) : window(window), font(font
 // Add an interactable to the menu
 void Menu::addInteractable(std::unique_ptr<Interactable> interactable) {
 	// Add the interactable to the list of interactables
-	interactables.push_back(interactable);
+	interactables.push_back(std::move(interactable));
 }
 
 // Set up the menu

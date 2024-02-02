@@ -226,28 +226,28 @@
     <ClCompile Include="PirateGame\Resource\World_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World</Filter>
     </ClCompile>
-    <ClCompile Include="Menu_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="Button_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="Slider_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="TextInpuBox_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="TextDisplayBoxd_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="Interactable_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuHandler_PG.cpp">
+    <ClCompile Include="PirateGame\Resource\MenuHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="StartMenu_PG.cpp">
+    <ClCompile Include="PirateGame\Resource\Button_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Slider_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\TextDisplayBoxd_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\TextInpuBox_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Menu_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\StartMenu_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
     </ClCompile>
   </ItemGroup>
@@ -372,28 +372,28 @@
     <ClInclude Include="PirateGame\Header\World_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
-    <ClInclude Include="Menu_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="Button_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Slider_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="TextInpuBox_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="TextDisplayBox_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="Interactable_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuHandler_PG.h">
+    <ClInclude Include="PirateGame\Header\MenuHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="StartMenu_PG.h">
+    <ClInclude Include="PirateGame\Header\Button_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Interactable_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Slider_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\TextDisplayBox_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\TextInpuBox_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Menu_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\StartMenu_PG.h">
       <Filter>Source Files\PirateGame\Header\Menus\Specific Menus</Filter>
     </ClInclude>
   </ItemGroup>

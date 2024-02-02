@@ -24,40 +24,27 @@ namespace PirateGame {
 		void gameLoop();
 
 	private:
-		// Variables to store the world's values
-		int width = 10000;
-		int height = 10000;
-		int cellSize = 10;
-
-		// Map size
-		sf::Vector2f worldMap = sf::Vector2f(width, height);
-
-		// Main clock
+		// SFML objects
+		sf::RenderWindow& window;
+		sf::Font font;
 		sf::Clock mainClock;
 
-		// This will be implemented later
+		// Variables to store the world's values
+		float width = 10000;
+		float height = 10000;
+		int cellSize = 10;
+		sf::Vector2f worldMap = sf::Vector2f(width, height);
+
+		// Game objects
 		Player player;
-
-		// This will be implemented later
 		Ship ship = Ship(window);
-
-		// This will be implemented later
 		View view = View(window);
-
-		// LandMass Handler
-		LandMassHandler LMHandler = LandMassHandler(map);
-
-		// GameState Manager
-		GameStateManager GSM;
-
-		// Menu Handler
-		MenuHandler MH = MenuHandler(window, font, GSM);
-
-		// This will be implemented later
-		sf::RenderWindow& window;
-
-		// Map
 		Map map;
+
+		// Handlers
+		LandMassHandler LMHandler = LandMassHandler(map);
+		GameStateManager GSM = GameStateManager();
+		MenuHandler MH = MenuHandler(window, font, GSM);
 	};
 }
 

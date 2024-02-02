@@ -1,5 +1,7 @@
 #include "SoundManager_PG.h"
 
+using namespace PirateGame;
+
 SoundManager::SoundManager(std::string pathToSound) {
 	// Load the sound
 	if (!collisionBuffer.loadFromFile(pathToSound)) {

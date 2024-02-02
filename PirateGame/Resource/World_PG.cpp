@@ -3,9 +3,12 @@
 using namespace PirateGame;
 
 World::World(sf::RenderWindow& window) : window(window) {
-	map.grid(height, width, cellSize);
+	map.grid(static_cast<int>(height), static_cast<int>(width), cellSize);
 	ship.createShip(ShipType::Player, ShipClass::Galleon);
 	LMHandler.addLandMasses(100, 500.f);
+
+	// Set the game state to start
+	GSM.changeGameState(GameState::Start);
 }
 
 World::~World() {
@@ -18,7 +21,7 @@ void World::createWorld(sf::Event event) {
 	switch (GSM.getCurrentGameState()) {
 		case GameState::Start:
 			// Draw the main menu
-			MH.openMenu(MenuType::);
+			MH.openMenu(MenuType::StartMenu);
 			break;
 		case GameState::OptionsMenu:
 			// Draw the options menu

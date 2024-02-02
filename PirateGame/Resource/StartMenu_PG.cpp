@@ -1,5 +1,7 @@
 #include "StartMenu_PG.h"
 
+using namespace PirateGame;
+
 // Set up the start menu
 void StartMenu::setUpMenu() {
 	// Set the title of the menu
@@ -14,7 +16,8 @@ void StartMenu::setUpMenu() {
 	// Set up the title text
 	titleText.setPosition(100.f, 100.f);
 	titleText.setString(title);
-	titleText.setCharacterSize(100.0f);
+	unsigned int charSize = 100;
+	titleText.setCharacterSize(charSize);
 
 	// Add the interactables to the menu
 	addInteractables();

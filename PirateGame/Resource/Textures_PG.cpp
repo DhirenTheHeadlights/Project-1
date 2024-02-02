@@ -1,5 +1,7 @@
 #include "Textures_PG.h"
 
+using namespace PirateGame;
+
 // Constructor
 
 Textures::Textures() {

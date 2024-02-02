@@ -7,13 +7,15 @@
 /// The view is the part of the game that the player can see.
 /// </summary>
 
-class View {
-public:
-	View(sf::RenderWindow& window);
-	~View();
-	void setCenter(sf::Vector2f position);
-private:
-	sf::View view;
-	sf::RenderWindow& window;
-};
+namespace PirateGame {
+	class View {
+	public:
+		View(sf::RenderWindow& window);
+		~View();
+		void setCenter(sf::Vector2f position);
+	private:
+		sf::View view;
+		sf::RenderWindow& window;
+	};
+}
 

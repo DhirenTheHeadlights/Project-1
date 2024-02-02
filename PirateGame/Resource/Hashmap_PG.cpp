@@ -1,5 +1,7 @@
 #include "Hashmap_PG.h"
 
+using namespace PirateGame;
+
 HashmapPG::HashmapPG(Map& map_in) : map(map_in) {
 }
 
@@ -17,7 +19,7 @@ void HashmapPG::addLandMass(LandMass* landmass) {
 
     for (int i = topLeft.first; i <= bottomRight.first; ++i) {
         for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-            std::string key = generateKey(sf::Vector2f(i, j));
+            std::string key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
             this->hashmap[key] = landmass;
         }
     }
@@ -32,7 +34,7 @@ void HashmapPG::removeLandMass(LandMass* landmass) {
 
 	for (int i = topLeft.first; i <= bottomRight.first; ++i) {
 		for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-			std::string key = generateKey(sf::Vector2f(i, j));
+			std::string key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
 			this->hashmap.erase(key);
 		}
 	}
@@ -58,7 +60,7 @@ std::set<LandMass*> HashmapPG::findLandMassNearPlayer(Ship& ship, sf::RenderWind
     // Check the cells in the bounding box
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
-            std::string key = generateKey(sf::Vector2f(i, j));
+            std::string key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
 
             // If the key exists in the hashmap, add the landmass to the set
             if (hashmap.count(key)) {
@@ -71,9 +73,9 @@ std::set<LandMass*> HashmapPG::findLandMassNearPlayer(Ship& ship, sf::RenderWind
 
             // Optionally, visualize the grid cells being checked (for debugging)
             sf::RectangleShape rect;
-            rect.setSize(sf::Vector2f(map.getCellSize(), map.getCellSize()));
+            rect.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
             rect.setFillColor(sf::Color::Magenta);  // Color for visualization
-            rect.setPosition(sf::Vector2f(i * map.getCellSize(), j * map.getCellSize()));  // Adjust position based on your grid sizing
+            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize())));  // Adjust position based on your grid sizing
             window.draw(rect);
         }
     }

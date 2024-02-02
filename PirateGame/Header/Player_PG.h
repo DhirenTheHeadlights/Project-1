@@ -6,11 +6,12 @@
 
 #include "SFML/Graphics.hpp"
 
-class Player {
+namespace PirateGame {
+	class Player {
 	public:
-	Player();
-	~Player();
+		Player();
+		~Player();
 	private:
-	// This will be implemented later
-};
-
+		// This will be implemented later
+	};
+}

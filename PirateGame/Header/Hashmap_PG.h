@@ -14,24 +14,27 @@
 /// for quick and easy collsion detection.
 /// </summary>
 
-class HashmapPG {
-public:
-	HashmapPG(Map& map);
 
-	// Add and remove landmass to hashmap
-	void addLandMass(LandMass* landmass);
-	void removeLandMass(LandMass* landmass);
+namespace PirateGame {
+	class HashmapPG {
+	public:
+		HashmapPG(Map& map);
 
-	// Generate key for hashmap
-	std::string generateKey(sf::Vector2f position);
+		// Add and remove landmass to hashmap
+		void addLandMass(LandMass* landmass);
+		void removeLandMass(LandMass* landmass);
 
-	// Find landmass near player
-	std::set<LandMass*> findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug = false);
-private:
-	// Hashmap
-	std::unordered_map<std::string, LandMass*> hashmap;
+		// Generate key for hashmap
+		std::string generateKey(sf::Vector2f position);
 
-	// Map size
-	Map& map;
-};
+		// Find landmass near player
+		std::set<LandMass*> findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug = false);
+	private:
+		// Hashmap
+		std::unordered_map<std::string, LandMass*> hashmap;
+
+		// Map
+		Map& map;
+	};
+}
 

@@ -6,16 +6,18 @@
 /// This class is used to manage the sounds in the game.
 /// </summary>
 
-class SoundManager {
-public:
-	SoundManager(std::string pathToSound);
+namespace PirateGame {
+	class SoundManager {
+	public:
+		SoundManager(std::string pathToSound);
 
-	// Play the sound on command
-	void playSound();
+		// Play the sound on command
+		void playSound();
 
-private:
-	// Buffer and sound for collision
-	sf::SoundBuffer collisionBuffer;
-	sf::Sound collisionSound;
-};
+	private:
+		// Buffer and sound for collision
+		sf::SoundBuffer collisionBuffer;
+		sf::Sound collisionSound;
+	};
+}
 
