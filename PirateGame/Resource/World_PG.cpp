@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-World::World(sf::RenderWindow& window) : window(window), view(window), ship(window), LMHandler(map) {
+World::World(sf::RenderWindow& window) : window(window) {
 	map.grid(height, width, cellSize);
 	ship.createShip(ShipType::Player, ShipClass::Galleon);
 	LMHandler.addLandMasses(100, 500.f);
@@ -18,6 +18,7 @@ void World::createWorld(sf::Event event) {
 	switch (GSM.getCurrentGameState()) {
 		case GameState::Start:
 			// Draw the main menu
+			MH.openMenu(MenuType::);
 			break;
 		case GameState::OptionsMenu:
 			// Draw the options menu

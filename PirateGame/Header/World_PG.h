@@ -39,19 +39,19 @@ namespace PirateGame {
 		Player player;
 
 		// This will be implemented later
-		Ship ship;
+		Ship ship = Ship(window);
 
 		// This will be implemented later
-		View view;
+		View view = View(window);
 
 		// LandMass Handler
-		LandMassHandler LMHandler;
+		LandMassHandler LMHandler = LandMassHandler(map);
 
 		// GameState Manager
 		GameStateManager GSM;
 
 		// Menu Handler
-		MenuHandler MH;
+		MenuHandler MH = MenuHandler(window, font, GSM);
 
 		// This will be implemented later
 		sf::RenderWindow& window;
