@@ -35,7 +35,6 @@ public:
     void setHoverColor(sf::Color color);
     void updateInteractableColors();
     void setButtonSize(sf::Vector2f size);
-    void setMaxInteractables(int max);
 
     // Getters for menu state and properties
     bool getIsMenuOpen() const;

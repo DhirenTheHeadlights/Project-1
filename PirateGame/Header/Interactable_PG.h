@@ -15,7 +15,7 @@ namespace PirateGame {
 		Interactable(sf::Font& font) : font(font) {};
 		~Interactable() {};
 
-		virtual void addInteractable(sf::Vector2f& size);
+		virtual void setUpInteractable(sf::Vector2f& size);
 		virtual void interact(sf::RenderWindow& window) = 0;
 		virtual void draw(sf::RenderWindow& window);
 		void updateColors();
@@ -33,12 +33,7 @@ namespace PirateGame {
 		void setFrameColor(sf::Color color) { this->frameColor = color; }
 		void setTextColor(sf::Color color) { this->textColor = color; }
 
-		// Getters for properties
-		sf::RectangleShape& getBackground() { return this->background; }
-		sf::RectangleShape& getForeground() { return this->foreground; }
-
-
-	private:
+	protected:
 		// Variables
 		sf::Vector2f position;
 		sf::Vector2f size;

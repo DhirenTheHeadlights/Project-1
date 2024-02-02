@@ -3,6 +3,11 @@
 using namespace PirateGame;
 
 World::World(sf::RenderWindow& window) : window(window) {
+	// Initalize the font
+	if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
+		std::cout << "Error loading font" << std::endl;
+	}
+
 	map.grid(static_cast<int>(height), static_cast<int>(width), cellSize);
 	ship.createShip(ShipType::Player, ShipClass::Galleon);
 	LMHandler.addLandMasses(100, 500.f);
@@ -38,7 +43,15 @@ void World::createWorld(sf::Event event) {
 			break;
 	}
 
-	gameLoop();
+	// Close if the escape key is pressed
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		window.close();
+	}
+
+	// Temp code to enter the game loop when pressing enter
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		GSM.changeGameState(GameState::GameLoop);
+	}
 
 	window.display();
 }

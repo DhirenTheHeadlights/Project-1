@@ -2,16 +2,16 @@
 
 using namespace PirateGame;
 
-HashmapPG::HashmapPG(Map& map_in) : map(map_in) {
+Hashmap::Hashmap(Map& map_in) : map(map_in) {
 }
 
 // Generate a key for the hashmap based on position
-std::string HashmapPG::generateKey(sf::Vector2f pos) {
+std::string Hashmap::generateKey(sf::Vector2f pos) {
 	return std::to_string(static_cast<int>(pos.x)) + "," + std::to_string(static_cast<int>(pos.y));
 }
 
 // Add a new object to the hashmap
-void HashmapPG::addLandMass(LandMass* landmass) {
+void Hashmap::addLandMass(LandMass* landmass) {
     // Use the bounding box of the sprite for grid calculations
     sf::FloatRect bounds = landmass->getSprite().getGlobalBounds();
     auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
@@ -26,7 +26,7 @@ void HashmapPG::addLandMass(LandMass* landmass) {
 }
 
 // Remove an object from the hashmap
-void HashmapPG::removeLandMass(LandMass* landmass) {
+void Hashmap::removeLandMass(LandMass* landmass) {
 	// Similar to addLandMass, you need to remove the landmass from all the cells it occupies
 	auto topLeft = map.getGridCoordinates(landmass->getSpritePos().x, landmass->getSpritePos().y);
 	auto bottomRight = map.getGridCoordinates(landmass->getSpritePos().x + landmass->getSpriteSize().x,
@@ -41,7 +41,7 @@ void HashmapPG::removeLandMass(LandMass* landmass) {
 }
 
 // Find landmass near to a player
-std::set<LandMass*> HashmapPG::findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug) {
+std::set<LandMass*> Hashmap::findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug) {
     // Get the global bounds of the player ship's sprite
     sf::FloatRect shipBounds = ship.getSprite().getGlobalBounds();
 

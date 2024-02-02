@@ -79,8 +79,6 @@ void agario() { // Agar.io
 				window.close();
 			}
         }
-        // This shouldnt be here, it should really be in the while loop above
-        // but it doesnt work there for some reason. It causes stuttering :(|
         window.clear();
         world.createWorld(event);
         window.display();

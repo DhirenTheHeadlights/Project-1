@@ -32,7 +32,7 @@ namespace PirateGame {
 		std::vector<LandMass*> landMasses;
 
 		// Hashmap to store the land masses
-		HashmapPG hashmap;
+		Hashmap hashmap;
 
 		// Map to store the land masses
 		Map& map;

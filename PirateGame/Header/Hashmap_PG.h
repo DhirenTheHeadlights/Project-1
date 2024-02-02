@@ -16,9 +16,9 @@
 
 
 namespace PirateGame {
-	class HashmapPG {
+	class Hashmap {
 	public:
-		HashmapPG(Map& map);
+		Hashmap(Map& map);
 
 		// Add and remove landmass to hashmap
 		void addLandMass(LandMass* landmass);
