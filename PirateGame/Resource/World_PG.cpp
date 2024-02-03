@@ -7,16 +7,14 @@ World::World(sf::RenderWindow& window) : window(window) {
 	if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
 		std::cout << "Error loading font" << std::endl;
 	}
-
+	
+	// Set up the world
 	map.grid(static_cast<int>(height), static_cast<int>(width), cellSize);
 	ship.createShip(ShipType::Player, ShipClass::Galleon);
 	LMHandler.addLandMasses(100, 500.f);
 
 	// Set the game state to start
 	GSM.changeGameState(GameState::Start);
-}
-
-World::~World() {
 }
 
 void World::createWorld(sf::Event event) {
@@ -48,10 +46,7 @@ void World::createWorld(sf::Event event) {
 		window.close();
 	}
 
-	// Temp code to enter the game loop when pressing enter
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-		GSM.changeGameState(GameState::GameLoop);
-	}
+	std::cout << static_cast<int>(GSM.getCurrentGameState()) << std::endl;
 
 	window.display();
 }
@@ -62,9 +57,8 @@ void World::gameLoop() {
 	background.setFillColor(sf::Color(0, 158, 163));
 	window.draw(background);
 
-
 	// Temporary code to draw a grid
-	//map.drawGrid(window);
+	map.drawGrid(window);
 
 	// Draw the land masses
 	LMHandler.drawLandMasses(window, ship);
@@ -72,8 +66,6 @@ void World::gameLoop() {
 	// Draw the ship
 	ship.draw(worldMap);
 	view.setCenter(ship.getSpritePosition());
-
-
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

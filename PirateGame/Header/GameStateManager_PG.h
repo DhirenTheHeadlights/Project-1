@@ -18,10 +18,10 @@ namespace PirateGame {
 	class GameStateManager {
 	public:
 		// Change the GameState
-		void changeGameState(GameState gameState) { this->currGameState; }
+		void changeGameState(GameState gameState) { this->currGameState = gameState; }
 
 		// Grab the GameState
-		GameState getCurrentGameState() { return currGameState; }
+		GameState& getCurrentGameState() { return currGameState; }
 	private:
 		// Variable that stores the GameState
 		GameState currGameState;

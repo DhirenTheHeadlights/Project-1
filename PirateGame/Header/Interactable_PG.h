@@ -51,7 +51,7 @@ namespace PirateGame {
 		sf::Text text;
 
 		// Default colors
-		sf::Color backgroundColor = sf::Color(0, 0, 0, 200);
+		sf::Color backgroundColor = sf::Color(200, 0, 0, 200);
 		sf::Color foregroundColor = sf::Color(255, 255, 255, 200);
 		sf::Color frameColor = sf::Color(255, 255, 255, 200);
 		sf::Color textColor = sf::Color(255, 255, 255, 200);

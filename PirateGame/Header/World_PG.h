@@ -18,7 +18,7 @@ namespace PirateGame {
 	class World {
 	public:
 		World(sf::RenderWindow& window);
-		~World();
+		~World() {};
 
 		void createWorld(sf::Event event);
 		void gameLoop();

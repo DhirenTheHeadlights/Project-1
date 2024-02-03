@@ -13,7 +13,7 @@ void Button::interact(sf::RenderWindow& window) {
 	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
 	// If the mouse is over the button, call the button's callback function
-	if (!foreground.getGlobalBounds().contains(mousePos)) {
+	if (foreground.getGlobalBounds().contains(mousePos)) {
 		func();
 	}
 }

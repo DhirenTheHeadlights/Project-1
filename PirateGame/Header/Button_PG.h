@@ -18,13 +18,13 @@ namespace PirateGame {
 
 	class Button : public Interactable {
 	public:
-		Button(InteractableFunction& func, sf::Font& font) : func(func), Interactable(font) {};
+		Button(InteractableFunction func, sf::Font& font) : func(func), Interactable(font) {};
 		~Button() {};
 
 		void interact(sf::RenderWindow& window); // Overridden function to handle the interaction of the button
 
 	private:
-		InteractableFunction& func;
+		InteractableFunction func;
 		sf::Clock cooldown;
 	};
 }

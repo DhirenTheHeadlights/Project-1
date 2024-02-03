@@ -1,5 +1,5 @@
 # Project-1
-**The Savant LLC Game Development Project**
+**DNS Game Development Project**
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ To streamline the setup process, we will be setting an environment variable name
      
 - **Lib Directories**:
   1. Go to `Project -> Properties -> Linker -> General -> Additional Library Directories`.
-  2. Add `$(SFML_PATH)\lib`.
+  2. Add `$(SFML_PATH)\lib` if it is not already present.
      
 - **Linking Libraries**:
   1. Go to `Project -> Properties -> Linker -> Input -> Additional Dependencies`.
