@@ -21,7 +21,7 @@ namespace PirateGame {
 		void updateColors();
 
 		// Setters for properties
-		void setPosition(sf::Vector2f pos) { this->position = pos; }
+		void setPosition(sf::Vector2f& pos);
 		void setSize(sf::Vector2f size) { this->size = size; }
 		void setScale(sf::Vector2f scale) { this->scale = scale; }
 		void setTexture(const std::string& textureFile) { if (!texture.loadFromFile(textureFile)) std::cout << "Error Loading File"; };

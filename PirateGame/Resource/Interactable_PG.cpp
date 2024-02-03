@@ -7,18 +7,14 @@ void Interactable::setUpInteractable(sf::Vector2f& size) {
 	// Set the size of all the interactable objects
 	background.setSize(size);
 	foreground.setSize(sf::Vector2f(size.x - padding * 2, size.y - padding * 2));
+	text.setCharacterSize(size.x / 2);
+	text.setFont(font);
 
 	// Set the color of the interactable objects
 	background.setFillColor(backgroundColor);
 	foreground.setFillColor(foregroundColor);
 	frame.setFillColor(frameColor);
 	text.setFillColor(textColor);
-
-	// Set the position of the interactable objects
-	background.setPosition(position);
-	foreground.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
-	text.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
-	std::cout << "Position: " << position.x << ", " << position.y << std::endl;	
 }
 
 // Draw the interactable object
@@ -34,5 +30,14 @@ void Interactable::updateColors() {
 	background.setFillColor(backgroundColor);
 	foreground.setFillColor(foregroundColor);
 	frame.setFillColor(frameColor);
-	text.setFillColor(textColor);
+	text.setFillColor(textColor); 
+}
+
+// Set the position of the interactables
+void Interactable::setPosition(sf::Vector2f& pos) {
+	this->position = pos;
+	// Set the position of the interactable objects
+	background.setPosition(position);
+	foreground.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
+	text.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
 }
