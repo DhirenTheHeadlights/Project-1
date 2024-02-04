@@ -6,6 +6,7 @@ using namespace PirateGame;
 void Interactable::setUpInteractable(sf::Vector2f& size) {
 	// Set the size of all the interactable objects
 	background.setSize(size);
+	frame.setSize(size);
 	foreground.setSize(sf::Vector2f(size.x - padding * 2, size.y - padding * 2));
 	text.setCharacterSize(size.x / 5);
 	text.setFont(font);
@@ -13,7 +14,9 @@ void Interactable::setUpInteractable(sf::Vector2f& size) {
 	// Set the color of the interactable objects
 	background.setFillColor(backgroundColor);
 	foreground.setFillColor(foregroundColor);
-	frame.setFillColor(frameColor);
+	frame.setFillColor(sf::Color::Transparent);
+	frame.setOutlineColor(frameColor);
+	frame.setOutlineThickness(5);
 	text.setFillColor(textColor);
 }
 
@@ -38,6 +41,8 @@ void Interactable::setPosition(sf::Vector2f& pos) {
 	this->position = pos;
 	// Set the position of the interactable objects
 	background.setPosition(position);
+	frame.setPosition(position);
 	foreground.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
-	text.setPosition(position.x + (foreground.getSize().x / 2) - (text.getGlobalBounds().width / 2), position.y + (foreground.getSize().y / 2) - (text.getGlobalBounds().height / 2));
+	// Set the text to be in the center of the foreground
+	text.setPosition(sf::Vector2f(position.x + 2 * padding, position.y + padding));
 }

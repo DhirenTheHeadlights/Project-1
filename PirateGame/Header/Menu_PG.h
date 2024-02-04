@@ -63,7 +63,7 @@ namespace PirateGame {
 
 		// Menu colors
 		sf::Color backgroundColor = sf::Color(0, 0, 0, 200);
-		sf::Color textColor = sf::Color::White;
+		sf::Color textColor = sf::Color(150, 150, 200, 200);
 		sf::Color interactableColor = sf::Color(0, 0, 0, 200);
 		sf::Color interactableTextColor = sf::Color::White;
 		sf::Color hoverColor = sf::Color(0, 0, 0, 100);

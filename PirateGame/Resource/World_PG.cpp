@@ -46,8 +46,6 @@ void World::createWorld(sf::Event event) {
 		window.close();
 	}
 
-	std::cout << static_cast<int>(GSM.getCurrentGameState()) << std::endl;
-
 	window.display();
 }
 
@@ -58,7 +56,7 @@ void World::gameLoop() {
 	window.draw(background);
 
 	// Temporary code to draw a grid
-	map.drawGrid(window);
+	//map.drawGrid(window);
 
 	// Draw the land masses
 	LMHandler.drawLandMasses(window, ship);

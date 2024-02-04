@@ -24,7 +24,7 @@ namespace PirateGame {
 	class Ship {
 	public:
 		Ship(sf::RenderWindow& window);
-		~Ship();
+		~Ship() {};
 
 		// Create the ship
 		void createShip(ShipType type, ShipClass shipClass);
@@ -79,7 +79,7 @@ namespace PirateGame {
 		// Friction value and boolean and axis value
 		float frictionCoeff = 0.1f;
 		bool friction = false;
-		int axis;
+		int axis = 0;
 
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;

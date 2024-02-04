@@ -12,7 +12,8 @@ void StartMenu::setUpMenu() {
 	titleText.setString(title);
 
 	// Set the size of the menu
-	size = sf::Vector2f(400, 400);
+	size = sf::Vector2f(400, 200);
+	interactableSize = sf::Vector2f(200, 100);
 
 	// Set the position of the menu to the bottom right of the window
 	sf::Vector2f position = sf::Vector2f(window.getSize().x - size.x - 10, window.getSize().y - size.y - 10);

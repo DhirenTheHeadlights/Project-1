@@ -8,11 +8,6 @@ Ship::Ship(sf::RenderWindow& window) : window(window) {
 	position = sf::Vector2f(0, 0);
 }
 
-// Destructor
-Ship::~Ship() {
-	
-}
-
 // Create the ship
 void Ship::createShip(ShipType type, ShipClass level) {
 	// This switch case will determine the ship type 
@@ -106,6 +101,9 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	float spriteLen = sprite.getGlobalBounds().width;
 	float spriteHeight = sprite.getGlobalBounds().height;
 	constSpriteBounds = sf::Vector2f(spriteLen, spriteHeight);
+
+	// Initalize the position of the ship to be random
+	position = sf::Vector2f(rand() % 1000, rand() % 1000);
 }
 
 // Move the ship
