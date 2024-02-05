@@ -18,10 +18,10 @@
 namespace PirateGame {
 	class Menu {
 	public:
-		Menu(sf::RenderWindow& window, sf::Font& font);
+		Menu(sf::RenderWindow& window, sf::Font& font) : window(window), font(font) {} ;
 		~Menu() {};
 
-		virtual void setUpMenu();
+		virtual void setUpMenu() = 0;
 		virtual void draw(sf::RenderWindow& window);
 		virtual void addInteractableToMenu(std::unique_ptr<Interactable> interactable);
 		virtual void addInteractables() = 0;

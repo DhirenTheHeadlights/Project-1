@@ -6,11 +6,13 @@
 /// </summary>
 
 #include "StartMenu_PG.h"
+#include "OptionsMenu_PG.h"
 
 namespace PirateGame {
 	// Enum for the different types of menus
 	enum class MenuType {
 		StartMenu,
+		OptionsMenu,
 	};
 
 	class MenuHandler {
@@ -22,6 +24,7 @@ namespace PirateGame {
 	private:
 		// Pointers to the different menus
 		std::unique_ptr<StartMenu> startMenu;
+		std::unique_ptr<OptionsMenu> optionsMenu;
 		//...
 
 		// SFML objects

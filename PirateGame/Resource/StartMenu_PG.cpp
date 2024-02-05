@@ -4,19 +4,17 @@ using namespace PirateGame;
 
 // Set up the start menu
 void StartMenu::setUpMenu() {
+	// Set up the background rectangle
+	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
+	backgroundRect.setFillColor(backgroundColor);
+
 	// Set the title of the menu
-	title = "DNS PIRATE GAME ADVENTURE";
-	textSize = 100;
-	titleText.setPosition(100.f, 100.f);
-	titleText.setCharacterSize(static_cast<unsigned int>(textSize));
-	titleText.setString(title);
+	titleText = sf::Text("DNS PIRATE GAME ADVENTURE", font, static_cast<unsigned int>(100.f));
+	titleText.setPosition(backgroundRect.getSize().x / 2 - titleText.getGlobalBounds().width / 2, 100);
 
 	// Set the size of the menu
 	size = sf::Vector2f(400, 200);
 	interactableSize = sf::Vector2f(200, 100);
-
-	// Set the position of the menu to the bottom right of the window
-	sf::Vector2f position = sf::Vector2f(window.getSize().x - size.x - 10, window.getSize().y - size.y - 10);
 
 	// Add the interactables to the menu and set their positions
 	addInteractables();

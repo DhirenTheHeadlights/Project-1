@@ -14,17 +14,17 @@
 
 namespace PirateGame {
 	// Function for the button, does not need to return anything
-	using InteractableFunction = std::function<void()>;
+	using ButtonFunction = std::function<void()>;
 
 	class Button : public Interactable {
 	public:
-		Button(InteractableFunction func, sf::Font& font) : func(func), Interactable(font) {};
+		Button(ButtonFunction func, sf::Font& font) : func(func), Interactable(font) {};
 		~Button() {};
 
 		void interact(sf::RenderWindow& window); // Overridden function to handle the interaction of the button
 
 	private:
-		InteractableFunction func;
+		ButtonFunction func;
 		sf::Clock cooldown;
 	};
 }

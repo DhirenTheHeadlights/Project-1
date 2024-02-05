@@ -28,12 +28,14 @@ void World::createWorld(sf::Event event) {
 			break;
 		case GameState::OptionsMenu:
 			// Draw the options menu
+			MH.openMenu(MenuType::OptionsMenu);
 			break;
 		case GameState::LandMassInteraction:
 			// Interact with the land masses
 			break;
 		case GameState::End:
-			// End the game
+			// End the game and close the window
+			window.close();
 			break;
 		case GameState::GameLoop:
 			// Run the game loop
