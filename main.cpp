@@ -16,6 +16,8 @@
 // Define a type alias for a function that takes no arguments and returns void
 using GameFunction = std::function<void()>;
 
+bool exitLauncher = false;
+
 class Game { // A class to store game data
 public:
     Game(const std::string& n, GameFunction func) : name(n), gameFunc(func) {} // Constructor
@@ -140,6 +142,11 @@ void lightAndShadow() {
     }
 }
 
+void exitTheLauncher() {
+    exitLauncher = true;
+	window.close();
+}
+
 int main() {
     std::string name = "Game Selection Window";
     initializeGlobals(name);
@@ -152,6 +159,7 @@ int main() {
         Game("Snake", snake),
         Game("Light and Shadows", lightAndShadow),
         Game("Pirate Game", pirateGame),
+        Game("Exit", exitTheLauncher),
         // Add more games here...
     };
 
@@ -194,7 +202,7 @@ int main() {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && button.isMouseOver(window)) {
                 window.close();          // Close the menu window before launching the game
                 button.getGame().run();  // Run the selected game, which will create its own window
-                initializeGlobals(name); // Recreate the menu window if needed after the game exits
+                if (!exitLauncher) initializeGlobals(name); // Recreate the menu window if needed after the game exits
 			}
             button.draw(window);
         }

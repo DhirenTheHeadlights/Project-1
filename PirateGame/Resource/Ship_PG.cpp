@@ -23,7 +23,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_sloop.png")) std::cout << "Failed to load Sloop texture." << std::endl;
 		sprite.setTexture(texture);
-		sprite.setOrigin(103.f, 273.f);
+		sprite.setOrigin(spriteOrigin);
 		sprite.setScale(.1f * scaling, .1f * scaling);
 		break;
 	case ShipClass::Brigantine:
@@ -36,7 +36,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_brigantine.png")) std::cout << "Failed to load Brigantine texture." << std::endl;
 		sprite.setTexture(texture);
-		sprite.setOrigin(117.f, 292.f);
+		sprite.setOrigin(spriteOrigin);
 		sprite.setScale(.12f * scaling, .12f * scaling);
 		break;
 	case ShipClass::Frigate:
@@ -48,7 +48,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_frigate.png")) std::cout << "Failed to load Frigate texture." << std::endl;
 		sprite.setTexture(texture);
-		sprite.setOrigin(145.f, 339.f);
+		sprite.setOrigin(spriteOrigin);
 		sprite.setScale(.15f * scaling, .15f * scaling);
 		break;
 	case ShipClass::ManOWar:
@@ -60,7 +60,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_manowar.png")) std::cout << "Failed to load Man O'War texture." << std::endl;
 		sprite.setTexture(texture);
-		sprite.setOrigin(135.f, 388.f);
+		sprite.setOrigin(spriteOrigin);
 		sprite.setScale(.18f * scaling, .18f * scaling);
 		break;
 	case ShipClass::Galleon:
@@ -72,7 +72,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the texture
 		if (!texture.loadFromFile("PirateGameSprites/pg_ship_galleon.png")) std::cout << "Failed to load Galleon texture." << std::endl;
 		sprite.setTexture(texture);
-		sprite.setOrigin(209.f, 452.f);
+		sprite.setOrigin(spriteOrigin);
 		sprite.setScale(.23f * scaling, .23f * scaling);
 		break;
 	default:

@@ -63,11 +63,12 @@ namespace PirateGame {
 		float baseSpeed = 1;
 		float speed = 1;
 		float regenRate = 1;
-		float scaling = 1;
+		float scaling = 5;
 		float rotation = 0;
 
 		sf::Vector2f velocity;
 		sf::Vector2f constSpriteBounds;
+		sf::Vector2f spriteOrigin = sf::Vector2f(123.f, 128.f);
 
 		// Collision rectangle
 		sf::RectangleShape collisionRect;

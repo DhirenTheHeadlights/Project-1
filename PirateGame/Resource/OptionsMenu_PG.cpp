@@ -14,7 +14,7 @@ void OptionsMenu::setUpMenu() {
 	// Set the title
 	titleText = sf::Text("Options", font, static_cast<unsigned int>(100.f));
 	titleText.setFillColor(textColor);
-	titleText.setPosition(sf::Vector2f(center.x - 160.f, 100.f));
+	titleText.setPosition(sf::Vector2f(center.x - titleText.getGlobalBounds().width / 2, 100.f));
 
 	// Set the size of the menu
 	size = sf::Vector2f(1000, 500);
@@ -194,6 +194,11 @@ void OptionsMenu::interactWithMenuItems() {
 			interactable->interact(window);
 		}
 		break;
+	}
+
+	// Interact with the menu items
+	for (auto& interactable : interactables) {
+		interactable->interact(window);
 	}
 }
 
