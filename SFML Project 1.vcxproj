@@ -157,6 +157,7 @@
     <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
+    <ClCompile Include="DropDown_PG.cpp" />
     <ClCompile Include="Globals\Resource\GameTemplate.cpp" />
     <ClCompile Include="Globals\Resource\Globals.cpp" />
     <ClCompile Include="Globals\Resource\Map.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
+    <ClInclude Include="DropDown_PG.h" />
     <ClInclude Include="Globals\Header\GameTemplate.h" />
     <ClInclude Include="Globals\Header\Globals.h" />
     <ClInclude Include="Globals\Header\Map.h" />

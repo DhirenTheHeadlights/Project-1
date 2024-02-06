@@ -12,8 +12,8 @@
 #include "Interactable_PG.h"
 #include "Button_PG.h"
 #include "Slider_PG.h"
-//#include "TextDisplayBox.h"
-//#include "TextInputBox_PG.h"
+#include "TextDisplayBox_PG.h"
+#include "TextInpuBox_PG.h"
 
 namespace PirateGame {
 	class Menu {
