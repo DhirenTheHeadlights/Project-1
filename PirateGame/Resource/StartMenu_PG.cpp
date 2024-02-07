@@ -19,6 +19,8 @@ void StartMenu::setUpMenu() {
 	// Add the interactables to the menu and set their positions
 	addInteractables();
 	setInteractablePositions();
+
+	std::cout << "Window size: " << window.getSize().x << ", " << window.getSize().y << std::endl;
 }
 
 // Set the position of the interactables

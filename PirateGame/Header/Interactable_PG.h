@@ -37,6 +37,9 @@ namespace PirateGame {
 		void setTextColor(sf::Color color) { this->textColor = color; }
 		void setOutlineThickness(float thickness) { this->outlineThickness = thickness; }
 
+		// Getters for properties
+		sf::Text& getText() { return text; }
+
 	protected:
 		// Variables
 		sf::Vector2f position;

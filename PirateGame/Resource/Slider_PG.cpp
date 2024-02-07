@@ -16,8 +16,6 @@ void Slider::setUpInteractable(sf::Vector2f size) {
 	// Set the text to be under the slider thumb
 	text = sf::Text(name + ":  " + std::to_string(static_cast<int>(defaultValue)), font, static_cast<unsigned int>(size.y / 2));
 
-	std::cout << "Slider text: " << text.getString().toAnsiString() << std::endl;
-
 	// Set the color of the interactable objects
 	updateColors();
 }

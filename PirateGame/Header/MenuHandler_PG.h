@@ -20,6 +20,7 @@ namespace PirateGame {
 		MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM);
 		~MenuHandler() {};
 
+		void setUpMenus();
 		void openMenu(MenuType menuType);
 	private:
 		// Pointers to the different menus
@@ -29,7 +30,6 @@ namespace PirateGame {
 
 		// SFML objects
 		sf::RenderWindow& window;
-		sf::Font& font;
 
 		// GameStateManager
 		GameStateManager& GSM;

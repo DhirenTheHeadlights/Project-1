@@ -4,6 +4,7 @@ using namespace PirateGame;
 
 // Set up the options menu
 void OptionsMenu::setUpMenu() {
+
 	// Set up the background rectangle
 	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
 	backgroundRect.setFillColor(backgroundColor);
@@ -15,14 +16,6 @@ void OptionsMenu::setUpMenu() {
 	titleText = sf::Text("Options", font, static_cast<unsigned int>(100.f));
 	titleText.setFillColor(textColor);
 	titleText.setPosition(sf::Vector2f(center.x - titleText.getGlobalBounds().width / 2, 100.f));
-
-	// temp create a sf::text and print the size
-	sf::Text text;
-	text.setFont(font);
-	text.setString("Hello World");
-	text.setCharacterSize(24);
-	text.setFillColor(sf::Color::White);
-	std::cout << "Text size: " << text.getGlobalBounds().width << " " << text.getGlobalBounds().height << std::endl; // This doesnt work either :/
 
 	// Set the size of the menu
 	size = sf::Vector2f(1000, 500);
@@ -70,7 +63,10 @@ void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Intera
 	sf::Vector2f position = sf::Vector2f(tabBar.getPosition().x, tabBar.getPosition().y + tabBar.getSize().y);
 	for (auto& interactable : tabInteractables) {
 		interactable->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x * 0.25f, position.y));
-		interactable->setTextPosition(position);
+		// Set the text to be in the center of the left 25% of the menu
+		float x = menu.getPosition().x + menu.getSize().x * 0.25f - interactable->getText().getGlobalBounds().width / 2;
+		float y = position.y + interactableSize.y / 2 - interactable->getText().getGlobalBounds().height / 2;
+		interactable->getText().setPosition(sf::Vector2f(x, y));
 		position.y += interactableSize.y + 1.f;
 	}
 }

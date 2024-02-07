@@ -15,6 +15,9 @@ World::World(sf::RenderWindow& window) : window(window) {
 
 	// Set the game state to start
 	GSM.changeGameState(GameState::Start);
+
+	// Set up the menus
+	MH.setUpMenus();
 }
 
 void World::createWorld(sf::Event event) {
@@ -72,3 +75,4 @@ void World::gameLoop() {
 		window.close();
 	}
 }
+
