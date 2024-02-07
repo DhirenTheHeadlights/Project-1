@@ -19,7 +19,7 @@ namespace PirateGame {
 		virtual void setUpInteractable(sf::Vector2f size);
 		virtual void interact(sf::RenderWindow& window) = 0;
 		virtual void draw(sf::RenderWindow& window);
-		void updateColors();
+		virtual void updateColors();
 
 		// Setters for properties
 		virtual void setPosition(sf::Vector2f pos);

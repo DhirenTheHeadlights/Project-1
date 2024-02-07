@@ -157,7 +157,6 @@
     <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
-    <ClCompile Include="DropDown_PG.cpp" />
     <ClCompile Include="Globals\Resource\GameTemplate.cpp" />
     <ClCompile Include="Globals\Resource\Globals.cpp" />
     <ClCompile Include="Globals\Resource\Map.cpp" />
@@ -166,6 +165,7 @@
     <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
@@ -210,7 +210,6 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
-    <ClInclude Include="DropDown_PG.h" />
     <ClInclude Include="Globals\Header\GameTemplate.h" />
     <ClInclude Include="Globals\Header\Globals.h" />
     <ClInclude Include="Globals\Header\Map.h" />
@@ -218,6 +217,7 @@
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
+    <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\Interactable_PG.h" />

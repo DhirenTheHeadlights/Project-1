@@ -10,7 +10,7 @@ World::World(sf::RenderWindow& window) : window(window) {
 	
 	// Set up the world
 	map.grid(static_cast<int>(height), static_cast<int>(width), cellSize);
-	ship.createShip(ShipType::Player, ShipClass::Galleon);
+	ship.createShip(ShipType::Player, ShipClass::Brigantine);
 	LMHandler.addLandMasses(100, 500.f);
 
 	// Set the game state to start
@@ -22,25 +22,25 @@ void World::createWorld(sf::Event event) {
 
 	// Handle the different game states
 	switch (GSM.getCurrentGameState()) {
-		case GameState::Start:
-			// Draw the main menu
-			MH.openMenu(MenuType::StartMenu);
-			break;
-		case GameState::OptionsMenu:
-			// Draw the options menu
-			MH.openMenu(MenuType::OptionsMenu);
-			break;
-		case GameState::LandMassInteraction:
-			// Interact with the land masses
-			break;
-		case GameState::End:
-			// End the game and close the window
-			window.close();
-			break;
-		case GameState::GameLoop:
-			// Run the game loop
-			gameLoop();
-			break;
+	case GameState::Start:
+		// Draw the main menu
+		MH.openMenu(MenuType::StartMenu);
+		break;
+	case GameState::OptionsMenu:
+		// Draw the options menu
+		MH.openMenu(MenuType::OptionsMenu);
+		break;
+	case GameState::LandMassInteraction:
+		// Interact with the land masses
+		break;
+	case GameState::End:
+		// End the game and close the window
+		window.close();
+		break;
+	case GameState::GameLoop:
+		// Run the game loop
+		gameLoop();
+		break;
 	}
 
 	// Close if the escape key is pressed

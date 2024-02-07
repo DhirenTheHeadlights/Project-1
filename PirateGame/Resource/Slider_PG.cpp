@@ -14,9 +14,9 @@ void Slider::setUpInteractable(sf::Vector2f size) {
 	sliderThumb.setFillColor(foregroundColor);
 
 	// Set the text to be under the slider thumb
-	text.setCharacterSize(size.y / 2);
-	text.setFont(font);
-	text.setFillColor(textColor);
+	text = sf::Text(name + ":  " + std::to_string(static_cast<int>(defaultValue)), font, static_cast<unsigned int>(size.y / 2));
+
+	std::cout << "Slider text: " << text.getString().toAnsiString() << std::endl;
 
 	// Set the color of the interactable objects
 	updateColors();
@@ -46,9 +46,12 @@ void Slider::interact(sf::RenderWindow& window) {
 		// If the slider thumb is outside the bounds of the slider track, set it to the bounds
 		if (sliderThumb.getPosition().x < foreground.getPosition().x) sliderThumb.setPosition(foreground.getPosition().x, sliderThumb.getPosition().y);
 		if (sliderThumb.getPosition().x > foreground.getPosition().x + foreground.getSize().x - sliderThumb.getSize().x) sliderThumb.setPosition(foreground.getPosition().x + foreground.getSize().x - sliderThumb.getSize().x, sliderThumb.getPosition().y);
+		// Set the text to display the value of the slider
+		text.setString(name + ":  " + std::to_string(static_cast<int>((sliderThumb.getPosition().x - foreground.getPosition().x) / (foreground.getSize().x - sliderThumb.getSize().x) * 100)));// Set the color of the interactable objects
+		// Call the function with the value of the slider
+		//func((sliderThumb.getPosition().x - foreground.getPosition().x) / (foreground.getSize().x - sliderThumb.getSize().x));
 	}
-	// Set the text to display the value of the slider
-	text.setString(name + ":  " + std::to_string(static_cast<int>((sliderThumb.getPosition().x - foreground.getPosition().x) / (foreground.getSize().x - sliderThumb.getSize().x) * 100)));
+	
 }
 
 // Draw the slider

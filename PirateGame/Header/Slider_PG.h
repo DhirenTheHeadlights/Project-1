@@ -31,6 +31,8 @@ namespace PirateGame {
 	private:
 		SliderFunction func;
 
+		float defaultValue = 50.0f;
+
 		sf::RectangleShape sliderThumb;
 	};
 }

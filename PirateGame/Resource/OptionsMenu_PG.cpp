@@ -16,6 +16,14 @@ void OptionsMenu::setUpMenu() {
 	titleText.setFillColor(textColor);
 	titleText.setPosition(sf::Vector2f(center.x - titleText.getGlobalBounds().width / 2, 100.f));
 
+	// temp create a sf::text and print the size
+	sf::Text text;
+	text.setFont(font);
+	text.setString("Hello World");
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::White);
+	std::cout << "Text size: " << text.getGlobalBounds().width << " " << text.getGlobalBounds().height << std::endl; // This doesnt work either :/
+
 	// Set the size of the menu
 	size = sf::Vector2f(1000, 500);
 
@@ -112,26 +120,47 @@ void OptionsMenu::addInteractables() {
 
 void OptionsMenu::addGeneralTabInteractables() {
 	// Add the interactables to the general tab
-	std::function<void()> fullscreenFunc = [this]() { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Button> fullscreenButton = std::make_unique<Button>(fullscreenFunc, font);
-	fullscreenButton->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
-	fullscreenButton->setString("Fullscreen");
-	generalTabInteractables.push_back(std::move(fullscreenButton));
+	std::vector<std::pair<std::function<void()>, std::string>> screenPair;
+	screenPair.push_back(std::make_pair(std::function<void()>([]() {}), "Fullscreen"));
+	screenPair.push_back(std::make_pair(std::function<void()>([]() {}), "Windowed"));
+	std::unique_ptr<DropDown> screenDropDown = std::make_unique<DropDown>(font, screenPair);
+	screenDropDown->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
+	screenDropDown->setString("Fullscreen");
+	generalTabInteractables.push_back(std::move(screenDropDown));
 
-	std::function<void()> resolutionFunc = [this]() { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Button> resolutionButton = std::make_unique<Button>(resolutionFunc, font);
-	resolutionButton->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
-	resolutionButton->setString("Resolution");
-	generalTabInteractables.push_back(std::move(resolutionButton));
+	std::vector<std::pair<std::function<void()>, std::string>> resolutionPair;
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "1920x1080"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "1280x720"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "800x600"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "640x480"));
+	std::unique_ptr<DropDown> resolutionDropDown = std::make_unique<DropDown>(font, resolutionPair);
+	resolutionDropDown->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
+	resolutionDropDown->setString("Resolution");
+	generalTabInteractables.push_back(std::move(resolutionDropDown));
 }
 
 void OptionsMenu::addGraphicsTabInteractables() {
 	// Add the interactables to the graphics tab
-	std::function<void()> vsyncFunc = [this]() { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Button> vsyncButton = std::make_unique<Button>(vsyncFunc, font);
-	vsyncButton->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
-	vsyncButton->setString("Vsync");
-	videoTabInteractables.push_back(std::move(vsyncButton));
+	std::function<void(float value)> brightnessSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::unique_ptr<Slider> brightnessSlider = std::make_unique<Slider>(brightnessSliderFunc, font);
+	brightnessSlider->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
+	brightnessSlider->setString("Brightness");
+	videoTabInteractables.push_back(std::move(brightnessSlider));
+
+	std::function<void(float value)> contrastSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::unique_ptr<Slider> contrastSlider = std::make_unique<Slider>(contrastSliderFunc, font);
+	contrastSlider->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
+	contrastSlider->setString("Contrast");
+	videoTabInteractables.push_back(std::move(contrastSlider));
+
+	std::vector<std::pair<std::function<void()>, std::string>> qualityPair;
+	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Low"));
+	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Medium"));
+	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "High"));
+	std::unique_ptr<DropDown> qualityDropDown = std::make_unique<DropDown>(font, qualityPair);
+	qualityDropDown->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
+	qualityDropDown->setString("Quality");
+	videoTabInteractables.push_back(std::move(qualityDropDown));
 }
 
 
@@ -251,10 +280,14 @@ void OptionsMenu::draw(sf::RenderWindow& window) {
 
 // General function to draw the tab interactables
 void OptionsMenu::drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables) {
-	for (auto& interactable : tabInteractables) {
-		interactable->setTextColor(sf::Color::White);
-		interactable->setOutlineThickness(0.f);
-		interactable->updateColors();
-		interactable->draw(window);
+	// Draw the interactables in reverse order so that the top interactable is draw last
+	// This means that the drop down menu will be drawn on top of the other interactables and will
+	// be visible
+	for (auto it = tabInteractables.rbegin(); it != tabInteractables.rend(); ++it) {
+		(*it)->draw(window);
+		(*it)->setTextColor(sf::Color::White);
+		(*it)->setOutlineThickness(0.f);
+		(*it)->updateColors();
+		(*it)->draw(window);
 	}
 }

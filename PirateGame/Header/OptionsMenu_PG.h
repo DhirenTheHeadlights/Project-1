@@ -34,7 +34,6 @@ namespace PirateGame {
 		void addAudioTabInteractables();
 		void addControlsTabInteractables();
 
-
 	private:
 		// GameStateManager
 		GameStateManager& GSM;
