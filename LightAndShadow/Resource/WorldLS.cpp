@@ -9,6 +9,10 @@ World::World(sf::RenderWindow& window) : window(window) {
 void World::createWorld(sf::Event event) {
 	update();
 	render();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		window.close();
+	}
 }
 
 void World::update() {

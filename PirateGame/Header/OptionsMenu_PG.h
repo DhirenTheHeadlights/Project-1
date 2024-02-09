@@ -41,13 +41,13 @@ namespace PirateGame {
 		// Menu variables
 		Tab currentTab = Tab::General;
 		std::vector<std::unique_ptr<Interactable>> generalTabInteractables;
+		std::vector<std::unique_ptr<Interactable>> graphicsTabInteractables;
 		std::vector<std::unique_ptr<Interactable>> audioTabInteractables;
-		std::vector<std::unique_ptr<Interactable>> videoTabInteractables;
 		std::vector<std::unique_ptr<Interactable>> controlsTabInteractables;
 
 		// Menu items
 		sf::RectangleShape tabBar;
-		sf::Vector2f tabSize = sf::Vector2f(100.0f, 50.0f);
+		sf::Vector2f tabSize = sf::Vector2f(200.0f, 50.0f);
 
 		// Menu tabs
 		std::vector<std::unique_ptr<Button>> tabButtons;

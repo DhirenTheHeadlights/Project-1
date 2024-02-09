@@ -225,8 +225,8 @@ void Ship::draw(sf::Vector2f map) {
 
 // Get the ship's position as the center of the ship
 sf::Vector2f Ship::getSpritePosition() {
-	float x = sprite.getPosition().x ;
-	float y = sprite.getPosition().y ;
+	float x = sprite.getPosition().x;
+	float y = sprite.getPosition().y;
 	return sf::Vector2f(x, y);
 }
 

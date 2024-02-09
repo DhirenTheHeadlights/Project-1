@@ -5,6 +5,7 @@ using namespace PirateGame;
 // Set up the slider
 void Slider::setUpInteractable(sf::Vector2f size) {
 	// Set the size of the interactable objects
+	this->size = size;
 	background.setSize(size);
 	foreground.setSize(sf::Vector2f(size.x - padding * 2, size.y / 2 - padding * 2));
 	frame.setSize(size);
@@ -25,12 +26,15 @@ void Slider::setPosition(sf::Vector2f pos) {
 	// Set the position of the interactable objects
 	background.setPosition(pos);
 	frame.setPosition(pos);
+
 	// Set the position of the slider track to be in the center of the background
 	foreground.setPosition(sf::Vector2f(pos.x + padding, pos.y + 2 * padding));
+
 	// Set the text to be in the center of the foreground
 	float x = foreground.getPosition().x + foreground.getSize().x / 2 - text.getGlobalBounds().width / 2;
 	float y = foreground.getPosition().y + foreground.getSize().y / 2 - text.getGlobalBounds().height / 2;
 	text.setPosition(sf::Vector2f(x, y));
+
 	// Set the position of the slider thumb to be in the center of the slider track
 	sliderThumb.setPosition(foreground.getPosition().x, foreground.getPosition().y + foreground.getSize().y / 2 - sliderThumb.getSize().y / 2);
 }

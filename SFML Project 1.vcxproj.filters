@@ -256,6 +256,9 @@
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -407,6 +410,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\DropDown_PG.h">
       <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\InGameHUD_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Specific Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

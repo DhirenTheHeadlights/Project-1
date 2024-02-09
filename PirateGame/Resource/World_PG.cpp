@@ -10,7 +10,7 @@ World::World(sf::RenderWindow& window) : window(window) {
 	
 	// Set up the world
 	map.grid(static_cast<int>(height), static_cast<int>(width), cellSize);
-	ship.createShip(ShipType::Player, ShipClass::Brigantine);
+	ship.createShip(ShipType::Player, ShipClass::ManOWar);
 	LMHandler.addLandMasses(100, 500.f);
 
 	// Set the game state to start
@@ -43,6 +43,7 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		gameLoop();
+		MH.openMenu(MenuType::HUD);
 		break;
 	}
 

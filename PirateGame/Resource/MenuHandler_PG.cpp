@@ -6,6 +6,7 @@ MenuHandler::MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateMana
 	// Initialize the menu pointers and set up the menus
 	startMenu = std::make_unique<StartMenu>(window, font, GSM);
 	optionsMenu = std::make_unique<OptionsMenu>(window, font, GSM);
+	HUD = std::make_unique<InGameHUD>(window, font, GSM);
 }
 
 void MenuHandler::openMenu(MenuType menuType) {
@@ -16,7 +17,11 @@ void MenuHandler::openMenu(MenuType menuType) {
 	case MenuType::OptionsMenu:
 		optionsMenu->draw(window);
 		break;
+	case MenuType::HUD:
+		HUD->draw(window);
+		break;
 	}
+
 }
 
 void MenuHandler::setUpMenus() {

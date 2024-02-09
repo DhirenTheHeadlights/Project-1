@@ -24,7 +24,7 @@ void DropDown::setUpInteractable(sf::Vector2f size) {
 	// Set up the drop down menu
 	for (int i = 0; i < options.size(); i++) {
 		// Set up the option text
-		sf::Text optionText(options[i].second, font, static_cast<unsigned int>(size.y / 2));
+		sf::Text optionText(options[i].second, font, static_cast<unsigned int>(size.y / 3));
 		optionText.setFillColor(sf::Color::White);
 
 		// Set up the option box
@@ -44,15 +44,25 @@ void DropDown::setUpInteractable(sf::Vector2f size) {
 
 // Set the position of the drop down menu
 void DropDown::setPosition(sf::Vector2f pos) {
+	// Set the position of the drop down menu objects
 	position = pos;
 	background.setPosition(position);
 	foreground.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
 	frame.setPosition(position);
 	text.setPosition(position.x + 10, position.y + size.y / 4);
-	selectedText.setPosition(position.x + 10, position.y + size.y / 4);
+
+	// Set the selected text to be in the center of the foreground
+	float x = foreground.getPosition().x + foreground.getSize().x / 2 - selectedText.getGlobalBounds().width / 2;
+	float y = foreground.getPosition().y + foreground.getSize().y / 2 - selectedText.getGlobalBounds().height + 1.f;
+	selectedText.setPosition(sf::Vector2f(x, y));
+
+	// Set the position of the options
 	for (int i = 0; i < options.size(); i++) {
-		optionTexts[i].setPosition(position.x + padding, position.y + size.y + (size.y * i));
 		optionBoxes[i].setPosition(position.x + padding, position.y + size.y + (size.y * i));
+		// Set the text in the middle of the box
+		float x = optionBoxes[i].getPosition().x + optionBoxes[i].getSize().x / 2 - optionTexts[i].getGlobalBounds().width / 2;
+		float y = optionBoxes[i].getPosition().y + optionBoxes[i].getSize().y / 2 - optionTexts[i].getGlobalBounds().height / 2;
+		optionTexts[i].setPosition(sf::Vector2f(x, y));
 	}
 }
 

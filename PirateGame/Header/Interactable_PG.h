@@ -39,6 +39,9 @@ namespace PirateGame {
 
 		// Getters for properties
 		sf::Text& getText() { return text; }
+		sf::RectangleShape& getBackground() { return background; }
+		sf::RectangleShape& getForeground() { return foreground; }
+		sf::RectangleShape& getFrame() { return frame; }
 
 	protected:
 		// Variables

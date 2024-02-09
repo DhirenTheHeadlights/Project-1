@@ -37,7 +37,7 @@ void OptionsMenu::setUpMenu() {
 
 // Set the position of the interactables
 void OptionsMenu::setInteractablePositions() {
-	// Set the positions of the interactables to be in the center of the screen, slightly below the title
+	// Set the positions of the interactables to be under the menu
 	sf::Vector2f position = sf::Vector2f(backgroundRect.getSize().x / 2 - interactableSize.x / 2, backgroundRect.getSize().y / 2 - interactableSize.y / 2 + 100);
 	for (auto& interactable : interactables) {
 		interactable->setPosition(sf::Vector2f(menu.getPosition().x, menu.getPosition().y + menu.getSize().y + 1.f));
@@ -52,22 +52,23 @@ void OptionsMenu::setInteractablePositions() {
 	}
 
 	setTabInteractablePositions(generalTabInteractables);
-	setTabInteractablePositions(videoTabInteractables);
+	setTabInteractablePositions(graphicsTabInteractables);
 	setTabInteractablePositions(audioTabInteractables);
 	setTabInteractablePositions(controlsTabInteractables);
 }
 
 // General function to set the position of the tab interactables
 void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables) {
-	// Set the positions of the interactables for the general tab
+	// Set the positions of the interactables to be under the menu
 	sf::Vector2f position = sf::Vector2f(tabBar.getPosition().x, tabBar.getPosition().y + tabBar.getSize().y);
+
 	for (auto& interactable : tabInteractables) {
 		interactable->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x * 0.25f, position.y));
 		// Set the text to be in the center of the left 25% of the menu
-		float x = menu.getPosition().x + menu.getSize().x * 0.25f - interactable->getText().getGlobalBounds().width / 2;
-		float y = position.y + interactableSize.y / 2 - interactable->getText().getGlobalBounds().height / 2;
+		float x = menu.getPosition().x + menu.getSize().x * 0.25f / 2 - interactable->getText().getGlobalBounds().width / 2;
+		float y = position.y + interactable->getBackground().getSize().y / 2 - interactable->getText().getGlobalBounds().height;
 		interactable->getText().setPosition(sf::Vector2f(x, y));
-		position.y += interactableSize.y + 1.f;
+		position.y += interactableSize.y;
 	}
 }
 
@@ -141,13 +142,13 @@ void OptionsMenu::addGraphicsTabInteractables() {
 	std::unique_ptr<Slider> brightnessSlider = std::make_unique<Slider>(brightnessSliderFunc, font);
 	brightnessSlider->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	brightnessSlider->setString("Brightness");
-	videoTabInteractables.push_back(std::move(brightnessSlider));
+	graphicsTabInteractables.push_back(std::move(brightnessSlider));
 
 	std::function<void(float value)> contrastSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
 	std::unique_ptr<Slider> contrastSlider = std::make_unique<Slider>(contrastSliderFunc, font);
 	contrastSlider->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	contrastSlider->setString("Contrast");
-	videoTabInteractables.push_back(std::move(contrastSlider));
+	graphicsTabInteractables.push_back(std::move(contrastSlider));
 
 	std::vector<std::pair<std::function<void()>, std::string>> qualityPair;
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Low"));
@@ -156,9 +157,8 @@ void OptionsMenu::addGraphicsTabInteractables() {
 	std::unique_ptr<DropDown> qualityDropDown = std::make_unique<DropDown>(font, qualityPair);
 	qualityDropDown->setUpInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	qualityDropDown->setString("Quality");
-	videoTabInteractables.push_back(std::move(qualityDropDown));
+	graphicsTabInteractables.push_back(std::move(qualityDropDown));
 }
-
 
 void OptionsMenu::addAudioTabInteractables() {
 	// Add the interactables to the audio tab
@@ -205,7 +205,7 @@ void OptionsMenu::interactWithMenuItems() {
 		}
 		break;
 	case Tab::Graphics:
-		for (auto& interactable : videoTabInteractables) {
+		for (auto& interactable : graphicsTabInteractables) {
 			interactable->interact(window);
 		}
 		break;
@@ -260,7 +260,7 @@ void OptionsMenu::draw(sf::RenderWindow& window) {
 		drawTabInteractables(generalTabInteractables);
 		break;
 	case Tab::Graphics:
-		drawTabInteractables(videoTabInteractables);
+		drawTabInteractables(graphicsTabInteractables);
 		break;
 	case Tab::Audio:
 		drawTabInteractables(audioTabInteractables);
