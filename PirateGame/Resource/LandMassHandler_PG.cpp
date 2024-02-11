@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-LandMassHandler::LandMassHandler(Map& map) : hashmap(map), map(map), soundManager(soundFile) {
+LandMassHandler::LandMassHandler() : hashmap(), soundManager(soundFile) {
 }
 
 LandMassHandler::~LandMassHandler() {
@@ -83,21 +83,21 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 }
 
 // Draw all the land masses
-void LandMassHandler::drawLandMasses(sf::RenderWindow& window, Ship& ship) {
+void LandMassHandler::drawLandMasses(Ship& ship) {
 	// Draw all the land masses and add them to the hashmap
 	for (auto& i : landMasses) {
-		i->draw(window);
+		i->draw(*window);
 		hashmap.addLandMass(i);
 	}
 
 	// Handle the collisions between the player and the land masses
-	handleCollisions(ship, window);
+	handleCollisions(ship);
 }
 
 // Handle the collision between the player ship and the land masses
-void LandMassHandler::handleCollisions(Ship& ship, sf::RenderWindow& window) {
+void LandMassHandler::handleCollisions(Ship& ship) {
 	// Get the nearby land masses
-	std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, window);
+	std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
 
 	// Vector to store colliding land masses
 	std::vector<LandMass*> collidingLandMasses;
@@ -128,10 +128,10 @@ void LandMassHandler::handleCollisions(Ship& ship, sf::RenderWindow& window) {
 		}
 
 		// Draw the bounds of the land mass
-		drawBounds(window, i->getSprite());
+		drawBounds(*window, i->getSprite());
 
 		// Draw the bounds of the player
-		drawBounds(window, ship.getSprite());
+		drawBounds(*window, ship.getSprite());
 	}
 
 	// Play the collision sound while the player is colliding with a land mass

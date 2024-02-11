@@ -414,6 +414,9 @@
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h">
       <Filter>Source Files\PirateGame\Header\Menus\Specific Menus</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalValues_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

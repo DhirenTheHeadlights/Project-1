@@ -1,11 +1,13 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <iostream>
 
 /// <summary>
 /// This class is used to represent the player ship in the game.
 /// </summary>
 
+#include <SFML/Graphics.hpp>
+#include <iostream>
+
+#include "GlobalValues_PG.h"
 
 namespace PirateGame {
 
@@ -23,7 +25,7 @@ namespace PirateGame {
 
 	class Ship {
 	public:
-		Ship(sf::RenderWindow& window);
+		Ship() {};
 		~Ship() {};
 
 		// Create the ship
@@ -52,7 +54,7 @@ namespace PirateGame {
 		sf::Sprite& getSprite() { return sprite; }
 	private:
 		// SFML Objects
-		sf::RenderWindow& window;
+		sf::RenderWindow* window;
 		sf::Clock deltaTime;
 		sf::Sprite sprite;
 		sf::Texture texture;

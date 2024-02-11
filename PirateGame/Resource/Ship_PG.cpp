@@ -3,14 +3,12 @@
 
 using namespace PirateGame;
 
-// Constructor
-Ship::Ship(sf::RenderWindow& window) : window(window) {
-	position = sf::Vector2f(0, 0);
-}
-
 // Create the ship
 void Ship::createShip(ShipType type, ShipClass level) {
-	// This switch case will determine the ship type 
+	// Set the window
+	window = GlobalValues::getInstance().getWindow();
+
+	// This switch case will determine the ship type
 	// and assign the appropriate texture/sprite
 
 	switch (level) {
@@ -111,7 +109,7 @@ void Ship::move(sf::Vector2f map) {
 	speed = baseSpeed;
 
 	// Get the position of the mouse
-	sf::Vector2f viewPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+	sf::Vector2f viewPos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
 
 	// Get the direction to the mouse
 	sf::Vector2f dirToMouse = viewPos - getSpritePosition();
@@ -215,12 +213,12 @@ void Ship::draw(sf::Vector2f map) {
 	healthBarRed.setRotation(rotation);
 
 	// Draw the health bars first to ensure they are behind the ship
-	window.draw(healthBarRed);
-	window.draw(healthBarGreen);
+	window->draw(healthBarRed);
+	window->draw(healthBarGreen);
 
 	// Move and draw the ship
 	move(map);
-	window.draw(sprite);
+	window->draw(sprite);
 }
 
 // Get the ship's position as the center of the ship
@@ -272,5 +270,5 @@ void Ship::drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf:
 	line[1].color = color;
 
 	// Draw the line
-	window.draw(line);
+	window->draw(line);
 }

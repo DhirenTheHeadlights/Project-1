@@ -9,7 +9,7 @@
 namespace PirateGame {
 	class StartMenu : public Menu {
 	public:
-		StartMenu(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM) : Menu(window, font), GSM(GSM) {};
+		StartMenu(GameStateManager& GSM) : Menu(), GSM(GSM) {};
 		~StartMenu() {};
 
 		void setUpMenu() override;

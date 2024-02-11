@@ -10,12 +10,12 @@
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
-		InGameHUD(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM) : Menu(window, font), GSM(GSM) {};
+		InGameHUD(GameStateManager& GSM) : GSM(GSM) {};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractables() override;
-		void draw(sf::RenderWindow& window) override;
+		void draw() override;
 
 		// Setters
 		void setHUDView(sf::View& view) { this->HUDView = view; }

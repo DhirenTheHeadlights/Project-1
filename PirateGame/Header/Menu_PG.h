@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "GlobalValues_PG.h"
 #include "GameStateManager_PG.h"
 #include "Interactable_PG.h"
 #include "Button_PG.h"
@@ -19,11 +20,17 @@
 namespace PirateGame {
 	class Menu {
 	public:
-		Menu(sf::RenderWindow& window, sf::Font& font) : window(window), font(font) {} ;
+		Menu() {
+			if (GlobalValues::getInstance().getWindow() == nullptr) {
+				std::cerr << "Attempted to set a nullptr window in Menu\n";
+			}
+			this->window = GlobalValues::getInstance().getWindow();
+		}
+
 		~Menu() {};
 
 		virtual void setUpMenu() = 0;
-		virtual void draw(sf::RenderWindow& window);
+		virtual void draw();
 		virtual void addInteractableToMenu(std::unique_ptr<Interactable> interactable);
 		virtual void addInteractables() = 0;
 		virtual void setInteractablePositions() = 0;
@@ -42,8 +49,8 @@ namespace PirateGame {
 
 	protected:
 		// SFML objects
-		sf::Font& font;
-		sf::RenderWindow& window;
+		sf::Font& font = GlobalValues::getInstance().getFont();
+		sf::RenderWindow* window = nullptr;
 
 		// Menu items
 		sf::RectangleShape backgroundRect;

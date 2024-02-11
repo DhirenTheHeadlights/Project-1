@@ -2,78 +2,109 @@
 
 using namespace PirateGame;
 
-World::World(sf::RenderWindow& window) : window(window) {
+World::World(sf::RenderWindow* window_in) {
+	// Set the window
+	GlobalValues::getInstance().setWindow(window_in);
+	window = GlobalValues::getInstance().getWindow();
+
+	view.setUpView();
+
+	if (window == nullptr) {
+		std::cerr << "Window is nullptr immediately after setting in World\n";
+	}
+
 	// Initalize the font
+	sf::Font font;
 	if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
 		std::cout << "Error loading font" << std::endl;
 	}
+	else {
+		GlobalValues::getInstance().setFont(font);
+	}
 	
 	// Set up the world
-	map.grid(static_cast<int>(height), static_cast<int>(width), cellSize);
+	int x = static_cast<int>(GlobalValues::getInstance().getMapSize().x);
+	int y = static_cast<int>(GlobalValues::getInstance().getMapSize().y);
+	int cellSize = GlobalValues::getInstance().getCellSize();
+	GlobalValues::getInstance().getMap().grid(x, y, cellSize);
+
+	// Set up the pointers
+	LMHandler = std::make_unique<LandMassHandler>();
+	MH = std::make_unique<MenuHandler>(GSM);
+
+	// Set up the world
+	setUpWorld();
+}
+
+void World::setUpWorld() {
 	ship.createShip(ShipType::Player, ShipClass::ManOWar);
-	LMHandler.addLandMasses(100, 500.f);
+	LMHandler->addLandMasses(100, 500.f);
 
 	// Set the game state to start
 	GSM.changeGameState(GameState::Start);
 
 	// Set up the menus
-	MH.setUpMenus();
+	MH->createMenus();
+	MH->setUpMenus();
+
+	// Set up the view
+	view.setUpView();
 }
 
 void World::createWorld(sf::Event event) {
-	window.clear();
+	window->clear();
 
 	// Handle the different game states
 	switch (GSM.getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
-		MH.openMenu(MenuType::StartMenu);
+		MH->openMenu(MenuType::StartMenu);
 		break;
 	case GameState::OptionsMenu:
 		// Draw the options menu
-		MH.openMenu(MenuType::OptionsMenu);
+		MH->openMenu(MenuType::OptionsMenu);
 		break;
 	case GameState::LandMassInteraction:
 		// Interact with the land masses
 		break;
 	case GameState::End:
 		// End the game and close the window
-		window.close();
+		window->close();
 		break;
 	case GameState::GameLoop:
 		// Run the game loop
 		gameLoop();
-		MH.openMenu(MenuType::HUD);
+		MH->openMenu(MenuType::HUD);
 		break;
 	}
 
 	// Close if the escape key is pressed
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		window.close();
+		window->close();
 	}
 
-	window.display();
+	window->display();
 }
 
 void World::gameLoop() {
 	// Temp background rect for water
 	sf::RectangleShape background(sf::Vector2f(10000, 10000));
 	background.setFillColor(sf::Color(0, 158, 163));
-	window.draw(background);
+	window->draw(background);
 
 	// Temporary code to draw a grid
 	//map.drawGrid(window);
 
 	// Draw the land masses
-	LMHandler.drawLandMasses(window, ship);
+	LMHandler->drawLandMasses(ship);
 
 	// Draw the ship
-	ship.draw(worldMap);
+	ship.draw(GlobalValues::getInstance().getMapSize());
 	view.setCenter(ship.getSpritePosition());
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		window.close();
+		window->close();
 	}
 }
 

@@ -9,15 +9,15 @@ void Menu::addInteractableToMenu(std::unique_ptr<Interactable> interactable) {
 }
 
 // Draw the menu
-void Menu::draw(sf::RenderWindow& window) {
+void Menu::draw() {
 	// Draw the menu items
-	window.draw(backgroundRect);
-	window.draw(menu);
-	window.draw(titleText);
+	window->draw(backgroundRect);
+	window->draw(menu);
+	window->draw(titleText);
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {
-		interactable->draw(window);
+		interactable->draw(*window);
 	}
 
 	// Interact with the menu items
@@ -27,6 +27,6 @@ void Menu::draw(sf::RenderWindow& window) {
 // Interact with the menu items
 void Menu::interactWithMenuItems() {
 	for (auto& interactable : interactables) {
-		interactable->interact(window);
+		interactable->interact(*window);
 	}
 }

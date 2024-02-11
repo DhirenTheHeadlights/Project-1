@@ -220,6 +220,7 @@
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
     <ClInclude Include="PirateGame\Header\Interactable_PG.h" />

@@ -6,6 +6,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "GlobalValues_PG.h"
 #include "Player_PG.h"
 #include "View_PG.h"
 #include "Ship_PG.h"
@@ -17,34 +18,28 @@
 namespace PirateGame {
 	class World {
 	public:
-		World(sf::RenderWindow& window);
+		World(sf::RenderWindow* window);
 		~World() {};
 
+		void setUpWorld();
 		void createWorld(sf::Event event);
 		void gameLoop();
 
 	private:
-		// SFML objects
-		sf::RenderWindow& window;
-		sf::Font font;
-		sf::Clock mainClock;
-
-		// Variables to store the world's values
-		float width = 10000;
-		float height = 10000;
-		int cellSize = 10;
-		sf::Vector2f worldMap = sf::Vector2f(width, height);
-
 		// Game objects
 		Player player;
-		Ship ship = Ship(window);
-		View view = View(window);
-		Map map;
+		Ship ship;
+		View view;
+
+		// Game state manager
+		GameStateManager GSM;
 
 		// Handlers
-		LandMassHandler LMHandler = LandMassHandler(map);
-		GameStateManager GSM = GameStateManager();
-		MenuHandler MH = MenuHandler(window, font, GSM);
+		std::unique_ptr<LandMassHandler> LMHandler;
+		std::unique_ptr<MenuHandler> MH;
+
+		// SFML Objects
+		sf::RenderWindow* window = nullptr;
 	};
 }
 

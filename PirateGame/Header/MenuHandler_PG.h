@@ -19,9 +19,10 @@ namespace PirateGame {
 
 	class MenuHandler {
 	public:
-		MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM);
+		MenuHandler(GameStateManager& GSM) : GSM(GSM) {};
 		~MenuHandler() {};
 
+		void createMenus();
 		void setUpMenus();
 		void openMenu(MenuType menuType);
 	private:
@@ -30,9 +31,6 @@ namespace PirateGame {
 		std::unique_ptr<OptionsMenu> optionsMenu;
 		std::unique_ptr<InGameHUD> HUD;
 		//...
-
-		// SFML objects
-		sf::RenderWindow& window;
 
 		// GameStateManager
 		GameStateManager& GSM;

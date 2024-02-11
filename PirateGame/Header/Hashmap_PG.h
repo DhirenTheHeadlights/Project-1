@@ -1,4 +1,11 @@
 #pragma once
+
+/// <summary>
+/// This class will be used to handle collisions in the game.
+/// Each object will be assigned to the hashmap. This will allow 
+/// for quick and easy collsion detection.
+/// </summary>
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <unordered_map>
@@ -8,17 +15,10 @@
 #include "Ship_PG.h"
 #include "Map.h"
 
-/// <summary>
-/// This class will be used to handle collisions in the game.
-/// Each object will be assigned to the hashmap. This will allow 
-/// for quick and easy collsion detection.
-/// </summary>
-
-
 namespace PirateGame {
 	class Hashmap {
 	public:
-		Hashmap(Map& map);
+		Hashmap();
 
 		// Add and remove landmass to hashmap
 		void addLandMass(LandMass* landmass);
@@ -34,7 +34,7 @@ namespace PirateGame {
 		std::unordered_map<std::string, LandMass*> hashmap;
 
 		// Map
-		Map& map;
+		Map& map = GlobalValues::getInstance().getMap();
 	};
 }
 

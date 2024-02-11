@@ -111,7 +111,7 @@ void snake() { // Snake or some other game idk
 void pirateGame() { // Pirate Game
     initializeGlobals("Pirate Game Window");
 	
-    PirateGame::World world(window);
+    PirateGame::World world(&window);
 
     while (window.isOpen()) {
 		sf::Event event;

@@ -17,14 +17,14 @@ enum class Tab {
 namespace PirateGame {
 	class OptionsMenu : public Menu {
 	public:
-		OptionsMenu(sf::RenderWindow& window, sf::Font& font, GameStateManager& GSM) : Menu(window, font), GSM(GSM) {};
+		OptionsMenu(GameStateManager& GSM) : Menu(), GSM(GSM) {};
 		~OptionsMenu() {};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
 		void addInteractables() override;
-		void draw(sf::RenderWindow& window) override;
+		void draw() override;
 		void drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
 		void interactWithMenuItems() override;
 

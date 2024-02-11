@@ -2,14 +2,13 @@
 
 using namespace PirateGame;
 
-View::View(sf::RenderWindow& window) : window(window) {
-	view = window.getDefaultView();
-}
-
-View::~View() {
+void View::setUpView() {
+	window = GlobalValues::getInstance().getWindow();
 }
 
 void View::setCenter(sf::Vector2f position) {
 	view.setCenter(position);
-	window.setView(view);
+	sf::Vector2f size = sf::Vector2f(window->getSize());
+	view.setSize(size);
+	window->setView(view);
 }

@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-Hashmap::Hashmap(Map& map_in) : map(map_in) {
+Hashmap::Hashmap() {
 }
 
 // Generate a key for the hashmap based on position

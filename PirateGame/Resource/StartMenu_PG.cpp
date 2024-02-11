@@ -5,7 +5,7 @@ using namespace PirateGame;
 // Set up the start menu
 void StartMenu::setUpMenu() {
 	// Set up the background rectangle
-	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
+	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
 	backgroundRect.setFillColor(backgroundColor);
 
 	// Set the title of the menu
@@ -20,13 +20,13 @@ void StartMenu::setUpMenu() {
 	addInteractables();
 	setInteractablePositions();
 
-	std::cout << "Window size: " << window.getSize().x << ", " << window.getSize().y << std::endl;
+	std::cout << "Window size: " << window->getSize().x << ", " << window->getSize().y << std::endl;
 }
 
 // Set the position of the interactables
 void StartMenu::setInteractablePositions() {
 	// Set the positions of the interactables to be in the bottom right of the screen
-	sf::Vector2f position = sf::Vector2f(window.getSize().x - size.x - 10, window.getSize().y - size.y - 10);
+	sf::Vector2f position = sf::Vector2f(window->getSize().x - size.x - 10, window->getSize().y - size.y - 10);
 	for (auto& interactable : interactables) {
 		interactable->setPosition(position);
 		position.y -= interactableSize.y + 10;

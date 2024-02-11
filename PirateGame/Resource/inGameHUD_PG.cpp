@@ -23,7 +23,7 @@ void InGameHUD::addInteractables() {
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
 }
-
+ 
 void InGameHUD::setInteractablePositions() {
 	// Get the view position
 	sf::Vector2f viewPos = HUDView.getCenter();
@@ -38,19 +38,19 @@ void InGameHUD::setInteractablePositions() {
 	interactables[0]->setPosition(sf::Vector2f(viewPos.x - 100, viewPos.y + 300));
 }
 
-void InGameHUD::draw(sf::RenderWindow& window) {
+void InGameHUD::draw() {
 	// Set the view
 	//window.setView(HUDView);
 
 	// Draw the health bar
 	healthBarRed.setPosition(healthBarGreen.getPosition());
-	window.draw(healthBarRed);
-	window.draw(healthBarGreen);
-	window.draw(healthText);
+	window->draw(healthBarRed);
+	window->draw(healthBarGreen);
+	window->draw(healthText);
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {
-		interactable->draw(window);
+		interactable->draw(*window);
 	}
 
 	// Interact
