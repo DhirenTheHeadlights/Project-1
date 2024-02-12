@@ -185,6 +185,7 @@
     <ClCompile Include="PirateGame\Resource\Textures_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
+    <ClCompile Include="ShipMovementHandler_PG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgarGame\Header\CellGroup_AG.h" />
@@ -230,6 +231,7 @@
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Ship_PG.h" />
     <ClInclude Include="PirateGame\Header\Slider_PG.h" />
     <ClInclude Include="PirateGame\Header\SoundManager_PG.h" />

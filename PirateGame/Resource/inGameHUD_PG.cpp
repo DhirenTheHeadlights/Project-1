@@ -12,7 +12,6 @@ void InGameHUD::setUpMenu() {
 
 	// Add the interactables
 	addInteractables();
-	setInteractablePositions();
 }
 
 void InGameHUD::addInteractables() {
@@ -26,7 +25,7 @@ void InGameHUD::addInteractables() {
  
 void InGameHUD::setInteractablePositions() {
 	// Get the view position
-	sf::Vector2f viewPos = HUDView.getCenter();
+	sf::Vector2f viewPos = window->getView().getCenter();
 
 	// Set the position of the health bar
 	healthBarGreen.setPosition(viewPos.x - 100, viewPos.y - 300);
@@ -39,9 +38,6 @@ void InGameHUD::setInteractablePositions() {
 }
 
 void InGameHUD::draw() {
-	// Set the view
-	//window.setView(HUDView);
-
 	// Draw the health bar
 	healthBarRed.setPosition(healthBarGreen.getPosition());
 	window->draw(healthBarRed);
@@ -54,5 +50,6 @@ void InGameHUD::draw() {
 	}
 
 	// Interact
+	setInteractablePositions();
 	interactWithMenuItems();
 }

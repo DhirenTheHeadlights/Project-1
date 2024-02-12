@@ -111,10 +111,13 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 
 		// If the player is colliding with a land mass
 		if (pixelPerfectTest(ship.getSprite(), i->getSprite())) {
-
+			collisionNormalVector = sf::Vector2f((static_cast<float>(ship.getSprite().getTextureRect().getPosition().x + 0.5 * ship.getSprite().getTextureRect().getSize().x) - // Ship's center x coordinate
+				(i->getSprite().getTextureRect().getPosition().x + 0.5 * i->getSprite().getTextureRect().getSize().x)), // Landmass i's center x cooordinate
+				static_cast<float>((ship.getSprite().getTextureRect().getPosition().y + 0.5 * ship.getSprite().getTextureRect().getSize().y) - // Ship's center y coordinate
+					(i->getSprite().getTextureRect().getPosition().y + 0.5 * i->getSprite().getTextureRect().getSize().y))); // Landmass i's center y coordinate
 			// Determine the collision axis and move the player accordingly
-			int collisionAxis = determineCollisionAxis(ship, i);
-			ship.collisionMovement(collisionAxis);
+			//int collisionAxis = determineCollisionAxis(ship, i);
+			ship.collisionMovement(collisionNormalVector);
 			ship.setFriction(true);
 
 			// Set the boolean to true
@@ -146,6 +149,7 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 }
 
 // Determine the collision axis
+/*
 int LandMassHandler::determineCollisionAxis(Ship& ship, LandMass* landMass) {
 	// Get the bounds of the ship and the land mass
 	sf::FloatRect shipBounds = ship.getSprite().getGlobalBounds();
@@ -168,7 +172,7 @@ int LandMassHandler::determineCollisionAxis(Ship& ship, LandMass* landMass) {
 		return ship.getCollisionAxis(); // Existing collision axis or a default one
 	}
 }
-
+*/
 
 // Pixel perfect collision detection
 bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {

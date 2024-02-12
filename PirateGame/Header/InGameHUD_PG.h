@@ -18,7 +18,6 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setHUDView(sf::View& view) { this->HUDView = view; }
 		void setShip(Ship& ship) { this->health = ship.getHealth(); }
 	private:
 		// GameStateManager

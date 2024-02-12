@@ -1,5 +1,4 @@
 #include "Ship_PG.h"
-#include <cmath>
 
 using namespace PirateGame;
 
@@ -28,7 +27,6 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the values
 		speed = 95.f;
 		health = 133;
-		regenRate = 1.48f;
 		regenRate = 1.48f;
 
 		// Load the texture
@@ -90,7 +88,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	}
 
 	// Set the base speed
-	baseSpeed = 10 * speed; // Temporary speed up for testing
+	baseSpeed = 5 * speed; // Temporary speed up for testing
 
 	// Set the maximum health
 	maxHealth = health;
@@ -101,7 +99,11 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	constSpriteBounds = sf::Vector2f(spriteLen, spriteHeight);
 
 	// Initalize the position of the ship to be random
-	position = sf::Vector2f(rand() % 1000, rand() % 1000);
+	position = sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000));
+
+	// Set type and class
+	shipType = type;
+	shipClass = level;
 }
 
 // Move the ship
@@ -126,11 +128,9 @@ void Ship::move(sf::Vector2f map) {
 	// If friction is enabled, decrease the speed of a specific axis
 	if (friction) {
 		speed = baseSpeed * frictionCoeff;
-		if (axis == 0) velocity.y = dirToMouse.y * speed;
-		else if (axis == 1) velocity.x = dirToMouse.x * speed;
 	}
 	else velocity = sf::Vector2f(dirToMouse.x * speed, dirToMouse.y * speed);
-	
+
 	// Rotate the sprite using conversion from vector to angle with atan2
 	// Calculate the angle and convert it to degrees
 	float angleRad = std::atan2(dirToMouse.y, dirToMouse.x);
@@ -155,7 +155,7 @@ void Ship::direction(sf::Vector2f velocity, float elapsed, sf::Vector2f map) {
 	lastValidPos = position;
 
 	// Update the position
-	position.x += velocity.x * elapsed; 
+	position.x += velocity.x * elapsed;
 	position.y += velocity.y * elapsed;
 
 	// Boundary checks
@@ -212,10 +212,11 @@ void Ship::draw(sf::Vector2f map) {
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
 
-	// Draw the health bars first to ensure they are behind the ship
-	window->draw(healthBarRed);
-	window->draw(healthBarGreen);
-
+	// Draw the health bars only if it is an enemy
+	if (shipType == ShipType::Enemy) {
+		window->draw(healthBarRed);
+		window->draw(healthBarGreen);
+	}
 	// Move and draw the ship
 	move(map);
 	window->draw(sprite);
@@ -228,20 +229,24 @@ sf::Vector2f Ship::getSpritePosition() {
 	return sf::Vector2f(x, y);
 }
 
-// Apply collision movement to the ship; 0 = x-axis, 1 = y-axis
-void Ship::collisionMovement(int axis) {
-	// Set the axis
-	this->axis = axis;
+// Apply collision movement to the ship, redirect velocity as a scaled cross product with normalized collision vector
+void Ship::collisionMovement(sf::Vector2f normalVector) {
+	// NO MORE AXIS RAHHHH, set friction to true
+	friction = true;
 
-	// Set one of the positions to the last valid position
-	if (axis == 0) {
-		position.x = lastValidPos.x;
-		velocity.x = 0;
-	}
-	else if (axis == 1) {
-		position.y = lastValidPos.y;
-		velocity.y = 0;
-	}
+	// Store collision vector in Ship class
+	this->normal = normalVector;
+
+	// Scalar friction facotr; this changes the degree to which the ship is "reflected" off on collision
+	float friction_factor = 0.000007;
+
+	// Calculate dot product between velocity and normalized collision vector
+	int dot_product = 2 * (velocity.x * normal.x + velocity.y * normal.y);
+
+	// Reflect velocity
+	sf::Vector2f reflected_vector = sf::Vector2f(velocity.x - dot_product * normal.x * friction_factor, velocity.y - dot_product * normal.y * friction_factor);
+	velocity.x = reflected_vector.x;
+	velocity.y = reflected_vector.y;
 
 	// Set the position of the ship
 	float sizeX = sprite.getGlobalBounds().width;

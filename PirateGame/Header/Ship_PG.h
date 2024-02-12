@@ -6,6 +6,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cmath>
 
 #include "GlobalValues_PG.h"
 
@@ -34,7 +35,7 @@ namespace PirateGame {
 		// Movement functions
 		void move(sf::Vector2f map);
 		void direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
-		void collisionMovement(int axis);
+		void collisionMovement(sf::Vector2f normalVector);
 		void stop();
 
 		// Draw functions
@@ -71,6 +72,10 @@ namespace PirateGame {
 		sf::Vector2f velocity;
 		sf::Vector2f constSpriteBounds;
 		sf::Vector2f spriteOrigin = sf::Vector2f(123.f, 128.f);
+		sf::Vector2f normal;
+
+		ShipType shipType;
+		ShipClass shipClass;
 
 		// Collision rectangle
 		sf::RectangleShape collisionRect;

@@ -4,7 +4,7 @@
 /// This class is going to handle the land masses in the game.
 /// It will be used to generate the land masses and store them in a vector.
 /// </summary>
-
+#include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include <vector>
 
@@ -16,43 +16,40 @@
 #include "SoundManager_PG.h"
 
 namespace PirateGame {
-	class LandMassHandler {
-	public:
-		LandMassHandler();
-		~LandMassHandler();
+    class LandMassHandler {
+    public:
+        LandMassHandler();
+        ~LandMassHandler();
 
-		void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
-		void drawLandMasses(Ship& ship);
-	private:
-		// Handle collisions between ship and land masses
-		void handleCollisions(Ship& ship);
-		int determineCollisionAxis(Ship& ship, LandMass* landMass);
-		bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 0);
+        void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
+        void drawLandMasses(Ship& ship);
+    private:
+        // Handle collisions between ship and land masses
+        void handleCollisions(Ship& ship);
+        //int determineCollisionAxis(Ship& ship, LandMass* landMass);
+        bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5);
 
-		// Window pointer
-		sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+        // Window pointer
+        sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
-		// Vector to store the land masses
-		std::vector<LandMass*> landMasses;
+        // Vector to store the land masses
+        std::vector<LandMass*> landMasses;
 
-		// Hashmap to store the land masses
-		Hashmap hashmap;
+        // Hashmap to store the land masses
+        Hashmap hashmap;
 
-		// Map to store the land masses
-		Map& map = GlobalValues::getInstance().getMap();
+        // Map to store the land masses
+        Map& map = GlobalValues::getInstance().getMap();
 
-		// Temporary string for sound file
-		std::string soundFile = "Sounds/bonk.wav";
+        // Temporary string for sound file
+        std::string soundFile = "Sounds/bonk.wav";
 
-		// SoundManager to play sounds
-		SoundManager soundManager;
+        // SoundManager to play sounds
+        SoundManager soundManager;
 
-		// Temp function for bounds drawing
-		void drawBounds(sf::RenderWindow& window, const sf::Sprite& rect);
-
-		Textures texture;
-	};
+        // Temp function for bounds drawing
+        void drawBounds(sf::RenderWindow& window, const sf::Sprite& rect);
+        sf::Vector2f collisionNormalVector;
+        Textures texture;
+    };
 }
-
-
-
