@@ -238,7 +238,7 @@ void Ship::collisionMovement(sf::Vector2f normalVector) {
 	this->normal = normalVector;
 
 	// Scalar friction facotr; this changes the degree to which the ship is "reflected" off on collision
-	float friction_factor = 0.000007;
+	float friction_factor = 1;
 
 	// Calculate dot product between velocity and normalized collision vector
 	int dot_product = 2 * (velocity.x * normal.x + velocity.y * normal.y);

@@ -259,6 +259,9 @@
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -416,6 +419,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
