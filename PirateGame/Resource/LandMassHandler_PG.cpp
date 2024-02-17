@@ -113,8 +113,6 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 			// Collision movement for the ship
 			ship.getMovementHandler().collisionMovement(i->getSprite());
 
-			ship.getMovementHandler().setCollisionMovement(true, collisionNormalVector);
-
 			// Set the boolean to true
 			isColliding = true;
 

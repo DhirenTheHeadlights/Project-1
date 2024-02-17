@@ -32,28 +32,22 @@ namespace PirateGame {
 
 		// Create the ship and set its values
 		void createShip(ShipType type, ShipClass shipClass);
-		void move();
 		void draw();
 
 		// Get movement handler
 		ShipMovementHandler& getMovementHandler() { return SMH; }
 
-		// Draw functions
-		void draw(sf::Vector2f map);
-		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
-
 		// Setters
 		void setHealth(float hp) { health = hp; }
 
 		// Getters
-		sf::Vector2f getSpritePosition() { return sprite.getPosition(); }
 		float getHealth() { return health; }
 		sf::Sprite& getSprite() { return sprite; }
-		ShipMovementHandler& getMovementHandler() { return movementHandler; }
 
 	private:
 		// Functions
 		void setHealthBarPosition();
+		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
 
 		// SFML Objects
 		sf::RenderWindow* window;

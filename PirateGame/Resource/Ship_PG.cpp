@@ -88,7 +88,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	}
 
 	// Set the base speed
-	baseSpeed *= 5;
+	baseSpeed *= 20;
 
 	// Set the maximum health
 	maxHealth = health;
@@ -107,7 +107,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 }
 
 // Draw the ship
-void Ship::draw(sf::Vector2f map) {
+void Ship::draw() {
 	// Set the health to 0 if it is negative
 	if (health < 0) health = 0;
 
@@ -119,6 +119,21 @@ void Ship::draw(sf::Vector2f map) {
 		}
 	}
 
+	// Draw the health bars only if it is an enemy
+	if (shipType == ShipType::Enemy) {
+		setHealthBarPosition();
+	}
+
+	// Draw the velocity vector
+	drawVector(sprite.getPosition(), SMH.getVelocity(), sf::Color::Red);
+
+	// Move and draw the ship
+	sprite.setPosition(SMH.move(baseSpeed));
+	window->draw(sprite);
+}
+
+// Draw the health bars
+void Ship::setHealthBarPosition() {
 	// Determine the size of the health bar green based on health
 	healthBarGreen.setSize(sf::Vector2f(100 * health / maxHealth, 10));
 	healthBarGreen.setFillColor(sf::Color::Green);
@@ -146,12 +161,26 @@ void Ship::draw(sf::Vector2f map) {
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
 
-	// Draw the health bars only if it is an enemy
-	if (shipType == ShipType::Enemy) {
-		window->draw(healthBarRed);
-		window->draw(healthBarGreen);
-	}
-	// Move and draw the ship
-	sprite.setPosition(SMH.move(baseSpeed));
-	window->draw(sprite);
+	// Draw the health bars
+	window->draw(healthBarRed);
+	window->draw(healthBarGreen);
+}
+
+// Draw a vector
+void Ship::drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color) {
+	// Create a VertexArray with two points
+	sf::VertexArray line(sf::Lines, 2);
+
+	// Set the position of the first point to the starting point
+	line[0].position = start;
+
+	// Set the position of the second point to the end of the vector
+	line[1].position = start + vector;
+
+	// Set the color of the line
+	line[0].color = color;
+	line[1].color = color;
+
+	// Draw the line
+	window->draw(line);
 }

@@ -44,8 +44,11 @@ namespace PirateGame {
 		float speed = 0;
 		float frictionCoefficient = 0.1f;
 
-		sf::Vector2f direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
-		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
+		// Helper functions
+		sf::Vector2f normalize(sf::Vector2f vector);
+		void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
+		void applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize);
+		void setSpriteRotation(sf::Vector2f& direction);
 	};
 }
 
