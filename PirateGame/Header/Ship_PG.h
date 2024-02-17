@@ -27,7 +27,7 @@ namespace PirateGame {
 
 	class Ship {
 	public:
-		Ship() : movementHandler(sprite) {};
+		Ship() : SMH(sprite) {};
 		~Ship() {};
 
 		// Create the ship and set its values
@@ -35,11 +35,18 @@ namespace PirateGame {
 		void move();
 		void draw();
 
+		// Get movement handler
+		ShipMovementHandler& getMovementHandler() { return SMH; }
+
+		// Draw functions
+		void draw(sf::Vector2f map);
+		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
+
 		// Setters
 		void setHealth(float hp) { health = hp; }
 
 		// Getters
-		int getCollisionAxis() { return axis; }
+		sf::Vector2f getSpritePosition() { return sprite.getPosition(); }
 		float getHealth() { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 		ShipMovementHandler& getMovementHandler() { return movementHandler; }
@@ -58,7 +65,6 @@ namespace PirateGame {
 		float health = 1;
 		float maxHealth = 1;
 		float baseSpeed = 1;
-		float speed = 1;
 		float regenRate = 1;
 		float scaling = 5;
 		float rotation = 0;
@@ -72,9 +78,6 @@ namespace PirateGame {
 		// Collision rectangle
 		sf::RectangleShape collisionRect;
 
-		// Friction value and boolean and axis value
-		int axis = 0;
-
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;
@@ -82,8 +85,8 @@ namespace PirateGame {
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
 
-		// Movement handler
-		ShipMovementHandler movementHandler;
+		// Movement Handler
+		ShipMovementHandler SMH;
 	};
 
 }

@@ -109,10 +109,9 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 
 		// If the player is colliding with a land mass
 		if (pixelPerfectTest(ship.getSprite(), i->getSprite())) {
-			collisionNormalVector = sf::Vector2f((static_cast<float>(ship.getSprite().getTextureRect().getPosition().x + 0.5 * ship.getSprite().getTextureRect().getSize().x) - // Ship's center x coordinate
-				(i->getSprite().getTextureRect().getPosition().x + 0.5 * i->getSprite().getTextureRect().getSize().x)), // Landmass i's center x cooordinate
-				static_cast<float>((ship.getSprite().getTextureRect().getPosition().y + 0.5 * ship.getSprite().getTextureRect().getSize().y) - // Ship's center y coordinate
-					(i->getSprite().getTextureRect().getPosition().y + 0.5 * i->getSprite().getTextureRect().getSize().y))); // Landmass i's center y coordinate
+
+			// Collision movement for the ship
+			ship.getMovementHandler().collisionMovement(i->getSprite());
 
 			ship.getMovementHandler().setCollisionMovement(true, collisionNormalVector);
 
@@ -140,7 +139,7 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 
 	// If the player is not colliding with a land mass, set the friction to false
 	else {
-		ship.getMovementHandler().setCollisionMovement(false);
+		ship.getMovementHandler().setFriction(false);
 	}
 }
 

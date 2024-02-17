@@ -13,7 +13,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	switch (level) {
 	case ShipClass::Sloop:
 		// Load the values
-		speed = 100.f;
+		baseSpeed = 100.f;
 		health = 100;
 		regenRate = 1;
 
@@ -25,7 +25,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		break;
 	case ShipClass::Brigantine:
 		// Load the values
-		speed = 95.f;
+		baseSpeed = 95.f;
 		health = 133;
 		regenRate = 1.48f;
 
@@ -37,7 +37,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		break;
 	case ShipClass::Frigate:
 		// Load the values
-		speed = 82.f;
+		baseSpeed = 82.f;
 		health = 192.f;
 		regenRate = 2.15f;
 
@@ -49,7 +49,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		break;
 	case ShipClass::ManOWar:
 		// Load the values
-		speed = 77.f;
+		baseSpeed = 77.f;
 		health = 250.f;
 		regenRate = 3.f;
 
@@ -61,7 +61,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		break;
 	case ShipClass::Galleon:
 		// Load the values
-		speed = 63.f;
+		baseSpeed = 63.f;
 		health = 380.f;
 		regenRate = 4.6f;
 
@@ -88,7 +88,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	}
 
 	// Set the base speed
-	baseSpeed = 50 * speed; // Temporary speed up for testing
+	baseSpeed *= 5;
 
 	// Set the maximum health
 	maxHealth = health;
@@ -99,31 +99,15 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	constSpriteBounds = sf::Vector2f(spriteLen, spriteHeight);
 
 	// Initalize the position of the ship to be random
-	movementHandler.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
+	SMH.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
 
 	// Set type and class
 	shipType = type;
 	shipClass = level;
 }
 
-// Move the ship, both with and without collision
-void Ship::move() {
-	sprite.setPosition(movementHandler.move(baseSpeed));
-}
-
 // Draw the ship
-void Ship::draw() {
-	// Draw the health bars only if it is an enemy
-	if (shipType == ShipType::Enemy) {
-		setHealthBarPosition();
-	}
-	// Move and draw the ship
-	move();
-	window->draw(sprite);
-}
-
-// Set the health bar position
-void Ship::setHealthBarPosition() {
+void Ship::draw(sf::Vector2f map) {
 	// Set the health to 0 if it is negative
 	if (health < 0) health = 0;
 
@@ -162,7 +146,12 @@ void Ship::setHealthBarPosition() {
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
 
-	// Draw the health bars
-	window->draw(healthBarRed);
-	window->draw(healthBarGreen);
+	// Draw the health bars only if it is an enemy
+	if (shipType == ShipType::Enemy) {
+		window->draw(healthBarRed);
+		window->draw(healthBarGreen);
+	}
+	// Move and draw the ship
+	sprite.setPosition(SMH.move(baseSpeed));
+	window->draw(sprite);
 }
