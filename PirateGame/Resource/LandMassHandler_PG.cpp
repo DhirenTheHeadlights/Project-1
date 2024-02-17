@@ -111,14 +111,9 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 
 		// If the player is colliding with a land mass
 		if (pixelPerfectTest(ship.getSprite(), i->getSprite())) {
-			collisionNormalVector = sf::Vector2f((static_cast<float>(ship.getSprite().getTextureRect().getPosition().x + 0.5 * ship.getSprite().getTextureRect().getSize().x) - // Ship's center x coordinate
-				(i->getSprite().getTextureRect().getPosition().x + 0.5 * i->getSprite().getTextureRect().getSize().x)), // Landmass i's center x cooordinate
-				static_cast<float>((ship.getSprite().getTextureRect().getPosition().y + 0.5 * ship.getSprite().getTextureRect().getSize().y) - // Ship's center y coordinate
-					(i->getSprite().getTextureRect().getPosition().y + 0.5 * i->getSprite().getTextureRect().getSize().y))); // Landmass i's center y coordinate
-			// Determine the collision axis and move the player accordingly
-			//int collisionAxis = determineCollisionAxis(ship, i);
-			ship.collisionMovement(collisionNormalVector);
-			ship.setFriction(true);
+
+			// Collision movement for the ship
+			ship.getMovementHandler().collisionMovement(i->getSprite());
 
 			// Set the boolean to true
 			isColliding = true;
@@ -144,35 +139,9 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 
 	// If the player is not colliding with a land mass, set the friction to false
 	else {
-		ship.setFriction(false);
+		ship.getMovementHandler().setFriction(false);
 	}
 }
-
-// Determine the collision axis
-/*
-int LandMassHandler::determineCollisionAxis(Ship& ship, LandMass* landMass) {
-	// Get the bounds of the ship and the land mass
-	sf::FloatRect shipBounds = ship.getSprite().getGlobalBounds();
-	sf::FloatRect landMassBounds = landMass->getSprite().getGlobalBounds();
-
-	// Get the center of the ship and the land mass
-	sf::Vector2f shipCenter(shipBounds.left + shipBounds.width / 2, shipBounds.top + shipBounds.height / 2);
-	sf::Vector2f landMassCenter(landMassBounds.left + landMassBounds.width / 2, landMassBounds.top + landMassBounds.height / 2);
-
-	// Get the distance between the center of the ship and the center of the land mass
-	sf::Vector2f distance = shipCenter - landMassCenter;
-	const float threshold = 10.f; // Threshold to determine significant difference
-	float diff = std::abs(std::abs(distance.x) - std::abs(distance.y));
-
-	// If the difference is greater than the threshold, return the axis with the greater difference
-	if (diff > threshold) {
-		return (std::abs(distance.x) > std::abs(distance.y)) ? 0 : 1; // 0 for horizontal, 1 for vertical
-	}
-	else {
-		return ship.getCollisionAxis(); // Existing collision axis or a default one
-	}
-}
-*/
 
 // Pixel perfect collision detection
 bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {

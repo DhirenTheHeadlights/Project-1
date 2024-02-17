@@ -9,6 +9,7 @@
 #include <cmath>
 
 #include "GlobalValues_PG.h"
+#include "ShipMovementHandler_PG.h"
 
 namespace PirateGame {
 
@@ -26,31 +27,24 @@ namespace PirateGame {
 
 	class Ship {
 	public:
-		Ship() {};
+		Ship() : SMH(sprite) {};
 		~Ship() {};
 
 		// Create the ship
 		void createShip(ShipType type, ShipClass shipClass);
 
-		// Movement functions
-		void move(sf::Vector2f map);
-		void direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
-		void collisionMovement(sf::Vector2f normalVector);
-		void stop();
+		// Get movement handler
+		ShipMovementHandler& getMovementHandler() { return SMH; }
 
 		// Draw functions
 		void draw(sf::Vector2f map);
 		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
 
 		// Setters
-		void setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
 		void setHealth(float hp) { health = hp; }
-		void setFriction(bool friction) { this->friction = friction; }
 
 		// Getters
-		sf::Vector2f getSpritePosition();
-		sf::Vector2f getVelocity() { return velocity; }
-		int getCollisionAxis() { return axis; }
+		sf::Vector2f getSpritePosition() { return sprite.getPosition(); }
 		float getHealth() { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 	private:
@@ -64,15 +58,12 @@ namespace PirateGame {
 		float health = 1;
 		float maxHealth = 1;
 		float baseSpeed = 1;
-		float speed = 1;
 		float regenRate = 1;
 		float scaling = 5;
 		float rotation = 0;
 
-		sf::Vector2f velocity;
 		sf::Vector2f constSpriteBounds;
 		sf::Vector2f spriteOrigin = sf::Vector2f(123.f, 128.f);
-		sf::Vector2f normal;
 
 		ShipType shipType;
 		ShipClass shipClass;
@@ -80,21 +71,15 @@ namespace PirateGame {
 		// Collision rectangle
 		sf::RectangleShape collisionRect;
 
-		// Variables to store the ship's position and last valid position
-		sf::Vector2f position;
-		sf::Vector2f lastValidPos;
-
-		// Friction value and boolean and axis value
-		float frictionCoeff = 0.1f;
-		bool friction = false;
-		int axis = 0;
-
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;
 
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
+
+		// Movement Handler
+		ShipMovementHandler SMH;
 	};
 
 }

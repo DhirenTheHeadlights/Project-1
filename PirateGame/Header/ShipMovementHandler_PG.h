@@ -6,20 +6,46 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <optional>
 
-class ShipMovementHandler_PG {
+#include "GlobalValues_PG.h"
+
+namespace PirateGame {
+	class ShipMovementHandler {
 	public:
-	ShipMovementHandler_PG() {};
-	~ShipMovementHandler_PG() {};
+		ShipMovementHandler(sf::Sprite& sprite) : sprite(sprite) {};
+		~ShipMovementHandler() {};
 
-	// Movement functions
-	void move(sf::Vector2f map);
-	void direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
-	void collisionMovement(sf::Vector2f normalVector);
-	void stop();
-private:
-	// SFML Objects
-	sf::RenderWindow* window = nullptr;
-	sf::Clock deltaTime;
-};
+		// Movement functions
+		sf::Vector2f move(float baseSpeed);
+		sf::Vector2f collisionMovement(sf::Sprite& collidingSprite);
+
+		// Setters
+		void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
+		void setFriction(bool friction) { this->friction = friction; }
+		void setPosition(sf::Vector2f position) { sprite.setPosition(position); }
+
+		// Getters
+		sf::Vector2f getVelocity() { return velocity; }
+		bool getFriction() { return friction; }
+		sf::Vector2f getPosition() { return sprite.getPosition(); }
+
+	private:
+		// SFML Objects
+		sf::RenderWindow* window = nullptr;
+		sf::Clock deltaTime;
+		sf::Sprite& sprite;
+
+		sf::Vector2f velocity;
+		sf::Vector2f position;
+
+		bool friction = true;
+		float rotation = 0;
+		float speed = 0;
+		float frictionCoefficient = 0.1f;
+
+		sf::Vector2f direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
+		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
+	};
+}
 
