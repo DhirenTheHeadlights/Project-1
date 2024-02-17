@@ -99,8 +99,8 @@ void World::gameLoop() {
 	LMHandler->drawLandMasses(ship);
 
 	// Draw the ship
-	ship.draw(GlobalValues::getInstance().getMapSize());
-	view.setCenter(ship.getSpritePosition());
+	ship.draw();
+	view.setCenter(ship.getSprite().getPosition());
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

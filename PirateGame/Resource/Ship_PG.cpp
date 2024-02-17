@@ -88,7 +88,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	}
 
 	// Set the base speed
-	baseSpeed = 5 * speed; // Temporary speed up for testing
+	baseSpeed = 50 * speed; // Temporary speed up for testing
 
 	// Set the maximum health
 	maxHealth = health;
@@ -99,81 +99,31 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	constSpriteBounds = sf::Vector2f(spriteLen, spriteHeight);
 
 	// Initalize the position of the ship to be random
-	position = sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000));
+	movementHandler.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
 
 	// Set type and class
 	shipType = type;
 	shipClass = level;
 }
 
-// Move the ship
-void Ship::move(sf::Vector2f map) {
-	speed = baseSpeed;
-
-	// Get the position of the mouse
-	sf::Vector2f viewPos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-
-	// Get the direction to the mouse
-	sf::Vector2f dirToMouse = viewPos - getSpritePosition();
-
-	// Get the elapsed time
-	float elapsed = deltaTime.restart().asSeconds();
-
-	// Normalize the direction
-	if (dirToMouse.x == 0 && dirToMouse.y == 0) return; // Return if the mouse is already on the ship.
-	float length = sqrt(dirToMouse.x * dirToMouse.x + dirToMouse.y * dirToMouse.y);
-	dirToMouse.x /= length;
-	dirToMouse.y /= length;
-
-	// If friction is enabled, decrease the speed of a specific axis
-	if (friction) {
-		speed = baseSpeed * frictionCoeff;
-	}
-	else velocity = sf::Vector2f(dirToMouse.x * speed, dirToMouse.y * speed);
-
-	// Rotate the sprite using conversion from vector to angle with atan2
-	// Calculate the angle and convert it to degrees
-	float angleRad = std::atan2(dirToMouse.y, dirToMouse.x);
-	const float pi = 3.1415926f;
-	float angleDeg = angleRad * 180.0f / pi;
-	rotation = angleDeg + 90;
-
-	// In SFML, 0 degrees is along the positive X-axis.
-	// Rotate the sprite to align with the direction to the mouse
-	sprite.setRotation(rotation); // Adding 90 degrees if the sprite's up is its top
-
-	// Draw the velocity vector
-	drawVector(getSpritePosition(), velocity, sf::Color::Red);
-
-	// Move the ship
-	direction(velocity, elapsed, map);
-}
-
-// Get the direction of the ship
-void Ship::direction(sf::Vector2f velocity, float elapsed, sf::Vector2f map) {
-	// Set the last valid position
-	lastValidPos = position;
-
-	// Update the position
-	position.x += velocity.x * elapsed;
-	position.y += velocity.y * elapsed;
-
-	// Boundary checks
-	if (position.x < 0) position.x = 0;
-	if (position.y < 0) position.y = 0;
-	float sizeX = sprite.getGlobalBounds().width;
-	float sizeY = sprite.getGlobalBounds().height;
-	if (position.x > map.x) position.x = map.x;
-	if (position.y > map.x) position.y = map.x;
-
-	// Set the position of the ship
-	float x = position.x - sizeX;
-	float y = position.y - sizeY;
-	sprite.setPosition(x + sizeX * 0.5f, y + sizeY * 0.5f);
+// Move the ship, both with and without collision
+void Ship::move() {
+	sprite.setPosition(movementHandler.move(baseSpeed));
 }
 
 // Draw the ship
-void Ship::draw(sf::Vector2f map) {
+void Ship::draw() {
+	// Draw the health bars only if it is an enemy
+	if (shipType == ShipType::Enemy) {
+		setHealthBarPosition();
+	}
+	// Move and draw the ship
+	move();
+	window->draw(sprite);
+}
+
+// Set the health bar position
+void Ship::setHealthBarPosition() {
 	// Set the health to 0 if it is negative
 	if (health < 0) health = 0;
 
@@ -212,68 +162,7 @@ void Ship::draw(sf::Vector2f map) {
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
 
-	// Draw the health bars only if it is an enemy
-	if (shipType == ShipType::Enemy) {
-		window->draw(healthBarRed);
-		window->draw(healthBarGreen);
-	}
-	// Move and draw the ship
-	move(map);
-	window->draw(sprite);
-}
-
-// Get the ship's position as the center of the ship
-sf::Vector2f Ship::getSpritePosition() {
-	float x = sprite.getPosition().x;
-	float y = sprite.getPosition().y;
-	return sf::Vector2f(x, y);
-}
-
-// Apply collision movement to the ship, redirect velocity as a scaled cross product with normalized collision vector
-void Ship::collisionMovement(sf::Vector2f normalVector) {
-	// NO MORE AXIS RAHHHH, set friction to true
-	friction = true;
-
-	// Store collision vector in Ship class
-	this->normal = normalVector;
-
-	// Scalar friction facotr; this changes the degree to which the ship is "reflected" off on collision
-	float friction_factor = 0.000007;
-
-	// Calculate dot product between velocity and normalized collision vector
-	int dot_product = 2 * (velocity.x * normal.x + velocity.y * normal.y);
-
-	// Reflect velocity
-	sf::Vector2f reflected_vector = sf::Vector2f(velocity.x - dot_product * normal.x * friction_factor, velocity.y - dot_product * normal.y * friction_factor);
-	velocity.x = reflected_vector.x;
-	velocity.y = reflected_vector.y;
-
-	// Set the position of the ship
-	float sizeX = sprite.getGlobalBounds().width;
-	float sizeY = sprite.getGlobalBounds().height;
-	sprite.setPosition(position.x - sizeX / 2, position.y - sizeY / 2);
-}
-
-// Stop the ship
-void Ship::stop() {
-	setPosition(lastValidPos);
-}
-
-// Draw a vector
-void Ship::drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color) {
-	// Create a VertexArray with two points
-	sf::VertexArray line(sf::Lines, 2);
-
-	// Set the position of the first point to the starting point
-	line[0].position = start;
-
-	// Set the position of the second point to the end of the vector
-	line[1].position = start + vector;
-
-	// Set the color of the line
-	line[0].color = color;
-	line[1].color = color;
-
-	// Draw the line
-	window->draw(line);
+	// Draw the health bars
+	window->draw(healthBarRed);
+	window->draw(healthBarGreen);
 }
