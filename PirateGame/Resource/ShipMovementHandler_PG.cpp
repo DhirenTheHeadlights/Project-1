@@ -60,10 +60,10 @@ void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 
 	// Calculate the normalized normal vector from the ship's center to the colliding sprite's center
 	sf::Vector2f normal = sf::Vector2f(
-		static_cast<float>(sprite.getTextureRect().left + sprite.getTextureRect().width / 2) -
-		(collidingSprite.getTextureRect().left + collidingSprite.getTextureRect().width / 2),
-		static_cast<float>(sprite.getTextureRect().top + sprite.getTextureRect().height / 2) -
-		(collidingSprite.getTextureRect().top + collidingSprite.getTextureRect().height / 2)
+		sprite.getPosition().x + sprite.getGlobalBounds().width / 2 -
+		(collidingSprite.getPosition().x + collidingSprite.getGlobalBounds().width / 2),
+		sprite.getPosition().y + sprite.getGlobalBounds().height / 2 -
+		(collidingSprite.getPosition().y + collidingSprite.getGlobalBounds().height / 2)
 	);
 	normal = normalize(normal);
 

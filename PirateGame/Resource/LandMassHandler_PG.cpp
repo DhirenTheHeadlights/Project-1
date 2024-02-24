@@ -2,9 +2,6 @@
 
 using namespace PirateGame;
 
-LandMassHandler::LandMassHandler() : hashmap(), soundManager(soundFile) {
-}
-
 LandMassHandler::~LandMassHandler() {
 	for (auto& landMass : landMasses) {
 		hashmap.removeLandMass(landMass);

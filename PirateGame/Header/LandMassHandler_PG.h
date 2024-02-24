@@ -4,6 +4,7 @@
 /// This class is going to handle the land masses in the game.
 /// It will be used to generate the land masses and store them in a vector.
 /// </summary>
+/// 
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -18,7 +19,7 @@
 namespace PirateGame {
     class LandMassHandler {
     public:
-        LandMassHandler();
+        LandMassHandler() : hashmap(), soundManager(soundFile) {};
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
