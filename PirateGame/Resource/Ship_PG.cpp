@@ -2,82 +2,38 @@
 
 using namespace PirateGame;
 
+std::unordered_map<ShipClass, ShipProperties> Ship::shipConfig = {
+{ ShipClass::Sloop, {100.f, 100.f, 1, "PirateGameSprites/pg_ship_sloop.png", .1f, .1f} },
+{ ShipClass::Brigantine, {95.f, 133.f, 1.48f, "PirateGameSprites/pg_ship_brigantine.png", .12f, .12f} },
+{ ShipClass::Frigate, {82.f, 192.f, 2.15f, "PirateGameSprites/pg_ship_frigate.png", .15f, .15f} },
+{ ShipClass::ManOWar, {77.f, 250.f, 3.f, "PirateGameSprites/pg_ship_manowar.png", .18f, .18f} },
+{ ShipClass::Galleon, {63.f, 380.f, 4.6f, "PirateGameSprites/pg_ship_galleon.png", .23f, .23f} }
+};
+
 // Create the ship
 void Ship::createShip(ShipType type, ShipClass level) {
-	// Set the window
-	window = GlobalValues::getInstance().getWindow();
+	// Access ship properties from the configuration map using the provided ship class
+	const ShipProperties& props = shipConfig[level];
 
-	// This switch case will determine the ship type
-	// and assign the appropriate texture/sprite
+	// Assign values from ShipProperties to the Ship's member variables
+	baseSpeed = props.baseSpeed * 2.f;
+	health = props.health;
+	maxHealth = props.health;
+	regenRate = props.regenRate;
+	sf::Vector2f scaling(props.scaleX * scalingFactor, props.scaleY * scalingFactor);
+	sf::Vector2f spriteOrigin = props.origin;
+	constSpriteBounds = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 
-	switch (level) {
-	case ShipClass::Sloop:
-		// Load the values
-		baseSpeed = 100.f;
-		health = 100;
-		regenRate = 1;
-
-		// Load the texture
-		if (!texture.loadFromFile("PirateGameSprites/pg_ship_sloop.png")) std::cout << "Failed to load Sloop texture." << std::endl;
+	// Load the texture
+	if (!texture.loadFromFile(props.texturePath)) {
+		std::cout << "Failed to load texture: " << props.texturePath << std::endl;
+	}
+	else {
 		sprite.setTexture(texture);
-		sprite.setOrigin(spriteOrigin);
-		sprite.setScale(.1f * scaling, .1f * scaling);
-		break;
-	case ShipClass::Brigantine:
-		// Load the values
-		baseSpeed = 95.f;
-		health = 133;
-		regenRate = 1.48f;
-
-		// Load the texture
-		if (!texture.loadFromFile("PirateGameSprites/pg_ship_brigantine.png")) std::cout << "Failed to load Brigantine texture." << std::endl;
-		sprite.setTexture(texture);
-		sprite.setOrigin(spriteOrigin);
-		sprite.setScale(.12f * scaling, .12f * scaling);
-		break;
-	case ShipClass::Frigate:
-		// Load the values
-		baseSpeed = 82.f;
-		health = 192.f;
-		regenRate = 2.15f;
-
-		// Load the texture
-		if (!texture.loadFromFile("PirateGameSprites/pg_ship_frigate.png")) std::cout << "Failed to load Frigate texture." << std::endl;
-		sprite.setTexture(texture);
-		sprite.setOrigin(spriteOrigin);
-		sprite.setScale(.15f * scaling, .15f * scaling);
-		break;
-	case ShipClass::ManOWar:
-		// Load the values
-		baseSpeed = 77.f;
-		health = 250.f;
-		regenRate = 3.f;
-
-		// Load the texture
-		if (!texture.loadFromFile("PirateGameSprites/pg_ship_manowar.png")) std::cout << "Failed to load Man O'War texture." << std::endl;
-		sprite.setTexture(texture);
-		sprite.setOrigin(spriteOrigin);
-		sprite.setScale(.18f * scaling, .18f * scaling);
-		break;
-	case ShipClass::Galleon:
-		// Load the values
-		baseSpeed = 63.f;
-		health = 380.f;
-		regenRate = 4.6f;
-
-		// Load the texture
-		if (!texture.loadFromFile("PirateGameSprites/pg_ship_galleon.png")) std::cout << "Failed to load Galleon texture." << std::endl;
-		sprite.setTexture(texture);
-		sprite.setOrigin(spriteOrigin);
-		sprite.setScale(.23f * scaling, .23f * scaling);
-		break;
-	default:
-		// Handle other cases
-		break;
+		sprite.setOrigin(spriteOrigin); // Make sure spriteOrigin is properly initialized
+		sprite.setScale(scaling);
 	}
 
-	// This switch case will determine the ship class
-	// and assign the appropriate texture/sprite
 	switch (type) {
 	case ShipType::Player:
 		// Load the texture and values
@@ -86,17 +42,6 @@ void Ship::createShip(ShipType type, ShipClass level) {
 		// Load the texture and values
 		break;
 	}
-
-	// Set the base speed
-	baseSpeed *= 20;
-
-	// Set the maximum health
-	maxHealth = health;
-
-	// Set constant values for the sprite len and height
-	float spriteLen = sprite.getGlobalBounds().width;
-	float spriteHeight = sprite.getGlobalBounds().height;
-	constSpriteBounds = sf::Vector2f(spriteLen, spriteHeight);
 
 	// Initalize the position of the ship to be random
 	SMH.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
@@ -107,29 +52,34 @@ void Ship::createShip(ShipType type, ShipClass level) {
 }
 
 // Draw the ship
-void Ship::draw() {
-	// Set the health to 0 if it is negative
-	if (health < 0) health = 0;
+void Ship::updateAndDraw() {
 
-	// Regen health every 250 milliseconds
-	if (health < maxHealth && health >= 0) {
-		if (healthRegenClock.getElapsedTime().asMilliseconds() > 250) {
-			health += regenRate;
-			healthRegenClock.restart();
-		}
-	}
+	window = GlobalValues::getInstance().getWindow();
+
+	regenerateHealth();
 
 	// Draw the health bars only if it is an enemy
 	if (shipType == ShipType::Enemy) {
-		setHealthBarPosition();
+		window->draw(healthBarRed);
+		window->draw(healthBarGreen);
 	}
 
 	// Draw the velocity vector
-	drawVector(sprite.getPosition(), SMH.getVelocity(), sf::Color::Red);
+	window->draw(createVector(sprite.getPosition(), SMH.getVelocity(), sf::Color::Blue));
 
 	// Move and draw the ship
 	sprite.setPosition(SMH.move(baseSpeed));
 	window->draw(sprite);
+}
+
+// Regen Health
+void Ship::regenerateHealth() {
+	// Regen health every 250 milliseconds
+	if (!(health < maxHealth && health >= 0)) return;
+	if (healthRegenClock.getElapsedTime().asMilliseconds() > 250) {
+		health += regenRate;
+		healthRegenClock.restart();
+	}
 }
 
 // Draw the health bars
@@ -143,44 +93,29 @@ void Ship::setHealthBarPosition() {
 	healthBarRed.setFillColor(sf::Color::Red);
 
 	// Define the offset from the center of the ship to where the health bar should be
-	float healthBarOffsetX = -constSpriteBounds.x / 2; // Offset to the left of the sprite
-	float healthBarOffsetY = constSpriteBounds.y / 2; // Offset above the sprite
+	sf::Vector2f healthBarOffset(-1 * constSpriteBounds.x / 2, constSpriteBounds.y / 2);
 
 	// Calculate the health bar's position based on the ship's rotation
 	float angleRad = rotation * 3.1415926f / 180.0f;
 	sf::Transform rotationTransform;
 	rotationTransform.rotate(rotation, sprite.getPosition());
 
-	float x = sprite.getPosition().x + healthBarOffsetX;
-	float y = sprite.getPosition().y + healthBarOffsetY;
-	sf::Vector2f healthBarPosition = rotationTransform.transformPoint(x, y);
+	sf::Vector2f rotationPoint(sprite.getPosition().x + healthBarOffset.x, sprite.getPosition().y + healthBarOffset.y);
+	sf::Vector2f healthBarPosition = rotationTransform.transformPoint(rotationPoint);
 
 	// Set the position and rotation of the health bars
 	healthBarGreen.setPosition(healthBarPosition);
 	healthBarRed.setPosition(healthBarPosition);
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
-
-	// Draw the health bars
-	window->draw(healthBarRed);
-	window->draw(healthBarGreen);
 }
 
-// Draw a vector
-void Ship::drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color) {
+sf::VertexArray Ship::createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color) {
 	// Create a VertexArray with two points
 	sf::VertexArray line(sf::Lines, 2);
-
-	// Set the position of the first point to the starting point
 	line[0].position = start;
-
-	// Set the position of the second point to the end of the vector
 	line[1].position = start + vector;
-
-	// Set the color of the line
 	line[0].color = color;
 	line[1].color = color;
-
-	// Draw the line
-	window->draw(line);
+	return line;
 }

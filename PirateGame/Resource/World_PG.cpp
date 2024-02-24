@@ -37,7 +37,7 @@ World::World(sf::RenderWindow* window_in) {
 }
 
 void World::setUpWorld() {
-	ship.createShip(ShipType::Player, ShipClass::ManOWar);
+	ship.createShip(ShipType::Player, ShipClass::Sloop);
 	LMHandler->addLandMasses(100, 500.f);
 
 	// Set the game state to start
@@ -99,8 +99,8 @@ void World::gameLoop() {
 	LMHandler->drawLandMasses(ship);
 
 	// Draw the ship
-	ship.draw();
-	view.setCenter(ship.getSprite().getPosition());
+	ship.updateAndDraw();
+	view.setCenter(ship.getMovementHandler().getPosition());
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

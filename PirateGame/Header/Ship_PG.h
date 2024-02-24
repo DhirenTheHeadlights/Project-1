@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cmath>
+#include <unordered_map>
 
 #include "GlobalValues_PG.h"
 #include "ShipMovementHandler_PG.h"
@@ -25,6 +26,16 @@ namespace PirateGame {
 		Galleon
 	};
 
+	// Struct to hold ship properties
+	struct ShipProperties {
+		float baseSpeed;
+		float health;
+		float regenRate;
+		std::string texturePath;
+		float scaleX, scaleY;
+		sf::Vector2f origin = sf::Vector2f(126.f, 128.f);
+	};
+
 	class Ship {
 	public:
 		Ship() : SMH(sprite) {};
@@ -32,25 +43,32 @@ namespace PirateGame {
 
 		// Create the ship and set its values
 		void createShip(ShipType type, ShipClass shipClass);
-		void draw();
+		void updateAndDraw();
 
 		// Get movement handler
 		ShipMovementHandler& getMovementHandler() { return SMH; }
 
 		// Setters
-		void setHealth(float hp) { health = hp; }
+		void damageShip(float damagePerSecond) {
+			health -= damagePerSecond * deltaTime.restart().asSeconds();
+			if (health < 0) health = 0;
+		}
 
 		// Getters
 		float getHealth() { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 
 	private:
+		// Static map for ship configurations
+		static std::unordered_map<ShipClass, ShipProperties> shipConfig;
+
 		// Functions
 		void setHealthBarPosition();
-		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
+		void regenerateHealth();
+		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
 
 		// SFML Objects
-		sf::RenderWindow* window;
+		sf::RenderWindow* window = nullptr;
 		sf::Clock deltaTime;
 		sf::Sprite sprite;
 		sf::Texture texture;
@@ -60,11 +78,10 @@ namespace PirateGame {
 		float maxHealth = 1;
 		float baseSpeed = 1;
 		float regenRate = 1;
-		float scaling = 5;
+		float scalingFactor = 5;
 		float rotation = 0;
 
 		sf::Vector2f constSpriteBounds;
-		sf::Vector2f spriteOrigin = sf::Vector2f(123.f, 128.f);
 
 		ShipType shipType;
 		ShipClass shipClass;

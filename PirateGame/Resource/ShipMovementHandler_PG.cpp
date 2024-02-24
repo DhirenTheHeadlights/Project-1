@@ -18,7 +18,7 @@ sf::Vector2f ShipMovementHandler::move(float baseSpeed) {
 	applyBoundaryConstraints(position, map);
 
 	// Return the position of the ship
-	return sf::Vector2f(position.x * 0.5f, position.y * 0.5f);
+	return sf::Vector2f(position);
 }
 
 sf::Vector2f ShipMovementHandler::normalize(sf::Vector2f vector) {
@@ -31,13 +31,14 @@ void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const
 	float sizeX = sprite.getGlobalBounds().width;
 	float sizeY = sprite.getGlobalBounds().height;
 
+	// If the ship is out of bounds, set the position to the boundary
 	position.x = std::max(0.f, std::min(position.x, mapSize.x - sizeX));
 	position.y = std::max(0.f, std::min(position.y, mapSize.y - sizeY));
 }
 
 void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
 	// If friction is enabled, decrease the speed. Otherwise, set the velocity.
-	if (friction) {
+	if (isColliding) {
 		speed = baseSpeed * frictionCoefficient;
 	}
 	else velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
@@ -46,38 +47,58 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 	position += velocity * elapsedTime;
 }
 
-// Set the rotation of the sprite
 void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
+	if (isColliding) return;
 	// Rotate the sprite using conversion from vector to angle with atan2
 	const float pi = 3.14159265f;
 	float angle = std::atan2(direction.y, direction.x) * 180.f / pi + 90.f;
 	sprite.setRotation(angle);
 }
 
-// Apply collision movement to the ship, redirect velocity as a scaled cross product with normalized collision vector
-sf::Vector2f ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
-	// NO MORE AXIS RAHHHH, set friction to true
-	friction = true;
+void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
+	isColliding = true;
 
-	// Determine the normal vector
-	sf::Vector2f normal = sf::Vector2f((static_cast<float>(sprite.getTextureRect().getPosition().x + 0.5 * sprite.getTextureRect().getSize().x) - // Ship's center x coordinate
-				(collidingSprite.getTextureRect().getPosition().x + 0.5 * collidingSprite.getTextureRect().getSize().x)),			 // Landmass i's center x cooordinate
-				static_cast<float>((sprite.getTextureRect().getPosition().y + 0.5 * sprite.getTextureRect().getSize().y) -			 // Ship's center y coordinate
-				(collidingSprite.getTextureRect().getPosition().y + 0.5 * collidingSprite.getTextureRect().getSize().y)));			 // Landmass i's center y coordinate
+	// Calculate the normalized normal vector from the ship's center to the colliding sprite's center
+	sf::Vector2f normal = sf::Vector2f(
+		static_cast<float>(sprite.getTextureRect().left + sprite.getTextureRect().width / 2) -
+		(collidingSprite.getTextureRect().left + collidingSprite.getTextureRect().width / 2),
+		static_cast<float>(sprite.getTextureRect().top + sprite.getTextureRect().height / 2) -
+		(collidingSprite.getTextureRect().top + collidingSprite.getTextureRect().height / 2)
+	);
+	normal = normalize(normal);
 
-	// Scalar friction facotr; this changes the degree to which the ship is "reflected" off on collision
-	float friction_factor = 0.000007;
+	// Apply a damping factor to the velocity to simulate friction and prevent oscillations
+	float dampingFactor = 0.5f; // Reduce velocity by half in the direction of the normal
+	sf::Vector2f dampedVelocity = velocity - normal * dot(velocity, normal) * dampingFactor;
 
-	// Calculate dot product between velocity and normalized collision vector
-	int dot_product = 2 * (velocity.x * normal.x + velocity.y * normal.y);
+	// Ensure the ship is moved slightly away from the colliding object to prevent sticking
+	float separationDistance = 5.0f; // Adjust as necessary
+	position += normal * separationDistance;
 
-	// Reflect velocity
-	sf::Vector2f reflected_vector = sf::Vector2f(velocity.x - dot_product * normal.x * friction_factor, velocity.y - dot_product * normal.y * friction_factor);
-	velocity.x = reflected_vector.x;
-	velocity.y = reflected_vector.y;
+	// Update the ship's velocity
+	velocity = dampedVelocity;
 
-	// Set the position of the ship
-	float sizeX = sprite.getGlobalBounds().width;
-	float sizeY = sprite.getGlobalBounds().height;
-	return sf::Vector2f(position.x - sizeX / 2, position.y - sizeY / 2);
+	// Additional: Ensure separation based on direction of approach
+	ensureSeparation(position, normal, collidingSprite);
+}
+
+void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
+	float pushOutDistance = 2.0f; // Further adjust based on needs
+	// Calculate a push-out vector based on normal and ship's approach direction
+	sf::Vector2f pushOutVector = normal * pushOutDistance;
+
+	// Check the direction of approach and adjust the pushOutVector accordingly
+	sf::Vector2f approachVector = position - collidingSprite.getPosition();
+	if (dot(approachVector, normal) < 0) {
+		pushOutVector = -pushOutVector; // Invert the push-out direction for opposite approach
+	}
+
+	// Apply the push-out vector to position to ensure separation
+	position += pushOutVector;
+}
+
+
+// Helper function to calculate dot product
+float ShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {
+	return a.x * b.x + a.y * b.y;
 }
