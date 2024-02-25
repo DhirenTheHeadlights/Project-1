@@ -3,11 +3,11 @@
 using namespace PirateGame;
 
 std::unordered_map<ShipClass, ShipProperties> Ship::shipConfig = {
-{ ShipClass::Sloop, {100.f, 100.f, 1, "PirateGameSprites/pg_ship_sloop.png", .1f, .1f} },
-{ ShipClass::Brigantine, {95.f, 133.f, 1.48f, "PirateGameSprites/pg_ship_brigantine.png", .12f, .12f} },
-{ ShipClass::Frigate, {82.f, 192.f, 2.15f, "PirateGameSprites/pg_ship_frigate.png", .15f, .15f} },
-{ ShipClass::ManOWar, {77.f, 250.f, 3.f, "PirateGameSprites/pg_ship_manowar.png", .18f, .18f} },
-{ ShipClass::Galleon, {63.f, 380.f, 4.6f, "PirateGameSprites/pg_ship_galleon.png", .23f, .23f} }
+{ ShipClass::Sloop, {100.f, 100.f, 1, "PirateGameSprites/pg_ship_sloop.png", .1f, .1f, 1} },
+{ ShipClass::Brigantine, {95.f, 133.f, 1.48f, "PirateGameSprites/pg_ship_brigantine.png", .12f, .12f, 2} },
+{ ShipClass::Frigate, {82.f, 192.f, 2.15f, "PirateGameSprites/pg_ship_frigate.png", .15f, .15f, 3} },
+{ ShipClass::ManOWar, {77.f, 250.f, 3.f, "PirateGameSprites/pg_ship_manowar.png", .18f, .18f, 4} },
+{ ShipClass::Galleon, {63.f, 380.f, 4.6f, "PirateGameSprites/pg_ship_galleon.png", .23f, .23f, 5} }
 };
 
 // Create the ship
@@ -63,6 +63,12 @@ void Ship::updateAndDraw() {
 	// Move and draw the ship
 	SMH.move(shipProperties.baseSpeed);
 	window->draw(sprite);
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		SCH.shootCannonballs(shipProperties.numCannons, FiringSide::Right);
+	}
+	SCH.updateCannonballs();
 }
 
 // Regen Health

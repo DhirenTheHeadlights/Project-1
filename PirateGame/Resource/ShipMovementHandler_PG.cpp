@@ -67,16 +67,19 @@ void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 
 	// Calculate the difference between the target and current angle
 	float angleDifference = targetAngle - currentAngle;
-
+	
 	// Normalize the angle difference to the range [-180, 180]
 	while (angleDifference < -180) angleDifference += 360;
 	while (angleDifference > 180) angleDifference -= 360;
 
+	// Calculate the extra rotational acceleration based on the angle difference
+	float accel = angleDifference / 100.f;
+
 	// Limit the turning speed
 	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);
-
+	
 	// Set the new rotation
-	sprite.setRotation(currentAngle + angleDifference);
+	sprite.setRotation(currentAngle + accel + angleDifference);
 }
 
 void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {

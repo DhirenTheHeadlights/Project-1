@@ -165,6 +165,7 @@
     <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="PirateGame\Resource\Menu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\shipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Ship_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp" />
@@ -219,6 +221,7 @@
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
+    <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
@@ -231,6 +234,7 @@
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
+    <ClInclude Include="PirateGame\Header\shipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Ship_PG.h" />
     <ClInclude Include="PirateGame\Header\Slider_PG.h" />

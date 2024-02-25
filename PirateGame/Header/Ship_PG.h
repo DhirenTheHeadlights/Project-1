@@ -11,6 +11,7 @@
 
 #include "GlobalValues_PG.h"
 #include "ShipMovementHandler_PG.h"
+#include "shipCannonHandler_PG.h"
 
 namespace PirateGame {
 
@@ -33,11 +34,12 @@ namespace PirateGame {
 		float regenRate;
 		std::string texturePath;
 		float scaleX, scaleY;
+		int numCannons;
 	};
 
 	class Ship {
 	public:
-		Ship() : SMH(sprite) {};
+		Ship() : SMH(sprite), SCH(sprite) {};
 		~Ship() {};
 
 		// Create the ship and set its values
@@ -95,6 +97,9 @@ namespace PirateGame {
 
 		// Movement Handler
 		ShipMovementHandler SMH;
+
+		// Cannon Handler
+		ShipCannonHandler SCH;
 	};
 
 }
