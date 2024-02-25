@@ -13,24 +13,18 @@ std::unordered_map<ShipClass, ShipProperties> Ship::shipConfig = {
 // Create the ship
 void Ship::createShip(ShipType type, ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
-	const ShipProperties& props = shipConfig[level];
-
-	// Assign values from ShipProperties to the Ship's member variables
-	baseSpeed = props.baseSpeed * 2.f;
-	health = props.health;
-	maxHealth = props.health;
-	regenRate = props.regenRate;
-	sf::Vector2f scaling(props.scaleX * scalingFactor, props.scaleY * scalingFactor);
-	sf::Vector2f spriteOrigin = props.origin;
-	constSpriteBounds = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
+	shipProperties = shipConfig[level];
 
 	// Load the texture
-	if (!texture.loadFromFile(props.texturePath)) {
-		std::cout << "Failed to load texture: " << props.texturePath << std::endl;
+	if (!texture.loadFromFile(shipProperties.texturePath)) {
+		std::cout << "Failed to load texture: " << shipProperties.texturePath << std::endl;
 	}
 	else {
+		sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
+		constSpriteBounds = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
+
 		sprite.setTexture(texture);
-		sprite.setOrigin(spriteOrigin); // Make sure spriteOrigin is properly initialized
+		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 		sprite.setScale(scaling);
 	}
 
@@ -53,7 +47,6 @@ void Ship::createShip(ShipType type, ShipClass level) {
 
 // Draw the ship
 void Ship::updateAndDraw() {
-
 	window = GlobalValues::getInstance().getWindow();
 
 	regenerateHealth();
@@ -68,16 +61,16 @@ void Ship::updateAndDraw() {
 	window->draw(createVector(sprite.getPosition(), SMH.getVelocity(), sf::Color::Blue));
 
 	// Move and draw the ship
-	sprite.setPosition(SMH.move(baseSpeed));
+	SMH.move(shipProperties.baseSpeed);
 	window->draw(sprite);
 }
 
 // Regen Health
 void Ship::regenerateHealth() {
 	// Regen health every 250 milliseconds
-	if (!(health < maxHealth && health >= 0)) return;
+	if (!(health < shipProperties.maxHealth && health >= 0.f)) return;
 	if (healthRegenClock.getElapsedTime().asMilliseconds() > 250) {
-		health += regenRate;
+		health += shipProperties.regenRate;
 		healthRegenClock.restart();
 	}
 }
@@ -85,7 +78,7 @@ void Ship::regenerateHealth() {
 // Draw the health bars
 void Ship::setHealthBarPosition() {
 	// Determine the size of the health bar green based on health
-	healthBarGreen.setSize(sf::Vector2f(100 * health / maxHealth, 10));
+	healthBarGreen.setSize(sf::Vector2f(100.f * health / shipProperties.maxHealth, 10));
 	healthBarGreen.setFillColor(sf::Color::Green);
 
 	// Determine the size of the health bar red based on health

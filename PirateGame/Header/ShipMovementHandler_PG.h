@@ -17,7 +17,7 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions
-		sf::Vector2f move(float baseSpeed);
+		void move(float baseSpeed);
 		void collisionMovement(sf::Sprite& collidingSprite);
 
 		// Setters
@@ -42,7 +42,13 @@ namespace PirateGame {
 		bool isColliding = true;
 		float rotation = 0;
 		float speed = 0;
-		float frictionCoefficient = 0.1f;
+		float frictionCoefficient = 0.1f; // For friction
+		float dampingFactor = 0.5f; // For collisionMovement
+		float separationDistance = 5.0f; // For collisionMovement
+		float pushOutDistance = 1.0f; // For ensureSeparation
+		float turningSpeed = 0.1f; // For setSpriteRotation
+
+		const float pi = 3.14159265359f;
 
 		// Helper functions
 		sf::Vector2f normalize(sf::Vector2f vector);

@@ -25,6 +25,8 @@ namespace PirateGame {
 		void createMenus();
 		void setUpMenus();
 		void openMenu(MenuType menuType);
+
+		Menu* getMenu(MenuType menuType);
 	private:
 		// Pointers to the different menus
 		std::unique_ptr<StartMenu> startMenu;

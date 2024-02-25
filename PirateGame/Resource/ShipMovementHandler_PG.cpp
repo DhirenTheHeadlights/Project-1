@@ -3,23 +3,26 @@
 using namespace PirateGame;
 
 // Move the ship
-sf::Vector2f ShipMovementHandler::move(float baseSpeed) {
+void ShipMovementHandler::move(float baseSpeed) {
 	// Initialize the window and map size
 	window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
-	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-	sf::Vector2f direction = normalize(mousePosition - sprite.getPosition());
 
 	float elapsed = deltaTime.restart().asSeconds();
 	speed = baseSpeed;
+
+	// Calculate the direction based on the ship's current rotation
+	float rotationInRadians = (sprite.getRotation() - 90.f) * pi / 180.f; // Subtract 90 degrees to align with SFML's rotation
+	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
 	updateVelocity(direction, elapsed, baseSpeed);
 	setSpriteRotation(direction);
 	applyBoundaryConstraints(position, map);
 
-	// Return the position of the ship
-	return sf::Vector2f(position);
+	// Set the new position
+	sprite.setPosition(position);
 }
+
 
 sf::Vector2f ShipMovementHandler::normalize(sf::Vector2f vector) {
 	float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
@@ -49,10 +52,31 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 
 void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	if (isColliding) return;
+	// Calculate the direction to the mouse
+	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+	sf::Vector2f directionToMouse = normalize(mousePosition - sprite.getPosition());
+
 	// Rotate the sprite using conversion from vector to angle with atan2
-	const float pi = 3.14159265f;
-	float angle = std::atan2(direction.y, direction.x) * 180.f / pi + 90.f;
-	sprite.setRotation(angle);
+	float targetAngle = std::atan2(directionToMouse.y, directionToMouse.x) * 180.f / pi + 90.f;
+
+	// Normalize the target angle to the range [0, 360]
+	if (targetAngle < 0) targetAngle += 360;
+
+	// Get the current angle
+	float currentAngle = sprite.getRotation();
+
+	// Calculate the difference between the target and current angle
+	float angleDifference = targetAngle - currentAngle;
+
+	// Normalize the angle difference to the range [-180, 180]
+	while (angleDifference < -180) angleDifference += 360;
+	while (angleDifference > 180) angleDifference -= 360;
+
+	// Limit the turning speed
+	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);
+
+	// Set the new rotation
+	sprite.setRotation(currentAngle + angleDifference);
 }
 
 void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
@@ -68,11 +92,9 @@ void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 	normal = normalize(normal);
 
 	// Apply a damping factor to the velocity to simulate friction and prevent oscillations
-	float dampingFactor = 0.5f; // Reduce velocity by half in the direction of the normal
 	sf::Vector2f dampedVelocity = velocity - normal * dot(velocity, normal) * dampingFactor;
 
 	// Ensure the ship is moved slightly away from the colliding object to prevent sticking
-	float separationDistance = 5.0f; // Adjust as necessary
 	position += normal * separationDistance;
 
 	// Update the ship's velocity
@@ -83,7 +105,6 @@ void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 }
 
 void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
-	float pushOutDistance = 2.0f; // Further adjust based on needs
 	// Calculate a push-out vector based on normal and ship's approach direction
 	sf::Vector2f pushOutVector = normal * pushOutDistance;
 

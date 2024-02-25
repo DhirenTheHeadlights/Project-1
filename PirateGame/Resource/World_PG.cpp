@@ -102,6 +102,9 @@ void World::gameLoop() {
 	ship.updateAndDraw();
 	view.setCenter(ship.getMovementHandler().getPosition());
 
+	// Set the ship for the hud
+	//MH->getMenu(MenuType::HUD)->setShip(ship);
+
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window->close();
