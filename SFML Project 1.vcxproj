@@ -252,6 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\bonk.wav" />
+    <Media Include="Sounds\cannonshot.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="PirateGameSprites\pg_island_1.png" />

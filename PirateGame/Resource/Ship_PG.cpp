@@ -70,6 +70,7 @@ void Ship::updateAndDraw() {
 
 	// Fire the cannons
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+	//if (sf::Mouse::isButtonPressed(sf::Mouse::Middle)) {
 		SCH.shootCannonballs(shipProperties.numCannons);
 	}
 

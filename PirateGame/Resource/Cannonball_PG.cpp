@@ -5,5 +5,6 @@ using namespace PirateGame;
 Cannonball::Cannonball() {
 	texture = textures.grabCannonballTexture();
 	sprite.setTexture(texture);
+	sprite.setScale(cannonballScale);
 }
 
