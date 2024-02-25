@@ -83,6 +83,14 @@ void World::createWorld(sf::Event event) {
 		window->close();
 	}
 
+	float frameRate = 1.f / frameRateClock.restart().asSeconds();
+	sf::Text frameRateText;
+	frameRateText.setFont(GlobalValues::getInstance().getFont());
+	frameRateText.setString(std::to_string(static_cast<int>(frameRate)));
+	frameRateText.setCharacterSize(24);
+	frameRateText.setFillColor(sf::Color::White);
+	frameRateText.setPosition(0, 0);
+
 	window->display();
 }
 
@@ -103,7 +111,7 @@ void World::gameLoop() {
 	view.setCenter(ship.getMovementHandler().getPosition());
 
 	// Set the ship for the hud
-	//MH->getMenu(MenuType::HUD)->setShip(ship);
+	//MH->getHUD();
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

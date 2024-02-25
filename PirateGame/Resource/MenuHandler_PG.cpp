@@ -30,15 +30,3 @@ void MenuHandler::setUpMenus() {
 	optionsMenu->setUpMenu();
 	HUD->setUpMenu();
 }
-
-Menu* MenuHandler::getMenu(MenuType menuType) {
-	switch (menuType) {
-	case MenuType::StartMenu:
-		return startMenu.get();
-	case MenuType::OptionsMenu:
-		return optionsMenu.get();
-	case MenuType::HUD:
-		return HUD.get();
-	}
-	return nullptr;
-}

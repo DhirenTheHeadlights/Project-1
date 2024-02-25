@@ -2,6 +2,10 @@
 
 using namespace PirateGame;
 
+#include "shipCannonHandler_PG.h"
+
+using namespace PirateGame;
+
 void ShipCannonHandler::shootCannonballs(int numCannons) {
 	// If the ship is not ready to fire, return
 	if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
@@ -11,20 +15,19 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
 
 	// Calculate the direction of the cannon
 	sf::Vector2f cannonDirection(cos(rotationInRadians), sin(rotationInRadians));
-	cannonDirection = cannonDirection / static_cast<float>((sqrt(pow(cannonDirection.x, 2) + pow(cannonDirection.y, 2))));
+	float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
+	cannonDirection /= magnitude;
 
-	switch (side) {
-		case FiringSide::Right:
-			cannonDirection = sf::Vector2f(-cannonDirection.x, -cannonDirection.y);
-			break;
-		case FiringSide::Left:
-			break;
+	if (side == FiringSide::Right) {
+		cannonDirection = -cannonDirection;
 	}
 
 	// For each cannon, create a cannonball and set its position and velocity, add to vector
+	cannonballs.reserve(cannonballs.size() + numCannons); // reserve space in vector to avoid reallocations
+	sf::Vector2f shipPosition = shipSprite.getPosition(); // get position once, outside the loop
 	for (int i = 0; i < numCannons; i++) {
 		Cannonball* cannonball = new Cannonball;
-		cannonball->setPos(shipSprite.getPosition());
+		cannonball->setPos(shipPosition);
 		cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
 		cannonball->getSprite().setScale(cannonballScale);
 		cannonballs.push_back(cannonball);
@@ -40,8 +43,9 @@ void ShipCannonHandler::updateCannonballs() {
 
 	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
 		// Update the position and velocity (1% Decay) of the cannonball
-		(*it)->setVelocity((*it)->getVelocity() * 0.99f);
-		(*it)->setPos((*it)->getPos() + (*it)->getVelocity());
+		sf::Vector2f velocity = (*it)->getVelocity() * 0.99f;
+		(*it)->setVelocity(velocity);
+		(*it)->setPos((*it)->getPos() + velocity);
 		window->draw((*it)->getSprite());
 
 		// If more than 2 seconds have passed, delete the cannonball

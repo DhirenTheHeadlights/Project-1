@@ -262,6 +262,12 @@
     <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -421,6 +427,12 @@
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Cannonball_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers</Filter>
     </ClInclude>
   </ItemGroup>
