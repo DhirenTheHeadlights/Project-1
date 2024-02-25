@@ -121,6 +121,10 @@ void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vec
 	position += pushOutVector;
 }
 
+void ShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
+	// Apply the recoil to the ship's position
+	position += direction * recoil;
+}
 
 // Helper function to calculate dot product
 float ShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {

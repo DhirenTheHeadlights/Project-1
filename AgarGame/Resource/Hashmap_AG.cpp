@@ -17,7 +17,7 @@ void Hashmap::assignPellet(Pellet& pellet, Map& map) {
 }
 
 std::set<Pellet*> Hashmap::getPelletsInSameCell(float x, float y) const {
-    std::string key = generateKey(x, y);
+    std::string key = generateKey(static_cast<int>(x), static_cast<int>(y));
     if (pelletHashmap.count(key)) return pelletHashmap.at(key);
     return {};
 }

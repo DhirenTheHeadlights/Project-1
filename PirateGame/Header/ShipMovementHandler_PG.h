@@ -19,6 +19,7 @@ namespace PirateGame {
 		// Movement functions
 		void move(float baseSpeed);
 		void collisionMovement(sf::Sprite& collidingSprite);
+		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
 		// Setters
 		void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
@@ -26,9 +27,9 @@ namespace PirateGame {
 		void setPosition(sf::Vector2f position) { sprite.setPosition(position); }
 
 		// Getters
-		sf::Vector2f getVelocity() { return velocity; }
-		bool getIsColliding() { return isColliding; }
-		sf::Vector2f getPosition() { return position; }
+		sf::Vector2f getVelocity() const { return velocity; }
+		bool getIsColliding() const { return isColliding; }
+		sf::Vector2f getPosition() const { return position; }
 
 	private:
 		// SFML Objects

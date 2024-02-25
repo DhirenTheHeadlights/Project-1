@@ -3,7 +3,7 @@
 Menu::Menu(sf::RenderWindow& window, sf::Font font_in) : window(window), font(font_in) {
 
 	// Set the size of the menu background
-	backgroundRect = sf::RectangleShape(sf::Vector2f(window.getSize().x, window.getSize().y));
+	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
 	backgroundRect.setFillColor(backgroundColor);
 
 	// Set the size and color of the menu
@@ -12,7 +12,7 @@ Menu::Menu(sf::RenderWindow& window, sf::Font font_in) : window(window), font(fo
 
 	// Set the title properties
 	title = sf::Text("Title Not Set" , font);
-	title.setCharacterSize(50.0f);
+	title.setCharacterSize(50);
 	title.setFillColor(textColor);
 	title.setStyle(sf::Text::Bold);
 }

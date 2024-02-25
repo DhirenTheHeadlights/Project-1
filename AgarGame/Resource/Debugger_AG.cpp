@@ -41,9 +41,9 @@ void Debugger::drawVector(const sf::Vector2f& start, const sf::Vector2f& directi
 
 void Debugger::drawCell(sf::RenderWindow& window, int x, int y, Map& map, sf::Color color) {
     sf::RectangleShape rectangle;
-    rectangle.setSize(sf::Vector2f(map.getCellSize(), map.getCellSize()));
+    rectangle.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
     rectangle.setFillColor(color);
-    rectangle.setPosition(x * map.getCellSize(), y * map.getCellSize());
+    rectangle.setPosition(static_cast<float>(x * map.getCellSize()), static_cast<float>(y * map.getCellSize()));
     window.draw(rectangle);
 
     //std::cout << "Drawing cell\n";

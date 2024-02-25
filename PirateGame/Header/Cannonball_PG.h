@@ -18,22 +18,25 @@ namespace PirateGame {
 		void setVelocity(sf::Vector2f vel) { velocity = vel; }
 		void arrrMatey() { std::cout << "Avast, ye scallywags!" << std::endl; }
 
-		sf::Clock getClock() { return clock; }
-		sf::Vector2f getPos() { return sprite.getPosition(); }
-		sf::Vector2f getVelocity() { return velocity; }
+		// Getters
+		sf::Clock getClock() const { return clock; }
+		sf::Vector2f getPos() const { return sprite.getPosition(); }
+		sf::Vector2f getVelocity() const { return velocity; }
 		sf::Sprite& getSprite() { return sprite; }
-		float getSpeed() { return speed; }
+		float getSpeed() const { return speed; }
 
 		bool operator==(const Cannonball& other) const {
 			return velocity == other.velocity && clock.getElapsedTime() == other.clock.getElapsedTime();
 		}
 		
 	private:
-		float speed = 10.f;
 		sf::Clock clock;
 		sf::Vector2f velocity;
 		sf::Sprite sprite;
-		Textures textures;
 		sf::Texture texture;
+
+		Textures textures;
+
+		float speed = 10.f;
 	};
 };

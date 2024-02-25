@@ -45,7 +45,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	shipClass = level;
 }
 
-// Draw the ship
+// Draw and update the ship
 void Ship::updateAndDraw() {
 	window = GlobalValues::getInstance().getWindow();
 
@@ -64,10 +64,15 @@ void Ship::updateAndDraw() {
 	SMH.move(shipProperties.baseSpeed);
 	window->draw(sprite);
 
+	// Set the firing side of the ship
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) SCH.setFiringSide(FiringSide::Left);
+	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) SCH.setFiringSide(FiringSide::Right);
 
+	// Fire the cannons
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		SCH.shootCannonballs(shipProperties.numCannons, FiringSide::Right);
+		SCH.shootCannonballs(shipProperties.numCannons);
 	}
+
 	SCH.updateCannonballs();
 }
 

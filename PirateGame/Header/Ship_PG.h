@@ -29,12 +29,12 @@ namespace PirateGame {
 
 	// Struct to hold ship properties
 	struct ShipProperties {
-		float baseSpeed;
-		float maxHealth;
-		float regenRate;
-		std::string texturePath;
-		float scaleX, scaleY;
-		int numCannons;
+		float baseSpeed = 1.f;
+		float maxHealth = 100.f;
+		float regenRate = 0.5f;
+		std::string texturePath = "";
+		float scaleX = 1.f, scaleY = 1.f;
+		int numCannons = 1;
 	};
 
 	class Ship {
@@ -56,7 +56,7 @@ namespace PirateGame {
 		}
 
 		// Getters
-		float getHealth() { return health; }
+		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 
 	private:
@@ -75,14 +75,14 @@ namespace PirateGame {
 		sf::Texture texture;
 
 		// Variables to store the ship's values
-		float health;
+		float health = 0;
 		float scalingFactor = 5;
 		float rotation = 0;
 
 		sf::Vector2f constSpriteBounds;
 
-		ShipType shipType;
-		ShipClass shipClass;
+		ShipType shipType = ShipType::Player;
+		ShipClass shipClass = ShipClass::Sloop;
 		ShipProperties shipProperties;
 
 		// Collision rectangle

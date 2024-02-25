@@ -19,7 +19,7 @@ World::World(sf::RenderWindow& window) : window(window), hashmap(), crosshair(wi
     }
 
     // Set up the background rectangle
-    backgroundRect.setSize(sf::Vector2f(window.getSize().x, window.getSize().y));
+    backgroundRect.setSize(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
     backgroundRect.setFillColor(sf::Color(0, 191, 255));
     
     // Set up the arena box
@@ -178,7 +178,7 @@ void World::showTimer() {
     if (currentGameState == GameState::GameLoop) {
 
         // Calculate the time left in the game
-        int timeElapsed = mainClock.getElapsedTime().asSeconds() - menuHandler->getOptionsMenu()->getTotalTimeInMenu().asSeconds();
+        int timeElapsed = static_cast<int>(mainClock.getElapsedTime().asSeconds() - menuHandler->getOptionsMenu()->getTotalTimeInMenu().asSeconds());
         int timeLeft = timerTime - timeElapsed;
         // Check if the game is running and display the score
         if (timeLeft > 0) {

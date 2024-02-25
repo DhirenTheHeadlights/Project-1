@@ -148,7 +148,7 @@ bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spri
 	for (int i = static_cast<int>(intersection.left); i < intersection.left + intersection.width; i++) {
 		for (int j = static_cast<int>(intersection.top); j < intersection.top + intersection.height; j++) {
 			// Convert global coordinates to sprite1's local space
-			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(i, j);
+			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 
 			// Check if the point is inside the ellipse defined by sprite1's local bounds
 			float x_rel = localPos1.x - rect1.width / 2.0f;
@@ -157,7 +157,7 @@ bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spri
 				// Now check pixel alpha values for collision
 				int idx1 = ((int)localPos1.y * rect1.width + (int)localPos1.x) * 4;
 				// Convert global coordinates to sprite2's local space
-				sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(i, j);
+				sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 				int idx2 = ((int)localPos2.y * rect2.width + (int)localPos2.x) * 4;
 
 				if (idx1 >= 0 && idx1 < rect1.width * rect1.height * 4 && idx2 >= 0 && idx2 < rect2.width * rect2.height * 4) {

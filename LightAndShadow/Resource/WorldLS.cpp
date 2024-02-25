@@ -25,11 +25,11 @@ void World::update() {
 	lightShape.setPointCount(3); // triangle for the light cone
 
 	// The base of the triangle will be the width of the window
-	lightShape.setPoint(0, sf::Vector2f(0, window.getSize().y));
-	lightShape.setPoint(1, sf::Vector2f(window.getSize().x, window.getSize().y));
+	lightShape.setPoint(0, sf::Vector2f(0.f, static_cast<float>(window.getSize().y)));
+	lightShape.setPoint(1, sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
 
 	// The top of the triangle is the position of the emitter
-	lightShape.setPoint(2, sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
+	lightShape.setPoint(2, sf::Vector2f(static_cast<float>(window.getSize().x / 2.f), static_cast<float>(window.getSize().y / 2.f)));
 	lightShape.setFillColor(sf::Color(255, 255, 0, 100)); // semi-transparent yellow
 
 	// This code should also move the player around the screen with WASD
@@ -71,8 +71,8 @@ void World::render() {
 			if (lightShape.getGlobalBounds().contains(corner)) { inLight = true; }
 		}
 		if (inLight) {
-			float x = window.getSize().x / 2;
-			float y = window.getSize().y / 2;
+			float x = static_cast<float>(window.getSize().x / 2);
+			float y = static_cast<float>(window.getSize().y / 2);
 			auto shadowPoints = calculateShadow(obstacle, sf::Vector2f(x, y));
 			auto shadowShape = createShadowShape(shadowPoints);
 			window.draw(shadowShape);
@@ -86,7 +86,7 @@ void World::render() {
 
 void World::initializeGameEntities() {
 
-	background.setSize(sf::Vector2f(window.getSize().x, window.getSize().y));
+	background.setSize(sf::Vector2f(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y)));
 	background.setFillColor(sf::Color(50, 50, 50)); // Dark gray
 
 	lightEmitter.setRadius(lightEmitterSize);

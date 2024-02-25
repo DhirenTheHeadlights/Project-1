@@ -26,7 +26,7 @@ namespace PirateGame {
 		// Getters
 		std::vector<std::pair<std::string, int>> getMarket() { return market; }
 		sf::RectangleShape getInteractablePoint() { return interactablePoint; }
-		LandMassType getType() { return type; }
+		LandMassType getType() const { return type; }
 		sf::Sprite& getSprite() { return sprite; }
 		sf::Vector2f getSpritePos() { return sprite.getPosition(); }
 		sf::Vector2f getSpriteSize() { return sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height); }
@@ -44,7 +44,7 @@ namespace PirateGame {
 		float scaling = 1;
 
 		// Variable to store the land mass's type
-		LandMassType type;
+		LandMassType type = LandMassType::Island;
 
 		// Temporary rectangle to represent interactable point
 		sf::RectangleShape interactablePoint;

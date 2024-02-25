@@ -16,13 +16,22 @@ namespace PirateGame {
 		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
 		~ShipCannonHandler() {};
 
-		void shootCannonballs(int numCannons, FiringSide side);
+		void shootCannonballs(int numCannons);
 		void updateCannonballs();
-	private:
-		std::vector<Cannonball> cannonballs{};
-		sf::Vector2f cannonballDirection;
-		sf::Sprite& shipSprite;
-		FiringSide side;
 
+		void setFiringSide(FiringSide side) { this->side = side; };
+		void setCooldown(float cooldown) { this->cooldown = cooldown; };
+	private:
+		std::vector<Cannonball*> cannonballs{};
+
+		sf::Vector2f cannonballDirection;
+		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
+
+		sf::Sprite& shipSprite;
+		sf::Clock cannonCooldownClock;
+
+		FiringSide side = FiringSide::Left;
+
+		float cooldown = 0.1f;
 	};
 };

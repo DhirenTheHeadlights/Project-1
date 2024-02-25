@@ -32,8 +32,8 @@ Target* Hashmap_AT::getTargetInGrid(const std::string& key, sf::Vector2f positio
 // Function to iterate over grid squares and find a collision
 Target* Hashmap_AT::getTargetAtCollision(sf::Vector2f position, float radius) {
     // Iterate over the grid squares within the radius for a collision
-    for (int x_offset = -radius; x_offset <= radius; x_offset += grid_size) {
-        for (int y_offset = -radius; y_offset <= radius; y_offset += grid_size) {
+    for (int x_offset = static_cast<int>(- radius); x_offset <= radius; x_offset += grid_size) {
+        for (int y_offset = static_cast<int>(-radius); y_offset <= radius; y_offset += grid_size) {
             sf::Vector2f check_position = { position.x + x_offset, position.y + y_offset };
             std::string key = generateKey(check_position);
             Target* target = getTargetInGrid(key, position);
