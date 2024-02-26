@@ -268,6 +268,9 @@
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -435,6 +438,9 @@
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\InputHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -446,6 +452,9 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\bonk.wav">
+      <Filter>Source Files\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\cannonshot.wav">
       <Filter>Source Files\Sounds</Filter>
     </Media>
   </ItemGroup>

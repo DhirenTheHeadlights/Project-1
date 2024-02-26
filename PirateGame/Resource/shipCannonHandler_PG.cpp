@@ -2,16 +2,9 @@
 
 using namespace PirateGame;
 
-#include "shipCannonHandler_PG.h"
-
-using namespace PirateGame;
-
 void ShipCannonHandler::shootCannonballs(int numCannons) {
 	// If the ship is not ready to fire, return
 	if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
-
-	// If cannons are ready to fire, play sound
-	soundManager.playSound();
 
 	// Get the rotation of the ship and convert to radians
 	float rotationInRadians = (shipSprite.getRotation() - 180) * 3.14159265f / 180.f;
@@ -30,9 +23,14 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
 	sf::Vector2f shipPosition = shipSprite.getPosition(); // get position once, outside the loop
 	for (int i = 0; i < numCannons; i++) {
 		Cannonball* cannonball = new Cannonball;
-		cannonball->setPos(shipPosition + sf::Vector2f(i*18,i*18));
+		cannonball->getSprite().setTexture(textures.grabCannonballTexture());
+		cannonball->getSprite().setScale(cannonballScale);
+		cannonball->setPos(shipPosition + sf::Vector2f(i * 18,i * 18));
 		cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
 		cannonballs.push_back(cannonball);
+
+		// If cannons are ready to fire, play sound
+	    soundManager.playSound();
 	}
 
 	// Reset the cooldown clock

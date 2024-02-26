@@ -61,7 +61,7 @@ namespace PirateGame {
 
 	private:
 		// Static map for ship configurations
-		static std::unordered_map<ShipClass, ShipProperties> shipConfig;
+		static std::unordered_map<ShipClass, ShipProperties> ShipConfig;
 
 		// Functions
 		void setHealthBarPosition();
@@ -69,7 +69,6 @@ namespace PirateGame {
 		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
 
 		// SFML Objects
-		sf::RenderWindow* window = nullptr;
 		sf::Clock deltaTime;
 		sf::Sprite sprite;
 		sf::Texture texture;
@@ -77,16 +76,12 @@ namespace PirateGame {
 		// Variables to store the ship's values
 		float health = 0;
 		float scalingFactor = 5;
-		float rotation = 0;
 
 		sf::Vector2f constSpriteBounds;
 
 		ShipType shipType = ShipType::Player;
 		ShipClass shipClass = ShipClass::Sloop;
 		ShipProperties shipProperties;
-
-		// Collision rectangle
-		sf::RectangleShape collisionRect;
 
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
@@ -95,10 +90,8 @@ namespace PirateGame {
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
 
-		// Movement Handler
+		// Handlers
 		ShipMovementHandler SMH;
-
-		// Cannon Handler
 		ShipCannonHandler SCH;
 	};
 

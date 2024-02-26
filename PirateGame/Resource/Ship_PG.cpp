@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-std::unordered_map<ShipClass, ShipProperties> Ship::shipConfig = {
+std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
 { ShipClass::Sloop, {100.f, 100.f, 1, "PirateGameSprites/pg_ship_sloop.png", .1f, .1f, 1} },
 { ShipClass::Brigantine, {95.f, 133.f, 1.48f, "PirateGameSprites/pg_ship_brigantine.png", .12f, .12f, 2} },
 { ShipClass::Frigate, {82.f, 192.f, 2.15f, "PirateGameSprites/pg_ship_frigate.png", .15f, .15f, 3} },
@@ -13,7 +13,7 @@ std::unordered_map<ShipClass, ShipProperties> Ship::shipConfig = {
 // Create the ship
 void Ship::createShip(ShipType type, ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
-	shipProperties = shipConfig[level];
+	shipProperties = ShipConfig[level];
 
 	// Load the texture
 	if (!texture.loadFromFile(shipProperties.texturePath)) {
@@ -47,7 +47,8 @@ void Ship::createShip(ShipType type, ShipClass level) {
 
 // Draw and update the ship
 void Ship::updateAndDraw() {
-	window = GlobalValues::getInstance().getWindow();
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
 
 	regenerateHealth();
 
@@ -65,12 +66,15 @@ void Ship::updateAndDraw() {
 	window->draw(sprite);
 
 	// Set the firing side of the ship
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) SCH.setFiringSide(FiringSide::Left);
-	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) SCH.setFiringSide(FiringSide::Right);
+	if (inputHandler.isMouseButtonPressedOnce(sf::Mouse::Left)) {
+		SCH.setFiringSide(FiringSide::Left);
+	}
+	else if (inputHandler.isMouseButtonPressedOnce(sf::Mouse::Right)) {
+		SCH.setFiringSide(FiringSide::Right);
+	}
 
 	// Fire the cannons
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-	//if (sf::Mouse::isButtonPressed(sf::Mouse::Middle)) {
+	if (inputHandler.isKeyPressedOnce(sf::Keyboard::Space)) {
 		SCH.shootCannonballs(shipProperties.numCannons);
 	}
 
@@ -101,6 +105,7 @@ void Ship::setHealthBarPosition() {
 	sf::Vector2f healthBarOffset(-1 * constSpriteBounds.x / 2, constSpriteBounds.y / 2);
 
 	// Calculate the health bar's position based on the ship's rotation
+	float rotation = sprite.getRotation();
 	float angleRad = rotation * 3.1415926f / 180.0f;
 	sf::Transform rotationTransform;
 	rotationTransform.rotate(rotation, sprite.getPosition());

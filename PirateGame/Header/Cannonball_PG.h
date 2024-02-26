@@ -11,7 +11,7 @@ namespace PirateGame {
 
 	class Cannonball {
 	public:
-		Cannonball();
+		Cannonball() {};
 		~Cannonball() {};
 
 		void setPos(sf::Vector2f pos) { sprite.setPosition(pos); }
@@ -33,10 +33,6 @@ namespace PirateGame {
 		sf::Clock clock;
 		sf::Vector2f velocity;
 		sf::Sprite sprite;
-		sf::Texture texture;
-		
-		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
-		Textures textures;
 
 		float speed = 10.f;
 	};

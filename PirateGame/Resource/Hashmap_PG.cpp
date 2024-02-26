@@ -6,8 +6,8 @@ Hashmap::Hashmap() {
 }
 
 // Generate a key for the hashmap based on position
-std::string Hashmap::generateKey(sf::Vector2f pos) {
-	return std::to_string(static_cast<int>(pos.x)) + "," + std::to_string(static_cast<int>(pos.y));
+std::pair<int, int> Hashmap::generateKey(sf::Vector2f pos) {
+	return { pos.x, pos.y };
 }
 
 // Add a new object to the hashmap
@@ -19,7 +19,7 @@ void Hashmap::addLandMass(LandMass* landmass) {
 
     for (int i = topLeft.first; i <= bottomRight.first; ++i) {
         for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-            std::string key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
+            std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
             this->hashmap[key] = landmass;
         }
     }
@@ -34,7 +34,7 @@ void Hashmap::removeLandMass(LandMass* landmass) {
 
 	for (int i = topLeft.first; i <= bottomRight.first; ++i) {
 		for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-			std::string key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
+			std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
 			this->hashmap.erase(key);
 		}
 	}
@@ -60,7 +60,7 @@ std::set<LandMass*> Hashmap::findLandMassNearPlayer(Ship& ship, sf::RenderWindow
     // Check the cells in the bounding box
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
-            std::string key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
+            std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
 
             // If the key exists in the hashmap, add the landmass to the set
             if (hashmap.count(key)) {

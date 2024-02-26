@@ -8,6 +8,7 @@
 #include "GlobalValues_PG.h"
 #include "Cannonball_PG.h"
 #include "SoundManager_PG.h"
+#include "Textures_PG.h"
 
 namespace PirateGame {
 
@@ -26,8 +27,11 @@ namespace PirateGame {
 	private:
 		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;
+
 		sf::Vector2f cannonballDirection;
-		float cooldown = 2.5f;
+		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
+		
+		float cooldown = 0.1f;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Left;
@@ -35,6 +39,6 @@ namespace PirateGame {
 		std::string soundFile = "Sounds/cannonshot.wav";
 		SoundManager soundManager;
 
-
+		Textures textures;
 	};
 };

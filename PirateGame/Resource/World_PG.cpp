@@ -53,6 +53,7 @@ void World::setUpWorld() {
 
 void World::createWorld(sf::Event event) {
 	window->clear();
+	GlobalValues::getInstance().getInputHandler().update();
 
 	// Handle the different game states
 	switch (GSM.getCurrentGameState()) {

@@ -16,6 +16,14 @@
 #include "Map.h"
 
 namespace PirateGame {
+	// A custom hash function for std::pair<int, int>
+	struct pair_hash {
+		template <class T1, class T2>
+		std::size_t operator () (const std::pair<T1, T2>& pair) const {
+			return std::hash<T1>()(pair.first) ^ std::hash<T2>()(pair.second);
+		}
+	};
+
 	class Hashmap {
 	public:
 		Hashmap();
@@ -25,13 +33,13 @@ namespace PirateGame {
 		void removeLandMass(LandMass* landmass);
 
 		// Generate key for hashmap
-		std::string generateKey(sf::Vector2f position);
+		std::pair<int, int> generateKey(sf::Vector2f position);
 
 		// Find landmass near player
 		std::set<LandMass*> findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug = false);
 	private:
 		// Hashmap
-		std::unordered_map<std::string, LandMass*> hashmap;
+		std::unordered_map<std::pair<int, int>, LandMass*, pair_hash> hashmap;
 
 		// Map
 		Map& map = GlobalValues::getInstance().getMap();
