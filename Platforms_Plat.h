@@ -7,7 +7,7 @@ class Platforms_Plat {
 public:
 
 	//Generate Platformer
-	void generatePlatforms();
+	void generatePlatforms(int numPlatforms);
 
 private:
 

@@ -4,6 +4,12 @@ Platforms_Plat::Platforms_Plat() {
 
 }
 
-void generatePlatforms() {
+void Platforms_Plat::generatePlatforms(int numPlatforms) {
+
+	int patformsGenerated = 0;
+
+	while (platformsGenerated < numPlatforms) {
+		
+	}
 
 }
