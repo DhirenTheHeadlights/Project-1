@@ -8,7 +8,7 @@ void Interactable::setUpInteractable(sf::Vector2f size) {
 	background.setSize(size);
 	frame.setSize(size);
 	foreground.setSize(sf::Vector2f(size.x - padding * 2, size.y - padding * 2));
-	text.setCharacterSize(size.y / 3);
+	text.setCharacterSize(static_cast<unsigned int>(size.y / 3));
 	text.setFont(font);
 
 	// Set the color of the interactable objects

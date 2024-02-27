@@ -1,8 +1,8 @@
 #include "CellGroup_AG.h"
 
 CellGroup::CellGroup(const float startSize, Map& map) {
-	x = std::rand() % map.getLength();
-	y = std::rand() % map.getLength();
+	x = static_cast<float>(std::rand() % map.getLength());
+	y = static_cast<float>(std::rand() % map.getLength());
 	Circle* cell = new Circle(startSize);
 	cell->setPosition(x, y);
 	cells.push_back(cell);

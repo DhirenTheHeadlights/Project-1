@@ -33,7 +33,7 @@ std::pair<int, int> Map::getGridCoordinates(float x, float y) const {
 std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
     // Constants
     const int k = 30; // Number of attempts to find a suitable point
-    const float pi = 3.14159265358979323846;
+    const float pi = 3.14159265358979323846f;
 
     // Statics
     static std::random_device rd;
@@ -42,7 +42,7 @@ std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
 
     // Initialize the first point and active list if they are empty
     if (samplePoints.empty()) {
-        sf::Vector2f initialPoint(dis(gen) * len, dis(gen) * height);
+        sf::Vector2f initialPoint(static_cast<float>(dis(gen) * len), static_cast<float>(dis(gen) * height));
         activeList.push_back(initialPoint);
         samplePoints.push_back(initialPoint);
     }
@@ -54,8 +54,8 @@ std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
     sf::Vector2f point = activeList[randIndex];
 
     for (int i = 0; i < k; ++i) {
-        float angle = dis(gen) * 2 * pi;
-        float radius = spacing * (1 + dis(gen));
+        float angle = static_cast<float>(dis(gen)) * 2.f * pi;
+        float radius = spacing * static_cast<float>((1 + dis(gen)));
         sf::Vector2f newPoint(point.x + radius * cos(angle), point.y + radius * sin(angle));
         
         // Check if the point is within bounds and far enough from existing points
@@ -82,9 +82,6 @@ std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
 
     return std::nullopt;
 }
-
-// Helper function to check points
-
 
 // Draw the grid
 void Map::drawGrid(sf::RenderWindow& window) {

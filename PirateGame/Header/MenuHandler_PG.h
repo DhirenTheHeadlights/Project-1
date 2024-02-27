@@ -25,6 +25,11 @@ namespace PirateGame {
 		void createMenus();
 		void setUpMenus();
 		void openMenu(MenuType menuType);
+
+		StartMenu* getStartMenu() { return startMenu.get(); }
+		OptionsMenu* getOptionsMenu() { return optionsMenu.get(); }
+		InGameHUD* getHUD() { return HUD.get(); }
+		
 	private:
 		// Pointers to the different menus
 		std::unique_ptr<StartMenu> startMenu;

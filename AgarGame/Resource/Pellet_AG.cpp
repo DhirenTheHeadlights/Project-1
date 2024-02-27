@@ -19,7 +19,7 @@ Pellet::Pellet(float x, float y) {
 }
 
 sf::Vector2f Pellet::getPosition() const {
-    return shape.getPosition() + sf::Vector2f(radius, radius);
+    return shape.getPosition() + sf::Vector2f(static_cast<float>(radius), static_cast<float>(radius));
 }
 
 int Pellet::getRadius() const {

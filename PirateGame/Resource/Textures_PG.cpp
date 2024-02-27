@@ -1,5 +1,5 @@
 #include "Textures_PG.h"
-
+#include <iostream>
 using namespace PirateGame;
 
 // Constructor
@@ -40,9 +40,10 @@ Textures::Textures() {
 	}
 
 	// Load cannonball texture
-	cannonball.loadFromFile("PirateGameSprites/pg_misc_cannonball.png");
-}
 
+	if (!cannonball.loadFromFile("PirateGameSprites/pg_misc_cannonball.png")) std::cout << "no spritey witey" << std::endl;
+
+}
 // Deconstructor
 Textures::~Textures() {};
 

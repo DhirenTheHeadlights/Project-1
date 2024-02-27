@@ -40,6 +40,7 @@ namespace PirateGame {
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;
+		sf::Clock frameRateClock;
 	};
 }
 

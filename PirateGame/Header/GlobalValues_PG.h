@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Map.h"
+#include "InputHandler_PG.h"
 
 namespace PirateGame {
 	class GlobalValues {
@@ -29,12 +30,13 @@ namespace PirateGame {
 		void setClock(sf::Clock clock) { this->globalClock = clock; }
 		
 		// Getters
-		sf::Vector2f getMapSize() { return this->worldMap; }
+		sf::Vector2f getMapSize() const { return this->worldMap; }
 		Map& getMap() { return this->map; }
-		int getCellSize() { return this->cellSize; }
+		int getCellSize() const { return this->cellSize; }
 		sf::Font& getFont() { return this->globalFont; }
 		sf::RenderWindow* getWindow() { return this->globalWindow; }
-		sf::Clock getClock() { return this->globalClock; }
+		sf::Clock getClock() const { return this->globalClock; }
+		InputHandler& getInputHandler() { return this->inputHandler; }
 
 	private:
 		// Private Constructor
@@ -48,6 +50,9 @@ namespace PirateGame {
 		Map map;
 		sf::Vector2f worldMap = sf::Vector2f(10000, 10000);
 		int cellSize = 10;
+
+		// Input handler
+		InputHandler inputHandler;
 
 		// SFML objects
 		sf::Font globalFont;

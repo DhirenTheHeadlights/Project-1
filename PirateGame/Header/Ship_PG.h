@@ -7,8 +7,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <cmath>
+#include <unordered_map>
 
 #include "GlobalValues_PG.h"
+#include "ShipMovementHandler_PG.h"
+#include "shipCannonHandler_PG.h"
 
 namespace PirateGame {
 
@@ -24,70 +27,61 @@ namespace PirateGame {
 		Galleon
 	};
 
+	// Struct to hold ship properties
+	struct ShipProperties {
+		float baseSpeed = 1.f;
+		float maxHealth = 100.f;
+		float regenRate = 0.5f;
+		std::string texturePath = "";
+		float scaleX = 1.f, scaleY = 1.f;
+		int numCannons = 1;
+	};
+
 	class Ship {
 	public:
-		Ship() {};
+		Ship() : SMH(sprite), SCH(sprite) {};
 		~Ship() {};
 
-		// Create the ship
+		// Create the ship and set its values
 		void createShip(ShipType type, ShipClass shipClass);
+		void updateAndDraw();
 
-		// Movement functions
-		void move(sf::Vector2f map);
-		void direction(sf::Vector2f veclocity, float elapsed, sf::Vector2f map);
-		void collisionMovement(sf::Vector2f normalVector);
-		void stop();
-
-		// Draw functions
-		void draw(sf::Vector2f map);
-		void drawVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
+		// Get movement handler
+		ShipMovementHandler& getMovementHandler() { return SMH; }
 
 		// Setters
-		void setPosition(sf::Vector2f pos) { sprite.setPosition(pos); }
-		void setHealth(float hp) { health = hp; }
-		void setFriction(bool friction) { this->friction = friction; }
+		void damageShip(float damagePerSecond) {
+			health -= damagePerSecond * deltaTime.restart().asSeconds();
+			if (health < 0) health = 0;
+		}
 
 		// Getters
-		sf::Vector2f getSpritePosition();
-		sf::Vector2f getVelocity() { return velocity; }
-		int getCollisionAxis() { return axis; }
-		float getHealth() { return health; }
+		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
+
 	private:
+		// Static map for ship configurations
+		static std::unordered_map<ShipClass, ShipProperties> ShipConfig;
+
+		// Functions
+		void setHealthBarPosition();
+		void regenerateHealth();
+		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
+
 		// SFML Objects
-		sf::RenderWindow* window;
 		sf::Clock deltaTime;
 		sf::Sprite sprite;
 		sf::Texture texture;
 
 		// Variables to store the ship's values
-		float health = 1;
-		float maxHealth = 1;
-		float baseSpeed = 1;
-		float speed = 1;
-		float regenRate = 1;
-		float scaling = 5;
-		float rotation = 0;
+		float health = 0;
+		float scalingFactor = 5;
 
-		sf::Vector2f velocity;
 		sf::Vector2f constSpriteBounds;
-		sf::Vector2f spriteOrigin = sf::Vector2f(123.f, 128.f);
-		sf::Vector2f normal;
 
-		ShipType shipType;
-		ShipClass shipClass;
-
-		// Collision rectangle
-		sf::RectangleShape collisionRect;
-
-		// Variables to store the ship's position and last valid position
-		sf::Vector2f position;
-		sf::Vector2f lastValidPos;
-
-		// Friction value and boolean and axis value
-		float frictionCoeff = 0.1f;
-		bool friction = false;
-		int axis = 0;
+		ShipType shipType = ShipType::Player;
+		ShipClass shipClass = ShipClass::Sloop;
+		ShipProperties shipProperties;
 
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
@@ -95,6 +89,10 @@ namespace PirateGame {
 
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
+
+		// Handlers
+		ShipMovementHandler SMH;
+		ShipCannonHandler SCH;
 	};
 
 }

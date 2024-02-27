@@ -49,7 +49,7 @@ void PlayerInputBox::createPlayerInputBox(sf::RenderWindow& window, sf::Event ev
     playerInputText.setPosition(x, y);
 
     // Get mouse position relative to the window
-    sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y);
+    sf::Vector2f mousePos = sf::Vector2f(static_cast<float>(sf::Mouse::getPosition(window).x), static_cast<float>(sf::Mouse::getPosition(window).y));
 
     // Handle mouse button press
     if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {

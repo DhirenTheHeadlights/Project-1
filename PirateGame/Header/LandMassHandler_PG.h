@@ -4,6 +4,7 @@
 /// This class is going to handle the land masses in the game.
 /// It will be used to generate the land masses and store them in a vector.
 /// </summary>
+/// 
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -18,7 +19,7 @@
 namespace PirateGame {
     class LandMassHandler {
     public:
-        LandMassHandler();
+        LandMassHandler() : hashmap(), soundManager(soundFile) {};
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
@@ -26,8 +27,7 @@ namespace PirateGame {
     private:
         // Handle collisions between ship and land masses
         void handleCollisions(Ship& ship);
-        //int determineCollisionAxis(Ship& ship, LandMass* landMass);
-        bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5);
+        bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5, sf::RenderWindow& window = *GlobalValues::getInstance().getWindow(), bool debug = true);
 
         // Window pointer
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
@@ -47,9 +47,7 @@ namespace PirateGame {
         // SoundManager to play sounds
         SoundManager soundManager;
 
-        // Temp function for bounds drawing
-        void drawBounds(sf::RenderWindow& window, const sf::Sprite& rect);
-        sf::Vector2f collisionNormalVector;
+        // Textures
         Textures texture;
     };
 }

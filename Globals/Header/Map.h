@@ -22,7 +22,7 @@ public:
     std::optional<sf::Vector2f> getRandomPosition(float spacing);
 private:
     int rows = 1, cols = 1, cellSize = 1;
-    float len = 1, height = 1;
+    int len = 1, height = 1;
 
     // For disk sampling
     std::vector<sf::Vector2f> samplePoints;

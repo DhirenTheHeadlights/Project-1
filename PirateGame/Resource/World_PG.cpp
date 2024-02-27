@@ -37,7 +37,7 @@ World::World(sf::RenderWindow* window_in) {
 }
 
 void World::setUpWorld() {
-	ship.createShip(ShipType::Player, ShipClass::ManOWar);
+	ship.createShip(ShipType::Player, ShipClass::Frigate);
 	LMHandler->addLandMasses(100, 500.f);
 
 	// Set the game state to start
@@ -53,6 +53,7 @@ void World::setUpWorld() {
 
 void World::createWorld(sf::Event event) {
 	window->clear();
+	GlobalValues::getInstance().getInputHandler().update();
 
 	// Handle the different game states
 	switch (GSM.getCurrentGameState()) {
@@ -83,6 +84,14 @@ void World::createWorld(sf::Event event) {
 		window->close();
 	}
 
+	float frameRate = 1.f / frameRateClock.restart().asSeconds();
+	sf::Text frameRateText;
+	frameRateText.setFont(GlobalValues::getInstance().getFont());
+	frameRateText.setString(std::to_string(static_cast<int>(frameRate)));
+	frameRateText.setCharacterSize(24);
+	frameRateText.setFillColor(sf::Color::White);
+	frameRateText.setPosition(0, 0);
+
 	window->display();
 }
 
@@ -99,8 +108,11 @@ void World::gameLoop() {
 	LMHandler->drawLandMasses(ship);
 
 	// Draw the ship
-	ship.draw(GlobalValues::getInstance().getMapSize());
-	view.setCenter(ship.getSpritePosition());
+	ship.updateAndDraw();
+	view.setCenter(ship.getMovementHandler().getPosition());
+
+	// Set the ship for the hud
+	//MH->getHUD();
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

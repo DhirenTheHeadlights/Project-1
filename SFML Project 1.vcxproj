@@ -165,10 +165,12 @@
     <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp" />
@@ -176,6 +178,7 @@
     <ClCompile Include="PirateGame\Resource\Menu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Ship_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp" />
@@ -219,11 +222,13 @@
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
+    <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
+    <ClInclude Include="PirateGame\Header\InputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Interactable_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMass_PG.h" />
@@ -231,6 +236,7 @@
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Ship_PG.h" />
     <ClInclude Include="PirateGame\Header\Slider_PG.h" />
@@ -248,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\bonk.wav" />
+    <Media Include="Sounds\cannonshot.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="PirateGameSprites\pg_island_1.png" />

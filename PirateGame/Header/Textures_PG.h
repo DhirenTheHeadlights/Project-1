@@ -20,6 +20,7 @@ namespace PirateGame {
 		// These two functions return a random island or rock texture unless a specific one is specified
 		sf::Texture& grabIslandTexture(int index = -1);
 		sf::Texture& grabRockTexture(int index = -1);
+		sf::Texture& grabCannonballTexture() { return cannonball; }
 	private:
 		std::vector<sf::Texture> shipTextures{};
 		std::vector<sf::Texture> islandTextures{};

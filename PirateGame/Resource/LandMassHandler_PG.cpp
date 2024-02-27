@@ -2,9 +2,6 @@
 
 using namespace PirateGame;
 
-LandMassHandler::LandMassHandler() : hashmap(), soundManager(soundFile) {
-}
-
 LandMassHandler::~LandMassHandler() {
 	for (auto& landMass : landMasses) {
 		hashmap.removeLandMass(landMass);
@@ -78,8 +75,6 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 			}
 		}
 	}
-
-	std::cout << "Number of land masses: " << landMasses.size() << std::endl;
 }
 
 // Draw all the land masses
@@ -108,17 +103,10 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 
 	// Check if the player is colliding with any of the nearby land masses
 	for (auto& i : nearbyLandMasses) {
-
-		// If the player is colliding with a land mass
 		if (pixelPerfectTest(ship.getSprite(), i->getSprite())) {
-			collisionNormalVector = sf::Vector2f((static_cast<float>(ship.getSprite().getTextureRect().getPosition().x + 0.5 * ship.getSprite().getTextureRect().getSize().x) - // Ship's center x coordinate
-				(i->getSprite().getTextureRect().getPosition().x + 0.5 * i->getSprite().getTextureRect().getSize().x)), // Landmass i's center x cooordinate
-				static_cast<float>((ship.getSprite().getTextureRect().getPosition().y + 0.5 * ship.getSprite().getTextureRect().getSize().y) - // Ship's center y coordinate
-					(i->getSprite().getTextureRect().getPosition().y + 0.5 * i->getSprite().getTextureRect().getSize().y))); // Landmass i's center y coordinate
-			// Determine the collision axis and move the player accordingly
-			//int collisionAxis = determineCollisionAxis(ship, i);
-			ship.collisionMovement(collisionNormalVector);
-			ship.setFriction(true);
+
+			// Collision movement for the ship
+			ship.getMovementHandler().collisionMovement(i->getSprite());
 
 			// Set the boolean to true
 			isColliding = true;
@@ -127,103 +115,59 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 			collidingLandMasses.push_back(i);
 
 			// If the player collides, decrease the health of the player, multiplied by the number of colliding land masses
-			ship.setHealth(ship.getHealth() - 0.2f * collidingLandMasses.size());
+			ship.damageShip(0.2f * collidingLandMasses.size());
 		}
-
-		// Draw the bounds of the land mass
-		drawBounds(*window, i->getSprite());
-
-		// Draw the bounds of the player
-		drawBounds(*window, ship.getSprite());
 	}
 
 	// Play the collision sound while the player is colliding with a land mass
-	if (isColliding) {
-		soundManager.playSound();
-	}
-
-	// If the player is not colliding with a land mass, set the friction to false
-	else {
-		ship.setFriction(false);
-	}
+	if (isColliding) soundManager.playSound();
+	else ship.getMovementHandler().setIsColliding(false);
 }
-
-// Determine the collision axis
-/*
-int LandMassHandler::determineCollisionAxis(Ship& ship, LandMass* landMass) {
-	// Get the bounds of the ship and the land mass
-	sf::FloatRect shipBounds = ship.getSprite().getGlobalBounds();
-	sf::FloatRect landMassBounds = landMass->getSprite().getGlobalBounds();
-
-	// Get the center of the ship and the land mass
-	sf::Vector2f shipCenter(shipBounds.left + shipBounds.width / 2, shipBounds.top + shipBounds.height / 2);
-	sf::Vector2f landMassCenter(landMassBounds.left + landMassBounds.width / 2, landMassBounds.top + landMassBounds.height / 2);
-
-	// Get the distance between the center of the ship and the center of the land mass
-	sf::Vector2f distance = shipCenter - landMassCenter;
-	const float threshold = 10.f; // Threshold to determine significant difference
-	float diff = std::abs(std::abs(distance.x) - std::abs(distance.y));
-
-	// If the difference is greater than the threshold, return the axis with the greater difference
-	if (diff > threshold) {
-		return (std::abs(distance.x) > std::abs(distance.y)) ? 0 : 1; // 0 for horizontal, 1 for vertical
-	}
-	else {
-		return ship.getCollisionAxis(); // Existing collision axis or a default one
-	}
-}
-*/
 
 // Pixel perfect collision detection
-bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {
+bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit, sf::RenderWindow& window, bool debug) {
 	sf::FloatRect intersection;
-	// Check if the sprites intersect
 	if (!sprite1.getGlobalBounds().intersects(sprite2.getGlobalBounds(), intersection)) return false;
 
-	// Get the textures of the sprites
 	const sf::Texture* texture1 = sprite1.getTexture();
 	const sf::Texture* texture2 = sprite2.getTexture();
-
-	// If the textures are null, return false
 	if (!texture1 || !texture2) return false;
 
-	// Get the pixels of the textures
 	sf::Image image1 = texture1->copyToImage();
 	sf::Image image2 = texture2->copyToImage();
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();
 
-	// Get the texture rectangles of the sprites
 	sf::IntRect rect1 = sprite1.getTextureRect();
 	sf::IntRect rect2 = sprite2.getTextureRect();
 
-	// Loop through the intersection of the sprites
+	// Ellipse parameters in sprite1's local coordinate space
+	float a = (rect1.width) / 2.0f; // Semi-major axis without sails
+	float b = rect1.height / 2.0f; // Semi-minor axis
+
 	for (int i = static_cast<int>(intersection.left); i < intersection.left + intersection.width; i++) {
 		for (int j = static_cast<int>(intersection.top); j < intersection.top + intersection.height; j++) {
-			// Get the local positions of the sprites
+			// Convert global coordinates to sprite1's local space
 			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
-			sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 
-			// Get the indices of the pixels
-			int idx1 = ((int)(rect1.top + localPos1.y) * rect1.width + (int)(rect1.left + localPos1.x)) * 4;
-			int idx2 = ((int)(rect2.top + localPos2.y) * rect2.width + (int)(rect2.left + localPos2.x)) * 4;
+			// Check if the point is inside the ellipse defined by sprite1's local bounds
+			float x_rel = localPos1.x - rect1.width / 2.0f;
+			float y_rel = localPos1.y - rect1.height / 2.0f;
+			if ((x_rel * x_rel) / (a * a) + (y_rel * y_rel) / (b * b) <= 1) {
+				// Now check pixel alpha values for collision
+				int idx1 = ((int)localPos1.y * rect1.width + (int)localPos1.x) * 4;
+				// Convert global coordinates to sprite2's local space
+				sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
+				int idx2 = ((int)localPos2.y * rect2.width + (int)localPos2.x) * 4;
 
-			// If the pixels are not transparent, return true
-			if (idx1 >= 0 && idx1 < rect1.width * rect1.height * 4 && idx2 >= 0 && idx2 < rect2.width * rect2.height * 4) {
-				if (pixels1[idx1 + 3] > alphaLimit && pixels2[idx2 + 3] > alphaLimit) return true;
+				if (idx1 >= 0 && idx1 < rect1.width * rect1.height * 4 && idx2 >= 0 && idx2 < rect2.width * rect2.height * 4) {
+					if (pixels1[idx1 + 3] > alphaLimit && pixels2[idx2 + 3] > alphaLimit) {
+						return true; // Collision detected
+					}
+				}
 			}
 		}
 	}
-	return false;
-}
 
-
-void LandMassHandler::drawBounds(sf::RenderWindow& window, const sf::Sprite& sprite) {
-	sf::FloatRect bounds = sprite.getGlobalBounds();
-	sf::RectangleShape frame(sf::Vector2f(bounds.width, bounds.height));
-	frame.setPosition(bounds.left, bounds.top);
-	frame.setFillColor(sf::Color::Transparent);
-	frame.setOutlineColor(sf::Color::Yellow);
-	frame.setOutlineThickness(5.f);
-	window.draw(frame);
+	return false; // No collision detected
 }

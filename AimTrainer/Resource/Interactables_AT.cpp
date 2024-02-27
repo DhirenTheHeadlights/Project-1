@@ -54,7 +54,7 @@ void Interactable::createInteractable(std::string name, float len, float wid, fl
 
         // Text for the input box
         sliderInputBox.getPlayerInputText().setFillColor(textColor);
-        sliderInputBox.getPlayerInputText().setCharacterSize(textSize);
+        sliderInputBox.getPlayerInputText().setCharacterSize(static_cast<unsigned int>(textSize));
         sliderInputBox.setOnlyNumbers(true);
         sliderInputBox.setMaxCharacters(2);
         sliderInputBox.setResetTextBox(false);
@@ -69,7 +69,7 @@ void Interactable::createInteractable(std::string name, float len, float wid, fl
         inputBox.setFont(font);
         inputBox.setDefaultText(name);
         inputBox.getPlayerInputText().setFillColor(textColor);
-        inputBox.getPlayerInputText().setCharacterSize(textSize);
+        inputBox.getPlayerInputText().setCharacterSize(static_cast<unsigned int>(textSize));
 
         // Set properties of the input box
         float padding = 20.0f;
@@ -85,7 +85,7 @@ void Interactable::createInteractable(std::string name, float len, float wid, fl
     if (interactableType != Type::InputBox) {
         // Set the text of the interactable
         text = sf::Text(name, font);
-        text.setCharacterSize(textSize);
+        text.setCharacterSize(static_cast<unsigned int>(textSize));
         text.setFillColor(textColor);
 	}
 }
@@ -353,5 +353,5 @@ void Interactable::setInteractableSize(sf::Vector2f size) {
 }
 
 void Interactable::setInteractableTextSize(float size) {
-	text.setCharacterSize(size);
+	text.setCharacterSize(static_cast<unsigned int>(size));
 }

@@ -18,13 +18,10 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setShip(Ship& ship) { this->health = ship.getHealth(); }
+		//void setShip(Ship& ship) { this->health = ship.getHealth(); }
 	private:
 		// GameStateManager
 		GameStateManager& GSM;
-
-		// Menu variables
-		sf::View HUDView;
 
 		// Menu items
 		float health = 100;

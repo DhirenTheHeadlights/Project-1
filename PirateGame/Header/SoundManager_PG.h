@@ -17,7 +17,7 @@ namespace PirateGame {
 	private:
 		// Buffer and sound for collision
 		sf::SoundBuffer collisionBuffer;
-		sf::Sound collisionSound;
+		sf::Sound sound;
 	};
 }
 

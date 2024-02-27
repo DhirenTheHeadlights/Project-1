@@ -9,6 +9,7 @@ void InGameHUD::setUpMenu() {
 	healthBarRed.setSize(sf::Vector2f(200, 20));
 	healthBarRed.setFillColor(sf::Color::Red);
 	healthText = sf::Text("Health: " + std::to_string(static_cast<int>(health)), font, 20);
+	healthText.setFillColor(sf::Color::Black);
 
 	// Add the interactables
 	addInteractables();
@@ -25,16 +26,17 @@ void InGameHUD::addInteractables() {
  
 void InGameHUD::setInteractablePositions() {
 	// Get the view position
-	sf::Vector2f viewPos = window->getView().getCenter();
+	sf::View HUDView = window->getView();
+	HUDView.setRotation(0);
 
-	// Set the position of the health bar
-	healthBarGreen.setPosition(viewPos.x - 100, viewPos.y - 300);
+	// Set the position of the health bar to be in the bottom right corner of the screen
+	healthBarGreen.setPosition(HUDView.getCenter().x + window->getSize().x / 2 - 220, HUDView.getCenter().y + window->getSize().y / 2 - 30);
 
-	// Set the position of the health text
-	healthText.setPosition(healthBarGreen.getPosition().x + 10, healthBarGreen.getPosition().y - 30);
+	// Set the position of the health text to be centered in the health bar
+	healthText.setPosition(healthBarGreen.getPosition().x + 50, healthBarGreen.getPosition().y - 1);
 
 	// Set the position of the settings button
-	interactables[0]->setPosition(sf::Vector2f(viewPos.x - 100, viewPos.y + 300));
+	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - 100, HUDView.getCenter().y + 300));
 }
 
 void InGameHUD::draw() {

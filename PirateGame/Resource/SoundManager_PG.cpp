@@ -9,12 +9,12 @@ SoundManager::SoundManager(std::string pathToSound) {
 	}
 
 	// Set the sound to the buffer
-	collisionSound.setBuffer(collisionBuffer);
+	sound.setBuffer(collisionBuffer);
 }
 
 void SoundManager::playSound() {
 	// Only play if the sound is not already playing
-	if (collisionSound.getStatus() != sf::Sound::Status::Playing) {
-		collisionSound.play();
+	if (sound.getStatus() != sf::Sound::Status::Playing) {
+		sound.play();
 	}
 }
