@@ -1,6 +1,6 @@
 #include "Platforms_Plat.h"
 
-
+using namespace PlatformerGame;
 
 Platforms_Plat::Platforms_Plat(sf::RenderWindow& window){
 

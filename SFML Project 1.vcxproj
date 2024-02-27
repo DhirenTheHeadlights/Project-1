@@ -189,10 +189,10 @@
     <ClCompile Include="PirateGame\Resource\Textures_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
+    <ClCompile Include="Platformer Game\Resource\Platforms_Plat.cpp" />
     <ClCompile Include="Platformer Game\Resource\Player_Plat.cpp" />
     <ClCompile Include="Platformer Game\Resource\Textures_Plat.cpp" />
     <ClCompile Include="Platformer Game\Resource\World_Plat.cpp" />
-    <ClCompile Include="Platforms_Plat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgarGame\Header\CellGroup_AG.h" />
@@ -251,10 +251,10 @@
     <ClInclude Include="PirateGame\Header\Textures_PG.h" />
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
+    <ClInclude Include="Platformer Game\Header\Platforms_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Player_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Textures_Plat.h" />
     <ClInclude Include="Platformer Game\Header\World_Plat.h" />
-    <ClInclude Include="Platforms_Plat.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf" />

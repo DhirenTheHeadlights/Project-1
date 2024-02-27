@@ -40,11 +40,11 @@ void Player::move() {
 	}
 
 	// Bounds check
-	sf::Vector2f newPosition = player.getPosition() + velocity;
+	sf::Vector2f newPosition = playerSprite.getPosition() + velocity;
 	if (newPosition.x < leftBoundary) newPosition.x = leftBoundary;
-	if (newPosition.x > rightBoundary - player.getSize().x) newPosition.x = rightBoundary - player.getSize().x;
+	if (newPosition.x > rightBoundary - playerSprite.getGlobalBounds().width) newPosition.x = rightBoundary - playerSprite.getGlobalBounds().width;
 	if (newPosition.y < topBoundary) newPosition.y = topBoundary;
-	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
+	if (newPosition.y > bottomBoundary - playerSprite.getGlobalBounds().height) newPosition.y = bottomBoundary - playerSprite.getGlobalBounds().height;
 
 	playerSprite.setPosition(newPosition);
 }
@@ -56,12 +56,11 @@ void Player::applyGravity() {
 }
 
 void Player::draw() {
-	window.draw(player);
 	window.draw(playerSprite);
 }
 
 void Player::handlePlayerState() {
-	if (player.getPosition().y == 1000.f - player.getSize().y) {
+	if (playerSprite.getPosition().y == 1000.f - playerSprite.getGlobalBounds().height) {
 		isOnGround = true;
 		velocity.y = 0.f;
 	}
