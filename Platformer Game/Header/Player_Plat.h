@@ -11,7 +11,6 @@ namespace PlatformerGame {
 
 		// Movement methods
 		void move();
-		void jump();
 		void draw();
 
 		// Physics methods
@@ -24,29 +23,34 @@ namespace PlatformerGame {
 
 
 	private:
-		sf::RectangleShape player;
-		sf::Vector2f position;
+		// SFML variables
 		sf::Clock frametimeClock;
-		float elapsed;
 		sf::RenderWindow& window;
-		sf::Sprite playerSprite;
 
 		// Physics variables
 		sf::Vector2f velocity;
 		sf::Vector2f accel;
-		sf::Vector2f maxVelocity;
+		sf::Vector2f maxVelocity = sf::Vector2f(30.f, 30.f);  // Maximum velocity (x, y)
+		sf::Vector2f position;  // Position of the player
+
 		static const sf::Vector2f GRAVITY;  // Gravity constant
-		bool isOnGround;                    // Track if the player is on the ground
-		bool isMoving;						// Track is player is moving side to side
+
+
+		bool isOnGround = false;                    // Track if the player is on the ground
+		bool isMoving = false;						// Track is player is moving side to side
+
+		// Boundary variables
 		float leftBoundary;
 		float rightBoundary;
 		float topBoundary;
 		float bottomBoundary;
 
+		float elapsed = 0;
+		float scaling = 1;
+
 		Textures texture;
 		sf::Texture playerTexture;
-
-		float scaling = 1;
+		sf::Sprite playerSprite;
 
 	};
 }
