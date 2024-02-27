@@ -3,48 +3,51 @@
 #include "Textures_Plat.h"
 #include <iostream>
 
-class Player_Plat {
-public:
-	Player_Plat(sf::Vector2f& map, sf::RenderWindow& window);
 
-	// Movement methods
-	void move();
-	void jump();
-	void draw();
+namespace PlatformerGame {
+	class Player {
+	public:
+		Player(sf::Vector2f& map, sf::RenderWindow& window);
 
-	// Physics methods
-	void applyGravity();
+		// Movement methods
+		void move();
+		void jump();
+		void draw();
 
-	//State methods
-	void handlePlayerState();
+		// Physics methods
+		void applyGravity();
 
-	sf::Vector2f getPosition() const { return player.getPosition(); }
-	
+		//State methods
+		void handlePlayerState();
 
-private:
-	sf::RectangleShape player;
-	sf::Vector2f position;
-	sf::Clock frametimeClock;
-	float elapsed;
-	sf::RenderWindow& window;
-	sf::Sprite playerSprite;
+		sf::Vector2f getPosition() const { return player.getPosition(); }
 
-	// Physics variables
-	sf::Vector2f velocity;
-	sf::Vector2f accel;
-	sf::Vector2f maxVelocity;
-	static const sf::Vector2f GRAVITY;  // Gravity constant
-	bool isOnGround;                    // Track if the player is on the ground
-	bool isMoving;						// Track is player is moving side to side
-	float leftBoundary;
-	float rightBoundary;
-	float topBoundary;
-	float bottomBoundary;
 
-	PlatformerGame::Textures texture;
-	sf::Texture playerTexture;
+	private:
+		sf::RectangleShape player;
+		sf::Vector2f position;
+		sf::Clock frametimeClock;
+		float elapsed;
+		sf::RenderWindow& window;
+		sf::Sprite playerSprite;
 
-	float scaling = 1;
+		// Physics variables
+		sf::Vector2f velocity;
+		sf::Vector2f accel;
+		sf::Vector2f maxVelocity;
+		static const sf::Vector2f GRAVITY;  // Gravity constant
+		bool isOnGround;                    // Track if the player is on the ground
+		bool isMoving;						// Track is player is moving side to side
+		float leftBoundary;
+		float rightBoundary;
+		float topBoundary;
+		float bottomBoundary;
 
-};
+		Textures texture;
+		sf::Texture playerTexture;
+
+		float scaling = 1;
+
+	};
+}
 

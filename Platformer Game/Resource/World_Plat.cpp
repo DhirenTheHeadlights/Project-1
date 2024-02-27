@@ -1,11 +1,13 @@
 #include "World_Plat.h"
 
-world_plat::world_plat(sf::RenderWindow& window) : window(window), player(worldMap, window) {
+using namespace PlatformerGame;
+
+World::World(sf::RenderWindow& window) : window(window), player(worldMap, window) {
 	map.grid(len, wid, 10);
 }
 
 // Game loop
-void world_plat::gameLoop(sf::Event event) {
+void World::gameLoop(sf::Event event) {
 	player.handlePlayerState();
 	player.move();
 	player.applyGravity();

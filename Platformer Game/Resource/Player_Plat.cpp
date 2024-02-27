@@ -1,9 +1,11 @@
 #include "Player_Plat.h"
 
+using namespace PlatformerGame;
 
-const sf::Vector2f Player_Plat::GRAVITY = sf::Vector2f(0, 0.05f);  // Gravity value
 
-Player_Plat::Player_Plat(sf::Vector2f& map, sf::RenderWindow& window) : window(window) {
+const sf::Vector2f Player::GRAVITY = sf::Vector2f(0, 0.05f);  // Gravity value
+
+Player::Player(sf::Vector2f& map, sf::RenderWindow& window) : window(window) {
 	// Init player
 
 	//player.setSize(sf::Vector2f(1.f, 1.f));
@@ -25,13 +27,12 @@ Player_Plat::Player_Plat(sf::Vector2f& map, sf::RenderWindow& window) : window(w
 	rightBoundary = 100000; // windowSize should be passed to the Player or known globally
 	topBoundary = 0.f;
 	bottomBoundary = 1000;
-	std::cout << "Right boundary: " << rightBoundary << std::endl;
-	std::cout << "Right boundary: " << bottomBoundary << std::endl;
 }
 
-void Player_Plat::move() {
+void Player::move() {
 
 	elapsed = frametimeClock.restart().asMilliseconds();
+
 	 //Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		velocity.x = -6.f;
@@ -58,18 +59,18 @@ void Player_Plat::move() {
 	playerSprite.setPosition(newPosition);
 }
 
-void Player_Plat::applyGravity() {
+void Player::applyGravity() {
 	if (!isOnGround) {
 		velocity += GRAVITY;  // Apply gravity to the velocity
 	}
 }
 
-void Player_Plat::draw() {
+void Player::draw() {
 	window.draw(player);
 	window.draw(playerSprite);
 }
 
-void Player_Plat::handlePlayerState() {
+void Player::handlePlayerState() {
 	if (player.getPosition().y == 1000.f - player.getSize().y) {
 		isOnGround = true;
 		velocity.y = 0.f;

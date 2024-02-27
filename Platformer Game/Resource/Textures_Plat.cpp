@@ -1,5 +1,6 @@
 #include "Textures_Plat.h"
 #include <iostream>
+
 using namespace PlatformerGame;
 
 Textures::Textures() {
