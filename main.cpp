@@ -12,6 +12,7 @@
 #include "AimTrainer/Header/World_AT.h"
 #include "LightAndShadow/Header/WorldLS.h"
 #include "PirateGame/Header/World_PG.h"
+#include "Platformer Game/Header/World_Plat.h"
 
 // Define a type alias for a function that takes no arguments and returns void
 using GameFunction = std::function<void()>;
@@ -142,6 +143,24 @@ void lightAndShadow() {
     }
 }
 
+void Platformer() {
+    initializeGlobals("Platformer Window");
+
+    world_plat world(window);
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) { // Close the window if the user clicks the X button
+                window.close();
+            }
+        }
+        window.clear();
+        world.gameLoop(event);
+        window.display();
+    }
+}
+
 void exitTheLauncher() {
     exitLauncher = true;
 	window.close();
@@ -160,6 +179,7 @@ int main() {
         Game("Light and Shadows", lightAndShadow),
         Game("Pirate Game", pirateGame),
         Game("Exit", exitTheLauncher),
+        Game("Platformer", Platformer),
         // Add more games here...
     };
 

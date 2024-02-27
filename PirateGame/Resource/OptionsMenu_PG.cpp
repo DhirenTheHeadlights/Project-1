@@ -194,36 +194,36 @@ void OptionsMenu::addControlsTabInteractables() {
 void OptionsMenu::interactWithMenuItems() {
 	// Interact with the tabs
 	for (auto& tab : tabButtons) {
-		tab->interact(*window);
+		tab->interact();
 	}
 
 	// Interact with the interactables for the current tab
 	switch (currentTab) {
 	case Tab::General:
 		for (auto& interactable : generalTabInteractables) {
-			interactable->interact(*window);
+			interactable->interact();
 		}
 		break;
 	case Tab::Graphics:
 		for (auto& interactable : graphicsTabInteractables) {
-			interactable->interact(*window);
+			interactable->interact();
 		}
 		break;
 	case Tab::Audio:
 		for (auto& interactable : audioTabInteractables) {
-			interactable->interact(*window);
+			interactable->interact();
 		}
 		break;
 	case Tab::Controls:
 		for (auto& interactable : controlsTabInteractables) {
-			interactable->interact(*window);
+			interactable->interact();
 		}
 		break;
 	}
 
 	// Interact with the menu items
 	for (auto& interactable : interactables) {
-		interactable->interact(*window);
+		interactable->interact();
 	}
 }
 
@@ -240,7 +240,7 @@ void OptionsMenu::draw() {
 		interactable->setTextColor(sf::Color::White);
 		interactable->setOutlineThickness(0.f);
 		interactable->updateColors();
-		interactable->draw(*window);
+		interactable->draw();
 	}
 
 	// Draw the tabs
@@ -251,7 +251,7 @@ void OptionsMenu::draw() {
 		tab->setFrameColor(sf::Color::Transparent);
 		tab->setTextColor(sf::Color::White);
 		tab->updateColors();
-		tab->draw(*window);
+		tab->draw();
 	}
 
 	// Draw the interactables for the current tab
@@ -280,10 +280,10 @@ void OptionsMenu::drawTabInteractables(std::vector<std::unique_ptr<Interactable>
 	// This means that the drop down menu will be drawn on top of the other interactables and will
 	// be visible
 	for (auto it = tabInteractables.rbegin(); it != tabInteractables.rend(); ++it) {
-		(*it)->draw(*window);
+		(*it)->draw();
 		(*it)->setTextColor(sf::Color::White);
 		(*it)->setOutlineThickness(0.f);
 		(*it)->updateColors();
-		(*it)->draw(*window);
+		(*it)->draw();
 	}
 }

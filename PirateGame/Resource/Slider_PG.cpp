@@ -40,11 +40,12 @@ void Slider::setPosition(sf::Vector2f pos) {
 }
 
 // Interact with the slider
-void Slider::interact(sf::RenderWindow& window) {
+void Slider::interact() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	// If the slider is being clicked
-	if (foreground.getGlobalBounds().contains(static_cast<float>(sf::Mouse::getPosition(window).x), static_cast<float>(sf::Mouse::getPosition(window).y)) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+	if (foreground.getGlobalBounds().contains(static_cast<float>(sf::Mouse::getPosition(*window).x), static_cast<float>(sf::Mouse::getPosition(*window).y)) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		// Set the position of the slider thumb to the mouse position
-		sliderThumb.setPosition(static_cast<float>(sf::Mouse::getPosition(window).x), sliderThumb.getPosition().y);
+		sliderThumb.setPosition(static_cast<float>(sf::Mouse::getPosition(*window).x), sliderThumb.getPosition().y);
 		// If the slider thumb is outside the bounds of the slider track, set it to the bounds
 		if (sliderThumb.getPosition().x < foreground.getPosition().x) sliderThumb.setPosition(foreground.getPosition().x, sliderThumb.getPosition().y);
 		if (sliderThumb.getPosition().x > foreground.getPosition().x + foreground.getSize().x - sliderThumb.getSize().x) sliderThumb.setPosition(foreground.getPosition().x + foreground.getSize().x - sliderThumb.getSize().x, sliderThumb.getPosition().y);
@@ -57,10 +58,11 @@ void Slider::interact(sf::RenderWindow& window) {
 }
 
 // Draw the slider
-void Slider::draw(sf::RenderWindow& window) {
-	window.draw(background);
-	window.draw(foreground);
-	window.draw(frame);
-	window.draw(sliderThumb);
-	window.draw(text);
+void Slider::draw() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	window->draw(background);
+	window->draw(foreground);
+	window->draw(frame);
+	window->draw(sliderThumb);
+	window->draw(text);
 }

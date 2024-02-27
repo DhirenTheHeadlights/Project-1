@@ -19,8 +19,8 @@ namespace PirateGame {
 		~Slider() {};
 
 		void setUpInteractable(sf::Vector2f size) override;
-		void interact(sf::RenderWindow& window) override;
-		void draw(sf::RenderWindow& window) override;
+		void interact() override;
+		void draw() override;
 		void setPosition(sf::Vector2f pos) override;	
 
 		// Setters for properties

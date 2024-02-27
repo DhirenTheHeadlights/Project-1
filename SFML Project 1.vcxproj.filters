@@ -104,6 +104,15 @@
     <Filter Include="Source Files\PirateGame\Resource\Handlers">
       <UniqueIdentifier>{abcba486-6300-4a62-b5ea-27c459d6a44f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Platformer">
+      <UniqueIdentifier>{4cfd6464-0c50-4681-a0f2-0d66cb35178d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platformer\Header">
+      <UniqueIdentifier>{a9b6a249-7554-4790-b6bd-461063ce56cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platformer\Resource">
+      <UniqueIdentifier>{7aadd537-d186-4dc0-be08-af18eb358df3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -238,7 +247,7 @@
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\TextDisplayBoxd_PG.cpp">
+    <ClCompile Include="PirateGame\Resource\TextDisplayBox_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\TextInpuBox_PG.cpp">
@@ -270,6 +279,12 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer Game\Resource\Player_Plat.cpp">
+      <Filter>Source Files\Platformer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer Game\Resource\World_Plat.cpp">
+      <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -440,6 +455,12 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\InputHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Platformer Game\Header\Player_Plat.h">
+      <Filter>Source Files\Platformer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Platformer Game\Header\World_Plat.h">
+      <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ void Menu::draw() {
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {
-		interactable->draw(*window);
+		interactable->draw();
 	}
 
 	// Interact with the menu items
@@ -27,6 +27,6 @@ void Menu::draw() {
 // Interact with the menu items
 void Menu::interactWithMenuItems() {
 	for (auto& interactable : interactables) {
-		interactable->interact(*window);
+		interactable->interact();
 	}
 }

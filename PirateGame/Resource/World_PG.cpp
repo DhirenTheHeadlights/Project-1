@@ -91,6 +91,7 @@ void World::createWorld(sf::Event event) {
 	frameRateText.setCharacterSize(24);
 	frameRateText.setFillColor(sf::Color::White);
 	frameRateText.setPosition(0, 0);
+	window->draw(frameRateText);
 
 	window->display();
 }

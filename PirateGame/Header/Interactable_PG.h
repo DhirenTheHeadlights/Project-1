@@ -10,6 +10,8 @@
 #include <iostream>
 #include <functional>
 
+#include "GlobalValues_PG.h"
+
 namespace PirateGame {
 	class Interactable {
 	public:
@@ -17,8 +19,8 @@ namespace PirateGame {
 		~Interactable() {};
 
 		virtual void setUpInteractable(sf::Vector2f size);
-		virtual void interact(sf::RenderWindow& window) = 0;
-		virtual void draw(sf::RenderWindow& window);
+		virtual void interact() = 0;
+		virtual void draw();
 		virtual void updateColors();
 
 		// Setters for properties

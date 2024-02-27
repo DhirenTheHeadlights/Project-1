@@ -21,7 +21,7 @@ namespace PirateGame {
 		Button(ButtonFunction func, sf::Font& font) : func(func), Interactable(font) {};
 		~Button() {};
 
-		void interact(sf::RenderWindow& window); // Overridden function to handle the interaction of the button
+		void interact(); // Overridden function to handle the interaction of the button
 
 	private:
 		ButtonFunction func;

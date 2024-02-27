@@ -67,8 +67,9 @@ void DropDown::setPosition(sf::Vector2f pos) {
 }
 
 // Interact with the drop down menu
-void DropDown::interact(sf::RenderWindow& window) {
-	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
+void DropDown::interact() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(*window));
 
 	// If the mouse is over the drop down menu and the mouse is clicked
 	if (foreground.getGlobalBounds().contains(mousePos) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -95,31 +96,35 @@ void DropDown::interact(sf::RenderWindow& window) {
 }
 
 // Draw the drop down menu
-void DropDown::draw(sf::RenderWindow& window) {
+void DropDown::draw() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+
 	// Draw the background
-	window.draw(background);
-	window.draw(foreground);
-	window.draw(frame);
-	window.draw(text);
-	window.draw(selectedText);
+	window->draw(background);
+	window->draw(foreground);
+	window->draw(frame);
+	window->draw(text);
+	window->draw(selectedText);
 
 	// If the drop down menu is open, open the drop down menu
 	if (isOpen) {
-		openDropDown(window);
+		openDropDown();
 	}
 }
 
 // Open the drop down menu if needed
-void DropDown::openDropDown(sf::RenderWindow& window) {
+void DropDown::openDropDown() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+
 	// Draw the options
 	for (int i = 0; i < options.size(); i++) {
-		window.draw(optionBoxes[i]);
-		window.draw(optionTexts[i]);
+		window->draw(optionBoxes[i]);
+		window->draw(optionTexts[i]);
 	}
 
 	// If the mouse is over an option
 	for (int i = 0; i < options.size(); i++) {
-		if (optionBoxes[i].getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window)))) {
+		if (optionBoxes[i].getGlobalBounds().contains(window->mapPixelToCoords(sf::Mouse::getPosition(*window)))) {
 			// If the mouse is clicked
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 				// Set the selected option

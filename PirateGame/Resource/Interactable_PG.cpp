@@ -16,11 +16,12 @@ void Interactable::setUpInteractable(sf::Vector2f size) {
 }
 
 // Draw the interactable object
-void Interactable::draw(sf::RenderWindow& window) {
-	window.draw(background);
-	window.draw(foreground);
-	window.draw(frame);
-	window.draw(text);
+void Interactable::draw() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	window->draw(background);
+	window->draw(foreground);
+	window->draw(frame);
+	window->draw(text);
 }
 
 // Update the colors of the interactable objects

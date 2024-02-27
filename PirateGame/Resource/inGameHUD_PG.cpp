@@ -17,7 +17,7 @@ void InGameHUD::setUpMenu() {
 
 void InGameHUD::addInteractables() {
 	// Add a settings button
-	std::function<void()> settingsFunc = [this]() { GSM.changeGameState(GameState::OptionsMenu); };
+	std::function<void()> settingsFunc = [this]() { GSM.changeGameState(GameState::Start); };
 	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc, font);
 	settingsButton->setUpInteractable(sf::Vector2f(200, 50));
 	settingsButton->setString("Settings");
@@ -48,10 +48,10 @@ void InGameHUD::draw() {
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {
-		interactable->draw(*window);
+		interactable->draw();
 	}
 
 	// Interact
 	setInteractablePositions();
-	interactWithMenuItems();
+	interactWithMenuItems();															
 }

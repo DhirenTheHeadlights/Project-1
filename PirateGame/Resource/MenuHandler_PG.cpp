@@ -21,7 +21,6 @@ void MenuHandler::openMenu(MenuType menuType) {
 		HUD->draw();
 		break;
 	}
-
 }
 
 void MenuHandler::setUpMenus() {

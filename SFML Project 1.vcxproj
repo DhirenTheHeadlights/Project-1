@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_PATH)\include;$(ProjectDir)AgarGame\Header;$(ProjectDir)AimTrainer\Header;$(ProjectDir)PirateGame\Header;$(ProjectDir)LightAndShadow\Header;$(ProjectDir)Globals\Header;$(ProjectDir)Fonts;$(ProjectDir)Sounds;$(ProjectDir)AimTrainer\Misc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_PATH)\include;$(ProjectDir)AgarGame\Header;$(ProjectDir)AimTrainer\Header;$(ProjectDir)PirateGame\Header;$(ProjectDir)LightAndShadow\Header;$(ProjectDir)Globals\Header;$(ProjectDir)Fonts;$(ProjectDir)Sounds;$(ProjectDir)AimTrainer\Misc;$(ProjectDir)Platformer Game\Header</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -184,11 +184,13 @@
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\StartMenu_PG.cpp" />
-    <ClCompile Include="PirateGame\Resource\TextDisplayBoxd_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\TextDisplayBox_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\TextInpuBox_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Textures_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
+    <ClCompile Include="Platformer Game\Resource\Player_Plat.cpp" />
+    <ClCompile Include="Platformer Game\Resource\World_Plat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgarGame\Header\CellGroup_AG.h" />
@@ -247,6 +249,8 @@
     <ClInclude Include="PirateGame\Header\Textures_PG.h" />
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
+    <ClInclude Include="Platformer Game\Header\Player_Plat.h" />
+    <ClInclude Include="Platformer Game\Header\World_Plat.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf" />
