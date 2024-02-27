@@ -7,9 +7,9 @@ World::World(sf::RenderWindow& window) : window(window), player(worldMap, window
 }
 
 //Create the world
-void World::createWorld(sf::Event event) {
-	platforms.generatePlatforms(100);
-}
+//void World::createWorld(sf::Event event) {
+//	platforms.generatePlatforms(100);
+//}
 
 // Game loop
 void World::gameLoop(sf::Event event) {
