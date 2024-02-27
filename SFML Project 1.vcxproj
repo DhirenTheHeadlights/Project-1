@@ -192,6 +192,7 @@
     <ClCompile Include="Platformer Game\Resource\Player_Plat.cpp" />
     <ClCompile Include="Platformer Game\Resource\Textures_Plat.cpp" />
     <ClCompile Include="Platformer Game\Resource\World_Plat.cpp" />
+    <ClCompile Include="Platforms_Plat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgarGame\Header\CellGroup_AG.h" />
@@ -253,6 +254,7 @@
     <ClInclude Include="Platformer Game\Header\Player_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Textures_Plat.h" />
     <ClInclude Include="Platformer Game\Header\World_Plat.h" />
+    <ClInclude Include="Platforms_Plat.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf" />
