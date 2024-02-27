@@ -1,0 +1,101 @@
+#include "Player_Plat.h"
+#include <iostream>
+
+const sf::Vector2f Player_Plat::GRAVITY = sf::Vector2f(0, 2.f);  // Gravity value
+
+Player_Plat::Player_Plat(sf::Vector2f& map) {
+	// Init player
+	player.setSize(sf::Vector2f(100.f, 100.f));
+	player.setFillColor(sf::Color::Red);
+	player.setPosition(0.f, 980.f);
+
+	maxVelocity = sf::Vector2f(30.f, 30.f);
+	
+	leftBoundary = 0.f;
+	rightBoundary = 1820.f; // windowSize should be passed to the Player or known globally
+	topBoundary = 0.f;
+	bottomBoundary = 1080.f;
+
+	// Debug print all boundaries
+	std::cout << "Left: " << leftBoundary << std::endl;
+	std::cout << "Right: " << rightBoundary << std::endl;
+	std::cout << "Top: " << topBoundary << std::endl;
+	std::cout << "Bottom: " << bottomBoundary << std::endl;
+}
+
+void Player_Plat::move() {
+	 //Horizontal movement logic
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		velocity.x = -10.f;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+		velocity.x = 10.f;
+	}
+	else {
+		isMoving = false;
+	}
+	if (isOnGround && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		velocity.y = -20.f;
+		isOnGround = false;
+	}
+
+	std::cout << velocity.x << ", " << velocity.y << std::endl;
+	std::cout << player.getPosition().x << ", " << player.getPosition().y << std::endl;
+}
+
+void Player_Plat::applyGravity() {
+	if (!isOnGround) {
+		velocity += GRAVITY;  // Apply gravity to the velocity
+		
+	}
+}
+
+void Player_Plat::draw(sf::RenderWindow& window) {
+	window.draw(player);
+}
+
+void Player_Plat::handlePlayerState() {
+
+	if (velocity.x == 0.f) {
+		isMoving = false;
+	
+	}
+	else {
+		isMoving = true;
+
+	}
+	if (isMoving = false) {
+		velocity.x = 0.f;
+	
+	}
+	if (player.getPosition().y == 980.f) {
+		isOnGround = true;
+		velocity.y = 0.f;
+	
+	}
+	else {
+		isOnGround = false;
+	
+	}
+	// Cap the velocity
+	if (velocity.x > maxVelocity.x) {
+		velocity.x = maxVelocity.x;
+	}
+
+	if (velocity.y > 2.f) {
+		velocity.y = 2.f;
+	
+	}
+	else if (velocity.y < -30.f) {
+		velocity.y = -30.f;
+	
+	}
+	// Bounds check
+	sf::Vector2f newPosition = player.getPosition() + velocity;
+	if (newPosition.x < leftBoundary) newPosition.x = leftBoundary;
+	if (newPosition.x > rightBoundary - player.getSize().x) newPosition.x = rightBoundary - player.getSize().x;
+	if (newPosition.y < topBoundary) newPosition.y = topBoundary;
+	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
+
+	player.setPosition(newPosition);
+}
