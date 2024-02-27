@@ -12,6 +12,7 @@ namespace PlatformerGame {
 		// World.h
 		World(sf::RenderWindow& window);
 		void gameLoop(sf::Event event);
+		void createWorld(sf::Event event);
 
 
 	private:
@@ -23,7 +24,7 @@ namespace PlatformerGame {
 		Player player;
 
 		//Define the platforms
-		Platform_Plat platforms;
+		Platforms_Plat platforms;
 
 		//variables for movement
 		bool isJumping = false;

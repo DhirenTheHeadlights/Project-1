@@ -3,7 +3,12 @@
 using namespace PlatformerGame;
 
 World::World(sf::RenderWindow& window) : window(window), player(worldMap, window) {
-	map.grid(len, wid, 10);
+	map.grid(len, wid, 10.f);
+}
+
+//Create the world
+void createWorld(sf::Event event) {
+	platforms.generatePlatforms(100);
 }
 
 // Game loop

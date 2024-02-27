@@ -6,7 +6,7 @@
 namespace PlatformerGame {
 	class Platforms_Plat {
 	public:
-		Platforms_Plat(sf::RenderWindow& window);
+		Platforms_Plat();
 
 		//Generate Platformer
 		void generatePlatforms(int numPlatforms);
