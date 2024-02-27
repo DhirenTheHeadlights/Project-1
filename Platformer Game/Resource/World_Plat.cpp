@@ -7,7 +7,7 @@ World::World(sf::RenderWindow& window) : window(window), player(worldMap, window
 }
 
 //Create the world
-void createWorld(sf::Event event) {
+void World::createWorld(sf::Event event) {
 	platforms.generatePlatforms(100);
 }
 
