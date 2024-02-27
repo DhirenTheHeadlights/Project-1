@@ -6,22 +6,11 @@ using namespace PlatformerGame;
 const sf::Vector2f Player::GRAVITY = sf::Vector2f(0, 0.05f);  // Gravity value
 
 Player::Player(sf::Vector2f& map, sf::RenderWindow& window) : window(window) {
-	// Init player
-
-	//player.setSize(sf::Vector2f(1.f, 1.f));
-	//player.setFillColor(sf::Color::Red);
-	//player.setPosition(90.f, 90.f);
+	// Initialize the player sprite
 	playerSprite.setPosition(100.f, 100.f);
 	playerSprite.setScale(2.0f, 2.0f);
 	playerSprite.setTexture(texture.grabPlayerTexture(0));
-
-
-	sf::Vector2u textureSize = playerSprite.getTexture()->getSize();
-	playerSprite.setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
-
-
-
-	maxVelocity = sf::Vector2f(30.f, 30.f);
+	playerSprite.setOrigin(playerSprite.getGlobalBounds().width / 2.0f, playerSprite.getGlobalBounds().height / 2.0f);
 	
 	leftBoundary = 0.f;
 	rightBoundary = 100000; // windowSize should be passed to the Player or known globally
@@ -57,7 +46,6 @@ void Player::move() {
 	if (newPosition.y < topBoundary) newPosition.y = topBoundary;
 	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
 
-	player.setPosition(newPosition);
 	playerSprite.setPosition(newPosition);
 }
 
