@@ -3,6 +3,7 @@
 #include "Map.h"
 
 
+#include "Platforms_Plat.h"
 #include "Player_Plat.h"
 #pragma once
 class world_plat {
@@ -10,6 +11,7 @@ public:
 	// World.h
 	world_plat(sf::RenderWindow& window);
 	void gameLoop(sf::Event event);
+	void createGame(sf::Event event);
 
 
 private:
@@ -19,6 +21,9 @@ private:
 
 	// Define the player
 	Player_Plat player;
+
+	//Define Platforms
+	Platforms_Plat platforms;
 
 	//variables for movement
 	bool isJumping = false;

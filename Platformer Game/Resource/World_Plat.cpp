@@ -4,6 +4,10 @@ world_plat::world_plat(sf::RenderWindow& window) : window(window), player(worldM
 	map.grid(len, wid, 10);
 }
 
+void createGame(sf::Event event) {
+	
+}
+
 // Game loop
 void world_plat::gameLoop(sf::Event event) {
 	player.handlePlayerState();
