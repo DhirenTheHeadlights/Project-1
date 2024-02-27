@@ -35,9 +35,11 @@ void Player_Plat::move() {
 	 //Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		velocity.x = -6.f;
+		playerSprite.setScale(-2.f, 2.f);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		velocity.x = 6.f;
+		playerSprite.setScale(2.f, 2.f);
 	}
 	else {
 		velocity.x = 0;
