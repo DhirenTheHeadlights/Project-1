@@ -7,6 +7,7 @@ Textures::Textures() {
 	sf::Texture player;
 	player.loadFromFile("PlatformerGameSprites/stupidnicktankdog.png");
 	playerTextures.push_back(player);
+	
 
 }
 
