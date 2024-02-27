@@ -9,7 +9,7 @@ void world_plat::gameLoop(sf::Event event) {
 	player.handlePlayerState();
 	player.move();
 	player.applyGravity();
-	player.draw(window);
+	player.draw();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window.close();

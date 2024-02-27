@@ -3,12 +3,12 @@
 
 class Player_Plat {
 public:
-	Player_Plat(sf::Vector2f& map);
+	Player_Plat(sf::Vector2f& map, sf::RenderWindow& window);
 
 	// Movement methods
 	void move();
 	void jump();
-	void draw(sf::RenderWindow& window);
+	void draw();
 
 	// Physics methods
 	void applyGravity();
@@ -20,6 +20,9 @@ public:
 private:
 	sf::RectangleShape player;
 	sf::Vector2f position;
+	sf::Clock frametimeClock;
+	float elapsed;
+	sf::RenderWindow& window;
 
 	// Physics variables
 	sf::Vector2f velocity;

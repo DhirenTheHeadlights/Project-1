@@ -3,7 +3,7 @@
 
 const sf::Vector2f Player_Plat::GRAVITY = sf::Vector2f(0, 2.f);  // Gravity value
 
-Player_Plat::Player_Plat(sf::Vector2f& map) {
+Player_Plat::Player_Plat(sf::Vector2f& map, sf::RenderWindow& window) : window(window) {
 	// Init player
 	player.setSize(sf::Vector2f(100.f, 100.f));
 	player.setFillColor(sf::Color::Red);
@@ -24,6 +24,8 @@ Player_Plat::Player_Plat(sf::Vector2f& map) {
 }
 
 void Player_Plat::move() {
+
+	elapsed = frametimeClock.restart().asMilliseconds();
 	 //Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		velocity.x = -10.f;
@@ -39,6 +41,15 @@ void Player_Plat::move() {
 		isOnGround = false;
 	}
 
+	// Bounds check
+	sf::Vector2f newPosition = player.getPosition() + velocity;
+	if (newPosition.x < leftBoundary) newPosition.x = leftBoundary;
+	if (newPosition.x > rightBoundary - player.getSize().x) newPosition.x = rightBoundary - player.getSize().x;
+	if (newPosition.y < topBoundary) newPosition.y = topBoundary;
+	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
+
+	player.setPosition(newPosition);
+
 	std::cout << velocity.x << ", " << velocity.y << std::endl;
 	std::cout << player.getPosition().x << ", " << player.getPosition().y << std::endl;
 }
@@ -50,7 +61,7 @@ void Player_Plat::applyGravity() {
 	}
 }
 
-void Player_Plat::draw(sf::RenderWindow& window) {
+void Player_Plat::draw() {
 	window.draw(player);
 }
 
@@ -68,7 +79,7 @@ void Player_Plat::handlePlayerState() {
 		velocity.x = 0.f;
 	
 	}
-	if (player.getPosition().y == 980.f) {
+	if (player.getPosition().y == window.getSize().y - player.getSize().y) {
 		isOnGround = true;
 		velocity.y = 0.f;
 	
@@ -77,25 +88,5 @@ void Player_Plat::handlePlayerState() {
 		isOnGround = false;
 	
 	}
-	// Cap the velocity
-	if (velocity.x > maxVelocity.x) {
-		velocity.x = maxVelocity.x;
-	}
 
-	if (velocity.y > 2.f) {
-		velocity.y = 2.f;
-	
-	}
-	else if (velocity.y < -30.f) {
-		velocity.y = -30.f;
-	
-	}
-	// Bounds check
-	sf::Vector2f newPosition = player.getPosition() + velocity;
-	if (newPosition.x < leftBoundary) newPosition.x = leftBoundary;
-	if (newPosition.x > rightBoundary - player.getSize().x) newPosition.x = rightBoundary - player.getSize().x;
-	if (newPosition.y < topBoundary) newPosition.y = topBoundary;
-	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
-
-	player.setPosition(newPosition);
 }
