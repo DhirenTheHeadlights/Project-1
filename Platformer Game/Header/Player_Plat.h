@@ -14,7 +14,7 @@ namespace PlatformerGame {
 		void draw();
 
 		// Physics methods
-		void applyGravity();
+		void applyGravity(); // Apply gravity to the player
 
 		//State methods
 		void handlePlayerState();
