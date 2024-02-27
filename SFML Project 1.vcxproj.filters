@@ -292,7 +292,7 @@
     <ClCompile Include="Platformer Game\Resource\Textures_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="Platforms_Plat.cpp">
+    <ClCompile Include="Platformer Game\Resource\Platforms_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
   </ItemGroup>
@@ -474,7 +474,7 @@
     <ClInclude Include="Platformer Game\Header\Textures_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Platforms_Plat.h">
+    <ClInclude Include="Platformer Game\Header\Platforms_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
   </ItemGroup>

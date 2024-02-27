@@ -22,6 +22,9 @@ namespace PlatformerGame {
 		// Define the player
 		Player player;
 
+		//Define the platforms
+		Platform_Plat platforms;
+
 		//variables for movement
 		bool isJumping = false;
 		sf::Vector2f velocity;
