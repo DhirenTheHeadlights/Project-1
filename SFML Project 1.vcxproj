@@ -190,6 +190,7 @@
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
     <ClCompile Include="Platformer Game\Resource\Player_Plat.cpp" />
+    <ClCompile Include="Platformer Game\Resource\Textures_Plat.cpp" />
     <ClCompile Include="Platformer Game\Resource\World_Plat.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +251,7 @@
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
     <ClInclude Include="Platformer Game\Header\Player_Plat.h" />
+    <ClInclude Include="Platformer Game\Header\Textures_Plat.h" />
     <ClInclude Include="Platformer Game\Header\World_Plat.h" />
   </ItemGroup>
   <ItemGroup>
@@ -278,6 +280,7 @@
     <Image Include="PirateGameSprites\pg_ship_galleon.png" />
     <Image Include="PirateGameSprites\pg_ship_manowar.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop.png" />
+    <Image Include="PlatformerGameSprites\stupidnicktankdog.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt" />

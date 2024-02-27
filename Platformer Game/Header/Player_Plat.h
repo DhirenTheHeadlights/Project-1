@@ -1,5 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "Textures_Plat.h"
+#include <iostream>
 
 class Player_Plat {
 public:
@@ -15,6 +17,8 @@ public:
 
 	//State methods
 	void handlePlayerState();
+
+	sf::Vector2f getPosition() const { return player.getPosition(); }
 	
 
 private:
@@ -23,6 +27,7 @@ private:
 	sf::Clock frametimeClock;
 	float elapsed;
 	sf::RenderWindow& window;
+	sf::Sprite playerSprite;
 
 	// Physics variables
 	sf::Vector2f velocity;
@@ -35,5 +40,11 @@ private:
 	float rightBoundary;
 	float topBoundary;
 	float bottomBoundary;
+
+	PlatformerGame::Textures texture;
+	sf::Texture playerTexture;
+
+	float scaling = 1;
+
 };
 

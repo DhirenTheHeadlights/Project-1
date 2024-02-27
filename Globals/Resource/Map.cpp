@@ -86,7 +86,7 @@ std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
 // Draw the grid
 void Map::drawGrid(sf::RenderWindow& window) {
     sf::RectangleShape line(sf::Vector2f(static_cast<float>(getLength()), 1.f)); // Horizontal line
-    line.setFillColor(sf::Color::Black);
+    line.setFillColor(sf::Color::Red);
     for (int i = 0; i <= rows; i++) {
         line.setPosition(0, static_cast<float>(i * cellSize));
         window.draw(line);

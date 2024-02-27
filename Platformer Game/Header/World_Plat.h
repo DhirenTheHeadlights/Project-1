@@ -1,9 +1,10 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
+#include "Map.h"
 
 
 #include "Player_Plat.h"
-
+#pragma once
 class world_plat {
 public:
 	// World.h
@@ -24,9 +25,13 @@ private:
 	sf::Vector2f velocity;
 
 	// Map
-	float len = window.getSize().x;
-	float wid = window.getSize().y;
-	sf::Vector2f map = sf::Vector2f(len, wid);
+	float len = 100000;
+	float wid = 1000;
+	sf::Vector2f worldMap = sf::Vector2f(len, wid);
+
+	Map map;
+
+	sf::View view;
 
 };
-#pragma once
+

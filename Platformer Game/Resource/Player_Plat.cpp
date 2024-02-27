@@ -1,20 +1,32 @@
 #include "Player_Plat.h"
-#include <iostream>
 
-const sf::Vector2f Player_Plat::GRAVITY = sf::Vector2f(0, 2.f);  // Gravity value
+
+const sf::Vector2f Player_Plat::GRAVITY = sf::Vector2f(0, 0.05f);  // Gravity value
 
 Player_Plat::Player_Plat(sf::Vector2f& map, sf::RenderWindow& window) : window(window) {
 	// Init player
-	player.setSize(sf::Vector2f(100.f, 100.f));
-	player.setFillColor(sf::Color::Red);
-	player.setPosition(0.f, 980.f);
+
+	//player.setSize(sf::Vector2f(1.f, 1.f));
+	//player.setFillColor(sf::Color::Red);
+	//player.setPosition(90.f, 90.f);
+	playerSprite.setPosition(100.f, 100.f);
+	playerSprite.setScale(2.0f, 2.0f);
+	playerSprite.setTexture(texture.grabPlayerTexture(0));
+
+
+	sf::Vector2u textureSize = playerSprite.getTexture()->getSize();
+	playerSprite.setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
+
+
 
 	maxVelocity = sf::Vector2f(30.f, 30.f);
 	
 	leftBoundary = 0.f;
-	rightBoundary = 1820.f; // windowSize should be passed to the Player or known globally
+	rightBoundary = 100000; // windowSize should be passed to the Player or known globally
 	topBoundary = 0.f;
-	bottomBoundary = 1080.f;
+	bottomBoundary = 1000;
+	std::cout << "Right boundary: " << rightBoundary << std::endl;
+	std::cout << "Right boundary: " << bottomBoundary << std::endl;
 }
 
 void Player_Plat::move() {
@@ -22,16 +34,16 @@ void Player_Plat::move() {
 	elapsed = frametimeClock.restart().asMilliseconds();
 	 //Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		velocity.x = -10.f;
+		velocity.x = -6.f;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		velocity.x = 10.f;
+		velocity.x = 6.f;
 	}
 	else {
-		isMoving = false;
+		velocity.x = 0;
 	}
 	if (isOnGround && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		velocity.y = -20.f;
+		velocity.y = -4.f;
 		isOnGround = false;
 	}
 
@@ -43,6 +55,7 @@ void Player_Plat::move() {
 	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
 
 	player.setPosition(newPosition);
+	playerSprite.setPosition(newPosition);
 }
 
 void Player_Plat::applyGravity() {
@@ -53,10 +66,11 @@ void Player_Plat::applyGravity() {
 
 void Player_Plat::draw() {
 	window.draw(player);
+	window.draw(playerSprite);
 }
 
 void Player_Plat::handlePlayerState() {
-	if (player.getPosition().y == window.getSize().y - player.getSize().y) {
+	if (player.getPosition().y == 1000.f - player.getSize().y) {
 		isOnGround = true;
 		velocity.y = 0.f;
 	}

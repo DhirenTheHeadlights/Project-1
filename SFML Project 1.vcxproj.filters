@@ -113,6 +113,9 @@
     <Filter Include="Source Files\Platformer\Resource">
       <UniqueIdentifier>{7aadd537-d186-4dc0-be08-af18eb358df3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Platformer\Sprites">
+      <UniqueIdentifier>{22e0ddb0-eae4-4940-ac57-b86506fe255b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -284,6 +287,9 @@
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
     <ClCompile Include="Platformer Game\Resource\World_Plat.cpp">
+      <Filter>Source Files\Platformer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer Game\Resource\Textures_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
   </ItemGroup>
@@ -462,6 +468,9 @@
     <ClInclude Include="Platformer Game\Header\World_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
+    <ClInclude Include="Platformer Game\Header\Textures_Plat.h">
+      <Filter>Source Files\Platformer\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -530,6 +539,9 @@
     </Image>
     <Image Include="PirateGameSprites\pg_ship_sloop.png">
       <Filter>Source Files\PirateGame\Sprites</Filter>
+    </Image>
+    <Image Include="PlatformerGameSprites\stupidnicktankdog.png">
+      <Filter>Source Files\Platformer\Sprites</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
