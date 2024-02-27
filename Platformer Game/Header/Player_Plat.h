@@ -19,7 +19,7 @@ namespace PlatformerGame {
 		//State methods
 		void handlePlayerState();
 
-		sf::Vector2f getPosition() const { return player.getPosition(); }
+		sf::Vector2f getPosition() const { return playerSprite.getPosition(); }
 
 
 	private:
