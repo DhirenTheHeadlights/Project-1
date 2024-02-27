@@ -22,7 +22,7 @@ void Player::move() {
 
 	elapsed = frametimeClock.restart().asMilliseconds();
 
-	 //Horizontal movement logic
+	//Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		velocity.x = -6.f;
 		playerSprite.setScale(-2.f, 2.f);

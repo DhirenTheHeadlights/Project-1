@@ -1,15 +1,19 @@
 #include "Platforms_Plat.h"
 
-Platforms_Plat::Platforms_Plat() {
+
+
+Platforms_Plat::Platforms_Plat(sf::RenderWindow& window){
 
 }
 
 void Platforms_Plat::generatePlatforms(int numPlatforms) {
 
-	int patformsGenerated = 0;
+	int platformsGenerated = 0;
 
 	while (platformsGenerated < numPlatforms) {
-		
+		int yRandom = std::rand();
+		int xRandom = std::rand();
+
 	}
 
 }
