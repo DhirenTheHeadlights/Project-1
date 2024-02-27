@@ -146,7 +146,7 @@ void lightAndShadow() {
 void Platformer() {
     initializeGlobals("Platformer Window");
 
-    world_plat world(window);
+    PlatformerGame::World world(window);
 
     while (window.isOpen()) {
         sf::Event event;
