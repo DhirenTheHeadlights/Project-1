@@ -2,7 +2,7 @@
 
 using namespace PlatformerGame;
 
-Platforms_Plat::Platforms_Plat(sf::RenderWindow& window){
+Platforms_Plat::Platforms_Plat(){
 
 }
 
