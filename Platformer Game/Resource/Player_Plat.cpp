@@ -15,12 +15,6 @@ Player_Plat::Player_Plat(sf::Vector2f& map, sf::RenderWindow& window) : window(w
 	rightBoundary = 1820.f; // windowSize should be passed to the Player or known globally
 	topBoundary = 0.f;
 	bottomBoundary = 1080.f;
-
-	// Debug print all boundaries
-	std::cout << "Left: " << leftBoundary << std::endl;
-	std::cout << "Right: " << rightBoundary << std::endl;
-	std::cout << "Top: " << topBoundary << std::endl;
-	std::cout << "Bottom: " << bottomBoundary << std::endl;
 }
 
 void Player_Plat::move() {
@@ -49,15 +43,11 @@ void Player_Plat::move() {
 	if (newPosition.y > bottomBoundary - player.getSize().y) newPosition.y = bottomBoundary - player.getSize().y;
 
 	player.setPosition(newPosition);
-
-	std::cout << velocity.x << ", " << velocity.y << std::endl;
-	std::cout << player.getPosition().x << ", " << player.getPosition().y << std::endl;
 }
 
 void Player_Plat::applyGravity() {
 	if (!isOnGround) {
 		velocity += GRAVITY;  // Apply gravity to the velocity
-		
 	}
 }
 
@@ -66,27 +56,12 @@ void Player_Plat::draw() {
 }
 
 void Player_Plat::handlePlayerState() {
-
-	if (velocity.x == 0.f) {
-		isMoving = false;
-	
-	}
-	else {
-		isMoving = true;
-
-	}
-	if (isMoving = false) {
-		velocity.x = 0.f;
-	
-	}
 	if (player.getPosition().y == window.getSize().y - player.getSize().y) {
 		isOnGround = true;
 		velocity.y = 0.f;
-	
 	}
 	else {
 		isOnGround = false;
-	
 	}
 
 }

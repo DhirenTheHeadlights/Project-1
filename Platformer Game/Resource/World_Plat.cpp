@@ -1,7 +1,6 @@
 #include "World_Plat.h"
 
-world_plat::world_plat(sf::RenderWindow& window) : window(window), player(map) {
-	std::cout << map.x << ", " << map.y;
+world_plat::world_plat(sf::RenderWindow& window) : window(window), player(map, window) {
 }
 
 // Game loop
