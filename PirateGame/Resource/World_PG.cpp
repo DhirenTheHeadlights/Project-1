@@ -113,7 +113,7 @@ void World::gameLoop() {
 	view.setCenter(ship.getMovementHandler().getPosition());
 
 	// Set the ship for the hud
-	//MH->getHUD();
+	MH->getHUD()->setShip(ship);
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

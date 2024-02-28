@@ -11,7 +11,7 @@
 
 #include "GlobalValues_PG.h"
 #include "ShipMovementHandler_PG.h"
-#include "shipCannonHandler_PG.h"
+#include "ShipInputHandler_PG.h"
 
 namespace PirateGame {
 
@@ -39,7 +39,7 @@ namespace PirateGame {
 
 	class Ship {
 	public:
-		Ship() : SMH(sprite), SCH(sprite) {};
+		Ship() : SIH(sprite) {};
 		~Ship() {};
 
 		// Create the ship and set its values
@@ -47,7 +47,7 @@ namespace PirateGame {
 		void updateAndDraw();
 
 		// Get movement handler
-		ShipMovementHandler& getMovementHandler() { return SMH; }
+		ShipMovementHandler& getMovementHandler() { return SIH.getMovementHandler(); }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -58,12 +58,13 @@ namespace PirateGame {
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
+		ShipProperties& getShipProperties() { return shipProperties; }
 
 	private:
 		// Static map for ship configurations
 		static std::unordered_map<ShipClass, ShipProperties> ShipConfig;
 
-		// Functions
+		// Helper methods
 		void setHealthBarPosition();
 		void regenerateHealth();
 		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
@@ -91,8 +92,7 @@ namespace PirateGame {
 		sf::Clock healthRegenClock;
 
 		// Handlers
-		ShipMovementHandler SMH;
-		ShipCannonHandler SCH;
+		ShipInputHandler SIH;
 	};
 
 }

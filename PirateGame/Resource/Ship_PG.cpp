@@ -3,17 +3,22 @@
 using namespace PirateGame;
 
 std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
-{ ShipClass::Sloop, {100.f, 100.f, 1, "PirateGameSprites/pg_ship_sloop.png", .1f, .1f, 1} },
-{ ShipClass::Brigantine, {95.f, 133.f, 1.48f, "PirateGameSprites/pg_ship_brigantine.png", .12f, .12f, 2} },
-{ ShipClass::Frigate, {82.f, 192.f, 2.15f, "PirateGameSprites/pg_ship_frigate.png", .15f, .15f, 3} },
-{ ShipClass::ManOWar, {77.f, 250.f, 3.f, "PirateGameSprites/pg_ship_manowar.png", .18f, .18f, 4} },
-{ ShipClass::Galleon, {63.f, 380.f, 4.6f, "PirateGameSprites/pg_ship_galleon.png", .23f, .23f, 5} }
+{ ShipClass::Sloop,		 {100.f, 100.f, 1,	   "PirateGameSprites/pg_ship_sloop.png",	   .1f,  .1f,  1} },
+{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, "PirateGameSprites/pg_ship_brigantine.png", .12f, .12f, 2} },
+{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, "PirateGameSprites/pg_ship_frigate.png",	   .15f, .15f, 3} },
+{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   "PirateGameSprites/pg_ship_manowar.png",    .18f, .18f, 4} },
+{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  "PirateGameSprites/pg_ship_galleon.png",    .23f, .23f, 5} }
 };
 
 // Create the ship
 void Ship::createShip(ShipType type, ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
 	shipProperties = ShipConfig[level];
+
+	SIH.setNumCannons(shipProperties.numCannons);
+	SIH.setBaseSpeed(shipProperties.baseSpeed);
+
+	health = shipProperties.maxHealth;
 
 	// Load the texture
 	if (!texture.loadFromFile(shipProperties.texturePath)) {
@@ -38,7 +43,7 @@ void Ship::createShip(ShipType type, ShipClass level) {
 	}
 
 	// Initalize the position of the ship to be random
-	SMH.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
+	SIH.getMovementHandler().setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
 
 	// Set type and class
 	shipType = type;
@@ -48,7 +53,6 @@ void Ship::createShip(ShipType type, ShipClass level) {
 // Draw and update the ship
 void Ship::updateAndDraw() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
 
 	regenerateHealth();
 
@@ -59,36 +63,22 @@ void Ship::updateAndDraw() {
 	}
 
 	// Draw the velocity vector
-	window->draw(createVector(sprite.getPosition(), SMH.getVelocity(), sf::Color::Blue));
+	window->draw(createVector(sprite.getPosition(), SIH.getMovementHandler().getVelocity(), sf::Color::Blue));
 
-	// Move and draw the ship
-	SMH.move(shipProperties.baseSpeed);
 	window->draw(sprite);
 
-	// Set the firing side of the ship
-	if (inputHandler.isMouseButtonPressedOnce(sf::Mouse::Left)) {
-		SCH.setFiringSide(FiringSide::Left);
-	}
-	else if (inputHandler.isMouseButtonPressedOnce(sf::Mouse::Right)) {
-		SCH.setFiringSide(FiringSide::Right);
-	}
-
-	// Fire the cannons
-	if (inputHandler.isKeyPressedOnce(sf::Keyboard::Space)) {
-		SCH.shootCannonballs(shipProperties.numCannons);
-	}
-
-	SCH.updateCannonballs();
+	// Update the ship input handler
+	SIH.update();
 }
 
 // Regen Health
 void Ship::regenerateHealth() {
 	// Regen health every 250 milliseconds
-	if (!(health < shipProperties.maxHealth && health >= 0.f)) return;
 	if (healthRegenClock.getElapsedTime().asMilliseconds() > 250) {
 		health += shipProperties.regenRate;
 		healthRegenClock.restart();
 	}
+	if (health > shipProperties.maxHealth) health = shipProperties.maxHealth;
 }
 
 // Draw the health bars

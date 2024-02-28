@@ -12,7 +12,7 @@
 
 namespace PirateGame {
 
-	enum class FiringSide { Left, Right };
+	enum class FiringSide { Port, Starboard };
 
 	class ShipCannonHandler {
 	public:
@@ -24,6 +24,7 @@ namespace PirateGame {
 
 		void setFiringSide(FiringSide side) { this->side = side; };
 		void setCooldown(float cooldown) { this->cooldown = cooldown; };
+		void setAimTowardsMouse(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
 	private:
 		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;
@@ -31,10 +32,11 @@ namespace PirateGame {
 		sf::Vector2f cannonballDirection;
 		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
 		
+		bool aimTowardsMouse = false;
 		float cooldown = 0.1f;
 
 		sf::Sprite& shipSprite;
-		FiringSide side = FiringSide::Left;
+		FiringSide side = FiringSide::Port;
 
 		std::string soundFile = "Sounds/cannonshot.wav";
 		SoundManager soundManager;

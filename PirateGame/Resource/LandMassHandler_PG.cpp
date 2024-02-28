@@ -115,7 +115,7 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 			collidingLandMasses.push_back(i);
 
 			// If the player collides, decrease the health of the player, multiplied by the number of colliding land masses
-			ship.damageShip(0.2f * collidingLandMasses.size());
+			ship.damageShip(2.f * collidingLandMasses.size());
 		}
 	}
 

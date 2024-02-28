@@ -14,8 +14,17 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
 	float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
 	cannonDirection /= magnitude;
 
-	if (side == FiringSide::Right) {
+	if (side == FiringSide::Starboard) {
 		cannonDirection = -cannonDirection;
+	}
+
+	// If aiming towards the mouse, get the mouse position and calculate the direction
+	if (aimTowardsMouse) {
+		sf::Vector2i mousePos = sf::Mouse::getPosition(*GlobalValues::getInstance().getWindow());
+		sf::Vector2f shipPos = shipSprite.getPosition();
+		cannonDirection = sf::Vector2f(mousePos.x - shipPos.x, mousePos.y - shipPos.y);
+		float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
+		cannonDirection /= magnitude;
 	}
 
 	// For each cannon, create a cannonball and set its position and velocity, add to vector
