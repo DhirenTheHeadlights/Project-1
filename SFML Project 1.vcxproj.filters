@@ -116,6 +116,12 @@
     <Filter Include="Source Files\Platformer\Sprites">
       <UniqueIdentifier>{22e0ddb0-eae4-4940-ac57-b86506fe255b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Handlers\Ship">
+      <UniqueIdentifier>{12adcc94-135b-4a64-9d24-66092e62c457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Handlers\Ship">
+      <UniqueIdentifier>{95b2744b-b2ed-496c-85d7-021d199ee118}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -271,14 +277,8 @@
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
@@ -292,8 +292,20 @@
     <ClCompile Include="Platformer Game\Resource\Textures_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="Platforms_Plat.cpp">
+    <ClCompile Include="PirateGame\Resource\WindController_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Platformer Game\Resource\Platforms_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipInputHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -453,14 +465,8 @@
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h">
-      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h">
-      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\InputHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers</Filter>
@@ -474,8 +480,20 @@
     <ClInclude Include="Platformer Game\Header\Textures_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
-    <ClInclude Include="Platforms_Plat.h">
+    <ClInclude Include="Platformer Game\Header\Platforms_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WindController_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipInputHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,10 +50,10 @@ void InGameHUD::setInteractablePositions() {
 	healthText.setString("Health: " + std::to_string(static_cast<int>(healthFraction)));
 
 	// Set the settings button to be in the top left corner
-	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2 + padding, HUDView.getCenter().y - window->getSize().x));
+	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2 + padding, healthBarGreen.getPosition().y));
 
 	// Set the mini map to be in the top right corner with padding right by the health bars
-	minimap.setPosition(HUDView.getCenter().x + healthBarSize.x / 2 + padding, HUDView.getCenter().y - window->getSize().y / 2 + padding);
+	minimap.setPosition(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
 }
 
 void InGameHUD::draw() {
@@ -67,6 +67,9 @@ void InGameHUD::draw() {
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {
+		//interactable->getBackground().setFillColor(sf::Color::Transparent);
+		interactable->getFrame().setFillColor(sf::Color::Transparent);
+		interactable->getFrame().setOutlineThickness(0.f);
 		interactable->draw();
 	}
 
