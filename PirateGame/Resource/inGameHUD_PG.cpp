@@ -39,10 +39,11 @@ void InGameHUD::setInteractablePositions() {
 	HUDView.setRotation(0);
 
 	// Set the health bar red to be proportional to the health from the ship
-	healthBarRed.setSize(sf::Vector2f(healthBarSize.x - (healthBarSize.x * healthFraction / 100), healthBarSize.y));
+	healthBarGreen.setSize(sf::Vector2f(healthBarSize.x - (healthBarSize.x * (1 - healthFraction) / 100), healthBarSize.y));
 
 	// Set the position of the health bar and text
 	healthBarGreen.setPosition(HUDView.getCenter().x - healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
+	healthBarRed.setPosition(healthBarGreen.getPosition());
 
 	float healthTextX = healthBarGreen.getPosition().x + healthBarGreen.getSize().x / 2 - healthText.getGlobalBounds().width / 2;
 	float healthTextY = healthBarGreen.getPosition().y + healthBarGreen.getSize().y / 2 - healthText.getGlobalBounds().height / 2;
