@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 // Set up the slider
-void Slider::setUpInteractable(sf::Vector2f size) {
+void Slider::createInteractable(sf::Vector2f size) {
 	// Set the size of the interactable objects
 	this->size = size;
 	background.setSize(size);

@@ -18,7 +18,7 @@ namespace PirateGame {
 		Interactable(sf::Font& font) : font(font) {};
 		~Interactable() {};
 
-		virtual void setUpInteractable(sf::Vector2f size);
+		virtual void createInteractable(sf::Vector2f size);
 		virtual void interact() = 0;
 		virtual void draw();
 		virtual void updateColors();

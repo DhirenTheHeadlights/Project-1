@@ -2,8 +2,7 @@
 
 using namespace PirateGame;
 
-// Create a new interactable object
-void Interactable::setUpInteractable(sf::Vector2f size) {
+void Interactable::createInteractable(sf::Vector2f size) {
 	// Set the size of all the interactable objects
 	background.setSize(size);
 	frame.setSize(size);
@@ -15,7 +14,6 @@ void Interactable::setUpInteractable(sf::Vector2f size) {
 	updateColors();
 }
 
-// Draw the interactable object
 void Interactable::draw() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	window->draw(background);
@@ -24,7 +22,6 @@ void Interactable::draw() {
 	window->draw(text);
 }
 
-// Update the colors of the interactable objects
 void Interactable::updateColors() {
 	background.setFillColor(backgroundColor);
 	foreground.setFillColor(foregroundColor);
@@ -34,7 +31,6 @@ void Interactable::updateColors() {
 	text.setFillColor(textColor); 
 }
 
-// Set the position of the interactables
 void Interactable::setPosition(sf::Vector2f pos) {
 	this->position = pos;
 	// Set the position of the interactable objects

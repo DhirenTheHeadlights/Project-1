@@ -14,7 +14,7 @@ namespace PirateGame {
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
-		void addInteractables() override;
+		void addInteractablesToMenu() override;
 		void draw() override;
 
 		// Setters

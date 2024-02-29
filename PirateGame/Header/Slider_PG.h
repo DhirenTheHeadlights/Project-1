@@ -18,7 +18,7 @@ namespace PirateGame {
 		Slider(SliderFunction func, sf::Font& font) : func(func), Interactable(font) {};
 		~Slider() {};
 
-		void setUpInteractable(sf::Vector2f size) override;
+		void createInteractable(sf::Vector2f size) override;
 		void interact() override;
 		void draw() override;
 		void setPosition(sf::Vector2f pos) override;	
