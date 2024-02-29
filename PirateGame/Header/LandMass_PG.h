@@ -17,8 +17,8 @@ namespace PirateGame {
 	public:
 		void createLandMass(LandMassType type, Textures& texture);
 
-		// Add a new item to the market
-		void addItem(std::string name, int price);
+		void addItemToMarket(std::string name, int price);
+		void setRandomRotation();
 
 		// Setters
 		void setPosition(sf::Vector2f pos);

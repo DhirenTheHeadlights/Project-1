@@ -32,7 +32,7 @@ namespace PirateGame {
 		virtual void setUpMenu() = 0;
 		virtual void draw();
 		virtual void addInteractableToMenu(std::unique_ptr<Interactable> interactable);
-		virtual void addInteractables() = 0;
+		virtual void addInteractablesToMenu() = 0;
 		virtual void setInteractablePositions() = 0;
 		virtual void interactWithMenuItems();
 

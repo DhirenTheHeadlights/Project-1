@@ -14,7 +14,7 @@ namespace PirateGame {
 		~DropDown() {};
 
 		// Set up the drop down menu
-		void setUpInteractable(sf::Vector2f size) override;
+		void createInteractable(sf::Vector2f size) override;
 		void interact() override;
 		void draw() override;
 		void openDropDown();

@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 // Set up the drop down menu
-void DropDown::setUpInteractable(sf::Vector2f size) {
+void DropDown::createInteractable(sf::Vector2f size) {
 	// Set the size of the drop down menu
 	this->size = size;
 

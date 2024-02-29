@@ -36,21 +36,21 @@ void StartMenu::addInteractables() {
 	// Create the start button
 	std::function<void()> startFunc = [this]() { GSM.changeGameState(GameState::GameLoop); };
 	std::unique_ptr<Button> startButton = std::make_unique<Button>(startFunc, font);
-	startButton->setUpInteractable(interactableSize);
+	startButton->createInteractable(interactableSize);
 	startButton->setString("Start");
 	addInteractableToMenu(std::move(startButton));
 
 	// Create the settings button
 	std::function<void()> settingsFunc = [this]() { GSM.changeGameState(GameState::OptionsMenu); };
 	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc, font);
-	settingsButton->setUpInteractable(interactableSize);
+	settingsButton->createInteractable(interactableSize);
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
 
 	// Create the exit button
 	std::function<void()> endFunc = [this]() { GSM.changeGameState(GameState::End); };
 	std::unique_ptr<Button> exitButton = std::make_unique<Button>(endFunc, font);
-	exitButton->setUpInteractable(interactableSize);
+	exitButton->createInteractable(interactableSize);
 	exitButton->setString("Exit");
 	addInteractableToMenu(std::move(exitButton));
 }
