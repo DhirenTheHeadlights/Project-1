@@ -17,7 +17,7 @@ void StartMenu::setUpMenu() {
 	interactableSize = sf::Vector2f(200, 100);
 
 	// Add the interactables to the menu and set their positions
-	addInteractables();
+	addInteractablesToMenu();
 	setInteractablePositions();
 }
 
@@ -32,7 +32,7 @@ void StartMenu::setInteractablePositions() {
 }
 
 // Add the interactables to the menu
-void StartMenu::addInteractables() {
+void StartMenu::addInteractablesToMenu() {
 	// Create the start button
 	std::function<void()> startFunc = [this]() { GSM.changeGameState(GameState::GameLoop); };
 	std::unique_ptr<Button> startButton = std::make_unique<Button>(startFunc, font);

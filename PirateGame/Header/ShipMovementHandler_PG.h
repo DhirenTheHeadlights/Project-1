@@ -25,11 +25,13 @@ namespace PirateGame {
 		void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
 		void setIsColliding(bool isColliding) { this->isColliding = isColliding; }
 		void setPosition(sf::Vector2f position) { sprite.setPosition(position); }
+		void setStopShipRotationFlag(bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
 
 		// Getters
 		sf::Vector2f getVelocity() const { return velocity; }
 		bool getIsColliding() const { return isColliding; }
 		sf::Vector2f getPosition() const { return position; }
+		bool getStopShipRotationFlag() const { return stopShipRotationFlag; }
 
 	private:
 		// SFML Objects
@@ -41,6 +43,8 @@ namespace PirateGame {
 		sf::Vector2f position;
 
 		bool isColliding = true;
+		bool stopShipRotationFlag = false;
+
 		float rotation = 0;
 		float speed = 0;
 		float frictionCoefficient = 0.1f; // For friction

@@ -29,14 +29,18 @@ namespace PirateGame {
         void handleCollisions(Ship& ship);
         bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5, sf::RenderWindow& window = *GlobalValues::getInstance().getWindow(), bool debug = true);
 
-        // Window pointer
+        void createLandmass(LandMassType type, float minDistBetweenLandmasses);
+
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
-        // Vector to store the land masses
         std::vector<LandMass*> landMasses;
 
-        // Hashmap to store the land masses
+        // Hashmap and Textures
         Hashmap hashmap;
+        Textures texture;
+
+        // Values
+        float collisionDamagePerSecond = 4.f;
 
         // Map to store the land masses
         Map& map = GlobalValues::getInstance().getMap();
@@ -47,7 +51,5 @@ namespace PirateGame {
         // SoundManager to play sounds
         SoundManager soundManager;
 
-        // Textures
-        Textures texture;
     };
 }

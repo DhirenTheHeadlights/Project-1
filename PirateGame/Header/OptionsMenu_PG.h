@@ -23,7 +23,7 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
-		void addInteractables() override;
+		void addInteractablesToMenu() override;
 		void draw() override;
 		void drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
 		void interactWithMenuItems() override;

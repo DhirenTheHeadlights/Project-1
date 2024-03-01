@@ -51,7 +51,7 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 }
 
 void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
-	if (isColliding) return;
+	if (isColliding|| stopShipRotationFlag) return;
 	// Calculate the direction to the mouse
 	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
 	sf::Vector2f directionToMouse = normalize(mousePosition - sprite.getPosition());

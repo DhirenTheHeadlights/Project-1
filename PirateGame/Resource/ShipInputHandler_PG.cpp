@@ -37,8 +37,8 @@ void ShipInputHandler::handleCannonAim() {
 	}
 
 	// Rotate the cannons based on the mouse position if cannon mode is set to manual
-	if (inputHandler.isKeyPressedOnce(manualAimKey)) SCH.setAimTowardsMouse(true);
-	else SCH.setAimTowardsMouse(false);
+	SCH.setAimTowardsMouse(inputHandler.isKeyToggled(manualAimKey));
+	SMH.setStopShipRotationFlag(inputHandler.isKeyToggled(manualAimKey));
 }
 
 void ShipInputHandler::handleAnchorDrop() {

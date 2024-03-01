@@ -495,6 +495,9 @@
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Ship</Filter>
     </ClInclude>
+    <ClInclude Include="Globals\Header\Credits.h">
+      <Filter>Source Files\Globals\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

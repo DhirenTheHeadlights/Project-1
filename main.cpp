@@ -14,6 +14,8 @@
 #include "PirateGame/Header/World_PG.h"
 #include "Platformer Game/Header/World_Plat.h"
 
+#include "Credits.h"
+
 // Define a type alias for a function that takes no arguments and returns void
 using GameFunction = std::function<void()>;
 
@@ -105,10 +107,6 @@ void aimTrainer() { // Aim Trainer
     }
 }
 
-void snake() { // Snake or some other game idk
-	// TODO
-}
-
 void pirateGame() { // Pirate Game
     initializeGlobals("Pirate Game Window");
 	
@@ -161,6 +159,28 @@ void Platformer() {
     }
 }
 
+void credits() {
+    initializeGlobals("Credits Window");
+    sf::Font font;
+
+    if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
+		std::cerr << "Could not load font" << std::endl;
+		return;
+	}
+
+    Credits credits(font);
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+        credits.run(window);
+    }
+}
+
 void exitTheLauncher() {
     exitLauncher = true;
 	window.close();
@@ -175,12 +195,14 @@ int main() {
     std::vector<Game> games = {
         Game("Agar.io", agario),
         Game("Aim Trainer", aimTrainer),
-        Game("Snake", snake),
         Game("Light and Shadows", lightAndShadow),
         Game("Pirate Game", pirateGame),
-        Game("Exit", exitTheLauncher),
         Game("Platformer", Platformer),
         // Add more games here...
+
+        Game("Credits", credits),
+
+        Game("Exit", exitTheLauncher),
     };
 
     std::vector<gameButton> buttons;
@@ -190,12 +212,20 @@ int main() {
         return -1;
     }
 
-    float x = 100.f; // X position of the first button
-    float y = 100.f; // Y position of the first button
-    float yPadding = 150.f; // Space between buttons
+    float x = 100.f;                // X position of the first button
+    float y = 100.f;                // Y position of the first button
+    float yPadding = 150.f;         // Space between buttons
+    float xPadding = 400.f;         // Space between columns
+    float numButtonsInColumn = 6.f; // Number of buttons in a column
 
     // Create buttons for each game
     for (auto& game : games) {
+        // if there are too many buttons, move to the next column
+        if (y > yPadding * numButtonsInColumn) {
+			y = 100.f; // Reset y position
+			x += xPadding;
+		}
+
         gameButton button(game, font);
         button.setPosition(x, y);
         y += yPadding; // Update y position for the next button

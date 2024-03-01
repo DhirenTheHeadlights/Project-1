@@ -31,7 +31,7 @@ void OptionsMenu::setUpMenu() {
 	tabBar.setPosition(menu.getPosition());
 
 	// Add the interactables to the menu and set their positions
-	addInteractables();
+	addInteractablesToMenu();
 	setInteractablePositions();
 }
 
@@ -73,7 +73,7 @@ void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Intera
 }
 
 // Add the interactables to the menu
-void OptionsMenu::addInteractables() {
+void OptionsMenu::addInteractablesToMenu() {
 	// Add the tabs to the menu
 	std::function<void()> generalTabFunc = [this]() { currentTab = Tab::General; };
 	std::unique_ptr<Button> generalTabButton = std::make_unique<Button>(generalTabFunc, font);

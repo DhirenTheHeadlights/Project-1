@@ -221,6 +221,7 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
+    <ClInclude Include="Globals\Header\Credits.h" />
     <ClInclude Include="Globals\Header\GameTemplate.h" />
     <ClInclude Include="Globals\Header\Globals.h" />
     <ClInclude Include="Globals\Header\Map.h" />

@@ -17,7 +17,7 @@ void LandMass::createLandMass(LandMassType type, Textures& texture) {
 		case LandMassType::Shipwreck:
 			break;
 	}
-	setRandomRotation();
+	//setRandomRotation();
 }
 
 void LandMass::setRandomRotation() {

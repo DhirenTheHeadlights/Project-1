@@ -12,68 +12,39 @@ LandMassHandler::~LandMassHandler() {
 // Add all the land masses to the vector
 void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandmasses) {
 	for (int i = 0; i < numLandMasses; i++) {
-		LandMass* landMass = new LandMass();
-
 		// Generate a random number between 0 and 10
 		int randNum = rand() % 10;
-
 		// If the number is between 0 and 6, generate a rock
 		if (randNum < 6) {
-			landMass->createLandMass(LandMassType::Rock, texture);
-
-			// Generate a random position for the land mass
-			auto randPos = map.getRandomPosition(minDistBetweenLandmasses);
-
-			// Set the position of the land mass if there is a valid value
-			if (randPos.has_value()) {
-				landMass->setPosition(randPos.value());
-
-				// Add the land mass to the vector
-				landMasses.push_back(landMass);
-			}
-			else {
-				delete landMass;
-				continue;
-			}
+			createLandmass(LandMassType::Rock, minDistBetweenLandmasses);
 		}
 		// If the number is between 6 and 8, generate a island
 		else if (randNum < 8) {
-			landMass->createLandMass(LandMassType::Island, texture);
-
-			// Generate a random position for the land mass
-			auto randPos = map.getRandomPosition(5.f * minDistBetweenLandmasses);
-
-			// Set the position of the land mass if there is a valid value
-			if (randPos.has_value()) {
-				landMass->setPosition(randPos.value());
-
-				// Add the land mass to the vector
-				landMasses.push_back(landMass);
-			}
-			else {
-				delete landMass;
-				continue;
-			}
+			createLandmass(LandMassType::Island, minDistBetweenLandmasses * 5.f);
 		}
 		// If the number is between 8 and 10, generate a shipwreck
 		else {
-			landMass->createLandMass(LandMassType::Shipwreck, texture);
-
-			// Generate a random position for the land mass
-			auto randPos = map.getRandomPosition(2.f * minDistBetweenLandmasses);
-
-			// Set the position of the land mass if there is a valid value
-			if (randPos.has_value()) {
-				landMass->setPosition(randPos.value());
-
-				// Add the land mass to the vector
-				landMasses.push_back(landMass);
-			}
-			else {
-				delete landMass;
-				continue;
-			}
+			createLandmass(LandMassType::Shipwreck, minDistBetweenLandmasses * 2.f);
 		}
+	}
+}
+
+void LandMassHandler::createLandmass(LandMassType type, float minDistBetweenLandmasses) {
+	LandMass* landMass = new LandMass();
+	landMass->createLandMass(type, texture);
+
+	// Generate a random position for the land mass
+	auto randPos = map.getRandomPosition(minDistBetweenLandmasses);
+
+	// Set the position of the land mass if there is a valid value
+	if (randPos.has_value()) {
+		landMass->setPosition(randPos.value());
+
+		// Add the land mass to the vector
+		landMasses.push_back(landMass);
+	}
+	else {
+		delete landMass;
 	}
 }
 
@@ -115,7 +86,7 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 			collidingLandMasses.push_back(i);
 
 			// If the player collides, decrease the health of the player, multiplied by the number of colliding land masses
-			ship.damageShip(2.f * collidingLandMasses.size());
+			ship.damageShip(collisionDamagePerSecond * collidingLandMasses.size());
 		}
 	}
 
@@ -133,8 +104,8 @@ bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spri
 	const sf::Texture* texture2 = sprite2.getTexture();
 	if (!texture1 || !texture2) return false;
 
-	sf::Image image1 = texture1->copyToImage();
-	sf::Image image2 = texture2->copyToImage();
+	sf::Image image1 = texture1->copyToImage(); // Costly operation, but works because there are only
+	sf::Image image2 = texture2->copyToImage(); // A few collisions per frame at most
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();
 
@@ -142,7 +113,7 @@ bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spri
 	sf::IntRect rect2 = sprite2.getTextureRect();
 
 	// Ellipse parameters in sprite1's local coordinate space
-	float a = (rect1.width) / 2.0f; // Semi-major axis without sails
+	float a = rect1.width / 2.0f; // Semi-major axis without sails
 	float b = rect1.height / 2.0f; // Semi-minor axis
 
 	for (int i = static_cast<int>(intersection.left); i < intersection.left + intersection.width; i++) {
