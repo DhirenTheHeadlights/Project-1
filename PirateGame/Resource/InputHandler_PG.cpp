@@ -32,6 +32,7 @@ bool InputHandler::isKeyToggled(sf::Keyboard::Key key) {
     // If the key is pressed now and was not pressed last frame, toggle the state
     if (isPressedNow && !wasPressedLastFrame && cooldown.getElapsedTime() > cooldownTime) {
         toggledKeyState[key] = !toggledKeyState[key];
+        cooldown.restart();
     }
 
     // Return the toggled state
@@ -59,7 +60,7 @@ bool InputHandler::isMouseButtonToggled(sf::Mouse::Button button) {
     currentButtonState[button] = isPressedNow;
 
     // If the button is pressed now and was not pressed last frame, toggle the state
-    if (isPressedNow && !wasPressedLastFrame) {
+    if (isPressedNow && !wasPressedLastFrame && cooldown.getElapsedTime() > cooldownTime) {
         toggledButtonState[button] = !toggledButtonState[button];
     }
 

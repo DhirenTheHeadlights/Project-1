@@ -41,8 +41,6 @@ void Slider::setPosition(sf::Vector2f pos) {
 
 // Interact with the slider
 void Slider::interact() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-	// If the slider is being clicked
 	if (foreground.getGlobalBounds().contains(static_cast<float>(sf::Mouse::getPosition(*window).x), static_cast<float>(sf::Mouse::getPosition(*window).y)) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		// Set the position of the slider thumb to the mouse position
 		sliderThumb.setPosition(static_cast<float>(sf::Mouse::getPosition(*window).x), sliderThumb.getPosition().y);
@@ -59,7 +57,6 @@ void Slider::interact() {
 
 // Draw the slider
 void Slider::draw() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	window->draw(background);
 	window->draw(foreground);
 	window->draw(frame);

@@ -15,7 +15,10 @@
 namespace PirateGame {
 	class Interactable {
 	public:
-		Interactable(sf::Font& font) : font(font) {};
+		Interactable() { 
+			window = GlobalValues::getInstance().getWindow();
+			font = GlobalValues::getInstance().getFont();
+		};
 		~Interactable() {};
 
 		virtual void createInteractable(sf::Vector2f size);
@@ -61,8 +64,9 @@ namespace PirateGame {
 		sf::RectangleShape background;
 		sf::RectangleShape foreground;
 		sf::RectangleShape frame;
-		sf::Font& font;
+		sf::Font font;
 		sf::Text text;
+		sf::RenderWindow* window = nullptr;
 
 		// Default colors
 		sf::Color backgroundColor = sf::Color(100, 100, 150, 200);

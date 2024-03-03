@@ -4,7 +4,6 @@ using namespace PirateGame;
 
 // Set up the options menu
 void OptionsMenu::setUpMenu() {
-
 	// Set up the background rectangle
 	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
 	backgroundRect.setFillColor(backgroundColor);
@@ -76,7 +75,7 @@ void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Intera
 void OptionsMenu::addInteractablesToMenu() {
 	// Add the tabs to the menu
 	std::function<void()> generalTabFunc = [this]() { currentTab = Tab::General; };
-	std::unique_ptr<Button> generalTabButton = std::make_unique<Button>(generalTabFunc, font);
+	std::unique_ptr<Button> generalTabButton = std::make_unique<Button>(generalTabFunc);
 	generalTabButton->createInteractable(tabSize);
 	generalTabButton->setString("General");
 	tabButtons.push_back(std::move(generalTabButton));
@@ -84,7 +83,7 @@ void OptionsMenu::addInteractablesToMenu() {
 	addGeneralTabInteractables();
 
 	std::function<void()> graphicsTabFunc = [this]() { currentTab = Tab::Graphics; };
-	std::unique_ptr<Button> graphicsTabButton = std::make_unique<Button>(graphicsTabFunc, font);
+	std::unique_ptr<Button> graphicsTabButton = std::make_unique<Button>(graphicsTabFunc);
 	graphicsTabButton->createInteractable(tabSize);
 	graphicsTabButton->setString("Graphics");
 	tabButtons.push_back(std::move(graphicsTabButton));
@@ -92,7 +91,7 @@ void OptionsMenu::addInteractablesToMenu() {
 	addGraphicsTabInteractables();
 
 	std::function<void()> audioTabFunc = [this]() { currentTab = Tab::Audio; };
-	std::unique_ptr<Button> audioTabButton = std::make_unique<Button>(audioTabFunc, font);
+	std::unique_ptr<Button> audioTabButton = std::make_unique<Button>(audioTabFunc);
 	audioTabButton->createInteractable(tabSize);
 	audioTabButton->setString("Audio");
 	tabButtons.push_back(std::move(audioTabButton));
@@ -100,7 +99,7 @@ void OptionsMenu::addInteractablesToMenu() {
 	addAudioTabInteractables();
 
 	std::function<void()> controlsTabFunc = [this]() { currentTab = Tab::Controls; };
-	std::unique_ptr<Button> controlsTabButton = std::make_unique<Button>(controlsTabFunc, font);
+	std::unique_ptr<Button> controlsTabButton = std::make_unique<Button>(controlsTabFunc);
 	controlsTabButton->createInteractable(tabSize);
 	controlsTabButton->setString("Controls");
 	tabButtons.push_back(std::move(controlsTabButton));
@@ -109,7 +108,7 @@ void OptionsMenu::addInteractablesToMenu() {
 
 	// Create the back button
 	std::function<void()> backFunc = [this]() { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Button> backButton = std::make_unique<Button>(backFunc, font);
+	std::unique_ptr<Button> backButton = std::make_unique<Button>(backFunc);
 	backButton->createInteractable(sf::Vector2f(size.x, 50.f));
 	backButton->setString("Back");
 	addInteractableToMenu(std::move(backButton));
@@ -120,7 +119,7 @@ void OptionsMenu::addGeneralTabInteractables() {
 	std::vector<std::pair<std::function<void()>, std::string>> screenPair;
 	screenPair.push_back(std::make_pair(std::function<void()>([]() {}), "Fullscreen"));
 	screenPair.push_back(std::make_pair(std::function<void()>([]() {}), "Windowed"));
-	std::unique_ptr<DropDown> screenDropDown = std::make_unique<DropDown>(font, screenPair);
+	std::unique_ptr<DropDown> screenDropDown = std::make_unique<DropDown>(screenPair);
 	screenDropDown->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	screenDropDown->setString("Fullscreen");
 	generalTabInteractables.push_back(std::move(screenDropDown));
@@ -130,7 +129,7 @@ void OptionsMenu::addGeneralTabInteractables() {
 	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "1280x720"));
 	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "800x600"));
 	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "640x480"));
-	std::unique_ptr<DropDown> resolutionDropDown = std::make_unique<DropDown>(font, resolutionPair);
+	std::unique_ptr<DropDown> resolutionDropDown = std::make_unique<DropDown>(resolutionPair);
 	resolutionDropDown->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	resolutionDropDown->setString("Resolution");
 	generalTabInteractables.push_back(std::move(resolutionDropDown));
@@ -139,13 +138,13 @@ void OptionsMenu::addGeneralTabInteractables() {
 void OptionsMenu::addGraphicsTabInteractables() {
 	// Add the interactables to the graphics tab
 	std::function<void(float value)> brightnessSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Slider> brightnessSlider = std::make_unique<Slider>(brightnessSliderFunc, font);
+	std::unique_ptr<Slider> brightnessSlider = std::make_unique<Slider>(brightnessSliderFunc);
 	brightnessSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	brightnessSlider->setString("Brightness");
 	graphicsTabInteractables.push_back(std::move(brightnessSlider));
 
 	std::function<void(float value)> contrastSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Slider> contrastSlider = std::make_unique<Slider>(contrastSliderFunc, font);
+	std::unique_ptr<Slider> contrastSlider = std::make_unique<Slider>(contrastSliderFunc);
 	contrastSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	contrastSlider->setString("Contrast");
 	graphicsTabInteractables.push_back(std::move(contrastSlider));
@@ -154,7 +153,7 @@ void OptionsMenu::addGraphicsTabInteractables() {
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Low"));
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Medium"));
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "High"));
-	std::unique_ptr<DropDown> qualityDropDown = std::make_unique<DropDown>(font, qualityPair);
+	std::unique_ptr<DropDown> qualityDropDown = std::make_unique<DropDown>(qualityPair);
 	qualityDropDown->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	qualityDropDown->setString("Quality");
 	graphicsTabInteractables.push_back(std::move(qualityDropDown));
@@ -163,19 +162,19 @@ void OptionsMenu::addGraphicsTabInteractables() {
 void OptionsMenu::addAudioTabInteractables() {
 	// Add the interactables to the audio tab
 	std::function<void(float value)> musicSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Slider> musicSlider = std::make_unique<Slider>(musicSliderFunc, font);
+	std::unique_ptr<Slider> musicSlider = std::make_unique<Slider>(musicSliderFunc);
 	musicSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	musicSlider->setString("Music Volume");
 	audioTabInteractables.push_back(std::move(musicSlider));
 
 	std::function<void(float value)> sfxSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Slider> sfxSlider = std::make_unique<Slider>(sfxSliderFunc, font);
+	std::unique_ptr<Slider> sfxSlider = std::make_unique<Slider>(sfxSliderFunc);
 	sfxSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	sfxSlider->setString("SFX Volume");
 	audioTabInteractables.push_back(std::move(sfxSlider));
 
 	std::function<void(float value)> voiceSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Slider> voiceSlider = std::make_unique<Slider>(voiceSliderFunc, font);
+	std::unique_ptr<Slider> voiceSlider = std::make_unique<Slider>(voiceSliderFunc);
 	voiceSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	voiceSlider->setString("Voice Volume");
 	audioTabInteractables.push_back(std::move(voiceSlider));
@@ -184,7 +183,7 @@ void OptionsMenu::addAudioTabInteractables() {
 void OptionsMenu::addControlsTabInteractables() {
 	// Add the interactables to the controls tab
 	std::function<void()> rebindFunc = [this]() { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Button> rebindButton = std::make_unique<Button>(rebindFunc, font);
+	std::unique_ptr<Button> rebindButton = std::make_unique<Button>(rebindFunc);
 	rebindButton->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	rebindButton->setString("Rebind Controls");
 	controlsTabInteractables.push_back(std::move(rebindButton));

@@ -23,7 +23,7 @@ void InGameHUD::setUpMenu() {
 void InGameHUD::addInteractablesToMenu() {
 	// Add a settings button
 	std::function<void()> settingsFunc = [this]() { GSM.changeGameState(GameState::Start); };
-	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc, font);
+	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc);
 	settingsButton->createInteractable(sf::Vector2f(200, 50));
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
@@ -37,7 +37,8 @@ void InGameHUD::setInteractablePositions() {
 	HUDView.setRotation(0);
 
 	// Set the health bar red to be proportional to the health from the ship
-	healthBarGreen.setSize(sf::Vector2f(healthBarSize.x - (healthBarSize.x * (1 - healthFraction) / 100), healthBarSize.y));
+	healthBarGreen.setSize(sf::Vector2f(healthBarSize.x - (healthBarSize.x * (1 - (ship->getHealth() / ship->getShipProperties().maxHealth))), healthBarSize.y));
+	healthBarRed.setSize(healthBarSize);
 
 	// Set the position of the health bar and text
 	healthBarGreen.setPosition(HUDView.getCenter().x - healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
@@ -46,7 +47,7 @@ void InGameHUD::setInteractablePositions() {
 	float healthTextX = healthBarGreen.getPosition().x + healthBarGreen.getSize().x / 2 - healthText.getGlobalBounds().width / 2;
 	float healthTextY = healthBarGreen.getPosition().y + healthBarGreen.getSize().y / 2 - healthText.getGlobalBounds().height / 2;
 	healthText.setPosition(healthTextX, healthTextY);
-	healthText.setString("Health: " + std::to_string(static_cast<int>(healthFraction)));
+	healthText.setString("Health: " + std::to_string(static_cast<int>(100 * ship->getHealth() / ship->getShipProperties().maxHealth)));
 
 	// Set the settings button to be in the top left corner
 	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2 + padding, healthBarGreen.getPosition().y));

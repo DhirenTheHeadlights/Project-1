@@ -3,49 +3,80 @@
 using namespace PirateGame;
 
 void ShipCannonHandler::shootCannonballs(int numCannons) {
-	// If the ship is not ready to fire, return
-	if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
+    if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
 
-	// Get the rotation of the ship and convert to radians
-	float rotationInRadians = (shipSprite.getRotation() - 180) * 3.14159265f / 180.f;
+    // Fire the cannonballs with the adjusted direction
+    for (int i = 0; i < numCannons; i++) {
+        Cannonball* cannonball = new Cannonball;
+        cannonball->getSprite().setTexture(textures.grabCannonballTexture());
+        cannonball->getSprite().setScale(cannonballScale);
 
-	// Calculate the direction of the cannon
-	sf::Vector2f cannonDirection(cos(rotationInRadians), sin(rotationInRadians));
-	float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
-	cannonDirection /= magnitude;
+        // Consider a more accurate position calculation here based on cannon placement
+        float padding = 10.f;
+        cannonball->setPos(shipSprite.getPosition() + sf::Vector2f(static_cast<float>(i * padding), static_cast<float>(i * padding)));
+        cannonball->setVelocity(cannonball->getSpeed() * cannonDirection());
+        cannonballs.push_back(cannonball);
+    }
 
-	if (side == FiringSide::Starboard) {
-		cannonDirection = -cannonDirection;
-	}
+    // Play sound once per volley
+    soundManager.playSound();
 
-	// If aiming towards the mouse, get the mouse position and calculate the direction
-	if (aimTowardsMouse) {
-		sf::Vector2i mousePos = sf::Mouse::getPosition(*GlobalValues::getInstance().getWindow());
-		sf::Vector2f shipPos = shipSprite.getPosition();
-		cannonDirection = sf::Vector2f(mousePos.x - shipPos.x, mousePos.y - shipPos.y);
-		float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
-		cannonDirection /= magnitude;
-	}
-
-	// For each cannon, create a cannonball and set its position and velocity, add to vector
-	cannonballs.reserve(cannonballs.size() + numCannons); // reserve space in vector to avoid reallocations
-	sf::Vector2f shipPosition = shipSprite.getPosition(); // get position once, outside the loop
-	for (int i = 0; i < numCannons; i++) {
-		Cannonball* cannonball = new Cannonball;
-		cannonball->getSprite().setTexture(textures.grabCannonballTexture());
-		cannonball->getSprite().setScale(cannonballScale);
-		cannonball->setPos(shipPosition + sf::Vector2f(i * 18,i * 18));
-		cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
-		cannonballs.push_back(cannonball);
-
-		// If cannons are ready to fire, play sound
-	    soundManager.playSound();
-	}
-
-	// Reset the cooldown clock
-	cannonCooldownClock.restart();
+    // Reset the cooldown clock
+    cannonCooldownClock.restart();
 }
 
+sf::Vector2f ShipCannonHandler::cannonDirection() {
+    const float pi = 3.14159265f;
+    if (!aimTowardsMouse) {
+        float rotationInRadians = (shipSprite.getRotation() - 180.f) * pi / 180.f;
+
+        // Calculate the direction of the cannon and normalize it
+        sf::Vector2f cannonDirection(cos(rotationInRadians), sin(rotationInRadians));
+        float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
+        cannonDirection /= magnitude;
+
+        cannonDirection *= (side == FiringSide::Starboard) ? -1.f : 1.f;
+
+        return cannonDirection;
+    }
+    else {
+        const float maxAngle = 45.f;
+        sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+        sf::Vector2f mousePos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+        sf::Vector2f shipPos = shipSprite.getPosition();
+
+        // Calculate vector from ship to mouse
+        sf::Vector2f directionToMouse = mousePos - shipPos;
+        directionToMouse *= (side == FiringSide::Starboard) ? -1.f : 1.f;
+
+        // Calculate angle from ship to mouse in degrees
+        float angleToMouse = atan2(directionToMouse.y, directionToMouse.x) * 180 / pi;
+
+        // Adjust angle based on ship orientation and capped angle
+        float shipRotation = (shipSprite.getRotation() - 180);
+        float angleDifference = angleToMouse - shipRotation;
+
+        // Ensure angleDifference is within -180 to 180 degrees for correct comparison
+        if (angleDifference > 180) angleDifference -= 360;
+        else if (angleDifference < -180) angleDifference += 360;
+
+        // Cap the angleDifference within the maxAngle
+        angleDifference = std::max(std::min(angleDifference, maxAngle), -maxAngle);
+
+        // Calculate final direction vector based on capped angle
+        float cappedAngleRadians = (shipRotation + angleDifference) * pi / 180;
+        sf::Vector2f cappedDirection(cos(cappedAngleRadians), sin(cappedAngleRadians));
+
+        // Normalize the capped direction vector
+        float magnitude = sqrt(cappedDirection.x * cappedDirection.x + cappedDirection.y * cappedDirection.y);
+        cappedDirection /= magnitude;
+
+        // Invert the direction if firing from the starboard side
+        cappedDirection *= (side == FiringSide::Starboard) ? -1.f : 1.f;
+
+        return cappedDirection;
+    }
+}
 
 void ShipCannonHandler::updateCannonballs() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();

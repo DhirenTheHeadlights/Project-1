@@ -3,6 +3,8 @@
 using namespace PirateGame;
 
 void Interactable::createInteractable(sf::Vector2f size) {
+	// Grab the global font
+	font = GlobalValues::getInstance().getFont();
 	// Set the size of all the interactable objects
 	background.setSize(size);
 	frame.setSize(size);

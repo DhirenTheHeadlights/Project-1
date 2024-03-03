@@ -68,7 +68,6 @@ void DropDown::setPosition(sf::Vector2f pos) {
 
 // Interact with the drop down menu
 void DropDown::interact() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(*window));
 
 	// If the mouse is over the drop down menu and the mouse is clicked
@@ -97,8 +96,6 @@ void DropDown::interact() {
 
 // Draw the drop down menu
 void DropDown::draw() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
 	// Draw the background
 	window->draw(background);
 	window->draw(foreground);
@@ -114,8 +111,6 @@ void DropDown::draw() {
 
 // Open the drop down menu if needed
 void DropDown::openDropDown() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
 	// Draw the options
 	for (int i = 0; i < options.size(); i++) {
 		window->draw(optionBoxes[i]);

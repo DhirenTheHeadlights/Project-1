@@ -18,7 +18,7 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setShip(Ship& ship) { this->healthFraction = 100 * ship.getHealth() / ship.getShipProperties().maxHealth; }
+		void setShip(Ship& ship) { this->ship = &ship; };
 	private:
 		// GameStateManager
 		GameStateManager& GSM;
@@ -26,6 +26,8 @@ namespace PirateGame {
 		// Menu items
 		float healthFraction = 100;
 		float padding = 10.f;
+
+		Ship* ship = nullptr;
 
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;

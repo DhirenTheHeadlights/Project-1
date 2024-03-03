@@ -10,7 +10,7 @@
 namespace PirateGame {
 	class DropDown : public Interactable {
 	public:
-		DropDown(sf::Font& font, std::vector<std::pair<std::function<void()>, std::string>> options) : Interactable(font), options(options) {};
+		DropDown(std::vector<std::pair<std::function<void()>, std::string>> options) : options(options) {};
 		~DropDown() {};
 
 		// Set up the drop down menu

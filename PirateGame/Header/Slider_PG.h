@@ -15,7 +15,7 @@ using SliderFunction = std::function<void(float value)>;
 namespace PirateGame {
 	class Slider : public Interactable {
 	public:
-		Slider(SliderFunction func, sf::Font& font) : func(func), Interactable(font) {};
+		Slider(SliderFunction func) : func(func) {};
 		~Slider() {};
 
 		void createInteractable(sf::Vector2f size) override;

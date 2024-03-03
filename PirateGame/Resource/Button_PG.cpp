@@ -4,7 +4,6 @@ using namespace PirateGame;
 
 // Interact with the button
 void Button::interact() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	if (!GlobalValues::getInstance().getInputHandler().isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		return;

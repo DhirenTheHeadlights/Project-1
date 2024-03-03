@@ -28,7 +28,7 @@ namespace PirateGame {
 		void setAimTowardsMouse(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
 
 		// Getters
-		bool getAimTowardsMouse() { return aimTowardsMouse; };
+		bool getAimTowardsMouse() const { return aimTowardsMouse; };
 	private:
 		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;
@@ -46,5 +46,7 @@ namespace PirateGame {
 		SoundManager soundManager;
 
 		Textures textures;
+
+		sf::Vector2f cannonDirection();
 	};
 };
