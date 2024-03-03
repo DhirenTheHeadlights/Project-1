@@ -25,7 +25,7 @@ namespace PirateGame {
 		// Functions
 		void setUpWorld();
 		void gameLoop();
-		void draw();
+		void drawGameLoop();
 
 		// Game objects
 		Player player;

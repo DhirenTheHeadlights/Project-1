@@ -83,7 +83,7 @@ void ShipCannonHandler::updateCannonballs() {
     float elapsed = deltaTime.restart().asSeconds();
 	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
 		// Update the position and velocity (1% Decay) of the cannonball
-		sf::Vector2f velocity = (*it)->getVelocity() * 0.99f;
+		sf::Vector2f velocity = (*it)->getVelocity() * pow(0.99f, elapsed);
 		(*it)->setVelocity(velocity);
 		(*it)->setPos((*it)->getPos() + velocity * elapsed);
 

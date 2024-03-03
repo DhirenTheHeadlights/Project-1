@@ -85,7 +85,7 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		gameLoop();
-		draw();
+		drawGameLoop();
 		MH->openMenu(MenuType::HUD);
 		break;
 	}
@@ -132,7 +132,7 @@ void World::gameLoop() {
 	MH->getHUD()->setShip(ship);
 }
 
-void World::draw() {
+void World::drawGameLoop() {
 	window->draw(background);
 	LMHandler->drawLandMasses();
 	window->draw(frameRateText);
