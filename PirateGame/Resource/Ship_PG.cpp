@@ -11,7 +11,7 @@ std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
 };
 
 // Create the ship
-void Ship::createShip(ShipType type, ShipClass level) {
+void Ship::setUpShip(ShipType type, ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
 	shipProperties = ShipConfig[level];
 

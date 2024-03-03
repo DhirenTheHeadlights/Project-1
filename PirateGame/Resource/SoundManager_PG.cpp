@@ -2,19 +2,35 @@
 
 using namespace PirateGame;
 
-SoundManager::SoundManager(std::string pathToSound) {
-	// Load the sound
-	if (!collisionBuffer.loadFromFile(pathToSound)) {
-		std::cout << "Error loading sound file." << std::endl;
-	}
-
-	// Set the sound to the buffer
-	sound.setBuffer(collisionBuffer);
+void SoundManager::loadSoundBuffer(const std::string& soundName, const std::string& filePath) {
+    sf::SoundBuffer buffer;
+    if (buffer.loadFromFile(filePath)) {
+        soundBuffers[soundName] = buffer;
+    }
+    else {
+        std::cerr << "Failed to load sound buffer: " << filePath << std::endl;
+    }
 }
 
-void SoundManager::playSound() {
-	// Only play if the sound is not already playing
-	if (sound.getStatus() != sf::Sound::Status::Playing) {
-		sound.play();
-	}
+void SoundManager::playSound(const std::string& soundName) {
+    if (soundBuffers.find(soundName) != soundBuffers.end()) {
+        sf::Sound& sound = findAvailableSound();
+        sound.setBuffer(soundBuffers[soundName]);
+        sound.play();
+    }
+    else {
+        std::cerr << "Sound not found: " << soundName << std::endl;
+    }
+}
+
+sf::Sound& SoundManager::findAvailableSound() {
+    for (auto& sound : sounds) {
+        if (sound.getStatus() != sf::Sound::Playing) {
+            return sound;
+        }
+    }
+
+    // All sounds are playing, so we add a new one
+    sounds.emplace_back();
+    return sounds.back();
 }

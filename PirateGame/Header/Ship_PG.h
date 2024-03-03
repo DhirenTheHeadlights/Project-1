@@ -10,6 +10,8 @@
 #include "GlobalValues_PG.h"
 #include "ShipMovementHandler_PG.h"
 #include "ShipInputHandler_PG.h"
+#include "ShipCannonHandler_PG.h"
+#include "ShipInventoryHandler_PG.h"
 
 namespace PirateGame {
 
@@ -41,7 +43,7 @@ namespace PirateGame {
 		~Ship() {};
 
 		// Create the ship and set its values
-		void createShip(ShipType type, ShipClass shipClass);
+		void setUpShip(ShipType type, ShipClass shipClass);
 		void update();
 		void draw();
 
@@ -49,13 +51,17 @@ namespace PirateGame {
 		ShipMovementHandler& getMovementHandler() { return SIH.getMovementHandler(); }
 		ShipInputHandler& getInputHandler() { return SIH; }
 		ShipCannonHandler& getCannonHandler() { return SIH.getCannonHandler(); }
+		ShipInventoryHandler& getInventoryHandler() { return SIvH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
 			health -= damagePerSecond * deltaTime.restart().asSeconds();
 			if (health < 0) health = 0;
 		}
-		void addItemToInventory(std::string item, int quantity) { inventory.push_back(std::make_pair(item, quantity)); }
+		void changeShipClass(ShipClass shipClass) { 
+			this->shipClass = shipClass;
+			setUpShip(shipType, shipClass);
+		}
 
 		// Getters
 		float getHealth() const { return health; }
@@ -97,8 +103,8 @@ namespace PirateGame {
 
 		// Handlers
 		ShipInputHandler SIH;
+		ShipInventoryHandler SIvH;
 
-		std::vector<std::pair<std::string, int>> inventory;
 	};
 
 }

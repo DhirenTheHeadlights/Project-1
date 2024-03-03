@@ -16,7 +16,9 @@ namespace PirateGame {
 
 	class ShipCannonHandler {
 	public:
-		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite), soundManager(soundFile) {};
+		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {
+			soundManager.loadSoundBuffer("cannonshot", soundFile);
+		};
 		~ShipCannonHandler() {};
 
 		void shootCannonballs(int numCannons);
@@ -41,7 +43,7 @@ namespace PirateGame {
 		
 		bool aimTowardsMouse = false;
 		float cooldown = 0.1f;
-		float cannonballSpeed = 1000;
+		float cannonballSpeed = 300;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;

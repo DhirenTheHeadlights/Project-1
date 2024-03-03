@@ -37,7 +37,7 @@ World::World(sf::RenderWindow* window_in) {
 }
 
 void World::setUpWorld() {
-	ship.createShip(ShipType::Player, ShipClass::Frigate);
+	ship.setUpShip(ShipType::Player, ShipClass::Frigate);
 	LMHandler->addLandMasses(100, 500.f);
 
 	// Set the game state to start

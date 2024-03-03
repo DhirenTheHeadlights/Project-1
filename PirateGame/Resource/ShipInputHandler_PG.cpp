@@ -32,9 +32,11 @@ void ShipInputHandler::handleCannonAim() {
 
 	// Set the firing side of the ship
 	if (inputHandler.isMouseButtonPressedOnce(portMouseButton)) {
+		std::cout << "Port" << std::endl;
 		SCH.setFiringSide(FiringSide::Port);
 	}
-	else if (inputHandler.isMouseButtonPressedOnce(starboardMouseButton)) {
+	if (inputHandler.isMouseButtonPressedOnce(starboardMouseButton)) {
+		std::cout << "Starboard" << std::endl;
 		SCH.setFiringSide(FiringSide::Starboard);
 	}
 

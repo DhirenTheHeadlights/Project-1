@@ -19,7 +19,7 @@
 namespace PirateGame {
     class LandMassHandler {
     public:
-        LandMassHandler() : hashmap(), soundManager(soundFile) {};
+        LandMassHandler() { soundManager.loadSoundBuffer("bonk", soundFile); };
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
