@@ -172,6 +172,7 @@
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\IslandMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\MenuHandler_PG.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
     <ClInclude Include="PirateGame\Header\InputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Interactable_PG.h" />
+    <ClInclude Include="PirateGame\Header\IslandMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMass_PG.h" />
     <ClInclude Include="PirateGame\Header\MenuHandler_PG.h" />

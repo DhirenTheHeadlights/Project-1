@@ -45,6 +45,7 @@ namespace PirateGame {
 		// Create the ship and set its values
 		void createShip(ShipType type, ShipClass shipClass);
 		void updateAndDraw();
+		
 
 		// Get movement handler
 		ShipMovementHandler& getMovementHandler() { return SIH.getMovementHandler(); }
@@ -56,11 +57,14 @@ namespace PirateGame {
 			health -= damagePerSecond * deltaTime.restart().asSeconds();
 			if (health < 0) health = 0;
 		}
+		void addItemToInventory(std::string item, int quantity) { inventory.push_back(std::make_pair(item, quantity)); }
 
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 		ShipProperties& getShipProperties() { return shipProperties; }
+
+
 
 	private:
 		// Static map for ship configurations
@@ -95,6 +99,8 @@ namespace PirateGame {
 
 		// Handlers
 		ShipInputHandler SIH;
+
+		std::vector<std::pair<std::string, int>> inventory;
 	};
 
 }

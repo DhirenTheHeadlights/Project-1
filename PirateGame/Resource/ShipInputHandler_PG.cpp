@@ -19,7 +19,7 @@ void ShipInputHandler::handleCannonFire() {
 	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
 
 	// Fire the cannons
-	if (inputHandler.isKeyPressedOnce(sf::Keyboard::Space)) {
+	if (inputHandler.isMouseButtonPressedOnce(sf::Mouse::Middle)) {
 		SCH.shootCannonballs(numCannons);
 	}
 }
