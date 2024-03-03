@@ -9,7 +9,11 @@
 namespace PirateGame {
 	class TextDisplayBox : public Interactable {
 	public:
-		TextDisplayBox(sf::Font& font) : Interactable() {};
+		TextDisplayBox() : Interactable() {};
+		~TextDisplayBox() {};
+
+		// Have to define but it doesn't do anything
+		void interact() override {};
 	private:
 
 	};

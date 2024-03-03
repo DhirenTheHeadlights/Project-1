@@ -29,6 +29,7 @@ namespace PirateGame {
 
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };
+		FiringSide getFiringSide() const { return side; };
 	private:
 		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;

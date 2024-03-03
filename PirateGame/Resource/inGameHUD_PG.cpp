@@ -28,7 +28,41 @@ void InGameHUD::addInteractablesToMenu() {
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
 
-	// Add an information box for the ship
+	// Add information boxes for the ship state and properties
+	std::unique_ptr<TextDisplayBox> shipFiringSideIndicator = std::make_unique<TextDisplayBox>();
+	shipFiringSideIndicator->createInteractable(sf::Vector2f(200, 50));
+	std::string firingSide = "Firing Side: ";
+	shipFiringSideIndicator->setString(firingSide);
+	shipProperties.push_back(std::move(shipFiringSideIndicator));
+
+	std::unique_ptr<TextDisplayBox> manualAimIndicator = std::make_unique<TextDisplayBox>();
+	manualAimIndicator->createInteractable(sf::Vector2f(200, 50));
+	std::string manualAim = "Manual Aim: ";
+	manualAimIndicator->setString(manualAim);
+	shipProperties.push_back(std::move(manualAimIndicator));
+}
+
+// This function will update the strings of the ship properties
+void InGameHUD::updateShipPropertiesString() {
+	// Update the firing side indicator
+	std::string firingSide = "Firing Side: ";
+	if (ship->getCannonHandler().getFiringSide() == FiringSide::Port) {
+		firingSide += "Left";
+	}
+	else {
+		firingSide += "Right";
+	}
+	shipProperties[0]->setString(firingSide);
+
+	// Update the manual aim indicator
+	std::string manualAim = "Manual Aim: ";
+	if (ship->getCannonHandler().getAimTowardsMouse()) {
+		manualAim += "On";
+	}
+	else {
+		manualAim += "Off";
+	}
+	shipProperties[1]->setString(manualAim);
 }
  
 void InGameHUD::setInteractablePositions() {
@@ -54,6 +88,13 @@ void InGameHUD::setInteractablePositions() {
 
 	// Set the mini map to be in the top right corner with padding right by the health bars
 	minimap.setPosition(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
+
+	// Set the position of the info boxes to be below the settings button on the left side
+	for (int i = 0; i < shipProperties.size(); i++) {
+		float x = HUDView.getCenter().x - window->getSize().x / 2 + padding;
+		float y = interactables[0]->getPosition().y + interactables[0]->getBackground().getSize().y + padding + i * (shipProperties[i]->getBackground().getSize().y + padding);
+		shipProperties[i]->setPosition(sf::Vector2f(x, y));
+	}
 }
 
 void InGameHUD::draw() {
@@ -64,6 +105,14 @@ void InGameHUD::draw() {
 	window->draw(healthText);
 
 	window->draw(minimap);
+
+	// Add and draw the ship properties
+	updateShipPropertiesString();
+	for (auto& property : shipProperties) {
+		property->getFrame().setFillColor(sf::Color::Transparent);
+		property->getFrame().setOutlineColor(sf::Color::Transparent);
+		property->draw();
+	}
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {

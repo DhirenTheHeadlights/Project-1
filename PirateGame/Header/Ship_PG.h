@@ -48,6 +48,8 @@ namespace PirateGame {
 
 		// Get movement handler
 		ShipMovementHandler& getMovementHandler() { return SIH.getMovementHandler(); }
+		ShipInputHandler& getInputHandler() { return SIH; }
+		ShipCannonHandler& getCannonHandler() { return SIH.getCannonHandler(); }
 
 		// Setters
 		void damageShip(float damagePerSecond) {

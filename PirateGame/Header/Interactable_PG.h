@@ -48,6 +48,9 @@ namespace PirateGame {
 		sf::RectangleShape& getForeground() { return foreground; }
 		sf::RectangleShape& getFrame() { return frame; }
 
+		sf::Vector2f getPosition() const { return position; }
+		sf::Vector2f getSize() const { return size; }
+
 	protected:
 		// Variables
 		sf::Vector2f position;

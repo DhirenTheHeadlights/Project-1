@@ -15,6 +15,7 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
+		void updateShipPropertiesString();
 		void draw() override;
 
 		// Setters
@@ -31,6 +32,8 @@ namespace PirateGame {
 
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;
+
+		std::vector<std::unique_ptr<TextDisplayBox>> shipProperties;
 
 		// Temp rectangle for minimap
 		sf::RectangleShape minimap;
