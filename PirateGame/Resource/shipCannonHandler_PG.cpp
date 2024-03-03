@@ -79,14 +79,11 @@ sf::Vector2f ShipCannonHandler::cannonDirection() {
 }
 
 void ShipCannonHandler::updateCannonballs() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
 	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
 		// Update the position and velocity (1% Decay) of the cannonball
 		sf::Vector2f velocity = (*it)->getVelocity() * 0.99f;
 		(*it)->setVelocity(velocity);
 		(*it)->setPos((*it)->getPos() + velocity);
-		window->draw((*it)->getSprite());
 
 		// If more than 2 seconds have passed, delete the cannonball
 		if ((*it)->getClock().getElapsedTime().asSeconds() > 2) {
@@ -96,5 +93,12 @@ void ShipCannonHandler::updateCannonballs() {
 		else {
 			++it;
 		}
+	}
+}
+
+void ShipCannonHandler::drawCannonballs() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+    for (auto it = cannonballs.begin(); it != cannonballs.end(); ++it) {
+		window->draw((*it)->getSprite());
 	}
 }

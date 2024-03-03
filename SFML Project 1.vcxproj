@@ -168,6 +168,7 @@
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\GlobalValues_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp" />

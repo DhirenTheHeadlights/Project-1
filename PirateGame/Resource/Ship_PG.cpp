@@ -51,24 +51,24 @@ void Ship::createShip(ShipType type, ShipClass level) {
 }
 
 // Draw and update the ship
-void Ship::updateAndDraw() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
+void Ship::update() {
 	regenerateHealth();
+	SIH.update();
+}
 
+void Ship::draw() {
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	// Draw the health bars only if it is an enemy
 	if (shipType == ShipType::Enemy) {
 		window->draw(healthBarRed);
 		window->draw(healthBarGreen);
 	}
 
+	SIH.draw();
+
 	// Draw the velocity vector
 	window->draw(createVector(sprite.getPosition(), SIH.getMovementHandler().getVelocity(), sf::Color::Blue));
-
 	window->draw(sprite);
-
-	// Update the ship input handler
-	SIH.update();
 }
 
 // Regen Health

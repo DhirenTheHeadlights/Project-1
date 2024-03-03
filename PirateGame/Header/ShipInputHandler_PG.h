@@ -1,7 +1,7 @@
 #pragma once
 
-// This class contains the methods for handling the input
-// for the ship. This includes shooting, etc.
+/// This class contains the methods for handling the input
+/// for the ship. This includes shooting, etc.
 
 #include <SFML/Graphics.hpp>
 
@@ -16,6 +16,7 @@ namespace PirateGame {
 		~ShipInputHandler() {};
 
 		void update();
+		void draw();
 		void handleCannonFire();
 		void handleCannonAim();
 		void handleAnchorDrop();
@@ -27,7 +28,10 @@ namespace PirateGame {
 		// Getters
 		ShipCannonHandler& getCannonHandler() { return SCH; }
 		ShipMovementHandler& getMovementHandler() { return SMH; }
-
+		std::string const getFireKeyString() { return GlobalValues::getInstance().keyToString(fireKey); }
+		std::string const getManualAimKeyString() { return GlobalValues::getInstance().keyToString(manualAimKey); }
+		std::string const getPortMouseButtonString() { return GlobalValues::getInstance().buttonToString(portMouseButton); }
+		std::string const getStarboardMouseButtonString() { return GlobalValues::getInstance().buttonToString(starboardMouseButton); }
 	private:
 		sf::Sprite& sprite;
 

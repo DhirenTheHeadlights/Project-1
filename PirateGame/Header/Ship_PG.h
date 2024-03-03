@@ -1,8 +1,6 @@
 #pragma once
 
-/// <summary>
 /// This class is used to represent the player ship in the game.
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -44,8 +42,8 @@ namespace PirateGame {
 
 		// Create the ship and set its values
 		void createShip(ShipType type, ShipClass shipClass);
-		void updateAndDraw();
-		
+		void update();
+		void draw();
 
 		// Get movement handler
 		ShipMovementHandler& getMovementHandler() { return SIH.getMovementHandler(); }

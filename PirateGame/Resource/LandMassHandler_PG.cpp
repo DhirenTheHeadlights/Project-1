@@ -49,19 +49,16 @@ void LandMassHandler::createLandmass(LandMassType type, float minDistBetweenLand
 }
 
 // Draw all the land masses
-void LandMassHandler::drawLandMasses(Ship& ship) {
+void LandMassHandler::drawLandMasses() {
 	// Draw all the land masses and add them to the hashmap
 	for (auto& i : landMasses) {
 		i->draw(*window);
 		hashmap.addLandMass(i);
 	}
-
-	// Handle the collisions between the player and the land masses
-	interactWithLandmass(ship);
 }
 
 // Handle the collision between the player ship and the land masses
-void LandMassHandler::interactWithLandmass(Ship& ship) {
+void LandMassHandler::interactWithLandmasses(Ship& ship) {
 	// Get the nearby land masses
 	std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
 	handleCollisions(ship, nearbyLandMasses);

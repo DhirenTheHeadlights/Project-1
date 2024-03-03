@@ -1,8 +1,6 @@
 #pragma once
 
-/// <summary>
 /// This class is used to represent the world in the game.
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 
@@ -21,11 +19,14 @@ namespace PirateGame {
 		World(sf::RenderWindow* window);
 		~World() {};
 
-		void setUpWorld();
 		void createWorld(sf::Event event);
-		void gameLoop();
 
 	private:
+		// Functions
+		void setUpWorld();
+		void gameLoop();
+		void draw();
+
 		// Game objects
 		Player player;
 		Ship ship;
@@ -40,7 +41,14 @@ namespace PirateGame {
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;
+		sf::RectangleShape background;
+
+		// Frame rate variables
 		sf::Clock frameRateClock;
+		sf::Time frameRateUpdateTime;
+		sf::Text frameRateText;
+		int frameCount = 0;
+		const float numFramesToAverage = 40.f;
 	};
 }
 

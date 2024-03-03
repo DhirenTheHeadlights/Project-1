@@ -1,9 +1,7 @@
 #pragma once
 
-/// <summary>
 /// This class is a child class that represents an interactable drop down 
 /// menu to use in the menu classes.
-/// </summary>
 
 #include "Interactable_PG.h"
 

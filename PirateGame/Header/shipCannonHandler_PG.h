@@ -21,6 +21,7 @@ namespace PirateGame {
 
 		void shootCannonballs(int numCannons);
 		void updateCannonballs();
+		void drawCannonballs();
 
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };

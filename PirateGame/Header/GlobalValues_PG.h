@@ -1,9 +1,7 @@
 #pragma once
 
-/// <summary>
 /// This class contains all the global values used throughout the game.
 /// It is intended to be included in every file that needs access to these values.
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 
@@ -18,6 +16,9 @@ namespace PirateGame {
 			static GlobalValues instance;
 			return instance;
 		}
+
+		std::string keyToString(sf::Keyboard::Key key);
+		std::string buttonToString(sf::Mouse::Button button);
 
 		// Setters
 		void setFont(sf::Font font) { this->globalFont = font; }

@@ -3,9 +3,9 @@
 #include <iostream>
 
 
-// This class handles the input from the user
-// The main functionality is to get a singlular input from the user
-// per frame and return when needed.
+/// This class handles the input from the user
+/// The main functionality is to get a singlular input from the user
+/// per frame and return when needed.
 
 namespace PirateGame {
     class InputHandler {

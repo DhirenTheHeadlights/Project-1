@@ -7,11 +7,13 @@ void ShipInputHandler::update() {
 	handleCannonAim();
 	handleAnchorDrop();
 
-	// Update the ship cannon handler
-	SCH.updateCannonballs();
-
-	// Update the ship movement handler
+	// Update the handlers
 	SMH.move(baseSpeed);
+	SCH.updateCannonballs();
+}
+
+void ShipInputHandler::draw() {
+	SCH.drawCannonballs();
 }
 
 void ShipInputHandler::handleCannonFire() {
@@ -19,7 +21,7 @@ void ShipInputHandler::handleCannonFire() {
 	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
 
 	// Fire the cannons
-	if (inputHandler.isMouseButtonPressedOnce(sf::Mouse::Middle)) {
+	if (inputHandler.isKeyPressedOnce(fireKey)) {
 		SCH.shootCannonballs(numCannons);
 	}
 }

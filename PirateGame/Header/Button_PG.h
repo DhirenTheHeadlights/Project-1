@@ -1,9 +1,7 @@
 #pragma once
 
-/// <summary>
 /// This class is for the interactable type of button. It is used to create the
 /// button and handle its interaction.
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 #include <iostream>

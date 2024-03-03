@@ -1,9 +1,7 @@
 #pragma once
 
-/// <summary>
 /// The base class for all of the game menus.
 /// It is intended to be inherited from and extended to create new menus.
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 #include <iostream>

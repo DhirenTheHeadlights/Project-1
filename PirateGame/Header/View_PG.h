@@ -16,6 +16,8 @@ namespace PirateGame {
 
 		void setUpView();
 		void setCenter(sf::Vector2f position);
+
+		sf::View& getView() { return view;  }
 	private:
 		sf::View view;
 		sf::RenderWindow* window = nullptr;

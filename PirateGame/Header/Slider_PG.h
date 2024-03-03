@@ -1,11 +1,9 @@
 #pragma once
 
-/// <summary>
 /// This class is the for the slider interactable object. It will have
 /// a background, a foreground, and a frame. It will also have a slider
 /// track and a slider thumb. There is a text box to display the value
 /// of the slider for precision.
-/// </summary>
 
 #include "Interactable_PG.h"
 

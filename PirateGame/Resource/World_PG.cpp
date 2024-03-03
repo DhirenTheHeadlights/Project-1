@@ -49,10 +49,20 @@ void World::setUpWorld() {
 
 	// Set up the view
 	view.setUpView();
+
+	// Set up the frame rate text
+	frameRateText.setFont(GlobalValues::getInstance().getFont());
+	frameRateText.setCharacterSize(24);
+	frameRateText.setFillColor(sf::Color::White);
+
+	// Set up the background
+	background.setSize(sf::Vector2f(10000, 10000));
+	background.setFillColor(sf::Color(0, 158, 163));
 }
 
 void World::createWorld(sf::Event event) {
 	window->clear();
+
 	GlobalValues::getInstance().getInputHandler().update();
 
 	// Handle the different game states
@@ -75,6 +85,7 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		gameLoop();
+		draw();
 		MH->openMenu(MenuType::HUD);
 		break;
 	}
@@ -84,40 +95,47 @@ void World::createWorld(sf::Event event) {
 		window->close();
 	}
 
-	float frameRate = 1.f / frameRateClock.restart().asSeconds();
-	sf::Text frameRateText;
-	frameRateText.setFont(GlobalValues::getInstance().getFont());
-	frameRateText.setString(std::to_string(static_cast<int>(frameRate)));
-	frameRateText.setCharacterSize(24);
-	frameRateText.setFillColor(sf::Color::White);
-	frameRateText.setPosition(0, 0);
-	window->draw(frameRateText);
+	// Frame rate calculation
+	sf::Time deltaTime = frameRateClock.restart();
+	frameRateUpdateTime += deltaTime;
+	++frameCount;
 
-	window->display();
-}
+	if (frameCount >= numFramesToAverage) {
+		float frameRate = frameCount / frameRateUpdateTime.asSeconds();
+		frameRateText.setString("FPS: " + std::to_string(static_cast<int>(frameRate)));
+		frameRateUpdateTime = sf::Time::Zero;
+		frameCount = 0;
+	}
 
-void World::gameLoop() {
-	// Temp background rect for water
-	sf::RectangleShape background(sf::Vector2f(10000, 10000));
-	background.setFillColor(sf::Color(0, 158, 163));
-	window->draw(background);
-
-	// Temporary code to draw a grid
-	//map.drawGrid(window);
-
-	// Draw the land masses
-	LMHandler->drawLandMasses(ship);
-
-	// Draw the ship
-	ship.updateAndDraw();
-	view.setCenter(ship.getMovementHandler().getPosition());
-
-	// Set the ship for the hud
-	MH->getHUD()->setShip(ship);
+	// Set the position of the frame rate text to be in the bottom left corner
+	frameRateText.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y + window->getSize().y / 2.f - 2 * frameRateText.getGlobalBounds().height);
 
 	// Temporary code to close the window
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window->close();
 	}
+
+	window->display();
+}
+
+void World::gameLoop() {
+	// Temporary code to draw a grid
+	//map.drawGrid(window);
+
+	LMHandler->interactWithLandmasses(ship);
+
+	ship.update();
+
+	view.setCenter(ship.getMovementHandler().getPosition());
+
+	// Set the ship for the hud
+	MH->getHUD()->setShip(ship);
+}
+
+void World::draw() {
+	window->draw(background);
+	LMHandler->drawLandMasses();
+	window->draw(frameRateText);
+	ship.draw();
 }
 

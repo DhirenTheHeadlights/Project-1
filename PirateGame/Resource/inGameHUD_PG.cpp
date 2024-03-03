@@ -48,11 +48,12 @@ void InGameHUD::updateShipPropertiesString() {
 	std::string firingSide = "Firing Side: ";
 	if (ship->getCannonHandler().getFiringSide() == FiringSide::Port) {
 		firingSide += "Left";
+		shipProperties[0]->setString(firingSide + " [" + ship->getInputHandler().getPortMouseButtonString() + "]");
 	}
 	else {
 		firingSide += "Right";
+		shipProperties[0]->setString(firingSide + " [" + ship->getInputHandler().getStarboardMouseButtonString() + "]");
 	}
-	shipProperties[0]->setString(firingSide);
 
 	// Update the manual aim indicator
 	std::string manualAim = "Manual Aim: ";
@@ -61,8 +62,8 @@ void InGameHUD::updateShipPropertiesString() {
 	}
 	else {
 		manualAim += "Off";
-	}
-	shipProperties[1]->setString(manualAim);
+	} 
+	shipProperties[1]->setString(manualAim + " [" + ship->getInputHandler().getManualAimKeyString() + "]");
 }
  
 void InGameHUD::setInteractablePositions() {
@@ -75,7 +76,7 @@ void InGameHUD::setInteractablePositions() {
 	healthBarRed.setSize(healthBarSize);
 
 	// Set the position of the health bar and text
-	healthBarGreen.setPosition(HUDView.getCenter().x - healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
+	healthBarGreen.setPosition(HUDView.getCenter().x - healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2u + padding);
 	healthBarRed.setPosition(healthBarGreen.getPosition());
 
 	float healthTextX = healthBarGreen.getPosition().x + healthBarGreen.getSize().x / 2 - healthText.getGlobalBounds().width / 2;
@@ -84,14 +85,14 @@ void InGameHUD::setInteractablePositions() {
 	healthText.setString("Health: " + std::to_string(static_cast<int>(100 * ship->getHealth() / ship->getShipProperties().maxHealth)));
 
 	// Set the settings button to be in the top left corner
-	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2 + padding, healthBarGreen.getPosition().y));
+	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreen.getPosition().y));
 
 	// Set the mini map to be in the top right corner with padding right by the health bars
 	minimap.setPosition(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
 
 	// Set the position of the info boxes to be below the settings button on the left side
 	for (int i = 0; i < shipProperties.size(); i++) {
-		float x = HUDView.getCenter().x - window->getSize().x / 2 + padding;
+		float x = HUDView.getCenter().x - window->getSize().x / 2u + padding;
 		float y = interactables[0]->getPosition().y + interactables[0]->getBackground().getSize().y + padding + i * (shipProperties[i]->getBackground().getSize().y + padding);
 		shipProperties[i]->setPosition(sf::Vector2f(x, y));
 	}

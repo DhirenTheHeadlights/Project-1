@@ -1,8 +1,6 @@
 #pragma once
 
-/// <summary>
 /// This is a child menu class for the options menu.
-/// </summary>
 
 #include "Menu_PG.h"
 
