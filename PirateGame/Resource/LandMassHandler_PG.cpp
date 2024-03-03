@@ -57,14 +57,19 @@ void LandMassHandler::drawLandMasses(Ship& ship) {
 	}
 
 	// Handle the collisions between the player and the land masses
-	handleCollisions(ship);
+	interactWithLandmass(ship);
 }
 
 // Handle the collision between the player ship and the land masses
-void LandMassHandler::handleCollisions(Ship& ship) {
+void LandMassHandler::interactWithLandmass(Ship& ship) {
 	// Get the nearby land masses
 	std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
+	handleCollisions(ship, nearbyLandMasses);
+	//OPEN MARKET HERE
 
+}
+
+void LandMassHandler::handleCollisions(Ship& ship, std::set<LandMass*> nearbyLandMasses){
 	// Vector to store colliding land masses
 	std::vector<LandMass*> collidingLandMasses;
 	collidingLandMasses.clear();
@@ -75,7 +80,6 @@ void LandMassHandler::handleCollisions(Ship& ship) {
 	// Check if the player is colliding with any of the nearby land masses
 	for (auto& i : nearbyLandMasses) {
 		if (pixelPerfectTest(ship.getSprite(), i->getSprite())) {
-
 			// Collision movement for the ship
 			ship.getMovementHandler().collisionMovement(i->getSprite());
 

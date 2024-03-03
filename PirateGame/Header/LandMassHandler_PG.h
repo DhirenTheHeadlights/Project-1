@@ -26,9 +26,9 @@ namespace PirateGame {
         void drawLandMasses(Ship& ship);
     private:
         // Handle collisions between ship and land masses
-        void handleCollisions(Ship& ship);
+        void interactWithLandmass(Ship& ship);
         bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5, sf::RenderWindow& window = *GlobalValues::getInstance().getWindow(), bool debug = true);
-
+        void handleCollisions(Ship& ship, std::set<LandMass*> nearbyLandMasses);
         void createLandmass(LandMassType type, float minDistBetweenLandmasses);
 
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();

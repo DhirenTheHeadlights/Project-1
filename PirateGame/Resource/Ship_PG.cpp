@@ -119,3 +119,4 @@ sf::VertexArray Ship::createVector(const sf::Vector2f& start, const sf::Vector2f
 	line[1].color = color;
 	return line;
 }
+

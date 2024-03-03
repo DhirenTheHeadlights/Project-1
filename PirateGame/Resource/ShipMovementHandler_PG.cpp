@@ -41,10 +41,9 @@ void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const
 
 void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
 	// If friction is enabled, decrease the speed. Otherwise, set the velocity.
-	if (isColliding) {
-		speed = baseSpeed * frictionCoefficient;
-	}
+	if (isColliding) speed = baseSpeed * frictionCoefficient;
 	else velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
+	if (stopShipFlag) velocity = sf::Vector2f(0, 0);
 
 	// Update the position
 	position += velocity * elapsedTime;
