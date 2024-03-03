@@ -34,12 +34,14 @@ namespace PirateGame {
 	private:
 		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;
+		sf::Clock deltaTime;
 
 		sf::Vector2f cannonballDirection;
 		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
 		
 		bool aimTowardsMouse = false;
 		float cooldown = 0.1f;
+		float cannonballSpeed = 1000;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;

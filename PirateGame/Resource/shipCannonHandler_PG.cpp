@@ -10,8 +10,9 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
         Cannonball* cannonball = new Cannonball;
         cannonball->getSprite().setTexture(textures.grabCannonballTexture());
         cannonball->getSprite().setScale(cannonballScale);
+        cannonball->setSpeed(cannonballSpeed);
 
-        // Consider a more accurate position calculation here based on cannon placement
+        // Considering a more accurate position calculation here based on cannon placement
         float padding = 10.f;
         cannonball->setPos(shipSprite.getPosition() + sf::Vector2f(static_cast<float>(i * padding), static_cast<float>(i * padding)));
         cannonball->setVelocity(cannonball->getSpeed() * cannonDirection());
@@ -79,11 +80,12 @@ sf::Vector2f ShipCannonHandler::cannonDirection() {
 }
 
 void ShipCannonHandler::updateCannonballs() {
+    float elapsed = deltaTime.restart().asSeconds();
 	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
 		// Update the position and velocity (1% Decay) of the cannonball
 		sf::Vector2f velocity = (*it)->getVelocity() * 0.99f;
 		(*it)->setVelocity(velocity);
-		(*it)->setPos((*it)->getPos() + velocity);
+		(*it)->setPos((*it)->getPos() + velocity * elapsed);
 
 		// If more than 2 seconds have passed, delete the cannonball
 		if ((*it)->getClock().getElapsedTime().asSeconds() > 2) {
