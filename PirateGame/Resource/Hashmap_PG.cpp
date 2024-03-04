@@ -40,8 +40,8 @@ void Hashmap::removeLandMass(LandMass* landmass) {
 	}
 }
 
-// Find landmass near to a player
-std::set<LandMass*> Hashmap::findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug) {
+// Find landmass near to a player, debug is used to visualize the grid cells being checked
+std::set<LandMass*> Hashmap::findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug) { 
     // Get the global bounds of the player ship's sprite
     sf::FloatRect shipBounds = ship.getSprite().getGlobalBounds();
 

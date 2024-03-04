@@ -186,6 +186,7 @@ void IslandMenu::setInteractablePositions() {
 
 	if (!enteredIsland) {
 		// Set the position of the menu (only the inital menu)
+		menu.setSize(initalMenuSize); // Reset the size of the menu
 		menu.setPosition(HUDView.getCenter().x - menu.getSize().x / 2, HUDView.getCenter().y + menu.getSize().y);
 		titleText.setPosition(menu.getPosition().x + menu.getSize().x / 2 - titleText.getGlobalBounds().width / 2, menu.getPosition().y + padding);
 
@@ -194,6 +195,13 @@ void IslandMenu::setInteractablePositions() {
 
 		// Set the position of the second button to be centered on the right side of the menu rect
 		interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+
+		if (!playerPromptedOnce) {
+			// Set the ship stop flag to true when prompting the player to enter the island
+			ship->getMovementHandler().setStopShipFlag(true);
+			ship->getMovementHandler().setStopShipRotationFlag(true);
+			playerPromptedOnce = true;
+		}
 
 		return;
 	}
@@ -303,9 +311,6 @@ void IslandMenu::draw() {
 	if (enteredIsland && !addedShipInventory) {
 		addShipInventoryInteractables();
 	}
-	else if (enteredIsland) {
-		updateMarket();
-	}
 
 	if (enteredIsland) {
 		// Draw the market interactables
@@ -333,6 +338,9 @@ void IslandMenu::draw() {
 			button->getText().setCharacterSize(static_cast<unsigned int>(15));
 			button->draw();
 		}
+
+		// Update market
+		updateMarket();
 
 		// Draw the gold text
 		window->draw(merchantGold);

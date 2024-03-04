@@ -27,7 +27,7 @@ namespace PirateGame {
         void interactWithLandmasses(Ship& ship);
     private:
         // Helper functions
-        bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5, sf::RenderWindow& window = *GlobalValues::getInstance().getWindow(), bool debug = true);
+        bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5);
         void handleCollisions(Ship& ship, std::set<LandMass*> nearbyLandMasses);
         void createLandmass(LandMassType type, float minDistBetweenLandmasses);
         void openMarket(Ship& ship, LandMass* landMass);
@@ -42,6 +42,7 @@ namespace PirateGame {
 
         // Values
         float collisionDamagePerSecond = 4.f;
+        float interactionDistance = 600.f; // Distance for interaction with landmasses
 
         // Map to store the land masses
         Map& map = GlobalValues::getInstance().getMap();

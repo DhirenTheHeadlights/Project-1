@@ -23,6 +23,11 @@ namespace PirateGame {
 		void setShip(Ship& ship) { this->ship = &ship; };
 		void setMarket(std::vector<ShopItem> market) { this->market = market; }
 		void setEnteredIsland(bool enteredIsland) { this->enteredIsland = enteredIsland; }
+		void setPlayerPromptedOnce(bool playerPromptedOnce) { this->playerPromptedOnce = playerPromptedOnce; }
+
+		// Getters
+		bool getEnteredIsland() { return enteredIsland; }
+		bool getPlayerPromptedOnce() { return playerPromptedOnce; }
 	private:
 		// Menu items
 		float padding = 10.f;
@@ -30,6 +35,7 @@ namespace PirateGame {
 
 		bool enteredIsland = false;
 		bool addedShipInventory = false;
+		bool playerPromptedOnce = false;
 
 		sf::Vector2f initalMenuSize = sf::Vector2f(600.0f, 150.0f);
 		sf::Vector2f expandedMenuSize = sf::Vector2f(900.0f, 500.0f);

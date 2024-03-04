@@ -63,18 +63,29 @@ void LandMassHandler::drawLandMasses() {
 	}
 }
 
-// Handle the collision between the player ship and the land masses
 void LandMassHandler::interactWithLandmasses(Ship& ship) {
-	// Get the nearby land masses
-	std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
-	handleCollisions(ship, nearbyLandMasses);
-	
-	// If a nearby landmass is an island, prompt the player to open the market
-	for (auto& i : nearbyLandMasses) {
-		if (i->getType() == LandMassType::Island) {
-			openMarket(ship, i);
-		}
-	}
+    std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
+
+    handleCollisions(ship, nearbyLandMasses);
+    
+    for (auto& landMass : nearbyLandMasses) {
+        sf::Vector2f shipPosition = ship.getSprite().getPosition(); // Ship position is already the center of the sprite
+        sf::Vector2f landMassPosition = sf::Vector2f(landMass->getSprite().getPosition().x + landMass->getSprite().getGlobalBounds().width / 2, landMass->getSprite().getPosition().y + landMass->getSprite().getGlobalBounds().height / 2);
+        float distance = sqrt(pow(shipPosition.x - landMassPosition.x, 2) + pow(shipPosition.y - landMassPosition.y, 2));
+
+        if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
+            // Prompt the player to open the market here
+            openMarket(ship, landMass);
+            break; // Stop checking for other islands
+        }
+    }
+
+    // Reset the 'player prompted once' flag for all islands not nearby
+    for (auto& landMass : landMasses) {
+        if (landMass->getType() == LandMassType::Island && nearbyLandMasses.find(landMass) == nearbyLandMasses.end()) {
+            landMass->getIslandMenu()->setEnteredIsland(false);
+        }
+    }
 }
 
 void LandMassHandler::openMarket(Ship& ship, LandMass* landMass) {
@@ -113,7 +124,8 @@ void LandMassHandler::handleCollisions(Ship& ship, std::set<LandMass*> nearbyLan
 }
 
 // Pixel perfect collision detection
-bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit, sf::RenderWindow& window, bool debug) {
+bool LandMassHandler::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {
+	sf::RenderWindow& window = *GlobalValues::getInstance().getWindow();
 	sf::FloatRect intersection;
 	if (!sprite1.getGlobalBounds().intersects(sprite2.getGlobalBounds(), intersection)) return false;
 
