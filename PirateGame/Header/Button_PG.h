@@ -19,10 +19,17 @@ namespace PirateGame {
 		Button(ButtonFunction func) : func(func) {};
 		~Button() {};
 
-		void interact(); // Overridden function to handle the interaction of the button
+		void interact() override; // Overridden function to handle the interaction of the button
+		void interactOnce();
+		void interactHold();
 
+		void setCooldownTime(sf::Time time) { cooldownTime = time; }
+		void setHoldDown(bool hold) { holdDown = hold; }
 	private:
 		ButtonFunction func;
 		sf::Clock cooldown;
+		sf::Time cooldownTime = sf::milliseconds(100);
+
+		bool holdDown = false;
 	};
 }

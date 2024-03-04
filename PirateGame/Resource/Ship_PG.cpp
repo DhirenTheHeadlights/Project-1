@@ -47,7 +47,7 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 	}
 
 	// Initalize the position of the ship to be random
-	sprite.setPosition(GlobalValues::getInstance().getMap().getRandomPosition().value());
+	//sprite.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
 
 	// Set type and class
 	shipType = type;

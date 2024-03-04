@@ -103,6 +103,7 @@ void IslandMenu::addMarketInteractables() {
 		std::unique_ptr<Button> buyButton = std::make_unique<Button>(buyItem);
 		buyButton->createInteractable(buyButtonSize);
 		buyButton->setString("Buy");
+		buyButton->setHoldDown(true);
 		buyButtons.push_back(std::move(buyButton));
 
 		// Create the sell button
@@ -226,29 +227,29 @@ void IslandMenu::setInteractablePositions() {
 
 	// Set the position of the market interactables to be in the center of the menu
 	for (size_t i = 0; i < buyButtons.size(); ++i) {
-		float buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandiseSize.x / 2 - buyButtonSize.x - padding;
-		float buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - buyButtons[i]->getSize().y / 2 + i * (buyButtons[i]->getSize().y + padding);
+		float buttonX = menu.getPosition().x + menu.getSize().x / 2.f - merchandiseSize.x / 2.f - buyButtonSize.x - padding;
+		float buttonY = menu.getPosition().y + 0.25f * menu.getSize().y - buyButtons[i]->getSize().y / 2.f + i * (buyButtons[i]->getSize().y + padding);
 		buyButtons[i]->setPosition(sf::Vector2f(buttonX, buttonY));
 
-		buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandise[i]->getSize().x / 2;
-		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - merchandise[i]->getSize().y / 2 + i * (merchandise[i]->getSize().y + padding);
+		buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandise[i]->getSize().x / 2.f;
+		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - merchandise[i]->getSize().y / 2.f + i * (merchandise[i]->getSize().y + padding);
 		merchandise[i]->setPosition(sf::Vector2f(buttonX, buttonY));
 
-		buttonX = menu.getPosition().x + menu.getSize().x / 2 + merchandiseSize.x / 2 + padding;
-		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - sellButtons[i]->getSize().y / 2 + i * (sellButtons[i]->getSize().y + padding);
+		buttonX = menu.getPosition().x + menu.getSize().x / 2.f + merchandiseSize.x / 2.f + padding;
+		buttonY = menu.getPosition().y + 0.25f * menu.getSize().y - sellButtons[i]->getSize().y / 2.f + i * (sellButtons[i]->getSize().y + padding);
 		sellButtons[i]->setPosition(sf::Vector2f(buttonX, buttonY));
 
-		buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandiseSize.x / 2 - buyButtonSize.x - merchandiseSize.x - 2 * padding;
-		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - shipInventoryInteractable[i]->getSize().y / 2 + i * (shipInventoryInteractable[i]->getSize().y + padding);
+		buttonX = menu.getPosition().x + menu.getSize().x / 2.f - merchandiseSize.x / 2.f - buyButtonSize.x - merchandiseSize.x - 2 * padding;
+		buttonY = menu.getPosition().y + 0.25f * menu.getSize().y - shipInventoryInteractable[i]->getSize().y / 2.f + i * (shipInventoryInteractable[i]->getSize().y + padding);
 		shipInventoryInteractable[i]->setPosition(sf::Vector2f(buttonX, buttonY));
 
-		buttonX = menu.getPosition().x + menu.getSize().x / 2 + merchandiseSize.x / 2 + buyButtonSize.x + 2 * padding;
-		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - marketInventory[i]->getSize().y / 2 + i * (marketInventory[i]->getSize().y + padding);
+		buttonX = menu.getPosition().x + menu.getSize().x / 2.f + merchandiseSize.x / 2.f + buyButtonSize.x + 2.f * padding;
+		buttonY = menu.getPosition().y + 0.25f * menu.getSize().y - marketInventory[i]->getSize().y / 2.f + i * (marketInventory[i]->getSize().y + padding);
 		marketInventory[i]->setPosition(sf::Vector2f(buttonX, buttonY));
 	}
 
 	// Set the position of the leave island button to be at the bottom of the menu in the center
-	uiButtons[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2 - uiButtons[0]->getSize().x / 2, menu.getPosition().y + menu.getSize().y - uiButtons[0]->getSize().y - padding));
+	uiButtons[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - uiButtons[0]->getSize().x / 2.f, menu.getPosition().y + menu.getSize().y - uiButtons[0]->getSize().y - padding));
 }
 
 void IslandMenu::updateMarket() {
