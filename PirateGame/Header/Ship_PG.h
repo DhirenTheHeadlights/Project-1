@@ -39,7 +39,12 @@ namespace PirateGame {
 
 	class Ship {
 	public:
-		Ship() : SIH(sprite) {};
+		Ship() {
+			SIH = std::make_unique<ShipInputHandler>(sprite);
+			SMH = std::make_unique<ShipMovementHandler>(sprite);
+			SCH = std::make_unique<ShipCannonHandler>(sprite);
+			SIvH = std::make_unique<ShipInventoryHandler>();
+		};
 		~Ship() {};
 
 		// Create the ship and set its values
@@ -48,10 +53,10 @@ namespace PirateGame {
 		void draw();
 
 		// Get movement handler
-		ShipMovementHandler& getMovementHandler() { return SIH.getMovementHandler(); }
-		ShipInputHandler& getInputHandler() { return SIH; }
-		ShipCannonHandler& getCannonHandler() { return SIH.getCannonHandler(); }
-		ShipInventoryHandler& getInventoryHandler() { return SIvH; }
+		ShipMovementHandler& getMovementHandler() { return *SMH; }
+		ShipInputHandler& getInputHandler() { return *SIH; }
+		ShipCannonHandler& getCannonHandler() { return *SCH; }
+		ShipInventoryHandler& getInventoryHandler() { return *SIvH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -102,9 +107,10 @@ namespace PirateGame {
 		sf::Clock healthRegenClock;
 
 		// Handlers
-		ShipInputHandler SIH;
-		ShipInventoryHandler SIvH;
-
+		std::unique_ptr<ShipInputHandler> SIH;
+		std::unique_ptr<ShipInventoryHandler> SIvH;
+		std::unique_ptr<ShipCannonHandler> SCH;
+		std::unique_ptr<ShipMovementHandler> SMH;
 	};
 
 }

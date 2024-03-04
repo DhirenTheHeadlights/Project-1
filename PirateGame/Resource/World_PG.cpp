@@ -6,6 +6,7 @@ World::World(sf::RenderWindow* window_in) {
 	// Set the window
 	GlobalValues::getInstance().setWindow(window_in);
 	window = GlobalValues::getInstance().getWindow();
+	GSM = &GlobalValues::getInstance().getGSM();
 
 	view.setUpView();
 
@@ -30,7 +31,7 @@ World::World(sf::RenderWindow* window_in) {
 
 	// Set up the pointers
 	LMHandler = std::make_unique<LandMassHandler>();
-	MH = std::make_unique<MenuHandler>(GSM);
+	MH = std::make_unique<MenuHandler>();
 
 	// Set up the world
 	setUpWorld();
@@ -41,7 +42,7 @@ void World::setUpWorld() {
 	LMHandler->addLandMasses(100, 500.f);
 
 	// Set the game state to start
-	GSM.changeGameState(GameState::Start);
+	GSM->changeGameState(GameState::Start);
 
 	// Set up the menus
 	MH->createMenus();
@@ -66,7 +67,7 @@ void World::createWorld(sf::Event event) {
 	GlobalValues::getInstance().getInputHandler().update();
 
 	// Handle the different game states
-	switch (GSM.getCurrentGameState()) {
+	switch (GSM->getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
 		MH->openMenu(MenuType::StartMenu);
@@ -84,8 +85,8 @@ void World::createWorld(sf::Event event) {
 		break;
 	case GameState::GameLoop:
 		// Run the game loop
-		gameLoop();
 		drawGameLoop();
+		gameLoop();
 		MH->openMenu(MenuType::HUD);
 		break;
 	}

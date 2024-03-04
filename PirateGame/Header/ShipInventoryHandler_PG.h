@@ -12,15 +12,17 @@ namespace PirateGame {
 	class ShipInventoryHandler {
 	public:
 		void addItemsToInventory(ShopItem item) { inventory.push_back(item); }
-		void removeItemsFromInventory(ShopItem item);
+		void removeItem(ShopItem item);
 
 		// Getters
 		std::vector<ShopItem> getInventory() const { return inventory; }
-		ShopItem& getInventoryItem(std::string itemName);
+		ShopItem& getItem(std::string itemName);
 		float getGold() const { return gold; }
 
 		// Setters
 		void setGold(float gold) { this->gold = gold; }
+		void removeGold(float gold) { this->gold -= gold; }
+		void addGold(float gold) { this->gold += gold; }
 		
 	private:
 		std::vector<ShopItem> inventory;

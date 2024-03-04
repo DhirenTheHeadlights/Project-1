@@ -15,8 +15,10 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
 	shipProperties = ShipConfig[level];
 
-	SIH.setNumCannons(shipProperties.numCannons);
-	SIH.setBaseSpeed(shipProperties.baseSpeed);
+	SIH->setNumCannons(shipProperties.numCannons);
+	SIH->setBaseSpeed(shipProperties.baseSpeed * 2);
+	SIH->setCannonHandler(SCH.get());
+	SIH->setMovementHandler(SMH.get());
 
 	health = shipProperties.maxHealth;
 
@@ -43,7 +45,7 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 	}
 
 	// Initalize the position of the ship to be random
-	SIH.getMovementHandler().setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
+	SMH->setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
 
 	// Set type and class
 	shipType = type;
@@ -53,7 +55,7 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 // Draw and update the ship
 void Ship::update() {
 	regenerateHealth();
-	SIH.update();
+	SIH->update();
 }
 
 void Ship::draw() {
@@ -64,10 +66,10 @@ void Ship::draw() {
 		window->draw(healthBarGreen);
 	}
 
-	SIH.draw();
+	SIH->draw();
 
 	// Draw the velocity vector
-	window->draw(createVector(sprite.getPosition(), SIH.getMovementHandler().getVelocity(), sf::Color::Blue));
+	window->draw(createVector(sprite.getPosition(), SMH->getVelocity(), sf::Color::Blue));
 	window->draw(sprite);
 }
 

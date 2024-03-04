@@ -28,9 +28,9 @@ void Hashmap::addLandMass(LandMass* landmass) {
 // Remove an object from the hashmap
 void Hashmap::removeLandMass(LandMass* landmass) {
 	// Similar to addLandMass, you need to remove the landmass from all the cells it occupies
-	auto topLeft = map.getGridCoordinates(landmass->getSpritePos().x, landmass->getSpritePos().y);
-	auto bottomRight = map.getGridCoordinates(landmass->getSpritePos().x + landmass->getSpriteSize().x,
-		landmass->getSpritePos().y + landmass->getSpriteSize().y);
+	auto topLeft = map.getGridCoordinates(landmass->getSprite().getPosition().x, landmass->getSprite().getPosition().y);
+	auto bottomRight = map.getGridCoordinates(landmass->getSprite().getPosition().x + landmass->getSprite().getGlobalBounds().width,
+		landmass->getSprite().getPosition().y + landmass->getSprite().getGlobalBounds().height);
 
 	for (int i = topLeft.first; i <= bottomRight.first; ++i) {
 		for (int j = topLeft.second; j <= bottomRight.second; ++j) {

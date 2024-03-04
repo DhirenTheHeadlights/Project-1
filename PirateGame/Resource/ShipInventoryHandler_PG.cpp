@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void ShipInventoryHandler::removeItemsFromInventory(ShopItem item) {
+void ShipInventoryHandler::removeItem(ShopItem item) {
 	for (auto& it : inventory) {
 		if (it.name == item.name) {
 			inventory.erase(std::remove(inventory.begin(), inventory.end(), it), inventory.end());
@@ -11,7 +11,7 @@ void ShipInventoryHandler::removeItemsFromInventory(ShopItem item) {
 	}
 }
 
-ShopItem& ShipInventoryHandler::getInventoryItem(std::string itemName) {
+ShopItem& ShipInventoryHandler::getItem(std::string itemName) {
 	for (auto& it : inventory) {
 		if (it.name == itemName) {
 			return it;

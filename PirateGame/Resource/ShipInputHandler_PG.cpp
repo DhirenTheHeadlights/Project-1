@@ -8,12 +8,12 @@ void ShipInputHandler::update() {
 	handleAnchorDrop();
 
 	// Update the handlers
-	SMH.move(baseSpeed);
-	SCH.updateCannonballs();
+	SMH->move(baseSpeed);
+	SCH->updateCannonballs();
 }
 
 void ShipInputHandler::draw() {
-	SCH.drawCannonballs();
+	SCH->drawCannonballs();
 }
 
 void ShipInputHandler::handleCannonFire() {
@@ -22,7 +22,7 @@ void ShipInputHandler::handleCannonFire() {
 
 	// Fire the cannons
 	if (inputHandler.isKeyPressedOnce(fireKey)) {
-		SCH.shootCannonballs(numCannons);
+		SCH->shootCannonballs(numCannons);
 	}
 }
 
@@ -32,17 +32,15 @@ void ShipInputHandler::handleCannonAim() {
 
 	// Set the firing side of the ship
 	if (inputHandler.isMouseButtonPressedOnce(portMouseButton)) {
-		std::cout << "Port" << std::endl;
-		SCH.setFiringSide(FiringSide::Port);
+		SCH->setFiringSide(FiringSide::Port);
 	}
 	if (inputHandler.isMouseButtonPressedOnce(starboardMouseButton)) {
-		std::cout << "Starboard" << std::endl;
-		SCH.setFiringSide(FiringSide::Starboard);
+		SCH->setFiringSide(FiringSide::Starboard);
 	}
 
 	// Rotate the cannons based on the mouse position if cannon mode is set to manual
-	SCH.setAimTowardsMouse(inputHandler.isKeyToggled(manualAimKey));
-	SMH.setStopShipRotationFlag(inputHandler.isKeyToggled(manualAimKey));
+	SCH->setAimTowardsMouse(inputHandler.isKeyToggled(manualAimKey));
+	SMH->setStopShipRotationFlag(inputHandler.isKeyToggled(manualAimKey));
 }
 
 void ShipInputHandler::handleAnchorDrop() {

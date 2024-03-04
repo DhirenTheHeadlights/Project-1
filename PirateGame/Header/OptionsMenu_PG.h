@@ -15,7 +15,7 @@ enum class Tab {
 namespace PirateGame {
 	class OptionsMenu : public Menu {
 	public:
-		OptionsMenu(GameStateManager& GSM) : Menu(), GSM(GSM) {};
+		OptionsMenu() : Menu() {};
 		~OptionsMenu() {};
 
 		void setUpMenu() override;
@@ -33,9 +33,6 @@ namespace PirateGame {
 		void addControlsTabInteractables();
 
 	private:
-		// GameStateManager
-		GameStateManager& GSM;
-
 		// Menu variables
 		Tab currentTab = Tab::General;
 		std::vector<std::unique_ptr<Interactable>> generalTabInteractables;

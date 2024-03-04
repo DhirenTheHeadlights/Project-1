@@ -12,7 +12,7 @@
 namespace PirateGame {
 	class ShipInputHandler {
 	public:
-		ShipInputHandler(sf::Sprite& sprite) : sprite(sprite), SCH(sprite), SMH(sprite) {};
+		ShipInputHandler(sf::Sprite& sprite) : sprite(sprite) {};
 		~ShipInputHandler() {};
 
 		void update();
@@ -24,10 +24,12 @@ namespace PirateGame {
 		// Setters
 		void setNumCannons(int numCannons) { this->numCannons = numCannons; }
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
+		void setCannonHandler(ShipCannonHandler* SCH) { this->SCH = SCH; }
+		void setMovementHandler(ShipMovementHandler* SMH) { this->SMH = SMH; }
 
 		// Getters
-		ShipCannonHandler& getCannonHandler() { return SCH; }
-		ShipMovementHandler& getMovementHandler() { return SMH; }
+		ShipCannonHandler* getCannonHandler() { return SCH; }
+		ShipMovementHandler* getMovementHandler() { return SMH; }
 		std::string const getFireKeyString() { return GlobalValues::getInstance().keyToString(fireKey); }
 		std::string const getManualAimKeyString() { return GlobalValues::getInstance().keyToString(manualAimKey); }
 		std::string const getPortMouseButtonString() { return GlobalValues::getInstance().buttonToString(portMouseButton); }
@@ -36,8 +38,8 @@ namespace PirateGame {
 		sf::Sprite& sprite;
 
 		// Handlers
-		ShipCannonHandler SCH;
-		ShipMovementHandler SMH;
+		ShipCannonHandler* SCH = nullptr;
+		ShipMovementHandler* SMH = nullptr;
 
 		// Ship properties
 		int numCannons = 1;

@@ -10,7 +10,7 @@
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
-		InGameHUD(GameStateManager& GSM) : GSM(GSM) {};
+		InGameHUD() {};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
@@ -21,9 +21,6 @@ namespace PirateGame {
 		// Setters
 		void setShip(Ship& ship) { this->ship = &ship; };
 	private:
-		// GameStateManager
-		GameStateManager& GSM;
-
 		// Menu items
 		float healthFraction = 100;
 		float padding = 10.f;

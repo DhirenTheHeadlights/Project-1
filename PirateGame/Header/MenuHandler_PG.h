@@ -19,7 +19,7 @@ namespace PirateGame {
 
 	class MenuHandler {
 	public:
-		MenuHandler(GameStateManager& GSM) : GSM(GSM) {};
+		MenuHandler() {};
 		~MenuHandler() {};
 
 		void createMenus();
@@ -36,8 +36,5 @@ namespace PirateGame {
 		std::unique_ptr<OptionsMenu> optionsMenu;
 		std::unique_ptr<InGameHUD> HUD;
 		//...
-
-		// GameStateManager
-		GameStateManager& GSM;
 	};
 }

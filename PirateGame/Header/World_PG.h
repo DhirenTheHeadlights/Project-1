@@ -9,9 +9,7 @@
 #include "View_PG.h"
 #include "Ship_PG.h"
 #include "LandMassHandler_PG.h"
-#include "GameStateManager_PG.h"
 #include "MenuHandler_PG.h"
-#include "Map.h"
 
 namespace PirateGame {
 	class World {
@@ -33,7 +31,7 @@ namespace PirateGame {
 		View view;
 
 		// Game state manager
-		GameStateManager GSM;
+		GameStateManager* GSM = nullptr;
 
 		// Handlers
 		std::unique_ptr<LandMassHandler> LMHandler;

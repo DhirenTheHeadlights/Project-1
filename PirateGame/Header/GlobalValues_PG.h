@@ -7,6 +7,7 @@
 
 #include "Map.h"
 #include "InputHandler_PG.h"
+#include "GameStateManager_PG.h"
 
 namespace PirateGame {
 	class GlobalValues {
@@ -38,6 +39,7 @@ namespace PirateGame {
 		sf::RenderWindow* getWindow() { return this->globalWindow; }
 		sf::Clock getClock() const { return this->globalClock; }
 		InputHandler& getInputHandler() { return this->inputHandler; }
+		GameStateManager& getGSM() { return this->GSM; }
 
 	private:
 		// Private Constructor
@@ -54,6 +56,9 @@ namespace PirateGame {
 
 		// Input handler
 		InputHandler inputHandler;
+
+		// GameStateManager
+		GameStateManager GSM;
 
 		// SFML objects
 		sf::Font globalFont;

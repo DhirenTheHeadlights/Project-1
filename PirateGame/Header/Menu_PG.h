@@ -73,5 +73,8 @@ namespace PirateGame {
 		sf::Color interactableColor = sf::Color(0, 0, 0, 200);
 		sf::Color interactableTextColor = sf::Color::White;
 		sf::Color hoverColor = sf::Color(0, 0, 0, 100);
+
+		// GameStateManager
+		GameStateManager* GSM = nullptr;
 	};
 }

@@ -73,6 +73,9 @@ void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Intera
 
 // Add the interactables to the menu
 void OptionsMenu::addInteractablesToMenu() {
+	// Grab the global game state manager
+	GSM = &GlobalValues::getInstance().getGSM();
+
 	// Add the tabs to the menu
 	std::function<void()> generalTabFunc = [this]() { currentTab = Tab::General; };
 	std::unique_ptr<Button> generalTabButton = std::make_unique<Button>(generalTabFunc);
@@ -107,7 +110,7 @@ void OptionsMenu::addInteractablesToMenu() {
 	addControlsTabInteractables();
 
 	// Create the back button
-	std::function<void()> backFunc = [this]() { GSM.changeGameState(GameState::Start); };
+	std::function<void()> backFunc = [this]() { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Button> backButton = std::make_unique<Button>(backFunc);
 	backButton->createInteractable(sf::Vector2f(size.x, 50.f));
 	backButton->setString("Back");
@@ -137,13 +140,13 @@ void OptionsMenu::addGeneralTabInteractables() {
 
 void OptionsMenu::addGraphicsTabInteractables() {
 	// Add the interactables to the graphics tab
-	std::function<void(float value)> brightnessSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::function<void(float value)> brightnessSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Slider> brightnessSlider = std::make_unique<Slider>(brightnessSliderFunc);
 	brightnessSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	brightnessSlider->setString("Brightness");
 	graphicsTabInteractables.push_back(std::move(brightnessSlider));
 
-	std::function<void(float value)> contrastSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::function<void(float value)> contrastSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Slider> contrastSlider = std::make_unique<Slider>(contrastSliderFunc);
 	contrastSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	contrastSlider->setString("Contrast");
@@ -161,19 +164,19 @@ void OptionsMenu::addGraphicsTabInteractables() {
 
 void OptionsMenu::addAudioTabInteractables() {
 	// Add the interactables to the audio tab
-	std::function<void(float value)> musicSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::function<void(float value)> musicSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Slider> musicSlider = std::make_unique<Slider>(musicSliderFunc);
 	musicSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	musicSlider->setString("Music Volume");
 	audioTabInteractables.push_back(std::move(musicSlider));
 
-	std::function<void(float value)> sfxSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::function<void(float value)> sfxSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Slider> sfxSlider = std::make_unique<Slider>(sfxSliderFunc);
 	sfxSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	sfxSlider->setString("SFX Volume");
 	audioTabInteractables.push_back(std::move(sfxSlider));
 
-	std::function<void(float value)> voiceSliderFunc = [this](float value) { GSM.changeGameState(GameState::Start); };
+	std::function<void(float value)> voiceSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Slider> voiceSlider = std::make_unique<Slider>(voiceSliderFunc);
 	voiceSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	voiceSlider->setString("Voice Volume");
@@ -182,7 +185,7 @@ void OptionsMenu::addAudioTabInteractables() {
 
 void OptionsMenu::addControlsTabInteractables() {
 	// Add the interactables to the controls tab
-	std::function<void()> rebindFunc = [this]() { GSM.changeGameState(GameState::Start); };
+	std::function<void()> rebindFunc = [this]() { GSM->changeGameState(GameState::Start); };
 	std::unique_ptr<Button> rebindButton = std::make_unique<Button>(rebindFunc);
 	rebindButton->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	rebindButton->setString("Rebind Controls");

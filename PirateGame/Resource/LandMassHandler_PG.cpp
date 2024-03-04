@@ -27,6 +27,12 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 			createLandmass(LandMassType::Shipwreck, minDistBetweenLandmasses * 2.f);
 		}
 	}
+
+	// Temp code to add a single island right by the player at the start
+	LandMass* landMass = new LandMass();
+	landMass->createLandMass(LandMassType::Island, texture);
+	landMass->setPosition(sf::Vector2f(100, 100));
+	landMasses.push_back(landMass);
 }
 
 void LandMassHandler::createLandmass(LandMassType type, float minDistBetweenLandmasses) {
@@ -62,8 +68,18 @@ void LandMassHandler::interactWithLandmasses(Ship& ship) {
 	// Get the nearby land masses
 	std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
 	handleCollisions(ship, nearbyLandMasses);
-	//OPEN MARKET HERE
+	
+	// If a nearby landmass is an island, prompt the player to open the market
+	for (auto& i : nearbyLandMasses) {
+		if (i->getType() == LandMassType::Island) {
+			openMarket(ship, i);
+		}
+	}
+}
 
+void LandMassHandler::openMarket(Ship& ship, LandMass* landMass) {
+	landMass->getIslandMenu()->setShip(ship);
+	landMass->getIslandMenu()->draw();
 }
 
 void LandMassHandler::handleCollisions(Ship& ship, std::set<LandMass*> nearbyLandMasses){

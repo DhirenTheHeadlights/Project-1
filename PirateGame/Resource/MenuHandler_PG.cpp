@@ -4,9 +4,9 @@ using namespace PirateGame;
 
 void MenuHandler::createMenus() {
 	// Initialize the menu pointers and set up the menus
-	startMenu = std::make_unique<StartMenu>(GSM);
-	optionsMenu = std::make_unique<OptionsMenu>(GSM);
-	HUD = std::make_unique<InGameHUD>(GSM);
+	startMenu = std::make_unique<StartMenu>();
+	optionsMenu = std::make_unique<OptionsMenu>();
+	HUD = std::make_unique<InGameHUD>();
 }
 
 void MenuHandler::openMenu(MenuType menuType) {

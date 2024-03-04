@@ -7,7 +7,7 @@
 namespace PirateGame {
 	class StartMenu : public Menu {
 	public:
-		StartMenu(GameStateManager& GSM) : Menu(), GSM(GSM) {};
+		StartMenu() : Menu() {};
 		~StartMenu() {};
 
 		void setUpMenu() override;
@@ -15,7 +15,5 @@ namespace PirateGame {
 		void addInteractablesToMenu() override;
 
 	private:
-		// GameStateManager
-		GameStateManager& GSM;
 	};
 }

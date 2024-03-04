@@ -33,22 +33,25 @@ void StartMenu::setInteractablePositions() {
 
 // Add the interactables to the menu
 void StartMenu::addInteractablesToMenu() {
+	// Grab the global game state manager
+	GSM = &GlobalValues::getInstance().getGSM();
+
 	// Create the start button
-	std::function<void()> startFunc = [this]() { GSM.changeGameState(GameState::GameLoop); };
+	std::function<void()> startFunc = [this]() { GSM->changeGameState(GameState::GameLoop); };
 	std::unique_ptr<Button> startButton = std::make_unique<Button>(startFunc);
 	startButton->createInteractable(interactableSize);
 	startButton->setString("Start");
 	addInteractableToMenu(std::move(startButton));
 
 	// Create the settings button
-	std::function<void()> settingsFunc = [this]() { GSM.changeGameState(GameState::OptionsMenu); };
+	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
 	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc);
 	settingsButton->createInteractable(interactableSize);
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
 
 	// Create the exit button
-	std::function<void()> endFunc = [this]() { GSM.changeGameState(GameState::End); };
+	std::function<void()> endFunc = [this]() { GSM->changeGameState(GameState::End); };
 	std::unique_ptr<Button> exitButton = std::make_unique<Button>(endFunc);
 	exitButton->createInteractable(interactableSize);
 	exitButton->setString("Exit");
