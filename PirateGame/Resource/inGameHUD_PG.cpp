@@ -25,7 +25,7 @@ void InGameHUD::addInteractablesToMenu() {
 	GSM = &GlobalValues::getInstance().getGSM();
 
 	// Add a settings button
-	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::Start); };
+	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
 	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc);
 	settingsButton->createInteractable(sf::Vector2f(200, 50));
 	settingsButton->setString("Settings");

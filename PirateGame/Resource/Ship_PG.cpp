@@ -22,6 +22,8 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 
 	health = shipProperties.maxHealth;
 
+	getInventoryHandler().addGold(1000); // Temp code to add gold to the player
+
 	// Load the texture
 	if (!texture.loadFromFile(shipProperties.texturePath)) {
 		std::cout << "Failed to load texture: " << shipProperties.texturePath << std::endl;

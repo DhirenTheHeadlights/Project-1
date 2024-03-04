@@ -9,10 +9,37 @@ void IslandMenu::setUpMenu() {
 	menu.setOutlineColor(sf::Color::Black);
 	menu.setOutlineThickness(2.0f);
 
-	// Set up the island name
-	std::vector<std::string> randomIslandNames = { "Tortuga", "Port Royal", "Nassau", "Barbados", "Jamaica", "St. Kitts", "St. Lucia", "St. Vincent", "St. Thomas", "St. Croix" };
-	titleText = sf::Text("Island: " + randomIslandNames[rand() % randomIslandNames.size()], font, static_cast<unsigned int>(textSize));
+	// Set up the island names to be names from islands in 'one piece' but a little different to avoid copyright
+	std::vector<std::string> islandNames = {
+	"Grand Stride",
+	"Mysterious Blue",
+	"Drum Summit",
+	"Alabasta Kingdom",
+	"Skyward Peak",
+	"Water Eight",
+	"Thriller Barkland",
+	"Sabaody Arch",
+	"Amazon Lilypond",
+	"Impel Dune",
+	"Marine Fordo",
+	"Fish-Man Isle",
+	"Punk Risk",
+	"Dress Landia",
+	"Whole Cake Isle",
+	"Zou Haven",
+	"Wano Countryard",
+	"Onigashima Cove",
+	"Laugh Story",
+	"Elbaf Village"
+	};
+	
+	titleText = sf::Text("Island: " + islandNames[rand() % islandNames.size()], font, static_cast<unsigned int>(textSize));
 	titleText.setFillColor(textColor);
+
+	// Sort the market items
+	std::sort(market.begin(), market.end(), [](const ShopItem& a, const ShopItem& b) {
+		return a.name < b.name;
+	});
 	
 	addInteractablesToMenu();
 }
@@ -22,19 +49,16 @@ void IslandMenu::addInteractablesToMenu() {
 	GSM = &GlobalValues::getInstance().getGSM();
 
 	// Initial buttons to enter the island
-	std::function<void()> enterIsland = [this]() {
-		GSM->changeGameState(GameState::LandMassInteraction);
+	std::function<void()> enterIsland = [this]() { 
 		enteredIsland = true;
-		};
+		ship->getMovementHandler().setStopShipFlag(true);
+	};
 	std::unique_ptr<Button> enterIslandButton = std::make_unique<Button>(enterIsland);
 	enterIslandButton->createInteractable(sf::Vector2f(200, 50));
 	enterIslandButton->setString("Enter Island");
 	addInteractableToMenu(std::move(enterIslandButton));
 
-	std::function<void()> leaveIsland = [this]() {
-		GSM->changeGameState(GameState::GameLoop);
-		enteredIsland = false;
-	};
+	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(sf::Vector2f(200, 50));
 	leaveIslandButton->setString("Leave Island");
@@ -50,66 +74,221 @@ void IslandMenu::addMarketInteractables() {
 	for (auto& item : market) {
 		// Create the buy button
 		std::function<void()> buyItem = [this, &item]() {
-			// Check if the player has enough gold
 			if (ship->getInventoryHandler().getGold() >= item.price) {
-				// Add the item to the inventory
-				ship->getInventoryHandler().getInventory().push_back(item);
-				// Remove the gold from the player
+				// Attempt to find the item in the ship's inventory
+				auto& inventory = ship->getInventoryHandler().getInventory();
+				auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
+					return inventoryItem.name == item.name;
+					});
+
+				if (it != inventory.end()) {
+					// If the item exists, update its amount
+					it->amount += 1;
+				}
+				else {
+					// Otherwise, add a new item with amount 1
+					ShopItem newItem = item;
+					newItem.amount = 1;
+					inventory.push_back(newItem);
+				}
+
+				// Update gold
 				ship->getInventoryHandler().removeGold(item.price);
+
+				// Update merchant's gold and item quantity if applicable
+				item.amount -= 1;
+				gold += item.price;
 			}
 		};
 		std::unique_ptr<Button> buyButton = std::make_unique<Button>(buyItem);
-		buyButton->createInteractable(sf::Vector2f(50, 50));
+		buyButton->createInteractable(buyButtonSize);
 		buyButton->setString("Buy");
 		buyButtons.push_back(std::move(buyButton));
 
 		// Create the sell button
 		std::function<void()> sellItem = [this, &item]() {
-			// Check if the player has the item
-			if (ship->getInventoryHandler().getItem(item.name).amount > 0) {
-				// Remove the item from the inventory
-				ship->getInventoryHandler().removeItem(item);
-				// Add the gold to the player
+			auto& inventory = ship->getInventoryHandler().getInventory();
+			auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
+				return inventoryItem.name == item.name;
+				});
+
+			if (it != inventory.end() && it->amount > 0) {
+				// If the item exists and has a positive amount, decrease the amount
+				it->amount -= 1;
+
+				// Remove the item from inventory if amount becomes 0
+				if (it->amount == 0) {
+					inventory.erase(it);
+				}
+
+				// Update gold
 				ship->getInventoryHandler().addGold(item.price);
+
+				// Update merchant's gold and item quantity if applicable
+				item.amount += 1;
+				gold -= item.price;
 			}
 		};
+
 		std::unique_ptr<Button> sellButton = std::make_unique<Button>(sellItem);
-		sellButton->createInteractable(sf::Vector2f(50, 50));
+		sellButton->createInteractable(sellButtonSize);
 		sellButton->setString("Sell");
 		sellButtons.push_back(std::move(sellButton));
 
 		// Create the text display box for the item
 		std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
-		itemDisplay->createInteractable(sf::Vector2f(200, 50));
+		itemDisplay->createInteractable(merchandiseSize);
 		itemDisplay->setString(item.name + " - " + std::to_string(item.price));
 		merchandise.push_back(std::move(itemDisplay));
+
+		// Create a text display box to show the amount of the item in the market
+		std::unique_ptr<TextDisplayBox> marketInventoryAmount = std::make_unique<TextDisplayBox>();
+		marketInventoryAmount->createInteractable(merchandiseSize);
+		marketInventoryAmount->setString(item.name + " - " + std::to_string(item.amount));
+		marketInventory.push_back(std::move(marketInventoryAmount));
 	}
+
+	// Create an "exit" button to leave the island
+	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
+	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
+	leaveIslandButton->createInteractable(uiButtonSize);
+	leaveIslandButton->setString("Leave Island");
+	uiButtons.push_back(std::move(leaveIslandButton));
+}
+
+void IslandMenu::addShipInventoryInteractables() {
+	// Add every item from the ship's inventory to the menu
+	for (auto& marketItem : market) {
+		auto it = std::find_if(ship->getInventoryHandler().getInventory().begin(), ship->getInventoryHandler().getInventory().end(), [&marketItem](const ShopItem& shipItem) {
+			return shipItem.name == marketItem.name;
+			});
+
+		std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
+		itemDisplay->createInteractable(merchandiseSize);
+
+		if (it != ship->getInventoryHandler().getInventory().end()) {
+			// Item exists in ship's inventory, display with details
+			itemDisplay->setString(it->name + " - " + std::to_string(it->amount));
+		}
+		else {
+			// Item does not exist, display an empty box
+			itemDisplay->setString("Empty");
+		}
+		shipInventoryInteractable.push_back(std::move(itemDisplay));
+	}
+	this->shipInventory = ship->getInventoryHandler().getInventory();
+	addedShipInventory = true;
 }
 
 void IslandMenu::setInteractablePositions() {
 	// Get the view position
 	sf::View HUDView = window->getView();
 
-	// Set the position of the menu
-	menu.setPosition(HUDView.getCenter().x - menu.getSize().x / 2, HUDView.getCenter().y + menu.getSize().y);
+	if (!enteredIsland) {
+		// Set the position of the menu (only the inital menu)
+		menu.setPosition(HUDView.getCenter().x - menu.getSize().x / 2, HUDView.getCenter().y + menu.getSize().y);
+		titleText.setPosition(menu.getPosition().x + menu.getSize().x / 2 - titleText.getGlobalBounds().width / 2, menu.getPosition().y + padding);
+
+		// Set the position of the first button to be centered on the left side of the menu rect
+		interactables[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 - interactables[0]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+
+		// Set the position of the second button to be centered on the right side of the menu rect
+		interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+
+		return;
+	}
+
+	// Set up the menu to buy and sell items
+	menu.setSize(expandedMenuSize);
+	menu.setPosition(HUDView.getCenter().x - menu.getSize().x / 2, HUDView.getCenter().y - menu.getSize().y / 2);
+
+	// Set the position of the title text
 	titleText.setPosition(menu.getPosition().x + menu.getSize().x / 2 - titleText.getGlobalBounds().width / 2, menu.getPosition().y + padding);
 
-	// Set the position of the first button to be centered on the left side of the menu rect
-	interactables[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 - interactables[0]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+	// Set the position of the gold text
+	merchantGold = sf::Text("", font, static_cast<unsigned int>(textSize));
+	merchantGold.setString("Merchant Gold: " + std::to_string(gold));
+	merchantGold.setPosition(menu.getPosition().x + padding, titleText.getPosition().y + titleText.getGlobalBounds().height + padding);
+	merchantGold.setFillColor(textColor);
 
-	// Set the position of the second button to be centered on the right side of the menu rect
-	interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+	shipGold = sf::Text("", font, static_cast<unsigned int>(textSize));
+	shipGold.setString("Ship Gold: " + std::to_string(ship->getInventoryHandler().getGold()));
+	shipGold.setPosition(menu.getPosition().x + menu.getSize().x - shipGold.getGlobalBounds().width - padding, titleText.getPosition().y + titleText.getGlobalBounds().height + padding);
+	shipGold.setFillColor(textColor);
 
-	if (!enteredIsland) return;
-
-	// Set the position of the market interactables
+	// Set the position of the market interactables to be in the center of the menu
 	for (size_t i = 0; i < buyButtons.size(); ++i) {
-		buyButtons[i]->setPosition(sf::Vector2f(menu.getPosition().x + padding, menu.getPosition().y + padding + interactables[0]->getSize().y + padding + (i + 1) * (padding + buyButtons[i]->getSize().y)));
-		sellButtons[i]->setPosition(sf::Vector2f(menu.getPosition().x + padding + buyButtons[i]->getSize().x + padding, menu.getPosition().y + padding + interactables[0]->getSize().y + padding + (i + 1) * (padding + buyButtons[i]->getSize().y)));
-		merchandise[i]->setPosition(sf::Vector2f(menu.getPosition().x + padding + buyButtons[i]->getSize().x + padding + sellButtons[i]->getSize().x + padding, menu.getPosition().y + padding + interactables[0]->getSize().y + padding + (i + 1) * (padding + buyButtons[i]->getSize().y)));
+		float buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandiseSize.x / 2 - buyButtonSize.x - padding;
+		float buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - buyButtons[i]->getSize().y / 2 + i * (buyButtons[i]->getSize().y + padding);
+		buyButtons[i]->setPosition(sf::Vector2f(buttonX, buttonY));
+
+		buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandise[i]->getSize().x / 2;
+		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - merchandise[i]->getSize().y / 2 + i * (merchandise[i]->getSize().y + padding);
+		merchandise[i]->setPosition(sf::Vector2f(buttonX, buttonY));
+
+		buttonX = menu.getPosition().x + menu.getSize().x / 2 + merchandiseSize.x / 2 + padding;
+		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - sellButtons[i]->getSize().y / 2 + i * (sellButtons[i]->getSize().y + padding);
+		sellButtons[i]->setPosition(sf::Vector2f(buttonX, buttonY));
+
+		buttonX = menu.getPosition().x + menu.getSize().x / 2 - merchandiseSize.x / 2 - buyButtonSize.x - merchandiseSize.x - 2 * padding;
+		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - shipInventoryInteractable[i]->getSize().y / 2 + i * (shipInventoryInteractable[i]->getSize().y + padding);
+		shipInventoryInteractable[i]->setPosition(sf::Vector2f(buttonX, buttonY));
+
+		buttonX = menu.getPosition().x + menu.getSize().x / 2 + merchandiseSize.x / 2 + buyButtonSize.x + 2 * padding;
+		buttonY = menu.getPosition().y + 0.25 * menu.getSize().y - marketInventory[i]->getSize().y / 2 + i * (marketInventory[i]->getSize().y + padding);
+		marketInventory[i]->setPosition(sf::Vector2f(buttonX, buttonY));
 	}
-	
+
+	// Set the position of the leave island button to be at the bottom of the menu in the center
+	uiButtons[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2 - uiButtons[0]->getSize().x / 2, menu.getPosition().y + menu.getSize().y - uiButtons[0]->getSize().y - padding));
 }
+
+void IslandMenu::updateMarket() {
+	// Synchronize the local ship inventory for display purposes
+	auto& currentInventory = ship->getInventoryHandler().getInventory();
+
+	// Update or add new boxes based on the current ship inventory
+	for (size_t i = 0; i < market.size(); ++i) {
+		if (i < shipInventoryInteractable.size()) {
+			// Update existing box
+			auto it = std::find_if(currentInventory.begin(), currentInventory.end(), [&](const ShopItem& item) {
+				return item.name == market[i].name;
+				});
+			shipInventoryInteractable[i]->setString(it != currentInventory.end() ? it->name + " - " + std::to_string(it->amount) : "Empty");
+		}
+		else {
+			// Add new box if necessary
+			std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
+			itemDisplay->createInteractable(merchandiseSize);
+			auto it = std::find_if(currentInventory.begin(), currentInventory.end(), [&](const ShopItem& item) {
+				return item.name == market[i].name;
+				});
+			itemDisplay->setString(it != currentInventory.end() ? it->name + " - " + std::to_string(it->amount) : "Empty");
+			shipInventoryInteractable.push_back(std::move(itemDisplay));
+		}
+	}
+
+	// Remove excess boxes if the current inventory is smaller than the number of boxes
+	if (market.size() < shipInventoryInteractable.size()) {
+		shipInventoryInteractable.resize(market.size());
+	}
+
+	// Update or add new boxes based on the current item amount in  the market
+	for (size_t i = 0; i < market.size(); ++i) {
+		if (i < marketInventory.size()) {
+			// Update existing box
+			marketInventory[i]->setString(market[i].name + " - " + std::to_string(market[i].amount));
+		}
+		else {
+			// Add new box if necessary
+			std::unique_ptr<TextDisplayBox> marketInventoryAmount = std::make_unique<TextDisplayBox>();
+			marketInventoryAmount->createInteractable(merchandiseSize);
+			marketInventoryAmount->setString(market[i].name + " - " + std::to_string(market[i].amount));
+			marketInventory.push_back(std::move(marketInventoryAmount));
+		}
+	}
+}
+
 
 void IslandMenu::draw() {
 	// Draw the menu
@@ -120,13 +299,44 @@ void IslandMenu::draw() {
 	setInteractablePositions();
 	interactWithMenuItems();
 
+	// Draw the ship inventory if the player has entered the island
+	if (enteredIsland && !addedShipInventory) {
+		addShipInventoryInteractables();
+	}
+	else if (enteredIsland) {
+		updateMarket();
+	}
+
 	if (enteredIsland) {
 		// Draw the market interactables
 		for (size_t i = 0; i < buyButtons.size(); ++i) {
 			buyButtons[i]->draw();
 			sellButtons[i]->draw();
 			merchandise[i]->draw();
+			shipInventoryInteractable[i]->draw();
+			marketInventory[i]->draw();
 		}
+
+		// Interact with the market
+		for (size_t i = 0; i < buyButtons.size(); ++i) {
+			buyButtons[i]->interact();
+			sellButtons[i]->interact();
+			uiButtons[0]->interact();
+		}
+
+		// Draw the other ui buttons
+		for (auto& button : uiButtons) {
+			button->getFrame().setFillColor(sf::Color::Transparent);
+			button->getFrame().setOutlineThickness(0);
+			button->setPadding(2.f);
+			button->getForeground().setSize(sf::Vector2f(uiButtonSize.x - 2 * button->getPadding(), uiButtonSize.y - 2 * button->getPadding()));
+			button->getText().setCharacterSize(static_cast<unsigned int>(15));
+			button->draw();
+		}
+
+		// Draw the gold text
+		window->draw(merchantGold);
+		window->draw(shipGold);
 	}
 	else {
 		// Draw the inital buttons

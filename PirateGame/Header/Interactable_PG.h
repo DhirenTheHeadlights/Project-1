@@ -41,6 +41,7 @@ namespace PirateGame {
 		void setFrameColor(sf::Color color) { this->frameColor = color; }
 		void setTextColor(sf::Color color) { this->textColor = color; }
 		void setOutlineThickness(float thickness) { this->outlineThickness = thickness; }
+		void setPadding(float padding) { this->padding = padding; }
 
 		// Getters for properties
 		sf::Text& getText() { return text; }
@@ -50,6 +51,7 @@ namespace PirateGame {
 
 		sf::Vector2f getPosition() const { return position; }
 		sf::Vector2f getSize() const { return size; }
+		float getPadding() const { return padding; }
 
 	protected:
 		// Variables

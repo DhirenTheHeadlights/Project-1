@@ -1,9 +1,7 @@
 #pragma once
 
-/// <summary>
 /// This class contains the game state manager used
 /// for controlling which things appear on the screen
-/// </summary>
 
 namespace PirateGame {
 	// Enum class for game states

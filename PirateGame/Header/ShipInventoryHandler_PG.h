@@ -15,7 +15,7 @@ namespace PirateGame {
 		void removeItem(ShopItem item);
 
 		// Getters
-		std::vector<ShopItem> getInventory() const { return inventory; }
+		std::vector<ShopItem>& getInventory() { return inventory; }
 		ShopItem& getItem(std::string itemName);
 		float getGold() const { return gold; }
 

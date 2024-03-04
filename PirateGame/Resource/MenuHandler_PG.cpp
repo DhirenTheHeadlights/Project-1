@@ -10,6 +10,10 @@ void MenuHandler::createMenus() {
 }
 
 void MenuHandler::openMenu(MenuType menuType) {
+	// This will reset the view so that the menu is correctly visible. However, it should not happen w the hud.
+	if (menuType != MenuType::HUD) {
+		GlobalValues::getInstance().getWindow()->setView(GlobalValues::getInstance().getWindow()->getDefaultView());
+	}
 	switch (menuType) {
 	case MenuType::StartMenu:
 		startMenu->draw();

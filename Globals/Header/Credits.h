@@ -2,18 +2,16 @@
 #include <iostream>
 #include <fstream>
 
-// Fun little class to credit my hard working slaves
+/// Fun little class to credit my hard working slaves
 
 class Credits {
 public:
 	Credits(sf::Font& font) {
 		credits.setFont(font);
 		credits.setCharacterSize(20);
-		credits.setFillColor(sf::Color::White);
+		credits.setFillColor(sf::Color::Black);
 		credits.setString(readFromCreditsFile());
 		credits.setPosition(100, 100);
-
-		std::cout << credits.getString().toAnsiString() << std::endl;
 	}
 
 	~Credits() {}
