@@ -77,10 +77,14 @@ void Ship::draw() {
 
 // Regen Health
 void Ship::regenerateHealth() {
-	// Regen health every 250 milliseconds
-	if (healthRegenClock.getElapsedTime().asMilliseconds() > 250) {
+	// Regen health
+	if (healthRegenClock.getElapsedTime().asMilliseconds() > regenTime.asMilliseconds()) {
 		health += shipProperties.regenRate;
 		healthRegenClock.restart();
+	}
+	// Restart the damage clock too
+	if (deltaTime.getElapsedTime().asSeconds() > 1) {
+		deltaTime.restart();
 	}
 	if (health > shipProperties.maxHealth) health = shipProperties.maxHealth;
 }

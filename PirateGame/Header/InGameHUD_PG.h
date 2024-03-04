@@ -32,6 +32,10 @@ namespace PirateGame {
 
 		std::vector<std::unique_ptr<TextDisplayBox>> shipProperties;
 
+		std::unique_ptr<TextDisplayBox> goldDisplay;
+		std::unique_ptr<TextDisplayBox> shipCoords;
+		std::unique_ptr<TextDisplayBox> shipVeclocity;
+
 		// Temp rectangle for minimap
 		sf::RectangleShape minimap;
 

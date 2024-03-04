@@ -37,7 +37,7 @@ namespace PirateGame {
 		bool addedShipInventory = false;
 		bool playerPromptedOnce = false;
 
-		sf::Vector2f initalMenuSize = sf::Vector2f(600.0f, 150.0f);
+		sf::Vector2f initalMenuSize = sf::Vector2f(600.0f, 110.0f);
 		sf::Vector2f expandedMenuSize = sf::Vector2f(900.0f, 500.0f);
 
 		sf::Vector2f merchandiseSize = sf::Vector2f(200.0f, 50.0f);

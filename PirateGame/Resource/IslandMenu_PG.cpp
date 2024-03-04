@@ -74,7 +74,7 @@ void IslandMenu::addMarketInteractables() {
 	for (auto& item : market) {
 		// Create the buy button
 		std::function<void()> buyItem = [this, &item]() {
-			if (ship->getInventoryHandler().getGold() >= item.price) {
+			if (ship->getInventoryHandler().getGold() >= item.price && item.amount > 0) {
 				// Attempt to find the item in the ship's inventory
 				auto& inventory = ship->getInventoryHandler().getInventory();
 				auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
@@ -191,10 +191,10 @@ void IslandMenu::setInteractablePositions() {
 		titleText.setPosition(menu.getPosition().x + menu.getSize().x / 2 - titleText.getGlobalBounds().width / 2, menu.getPosition().y + padding);
 
 		// Set the position of the first button to be centered on the left side of the menu rect
-		interactables[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 - interactables[0]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+		interactables[0]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 - interactables[0]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 4));
 
 		// Set the position of the second button to be centered on the right side of the menu rect
-		interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 2));
+		interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 4));
 
 		if (!playerPromptedOnce) {
 			// Set the ship stop flag to true when prompting the player to enter the island

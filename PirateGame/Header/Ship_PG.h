@@ -105,6 +105,7 @@ namespace PirateGame {
 
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
+		sf::Time regenTime = sf::seconds(2.f);
 
 		// Handlers
 		std::unique_ptr<ShipInputHandler> SIH;

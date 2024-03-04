@@ -57,7 +57,7 @@ void World::setUpWorld() {
 	frameRateText.setFillColor(sf::Color::White);
 
 	// Set up the background
-	background.setSize(sf::Vector2f(10000, 10000));
+	background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
 	background.setFillColor(sf::Color(0, 158, 163));
 }
 
@@ -122,6 +122,8 @@ void World::createWorld(sf::Event event) {
 void World::gameLoop() {
 	// Temporary code to draw a grid
 	//map.drawGrid(window);
+
+	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
 
 	LMHandler->interactWithLandmasses(ship);
 

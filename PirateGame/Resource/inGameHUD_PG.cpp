@@ -4,6 +4,7 @@ using namespace PirateGame;
 
 void InGameHUD::setUpMenu() {
 	healthBarSize = sf::Vector2f(window->getSize().x - 400 - padding * 2, 50);
+	interactableSize = sf::Vector2f(200, 50);
 
 	// Set up the health bar
 	healthBarGreen.setSize(sf::Vector2f(healthBarSize));
@@ -27,22 +28,37 @@ void InGameHUD::addInteractablesToMenu() {
 	// Add a settings button
 	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
 	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc);
-	settingsButton->createInteractable(sf::Vector2f(200, 50));
+	settingsButton->createInteractable(interactableSize);
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
 
 	// Add information boxes for the ship state and properties
 	std::unique_ptr<TextDisplayBox> shipFiringSideIndicator = std::make_unique<TextDisplayBox>();
-	shipFiringSideIndicator->createInteractable(sf::Vector2f(200, 50));
+	shipFiringSideIndicator->createInteractable(interactableSize);
 	std::string firingSide = "Firing Side: ";
 	shipFiringSideIndicator->setString(firingSide);
 	shipProperties.push_back(std::move(shipFiringSideIndicator));
 
 	std::unique_ptr<TextDisplayBox> manualAimIndicator = std::make_unique<TextDisplayBox>();
-	manualAimIndicator->createInteractable(sf::Vector2f(200, 50));
+	manualAimIndicator->createInteractable(interactableSize);
 	std::string manualAim = "Manual Aim: ";
 	manualAimIndicator->setString(manualAim);
 	shipProperties.push_back(std::move(manualAimIndicator));
+
+	// Create a gold display
+	goldDisplay = std::make_unique<TextDisplayBox>();
+	goldDisplay->createInteractable(interactableSize);
+	goldDisplay->setString("Gold: "); // This will be updated in the draw function
+
+	// Create a ship coordinates display
+	shipCoords = std::make_unique<TextDisplayBox>();
+	shipCoords->createInteractable(interactableSize);
+	shipCoords->setString("Coords: "); // This will be updated in the draw function
+
+	// Create a ship velocity display
+	shipVeclocity = std::make_unique<TextDisplayBox>();
+	shipVeclocity->createInteractable(interactableSize);
+	shipVeclocity->setString("Velocity: "); // This will be updated in the draw function
 }
 
 // This function will update the strings of the ship properties
@@ -99,6 +115,16 @@ void InGameHUD::setInteractablePositions() {
 		float y = interactables[0]->getPosition().y + interactables[0]->getBackground().getSize().y + padding + i * (shipProperties[i]->getBackground().getSize().y + padding);
 		shipProperties[i]->setPosition(sf::Vector2f(x, y));
 	}
+
+	// Set the position of the gold display to be in the bottom left corner
+	goldDisplay->setPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - interactableSize.x - padding, 
+		HUDView.getCenter().y + window->getSize().y / 2u - goldDisplay->getBackground().getSize().y - padding));
+
+	// Set the position of the ship coordinates to be under the minimap
+	shipCoords->setPosition(sf::Vector2f(minimap.getPosition().x, minimap.getPosition().y + minimap.getSize().y + padding));
+
+	// Set the position of the ship velocity to be under the ship coordinates
+	shipVeclocity->setPosition(sf::Vector2f(shipCoords->getPosition().x, shipCoords->getPosition().y + shipCoords->getBackground().getSize().y + padding));
 }
 
 void InGameHUD::draw() {
@@ -117,6 +143,22 @@ void InGameHUD::draw() {
 		property->getFrame().setOutlineColor(sf::Color::Transparent);
 		property->draw();
 	}
+
+	// Draw the other hud elements
+	goldDisplay->setString("Gold: " + std::to_string(ship->getInventoryHandler().getGold()));
+	goldDisplay->getFrame().setFillColor(sf::Color::Transparent);
+	goldDisplay->getFrame().setOutlineColor(sf::Color::Transparent);
+	goldDisplay->draw();
+
+	shipCoords->setString("Coords: " + std::to_string(static_cast<int>(ship->getSprite().getPosition().x)) + ", " + std::to_string(static_cast<int>(ship->getSprite().getPosition().y)));
+	shipCoords->getFrame().setFillColor(sf::Color::Transparent);
+	shipCoords->getFrame().setOutlineColor(sf::Color::Transparent);
+	shipCoords->draw();
+
+	shipVeclocity->setString("Velocity: " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().x)) + ", " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().y)));
+	shipVeclocity->getFrame().setFillColor(sf::Color::Transparent);
+	shipVeclocity->getFrame().setOutlineColor(sf::Color::Transparent);
+	shipVeclocity->draw();
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {
