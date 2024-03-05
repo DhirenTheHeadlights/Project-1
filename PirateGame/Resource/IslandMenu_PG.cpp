@@ -162,7 +162,7 @@ void IslandMenu::addShipInventoryInteractables() {
 	for (auto& marketItem : market) {
 		auto it = std::find_if(ship->getInventoryHandler().getInventory().begin(), ship->getInventoryHandler().getInventory().end(), [&marketItem](const ShopItem& shipItem) {
 			return shipItem.name == marketItem.name;
-			});
+		});
 
 		std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
 		itemDisplay->createInteractable(merchandiseSize);

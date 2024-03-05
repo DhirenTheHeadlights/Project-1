@@ -71,7 +71,7 @@ void LandMassHandler::interactWithLandmasses(Ship& ship) {
     for (auto& landMass : nearbyLandMasses) {
         sf::Vector2f shipPosition = ship.getSprite().getPosition(); // Ship position is already the center of the sprite
         sf::Vector2f landMassPosition = sf::Vector2f(landMass->getSprite().getPosition().x + landMass->getSprite().getGlobalBounds().width / 2, landMass->getSprite().getPosition().y + landMass->getSprite().getGlobalBounds().height / 2);
-        float distance = sqrt(pow(shipPosition.x - landMassPosition.x, 2) + pow(shipPosition.y - landMassPosition.y, 2));
+        float distance = sqrt(pow(shipPosition.x - landMassPosition.x, 2.f) + pow(shipPosition.y - landMassPosition.y, 2.f));
 
         if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
             // Prompt the player to open the market here

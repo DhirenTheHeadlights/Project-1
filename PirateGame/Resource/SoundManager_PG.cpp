@@ -16,6 +16,7 @@ void SoundManager::playSound(const std::string& soundName) {
     if (soundBuffers.find(soundName) != soundBuffers.end()) {
         sf::Sound& sound = findAvailableSound();
         sound.setBuffer(soundBuffers[soundName]);
+        sound.setVolume(GlobalValues::getInstance().getGlobalVolume());
         sound.play();
     }
     else {

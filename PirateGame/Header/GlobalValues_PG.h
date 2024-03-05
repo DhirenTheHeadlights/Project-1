@@ -30,6 +30,7 @@ namespace PirateGame {
 			this->globalWindow = window;
 		}
 		void setClock(sf::Clock clock) { this->globalClock = clock; }
+		void setGlobalVolume(float volume) { this->soundVolume = volume; }
 		
 		// Getters
 		sf::Vector2f getMapSize() const { return this->worldMap; }
@@ -40,6 +41,7 @@ namespace PirateGame {
 		sf::Clock getClock() const { return this->globalClock; }
 		InputHandler& getInputHandler() { return this->inputHandler; }
 		GameStateManager& getGSM() { return this->GSM; }
+		float getGlobalVolume() const { return this->soundVolume; }
 
 	private:
 		// Private Constructor
@@ -53,6 +55,7 @@ namespace PirateGame {
 		Map map;
 		sf::Vector2f worldMap = sf::Vector2f(10000, 10000);
 		int cellSize = 10;
+		float soundVolume = 100;
 
 		// Input handler
 		InputHandler inputHandler;

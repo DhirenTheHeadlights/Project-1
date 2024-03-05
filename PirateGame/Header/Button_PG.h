@@ -24,6 +24,7 @@ namespace PirateGame {
 		void interactHold();
 
 		void setCooldownTime(sf::Time time) { cooldownTime = time; }
+		// This flag allows for multiple button presses if the button is held down
 		void setHoldDown(bool hold) { holdDown = hold; }
 	private:
 		ButtonFunction func;

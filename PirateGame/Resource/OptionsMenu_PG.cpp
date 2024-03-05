@@ -120,18 +120,35 @@ void OptionsMenu::addInteractablesToMenu() {
 void OptionsMenu::addGeneralTabInteractables() {
 	// Add the interactables to the general tab
 	std::vector<std::pair<std::function<void()>, std::string>> screenPair;
-	screenPair.push_back(std::make_pair(std::function<void()>([]() {}), "Fullscreen"));
-	screenPair.push_back(std::make_pair(std::function<void()>([]() {}), "Windowed"));
+
+	screenPair.push_back(std::make_pair(std::function<void()>([]() {
+		// Set the game to fullscreen
+		GlobalValues::getInstance().getWindow()->create(sf::VideoMode::getDesktopMode(), "Pirate Game", sf::Style::Fullscreen);
+		}), "Fullscreen"));
+
+	screenPair.push_back(std::make_pair(std::function<void()>([]() {
+		// Set the game to windowed
+		GlobalValues::getInstance().getWindow()->create(sf::VideoMode(1920, 1080), "Pirate Game", sf::Style::Default);
+		}), "Windowed"));
+
 	std::unique_ptr<DropDown> screenDropDown = std::make_unique<DropDown>(screenPair);
 	screenDropDown->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	screenDropDown->setString("Fullscreen");
 	generalTabInteractables.push_back(std::move(screenDropDown));
 
 	std::vector<std::pair<std::function<void()>, std::string>> resolutionPair;
-	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "1920x1080"));
-	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "1280x720"));
-	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "800x600"));
-	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {}), "640x480"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {
+		GlobalValues::getInstance().getWindow()->setSize(sf::Vector2u(1920, 1080));
+		}), "1920x1080"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {
+		GlobalValues::getInstance().getWindow()->setSize(sf::Vector2u(1600, 900));
+		}), "1600x900"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {
+		GlobalValues::getInstance().getWindow()->setSize(sf::Vector2u(1280, 720));
+		}), "1280x720"));
+	resolutionPair.push_back(std::make_pair(std::function<void()>([]() {
+		GlobalValues::getInstance().getWindow()->setSize(sf::Vector2u(640, 480));
+		}), "640x480"));
 	std::unique_ptr<DropDown> resolutionDropDown = std::make_unique<DropDown>(resolutionPair);
 	resolutionDropDown->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	resolutionDropDown->setString("Resolution");
@@ -170,7 +187,9 @@ void OptionsMenu::addAudioTabInteractables() {
 	musicSlider->setString("Music Volume");
 	audioTabInteractables.push_back(std::move(musicSlider));
 
-	std::function<void(float value)> sfxSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
+	std::function<void(float value)> sfxSliderFunc = [this](float value) {
+		GlobalValues::getInstance().setGlobalVolume(value);
+		};
 	std::unique_ptr<Slider> sfxSlider = std::make_unique<Slider>(sfxSliderFunc);
 	sfxSlider->createInteractable(sf::Vector2f(0.75f * size.x, 50.f));
 	sfxSlider->setString("SFX Volume");

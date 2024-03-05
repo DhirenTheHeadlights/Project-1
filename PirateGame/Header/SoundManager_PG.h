@@ -4,6 +4,8 @@
 #include <vector>
 #include <map>
 
+#include "GlobalValues_PG.h"
+
 /// <summary>
 /// This class is used to manage the sounds in the game.
 /// </summary>

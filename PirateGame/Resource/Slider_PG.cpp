@@ -50,7 +50,7 @@ void Slider::interact() {
 		// Set the text to display the value of the slider
 		text.setString(name + ":  " + std::to_string(static_cast<int>((sliderThumb.getPosition().x - foreground.getPosition().x) / (foreground.getSize().x - sliderThumb.getSize().x) * 100)));// Set the color of the interactable objects
 		// Call the function with the value of the slider
-		//func((sliderThumb.getPosition().x - foreground.getPosition().x) / (foreground.getSize().x - sliderThumb.getSize().x));
+		func((sliderThumb.getPosition().x - foreground.getPosition().x) / (foreground.getSize().x - sliderThumb.getSize().x));
 	}
 	
 }
