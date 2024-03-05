@@ -11,14 +11,17 @@ LandMassHandler::~LandMassHandler() {
 
 // Add all the land masses to the vector
 void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandmasses) {
-	for (int i = 0; i < numLandMasses; i++) {
+	// Grab a numLandMasses number of points from the map
+	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
+
+	for (int i = 0; i < points.size(); i++) {
 		// Generate a random number between 0 and 2
 		int randNum = rand() % 2;
 
 		// Create a land mass based on the random number; proportional to the distance between land masses
-		if (randNum == 0) createLandmass(LandMassType::Island, minDistBetweenLandmasses * 3.f);
-		else if (randNum == 1) createLandmass(LandMassType::Rock, minDistBetweenLandmasses);
-		else createLandmass(LandMassType::Shipwreck, minDistBetweenLandmasses * 2.f);
+		if (randNum == 0) createLandmass(LandMassType::Island, points[i]);
+		else if (randNum == 1) createLandmass(LandMassType::Rock, points[i]);
+		else createLandmass(LandMassType::Shipwreck, points[i]);
 	}
 
 	// debug print num of islands, rocks, shipwrecks
@@ -28,6 +31,7 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 		else if (landMass->getType() == LandMassType::Rock) numRocks++;
 		else if (landMass->getType() == LandMassType::Shipwreck) numShipwrecks++;
 	}
+
 	std::cout << "Islands: " << numIslands << ", Rocks: " << numRocks << ", Shipwrecks: " << numShipwrecks << std::endl;
 
 	// Temp code to add a single island right by the player at the start
@@ -38,26 +42,13 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 	hashmap.addLandMass(landMass);
 }
 
-void LandMassHandler::createLandmass(LandMassType type, float minDistBetweenLandmasses) {
+void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
 	LandMass* landMass = new LandMass();
 	landMass->createLandMass(type, texture);
 
-	// Generate a random position for the land mass
-	auto randPos = map.getRandomPosition(minDistBetweenLandmasses);
-
-	// Set the position of the land mass if there is a valid value
-	if (randPos.has_value()) {
-		landMass->setPosition(randPos.value());
-
-		// Add the land mass to the vector
-		landMasses.push_back(landMass);
-
-		// Add the land mass to the hashmap
-		hashmap.addLandMass(landMass);
-	}
-	else {
-		delete landMass;
-	}
+	landMass->setPosition(position);
+	landMasses.push_back(landMass);
+	hashmap.addLandMass(landMass);
 }
 
 // Draw all the land masses

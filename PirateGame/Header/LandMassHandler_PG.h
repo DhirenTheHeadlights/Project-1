@@ -32,7 +32,7 @@ namespace PirateGame {
         // Helper functions
         bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5);
         void handleCollisions(Ship& ship, std::set<LandMass*> nearbyLandMasses);
-        void createLandmass(LandMassType type, float minDistBetweenLandmasses);
+        void createLandmass(LandMassType type, sf::Vector2f position);
         void openMarket(Ship& ship, LandMass* landMass);
 
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
