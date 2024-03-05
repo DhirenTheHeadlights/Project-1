@@ -8,10 +8,11 @@ const sf::Vector2f Player::GRAVITY = sf::Vector2f(0, 0.05f);  // Gravity value
 Player::Player(sf::Vector2f& map, sf::RenderWindow& window) : window(window) {
 	// Initialize the player sprite
 	playerSprite.setPosition(100.f, 100.f);
-	playerSprite.setScale(2.0f, 2.0f);
+	playerSprite.setScale(spriteScale);
 	playerSprite.setTexture(texture.grabPlayerTexture(0));
-	playerSprite.setOrigin(playerSprite.getGlobalBounds().width / 2.0f, playerSprite.getGlobalBounds().height / 2.0f);
-	
+	playerSprite.setOrigin(playerSprite.getLocalBounds().width / 2.0f, playerSprite.getLocalBounds().height / 2.0f);
+	std::cout<< "Sprite size: " << playerSprite.getGlobalBounds().width << ", " << playerSprite.getGlobalBounds().height << std::endl;
+
 	leftBoundary = 0.f;
 	rightBoundary = 100000; // windowSize should be passed to the Player or known globally
 	topBoundary = 0.f;
@@ -25,11 +26,13 @@ void Player::move() {
 	//Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		velocity.x = -6.f;
-		playerSprite.setScale(-2.f, 2.f);
+		playerSprite.setScale(-spriteScale.x, spriteScale.y);
+		
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		velocity.x = 6.f;
-		playerSprite.setScale(2.f, 2.f);
+		playerSprite.setScale(spriteScale);
+
 	}
 	else {
 		velocity.x = 0;
@@ -40,13 +43,14 @@ void Player::move() {
 	}
 
 	// Bounds check
-	sf::Vector2f newPosition = playerSprite.getPosition() + velocity;
-	if (newPosition.x < leftBoundary) newPosition.x = leftBoundary;
-	if (newPosition.x > rightBoundary - playerSprite.getGlobalBounds().width) newPosition.x = rightBoundary - playerSprite.getGlobalBounds().width;
-	if (newPosition.y < topBoundary) newPosition.y = topBoundary;
-	if (newPosition.y > bottomBoundary - playerSprite.getGlobalBounds().height) newPosition.y = bottomBoundary - playerSprite.getGlobalBounds().height;
+	position = playerSprite.getPosition() + velocity;
+	if (position.x < leftBoundary) position.x = leftBoundary;
+	if (position.x > rightBoundary - playerSprite.getGlobalBounds().width) position.x = rightBoundary - playerSprite.getGlobalBounds().width;
+	if (position.y < topBoundary) position.y = topBoundary;
+	if (position.y > bottomBoundary - playerSprite.getGlobalBounds().height) position.y = bottomBoundary - playerSprite.getGlobalBounds().height;
 
-	playerSprite.setPosition(newPosition);
+	playerSprite.setPosition(position);
+	//std::cout << "Player position: " << playerSprite.getPosition().x << ", " << playerSprite.getPosition().y << std::endl;
 }
 
 void Player::applyGravity() {

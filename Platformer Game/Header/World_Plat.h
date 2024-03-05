@@ -4,6 +4,7 @@
 
 #include "Platforms_Plat.h"
 #include "Player_Plat.h"
+#include "HUD_Plat.h"
 #pragma once
 
 namespace PlatformerGame {
@@ -13,6 +14,8 @@ namespace PlatformerGame {
 		World(sf::RenderWindow& window);
 		void gameLoop(sf::Event event);
 		void createWorld(sf::Event event);
+
+		HealthBar healthBar;
 
 
 	private:
@@ -38,6 +41,8 @@ namespace PlatformerGame {
 		Map map;
 
 		sf::View view;
+
+		sf::RectangleShape background;
 
 	};
 }

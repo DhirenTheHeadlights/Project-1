@@ -32,6 +32,7 @@ namespace PlatformerGame {
 		sf::Vector2f accel;
 		sf::Vector2f maxVelocity = sf::Vector2f(30.f, 30.f);  // Maximum velocity (x, y)
 		sf::Vector2f position;  // Position of the player
+		sf::Vector2f spriteScale = sf::Vector2f(2, 2);  // Scale of the player sprite
 
 		static const sf::Vector2f GRAVITY;  // Gravity constant
 

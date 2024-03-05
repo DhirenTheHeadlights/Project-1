@@ -295,6 +295,9 @@
     <ClCompile Include="Platformer Game\Resource\Platforms_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="Platformer Game\Resource\HUD_Plat.cpp">
+      <Filter>Source Files\Platformer\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -475,6 +478,9 @@
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
     <ClInclude Include="Platformer Game\Header\Platforms_Plat.h">
+      <Filter>Source Files\Platformer\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Platformer Game\Header\HUD_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
   </ItemGroup>
