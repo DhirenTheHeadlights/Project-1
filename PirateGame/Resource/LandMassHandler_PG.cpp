@@ -12,23 +12,23 @@ LandMassHandler::~LandMassHandler() {
 // Add all the land masses to the vector
 void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandmasses) {
 	for (int i = 0; i < numLandMasses; i++) {
-		// Generate a random number between 0 and 10
-		int randNum = rand() % 10;
-		// If the number is between 0 and 6, generate a rock
-		if (randNum < 6) {
-			createLandmass(LandMassType::Rock, minDistBetweenLandmasses);
-		}
-		// If the number is between 6 and 8, generate a island
-		else if (randNum < 8) {
-			createLandmass(LandMassType::Island, minDistBetweenLandmasses * 5.f);
-		}
-		// If the number is between 8 and 10, generate a shipwreck
-		else {
-			createLandmass(LandMassType::Shipwreck, minDistBetweenLandmasses * 2.f);
-		}
+		// Generate a random number between 0 and 2
+		int randNum = rand() % 2;
+
+		// Create a land mass based on the random number; proportional to the distance between land masses
+		if (randNum == 0) createLandmass(LandMassType::Island, minDistBetweenLandmasses * 3.f);
+		else if (randNum == 1) createLandmass(LandMassType::Rock, minDistBetweenLandmasses);
+		else createLandmass(LandMassType::Shipwreck, minDistBetweenLandmasses * 2.f);
 	}
 
-	std::cout << "Landmasses: " << landMasses.size() << std::endl;
+	// debug print num of islands, rocks, shipwrecks
+	int numIslands = 0, numRocks = 0, numShipwrecks = 0;
+	for (auto& landMass : landMasses) {
+		if (landMass->getType() == LandMassType::Island) numIslands++;
+		else if (landMass->getType() == LandMassType::Rock) numRocks++;
+		else if (landMass->getType() == LandMassType::Shipwreck) numShipwrecks++;
+	}
+	std::cout << "Islands: " << numIslands << ", Rocks: " << numRocks << ", Shipwrecks: " << numShipwrecks << std::endl;
 
 	// Temp code to add a single island right by the player at the start
 	LandMass* landMass = new LandMass();

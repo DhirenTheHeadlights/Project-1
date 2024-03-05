@@ -16,6 +16,7 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
+		void addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination);
 		void updateShipPropertiesString();
 		void draw() override;
 
@@ -34,11 +35,8 @@ namespace PirateGame {
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;
 
-		std::vector<std::unique_ptr<TextDisplayBox>> shipProperties;
-
-		std::unique_ptr<TextDisplayBox> goldDisplay;
-		std::unique_ptr<TextDisplayBox> shipCoords;
-		std::unique_ptr<TextDisplayBox> shipVeclocity;
+		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesLeftSide;
+		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesRightSide;
 
 		Minimap minimap;
 

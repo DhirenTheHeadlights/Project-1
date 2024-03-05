@@ -16,7 +16,7 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 	shipProperties = ShipConfig[level];
 
 	SIH->setNumCannons(shipProperties.numCannons);
-	SIH->setBaseSpeed(shipProperties.baseSpeed * 2);
+	SIH->setBaseSpeed(shipProperties.baseSpeed);
 	SIH->setCannonHandler(SCH.get());
 	SIH->setMovementHandler(SMH.get());
 
@@ -45,9 +45,6 @@ void Ship::setUpShip(ShipType type, ShipClass level) {
 		// Load the texture and values
 		break;
 	}
-
-	// Initalize the position of the ship to be random
-	//sprite.setPosition(sf::Vector2f(static_cast<float>(rand() % 1000), static_cast<float>(rand() % 1000)));
 
 	// Set type and class
 	shipType = type;

@@ -9,7 +9,6 @@ void ShipMovementHandler::move(float baseSpeed) {
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
 
 	float elapsed = deltaTime.restart().asSeconds();
-	speed = baseSpeed;
 
 	// Calculate the direction based on the ship's current rotation
 	float rotationInRadians = (sprite.getRotation() - 90.f) * pi / 180.f; // Subtract 90 degrees to align with SFML's rotation
@@ -42,8 +41,18 @@ void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const
 void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
 	// If friction is enabled, decrease the speed. Otherwise, set the velocity.
 	if (isColliding) speed = baseSpeed * frictionCoefficient;
-	else velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
-	if (stopShipFlag) velocity = sf::Vector2f(0, 0);
+	else {
+		// Gradually increase the speed to the base speed
+		const float acceleration = 0.1f; // The acceleration factor, will be edited later based
+		// on the ship's properties
+		if (speed < baseSpeed) speed += acceleration;
+		else speed = baseSpeed;
+		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
+	}
+	if (stopShipFlag) {
+		velocity = sf::Vector2f(0, 0);
+		speed = 0;
+	}
 
 	// Update the position
 	position += velocity * elapsedTime;

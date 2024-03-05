@@ -134,6 +134,7 @@ void IslandMenu::addMarketInteractables() {
 		std::unique_ptr<Button> sellButton = std::make_unique<Button>(sellItem);
 		sellButton->createInteractable(sellButtonSize);
 		sellButton->setString("Sell");
+		sellButton->setHoldDown(true);
 		sellButtons.push_back(std::move(sellButton));
 
 		// Create the text display box for the item
@@ -150,7 +151,7 @@ void IslandMenu::addMarketInteractables() {
 	}
 
 	// Create an "exit" button to leave the island
-	std::function<void()> leaveIsland = [this]() { ship->getMovementHandler().setStopShipFlag(false); };
+	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(uiButtonSize);
 	leaveIslandButton->setString("Leave Island");
@@ -204,7 +205,7 @@ void IslandMenu::setInteractablePositions() {
 			playerPromptedOnce = true;
 		}
 
-		return;
+		return; // Return early if the player has not entered the island
 	}
 
 	// Set up the menu to buy and sell items
@@ -304,14 +305,14 @@ void IslandMenu::draw() {
 	window->draw(menu);
 	window->draw(titleText);
 
-	// Interact
-	setInteractablePositions();
-	interactWithMenuItems();
+	//interactWithMenuItems();
 
 	// Draw the ship inventory if the player has entered the island
 	if (enteredIsland && !addedShipInventory) {
 		addShipInventoryInteractables();
 	}
+
+	setInteractablePositions();
 
 	if (enteredIsland) {
 		// Draw the market interactables
@@ -348,9 +349,10 @@ void IslandMenu::draw() {
 		window->draw(shipGold);
 	}
 	else {
-		// Draw the inital buttons
+		// Draw the inital buttons and interact with them
 		for (auto& interactable : interactables) {
 			interactable->draw();
+			interactable->interact();
 		}
 	}
 }

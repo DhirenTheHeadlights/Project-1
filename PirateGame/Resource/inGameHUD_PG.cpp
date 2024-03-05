@@ -31,46 +31,43 @@ void InGameHUD::addInteractablesToMenu() {
 	settingsButton->setString("Settings");
 	addInteractableToMenu(std::move(settingsButton));
 
-	// Add information boxes for the ship state and properties
-	std::unique_ptr<TextDisplayBox> shipFiringSideIndicator = std::make_unique<TextDisplayBox>();
-	shipFiringSideIndicator->createInteractable(interactableSize);
-	std::string firingSide = "Firing Side: ";
-	shipFiringSideIndicator->setString(firingSide);
-	shipProperties.push_back(std::move(shipFiringSideIndicator));
 
-	std::unique_ptr<TextDisplayBox> manualAimIndicator = std::make_unique<TextDisplayBox>();
-	manualAimIndicator->createInteractable(interactableSize);
-	std::string manualAim = "Manual Aim: ";
-	manualAimIndicator->setString(manualAim);
-	shipProperties.push_back(std::move(manualAimIndicator));
+	/// Left side of the HUD
 
-	// Create a gold display
-	goldDisplay = std::make_unique<TextDisplayBox>();
-	goldDisplay->createInteractable(interactableSize);
-	goldDisplay->setString("Gold: "); // This will be updated in the draw function
+	addInfoBox("Firing Side: ", shipPropertiesLeftSide);
+	addInfoBox("Manual Aim: ", shipPropertiesLeftSide);
+	addInfoBox("Ship Class: ", shipPropertiesLeftSide);
+	addInfoBox("Ship Type: ", shipPropertiesLeftSide);
 
-	// Create a ship coordinates display
-	shipCoords = std::make_unique<TextDisplayBox>();
-	shipCoords->createInteractable(interactableSize);
-	shipCoords->setString("Coords: "); // This will be updated in the draw function
+	/// Right side of the HUD
 
-	// Create a ship velocity display
-	shipVeclocity = std::make_unique<TextDisplayBox>();
-	shipVeclocity->createInteractable(interactableSize);
-	shipVeclocity->setString("Velocity: "); // This will be updated in the draw function
+	addInfoBox("Gold: ", shipPropertiesRightSide);
+	addInfoBox("Coords: ", shipPropertiesRightSide);
+	addInfoBox("Velocity: ", shipPropertiesRightSide);
+	addInfoBox("Speed: ", shipPropertiesRightSide);
+}
+
+// General function to add an info box with a string to the HUD
+void InGameHUD::addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination) {
+	std::unique_ptr<TextDisplayBox> infoBox = std::make_unique<TextDisplayBox>();
+	infoBox->createInteractable(interactableSize);
+	infoBox->setString(text);
+	destination.push_back(std::move(infoBox));
 }
 
 // This function will update the strings of the ship properties
 void InGameHUD::updateShipPropertiesString() {
+	/// Left side of the HUD
+
 	// Update the firing side indicator
 	std::string firingSide = "Firing Side: ";
 	if (ship->getCannonHandler().getFiringSide() == FiringSide::Port) {
 		firingSide += "Left";
-		shipProperties[0]->setString(firingSide + " [" + ship->getInputHandler().getPortMouseButtonString() + "]");
+		shipPropertiesLeftSide[0]->setString(firingSide + " [" + ship->getInputHandler().getPortMouseButtonString() + "]");
 	}
 	else {
 		firingSide += "Right";
-		shipProperties[0]->setString(firingSide + " [" + ship->getInputHandler().getStarboardMouseButtonString() + "]");
+		shipPropertiesLeftSide[0]->setString(firingSide + " [" + ship->getInputHandler().getStarboardMouseButtonString() + "]");
 	}
 
 	// Update the manual aim indicator
@@ -81,7 +78,34 @@ void InGameHUD::updateShipPropertiesString() {
 	else {
 		manualAim += "Off";
 	} 
-	shipProperties[1]->setString(manualAim + " [" + ship->getInputHandler().getManualAimKeyString() + "]");
+	shipPropertiesLeftSide[1]->setString(manualAim + " [" + ship->getInputHandler().getManualAimKeyString() + "]");
+
+	// Update the ship type indicator
+	std::string shipClass = "Ship Class: ";
+	shipPropertiesLeftSide[2]->setString(shipClass + ship->getShipClassString());
+
+	// Update the ship class indicator
+	std::string shipType = "Ship Type: ";
+	shipPropertiesLeftSide[3]->setString(shipType + ship->getShipTypeString());
+
+	/// Right side of the HUD
+
+	// Update the gold display
+	std::string gold = "Gold: " + std::to_string(static_cast<int>(ship->getInventoryHandler().getGold()));
+	shipPropertiesRightSide[0]->setString(gold);
+
+	// Update the ship coordinates display
+	std::string coords = "Coords: " + std::to_string(static_cast<int>(ship->getSprite().getPosition().x)) + ", " + std::to_string(static_cast<int>(ship->getSprite().getPosition().y));
+	shipPropertiesRightSide[1]->setString(coords);
+
+	// Update the ship velocity display
+	std::string velocity = "Velocity: " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().x)) + ", " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().y));
+	shipPropertiesRightSide[2]->setString(velocity);
+
+	// Update the ship speed display
+	std::string speed = "Speed: " + std::to_string(static_cast<int>(ship->getMovementHandler().getSpeed()));
+	shipPropertiesRightSide[3]->setString(speed);
+
 }
  
 void InGameHUD::setInteractablePositions() {
@@ -109,21 +133,18 @@ void InGameHUD::setInteractablePositions() {
 	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding));
 
 	// Set the position of the info boxes to be below the settings button on the left side
-	for (int i = 0; i < shipProperties.size(); i++) {
+	for (int i = 0; i < shipPropertiesLeftSide.size(); i++) {
 		float x = HUDView.getCenter().x - window->getSize().x / 2u + padding;
-		float y = interactables[0]->getPosition().y + interactables[0]->getBackground().getSize().y + padding + i * (shipProperties[i]->getBackground().getSize().y + padding);
-		shipProperties[i]->setPosition(sf::Vector2f(x, y));
+		float y = interactables[0]->getPosition().y + interactables[0]->getBackground().getSize().y + padding + i * (shipPropertiesLeftSide[i]->getBackground().getSize().y + padding);
+		shipPropertiesLeftSide[i]->setPosition(sf::Vector2f(x, y));
 	}
 
-	// Set the position of the gold display to be in the bottom left corner
-	goldDisplay->setPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - interactableSize.x - padding, 
-		HUDView.getCenter().y + window->getSize().y / 2u - goldDisplay->getBackground().getSize().y - padding));
-
-	// Set the position of the ship coordinates to be under the minimap
-	shipCoords->setPosition(sf::Vector2f(minimap.getMinimap().getPosition().x, minimap.getMinimap().getPosition().y + minimap.getMinimap().getRadius() * 2 + padding));
-
-	// Set the position of the ship velocity to be under the ship coordinates
-	shipVeclocity->setPosition(sf::Vector2f(shipCoords->getPosition().x, shipCoords->getPosition().y + shipCoords->getBackground().getSize().y + padding));
+	// Set the position of the info boxes to be below the mini map on the right side
+	for (int i = 0; i < shipPropertiesRightSide.size(); i++) {
+		float x = HUDView.getCenter().x + healthBarSize.x / 2;
+		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + i * (shipPropertiesRightSide[i]->getBackground().getSize().y + padding);
+		shipPropertiesRightSide[i]->setPosition(sf::Vector2f(x, y));
+	}
 }
 
 void InGameHUD::draw() {
@@ -138,27 +159,18 @@ void InGameHUD::draw() {
 
 	// Add and draw the ship properties
 	updateShipPropertiesString();
-	for (auto& property : shipProperties) {
+
+	for (auto& property : shipPropertiesLeftSide) {
 		property->getFrame().setFillColor(sf::Color::Transparent);
 		property->getFrame().setOutlineColor(sf::Color::Transparent);
 		property->draw();
 	}
 
-	// Draw the other hud elements
-	goldDisplay->setString("Gold: " + std::to_string(ship->getInventoryHandler().getGold()));
-	goldDisplay->getFrame().setFillColor(sf::Color::Transparent);
-	goldDisplay->getFrame().setOutlineColor(sf::Color::Transparent);
-	goldDisplay->draw();
-
-	shipCoords->setString("Coords: " + std::to_string(static_cast<int>(ship->getSprite().getPosition().x)) + ", " + std::to_string(static_cast<int>(ship->getSprite().getPosition().y)));
-	shipCoords->getFrame().setFillColor(sf::Color::Transparent);
-	shipCoords->getFrame().setOutlineColor(sf::Color::Transparent);
-	shipCoords->draw();
-
-	shipVeclocity->setString("Velocity: " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().x)) + ", " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().y)));
-	shipVeclocity->getFrame().setFillColor(sf::Color::Transparent);
-	shipVeclocity->getFrame().setOutlineColor(sf::Color::Transparent);
-	shipVeclocity->draw();
+	for (auto& property : shipPropertiesRightSide) {
+		property->getFrame().setFillColor(sf::Color::Transparent);
+		property->getFrame().setOutlineColor(sf::Color::Transparent);
+		property->draw();
+	}
 
 	// Draw the interactables
 	for (auto& interactable : interactables) {

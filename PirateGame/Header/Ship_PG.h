@@ -72,8 +72,32 @@ namespace PirateGame {
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 		ShipProperties& getShipProperties() { return shipProperties; }
+		ShipType getShipType() const { return shipType; }
+		ShipClass getShipClass() const { return shipClass; }
 
+		std::string getShipClassString() {
+			switch (shipClass) {
+			case ShipClass::Sloop:
+				return "Sloop";
+			case ShipClass::Brigantine:
+				return "Brigantine";
+			case ShipClass::Frigate:
+				return "Frigate";
+			case ShipClass::ManOWar:
+				return "Man O' War";
+			case ShipClass::Galleon:
+				return "Galleon";
+			}
+		}
 
+		std::string getShipTypeString() {
+			switch (shipType) {
+			case ShipType::Player:
+				return "Player";
+			case ShipType::Enemy:
+				return "Enemy";
+			}
+		}
 
 	private:
 		// Static map for ship configurations

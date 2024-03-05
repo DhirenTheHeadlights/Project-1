@@ -124,7 +124,7 @@ void World::createWorld(sf::Event event) {
 
 void World::gameLoop() {
 	// Temporary code to draw a grid
-	//map.drawGrid(window);
+	//GlobalValues::getInstance().getMap().drawGrid(*window);
 
 	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
 

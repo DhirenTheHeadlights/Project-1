@@ -34,6 +34,7 @@ namespace PirateGame {
 		sf::Vector2f getPosition() const { return position; }
 		bool getStopShipRotationFlag() const { return stopShipRotationFlag; }
 		bool getStopShipFlag() const { return stopShipFlag; }
+		float getSpeed() const { return speed; }
 
 	private:
 		// SFML Objects
