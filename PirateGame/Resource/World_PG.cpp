@@ -39,7 +39,7 @@ World::World(sf::RenderWindow* window_in) {
 
 void World::setUpWorld() {
 	ship.setUpShip(ShipType::Player, ShipClass::Frigate);
-	LMHandler->addLandMasses(100, 500.f);
+	LMHandler->addLandMasses(GlobalValues::getInstance().getMapSize().x / 100.f, GlobalValues::getInstance().getMapSize().x / 40.f);
 
 	// Set the game state to start
 	GSM->changeGameState(GameState::Start);
@@ -50,6 +50,9 @@ void World::setUpWorld() {
 
 	// Set up the view
 	view.setUpView();
+
+	// Set up the hud minimap
+	MH->getHUD()->getMinimap().setLandmasses(LMHandler->getLandMasses());
 
 	// Set up the frame rate text
 	frameRateText.setFont(GlobalValues::getInstance().getFont());

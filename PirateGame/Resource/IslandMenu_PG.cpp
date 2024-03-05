@@ -150,7 +150,7 @@ void IslandMenu::addMarketInteractables() {
 	}
 
 	// Create an "exit" button to leave the island
-	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
+	std::function<void()> leaveIsland = [this]() { ship->getMovementHandler().setStopShipFlag(false); };
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(uiButtonSize);
 	leaveIslandButton->setString("Leave Island");

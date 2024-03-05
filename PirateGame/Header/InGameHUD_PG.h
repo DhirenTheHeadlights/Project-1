@@ -6,6 +6,7 @@
 
 #include "Menu_PG.h"
 #include "Ship_PG.h"
+#include "Minimap_PG.h"
 
 namespace PirateGame {
 	class InGameHUD : public Menu {
@@ -19,7 +20,10 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setShip(Ship& ship) { this->ship = &ship; };
+		void setShip(Ship& ship) { this->ship = &ship; minimap.setShip(&ship); };
+
+		// Getters
+		Minimap& getMinimap() { return minimap; }
 	private:
 		// Menu items
 		float healthFraction = 100;
@@ -36,10 +40,10 @@ namespace PirateGame {
 		std::unique_ptr<TextDisplayBox> shipCoords;
 		std::unique_ptr<TextDisplayBox> shipVeclocity;
 
-		// Temp rectangle for minimap
-		sf::RectangleShape minimap;
+		Minimap minimap;
 
 		sf::Vector2f healthBarSize;
+		float minimapSize = 100.f;
 		sf::Text healthText;
 	};
 }

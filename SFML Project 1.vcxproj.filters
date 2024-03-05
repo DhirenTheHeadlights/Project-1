@@ -122,6 +122,12 @@
     <Filter Include="Source Files\PirateGame\Resource\Handlers\Ship">
       <UniqueIdentifier>{95b2744b-b2ed-496c-85d7-021d199ee118}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Menus\Specific Menus\HUD">
+      <UniqueIdentifier>{478cc170-fff5-4a17-abec-09835937eee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Menus\Specific Menus\HUD">
+      <UniqueIdentifier>{f5b62ebe-05ef-4a9d-80c2-006828cab47d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -274,9 +280,6 @@
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
     </ClCompile>
@@ -318,6 +321,12 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\ShopItem_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Minimap_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus\HUD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -471,9 +480,6 @@
     <ClInclude Include="PirateGame\Header\DropDown_PG.h">
       <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\InGameHUD_PG.h">
-      <Filter>Source Files\PirateGame\Header\Menus\Specific Menus</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
@@ -518,6 +524,12 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\ShopItem_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Minimap_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Specific Menus\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\InGameHUD_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Specific Menus\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

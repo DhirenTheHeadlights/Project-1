@@ -15,8 +15,7 @@ void InGameHUD::setUpMenu() {
 	healthText.setFillColor(sf::Color::Black);
 
 	// Set up the minimap
-	minimap.setSize(sf::Vector2f(200, 200));
-	minimap.setFillColor(sf::Color::Blue);
+	minimap.setMinimapRadius(minimapSize);
 
 	addInteractablesToMenu();
 }
@@ -107,7 +106,7 @@ void InGameHUD::setInteractablePositions() {
 	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreen.getPosition().y));
 
 	// Set the mini map to be in the top right corner with padding right by the health bars
-	minimap.setPosition(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
+	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding));
 
 	// Set the position of the info boxes to be below the settings button on the left side
 	for (int i = 0; i < shipProperties.size(); i++) {
@@ -121,7 +120,7 @@ void InGameHUD::setInteractablePositions() {
 		HUDView.getCenter().y + window->getSize().y / 2u - goldDisplay->getBackground().getSize().y - padding));
 
 	// Set the position of the ship coordinates to be under the minimap
-	shipCoords->setPosition(sf::Vector2f(minimap.getPosition().x, minimap.getPosition().y + minimap.getSize().y + padding));
+	shipCoords->setPosition(sf::Vector2f(minimap.getMinimap().getPosition().x, minimap.getMinimap().getPosition().y + minimap.getMinimap().getRadius() * 2 + padding));
 
 	// Set the position of the ship velocity to be under the ship coordinates
 	shipVeclocity->setPosition(sf::Vector2f(shipCoords->getPosition().x, shipCoords->getPosition().y + shipCoords->getBackground().getSize().y + padding));
@@ -134,7 +133,8 @@ void InGameHUD::draw() {
 	window->draw(healthBarGreen);
 	window->draw(healthText);
 
-	window->draw(minimap);
+	minimap.draw();
+	minimap.update();
 
 	// Add and draw the ship properties
 	updateShipPropertiesString();

@@ -25,6 +25,9 @@ namespace PirateGame {
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
         void drawLandMasses();
         void interactWithLandmasses(Ship& ship);
+
+        // Getters
+        std::vector<LandMass*>& getLandMasses() { return landMasses; }
     private:
         // Helper functions
         bool pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit = 5);

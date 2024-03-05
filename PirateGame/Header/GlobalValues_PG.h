@@ -53,7 +53,7 @@ namespace PirateGame {
 
 		// Variables to store the world's values
 		Map map;
-		sf::Vector2f worldMap = sf::Vector2f(10000, 10000);
+		sf::Vector2f worldMap = sf::Vector2f(100000, 100000);
 		int cellSize = 10;
 		float soundVolume = 100;
 

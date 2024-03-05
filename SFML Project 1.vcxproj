@@ -178,6 +178,7 @@
     <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\MenuHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Menu_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Minimap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="PirateGame\Header\LandMass_PG.h" />
     <ClInclude Include="PirateGame\Header\MenuHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
+    <ClInclude Include="PirateGame\Header\Minimap_PG.h" />
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />

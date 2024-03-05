@@ -28,11 +28,14 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 		}
 	}
 
+	std::cout << "Landmasses: " << landMasses.size() << std::endl;
+
 	// Temp code to add a single island right by the player at the start
 	LandMass* landMass = new LandMass();
 	landMass->createLandMass(LandMassType::Island, texture);
-	landMass->setPosition(sf::Vector2f(100, 100));
+	landMass->setPosition(sf::Vector2f(500, 500));
 	landMasses.push_back(landMass);
+	hashmap.addLandMass(landMass);
 }
 
 void LandMassHandler::createLandmass(LandMassType type, float minDistBetweenLandmasses) {
@@ -48,6 +51,9 @@ void LandMassHandler::createLandmass(LandMassType type, float minDistBetweenLand
 
 		// Add the land mass to the vector
 		landMasses.push_back(landMass);
+
+		// Add the land mass to the hashmap
+		hashmap.addLandMass(landMass);
 	}
 	else {
 		delete landMass;
@@ -59,7 +65,6 @@ void LandMassHandler::drawLandMasses() {
 	// Draw all the land masses and add them to the hashmap
 	for (auto& i : landMasses) {
 		i->draw(*window);
-		hashmap.addLandMass(i);
 	}
 }
 
