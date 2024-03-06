@@ -19,7 +19,14 @@ public:
     std::pair<int, int> getGridCoordinates(float x, float y) const;
     int getCellSize() const;
     int getLength() const;
-    std::vector<sf::Vector2f> getRandomPositions(float minDistance, int numPoints = 1); 
+    std::vector<sf::Vector2f> getRandomPositions(float minDistance = 500.f, int numPoints = 1);
+    sf::Vector2f getRandomPosition() {
+        // Generate a random position
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<> dis(0.0, 1.0);
+        return sf::Vector2f(dis(gen) * len, dis(gen) * height);
+    }
 private:
     int rows = 1, cols = 1, cellSize = 1;
     int len = 1, height = 1;

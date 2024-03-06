@@ -31,7 +31,7 @@ namespace PirateGame {
 		// Getters
 		sf::Vector2f getVelocity() const { return velocity; }
 		bool getIsColliding() const { return isColliding; }
-		sf::Vector2f getPosition() const { return position; }
+		sf::Vector2f getPosition() const { return sprite.getPosition(); }
 		bool getStopShipRotationFlag() const { return stopShipRotationFlag; }
 		bool getStopShipFlag() const { return stopShipFlag; }
 		float getSpeed() const { return speed; }

@@ -8,6 +8,8 @@ void ShipMovementHandler::move(float baseSpeed) {
 	window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
 	this->baseSpeed = baseSpeed;
+	position = sprite.getPosition(); // This is here as a temporary fix for the ship's position being
+	// reset to (0, 0) after its set to a random position in world
 
 	float elapsed = deltaTime.restart().asSeconds();
 

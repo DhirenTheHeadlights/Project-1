@@ -65,7 +65,7 @@ void IslandMenu::addInteractablesToMenu() {
 	};
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(sf::Vector2f(200, 50));
-	leaveIslandButton->setString("Leave Island");
+	leaveIslandButton->setString("Close");
 	addInteractableToMenu(std::move(leaveIslandButton));
 
 	// Add the market interactables
