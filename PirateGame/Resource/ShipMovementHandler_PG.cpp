@@ -83,7 +83,7 @@ void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 
 	// Calculate the extra rotational acceleration based on the angle difference
 	// Also, the accel is based on the speed of the ship
-	float accel = abs(angleDifference / 180.f * speed / baseSpeed);
+	float accel = abs(10 * angleDifference / 180.f * speed / baseSpeed);
 
 	// Limit the turning speed
 	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);
