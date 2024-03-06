@@ -618,6 +618,12 @@
     <Image Include="PirateGameSprites\pg_ship_manowar.png">
       <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
     </Image>
+    <Image Include="PirateGameSprites\health_bar_green.png">
+      <Filter>Source Files\PirateGame\Sprites\Minimap</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\health_bar_red.png">
+      <Filter>Source Files\PirateGame\Sprites\Minimap</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt">

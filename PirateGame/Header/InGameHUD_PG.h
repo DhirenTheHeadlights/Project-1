@@ -11,7 +11,15 @@
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
-		InGameHUD() {};
+		InGameHUD() {
+			if (!healthBarGreenTexture.loadFromFile("PirateGameSprites/health_bar_green.png")) std::cout << "Error Loading File";
+			else healthBarGreenSprite.setTexture(healthBarGreenTexture);
+			healthBarGreenSprite.setScale(healthBarScale);
+
+			if (!healthBarRedTexture.loadFromFile("PirateGameSprites/health_bar_red.png")) std::cout << "Error Loading File";
+			else healthBarRedSprite.setTexture(healthBarRedTexture);
+			healthBarRedSprite.setScale(healthBarScale);
+		};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
@@ -32,15 +40,18 @@ namespace PirateGame {
 
 		Ship* ship = nullptr;
 
-		sf::RectangleShape healthBarGreen;
-		sf::RectangleShape healthBarRed;
+		sf::Sprite healthBarGreenSprite;
+		sf::Texture healthBarGreenTexture;
+		sf::Sprite healthBarRedSprite;
+		sf::Texture healthBarRedTexture;
+
+		sf::Vector2f healthBarScale = { 11, 4 };
 
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesLeftSide;
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesRightSide;
 
 		Minimap minimap;
 
-		sf::Vector2f healthBarSize;
 		float minimapSize = 100.f;
 		sf::Text healthText;
 	};

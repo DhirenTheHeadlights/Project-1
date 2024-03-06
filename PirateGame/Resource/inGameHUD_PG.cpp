@@ -3,14 +3,8 @@
 using namespace PirateGame;
 
 void InGameHUD::setUpMenu() {
-	healthBarSize = sf::Vector2f(window->getSize().x - 400 - padding * 2, 50);
 	interactableSize = sf::Vector2f(200, 50);
 
-	// Set up the health bar
-	healthBarGreen.setSize(sf::Vector2f(healthBarSize));
-	healthBarGreen.setFillColor(sf::Color::Green);
-	healthBarRed.setSize(sf::Vector2f(healthBarSize));
-	healthBarRed.setFillColor(sf::Color::Red);
 	healthText = sf::Text("Health: " + std::to_string(static_cast<int>(healthFraction)), font, 20);
 	healthText.setFillColor(sf::Color::Black);
 
@@ -113,24 +107,25 @@ void InGameHUD::setInteractablePositions() {
 	sf::View HUDView = window->getView();
 	HUDView.setRotation(0);
 
-	// Set the health bar red to be proportional to the health from the ship
-	healthBarGreen.setSize(sf::Vector2f(healthBarSize.x - (healthBarSize.x * (1 - (ship->getHealth() / ship->getShipProperties().maxHealth))), healthBarSize.y));
-	healthBarRed.setSize(healthBarSize);
+	healthFraction = 100 * ship->getHealth() / ship->getShipProperties().maxHealth;
 
-	// Set the position of the health bar and text
-	healthBarGreen.setPosition(HUDView.getCenter().x - healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2u + padding);
-	healthBarRed.setPosition(healthBarGreen.getPosition());
+	// Set the health bar green to be proportional to ship health
+	healthBarGreenSprite.setScale(healthBarScale.x * healthFraction / 100, healthBarScale.y);
 
-	float healthTextX = healthBarGreen.getPosition().x + healthBarGreen.getSize().x / 2 - healthText.getGlobalBounds().width / 2;
-	float healthTextY = healthBarGreen.getPosition().y + healthBarGreen.getSize().y / 2 - healthText.getGlobalBounds().height / 2;
+	// Set the position of the health bar to be in the center of the screen the top
+	healthBarRedSprite.setPosition(HUDView.getCenter().x - healthBarRedSprite.getGlobalBounds().width / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
+	healthBarGreenSprite.setPosition(healthBarRedSprite.getPosition());
+
+	float healthTextX = healthBarGreenSprite.getPosition().x + healthBarRedSprite.getLocalBounds().width / 2 - healthText.getGlobalBounds().width / 2;
+	float healthTextY = healthBarGreenSprite.getPosition().y + healthBarRedSprite.getLocalBounds().height / 2 - healthText.getGlobalBounds().height / 2;
 	healthText.setPosition(healthTextX, healthTextY);
-	healthText.setString("Health: " + std::to_string(static_cast<int>(100 * ship->getHealth() / ship->getShipProperties().maxHealth)));
+	healthText.setString("Health: " + std::to_string(static_cast<int>(healthFraction)));
 
 	// Set the settings button to be in the top left corner
-	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreen.getPosition().y));
+	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreenSprite.getPosition().y));
 
-	// Set the mini map to be in the top right corner with padding right by the health bars
-	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + healthBarSize.x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding));
+	// Set the mini map to be in the top right corner
+	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - minimap.getMinimapRadius() * 2 - padding, healthBarGreenSprite.getPosition().y));
 
 	// Set the position of the info boxes to be below the settings button on the left side
 	for (int i = 0; i < shipPropertiesLeftSide.size(); i++) {
@@ -141,7 +136,7 @@ void InGameHUD::setInteractablePositions() {
 
 	// Set the position of the info boxes to be below the mini map on the right side
 	for (int i = 0; i < shipPropertiesRightSide.size(); i++) {
-		float x = HUDView.getCenter().x + healthBarSize.x / 2;
+		float x = HUDView.getCenter().x + window->getSize().x / 2u - padding - shipPropertiesRightSide[i]->getBackground().getSize().x;
 		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + i * (shipPropertiesRightSide[i]->getBackground().getSize().y + padding);
 		shipPropertiesRightSide[i]->setPosition(sf::Vector2f(x, y));
 	}
@@ -149,9 +144,8 @@ void InGameHUD::setInteractablePositions() {
 
 void InGameHUD::draw() {
 	// Draw the health bar
-	healthBarRed.setPosition(healthBarGreen.getPosition());
-	window->draw(healthBarRed);
-	window->draw(healthBarGreen);
+	window->draw(healthBarRedSprite);
+	window->draw(healthBarGreenSprite);
 	window->draw(healthText);
 
 	minimap.draw();

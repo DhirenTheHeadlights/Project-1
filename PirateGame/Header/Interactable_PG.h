@@ -29,7 +29,7 @@ namespace PirateGame {
 		// Setters for properties
 		virtual void setPosition(sf::Vector2f pos);
 		void setSize(sf::Vector2f size) { this->size = size; }
-		void setScale(sf::Vector2f scale) { this->scale = scale; }
+		void setScale(sf::Vector2f healthBarScale) { this->healthBarScale = healthBarScale; }
 		void setTexture(const std::string& textureFile) { if (!texture.loadFromFile(textureFile)) std::cout << "Error Loading File"; };
 		void setString(const std::string& string) { this->name = string, text.setString(string); }
 
@@ -57,7 +57,7 @@ namespace PirateGame {
 		// Variables
 		sf::Vector2f position;
 		sf::Vector2f size;
-		sf::Vector2f scale;
+		sf::Vector2f healthBarScale;
 		std::string name;
 
 		float padding = 10.0f;

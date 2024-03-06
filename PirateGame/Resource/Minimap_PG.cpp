@@ -36,7 +36,8 @@ void Minimap::update(float shipRotation) {
     float minimapRadius = minimapSprite.getGlobalBounds().width / 2;
 
     for (size_t i = 0; i < landmasses.size(); ++i) {
-        sf::Vector2f landmassPos = landmasses[i]->getSprite().getPosition();
+        sf::Vector2f landmassPos = landmasses[i]->getSprite().getPosition() + // Adjust for the center of the landmass
+            sf::Vector2f(landmasses[i]->getSprite().getGlobalBounds().width / 2, landmasses[i]->getSprite().getGlobalBounds().height / 2);
 
         // Calculate distance from the ship to the landmass
         float distance = sqrt(pow(shipPos.x - landmassPos.x, 2) + pow(shipPos.y - landmassPos.y, 2));
