@@ -20,7 +20,7 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setShip(Ship& ship) { this->ship = &ship; };
+		void setShip(PlayerShip& ship) { this->ship = &ship; };
 		void setMarket(std::vector<ShopItem> market) { this->market = market; }
 		void setEnteredIsland(bool enteredIsland) { this->enteredIsland = enteredIsland; }
 		void setHasPlayerSaidNo(bool playerPromptedOnce) { this->hasPlayerSaidNo = playerPromptedOnce; }
@@ -47,7 +47,7 @@ namespace PirateGame {
 		sf::Vector2f goldDisplaySize = sf::Vector2f(200.f, 50.f);
 		sf::Vector2f islandNameDisplaySize = sf::Vector2f(420.f, 50.f);
 
-		Ship* ship = nullptr;
+		PlayerShip* ship = nullptr;
 
 		std::vector<std::unique_ptr<Button>> buyButtons;
 		std::vector<std::unique_ptr<Button>> sellButtons;

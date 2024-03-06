@@ -1,6 +1,6 @@
 #pragma once
 
-/// This class is used to represent the player ship in the game.
+/// Ship class is used to represent the ships in the game.
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -9,6 +9,7 @@
 
 #include "GlobalValues_PG.h"
 #include "ShipCannonHandler_PG.h"
+#include "ShipMovementHandler_PG.h"
 
 namespace PirateGame {
 	// This enum will be used to determine the ship class
@@ -34,17 +35,22 @@ namespace PirateGame {
 	public:
 		Ship() {
 			SCH = std::make_unique<ShipCannonHandler>(sprite);
+			SMH = std::make_unique<ShipMovementHandler>(sprite);
 		};
+
 		~Ship() {};
 
 		// Create the ship and set its values. Random ship class if not specified.
-		void setUpShip(ShipClass shipClass = ShipClass::(std::rand() % 5));
+		void setUpShip(ShipClass shipClass = ShipClass::Sloop);
+		virtual void customShipSetUp() = 0; // Virtual method to allow for custom ship setup
 		void update();
+		virtual void customShipUpdate() = 0; // Virtual method to allow for custom ship update
 		void draw();
+		virtual void customShipDraw() = 0; // Virtual method to allow for custom ship draw
 
 		// Get movement handler
-		ShipMovementHandler& getMovementHandler() { return *SMH; }
 		ShipCannonHandler& getCannonHandler() { return *SCH; }
+		ShipMovementHandler& getMovementHandler() { return *SMH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -60,7 +66,6 @@ namespace PirateGame {
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 		ShipProperties& getShipProperties() { return shipProperties; }
-		ShipType getShipType() const { return shipType; }
 		ShipClass getShipClass() const { return shipClass; }
 
 		std::string getShipClassString() {
@@ -76,15 +81,7 @@ namespace PirateGame {
 			case ShipClass::Galleon:
 				return "Galleon";
 			}
-		}
-
-		std::string getShipTypeString() {
-			switch (shipType) {
-			case ShipType::Player:
-				return "Player";
-			case ShipType::Enemy:
-				return "Enemy";
-			}
+			return "Error: Ship class not found.";
 		}
 
 	private:
@@ -107,23 +104,20 @@ namespace PirateGame {
 
 		sf::Vector2f constSpriteBounds;
 
-		ShipType shipType = ShipType::Player;
 		ShipClass shipClass = ShipClass::Sloop;
 		ShipProperties shipProperties;
-
-		// Rectangle shape for the health bar
-		sf::RectangleShape healthBarGreen;
-		sf::RectangleShape healthBarRed;
 
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
 		sf::Time regenTime = sf::seconds(2.f);
 
 		// Handlers
-		std::unique_ptr<ShipInputHandler> SIH;
-		std::unique_ptr<ShipInventoryHandler> SIvH;
 		std::unique_ptr<ShipCannonHandler> SCH;
 		std::unique_ptr<ShipMovementHandler> SMH;
-	};
 
+	protected:
+		// Rectangle shape for the health bar
+		sf::RectangleShape healthBarGreen;
+		sf::RectangleShape healthBarRed;
+	};
 }

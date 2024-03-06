@@ -27,7 +27,7 @@ namespace PirateGame {
 
 		// Game objects
 		Player player;
-		Ship ship;
+		PlayerShip ship;
 		View view;
 
 		// Game state manager

@@ -29,7 +29,7 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setShip(Ship& ship) { this->ship = &ship; minimap.setShip(&ship); };
+		void setShip(PlayerShip& ship) { this->ship = &ship; minimap.setShip(&ship); };
 
 		// Getters
 		Minimap& getMinimap() { return minimap; }
@@ -38,7 +38,7 @@ namespace PirateGame {
 		float healthFraction = 100;
 		float padding = 10.f;
 
-		Ship* ship = nullptr;
+		PlayerShip* ship = nullptr;
 
 		sf::Sprite healthBarGreenSprite;
 		sf::Texture healthBarGreenTexture;

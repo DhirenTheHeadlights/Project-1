@@ -38,7 +38,7 @@ World::World(sf::RenderWindow* window_in) {
 }
 
 void World::setUpWorld() {
-	ship.setUpShip(ShipType::Player, ShipClass::Galleon);
+	ship.setUpShip(ShipClass::Galleon);
 	LMHandler->addLandMasses(GlobalValues::getInstance().getMapSize().x / 100.f, GlobalValues::getInstance().getMapSize().x / 40.f);
 
 	// Set the ship to a rand pos

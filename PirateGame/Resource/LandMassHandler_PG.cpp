@@ -59,7 +59,7 @@ void LandMassHandler::drawLandMasses() {
 	}
 }
 
-void LandMassHandler::interactWithLandmasses(Ship& ship) {
+void LandMassHandler::interactWithLandmasses(PlayerShip& ship) {
     std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearPlayer(ship, *window);
 
     handleCollisions(ship, nearbyLandMasses);
@@ -85,12 +85,12 @@ void LandMassHandler::interactWithLandmasses(Ship& ship) {
     }
 }
 
-void LandMassHandler::openMarket(Ship& ship, LandMass* landMass) {
+void LandMassHandler::openMarket(PlayerShip& ship, LandMass* landMass) {
 	landMass->getIslandMenu()->setShip(ship);
 	landMass->getIslandMenu()->draw();
 }
 
-void LandMassHandler::handleCollisions(Ship& ship, std::set<LandMass*> nearbyLandMasses){
+void LandMassHandler::handleCollisions(PlayerShip& ship, std::set<LandMass*> nearbyLandMasses){
 	// Vector to store colliding land masses
 	std::vector<LandMass*> collidingLandMasses;
 	collidingLandMasses.clear();

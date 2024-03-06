@@ -15,14 +15,7 @@ void Ship::setUpShip(ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
 	shipProperties = ShipConfig[level];
 
-	SIH->setNumCannons(shipProperties.numCannons);
-	SIH->setBaseSpeed(shipProperties.baseSpeed);
-	SIH->setCannonHandler(SCH.get());
-	SIH->setMovementHandler(SMH.get());
-
 	health = shipProperties.maxHealth;
-
-	getInventoryHandler().addGold(1000); // Temp code to add gold to the player
 
 	// Load the texture
 	if (!texture.loadFromFile(shipProperties.texturePath)) {
@@ -37,39 +30,30 @@ void Ship::setUpShip(ShipClass level) {
 		sprite.setScale(scaling);
 	}
 
-	switch (type) {
-	case ShipType::Player:
-		// Load the texture and values
-		break;
-	case ShipType::Enemy:
-		// Load the texture and values
-		break;
-	}
-
 	// Set type and class
-	shipType = type;
 	shipClass = level;
+
+	// Execute custom ship setup
+	customShipSetUp();
 }
 
 // Draw and update the ship
 void Ship::update() {
 	regenerateHealth();
-	SIH->update();
+
+	// Execute custom ship update
+	customShipUpdate();
 }
 
 void Ship::draw() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-	// Draw the health bars only if it is an enemy
-	if (shipType == ShipType::Enemy) {
-		window->draw(healthBarRed);
-		window->draw(healthBarGreen);
-	}
-
-	SIH->draw();
 
 	// Draw the velocity vector
 	window->draw(createVector(sprite.getPosition(), SMH->getVelocity(), sf::Color::Blue));
 	window->draw(sprite);
+
+	// Custom ship draw
+	customShipDraw();
 }
 
 // Regen Health

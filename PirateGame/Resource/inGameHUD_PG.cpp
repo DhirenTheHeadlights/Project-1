@@ -30,7 +30,6 @@ void InGameHUD::addInteractablesToMenu() {
 
 	addInfoBox("Firing Side: ", shipPropertiesLeftSide);
 	addInfoBox("Manual Aim: ", shipPropertiesLeftSide);
-	addInfoBox("Ship Class: ", shipPropertiesLeftSide);
 	addInfoBox("Ship Type: ", shipPropertiesLeftSide);
 
 	/// Right side of the HUD
@@ -77,10 +76,6 @@ void InGameHUD::updateShipPropertiesString() {
 	// Update the ship type indicator
 	std::string shipClass = "Ship Class: ";
 	shipPropertiesLeftSide[2]->setString(shipClass + ship->getShipClassString());
-
-	// Update the ship class indicator
-	std::string shipType = "Ship Type: ";
-	shipPropertiesLeftSide[3]->setString(shipType + ship->getShipTypeString());
 
 	/// Right side of the HUD
 

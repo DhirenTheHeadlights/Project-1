@@ -36,7 +36,7 @@ namespace PirateGame {
 		std::pair<int, int> generateKey(sf::Vector2f position);
 
 		// Find landmass near player
-		std::set<LandMass*> findLandMassNearPlayer(Ship& ship, sf::RenderWindow& window, bool debug = false);
+		std::set<LandMass*> findLandMassNearPlayer(PlayerShip& ship, sf::RenderWindow& window, bool debug = false);
 	private:
 		// Hashmap
 		std::unordered_map<std::pair<int, int>, LandMass*, pair_hash> hashmap;
