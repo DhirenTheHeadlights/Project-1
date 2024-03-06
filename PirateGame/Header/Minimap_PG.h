@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GlobalValues_PG.h"
-#include "Ship_PG.h"
+#include "PlayerShip_PG.h"
 #include "LandMass_PG.h"
 
 /// This class will handle the minimap for the game.

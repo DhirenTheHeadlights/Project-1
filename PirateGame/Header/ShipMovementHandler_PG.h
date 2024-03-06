@@ -1,8 +1,6 @@
 #pragma once
 
-/// <summary>
 /// This class controls the movement and collisions of the ship class
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -17,7 +15,7 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions
-		void move(float baseSpeed);
+		virtual void move(float baseSpeed);
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
@@ -60,11 +58,14 @@ namespace PirateGame {
 
 		const float pi = 3.14159265359f;
 
-		// Helper functions
+		// These functions are intended to be overridden. The default implementation is
+		// for the player ship, but the AI ship will have a different implementation
+		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
+		virtual void setSpriteRotation(sf::Vector2f& direction);
+
+		// These functions stay constant
 		sf::Vector2f normalize(sf::Vector2f vector);
-		void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
 		void applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize);
-		void setSpriteRotation(sf::Vector2f& direction);
 		float dot(const sf::Vector2f& v1, const sf::Vector2f& v2);
 		void ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
 

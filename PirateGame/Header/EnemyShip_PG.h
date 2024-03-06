@@ -1,6 +1,6 @@
 #pragma once
 
-/// This class is used to represent the player ship in the game.
+/// This class is almost identical to PlayerShip, but it is used for the enemy ships.
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -8,9 +8,16 @@
 #include <unordered_map>
 
 #include "GlobalValues_PG.h"
+#include "ShipMovementHandler_PG.h"
+#include "ShipInputHandler_PG.h"
 #include "ShipCannonHandler_PG.h"
+#include "ShipInventoryHandler_PG.h"
 
 namespace PirateGame {
+
+	// This enum will be used to determine the ship type
+	enum class ShipType { Player, Enemy };
+
 	// This enum will be used to determine the ship class
 	enum class ShipClass {
 		Sloop,
@@ -33,18 +40,23 @@ namespace PirateGame {
 	class Ship {
 	public:
 		Ship() {
+			SIH = std::make_unique<ShipInputHandler>(sprite);
+			SMH = std::make_unique<ShipMovementHandler>(sprite);
 			SCH = std::make_unique<ShipCannonHandler>(sprite);
+			SIvH = std::make_unique<ShipInventoryHandler>();
 		};
 		~Ship() {};
 
-		// Create the ship and set its values. Random ship class if not specified.
-		void setUpShip(ShipClass shipClass = ShipClass::(std::rand() % 5));
+		// Create the ship and set its values
+		void setUpShip(ShipType type, ShipClass shipClass);
 		void update();
 		void draw();
 
 		// Get movement handler
 		ShipMovementHandler& getMovementHandler() { return *SMH; }
+		ShipInputHandler& getInputHandler() { return *SIH; }
 		ShipCannonHandler& getCannonHandler() { return *SCH; }
+		ShipInventoryHandler& getInventoryHandler() { return *SIvH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -53,7 +65,7 @@ namespace PirateGame {
 		}
 		void changeShipClass(ShipClass shipClass) {
 			this->shipClass = shipClass;
-			setUpShip(shipClass);
+			setUpShip(shipType, shipClass);
 		}
 
 		// Getters
@@ -127,3 +139,4 @@ namespace PirateGame {
 	};
 
 }
+

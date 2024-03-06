@@ -7,7 +7,7 @@
 #include "GlobalValues_PG.h"
 #include "Player_PG.h"
 #include "View_PG.h"
-#include "Ship_PG.h"
+#include "PlayerShip_PG.h"
 #include "LandMassHandler_PG.h"
 #include "MenuHandler_PG.h"
 

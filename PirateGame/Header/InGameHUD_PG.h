@@ -5,7 +5,7 @@
 /// </summary>
 
 #include "Menu_PG.h"
-#include "Ship_PG.h"
+#include "PlayerShip_PG.h"
 #include "Minimap_PG.h"
 
 namespace PirateGame {

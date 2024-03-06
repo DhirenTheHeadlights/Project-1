@@ -53,8 +53,12 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 	if (stopShipFlag) {
-		velocity = sf::Vector2f(0, 0);
-		speed = 0;
+		// Gradually decrease the speed to 0
+		const float deceleration = 0.1f; // The deceleration factor, will be edited later based
+		// on the ship's properties
+		if (speed > 0) speed -= deceleration;
+		else speed = 0;
+		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 
 	// Update the position

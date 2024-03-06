@@ -12,7 +12,7 @@
 #include <set>
 
 #include "LandMass_PG.h"
-#include "Ship_PG.h"
+#include "PlayerShip_PG.h"
 #include "Map.h"
 
 namespace PirateGame {

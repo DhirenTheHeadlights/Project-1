@@ -1,4 +1,4 @@
-#include "Ship_PG.h"
+#include "PlayerShip_PG.h"
 
 using namespace PirateGame;
 
@@ -11,7 +11,7 @@ std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
 };
 
 // Create the ship
-void Ship::setUpShip(ShipClass level) {
+void Ship::setUpShip(ShipType type, ShipClass level) {
 	// Access ship properties from the configuration map using the provided ship class
 	shipProperties = ShipConfig[level];
 

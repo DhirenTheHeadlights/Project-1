@@ -3,7 +3,7 @@
 /// This is a child menu class for the island menu.
 
 #include "Menu_PG.h"
-#include "Ship_PG.h"
+#include "PlayerShip_PG.h"
 #include "ShopItem_PG.h"
 
 namespace PirateGame {
