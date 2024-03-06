@@ -7,6 +7,7 @@ void ShipMovementHandler::move(float baseSpeed) {
 	// Initialize the window and map size
 	window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
+	this->baseSpeed = baseSpeed;
 
 	float elapsed = deltaTime.restart().asSeconds();
 
@@ -81,7 +82,8 @@ void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	while (angleDifference > 180) angleDifference -= 360;
 
 	// Calculate the extra rotational acceleration based on the angle difference
-	float accel = abs(angleDifference / 180.f);
+	// Also, the accel is based on the speed of the ship
+	float accel = abs(angleDifference / 180.f * speed / baseSpeed);
 
 	// Limit the turning speed
 	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);

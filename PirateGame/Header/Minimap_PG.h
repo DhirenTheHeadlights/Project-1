@@ -11,11 +11,20 @@
 namespace PirateGame {
 	class Minimap {
 	public:
-		Minimap() {};
+		Minimap() {
+			// Load the textures
+			if (!minimapTexture.loadFromFile("PirateGameSprites/minimap_sprite.png")) std::cout << "Error Loading File";
+			else minimapSprite.setTexture(minimapTexture);
+			minimapSprite.setScale(1.6f, 1.6f);
+
+			if (!shipIconTexture.loadFromFile("PirateGameSprites/minimap_ship_icon.png")) std::cout << "Error Loading File";
+			else shipIconSprite.setTexture(shipIconTexture);
+			shipIconSprite.setScale(0.02f, 0.02f);
+		};
 		~Minimap() {};
 
 		void draw();
-		void update();
+		void update(float shipRotation);
 
 		// Setters
 		void setMinimapRadius(float size) { this->size = size; }
@@ -32,7 +41,7 @@ namespace PirateGame {
 		sf::Vector2f getMinimapPosition() { return position; }
 	private:
 		// Values
-		float size;
+		float size = 0;
 		sf::Vector2f position;
 		sf::Vector2f shipIconSize = { 6.f, 6.f };
 		sf::Vector2f rockIconSize = { 2.f, 2.f };
@@ -42,6 +51,9 @@ namespace PirateGame {
 
 		sf::Sprite minimapSprite;
 		sf::Texture minimapTexture;
+		
+		sf::Sprite shipIconSprite;
+		sf::Texture shipIconTexture;
 
 		// Temp rectangle for minimap
 		sf::CircleShape minimap;

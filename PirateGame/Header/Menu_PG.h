@@ -5,6 +5,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <string>
 
 #include "GlobalValues_PG.h"
 #include "GameStateManager_PG.h"
@@ -76,5 +79,12 @@ namespace PirateGame {
 
 		// GameStateManager
 		GameStateManager* GSM = nullptr;
+
+		// Helper function to convert a float to a string with a set number of decimal places
+		std::string floatToString(float number, int decimalPlaces = 2) {
+			std::stringstream stream;
+			stream << std::fixed << std::setprecision(decimalPlaces) << number;
+			return stream.str();
+		}
 	};
 }

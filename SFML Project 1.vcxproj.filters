@@ -128,6 +128,15 @@
     <Filter Include="Source Files\PirateGame\Header\Menus\Specific Menus\HUD">
       <UniqueIdentifier>{f5b62ebe-05ef-4a9d-80c2-006828cab47d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Minimap">
+      <UniqueIdentifier>{eb470bdd-348d-4280-8988-9ede249d7ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Landmass">
+      <UniqueIdentifier>{87a6497b-2b5b-4726-80bd-d33dc500088d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Ship">
+      <UniqueIdentifier>{ea394f99-539c-4db0-b29f-0f06a50d1247}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -549,59 +558,65 @@
     </Media>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="PirateGameSprites\pg_island_1.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_island_2.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_misc_cannonball.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_1.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_2.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_3.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_4.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_5.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_6.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_7.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_8.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_rock_9.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_brigantine.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_frigate.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_galleon.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_manowar.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_sloop.png">
-      <Filter>Source Files\PirateGame\Sprites</Filter>
-    </Image>
     <Image Include="PlatformerGameSprites\stupidnicktankdog.png">
       <Filter>Source Files\Platformer\Sprites</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\minimap_ship_icon.png">
+      <Filter>Source Files\PirateGame\Sprites\Minimap</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\minimap_sprite.png">
+      <Filter>Source Files\PirateGame\Sprites\Minimap</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_island_1.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_island_2.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_1.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_2.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_3.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_5.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_4.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_6.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_7.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_8.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_rock_9.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_misc_cannonball.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_brigantine.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_galleon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_sloop.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

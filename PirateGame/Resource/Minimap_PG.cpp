@@ -6,35 +6,34 @@ void Minimap::draw() {
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
     window->draw(minimap);
+    window->draw(minimapSprite);
 
     // Iterate only through visible landmasses
     for (size_t i = 0; i < visibleLandmassRects.size(); ++i) {
         window->draw(visibleLandmassRects[i]);
     }
 
-    window->draw(shipIcon);
+    window->draw(shipIconSprite);
 }
 
-void Minimap::update() {
+void Minimap::update(float shipRotation) {
     sf::Vector2f mapSize = GlobalValues::getInstance().getMapSize();
     sf::Vector2f shipPos = ship->getSprite().getPosition();
-    sf::Vector2f minimapCenter = sf::Vector2f(minimap.getPosition().x + minimap.getRadius(), minimap.getPosition().y + minimap.getRadius());
+    sf::Vector2f minimapCenter = sf::Vector2f(minimapSprite.getPosition().x + minimapSprite.getGlobalBounds().width / 2, minimapSprite.getPosition().y + minimapSprite.getGlobalBounds().height / 2);
 
-    minimap.setRadius(size);
-    minimap.setPosition(position);
-    minimap.setOutlineThickness(2);
-    minimap.setOutlineColor(sf::Color::Black);
+    minimapSprite.setPosition(position);
 
     // Define the visibility radius around the ship for the minimap
-    float visibilityRadius = 10000.0f; 
+    float visibilityRadius = 10000.0f;
 
-    // Adjust shipIcon position to be at the center of the minimap
-    shipIcon.setPosition(minimapCenter);
-    shipIcon.setFillColor(sf::Color::Blue);
-    shipIcon.setSize(shipIconSize);
+    shipIconSprite.setPosition(minimapCenter);
+    shipIconSprite.setOrigin(shipIconSprite.getLocalBounds().width / 2, shipIconSprite.getLocalBounds().height / 2);
+    shipIconSprite.setRotation(shipRotation);
 
     // Clear the previous visible landmasses
     visibleLandmassRects.clear();
+
+    float minimapRadius = minimapSprite.getGlobalBounds().width / 2;
 
     for (size_t i = 0; i < landmasses.size(); ++i) {
         sf::Vector2f landmassPos = landmasses[i]->getSprite().getPosition();
@@ -46,11 +45,11 @@ void Minimap::update() {
             sf::RectangleShape landmassRect;
 
             // Adjust position relative to the ship's position on the minimap
-            sf::Vector2f scaledPos = (landmassPos - shipPos) * (minimap.getRadius() / visibilityRadius);
+            sf::Vector2f scaledPos = (landmassPos - shipPos) * (minimapSprite.getGlobalBounds().height / 2 / visibilityRadius);
             sf::Vector2f relativePos = minimapCenter + scaledPos;
 
             // Ensure landmassRect is within the minimap's bounds
-            if (sqrt(pow(relativePos.x - minimapCenter.x, 2) + pow(relativePos.y - minimapCenter.y, 2)) <= minimap.getRadius()) {
+            if (sqrt(pow(relativePos.x - minimapCenter.x, 2) + pow(relativePos.y - minimapCenter.y, 2)) <= minimapRadius) {
                 landmassRect.setPosition(relativePos);
 
                 // Set landmass type properties

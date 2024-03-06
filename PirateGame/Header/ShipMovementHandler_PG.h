@@ -51,6 +51,7 @@ namespace PirateGame {
 
 		float rotation = 0;
 		float speed = 0;
+		float baseSpeed = 0;
 		float frictionCoefficient = 0.1f; // For friction
 		float dampingFactor = 0.5f; // For collisionMovement
 		float separationDistance = 5.0f; // For collisionMovement

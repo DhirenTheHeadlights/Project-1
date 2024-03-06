@@ -85,10 +85,11 @@ void LandMassHandler::interactWithLandmasses(Ship& ship) {
         }
     }
 
-    // Reset the 'player prompted once' flag for all islands not nearby
+    // Reset the 'player said no' and enteredIsland flag for all islands not nearby
     for (auto& landMass : landMasses) {
         if (landMass->getType() == LandMassType::Island && nearbyLandMasses.find(landMass) == nearbyLandMasses.end()) {
             landMass->getIslandMenu()->setEnteredIsland(false);
+			landMass->getIslandMenu()->setHasPlayerSaidNo(false);
         }
     }
 }

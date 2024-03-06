@@ -279,6 +279,8 @@
     <Media Include="Sounds\cannonshot.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="PirateGameSprites\minimap_ship_icon.png" />
+    <Image Include="PirateGameSprites\minimap_sprite.png" />
     <Image Include="PirateGameSprites\pg_island_1.png" />
     <Image Include="PirateGameSprites\pg_island_2.png" />
     <Image Include="PirateGameSprites\pg_misc_cannonball.png" />

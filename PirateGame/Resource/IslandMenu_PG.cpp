@@ -33,8 +33,9 @@ void IslandMenu::setUpMenu() {
 	"Elbaf Village"
 	};
 	
-	titleText = sf::Text("Island: " + islandNames[rand() % islandNames.size()], font, static_cast<unsigned int>(textSize));
-	titleText.setFillColor(textColor);
+	islandName = islandNames[rand() % islandNames.size()];
+	titleText = sf::Text(islandName, font, 20);
+	titleText.setFillColor(sf::Color::Black);
 
 	// Sort the market items
 	std::sort(market.begin(), market.end(), [](const ShopItem& a, const ShopItem& b) {
@@ -58,7 +59,10 @@ void IslandMenu::addInteractablesToMenu() {
 	enterIslandButton->setString("Enter Island");
 	addInteractableToMenu(std::move(enterIslandButton));
 
-	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
+	std::function<void()> leaveIsland = [this]() { 
+		hasPlayerSaidNo = true; // Set the flag to true so the menu does not show
+		ship->getMovementHandler().setStopShipFlag(false);
+	};
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(sf::Vector2f(200, 50));
 	leaveIslandButton->setString("Leave Island");
@@ -140,7 +144,7 @@ void IslandMenu::addMarketInteractables() {
 		// Create the text display box for the item
 		std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
 		itemDisplay->createInteractable(merchandiseSize);
-		itemDisplay->setString(item.name + " - " + std::to_string(item.price));
+		itemDisplay->setString(item.name + " - " + floatToString(item.price));
 		merchandise.push_back(std::move(itemDisplay));
 
 		// Create a text display box to show the amount of the item in the market
@@ -149,6 +153,21 @@ void IslandMenu::addMarketInteractables() {
 		marketInventoryAmount->setString(item.name + " - " + std::to_string(item.amount));
 		marketInventory.push_back(std::move(marketInventoryAmount));
 	}
+
+	// Create a text display box to show the merchant's gold
+	islandGoldDisplay = std::make_unique<TextDisplayBox>();
+	islandGoldDisplay->createInteractable(goldDisplaySize);
+	islandGoldDisplay->setString("Merchant Gold: " + std::to_string(gold));
+
+	// Create a text display box to show the ship's gold
+	shipGoldDisplay = std::make_unique<TextDisplayBox>();
+	shipGoldDisplay->createInteractable(goldDisplaySize);
+	shipGoldDisplay->setString("Ship Gold: "); // Will be updated in the draw function
+
+	// Create a text display box to show the island's name
+	islandNameDisplay = std::make_unique<TextDisplayBox>();
+	islandNameDisplay->createInteractable(islandNameDisplaySize);
+	islandNameDisplay->setString(islandName);
 
 	// Create an "exit" button to leave the island
 	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
@@ -186,6 +205,11 @@ void IslandMenu::setInteractablePositions() {
 	// Get the view position
 	sf::View HUDView = window->getView();
 
+	// Basically, we want the menu to not show if the player pressed the "leave island" button
+	// This flag is set to false for all landmasses not near the player, and is set true when the player
+	// selects the "enter island" button. The flag will be reset in the landmass handler.
+	if (hasPlayerSaidNo) return;
+
 	if (!enteredIsland) {
 		// Set the position of the menu (only the inital menu)
 		menu.setSize(initalMenuSize); // Reset the size of the menu
@@ -198,12 +222,9 @@ void IslandMenu::setInteractablePositions() {
 		// Set the position of the second button to be centered on the right side of the menu rect
 		interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 4));
 
-		if (!playerPromptedOnce) {
-			// Set the ship stop flag to true when prompting the player to enter the island
-			ship->getMovementHandler().setStopShipFlag(true);
-			ship->getMovementHandler().setStopShipRotationFlag(true);
-			playerPromptedOnce = true;
-		}
+		// Set the ship stop flag to true when prompting the player to enter the island
+		ship->getMovementHandler().setStopShipFlag(true);
+		ship->getMovementHandler().setStopShipRotationFlag(true);
 
 		return; // Return early if the player has not entered the island
 	}
@@ -212,19 +233,12 @@ void IslandMenu::setInteractablePositions() {
 	menu.setSize(expandedMenuSize);
 	menu.setPosition(HUDView.getCenter().x - menu.getSize().x / 2, HUDView.getCenter().y - menu.getSize().y / 2);
 
-	// Set the position of the title text
-	titleText.setPosition(menu.getPosition().x + menu.getSize().x / 2 - titleText.getGlobalBounds().width / 2, menu.getPosition().y + padding);
+	// Set the position of the title text to be in the center of the menu
+	islandNameDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - islandNameDisplay->getSize().x / 2.f, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5 * padding));
 
-	// Set the position of the gold text
-	merchantGold = sf::Text("", font, static_cast<unsigned int>(textSize));
-	merchantGold.setString("Merchant Gold: " + std::to_string(gold));
-	merchantGold.setPosition(menu.getPosition().x + padding, titleText.getPosition().y + titleText.getGlobalBounds().height + padding);
-	merchantGold.setFillColor(textColor);
-
-	shipGold = sf::Text("", font, static_cast<unsigned int>(textSize));
-	shipGold.setString("Ship Gold: " + std::to_string(ship->getInventoryHandler().getGold()));
-	shipGold.setPosition(menu.getPosition().x + menu.getSize().x - shipGold.getGlobalBounds().width - padding, titleText.getPosition().y + titleText.getGlobalBounds().height + padding);
-	shipGold.setFillColor(textColor);
+	// Set the position of the gold info box to be right above the market interactbles
+	shipGoldDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - merchandiseSize.x / 2 - buyButtonSize.x - merchandiseSize.x - 2 * padding, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5 * padding));
+	islandGoldDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f + merchandiseSize.x / 2 + buyButtonSize.x + 2 * padding, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5 * padding));
 
 	// Set the position of the market interactables to be in the center of the menu
 	for (size_t i = 0; i < buyButtons.size(); ++i) {
@@ -301,11 +315,11 @@ void IslandMenu::updateMarket() {
 
 
 void IslandMenu::draw() {
+	// if the player has said no, do not draw the menu
+	if (hasPlayerSaidNo) return;
+
 	// Draw the menu
 	window->draw(menu);
-	window->draw(titleText);
-
-	//interactWithMenuItems();
 
 	// Draw the ship inventory if the player has entered the island
 	if (enteredIsland && !addedShipInventory) {
@@ -344,9 +358,15 @@ void IslandMenu::draw() {
 		// Update market
 		updateMarket();
 
-		// Draw the gold text
-		window->draw(merchantGold);
-		window->draw(shipGold);
+		// Update and draw the gold text
+		shipGoldDisplay->getText().setString("Ship Gold: " + floatToString(ship->getInventoryHandler().getGold()));
+		shipGoldDisplay->draw();
+
+		islandGoldDisplay->getText().setString("Merchant Gold: " + floatToString(gold));
+		islandGoldDisplay->draw();
+
+		// Draw the island name
+		islandNameDisplay->draw();
 	}
 	else {
 		// Draw the inital buttons and interact with them
@@ -354,5 +374,6 @@ void IslandMenu::draw() {
 			interactable->draw();
 			interactable->interact();
 		}
+		window->draw(titleText);
 	}
 }

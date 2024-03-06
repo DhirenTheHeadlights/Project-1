@@ -155,7 +155,7 @@ void InGameHUD::draw() {
 	window->draw(healthText);
 
 	minimap.draw();
-	minimap.update();
+	minimap.update(ship->getSprite().getRotation());
 
 	// Add and draw the ship properties
 	updateShipPropertiesString();

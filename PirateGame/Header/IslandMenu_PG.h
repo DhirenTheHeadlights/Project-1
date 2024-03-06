@@ -23,11 +23,11 @@ namespace PirateGame {
 		void setShip(Ship& ship) { this->ship = &ship; };
 		void setMarket(std::vector<ShopItem> market) { this->market = market; }
 		void setEnteredIsland(bool enteredIsland) { this->enteredIsland = enteredIsland; }
-		void setPlayerPromptedOnce(bool playerPromptedOnce) { this->playerPromptedOnce = playerPromptedOnce; }
+		void setHasPlayerSaidNo(bool playerPromptedOnce) { this->hasPlayerSaidNo = playerPromptedOnce; }
 
 		// Getters
 		bool getEnteredIsland() { return enteredIsland; }
-		bool getPlayerPromptedOnce() { return playerPromptedOnce; }
+		bool getPlayerPromptedOnce() { return hasPlayerSaidNo; }
 	private:
 		// Menu items
 		float padding = 10.f;
@@ -35,7 +35,7 @@ namespace PirateGame {
 
 		bool enteredIsland = false;
 		bool addedShipInventory = false;
-		bool playerPromptedOnce = false;
+		bool hasPlayerSaidNo = false;
 
 		sf::Vector2f initalMenuSize = sf::Vector2f(600.0f, 110.0f);
 		sf::Vector2f expandedMenuSize = sf::Vector2f(900.0f, 500.0f);
@@ -44,6 +44,8 @@ namespace PirateGame {
 		sf::Vector2f buyButtonSize = sf::Vector2f(100.0f, 50.0f);
 		sf::Vector2f sellButtonSize = sf::Vector2f(100.0f, 50.0f);
 		sf::Vector2f uiButtonSize = sf::Vector2f(100.0f, 30.0f);
+		sf::Vector2f goldDisplaySize = sf::Vector2f(200.f, 50.f);
+		sf::Vector2f islandNameDisplaySize = sf::Vector2f(420.f, 50.f);
 
 		Ship* ship = nullptr;
 
@@ -54,12 +56,18 @@ namespace PirateGame {
 		std::vector<std::unique_ptr<TextDisplayBox>> marketInventory;
 		std::vector<std::unique_ptr<Button>> uiButtons;
 
+		// Gold text display box
+		std::unique_ptr<TextDisplayBox> shipGoldDisplay;
+		std::unique_ptr<TextDisplayBox> islandGoldDisplay;
+
+		// Island name display
+		std::unique_ptr<TextDisplayBox> islandNameDisplay;
+
 		std::vector<ShopItem>& market;
 		std::vector<ShopItem> shipInventory;
 
-		sf::Text islandName;
+		std::string islandName = "Island Name";
+		sf::Text titleText;
 		sf::Text islandDescription;
-		sf::Text merchantGold;
-		sf::Text shipGold;
 	};
 }
