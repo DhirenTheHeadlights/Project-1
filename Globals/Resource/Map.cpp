@@ -30,58 +30,63 @@ std::pair<int, int> Map::getGridCoordinates(float x, float y) const {
     return { static_cast<int>(x / cellSize), static_cast<int>(y / cellSize) };
 }
 
-std::optional<sf::Vector2f> Map::getRandomPosition(float spacing) {
-    // Constants
-    const int k = 30; // Number of attempts to find a suitable point
+// This function uses a poisson disc sampling algorithm to generate a set of points
+// that are at least a certain distance apart from each other. This function should be
+// called once to generate the points.
+std::vector<sf::Vector2f> Map::getRandomPositions(float minDistance, int numPoints) {
+    const int k = 30; // attempts before giving up on finding a new point
     const float pi = 3.14159265358979323846f;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0.0, 1.0);
 
-    // Statics
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
-    static std::uniform_real_distribution<> dis(0.0, 1.0);
+    std::vector<sf::Vector2f> samplePoints;
+    std::vector<sf::Vector2f> activeList;
 
-    // Initialize the first point and active list if they are empty
-    if (samplePoints.empty()) {
-        sf::Vector2f initialPoint(static_cast<float>(dis(gen) * len), static_cast<float>(dis(gen) * height));
-        activeList.push_back(initialPoint);
-        samplePoints.push_back(initialPoint);
-    }
+    // Initialize with the first point
+    sf::Vector2f initialPoint(dis(gen) * len, dis(gen) * height);
+    activeList.push_back(initialPoint);
+    samplePoints.push_back(initialPoint);
 
-    if (activeList.empty()) return std::nullopt;
-    
-    std::uniform_int_distribution<> dist(0, activeList.size() - 1);
-    int randIndex = dist(gen);
-    sf::Vector2f point = activeList[randIndex];
+    while (!activeList.empty()) {
+        std::uniform_int_distribution<> dist(0, activeList.size() - 1);
+        int randIndex = dist(gen);
+        sf::Vector2f point = activeList[randIndex];
+        bool found = false;
 
-    for (int i = 0; i < k; ++i) {
-        float angle = static_cast<float>(dis(gen)) * 2.f * pi;
-        float radius = spacing * static_cast<float>((1 + dis(gen)));
-        sf::Vector2f newPoint(point.x + radius * cos(angle), point.y + radius * sin(angle));
-        
-        // Check if the point is within bounds and far enough from existing points
-        if (newPoint.x >= 0 && newPoint.x <= len && newPoint.y >= 0 && newPoint.y <= height) {
-            bool tooClose = false;
-            for (const sf::Vector2f& existingPoint : samplePoints) {
-                float dist = std::sqrt((newPoint.x - existingPoint.x) * (newPoint.x - existingPoint.x) +
-                    (newPoint.y - existingPoint.y) * (newPoint.y - existingPoint.y));
-                if (dist < spacing) {
-                    tooClose = true;
-                    break;
+        for (int i = 0; i < k; ++i) {
+            float angle = dis(gen) * 2 * pi;
+            float radius = minDistance * (1 + dis(gen));
+            sf::Vector2f newPoint(point.x + radius * cos(angle), point.y + radius * sin(angle));
+
+            // Check bounds and minimum distance
+            if (newPoint.x >= 0 && newPoint.x <= len && newPoint.y >= 0 && newPoint.y <= height) {
+                bool tooClose = false;
+                for (const sf::Vector2f& existingPoint : samplePoints) {
+                    float distance = std::hypot(newPoint.x - existingPoint.x, newPoint.y - existingPoint.y);
+                    if (distance < minDistance) {
+                        tooClose = true;
+                        break;
+                    }
+                }
+                if (!tooClose) {
+                    activeList.push_back(newPoint);
+                    samplePoints.push_back(newPoint);
+                    found = true;
+                    break; // Break from the attempts loop
                 }
             }
-            if (!tooClose) {
-                activeList.push_back(newPoint);
-                samplePoints.push_back(newPoint);
-                return newPoint; // Return the new valid point
-            }
+        }
+
+        if (!found) {
+            // If no point is found after k attempts, remove the current point from the active list
+            activeList.erase(activeList.begin() + randIndex);
         }
     }
 
-    // Remove the point from the active list after all attempts have failed
-    activeList.erase(activeList.begin() + randIndex);
-
-    return std::nullopt;
+    return samplePoints; // Return all generated points
 }
+
 
 // Draw the grid
 void Map::drawGrid(sf::RenderWindow& window) {

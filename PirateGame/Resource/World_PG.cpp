@@ -38,8 +38,11 @@ World::World(sf::RenderWindow* window_in) {
 }
 
 void World::setUpWorld() {
-	ship.setUpShip(ShipType::Player, ShipClass::Frigate);
+	ship.setUpShip(ShipType::Player, ShipClass::Sloop);
 	LMHandler->addLandMasses(GlobalValues::getInstance().getMapSize().x / 100.f, GlobalValues::getInstance().getMapSize().x / 40.f);
+
+	// Set the ship to a rand pos
+	ship.getMovementHandler().setPosition(GlobalValues::getInstance().getMap().getRandomPositions(0.f)[0]);
 
 	// Set the game state to start
 	GSM->changeGameState(GameState::Start);

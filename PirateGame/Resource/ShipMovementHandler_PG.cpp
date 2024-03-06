@@ -89,7 +89,7 @@ void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);
 
 	// Set the new rotation
-	sprite.setRotation(currentAngle + accel * angleDifference);
+	sprite.setRotation(currentAngle + (accel * angleDifference));
 }
 
 void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
