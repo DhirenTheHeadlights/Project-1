@@ -77,3 +77,13 @@ std::string GlobalValues::buttonToString(sf::Mouse::Button button) {
 		case sf::Mouse::XButton2: return "X2";
 	}
 }
+
+sf::VertexArray GlobalValues::createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color) {
+	sf::VertexArray line(sf::Lines, 2);
+	line[0].position = start;
+	line[0].color = color;
+	line[1].position = start + vector;
+	line[1].color = color;
+
+	return line;
+}

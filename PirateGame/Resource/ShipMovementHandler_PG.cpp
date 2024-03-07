@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 // Move the ship
-void ShipMovementHandler::move(float baseSpeed) {
+void PlayerShipMovementHandler::move(float baseSpeed) {
 	// Initialize the window and map size
 	window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
@@ -26,13 +26,13 @@ void ShipMovementHandler::move(float baseSpeed) {
 }
 
 
-sf::Vector2f ShipMovementHandler::normalize(sf::Vector2f vector) {
+sf::Vector2f PlayerShipMovementHandler::normalize(sf::Vector2f vector) {
 	float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
 	if (length == 0.f) return sf::Vector2f(0.f, 0.f);
 	return vector / length;
 }
 
-void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize) {
+void PlayerShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize) {
 	float sizeX = sprite.getGlobalBounds().width;
 	float sizeY = sprite.getGlobalBounds().height;
 
@@ -41,31 +41,36 @@ void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const
 	position.y = std::max(0.f, std::min(position.y, mapSize.y - sizeY));
 }
 
-void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
-	// If friction is enabled, decrease the speed. Otherwise, set the velocity.
+void PlayerShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
 	if (isColliding) speed = baseSpeed * frictionCoefficient;
 	else {
+		// Calculate wind effect
+		WindController& windController = GlobalValues::getInstance().getWindController();
+		sf::Vector2f windDirection = normalize(windController.getWindDirection()); // Ensure wind direction is normalized
+		float windEffect = dot(windDirection, direction) * windController.getWindSpeed();
+
 		// Gradually increase the speed to the base speed
-		const float acceleration = 0.1f; // The acceleration factor, will be edited later based
-		// on the ship's properties
-		if (speed < baseSpeed) speed += acceleration;
+		const float acceleration = 0.1f; // The acceleration factor
+		if (speed < (baseSpeed + windEffect)) speed += acceleration;
+		if (speed > (baseSpeed + windEffect)) speed = (baseSpeed + windEffect);
 		else speed = baseSpeed;
+
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
+
 	if (stopShipFlag) {
 		// Gradually decrease the speed to 0
-		const float deceleration = 0.1f; // The deceleration factor, will be edited later based
-		// on the ship's properties
+		const float deceleration = 0.1f; // The deceleration factor
 		if (speed > 0) speed -= deceleration;
 		else speed = 0;
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 
-	// Update the position
 	position += velocity * elapsedTime;
 }
 
-void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
+
+void PlayerShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	if (isColliding || stopShipRotationFlag) return;
 	// Calculate the direction to the mouse
 	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
@@ -98,7 +103,7 @@ void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	sprite.setRotation(currentAngle + (accel * angleDifference));
 }
 
-void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
+void PlayerShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 	isColliding = true;
 
 	// Calculate the normalized normal vector from the ship's center to the colliding sprite's center
@@ -123,7 +128,7 @@ void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 	ensureSeparation(position, normal, collidingSprite);
 }
 
-void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
+void PlayerShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
 	// Calculate a push-out vector based on normal and ship's approach direction
 	sf::Vector2f pushOutVector = normal * pushOutDistance;
 
@@ -137,12 +142,12 @@ void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vec
 	position += pushOutVector;
 }
 
-void ShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
+void PlayerShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
 	// Apply the recoil to the ship's position
 	position += direction * recoil;
 }
 
 // Helper function to calculate dot product
-float ShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {
+float PlayerShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {
 	return a.x * b.x + a.y * b.y;
 }

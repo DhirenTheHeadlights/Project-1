@@ -168,6 +168,7 @@
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShipInputHandler_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\EnemyShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShip_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GlobalValues_PG.cpp" />
@@ -182,6 +183,7 @@
     <ClCompile Include="PirateGame\Resource\Menu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Minimap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\PlayerShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipInputHandler_PG.cpp" />
@@ -241,6 +243,7 @@
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipInputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\EnemyShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShip_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
@@ -255,6 +258,7 @@
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
     <ClInclude Include="PirateGame\Header\Minimap_PG.h" />
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
+    <ClInclude Include="PirateGame\Header\PlayerShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />

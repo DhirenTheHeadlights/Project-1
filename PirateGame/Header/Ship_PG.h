@@ -35,7 +35,7 @@ namespace PirateGame {
 	public:
 		Ship() {
 			SCH = std::make_unique<ShipCannonHandler>(sprite);
-			SMH = std::make_unique<ShipMovementHandler>(sprite);
+			SMH = std::make_unique<PlayerShipMovementHandler>(sprite);
 		};
 
 		~Ship() {};
@@ -50,7 +50,7 @@ namespace PirateGame {
 
 		// Get movement handler
 		ShipCannonHandler& getCannonHandler() { return *SCH; }
-		ShipMovementHandler& getMovementHandler() { return *SMH; }
+		PlayerShipMovementHandler& getMovementHandler() { return *SMH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -113,7 +113,7 @@ namespace PirateGame {
 
 		// Handlers
 		std::unique_ptr<ShipCannonHandler> SCH;
-		std::unique_ptr<ShipMovementHandler> SMH;
+		std::unique_ptr<PlayerShipMovementHandler> SMH;
 
 	protected:
 		// Rectangle shape for the health bar

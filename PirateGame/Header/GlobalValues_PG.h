@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "InputHandler_PG.h"
 #include "GameStateManager_PG.h"
+#include "WindController_PG.h"
 
 namespace PirateGame {
 	class GlobalValues {
@@ -20,6 +21,8 @@ namespace PirateGame {
 
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);
+
+		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color);
 
 		// Setters
 		void setFont(sf::Font font) { this->globalFont = font; }
@@ -34,14 +37,18 @@ namespace PirateGame {
 		
 		// Getters
 		sf::Vector2f getMapSize() const { return this->worldMap; }
-		Map& getMap() { return this->map; }
+
+		float getGlobalVolume() const { return this->soundVolume; }
 		int getCellSize() const { return this->cellSize; }
+
 		sf::Font& getFont() { return this->globalFont; }
 		sf::RenderWindow* getWindow() { return this->globalWindow; }
 		sf::Clock getClock() const { return this->globalClock; }
+
+		Map& getMap() { return this->map; }
 		InputHandler& getInputHandler() { return this->inputHandler; }
 		GameStateManager& getGSM() { return this->GSM; }
-		float getGlobalVolume() const { return this->soundVolume; }
+		WindController& getWindController() { return this->windController; }
 
 	private:
 		// Private Constructor
@@ -56,6 +63,7 @@ namespace PirateGame {
 		sf::Vector2f worldMap = sf::Vector2f(100000, 100000);
 		int cellSize = 10;
 		float soundVolume = 100;
+		WindController windController;
 
 		// Input handler
 		InputHandler inputHandler;

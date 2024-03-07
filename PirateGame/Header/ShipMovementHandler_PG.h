@@ -9,10 +9,10 @@
 #include "GlobalValues_PG.h"
 
 namespace PirateGame {
-	class ShipMovementHandler {
+	class PlayerShipMovementHandler {
 	public:
-		ShipMovementHandler(sf::Sprite& sprite) : sprite(sprite) {};
-		~ShipMovementHandler() {};
+		PlayerShipMovementHandler(sf::Sprite& sprite) : sprite(sprite) {};
+		~PlayerShipMovementHandler() {};
 
 		// Movement functions
 		virtual void move(float baseSpeed);
@@ -46,15 +46,16 @@ namespace PirateGame {
 		bool isColliding = true;
 		bool stopShipRotationFlag = false;
 		bool stopShipFlag = false;
+		bool windSpeedApplied = false;
 
 		float rotation = 0;
 		float speed = 0;
 		float baseSpeed = 0;
 		float frictionCoefficient = 0.1f; // For friction
-		float dampingFactor = 0.5f; // For collisionMovement
-		float separationDistance = 5.0f; // For collisionMovement
-		float pushOutDistance = 1.0f; // For ensureSeparation
-		float turningSpeed = 0.1f; // For setSpriteRotation
+		float dampingFactor = 0.5f;		  // For collisionMovement
+		float separationDistance = 5.0f;  // For collisionMovement
+		float pushOutDistance = 1.0f;	  // For ensureSeparation
+		float turningSpeed = 0.1f;		  // For setSpriteRotation
 
 		const float pi = 3.14159265359f;
 

@@ -135,6 +135,12 @@ void InGameHUD::setInteractablePositions() {
 		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + i * (shipPropertiesRightSide[i]->getBackground().getSize().y + padding);
 		shipPropertiesRightSide[i]->setPosition(sf::Vector2f(x, y));
 	}
+
+	// Set the position of the wind vector to be in the bottom right corner of the screen
+	WindController& windController = GlobalValues::getInstance().getWindController();
+	sf::Vector2f windVector2f = windController.getWindDirection() * windController.getWindSpeed() * 5.f;
+	sf::Vector2f windVectorPosition = sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - padding - 200.f, HUDView.getCenter().y + window->getSize().y / 2u - padding - 200.f);
+	windVector = GlobalValues::getInstance().createVector(windVectorPosition, windVector2f, sf::Color::Black);
 }
 
 void InGameHUD::draw() {
@@ -168,6 +174,10 @@ void InGameHUD::draw() {
 		interactable->getFrame().setOutlineThickness(0.f);
 		interactable->draw();
 	}
+
+	// Draw the wind vector
+	// Draw a vector for the wind speed and direction in the bottom right corner of the screen
+	window->draw(windVector);
 
 	// Interact
 	setInteractablePositions();

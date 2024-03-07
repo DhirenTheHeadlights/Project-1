@@ -130,6 +130,8 @@ void World::gameLoop() {
 	// Temporary code to draw a grid
 	//GlobalValues::getInstance().getMap().drawGrid(*window);
 
+	GlobalValues::getInstance().getWindController().update();
+
 	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
 
 	LMHandler->interactWithLandmasses(ship);

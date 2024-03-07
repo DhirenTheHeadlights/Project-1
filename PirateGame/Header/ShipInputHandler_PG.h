@@ -25,17 +25,17 @@ namespace PirateGame {
 		void setNumCannons(int numCannons) { this->numCannons = numCannons; }
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
 		void setCannonHandler(ShipCannonHandler* SCH) { this->SCH = SCH; }
-		void setMovementHandler(ShipMovementHandler* SMH) { this->SMH = SMH; }
+		void setMovementHandler(PlayerShipMovementHandler* SMH) { this->SMH = SMH; }
 
 		// Getters
 		ShipCannonHandler* getCannonHandler() { return SCH; }
-		ShipMovementHandler* getMovementHandler() { return SMH; }
+		PlayerShipMovementHandler* getMovementHandler() { return SMH; }
 	protected:
 		sf::Sprite& sprite;
 
 		// Handlers
 		ShipCannonHandler* SCH = nullptr;
-		ShipMovementHandler* SMH = nullptr;
+		PlayerShipMovementHandler* SMH = nullptr;
 
 		// Ship properties
 		int numCannons = 1;
