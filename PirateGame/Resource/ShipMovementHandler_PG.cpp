@@ -52,8 +52,7 @@ void PlayerShipMovementHandler::updateVelocity(const sf::Vector2f& direction, fl
 		// Gradually increase the speed to the base speed
 		const float acceleration = 0.1f; // The acceleration factor
 		if (speed < (baseSpeed + windEffect)) speed += acceleration;
-		if (speed > (baseSpeed + windEffect)) speed = (baseSpeed + windEffect);
-		else speed = baseSpeed;
+		if (speed > (baseSpeed + windEffect)) speed -= acceleration;
 
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}

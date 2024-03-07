@@ -48,6 +48,8 @@ namespace PirateGame {
 		sf::Vector2f healthBarScale = { 11, 4 };
 
 		sf::VertexArray windVector;
+		sf::CircleShape windCircle;
+		sf::Text windText;
 
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesLeftSide;
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesRightSide;

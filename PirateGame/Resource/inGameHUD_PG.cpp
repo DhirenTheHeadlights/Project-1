@@ -38,6 +38,7 @@ void InGameHUD::addInteractablesToMenu() {
 	addInfoBox("Coords: ", shipPropertiesRightSide);
 	addInfoBox("Velocity: ", shipPropertiesRightSide);
 	addInfoBox("Speed: ", shipPropertiesRightSide);
+	addInfoBox("Wind Direction: ", shipPropertiesRightSide);
 }
 
 // General function to add an info box with a string to the HUD
@@ -95,6 +96,9 @@ void InGameHUD::updateShipPropertiesString() {
 	std::string speed = "Speed: " + std::to_string(static_cast<int>(ship->getMovementHandler().getSpeed()));
 	shipPropertiesRightSide[3]->setString(speed);
 
+	// Update the wind direction display
+	std::string windDirection = "Wind Direction: " + GlobalValues::getInstance().getWindController().getWindDirectionString();
+	shipPropertiesRightSide[4]->setString(windDirection);
 }
  
 void InGameHUD::setInteractablePositions() {
@@ -137,10 +141,13 @@ void InGameHUD::setInteractablePositions() {
 	}
 
 	// Set the position of the wind vector to be in the bottom right corner of the screen
-	WindController& windController = GlobalValues::getInstance().getWindController();
-	sf::Vector2f windVector2f = windController.getWindDirection() * windController.getWindSpeed() * 5.f;
 	sf::Vector2f windVectorPosition = sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - padding - 200.f, HUDView.getCenter().y + window->getSize().y / 2u - padding - 200.f);
-	windVector = GlobalValues::getInstance().createVector(windVectorPosition, windVector2f, sf::Color::Black);
+	windVector = GlobalValues::getInstance().getWindController().getWindDirectionIndicator(windVectorPosition, 5.f);
+	windCircle.setPosition(windVectorPosition - sf::Vector2f(windCircle.getRadius(), windCircle.getRadius()));
+	windCircle.setRadius(5.f);
+	windText = sf::Text("Wind Speed: " + std::to_string(static_cast<int>(GlobalValues::getInstance().getWindController().getWindSpeed())), font, 20);
+	windText.setPosition(windVectorPosition.x - windText.getGlobalBounds().width / 2, windVectorPosition.y - windText.getGlobalBounds().height - padding);
+	windText.setFillColor(sf::Color::Black);
 }
 
 void InGameHUD::draw() {
@@ -175,9 +182,10 @@ void InGameHUD::draw() {
 		interactable->draw();
 	}
 
-	// Draw the wind vector
 	// Draw a vector for the wind speed and direction in the bottom right corner of the screen
 	window->draw(windVector);
+	window->draw(windCircle);
+	window->draw(windText);
 
 	// Interact
 	setInteractablePositions();

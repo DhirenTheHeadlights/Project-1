@@ -19,7 +19,7 @@ void World::gameLoop(sf::Event event) {
 
 	map.drawGrid(window);
 	view.setCenter(player.getPosition());
-	view.setSize(window.getSize().x, window.getSize().y);
+	view.setSize(static_cast<float>(window.getSize().x), static_cast<float>(window.getSize().y));
 	window.setView(view);
 }
 

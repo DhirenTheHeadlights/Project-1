@@ -234,11 +234,11 @@ void IslandMenu::setInteractablePositions() {
 	menu.setPosition(HUDView.getCenter().x - menu.getSize().x / 2, HUDView.getCenter().y - menu.getSize().y / 2);
 
 	// Set the position of the title text to be in the center of the menu
-	islandNameDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - islandNameDisplay->getSize().x / 2.f, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5 * padding));
+	islandNameDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - islandNameDisplay->getSize().x / 2.f, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5f * padding));
 
 	// Set the position of the gold info box to be right above the market interactbles
-	shipGoldDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - merchandiseSize.x / 2 - buyButtonSize.x - merchandiseSize.x - 2 * padding, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5 * padding));
-	islandGoldDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f + merchandiseSize.x / 2 + buyButtonSize.x + 2 * padding, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5 * padding));
+	shipGoldDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f - merchandiseSize.x / 2 - buyButtonSize.x - merchandiseSize.x - 2 * padding, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5f * padding));
+	islandGoldDisplay->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 2.f + merchandiseSize.x / 2 + buyButtonSize.x + 2 * padding, menu.getPosition().y + 0.25f * menu.getSize().y - goldDisplaySize.y - 3.5f * padding));
 
 	// Set the position of the market interactables to be in the center of the menu
 	for (size_t i = 0; i < buyButtons.size(); ++i) {

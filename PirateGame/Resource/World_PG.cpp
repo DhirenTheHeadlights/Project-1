@@ -38,12 +38,12 @@ World::World(sf::RenderWindow* window_in) {
 }
 
 void World::setUpWorld() {
-	ship.setUpShip(ShipClass::Galleon);
-	LMHandler->addLandMasses(GlobalValues::getInstance().getMapSize().x / 100.f, GlobalValues::getInstance().getMapSize().x / 40.f);
+	playerShip.setUpShip(ShipClass::Frigate);
+	LMHandler->addLandMasses(static_cast<float>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
 
 	// Set the ship to a rand pos
 	sf::Vector2f randPos = GlobalValues::getInstance().getMap().getRandomPosition();
-	ship.getMovementHandler().setPosition(randPos);
+	playerShip.getMovementHandler().setPosition(randPos);
 
 	// Set the game state to start
 	GSM->changeGameState(GameState::Start);
@@ -134,20 +134,20 @@ void World::gameLoop() {
 
 	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
 
-	LMHandler->interactWithLandmasses(ship);
+	LMHandler->interactWithLandmasses(playerShip);
 
-	ship.update();
+	playerShip.update();
 
-	view.setCenter(ship.getMovementHandler().getPosition());
+	view.setCenter(playerShip.getMovementHandler().getPosition());
 
 	// Set the ship for the hud
-	MH->getHUD()->setShip(ship);
+	MH->getHUD()->setShip(playerShip);
 }
 
 void World::drawGameLoop() {
 	window->draw(background);
 	LMHandler->drawLandMasses();
 	window->draw(frameRateText);
-	ship.draw();
+	playerShip.draw();
 }
 

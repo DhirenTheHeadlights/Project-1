@@ -17,10 +17,10 @@ namespace PirateGame {
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
 
-		std::string const getFireKeyString() { return GlobalValues::getInstance().keyToString(fireKey); }
-		std::string const getManualAimKeyString() { return GlobalValues::getInstance().keyToString(manualAimKey); }
-		std::string const getPortMouseButtonString() { return GlobalValues::getInstance().buttonToString(portMouseButton); }
-		std::string const getStarboardMouseButtonString() { return GlobalValues::getInstance().buttonToString(starboardMouseButton); }
+		std::string  getFireKeyString() const { return GlobalValues::getInstance().keyToString(fireKey); }
+		std::string  getManualAimKeyString() const { return GlobalValues::getInstance().keyToString(manualAimKey); }
+		std::string  getPortMouseButtonString() const { return GlobalValues::getInstance().buttonToString(portMouseButton); }
+		std::string  getStarboardMouseButtonString() const { return GlobalValues::getInstance().buttonToString(starboardMouseButton); }
 	private:
 		// Keys
 		sf::Keyboard::Key fireKey = sf::Keyboard::Space;

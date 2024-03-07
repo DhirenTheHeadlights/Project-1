@@ -33,23 +33,23 @@ std::pair<int, int> Map::getGridCoordinates(float x, float y) const {
 // This function uses a poisson disc sampling algorithm to generate a set of points
 // that are at least a certain distance apart from each other. This function should be
 // called once to generate the points.
-std::vector<sf::Vector2f> Map::getRandomPositions(float minDistance, int numPoints) {
+std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int numPoints) {
     const int k = 30; // attempts before giving up on finding a new point
     const float pi = 3.14159265358979323846f;
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0.0, 1.0);
+    std::uniform_real_distribution<float> dis(0.0, 1.0);
 
     std::vector<sf::Vector2f> samplePoints;
     std::vector<sf::Vector2f> activeList;
 
     // Initialize with the first point
-    sf::Vector2f initialPoint(dis(gen) * len, dis(gen) * height);
+    sf::Vector2f initialPoint(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
     activeList.push_back(initialPoint);
     samplePoints.push_back(initialPoint);
 
     while (!activeList.empty()) {
-        std::uniform_int_distribution<> dist(0, activeList.size() - 1);
+        std::uniform_int_distribution<> dist(0, static_cast<int>(activeList.size()) - 1);
         int randIndex = dist(gen);
         sf::Vector2f point = activeList[randIndex];
         bool found = false;
@@ -89,7 +89,7 @@ std::vector<sf::Vector2f> Map::getRandomPositions(float minDistance, int numPoin
 
 
 // Draw the grid
-void Map::drawGrid(sf::RenderWindow& window) {
+void Map::drawGrid(sf::RenderWindow& window) const {
     sf::RectangleShape line(sf::Vector2f(static_cast<float>(getLength()), 1.f)); // Horizontal line
     line.setFillColor(sf::Color::Red);
     for (int i = 0; i <= rows; i++) {
