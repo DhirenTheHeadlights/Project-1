@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 // Move the ship
-void PlayerShipMovementHandler::move(float baseSpeed) {
+void ShipMovementHandler::move(float baseSpeed) {
 	// Initialize the window and map size
 	window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
@@ -30,13 +30,13 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 }
 
 
-sf::Vector2f PlayerShipMovementHandler::normalize(sf::Vector2f vector) {
+sf::Vector2f ShipMovementHandler::normalize(sf::Vector2f vector) {
 	float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
 	if (length == 0.f) return sf::Vector2f(0.f, 0.f);
 	return vector / length;
 }
 
-void PlayerShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize) {
+void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize) {
 	float sizeX = sprite.getGlobalBounds().width;
 	float sizeY = sprite.getGlobalBounds().height;
 
@@ -45,7 +45,7 @@ void PlayerShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position,
 	position.y = std::max(0.f, std::min(position.y, mapSize.y - sizeY));
 }
 
-void PlayerShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
+void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
 	if (isColliding) speed -= 10.f;
 	else {
 		// Calculate wind effect
@@ -73,7 +73,7 @@ void PlayerShipMovementHandler::updateVelocity(const sf::Vector2f& direction, fl
 }
 
 
-void PlayerShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
+void ShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	if (isColliding || stopShipRotationFlag) return;
 	// Calculate the direction to the mouse
 	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
@@ -106,7 +106,7 @@ void PlayerShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
 	sprite.setRotation(currentAngle + (accel * angleDifference));
 }
 
-void PlayerShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
+void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 	isColliding = true;
 
 	// Calculate the normalized normal vector from the ship's center to the colliding sprite's center
@@ -131,7 +131,7 @@ void PlayerShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 	ensureSeparation(position, normal, collidingSprite);
 }
 
-void PlayerShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
+void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
 	// Calculate a push-out vector based on normal and ship's approach direction
 	sf::Vector2f pushOutVector = normal * pushOutDistance;
 
@@ -145,12 +145,12 @@ void PlayerShipMovementHandler::ensureSeparation(sf::Vector2f& position, const s
 	position += pushOutVector;
 }
 
-void PlayerShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
+void ShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
 	// Apply the recoil to the ship's position
 	position += direction * recoil;
 }
 
 // Helper function to calculate dot product
-float PlayerShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {
+float ShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {
 	return a.x * b.x + a.y * b.y;
 }

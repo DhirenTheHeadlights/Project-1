@@ -9,10 +9,10 @@
 #include "GlobalValues_PG.h"
 
 namespace PirateGame {
-	class PlayerShipMovementHandler {
+	class ShipMovementHandler {
 	public:
-		PlayerShipMovementHandler(sf::Sprite& sprite) : sprite(sprite) {};
-		~PlayerShipMovementHandler() {};
+		ShipMovementHandler(sf::Sprite& sprite) : sprite(sprite) {};
+		~ShipMovementHandler() {};
 
 		// Movement functions
 		virtual void move(float baseSpeed);
