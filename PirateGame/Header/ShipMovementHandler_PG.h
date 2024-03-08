@@ -14,7 +14,7 @@ namespace PirateGame {
 		ShipMovementHandler(sf::Sprite& sprite) : sprite(sprite) {};
 		~ShipMovementHandler() {};
 
-		// Movement functions
+		// Movement functions 
 		virtual void move(float baseSpeed);
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
