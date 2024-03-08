@@ -8,7 +8,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
     // Fire the cannonballs with the adjusted direction
     for (int i = 0; i < numCannons; i++) {
         Cannonball* cannonball = new Cannonball;
-        cannonball->getSprite().setTexture(textures.grabCannonballTexture());
+        cannonball->getSprite().setTexture(textures.getCannonballTexture());
         cannonball->getSprite().setScale(cannonballScale);
         cannonball->setSpeed(cannonballSpeed);
 

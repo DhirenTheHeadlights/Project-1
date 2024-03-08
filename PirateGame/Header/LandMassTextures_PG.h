@@ -30,17 +30,37 @@ namespace PirateGame {
 			for (auto& i : { rock1, rock2, rock3, rock4, rock5, rock6, rock7, rock8, rock9 }) {
 				rockTextures.push_back(i);
 			}
+
+			// Load cannonball texture
+			cannonballTexture.loadFromFile("PirateGameSprites/pg_misc_cannonball.png");
 		}
 		~LandMassTextureHandler() {};
 
-		// Takes the ship type as a string, returns the sf::Texture for that ship.
-		sf::Texture& grabShipTexture(int index);
 		// These two functions return a random island or rock texture unless a specific one is specified
-		sf::Texture& grabIslandTexture(int index = -1);
-		sf::Texture& grabRockTexture(int index = -1);
+		sf::Texture& grabIslandTexture(int index = -1) {
+			if (index == -1) {
+				return islandTextures[rand() % islandTextures.size()];
+			}
+			else {
+				return islandTextures[index];
+			}
+		}
+		sf::Texture& grabRockTexture(int index = -1) {
+			if (index == -1) {
+				return rockTextures[rand() % rockTextures.size()];
+			}
+			else {
+				return rockTextures[index];
+			}
+		}
+
+		// Getters
+		sf::Texture& getCannonballTexture() { return cannonballTexture; }
 
 	private:
 		std::vector<sf::Texture> islandTextures{};
 		std::vector<sf::Texture> rockTextures{};
+
+		sf::Texture cannonballTexture;
 	};
 }

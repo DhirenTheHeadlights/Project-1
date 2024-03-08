@@ -138,7 +138,7 @@ void World::gameLoop() {
 
 	playerShip.update();
 
-	view.setCenter(playerShip.getMovementHandler().getPosition());
+	view.setCenter(playerShip.getSprite().getPosition());
 
 	// Set the ship for the hud
 	MH->getHUD()->setShip(playerShip);

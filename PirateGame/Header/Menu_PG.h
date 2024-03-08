@@ -17,6 +17,7 @@
 #include "TextDisplayBox_PG.h"
 #include "TextInpuBox_PG.h"
 #include "DropDown_PG.h"
+#include "InteractableTextures_PG.h"
 
 namespace PirateGame {
 	class Menu {

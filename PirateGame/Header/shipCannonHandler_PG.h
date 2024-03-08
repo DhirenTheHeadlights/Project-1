@@ -8,7 +8,7 @@
 #include "GlobalValues_PG.h"
 #include "Cannonball_PG.h"
 #include "SoundManager_PG.h"
-#include "Textures_PG.h"
+#include "LandMassTextures_PG.h"
 
 namespace PirateGame {
 
@@ -51,7 +51,7 @@ namespace PirateGame {
 		std::string soundFile = "Sounds/cannonshot.wav";
 		SoundManager soundManager;
 
-		LandMassTextures textures;
+		LandMassTextureHandler textures;
 
 		sf::Vector2f cannonDirection();
 	};

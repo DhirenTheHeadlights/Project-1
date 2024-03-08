@@ -7,17 +7,16 @@
 #include "Menu_PG.h"
 #include "PlayerShip_PG.h"
 #include "Minimap_PG.h"
+#include "HUDTextures_PG.h"
 
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
 		InGameHUD() {
-			if (!healthBarGreenTexture.loadFromFile("PirateGameSprites/health_bar_green.png")) std::cout << "Error Loading File";
-			else healthBarGreenSprite.setTexture(healthBarGreenTexture);
+			healthBarGreenSprite.setTexture(hudTextures.getHealthBarGreen());
 			healthBarGreenSprite.setScale(healthBarScale);
 
-			if (!healthBarRedTexture.loadFromFile("PirateGameSprites/health_bar_red.png")) std::cout << "Error Loading File";
-			else healthBarRedSprite.setTexture(healthBarRedTexture);
+			healthBarRedSprite.setTexture(hudTextures.getHealthBarRed());
 			healthBarRedSprite.setScale(healthBarScale);
 		};
 
@@ -41,9 +40,7 @@ namespace PirateGame {
 		PlayerShip* ship = nullptr;
 
 		sf::Sprite healthBarGreenSprite;
-		sf::Texture healthBarGreenTexture;
 		sf::Sprite healthBarRedSprite;
-		sf::Texture healthBarRedTexture;
 
 		sf::Vector2f healthBarScale = { 11, 4 };
 
@@ -54,6 +51,7 @@ namespace PirateGame {
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesLeftSide;
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesRightSide;
 
+		HUDTextureHandler hudTextures;
 		Minimap minimap;
 
 		float minimapSize = 100.f;

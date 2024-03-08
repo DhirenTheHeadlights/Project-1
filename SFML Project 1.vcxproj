@@ -247,11 +247,14 @@
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
+    <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
     <ClInclude Include="PirateGame\Header\InputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\InteractableTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\Interactable_PG.h" />
     <ClInclude Include="PirateGame\Header\IslandMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\LandMassTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMass_PG.h" />
     <ClInclude Include="PirateGame\Header\MenuHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
@@ -292,6 +295,7 @@
   <ItemGroup>
     <Image Include="PirateGameSprites\health_bar_green.png" />
     <Image Include="PirateGameSprites\health_bar_red.png" />
+    <Image Include="PirateGameSprites\Interactable_basic_gray_black.png" />
     <Image Include="PirateGameSprites\minimap_ship_icon.png" />
     <Image Include="PirateGameSprites\minimap_sprite.png" />
     <Image Include="PirateGameSprites\pg_island_1.png" />

@@ -5,6 +5,7 @@
 #include "GlobalValues_PG.h"
 #include "PlayerShip_PG.h"
 #include "LandMass_PG.h"
+#include "HUDTextures_PG.h"
 
 /// This class will handle the minimap for the game.
 
@@ -13,12 +14,10 @@ namespace PirateGame {
 	public:
 		Minimap() {
 			// Load the textures
-			if (!minimapTexture.loadFromFile("PirateGameSprites/minimap_sprite.png")) std::cout << "Error Loading File";
-			else minimapSprite.setTexture(minimapTexture);
+			minimapSprite.setTexture(textures.getMiniMap());
 			minimapSprite.setScale(1.6f, 1.6f);
 
-			if (!shipIconTexture.loadFromFile("PirateGameSprites/minimap_ship_icon.png")) std::cout << "Error Loading File";
-			else shipIconSprite.setTexture(shipIconTexture);
+			shipIconSprite.setTexture(textures.getMiniMapShipIcon());
 			shipIconSprite.setScale(0.02f, 0.02f);
 		};
 		~Minimap() {};
@@ -35,7 +34,6 @@ namespace PirateGame {
 		
 		// Getters
 		sf::Sprite& getMinimapSprite() { return minimapSprite; }
-		sf::Texture& getMinimapTexture() { return minimapTexture; }
 		sf::CircleShape& getMinimap() { return minimap; }
 		float getMinimapRadius() { return size; }
 		sf::Vector2f getMinimapPosition() { return position; }
@@ -50,10 +48,9 @@ namespace PirateGame {
 		Ship* ship = nullptr;
 
 		sf::Sprite minimapSprite;
-		sf::Texture minimapTexture;
-		
 		sf::Sprite shipIconSprite;
-		sf::Texture shipIconTexture;
+
+		HUDTextureHandler textures;
 
 		// Temp rectangle for minimap
 		sf::CircleShape minimap;

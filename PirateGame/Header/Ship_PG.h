@@ -9,7 +9,6 @@
 
 #include "GlobalValues_PG.h"
 #include "ShipCannonHandler_PG.h"
-#include "ShipMovementHandler_PG.h"
 
 namespace PirateGame {
 	// This enum will be used to determine the ship class
@@ -35,7 +34,6 @@ namespace PirateGame {
 	public:
 		Ship() {
 			SCH = std::make_unique<ShipCannonHandler>(sprite);
-			SMH = std::make_unique<ShipMovementHandler>(sprite);
 		};
 
 		~Ship() {};
@@ -50,7 +48,6 @@ namespace PirateGame {
 
 		// Get movement handler
 		ShipCannonHandler& getCannonHandler() { return *SCH; }
-		ShipMovementHandler& getMovementHandler() { return *SMH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -100,7 +97,7 @@ namespace PirateGame {
 
 		// Variables to store the ship's values
 		float health = 0;
-		float scalingFactor = 2;
+		float scalingFactor = 4;
 
 		sf::Vector2f constSpriteBounds;
 
@@ -113,8 +110,6 @@ namespace PirateGame {
 
 		// Handlers
 		std::unique_ptr<ShipCannonHandler> SCH;
-		std::unique_ptr<ShipMovementHandler> SMH;
-
 	protected:
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;

@@ -8,7 +8,7 @@ void PlayerShip::customShipSetUp() {
 	SIH->setNumCannons(getShipProperties().numCannons);
 	SIH->setBaseSpeed(getShipProperties().baseSpeed);
 	SIH->setCannonHandler(&getCannonHandler());
-	SIH->setMovementHandler(&getMovementHandler());
+	SIH->setMovementHandler(SMH.get());
 }
 
 void PlayerShip::customShipUpdate() {

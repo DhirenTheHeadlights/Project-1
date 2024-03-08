@@ -48,8 +48,6 @@ void Ship::update() {
 void Ship::draw() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
-	// Draw the velocity vector
-	window->draw(createVector(sprite.getPosition(), SMH->getVelocity(), sf::Color::Blue));
 	window->draw(sprite);
 
 	// Custom ship draw

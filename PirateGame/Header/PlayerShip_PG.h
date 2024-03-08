@@ -10,6 +10,7 @@
 #include "GlobalValues_PG.h"
 #include "Ship_PG.h"
 #include "PlayerShipInputHandler_PG.h"
+#include "PlayerShipMovementHandler_PG.h"
 #include "ShipInventoryHandler_PG.h"
 
 namespace PirateGame {
@@ -17,6 +18,7 @@ namespace PirateGame {
 	public:
 		PlayerShip() {
 			SIH = std::make_unique<PlayerShipInputHandler>(getSprite());
+			SMH = std::make_unique<PlayerShipMovementHandler>(getSprite());
 			SIvH = std::make_unique<ShipInventoryHandler>();
 		};
 
@@ -30,10 +32,12 @@ namespace PirateGame {
 		// Get movement handler
 		PlayerShipInputHandler& getInputHandler() { return *SIH; }
 		ShipInventoryHandler& getInventoryHandler() { return *SIvH; }
+		PlayerShipMovementHandler& getMovementHandler() { return *SMH; }
 
 	private:
 		// Handlers
 		std::unique_ptr<PlayerShipInputHandler> SIH;
 		std::unique_ptr<ShipInventoryHandler> SIvH;
+		std::unique_ptr<PlayerShipMovementHandler> SMH;
 	};
 }

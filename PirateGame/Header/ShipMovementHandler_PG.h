@@ -15,24 +15,47 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions 
-		virtual void move(float baseSpeed);
+		virtual void move(float baseSpeed) = 0;
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
+
+		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
+		virtual void setSpriteRotation(sf::Vector2f& direction) = 0;
+
+		// These functions stay constant
+		sf::Vector2f normalize(sf::Vector2f vector);
+		void applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize);
+		float dot(const sf::Vector2f& v1, const sf::Vector2f& v2);
+		void ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
+		void setInitialPosition();
 
 		// Setters
 		void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
 		void setIsColliding(bool isColliding) { this->isColliding = isColliding; }
 		void setPosition(sf::Vector2f position) { sprite.setPosition(position); }
+		void setInitialPositionVariable(sf::Vector2f initialPosition) { this->initialPosition = initialPosition; }
 		void setStopShipRotationFlag(bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
 		void setStopShipFlag(bool stopShipFlag) { this->stopShipFlag = stopShipFlag; }
+		void setSpeed(float speed) { this->speed = speed; }
+		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
+		void setWindSpeedApplied(bool windSpeedApplied) { this->windSpeedApplied = windSpeedApplied; }
+		void setInitialPositionSet(bool initialPositionSet) { this->initialPositionSet = initialPositionSet; }
 
 		// Getters
+		float getSpeed() const { return speed; }
+		float getBaseSpeed() const { return baseSpeed; }
+
+		sf::Sprite& getSprite() { return sprite; }
+		sf::Clock& getDeltaTime() { return deltaTime; }
+
 		sf::Vector2f getVelocity() const { return velocity; }
-		bool getIsColliding() const { return isColliding; }
-		sf::Vector2f getPosition() const { return sprite.getPosition(); }
+		sf::Vector2f getInitialPosition() const { return initialPosition; }
+
 		bool getStopShipRotationFlag() const { return stopShipRotationFlag; }
 		bool getStopShipFlag() const { return stopShipFlag; }
-		float getSpeed() const { return speed; }
+		bool getIsColliding() const { return isColliding; }
+		bool getWindSpeedApplied() const { return windSpeedApplied; }
+		bool getInitialPositionSet() const { return initialPositionSet; }
 
 	private:
 		// SFML Objects
@@ -41,7 +64,7 @@ namespace PirateGame {
 		sf::Sprite& sprite;
 
 		sf::Vector2f velocity;
-		sf::Vector2f position;
+		sf::Vector2f initialPosition;
 
 		bool isColliding = true;
 		bool stopShipRotationFlag = false;
@@ -56,21 +79,9 @@ namespace PirateGame {
 		float dampingFactor = 0.5f;		  // For collisionMovement
 		float separationDistance = 5.0f;  // For collisionMovement
 		float pushOutDistance = 1.0f;	  // For ensureSeparation
-		float turningSpeed = 0.1f;		  // For setSpriteRotation
-
+	protected:
 		const float pi = 3.14159265359f;
-
-		// These functions are intended to be overridden. The default implementation is
-		// for the player ship, but the AI ship will have a different implementation
-		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
-		virtual void setSpriteRotation(sf::Vector2f& direction);
-
-		// These functions stay constant
-		sf::Vector2f normalize(sf::Vector2f vector);
-		void applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize);
-		float dot(const sf::Vector2f& v1, const sf::Vector2f& v2);
-		void ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
-
+		sf::Vector2f position;
 	};
 }
 
