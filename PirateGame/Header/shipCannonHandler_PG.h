@@ -51,7 +51,7 @@ namespace PirateGame {
 		std::string soundFile = "Sounds/cannonshot.wav";
 		SoundManager soundManager;
 
-		Textures textures;
+		LandMassTextures textures;
 
 		sf::Vector2f cannonDirection();
 	};

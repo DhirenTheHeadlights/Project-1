@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void LandMass::createLandMass(LandMassType type, Textures& texture) {
+void LandMass::createLandMass(LandMassType type, LandMassTextureHandler& texture) {
 	// Set the type of landmass
 	this->type = type;
 

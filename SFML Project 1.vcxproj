@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -198,7 +198,6 @@
     <ClCompile Include="PirateGame\Resource\StartMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\TextDisplayBox_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\TextInpuBox_PG.cpp" />
-    <ClCompile Include="PirateGame\Resource\Textures_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\View_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\WindController_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
@@ -273,7 +272,7 @@
     <ClInclude Include="PirateGame\Header\StartMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\TextDisplayBox_PG.h" />
     <ClInclude Include="PirateGame\Header\TextInpuBox_PG.h" />
-    <ClInclude Include="PirateGame\Header\Textures_PG.h" />
+    <ClInclude Include="PirateGame\Header\TextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\WindController_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />

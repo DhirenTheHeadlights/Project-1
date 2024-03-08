@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "GlobalValues_PG.h"
-#include "Textures_PG.h"
+#include "TextureHandler_PG.h"
 #include "LandMass_PG.h"
 #include "Hashmap_PG.h"
 #include "Map.h"
@@ -41,7 +41,7 @@ namespace PirateGame {
 
         // Hashmap and Textures
         Hashmap hashmap;
-        Textures texture;
+        LandMassTextureHandler texture;
 
         // Values
         float collisionDamagePerSecond = 4.f;

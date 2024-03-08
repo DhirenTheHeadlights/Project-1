@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "Textures_PG.h"
+#include "TextureHandler_PG.h"
 #include "ShopItem_PG.h"
 #include "IslandMenu_PG.h"
 
@@ -18,7 +18,7 @@ namespace PirateGame {
 
 	class LandMass {
 	public:
-		void createLandMass(LandMassType type, Textures& texture);
+		void createLandMass(LandMassType type, LandMassTextures& texture);
 		void setRandomRotation() { sprite.setRotation(static_cast<float>(rand() % 360)); }
 
 		// Setters

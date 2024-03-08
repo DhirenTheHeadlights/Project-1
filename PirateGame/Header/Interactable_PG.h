@@ -1,10 +1,6 @@
 #pragma once
 
-/// <summary>
 ///  This class is the base class for all interactable objects in the game.
-///	 By default, it will have a background, a foreground, and a frame.
-///  Therefore, it can be used to make a text display box at base.
-/// </summary>
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -18,6 +14,8 @@ namespace PirateGame {
 		Interactable() { 
 			window = GlobalValues::getInstance().getWindow();
 			font = GlobalValues::getInstance().getFont();
+
+			
 		};
 		~Interactable() {};
 

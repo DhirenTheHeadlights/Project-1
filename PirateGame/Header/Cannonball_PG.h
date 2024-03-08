@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "GlobalValues_PG.h"
-#include "Textures_PG.h"
+#include "TextureHandler_PG.h"
 #include "ShipMovementHandler_PG.h"
 
 
