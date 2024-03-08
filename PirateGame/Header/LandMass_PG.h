@@ -38,7 +38,7 @@ namespace PirateGame {
 		// Sprite to represent the land mass
 		sf::Sprite sprite;
 		sf::Texture texture;
-		float scaling = 1;
+		float scaling = 2;
 		LandMassType type = LandMassType::Island;
 
 		// Market

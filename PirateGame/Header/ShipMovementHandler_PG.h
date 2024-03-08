@@ -47,6 +47,7 @@ namespace PirateGame {
 		bool stopShipRotationFlag = false;
 		bool stopShipFlag = false;
 		bool windSpeedApplied = false;
+		bool initialPositionSet = false;
 
 		float rotation = 0;
 		float speed = 0;

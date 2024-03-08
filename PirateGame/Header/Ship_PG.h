@@ -100,7 +100,7 @@ namespace PirateGame {
 
 		// Variables to store the ship's values
 		float health = 0;
-		float scalingFactor = 5;
+		float scalingFactor = 2;
 
 		sf::Vector2f constSpriteBounds;
 

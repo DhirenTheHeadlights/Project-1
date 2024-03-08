@@ -8,8 +8,12 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 	window = GlobalValues::getInstance().getWindow();
 	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
 	this->baseSpeed = baseSpeed;
-	position = sprite.getPosition(); // This is here as a temporary fix for the ship's position being
-	// reset to (0, 0) after its set to a random position in world
+
+	if (!initialPositionSet) {
+		position = sprite.getPosition(); // This is here as a temporary fix for the ship's position being
+		// reset to (0, 0) after its set to a random position in world
+		initialPositionSet = true;
+	}
 
 	float elapsed = deltaTime.restart().asSeconds();
 
@@ -42,7 +46,7 @@ void PlayerShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position,
 }
 
 void PlayerShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
-	if (isColliding) speed = baseSpeed * frictionCoefficient;
+	if (isColliding) speed -= 10.f;
 	else {
 		// Calculate wind effect
 		WindController& windController = GlobalValues::getInstance().getWindController();
