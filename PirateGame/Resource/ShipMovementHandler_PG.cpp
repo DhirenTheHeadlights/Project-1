@@ -25,25 +25,29 @@ void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const
 }
 
 void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
-	if (isColliding) speed -= 10.f;
-	else {
+	if (isColliding && speed > 0) speed -= 10.f;
+	else if (!dropAnchor) {
 		// Calculate wind effect
 		WindController& windController = GlobalValues::getInstance().getWindController();
 		sf::Vector2f windDirection = normalize(windController.getWindDirection()); // Ensure wind direction is normalized
 		float windEffect = dot(windDirection, direction) * windController.getWindSpeed();
 
-		// Gradually increase the speed to the base speed
-		const float acceleration = 0.1f; // The acceleration factor
-		if (speed < (baseSpeed + windEffect)) speed += acceleration;
-		if (speed > (baseSpeed + windEffect)) speed -= acceleration;
+		// Gradually increase the speed to the base speed, multiplied by the wind effect
+		const float acceleration = std::max(1.f, 1.f * windEffect); // The acceleration factor
+		if (speed < (baseSpeed + windEffect)) speed += acceleration * elapsedTime;
+		else if (speed > (baseSpeed + windEffect)) speed -= acceleration * elapsedTime;
 
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 
-	if (stopShipFlag) {
+	if (dropAnchor) {
 		// Gradually decrease the speed to 0
-		const float deceleration = 0.1f; // The deceleration factor
-		if (speed > 0) speed -= deceleration;
+		const float deceleration = 20.f; // The deceleration factor
+		// Here, we are going to specify a speed value that will be subtracted from the speed when 
+		// the speed goes to 0. This will create a "backwards" effect as the negative speed will
+		// slowly come back up to 0. This is to simulate the ship pulling back from the anchor
+		const float speedMin = -10.f;
+		if (speed > 0) speed -= deceleration * elapsedTime;
 		else speed = 0;
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}

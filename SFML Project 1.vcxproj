@@ -286,6 +286,10 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf" />
+    <Font Include="Fonts\PixelifySans-Bold.ttf" />
+    <Font Include="Fonts\PixelifySans-Medium.ttf" />
+    <Font Include="Fonts\PixelifySans-Regular.ttf" />
+    <Font Include="Fonts\PixelifySans-SemiBold.ttf" />
     <Font Include="Fonts\times_new_roman.ttf" />
   </ItemGroup>
   <ItemGroup>

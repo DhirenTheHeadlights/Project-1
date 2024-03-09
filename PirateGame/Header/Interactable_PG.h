@@ -28,7 +28,6 @@ namespace PirateGame {
 		virtual void setPosition(sf::Vector2f pos);
 		void setSize(sf::Vector2f size) { this->size = size; }
 		void setScale(sf::Vector2f healthBarScale) { this->healthBarScale = healthBarScale; }
-		void setTexture(const std::string& textureFile) { if (!texture.loadFromFile(textureFile)) std::cout << "Error Loading File"; };
 		void setString(const std::string& string) { this->name = string, text.setString(string); }
 
 		void setTextPosition(sf::Vector2f pos) { text.setPosition(pos); }
@@ -40,6 +39,7 @@ namespace PirateGame {
 		void setTextColor(sf::Color color) { this->textColor = color; }
 		void setOutlineThickness(float thickness) { this->outlineThickness = thickness; }
 		void setPadding(float padding) { this->padding = padding; }
+		void setSprite(sf::Sprite& sprite) { this->sprite = sprite; }
 
 		// Getters for properties
 		sf::Text& getText() { return text; }
@@ -63,7 +63,6 @@ namespace PirateGame {
 
 		// Objects
 		sf::Sprite sprite;
-		sf::Texture texture;
 		sf::RectangleShape background;
 		sf::RectangleShape foreground;
 		sf::RectangleShape frame;

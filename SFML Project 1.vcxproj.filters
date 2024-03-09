@@ -632,6 +632,18 @@
     <Font Include="Fonts\times_new_roman.ttf">
       <Filter>Source Files\Fonts</Filter>
     </Font>
+    <Font Include="Fonts\PixelifySans-Bold.ttf">
+      <Filter>Source Files\Fonts</Filter>
+    </Font>
+    <Font Include="Fonts\PixelifySans-Medium.ttf">
+      <Filter>Source Files\Fonts</Filter>
+    </Font>
+    <Font Include="Fonts\PixelifySans-Regular.ttf">
+      <Filter>Source Files\Fonts</Filter>
+    </Font>
+    <Font Include="Fonts\PixelifySans-SemiBold.ttf">
+      <Filter>Source Files\Fonts</Filter>
+    </Font>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\bonk.wav">

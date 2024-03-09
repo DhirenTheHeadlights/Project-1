@@ -21,6 +21,7 @@ namespace PirateGame {
 		std::string  getManualAimKeyString() const { return GlobalValues::getInstance().keyToString(manualAimKey); }
 		std::string  getPortMouseButtonString() const { return GlobalValues::getInstance().buttonToString(portMouseButton); }
 		std::string  getStarboardMouseButtonString() const { return GlobalValues::getInstance().buttonToString(starboardMouseButton); }
+		std::string  getAnchorDropKeyString() const { return GlobalValues::getInstance().keyToString(anchorDropKey); }
 	private:
 		// Keys
 		sf::Keyboard::Key fireKey = sf::Keyboard::Space;
@@ -28,5 +29,7 @@ namespace PirateGame {
 
 		sf::Mouse::Button portMouseButton = sf::Mouse::Left;
 		sf::Mouse::Button starboardMouseButton = sf::Mouse::Right;
+
+		sf::Keyboard::Key anchorDropKey = sf::Keyboard::Tab;	
 	};
 }

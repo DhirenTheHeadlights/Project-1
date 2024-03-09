@@ -31,6 +31,7 @@ void InGameHUD::addInteractablesToMenu() {
 	addInfoBox("Firing Side: ", shipPropertiesLeftSide);
 	addInfoBox("Manual Aim: ", shipPropertiesLeftSide);
 	addInfoBox("Ship Type: ", shipPropertiesLeftSide);
+	addInfoBox("Anchor: ", shipPropertiesLeftSide);
 
 	/// Right side of the HUD
 
@@ -77,6 +78,16 @@ void InGameHUD::updateShipPropertiesString() {
 	// Update the ship type indicator
 	std::string shipClass = "Ship Class: ";
 	shipPropertiesLeftSide[2]->setString(shipClass + ship->getShipClassString());
+
+	// Update the anchor drop indicator
+	std::string anchorDrop = "Anchor: ";
+	if (ship->getMovementHandler().getDroppedAnchor()) {
+		anchorDrop += "Down";
+	}
+	else {
+		anchorDrop += "Up";
+	}
+	shipPropertiesLeftSide[3]->setString(anchorDrop + " [" + ship->getInputHandler().getAnchorDropKeyString() + "]");
 
 	/// Right side of the HUD
 

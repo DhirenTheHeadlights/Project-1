@@ -21,6 +21,7 @@ void Interactable::draw() {
 	window->draw(background);
 	window->draw(foreground);
 	window->draw(frame);
+	window->draw(sprite);
 	window->draw(text);
 }
 
@@ -39,6 +40,7 @@ void Interactable::setPosition(sf::Vector2f pos) {
 	background.setPosition(position);
 	frame.setPosition(position);
 	foreground.setPosition(sf::Vector2f(position.x + padding, position.y + padding));
+	sprite.setPosition(position);
 	// Set the text to be in the center of the foreground
 	float x = foreground.getPosition().x + foreground.getSize().x / 2 - text.getGlobalBounds().width / 2;
 	float y = foreground.getPosition().y + foreground.getSize().y / 2 - text.getGlobalBounds().height / 2;

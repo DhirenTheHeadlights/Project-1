@@ -19,6 +19,10 @@ void StartMenu::setUpMenu() {
 	// Add the interactables to the menu and set their positions
 	addInteractablesToMenu();
 	setInteractablePositions();
+
+	for (auto& i : interactables) {
+		i->setSprite(buttonSprite);
+	}
 }
 
 // Set the position of the interactables

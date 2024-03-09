@@ -26,7 +26,7 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 
 
 void PlayerShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
-	if (getIsColliding() || getStopShipFlag()) return;
+	if (getIsColliding() || getStopShipRotationFlag()) return;
 
 	// Grab window
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();

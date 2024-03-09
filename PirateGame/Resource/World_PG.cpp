@@ -16,7 +16,7 @@ World::World(sf::RenderWindow* window_in) {
 
 	// Initalize the font
 	sf::Font font;
-	if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
+	if (!font.loadFromFile("Fonts/PixelifySans-Regular.ttf")) {
 		std::cout << "Error loading font" << std::endl;
 	}
 	else {

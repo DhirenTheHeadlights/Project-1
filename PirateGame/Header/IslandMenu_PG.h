@@ -69,5 +69,7 @@ namespace PirateGame {
 		std::string islandName = "Island Name";
 		sf::Text titleText;
 		sf::Text islandDescription;
+
+		sf::Clock buyClock;
 	};
 }

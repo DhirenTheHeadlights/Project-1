@@ -81,6 +81,8 @@ namespace PirateGame {
 		// GameStateManager
 		GameStateManager* GSM = nullptr;
 
+		InteractableTextureHandler interactableTextures;
+
 		// Helper function to convert a float to a string with a set number of decimal places
 		std::string floatToString(float number, int decimalPlaces = 2) {
 			std::stringstream stream;

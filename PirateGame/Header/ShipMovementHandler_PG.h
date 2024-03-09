@@ -35,7 +35,7 @@ namespace PirateGame {
 		void setPosition(sf::Vector2f position) { sprite.setPosition(position); }
 		void setInitialPositionVariable(sf::Vector2f initialPosition) { this->initialPosition = initialPosition; }
 		void setStopShipRotationFlag(bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
-		void setStopShipFlag(bool stopShipFlag) { this->stopShipFlag = stopShipFlag; }
+		void setAnchorDrop(bool anchorDrop) { this->dropAnchor = anchorDrop; }
 		void setSpeed(float speed) { this->speed = speed; }
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
 		void setWindSpeedApplied(bool windSpeedApplied) { this->windSpeedApplied = windSpeedApplied; }
@@ -52,7 +52,7 @@ namespace PirateGame {
 		sf::Vector2f getInitialPosition() const { return initialPosition; }
 
 		bool getStopShipRotationFlag() const { return stopShipRotationFlag; }
-		bool getStopShipFlag() const { return stopShipFlag; }
+		bool getDroppedAnchor() const { return dropAnchor; }
 		bool getIsColliding() const { return isColliding; }
 		bool getWindSpeedApplied() const { return windSpeedApplied; }
 		bool getInitialPositionSet() const { return initialPositionSet; }
@@ -68,7 +68,7 @@ namespace PirateGame {
 
 		bool isColliding = true;
 		bool stopShipRotationFlag = false;
-		bool stopShipFlag = false;
+		bool dropAnchor = false;
 		bool windSpeedApplied = false;
 		bool initialPositionSet = false;
 

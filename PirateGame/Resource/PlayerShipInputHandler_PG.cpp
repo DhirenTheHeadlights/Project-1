@@ -30,5 +30,7 @@ void PlayerShipInputHandler::handleCannonAim() {
 }
 
 void PlayerShipInputHandler::handleAnchorDrop() {
-	//...
+	if (GlobalValues::getInstance().getInputHandler().isKeyPressedOnce(anchorDropKey)) {
+		SMH->setAnchorDrop(!SMH->getDroppedAnchor());
+	}
 }

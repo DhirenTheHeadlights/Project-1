@@ -52,7 +52,7 @@ void IslandMenu::addInteractablesToMenu() {
 	// Initial buttons to enter the island
 	std::function<void()> enterIsland = [this]() { 
 		enteredIsland = true;
-		ship->getMovementHandler().setStopShipFlag(true);
+		ship->getMovementHandler().setAnchorDrop(true);
 	};
 	std::unique_ptr<Button> enterIslandButton = std::make_unique<Button>(enterIsland);
 	enterIslandButton->createInteractable(sf::Vector2f(200, 50));
@@ -61,7 +61,7 @@ void IslandMenu::addInteractablesToMenu() {
 
 	std::function<void()> leaveIsland = [this]() { 
 		hasPlayerSaidNo = true; // Set the flag to true so the menu does not show
-		ship->getMovementHandler().setStopShipFlag(false);
+		ship->getMovementHandler().setAnchorDrop(false);
 	};
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(sf::Vector2f(200, 50));
@@ -79,6 +79,9 @@ void IslandMenu::addMarketInteractables() {
 		// Create the buy button
 		std::function<void()> buyItem = [this, &item]() {
 			if (ship->getInventoryHandler().getGold() >= item.price && item.amount > 0) {
+				// Value that determines how many are bought each second when the button is held down
+				int buyRate = 1;
+
 				// Attempt to find the item in the ship's inventory
 				auto& inventory = ship->getInventoryHandler().getInventory();
 				auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
@@ -87,7 +90,8 @@ void IslandMenu::addMarketInteractables() {
 
 				if (it != inventory.end()) {
 					// If the item exists, update its amount
-					it->amount += 1;
+					it->amount += buyRate;
+
 				}
 				else {
 					// Otherwise, add a new item with amount 1
@@ -100,7 +104,7 @@ void IslandMenu::addMarketInteractables() {
 				ship->getInventoryHandler().removeGold(item.price);
 
 				// Update merchant's gold and item quantity if applicable
-				item.amount -= 1;
+				item.amount -= buyRate;
 				gold += item.price;
 			}
 		};
@@ -170,7 +174,7 @@ void IslandMenu::addMarketInteractables() {
 	islandNameDisplay->setString(islandName);
 
 	// Create an "exit" button to leave the island
-	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setStopShipFlag(false); };
+	std::function<void()> leaveIsland = [this]() { enteredIsland = false; ship->getMovementHandler().setAnchorDrop(false); };
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	leaveIslandButton->createInteractable(uiButtonSize);
 	leaveIslandButton->setString("Leave Island");
@@ -223,8 +227,9 @@ void IslandMenu::setInteractablePositions() {
 		interactables[1]->setPosition(sf::Vector2f(menu.getPosition().x + menu.getSize().x / 4 * 3 - interactables[1]->getSize().x / 2, menu.getPosition().y + menu.getSize().y / 2 - interactables[0]->getSize().y / 4));
 
 		// Set the ship stop flag to true when prompting the player to enter the island
-		ship->getMovementHandler().setStopShipFlag(true);
+		ship->getMovementHandler().setAnchorDrop(true);
 		ship->getMovementHandler().setStopShipRotationFlag(true);
+		std::cout << "Ship stopped and anchor dropped\n";
 
 		return; // Return early if the player has not entered the island
 	}
