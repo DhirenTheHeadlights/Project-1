@@ -17,7 +17,6 @@
 #include "TextDisplayBox_PG.h"
 #include "TextInpuBox_PG.h"
 #include "DropDown_PG.h"
-#include "InteractableTextures_PG.h"
 
 namespace PirateGame {
 	class Menu {
@@ -80,8 +79,6 @@ namespace PirateGame {
 
 		// GameStateManager
 		GameStateManager* GSM = nullptr;
-
-		InteractableTextureHandler interactableTextures;
 
 		// Helper function to convert a float to a string with a set number of decimal places
 		std::string floatToString(float number, int decimalPlaces = 2) {

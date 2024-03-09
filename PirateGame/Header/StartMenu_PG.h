@@ -7,17 +7,12 @@
 namespace PirateGame {
 	class StartMenu : public Menu {
 	public:
-		StartMenu() : Menu() {
-			buttonSprite.setTexture(interactableTextures.getBlackGrayButton());
-		};
+		StartMenu() : Menu() {};
 		~StartMenu() {};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
-
 	private:
-
-		sf::Sprite buttonSprite;
 	};
 }

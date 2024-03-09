@@ -245,6 +245,7 @@
     <ClInclude Include="PirateGame\Header\EnemyShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShip_PG.h" />
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />

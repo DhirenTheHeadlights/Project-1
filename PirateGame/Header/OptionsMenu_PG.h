@@ -43,6 +43,7 @@ namespace PirateGame {
 		// Menu items
 		sf::RectangleShape tabBar;
 		sf::Vector2f tabSize = sf::Vector2f(200.0f, 50.0f);
+		sf::Vector2f tabScale = sf::Vector2f(3.0f, 1.0f);
 
 		// Menu tabs
 		std::vector<std::unique_ptr<Button>> tabButtons;

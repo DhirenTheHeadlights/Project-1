@@ -69,6 +69,7 @@ namespace PirateGame {
 		bool isColliding = true;
 		bool stopShipRotationFlag = false;
 		bool dropAnchor = false;
+		bool anchorPushBack = false;
 		bool windSpeedApplied = false;
 		bool initialPositionSet = false;
 

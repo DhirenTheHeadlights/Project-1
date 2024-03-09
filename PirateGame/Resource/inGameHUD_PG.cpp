@@ -132,22 +132,23 @@ void InGameHUD::setInteractablePositions() {
 	healthText.setString("Health: " + std::to_string(static_cast<int>(healthFraction)));
 
 	// Set the settings button to be in the top left corner
-	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreenSprite.getPosition().y));
+	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + interactables[0]->getSprite().getGlobalBounds().width / 2, 
+		healthBarGreenSprite.getPosition().y + interactables[0]->getSprite().getGlobalBounds().height / 2));
 
 	// Set the mini map to be in the top right corner
 	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - minimap.getMinimapRadius() * 2 - padding, healthBarGreenSprite.getPosition().y));
 
 	// Set the position of the info boxes to be below the settings button on the left side
 	for (int i = 0; i < shipPropertiesLeftSide.size(); i++) {
-		float x = HUDView.getCenter().x - window->getSize().x / 2u + padding;
-		float y = interactables[0]->getPosition().y + interactables[0]->getBackground().getSize().y + padding + i * (shipPropertiesLeftSide[i]->getBackground().getSize().y + padding);
+		float x = HUDView.getCenter().x - window->getSize().x / 2u + shipPropertiesLeftSide[i]->getSprite().getGlobalBounds().width / 2;
+		float y = interactables[0]->getPosition().y + interactables[0]->getSprite().getGlobalBounds().height + padding + i * (shipPropertiesLeftSide[i]->getSprite().getGlobalBounds().height + padding);
 		shipPropertiesLeftSide[i]->setPosition(sf::Vector2f(x, y));
 	}
 
 	// Set the position of the info boxes to be below the mini map on the right side
 	for (int i = 0; i < shipPropertiesRightSide.size(); i++) {
-		float x = HUDView.getCenter().x + window->getSize().x / 2u - padding - shipPropertiesRightSide[i]->getBackground().getSize().x;
-		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + i * (shipPropertiesRightSide[i]->getBackground().getSize().y + padding);
+		float x = HUDView.getCenter().x + window->getSize().x / 2u - shipPropertiesRightSide[i]->getSprite().getGlobalBounds().width / 2;
+		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + shipPropertiesRightSide[i]->getSprite().getGlobalBounds().height / 2 + i * (shipPropertiesRightSide[i]->getSprite().getGlobalBounds().height + padding);
 		shipPropertiesRightSide[i]->setPosition(sf::Vector2f(x, y));
 	}
 

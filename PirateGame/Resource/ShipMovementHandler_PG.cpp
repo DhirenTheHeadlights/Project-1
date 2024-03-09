@@ -38,6 +38,10 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 		else if (speed > (baseSpeed + windEffect)) speed -= acceleration * elapsedTime;
 
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
+
+		// Set the anchor push back flag to be false. This will reset the flag so it can
+		// be set to true again if the anchor is dropped.
+		anchorPushBack = false;
 	}
 
 	if (dropAnchor) {
@@ -46,9 +50,17 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 		// Here, we are going to specify a speed value that will be subtracted from the speed when 
 		// the speed goes to 0. This will create a "backwards" effect as the negative speed will
 		// slowly come back up to 0. This is to simulate the ship pulling back from the anchor
-		const float speedMin = -10.f;
+		const float speedMin = -20.f;
+		const float reacceleration = 10.f;
 		if (speed > 0) speed -= deceleration * elapsedTime;
-		else speed = 0;
+
+		else if (speed < 0.01f && !anchorPushBack) {
+			speed = speedMin;
+			anchorPushBack = true;
+			std::cout << "Speed: " << speed << std::endl;
+		}
+
+		else if (speed < 0) speed += reacceleration * elapsedTime; // This will bring the speed back up to 0
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 

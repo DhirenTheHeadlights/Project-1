@@ -46,7 +46,8 @@ void OptionsMenu::setInteractablePositions() {
 	// Set the positions of the tabs
 	sf::Vector2f tabPosition = sf::Vector2f(menu.getPosition().x, menu.getPosition().y);
 	for (auto& tab : tabButtons) {
-		tab->setPosition(tabPosition);
+		tab->getSprite().setScale(tabScale);
+		tab->setPosition(tabPosition + tab->getSprite().getGlobalBounds().getSize());
 		tabPosition.x += tabSize.x;
 	}
 
@@ -267,11 +268,6 @@ void OptionsMenu::draw() {
 	// Draw the tabs
 	for (auto& tab : tabButtons) {
 		// Set the color of the tabs
-		tab->setBackgroundColor(sf::Color::Transparent);
-		tab->setForegroundColor(textColor);
-		tab->setFrameColor(sf::Color::Transparent);
-		tab->setTextColor(sf::Color::White);
-		tab->updateColors();
 		tab->draw();
 	}
 

@@ -7,6 +7,7 @@
 #include <functional>
 
 #include "GlobalValues_PG.h"
+#include "GlobalTextureHandler_PG.h"
 
 namespace PirateGame {
 	class Interactable {
@@ -15,8 +16,11 @@ namespace PirateGame {
 			window = GlobalValues::getInstance().getWindow();
 			font = GlobalValues::getInstance().getFont();
 
-			
+			sprite.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton());
+			sprite.setScale(7.f, 7.f);
+			sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
 		};
+
 		~Interactable() {};
 
 		virtual void createInteractable(sf::Vector2f size);
@@ -39,13 +43,15 @@ namespace PirateGame {
 		void setTextColor(sf::Color color) { this->textColor = color; }
 		void setOutlineThickness(float thickness) { this->outlineThickness = thickness; }
 		void setPadding(float padding) { this->padding = padding; }
-		void setSprite(sf::Sprite& sprite) { this->sprite = sprite; }
+		void setTexture(sf::Texture& texture) { this->texture = texture; sprite.setTexture(texture); }
 
 		// Getters for properties
 		sf::Text& getText() { return text; }
 		sf::RectangleShape& getBackground() { return background; }
 		sf::RectangleShape& getForeground() { return foreground; }
 		sf::RectangleShape& getFrame() { return frame; }
+
+		sf::Sprite& getSprite() { return sprite; }
 
 		sf::Vector2f getPosition() const { return position; }
 		sf::Vector2f getSize() const { return size; }
@@ -63,6 +69,7 @@ namespace PirateGame {
 
 		// Objects
 		sf::Sprite sprite;
+		sf::Texture texture;
 		sf::RectangleShape background;
 		sf::RectangleShape foreground;
 		sf::RectangleShape frame;

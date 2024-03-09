@@ -624,6 +624,9 @@
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

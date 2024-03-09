@@ -19,19 +19,17 @@ void StartMenu::setUpMenu() {
 	// Add the interactables to the menu and set their positions
 	addInteractablesToMenu();
 	setInteractablePositions();
-
-	for (auto& i : interactables) {
-		i->setSprite(buttonSprite);
-	}
 }
 
 // Set the position of the interactables
 void StartMenu::setInteractablePositions() {
 	// Set the positions of the interactables to be in the bottom right of the screen
-	sf::Vector2f position = sf::Vector2f(window->getSize().x - size.x - 10, window->getSize().y - size.y - 10);
+	float padding = 10.f;
+	sf::Vector2f position = sf::Vector2f(window->getSize().x - interactables[0]->getSprite().getGlobalBounds().width / 2 - padding,
+							window->getSize().y - interactables[0]->getSprite().getGlobalBounds().height / 2 - padding);
 	for (auto& interactable : interactables) {
 		interactable->setPosition(position);
-		position.y -= interactableSize.y + 10;
+		position.y -= interactableSize.y + padding;
 	}
 }
 
