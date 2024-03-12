@@ -2,18 +2,15 @@
 
 using namespace PirateGame;
 
-void Interactable::createInteractable(sf::Vector2f size) {
-	this->size = size;
+void Interactable::createInteractable(sf::Texture& texture, sf::Text& title, sf::Vector2f scale) {
+	this->text = title;
+	this->texture = texture;
+	this->name = title.getString();
+	sprite.setTexture(texture);
+	sprite.setScale(scale);
+	sprite.setOrigin(sf::Vector2f(texture.getSize().x / 2, texture.getSize().y / 2));
 
-	// Set the size of all the interactable objects
-	background.setSize(size);
-	frame.setSize(size);
-	foreground.setSize(sf::Vector2f(size.x - padding * 2, size.y - padding * 2));
-	text.setCharacterSize(static_cast<unsigned int>(size.y / 3));
-	text.setFont(font);
-
-	// Set the color of the interactable objects
-	updateColors();
+	customInteractableSetUp();
 }
 
 void Interactable::draw() {
@@ -22,18 +19,8 @@ void Interactable::draw() {
 	window->draw(text);
 }
 
-void Interactable::updateColors() {
-	background.setFillColor(backgroundColor);
-	foreground.setFillColor(foregroundColor);
-	frame.setFillColor(frameColor);
-	frame.setOutlineColor(frameColor);
-	frame.setOutlineThickness(outlineThickness);
-	text.setFillColor(textColor); 
-}
-
 void Interactable::setPosition(sf::Vector2f pos) {
-	this->position = pos;
 	sprite.setPosition(pos);
 	// Set the text to be in the center of the sprite
-	text.setPosition(sf::Vector2f(position.x - text.getGlobalBounds().width / 2, position.y - text.getGlobalBounds().height / 2));
+	text.setPosition(sf::Vector2f(pos.x - text.getGlobalBounds().width / 2, pos.y - text.getGlobalBounds().height / 2));
 }

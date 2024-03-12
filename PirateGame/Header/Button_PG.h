@@ -20,6 +20,7 @@ namespace PirateGame {
 		~Button() {};
 
 		void interact() override; // Overridden function to handle the interaction of the button
+		void customInteractableSetUp() override {}; // Need it but does nothing for now
 		void interactOnce();
 		void interactHold();
 

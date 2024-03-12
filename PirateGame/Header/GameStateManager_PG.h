@@ -16,12 +16,23 @@ namespace PirateGame {
 	class GameStateManager {
 	public:
 		// Change the GameState
-		void changeGameState(GameState gameState) { this->currGameState = gameState; }
+		void changeGameState(GameState gameState) { 
+			this->currGameState = gameState;
+			if (gameState == GameState::GameLoop) {
+				gameStarted = true;
+			}
+		}
 
 		// Grab the GameState
 		GameState& getCurrentGameState() { return currGameState; }
+
+		// Check if the game has started
+		bool hasGameStarted() const { return gameStarted; }
 	private:
 		// Variable that stores the GameState
 		GameState currGameState;
+
+		// Track if the game has started
+		bool gameStarted = false;
 	};
 }

@@ -12,39 +12,39 @@ namespace PirateGame {
 		~DropDown() {};
 
 		// Set up the drop down menu
-		void createInteractable(sf::Vector2f size) override;
+		void customInteractableSetUp() override;
 		void interact() override;
 		void draw() override;
 		void openDropDown();
-		void updateColors() override;
 
 		// Setters
 		void setPosition(sf::Vector2f pos) override;
-
+		void setOptionsBoxSprite(sf::Texture& texture, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) {
+			for (auto& optionSprite : optionSprites) {
+				optionSprite.setTexture(texture);
+				optionSprite.setScale(scale);
+			}
+		}
 		// Setters for colors
-		void setSelectedColor(sf::Color color) { this->selectedColor = color; }
-		void setOptionColor(sf::Color color) { this->optionColor = color; }
-		void setOptionOutlineColor(sf::Color color) { this->optionOutlineColor = color; }
 		void setOptionTextColor(sf::Color color) { this->optionTextColor = color; }
 
 	private:
 		// Variables
 		std::vector<std::pair<std::function<void()>, std::string>> options;
 		sf::Text selectedText;
+
 		sf::Clock cooldown;
+		sf::Time cooldownTime = sf::milliseconds(100);
+
 		bool isOpen = false;
 		bool wasButtonPressed = false;
 
 		// Drop down menu objects
 		std::vector<sf::Text> optionTexts;
-		std::vector<sf::RectangleShape> optionBoxes;
+		std::vector<sf::Sprite> optionSprites;
 
 		// Colors
-		sf::Color selectedColor = sf::Color(100, 100, 150, 200);
-		sf::Color optionColor = sf::Color(0, 0, 0, 150);
-		sf::Color optionOutlineColor = sf::Color(255, 255, 255);
 		sf::Color optionTextColor = sf::Color::White;
-		sf::Color optionsBackgroundColor = foregroundColor;
 	};
 }
 

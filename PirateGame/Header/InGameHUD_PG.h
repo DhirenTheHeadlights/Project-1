@@ -7,16 +7,16 @@
 #include "Menu_PG.h"
 #include "PlayerShip_PG.h"
 #include "Minimap_PG.h"
-#include "HUDTextures_PG.h"
+#include "GlobalTextureHandler_PG.h"
 
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
 		InGameHUD() {
-			healthBarGreenSprite.setTexture(hudTextures.getHealthBarGreen());
+			healthBarGreenSprite.setTexture(GlobalTextureHandler::getInstance().getHUDTextures().getHealthBarGreen());
 			healthBarGreenSprite.setScale(healthBarScale);
 
-			healthBarRedSprite.setTexture(hudTextures.getHealthBarRed());
+			healthBarRedSprite.setTexture(GlobalTextureHandler::getInstance().getHUDTextures().getHealthBarRed());
 			healthBarRedSprite.setScale(healthBarScale);
 		};
 
@@ -43,6 +43,7 @@ namespace PirateGame {
 		sf::Sprite healthBarRedSprite;
 
 		sf::Vector2f healthBarScale = { 11, 4 };
+		sf::Vector2f settingsScale = { 0.8f, 0.8f };
 
 		sf::VertexArray windVector;
 		sf::CircleShape windCircle;
@@ -51,7 +52,6 @@ namespace PirateGame {
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesLeftSide;
 		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesRightSide;
 
-		HUDTextureHandler hudTextures;
 		Minimap minimap;
 
 		float minimapSize = 100.f;

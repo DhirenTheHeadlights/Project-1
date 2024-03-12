@@ -4,17 +4,12 @@ using namespace PirateGame;
 
 // Set up the start menu
 void StartMenu::setUpMenu() {
-	// Set up the background rectangle
-	backgroundRect = sf::RectangleShape(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
-	backgroundRect.setFillColor(backgroundColor);
+	// Set up the background sprite
+
 
 	// Set the title of the menu
 	titleText = sf::Text("DNS PIRATE GAME ADVENTURE", font, static_cast<unsigned int>(100.f));
-	titleText.setPosition(backgroundRect.getSize().x / 2 - titleText.getGlobalBounds().width / 2, 100);
-
-	// Set the size of the menu
-	size = sf::Vector2f(400, 200);
-	interactableSize = sf::Vector2f(200, 100);
+	titleText.setPosition(background.getGlobalBounds().width / 2 - titleText.getGlobalBounds().width / 2, 100);
 
 	// Add the interactables to the menu and set their positions
 	addInteractablesToMenu();
@@ -29,7 +24,7 @@ void StartMenu::setInteractablePositions() {
 							window->getSize().y - interactables[0]->getSprite().getGlobalBounds().height / 2 - padding);
 	for (auto& interactable : interactables) {
 		interactable->setPosition(position);
-		position.y -= interactableSize.y + padding;
+		position.y += interactable->getSprite().getGlobalBounds().height + padding;
 	}
 }
 
@@ -40,22 +35,20 @@ void StartMenu::addInteractablesToMenu() {
 
 	// Create the start button
 	std::function<void()> startFunc = [this]() { GSM->changeGameState(GameState::GameLoop); };
-	std::unique_ptr<Button> startButton = std::make_unique<Button>(startFunc);
-	startButton->createInteractable(interactableSize);
-	startButton->setString("Start");
-	addInteractableToMenu(std::move(startButton));
+	setUpInteractable(startFunc, sf::Text("Start", font, textSize), interactableScale);
 
 	// Create the settings button
 	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
-	std::unique_ptr<Button> settingsButton = std::make_unique<Button>(settingsFunc);
-	settingsButton->createInteractable(interactableSize);
-	settingsButton->setString("Settings");
-	addInteractableToMenu(std::move(settingsButton));
+	setUpInteractable(settingsFunc, sf::Text("Settings", font, textSize), interactableScale);
 
-	// Create the exit button
-	std::function<void()> endFunc = [this]() { GSM->changeGameState(GameState::End); };
-	std::unique_ptr<Button> exitButton = std::make_unique<Button>(endFunc);
-	exitButton->createInteractable(interactableSize);
-	exitButton->setString("Exit");
-	addInteractableToMenu(std::move(exitButton));
+	// Create the quit button
+	std::function<void()> quitFunc = [this]() { GSM->changeGameState(GameState::End); };
+	setUpInteractable(quitFunc, sf::Text("Quit", font, textSize), interactableScale);
+}
+
+// Helper interactable set up function
+void StartMenu::setUpInteractable(std::function<void()> function, sf::Text name, sf::Vector2f scale) {
+	std::unique_ptr<Button> button = std::make_unique<Button>(function);
+	button->createInteractable(GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton(), name);
+	addInteractableToMenu(std::move(button));
 }

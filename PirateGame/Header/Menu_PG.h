@@ -54,8 +54,8 @@ namespace PirateGame {
 		sf::RenderWindow* window = nullptr;
 
 		// Menu items
-		sf::RectangleShape backgroundRect;
-		sf::RectangleShape menu;
+		sf::Sprite background;
+		sf::Sprite menu;
 
 		// Menu interactables
 		std::vector<std::unique_ptr<Interactable>> interactables;
@@ -65,17 +65,14 @@ namespace PirateGame {
 		sf::Text titleText;
 
 		// Menu properties
-		sf::Vector2f size = sf::Vector2f(1000.0f, 500.0f);
-		sf::Vector2f interactableSize = sf::Vector2f(100.0f, 50.0f);
-		float textSize = 20.0f;
-		float padding = 10.0f;
+		sf::Vector2f backgroundScale = { 1, 1 };
+		sf::Vector2f menuScale = { 1, 1 };
 
-		// Menu colors
-		sf::Color backgroundColor = sf::Color(0, 0, 0, 200);
-		sf::Color textColor = sf::Color(150, 150, 200, 200);
-		sf::Color interactableColor = sf::Color(0, 0, 0, 200);
-		sf::Color interactableTextColor = sf::Color::White;
-		sf::Color hoverColor = sf::Color(0, 0, 0, 100);
+		sf::Color textColor = sf::Color(0, 0, 0, 200); // Black
+		
+		unsigned textSize = 20u;
+		unsigned interactableTextSize = 10u;
+		float padding = 10.0f;
 
 		// GameStateManager
 		GameStateManager* GSM = nullptr;

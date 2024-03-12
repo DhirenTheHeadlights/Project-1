@@ -8,13 +8,19 @@ namespace PirateGame {
 	class InteractableTextureHandler : public TextureHandler {
 	public:
 		InteractableTextureHandler() {
-			BlackGrayButton.loadFromFile("PirateGameSprites/Interactable_basic_gray_black.png");
+			blackGrayButton.loadFromFile("PirateGameSprites/Interactable_basic_gray_black.png");
+			sliderThumb.loadFromFile("PirateGameSprites/slider_thumb.png");
+			sliderTrack.loadFromFile("PirateGameSprites/slider_track.png");
 		}
 		~InteractableTextureHandler() {};
 
 		// Getters
-		sf::Texture& getBlackGrayButton() { return BlackGrayButton; }
+		sf::Texture& getBlackGrayButton() { return blackGrayButton; }
+		sf::Texture& getSliderThumb() { return sliderThumb; }
+		sf::Texture& getSliderTrack() { return sliderTrack; }
 	private:
-		sf::Texture BlackGrayButton;
+		sf::Texture blackGrayButton;
+		sf::Texture sliderThumb;
+		sf::Texture sliderTrack;
 	};
 }

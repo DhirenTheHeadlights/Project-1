@@ -39,7 +39,7 @@ World::World(sf::RenderWindow* window_in) {
 
 void World::setUpWorld() {
 	playerShip.setUpShip(ShipClass::Frigate);
-	LMHandler->addLandMasses(static_cast<float>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
+	LMHandler->addLandMasses(static_cast<float>(GlobalValues::getInstance().getMapSize().x / 100), GlobalValues::getInstance().getMapSize().x / 40.f);
 
 	// Set the ship to a rand pos
 	sf::Vector2f randPos = GlobalValues::getInstance().getMap().getRandomPosition();

@@ -13,6 +13,9 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
+		void setUpInteractable(std::function<void()> function, sf::Text name, sf::Vector2f scale);
 	private:
+		// Menu parameters
+		sf::Vector2f interactableScale = { 1.0f, 1.0f };
 	};
 }

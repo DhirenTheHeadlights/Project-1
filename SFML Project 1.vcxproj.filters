@@ -92,9 +92,6 @@
     <Filter Include="Source Files\PirateGame\Header\Menus\Interactables">
       <UniqueIdentifier>{3aea67d1-c4ac-4fff-8243-069954349ca9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PirateGame\Resource\Menus\Interactables">
-      <UniqueIdentifier>{aee0c4e9-d1f5-4b71-8308-851c11c16a77}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\PirateGame\Header\Menus\Specific Menus">
       <UniqueIdentifier>{f86961d1-4727-4511-b093-6828b75f8f7b}</UniqueIdentifier>
     </Filter>
@@ -178,6 +175,18 @@
     </Filter>
     <Filter Include="Source Files\PirateGame\Sprites\HUD">
       <UniqueIdentifier>{eb470bdd-348d-4280-8988-9ede249d7ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Market">
+      <UniqueIdentifier>{69218814-f036-4e37-9b92-cbc05c661048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\OptionsMenu">
+      <UniqueIdentifier>{69833923-55a9-4a51-b644-93736bb119e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Menus\General">
+      <UniqueIdentifier>{569c305a-83df-4c73-897b-cbf7da8ab774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Menus\Specific Interactables">
+      <UniqueIdentifier>{aee0c4e9-d1f5-4b71-8308-851c11c16a77}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -281,22 +290,16 @@
       <Filter>Source Files\PirateGame\Resource\Game World</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Interactables</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Interactables</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\TextDisplayBox_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Interactables</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\TextInpuBox_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\Menu_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus</Filter>
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Interactables</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\StartMenu_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
@@ -305,7 +308,7 @@
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Menus\Interactables</Filter>
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Interactables</Filter>
     </ClCompile>
     <ClCompile Include="Platformer Game\Resource\Player_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
@@ -393,6 +396,12 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\PlayerShipMovementHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Ship\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Menu_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\General</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -627,6 +636,12 @@
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\OptionsMenuTextureHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\MarketTextureHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -725,6 +740,69 @@
     </Image>
     <Image Include="PirateGameSprites\Interactable_basic_gray_black.png">
       <Filter>Source Files\PirateGame\Sprites\Interactables</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\settings_button.png">
+      <Filter>Source Files\PirateGame\Sprites\HUD</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_middle_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_menu.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_left_right_navigation.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_interactable_far_left_right_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_buy_sell_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_bottom_right_left.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\slider_track.png">
+      <Filter>Source Files\PirateGame\Sprites\Interactables</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\slider_thumb.png">
+      <Filter>Source Files\PirateGame\Sprites\Interactables</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\options_menu_background.png">
+      <Filter>Source Files\PirateGame\Sprites\OptionsMenu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\options_menu_button_gray_left.png">
+      <Filter>Source Files\PirateGame\Sprites\OptionsMenu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\options_menu_drop_down_right_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\OptionsMenu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\options_menu_tab.png">
+      <Filter>Source Files\PirateGame\Sprites\OptionsMenu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\options_menu_right_interactable.png">
+      <Filter>Source Files\PirateGame\Sprites\OptionsMenu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\HUD_info_icon.png">
+      <Filter>Source Files\PirateGame\Sprites\HUD</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\enter_island_menu_button.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\enter_island_menu_initial.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\island_banner.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_top_middle_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_bottom_middle.png">
+      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

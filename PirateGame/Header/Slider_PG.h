@@ -13,25 +13,26 @@ using SliderFunction = std::function<void(float value)>;
 namespace PirateGame {
 	class Slider : public Interactable {
 	public:
-		Slider(SliderFunction func) : func(func) {};
+		Slider(SliderFunction func) : func(func) {
+			// For now, we are going to load default thumb and track textures
+			// We will need to change this to be more flexible
+			sliderTrack.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getSliderTrack());
+			sliderThumb.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getSliderThumb());
+		};
 		~Slider() {};
 
-		void createInteractable(sf::Vector2f size) override;
+		void customInteractableSetUp() override;
 		void interact() override;
 		void draw() override;
-		void setPosition(sf::Vector2f pos) override;	
-
-		// Setters for properties
-		void setSliderThumbSize(sf::Vector2f size) { sliderThumb.setSize(size); }
-		void setSliderThumbColor(sf::Color color) { sliderThumb.setFillColor(color); }
-		void setSliderThumbPosition(sf::Vector2f pos) { sliderThumb.setPosition(pos); }
+		void setPosition(sf::Vector2f pos) override;
 
 	private:
 		SliderFunction func;
 
-		float defaultValue = 50.0f;
+		float value = 0.5f; // Default value
 
-		sf::RectangleShape sliderThumb;
+		sf::Sprite sliderTrack;
+		sf::Sprite sliderThumb;
 	};
 }
 

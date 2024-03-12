@@ -257,9 +257,11 @@
     <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMass_PG.h" />
+    <ClInclude Include="PirateGame\Header\MarketTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\MenuHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Menu_PG.h" />
     <ClInclude Include="PirateGame\Header\Minimap_PG.h" />
+    <ClInclude Include="PirateGame\Header\OptionsMenuTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
@@ -298,11 +300,29 @@
     <Media Include="Sounds\cannonshot.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="PirateGameSprites\enter_island_menu_button.png" />
+    <Image Include="PirateGameSprites\enter_island_menu_initial.png" />
     <Image Include="PirateGameSprites\health_bar_green.png" />
     <Image Include="PirateGameSprites\health_bar_red.png" />
+    <Image Include="PirateGameSprites\HUD_info_icon.png" />
     <Image Include="PirateGameSprites\Interactable_basic_gray_black.png" />
+    <Image Include="PirateGameSprites\island_banner.png" />
+    <Image Include="PirateGameSprites\market_bottom_middle.png" />
+    <Image Include="PirateGameSprites\market_bottom_right_left.png" />
+    <Image Include="PirateGameSprites\market_buy_sell_dark_gray.png" />
+    <Image Include="PirateGameSprites\market_interactable_far_left_right_dark_gray.png" />
+    <Image Include="PirateGameSprites\market_left_right_navigation.png" />
+    <Image Include="PirateGameSprites\market_menu.png" />
+    <Image Include="PirateGameSprites\market_middle_dark_gray.png" />
+    <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png" />
+    <Image Include="PirateGameSprites\market_top_middle_dark_gray.png" />
     <Image Include="PirateGameSprites\minimap_ship_icon.png" />
     <Image Include="PirateGameSprites\minimap_sprite.png" />
+    <Image Include="PirateGameSprites\options_menu_background.png" />
+    <Image Include="PirateGameSprites\options_menu_button_gray_left.png" />
+    <Image Include="PirateGameSprites\options_menu_drop_down_right_gray.png" />
+    <Image Include="PirateGameSprites\options_menu_right_interactable.png" />
+    <Image Include="PirateGameSprites\options_menu_tab.png" />
     <Image Include="PirateGameSprites\pg_island_1.png" />
     <Image Include="PirateGameSprites\pg_island_2.png" />
     <Image Include="PirateGameSprites\pg_misc_cannonball.png" />
@@ -320,6 +340,9 @@
     <Image Include="PirateGameSprites\pg_ship_galleon.png" />
     <Image Include="PirateGameSprites\pg_ship_manowar.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop.png" />
+    <Image Include="PirateGameSprites\settings_button.png" />
+    <Image Include="PirateGameSprites\slider_thumb.png" />
+    <Image Include="PirateGameSprites\slider_track.png" />
     <Image Include="PlatformerGameSprites\stupidnicktankdog.png" />
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,6 @@ void Menu::addInteractableToMenu(std::unique_ptr<Interactable> interactable) {
 // Draw the menu
 void Menu::draw() {
 	// Draw the menu items
-	window->draw(backgroundRect);
 	window->draw(menu);
 	window->draw(titleText);
 

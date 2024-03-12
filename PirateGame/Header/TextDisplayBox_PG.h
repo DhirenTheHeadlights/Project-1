@@ -14,6 +14,7 @@ namespace PirateGame {
 
 		// Have to define but it doesn't do anything
 		void interact() override {};
+		void customInteractableSetUp() override {};
 	private:
 
 	};

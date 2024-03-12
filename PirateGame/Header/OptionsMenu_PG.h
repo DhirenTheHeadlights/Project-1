@@ -19,19 +19,7 @@ namespace PirateGame {
 		~OptionsMenu() {};
 
 		void setUpMenu() override;
-		void setInteractablePositions() override;
-		void setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
-		void addInteractablesToMenu() override;
 		void draw() override;
-		void drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
-		void interactWithMenuItems() override;
-
-		// Add interactables to the tabs
-		void addGeneralTabInteractables();
-		void addGraphicsTabInteractables();
-		void addAudioTabInteractables();
-		void addControlsTabInteractables();
-
 	private:
 		// Menu variables
 		Tab currentTab = Tab::General;
@@ -40,12 +28,37 @@ namespace PirateGame {
 		std::vector<std::unique_ptr<Interactable>> audioTabInteractables;
 		std::vector<std::unique_ptr<Interactable>> controlsTabInteractables;
 
-		// Menu items
-		sf::RectangleShape tabBar;
-		sf::Vector2f tabSize = sf::Vector2f(200.0f, 50.0f);
-		sf::Vector2f tabScale = sf::Vector2f(3.0f, 1.0f);
-
 		// Menu tabs
 		std::vector<std::unique_ptr<Button>> tabButtons;
+
+		// Helper functions
+		void setInteractablePositions() override;
+		void setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+		void addInteractablesToMenu() override;
+		void drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+		void interactWithMenuItems() override;
+
+		void addTabInteractable(std::function<void()> function, std::string name);
+		void addDropDownInteractable(std::vector<std::pair<std::function<void()>, std::string>> options, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+		void addSliderInteractable(std::function<void(float value)> function, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+		void addButtonInteractable(std::function<void()> function, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+
+		// Add interactables to the tabs
+		void addGeneralTabInteractables();
+		void addGraphicsTabInteractables();
+		void addAudioTabInteractables();
+		void addControlsTabInteractables();
+
+		// Very specifc values for setting the positions of the Interactables
+		const float tabButtonX = 4.f;
+		const float tabButtonY = 4.f;
+
+		const float leftColumnX = 4.f;
+		const float leftColumnY = 100.f;
+
+		const float rightColumnX = 400.f;
+		const float rightColumnY = 100.f;
+
+		const float rowSpacing = 2.f;
 	};
 }
