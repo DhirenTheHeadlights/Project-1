@@ -25,6 +25,7 @@ namespace PirateGame {
 				optionSprite.setScale(scale);
 			}
 		}
+
 		// Setters for colors
 		void setOptionTextColor(sf::Color color) { this->optionTextColor = color; }
 

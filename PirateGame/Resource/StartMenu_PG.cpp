@@ -9,7 +9,7 @@ void StartMenu::setUpMenu() {
 
 	// Set the title of the menu
 	titleText = sf::Text("DNS PIRATE GAME ADVENTURE", font, static_cast<unsigned int>(100.f));
-	titleText.setPosition(background.getGlobalBounds().width / 2 - titleText.getGlobalBounds().width / 2, 100);
+	titleText.setPosition(window->getSize().x / 2 - titleText.getGlobalBounds().getSize().x / 2, window->getSize().x / 8);
 
 	// Add the interactables to the menu and set their positions
 	addInteractablesToMenu();
@@ -19,9 +19,8 @@ void StartMenu::setUpMenu() {
 // Set the position of the interactables
 void StartMenu::setInteractablePositions() {
 	// Set the positions of the interactables to be in the bottom right of the screen
-	float padding = 10.f;
-	sf::Vector2f position = sf::Vector2f(window->getSize().x - interactables[0]->getSprite().getGlobalBounds().width / 2 - padding,
-							window->getSize().y - interactables[0]->getSprite().getGlobalBounds().height / 2 - padding);
+	sf::Vector2f position = sf::Vector2f(window->getSize().x - interactables[0]->getSprite().getGlobalBounds().width - padding,
+							window->getSize().y - interactables.size() * (interactables[0]->getSprite().getGlobalBounds().height + padding));
 	for (auto& interactable : interactables) {
 		interactable->setPosition(position);
 		position.y += interactable->getSprite().getGlobalBounds().height + padding;
@@ -49,6 +48,6 @@ void StartMenu::addInteractablesToMenu() {
 // Helper interactable set up function
 void StartMenu::setUpInteractable(std::function<void()> function, sf::Text name, sf::Vector2f scale) {
 	std::unique_ptr<Button> button = std::make_unique<Button>(function);
-	button->createInteractable(GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton(), name);
+	button->createInteractable(GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton(), name, scale);
 	addInteractableToMenu(std::move(button));
 }

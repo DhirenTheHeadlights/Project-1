@@ -9,7 +9,8 @@ enum class Tab {
 	General,
 	Graphics,
 	Audio,
-	Controls
+	Controls,
+	Extra
 };
 
 namespace PirateGame {
@@ -50,15 +51,10 @@ namespace PirateGame {
 		void addControlsTabInteractables();
 
 		// Very specifc values for setting the positions of the Interactables
-		const float tabButtonX = 4.f;
-		const float tabButtonY = 4.f;
-
-		const float leftColumnX = 4.f;
-		const float leftColumnY = 100.f;
-
-		const float rightColumnX = 400.f;
-		const float rightColumnY = 100.f;
-
+		const sf::Vector2f tabButtonPosition = sf::Vector2f(4.f, 2.f);
+		const sf::Vector2f leftColumnPosition = sf::Vector2f(4.f, 100.f);
+		const sf::Vector2f rightColumnPosition = sf::Vector2f(400.f, 100.f);
+		const sf::Vector2f leftBounds = sf::Vector2f(400.f, 100.f);
 		const float rowSpacing = 2.f;
 	};
 }

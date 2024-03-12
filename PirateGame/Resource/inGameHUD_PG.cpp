@@ -6,6 +6,8 @@ void InGameHUD::setUpMenu() {
 	healthText = sf::Text("Health: " + std::to_string(static_cast<int>(healthFraction)), font, 20);
 	healthText.setFillColor(sf::Color::Black);
 
+	interactableTextSize = 20;
+
 	// Set up the minimap
 	minimap.setMinimapRadius(minimapSize);
 
@@ -44,7 +46,7 @@ void InGameHUD::addInteractablesToMenu() {
 void InGameHUD::addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination) {
 	std::unique_ptr<TextDisplayBox> infoBox = std::make_unique<TextDisplayBox>();
 	sf::Text infoText = sf::Text(text, font, interactableTextSize);
-	infoBox->createInteractable(GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), infoText);
+	infoBox->createInteractable(GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), infoText, infoBoxScale);
 	destination.push_back(std::move(infoBox));
 }
 
@@ -53,11 +55,11 @@ void InGameHUD::updateShipPropertiesString() {
 	/// Left side of the HUD
 
 	// Update the firing side indicator
-	std::string firingSide = "Firing Side: ";
-	firingSide += ship->getCannonHandler().getFiringSide() == FiringSide::Port ? "Port" : "Starboard";
+	std::string firingSide = "Firing Side: " + std::string(ship->getCannonHandler().getFiringSide() == FiringSide::Port ? "Port" : "Starboard");
+	shipPropertiesLeftSide[0]->getText().setString(firingSide);
 
 	// Update the manual aim indicator
-	std::string manualAim = "Manual Aim: " +  ship->getCannonHandler().getAimTowardsMouse() ? "On" : "Off";
+	std::string manualAim = "Manual Aim: " + std::string(ship->getCannonHandler().getAimTowardsMouse() ? "On" : "Off");
 	shipPropertiesLeftSide[1]->getText().setString(manualAim + " [" + ship->getInputHandler().getManualAimKeyString() + "]");
 
 	// Update the ship type indicator
@@ -65,7 +67,7 @@ void InGameHUD::updateShipPropertiesString() {
 	shipPropertiesLeftSide[2]->getText().setString(shipClass + ship->getShipClassString());
 
 	// Update the anchor drop indicator
-	std::string anchorDrop = "Anchor: " + ship->getMovementHandler().getDroppedAnchor() ? "Down" : "Up";
+	std::string anchorDrop = "Anchor: " + std::string(ship->getMovementHandler().getDroppedAnchor() ? "Down" : "Up");
 	shipPropertiesLeftSide[3]->getText().setString(anchorDrop + " [" + ship->getInputHandler().getAnchorDropKeyString() + "]");
 
 	/// Right side of the HUD
@@ -105,28 +107,27 @@ void InGameHUD::setInteractablePositions() {
 	healthBarRedSprite.setPosition(HUDView.getCenter().x - healthBarRedSprite.getGlobalBounds().getSize().x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);
 	healthBarGreenSprite.setPosition(healthBarRedSprite.getPosition());
 
-	float healthTextX = healthBarGreenSprite.getPosition().x + healthBarRedSprite.getLocalBounds().width / 2 - healthText.getGlobalBounds().getSize().x / 2;
-	float healthTextY = healthBarGreenSprite.getPosition().y + healthBarRedSprite.getLocalBounds().height / 2 - healthText.getGlobalBounds().getSize().y / 2;
+	float healthTextX = healthBarRedSprite.getPosition().x + healthBarRedSprite.getLocalBounds().getSize().x / 2 - healthText.getGlobalBounds().getSize().x / 2;
+	float healthTextY = healthBarRedSprite.getPosition().y + healthBarRedSprite.getLocalBounds().getSize().y / 2 - healthText.getGlobalBounds().getSize().y / 2;
 	healthText.setPosition(healthTextX, healthTextY);
 	healthText.setString("Health: " + std::to_string(static_cast<int>(healthFraction)));
 
 	// Set the settings button to be in the top left corner
-	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + interactables[0]->getSprite().getGlobalBounds().getSize().x / 2 + padding,
-		healthBarGreenSprite.getPosition().y + interactables[0]->getSprite().getGlobalBounds().getSize().y / 2));
+	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreenSprite.getPosition().y));
 
 	// Set the mini map to be in the top right corner
 	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - minimap.getMinimapRadius() * 2 - padding, healthBarGreenSprite.getPosition().y));
 
 	// Set the position of the info boxes to be below the settings button on the left side
 	for (int i = 0; i < shipPropertiesLeftSide.size(); i++) {
-		float x = HUDView.getCenter().x - window->getSize().x / 2u + shipPropertiesLeftSide[i]->getSprite().getGlobalBounds().getSize().x / 2;
+		float x = HUDView.getCenter().x - window->getSize().x / 2u + padding;
 		float y = interactables[0]->getSprite().getPosition().y + interactables[0]->getSprite().getGlobalBounds().getSize().y + padding + i * (shipPropertiesLeftSide[i]->getSprite().getGlobalBounds().getSize().y + padding);
 		shipPropertiesLeftSide[i]->setPosition(sf::Vector2f(x, y));
 	}
 
 	// Set the position of the info boxes to be below the mini map on the right side
 	for (int i = 0; i < shipPropertiesRightSide.size(); i++) {
-		float x = HUDView.getCenter().x + window->getSize().x / 2u - shipPropertiesRightSide[i]->getSprite().getGlobalBounds().getSize().x / 2;
+		float x = HUDView.getCenter().x + window->getSize().x / 2u - shipPropertiesRightSide[i]->getSprite().getGlobalBounds().getSize().x - padding;
 		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + shipPropertiesRightSide[i]->getSprite().getGlobalBounds().getSize().y / 2 + i * (shipPropertiesRightSide[i]->getSprite().getGlobalBounds().getSize().y + padding);
 		shipPropertiesRightSide[i]->setPosition(sf::Vector2f(x, y));
 	}

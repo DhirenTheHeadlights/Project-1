@@ -19,7 +19,7 @@ namespace PirateGame {
 
 		~Interactable() {};
 
-		void createInteractable(sf::Texture& texture, sf::Text& title, sf::Vector2f scale = sf::Vector2f(1.f, 1.f));
+		void createInteractable(sf::Texture& texture, sf::Text& title, sf::Vector2f scale = { 1.f, 1.f });
 		virtual void customInteractableSetUp() = 0;
 		virtual void interact() = 0;
 		virtual void draw();
@@ -27,12 +27,6 @@ namespace PirateGame {
 		// Setters for properties
 		virtual void setPosition(sf::Vector2f pos);
 		void setTextPosition(sf::Vector2f pos) { text.setPosition(pos); }
-
-		// Setters for colors
-		void setTextColor(sf::Color color) { 
-			this->textColor = color; 
-			text.setFillColor(color);
-		}
 
 		// Getters for properties
 		sf::Text& getText() { return text; }

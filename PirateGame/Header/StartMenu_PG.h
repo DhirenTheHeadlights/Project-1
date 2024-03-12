@@ -16,6 +16,6 @@ namespace PirateGame {
 		void setUpInteractable(std::function<void()> function, sf::Text name, sf::Vector2f scale);
 	private:
 		// Menu parameters
-		sf::Vector2f interactableScale = { 1.0f, 1.0f };
+		sf::Vector2f interactableScale = sf::Vector2f(5.f, 5.f);
 	};
 }

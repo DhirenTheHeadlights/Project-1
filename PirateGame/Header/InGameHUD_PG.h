@@ -44,6 +44,7 @@ namespace PirateGame {
 
 		sf::Vector2f healthBarScale = { 11, 4 };
 		sf::Vector2f settingsScale = { 0.8f, 0.8f };
+		sf::Vector2f infoBoxScale = { 0.5f, 0.5f };
 
 		sf::VertexArray windVector;
 		sf::CircleShape windCircle;

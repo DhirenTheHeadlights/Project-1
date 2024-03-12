@@ -18,6 +18,7 @@ namespace PirateGame {
 			// We will need to change this to be more flexible
 			sliderTrack.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getSliderTrack());
 			sliderThumb.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getSliderThumb());
+			sliderThumb.setScale(4.f, 4.f);
 		};
 		~Slider() {};
 
@@ -30,6 +31,7 @@ namespace PirateGame {
 		SliderFunction func;
 
 		float value = 0.5f; // Default value
+		bool isGrabbing = false;
 
 		sf::Sprite sliderTrack;
 		sf::Sprite sliderThumb;

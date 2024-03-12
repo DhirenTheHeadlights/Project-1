@@ -23,10 +23,12 @@ void DropDown::customInteractableSetUp() {
 void DropDown::setPosition(sf::Vector2f pos) {
 	// Set the position of the drop down menu objects
 	sprite.setPosition(pos);
-	text.setPosition(pos.x - text.getGlobalBounds().getSize().x, pos.y - text.getGlobalBounds().getSize().y / 2);
+	text.setPosition(pos.x + sprite.getGlobalBounds().getSize().x / 2 - text.getGlobalBounds().getSize().x / 2, 
+					 pos.y + sprite.getGlobalBounds().getSize().y / 2 - text.getGlobalBounds().getSize().y / 2);
 
 	// Set the selected text to be in the center of the sprite
-	selectedText.setPosition(pos.x - selectedText.getGlobalBounds().getSize().x / 2, pos.y - selectedText.getGlobalBounds().getSize().y / 2);
+	selectedText.setPosition(pos.x + sprite.getGlobalBounds().getSize().x / 2 - selectedText.getGlobalBounds().getSize().x / 2,
+							 pos.y + sprite.getGlobalBounds().getSize().y / 2 - selectedText.getGlobalBounds().getSize().y / 2);
 
 	// Set the position of the options
 	for (int i = 0; i < options.size(); i++) {
