@@ -127,10 +127,10 @@ void OptionsMenu::addGeneralTabInteractables() {
 
 void OptionsMenu::addGraphicsTabInteractables() {
 	// Add the interactables to the graphics tab
-	std::function<void(float value)> brightnessSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
+	std::function<void(float value)> brightnessSliderFunc = [this](float value) { /*Implement later*/ };
 	addSliderInteractable(brightnessSliderFunc, "Brightness", graphicsTabInteractables);
 
-	std::function<void(float value)> contrastSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
+	std::function<void(float value)> contrastSliderFunc = [this](float value) { /*Implement later*/ };
 	addSliderInteractable(contrastSliderFunc, "Contrast", graphicsTabInteractables);
 
 	std::vector<std::pair<std::function<void()>, std::string>> qualityPair;
@@ -138,23 +138,32 @@ void OptionsMenu::addGraphicsTabInteractables() {
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Medium"));
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "High"));
 	addDropDownInteractable(qualityPair, "Quality", graphicsTabInteractables);
+
+	std::vector<std::pair<std::function<void()>, std::string>> vsyncToggle;
+	vsyncToggle.push_back(std::make_pair(std::function<void()>([]() {
+		GlobalValues::getInstance().getWindow()->setVerticalSyncEnabled(true);
+		}), "On"));
+	vsyncToggle.push_back(std::make_pair(std::function<void()>([]() {
+		GlobalValues::getInstance().getWindow()->setVerticalSyncEnabled(false);
+		}), "Off"));
+	addDropDownInteractable(vsyncToggle, "VSync", graphicsTabInteractables);
 }
 
 void OptionsMenu::addAudioTabInteractables() {
 	// Add the interactables to the audio tab
-	std::function<void(float value)> musicSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
+	std::function<void(float value)> musicSliderFunc = [this](float value) { /*Implement later*/ };
 	addSliderInteractable(musicSliderFunc, "Music Volume", audioTabInteractables);
 
 	std::function<void(float value)> sfxSliderFunc = [this](float value) { GlobalValues::getInstance().setGlobalVolume(value); };
 	addSliderInteractable(sfxSliderFunc, "SFX Volume", audioTabInteractables);
 
-	std::function<void(float value)> voiceSliderFunc = [this](float value) { GSM->changeGameState(GameState::Start); };
+	std::function<void(float value)> voiceSliderFunc = [this](float value) { /*Implement later*/ };
 	addSliderInteractable(voiceSliderFunc, "Voice Volume", audioTabInteractables);
 }
 
 void OptionsMenu::addControlsTabInteractables() {
 	// Add the interactables to the controls tab
-	std::function<void()> rebindFunc = [this]() { GSM->changeGameState(GameState::Start); };
+	std::function<void()> rebindFunc = [this]() { /*Implement later*/ };
 	addButtonInteractable(rebindFunc, "Rebind", controlsTabInteractables);
 }
 

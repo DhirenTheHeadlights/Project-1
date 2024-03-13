@@ -34,12 +34,14 @@ namespace PirateGame {
 		}
 		void setClock(sf::Clock clock) { this->globalClock = clock; }
 		void setGlobalVolume(float volume) { this->soundVolume = volume; }
+		void setShowHUD(bool showHUD) { this->showHUD = showHUD; }
 		
 		// Getters
 		sf::Vector2f getMapSize() const { return this->worldMap; }
 
 		float getGlobalVolume() const { return this->soundVolume; }
 		int getCellSize() const { return this->cellSize; }
+		bool getShowHUD() const { return this->showHUD; }
 
 		sf::Font& getFont() { return this->globalFont; }
 		sf::RenderWindow* getWindow() { return this->globalWindow; }
@@ -59,11 +61,14 @@ namespace PirateGame {
 		GlobalValues& operator=(GlobalValues const&) = delete;
 
 		// Variables to store the world's values
-		Map map;
 		sf::Vector2f worldMap = sf::Vector2f(100000, 100000);
+
 		int cellSize = 10;
 		float soundVolume = 100;
+		bool showHUD = true;
+
 		WindController windController;
+		Map map;
 
 		// Input handler
 		InputHandler inputHandler;

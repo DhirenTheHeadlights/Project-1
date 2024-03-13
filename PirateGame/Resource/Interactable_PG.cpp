@@ -20,7 +20,13 @@ void Interactable::draw() {
 
 void Interactable::setPosition(sf::Vector2f pos) {
 	sprite.setPosition(pos);
-	// Set the text to be in the center of the sprite
-	text.setPosition(sf::Vector2f(pos.x + sprite.getGlobalBounds().getSize().x / 2 - text.getGlobalBounds().getSize().x / 2, 
-								  pos.y + sprite.getGlobalBounds().getSize().y / 2 - text.getGlobalBounds().getSize().y / 2));
+
+	// Set the text origin to top-left before positioning
+	text.setOrigin(0, 0);
+
+	// Center the text within the sprite
+	sf::FloatRect spriteBounds = sprite.getGlobalBounds();
+	sf::FloatRect textBounds = text.getLocalBounds();
+	text.setPosition(spriteBounds.left + (spriteBounds.width - textBounds.width) / 2.0f - textBounds.left,
+		spriteBounds.top + (spriteBounds.height - textBounds.height) / 2.0f - textBounds.top);
 }

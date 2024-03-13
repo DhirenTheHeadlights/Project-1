@@ -33,8 +33,8 @@ namespace PirateGame {
 		float padding = 10.f;
 		float gold = 1000.f;
 		int textSize = 40;
-		int interactableTextSizeSmall = 10;
-		int interactableTextSizeBig = 20;
+		int interactableTextSizeSmall = 30;
+		int interactableTextSizeBig = 60;
 
 		bool enteredIsland = false;
 		bool addedShipInventory = false;
@@ -75,18 +75,18 @@ namespace PirateGame {
 		const sf::Vector2f initialButtonPositionLeft = sf::Vector2f(12.f, 12.f);
 		const sf::Vector2f initialButtonPositionRight = sf::Vector2f(251.f, 12.f);
 
-		const sf::Vector2f marketTopMiddle = sf::Vector2f(200.f, 11.f);
-		const sf::Vector2f marketTopLeft = sf::Vector2f(10.f, 11.f);
-		const sf::Vector2f marketTopRight = sf::Vector2f(602.f, 11.f);
-		const sf::Vector2f marketMiddle = sf::Vector2f(200.f, 81.f);
-		const sf::Vector2f marketLeftMiddle = sf::Vector2f(10.f, 81.f);
-		const sf::Vector2f marketSell = sf::Vector2f(152.f, 81.f);
-		const sf::Vector2f marketBuy = sf::Vector2f(602.f, 81.f);
-		const sf::Vector2f marketRightMiddle = sf::Vector2f(650.f, 81.f);
-		const sf::Vector2f marketBottomLeft = sf::Vector2f(10.f, 441.f);
-		const sf::Vector2f marketNavigationLeft = sf::Vector2f(152.f, 441.f);
-		const sf::Vector2f marketNavigationRight = sf::Vector2f(602.f, 441.f);
-		const sf::Vector2f marketBottomRight = sf::Vector2f(650.f, 441.f);
-		const sf::Vector2f marketBottomMiddle = sf::Vector2f(200.f, 441.f);
+		const sf::Vector2f marketTopMiddle = sf::Vector2f(400.f, 22.f);
+		const sf::Vector2f marketTopLeft = sf::Vector2f(20.f, 22.f);
+		const sf::Vector2f marketTopRight = sf::Vector2f(1204.f, 22.f);
+		const sf::Vector2f marketMiddle = sf::Vector2f(400.f, 162.f);
+		const sf::Vector2f marketLeftMiddle = sf::Vector2f(20.f, 162.f);
+		const sf::Vector2f marketSell = sf::Vector2f(210.f, 162.f);
+		const sf::Vector2f marketBuy = sf::Vector2f(1204.f, 162.f);
+		const sf::Vector2f marketRightMiddle = sf::Vector2f(1394.f, 162.f);
+		const sf::Vector2f marketBottomLeft = sf::Vector2f(20.f, 883.f);
+		const sf::Vector2f marketNavigationLeft = sf::Vector2f(304.f, 883.f);
+		const sf::Vector2f marketNavigationRight = sf::Vector2f(1204.f, 883.f);
+		const sf::Vector2f marketBottomRight = sf::Vector2f(1300.f, 883.f);
+		const sf::Vector2f marketBottomMiddle = sf::Vector2f(400.f, 883.f);
 	};
 }

@@ -94,7 +94,7 @@ void World::createWorld(sf::Event event) {
 		// Run the game loop
 		drawGameLoop();
 		gameLoop();
-		MH->openMenu(MenuType::HUD);
+		if (GlobalValues::getInstance().getShowHUD()) MH->openMenu(MenuType::HUD);
 		break;
 	}
 

@@ -34,9 +34,6 @@ namespace PirateGame {
 		std::vector<std::pair<std::function<void()>, std::string>> options;
 		sf::Text selectedText;
 
-		sf::Clock cooldown;
-		sf::Time cooldownTime = sf::milliseconds(100);
-
 		bool isOpen = false;
 		bool wasButtonPressed = false;
 

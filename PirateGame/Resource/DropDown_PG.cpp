@@ -23,19 +23,24 @@ void DropDown::customInteractableSetUp() {
 void DropDown::setPosition(sf::Vector2f pos) {
 	// Set the position of the drop down menu objects
 	sprite.setPosition(pos);
-	text.setPosition(pos.x + sprite.getGlobalBounds().getSize().x / 2 - text.getGlobalBounds().getSize().x / 2, 
-					 pos.y + sprite.getGlobalBounds().getSize().y / 2 - text.getGlobalBounds().getSize().y / 2);
+
+	text.setOrigin(0.f, 0.f);
+	text.setPosition(pos.x + sprite.getGlobalBounds().getSize().x / 2 - text.getLocalBounds().getSize().x / 2, 
+					 pos.y + sprite.getGlobalBounds().getSize().y / 2 - text.getLocalBounds().getSize().y / 2);
 
 	// Set the selected text to be in the center of the sprite
-	selectedText.setPosition(pos.x + sprite.getGlobalBounds().getSize().x / 2 - selectedText.getGlobalBounds().getSize().x / 2,
-							 pos.y + sprite.getGlobalBounds().getSize().y / 2 - selectedText.getGlobalBounds().getSize().y / 2);
+	selectedText.setOrigin(0.f, 0.f);
+	selectedText.setPosition(pos.x + sprite.getGlobalBounds().getSize().x / 2 - selectedText.getLocalBounds().getSize().x / 2,
+							 pos.y + sprite.getGlobalBounds().getSize().y / 2 - selectedText.getLocalBounds().getSize().y / 2);
 
 	// Set the position of the options
 	for (int i = 0; i < options.size(); i++) {
 		float spriteHeight = optionSprites[i].getGlobalBounds().getSize().y;
 		optionSprites[i].setPosition(pos.x, pos.y + spriteHeight + (spriteHeight * i));
 		float textHeight = optionTexts[i].getGlobalBounds().getSize().y;
-		optionTexts[i].setPosition(pos.x, pos.y + spriteHeight + (spriteHeight * i));
+		float spriteWidth = optionSprites[i].getGlobalBounds().getSize().x;
+		optionTexts[i].setPosition(pos.x + spriteWidth / 2 - optionTexts[i].getGlobalBounds().getSize().x / 2, 
+								  pos.y + spriteHeight + (spriteHeight * i) + spriteHeight / 2 - textHeight / 2);
 	}
 }
 
@@ -44,13 +49,7 @@ void DropDown::interact() {
 	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(*window));
 
 	// Check if the mouse is clicked.
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		// Check if the cooldown has elapsed.
-		if (!(cooldown.getElapsedTime().asSeconds() > cooldownTime.asSeconds())) return;
-			
-		// Restart the cooldown.
-		cooldown.restart();
-
+	if (GlobalValues::getInstance().getInputHandler().isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		// Toggle the open state if the mouse is over the sprite.
 		if (sprite.getGlobalBounds().contains(mousePos)) {
 			isOpen = !isOpen;

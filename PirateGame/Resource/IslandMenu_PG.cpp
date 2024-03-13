@@ -6,7 +6,6 @@ void IslandMenu::setUpMenu() {
 	// Set up the inital menu that asks the player if they wish to enter the island
 	menu.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getMarketMenu());
 	banner.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getIslandBanner());
-	banner.setScale(bannerScale);
 	initialMenu.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getInitialMenu());
 
 	// Set up the island names to be names from islands in 'one piece' but a little different to avoid copyright
@@ -35,8 +34,9 @@ void IslandMenu::setUpMenu() {
 	};
 	
 	islandName = islandNames[rand() % islandNames.size()];
-	titleText = sf::Text(islandName, font, textSize);
-	titleText.setFillColor(sf::Color::White);
+	titleText = sf::Text(islandName, font, interactableTextSizeBig);
+	titleText.setOrigin(0.f, 0.f);
+	titleText.setFillColor(sf::Color::Black);
 
 	// Sort the market items
 	std::sort(market.begin(), market.end(), [](const ShopItem& a, const ShopItem& b) {
@@ -64,6 +64,8 @@ void IslandMenu::addInteractablesToMenu() {
 	std::function<void()> leaveIsland = [this]() { 
 		hasPlayerSaidNo = true; // Set the flag to true so the menu does not show
 		ship->getMovementHandler().setAnchorDrop(false);
+		// Enable the HUD
+		GlobalValues::getInstance().setShowHUD(true);
 	};
 	std::unique_ptr<Button> leaveIslandButton = std::make_unique<Button>(leaveIsland);
 	sf::Text leaveButtonText = sf::Text("Close", font, interactableTextSizeSmall);
@@ -155,7 +157,7 @@ void IslandMenu::addMarketInteractables() {
 
 		// Create a text display box to show the amount of the item in the market
 		std::unique_ptr<TextDisplayBox> marketInventoryAmount = std::make_unique<TextDisplayBox>();
-		sf::Text marketInventoryText = sf::Text(item.name + " - " + std::to_string(item.amount), font, interactableTextSizeSmall);
+		sf::Text marketInventoryText = sf::Text(std::to_string(item.amount), font, interactableTextSizeSmall);
 		marketInventoryAmount->createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), marketInventoryText);
 		marketInventory.push_back(std::move(marketInventoryAmount));
 	}
@@ -188,7 +190,7 @@ void IslandMenu::addMarketInteractables() {
 	// Create an "exit" button to leave the island
 	std::function<void()> closeBuyMenu = [this]() { enteredIsland = false; };
 	std::unique_ptr<Button> closeBuyMenuButton = std::make_unique<Button>(closeBuyMenu);
-	sf::Text closeButtonText = sf::Text("Close Menu", font, interactableTextSizeSmall);
+	sf::Text closeButtonText = sf::Text("Close Menu", font, interactableTextSizeBig);
 	closeBuyMenuButton->createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketBottomMiddle(), closeButtonText);
 	uiButtons.push_back(std::move(closeBuyMenuButton));
 }
@@ -204,7 +206,7 @@ void IslandMenu::addShipInventoryInteractables() {
 
 		if (it != ship->getInventoryHandler().getInventory().end()) {
 			// Item exists in ship's inventory, display with details
-			sf::Text itemText = sf::Text(it->name + " - " + std::to_string(it->amount), font, interactableTextSizeSmall);
+			sf::Text itemText = sf::Text(std::to_string(it->amount), font, interactableTextSizeSmall);
 			itemDisplay->createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), itemText);
 		}
 		else {
@@ -234,13 +236,16 @@ void IslandMenu::setInteractablePositions() {
 		interactables[1]->setPosition(initialMenu.getPosition() + initialButtonPositionRight);
 		
 		// Title text should go in the banner and the banner should be near the top of the screen
-		banner.setPosition(HUDView.getCenter().x - banner.getGlobalBounds().getSize().x / 2, HUDView.getCenter().y - static_cast<float>(window->getSize().y / 4));
-		titleText.setPosition(banner.getPosition().x + banner.getGlobalBounds().width / 2 - titleText.getGlobalBounds().width / 2, 
-							  banner.getPosition().y + banner.getGlobalBounds().height / 2 - titleText.getGlobalBounds().height / 2);
+		banner.setPosition(HUDView.getCenter().x - banner.getGlobalBounds().getSize().x / 2, HUDView.getCenter().y - static_cast<float>(window->getSize().y / 2) + padding);
+		titleText.setPosition(banner.getPosition().x + banner.getGlobalBounds().width / 2 - titleText.getLocalBounds().width / 2, 
+							  banner.getPosition().y + banner.getGlobalBounds().height / 2 - titleText.getLocalBounds().height / 2);
 
 		// Set the ship stop flag to true when prompting the player to enter the island
 		ship->getMovementHandler().setAnchorDrop(true);
 		ship->getMovementHandler().setStopShipRotationFlag(true);
+
+		// Disable the HUD
+		GlobalValues::getInstance().setShowHUD(false);
 
 		return; // Return early if the player has not entered the island
 	}
@@ -270,7 +275,7 @@ void IslandMenu::setInteractablePositions() {
 	}
 
 	// Set the position of the leave island button to be at the bottom of the menu in the center
-	uiButtons[0]->setPosition(marketBottomMiddle);
+	uiButtons[0]->setPosition(menu.getPosition() + marketBottomMiddle);
 }
 
 void IslandMenu::updateMarket() {
@@ -284,12 +289,12 @@ void IslandMenu::updateMarket() {
 			auto it = std::find_if(currentInventory.begin(), currentInventory.end(), [&](const ShopItem& item) {
 				return item.name == market[i].name;
 				});
-			shipInventoryInteractable[i]->getText().setString(it != currentInventory.end() ? it->name + " - " + std::to_string(it->amount) : "Empty");
+			shipInventoryInteractable[i]->getText().setString(it != currentInventory.end() ? std::to_string(it->amount) : "Empty");
 		}
 		else {
 			// Add new box if necessary
 			std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
-			sf::Text itemText = sf::Text(market[i].name + " - " + std::to_string(market[i].amount), font, interactableTextSizeSmall);
+			sf::Text itemText = sf::Text(std::to_string(market[i].amount), font, interactableTextSizeSmall);
 			itemDisplay->createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), itemText);
 			auto it = std::find_if(currentInventory.begin(), currentInventory.end(), [&](const ShopItem& item) {
 				return item.name == market[i].name;
@@ -307,7 +312,7 @@ void IslandMenu::updateMarket() {
 	for (size_t i = 0; i < market.size(); ++i) {
 		if (i < marketInventory.size()) {
 			// Update existing box
-			marketInventory[i]->getText().setString(market[i].name + " - " + std::to_string(market[i].amount));
+			marketInventory[i]->getText().setString(std::to_string(market[i].amount));
 		}
 		else {
 			// Add new box if necessary
@@ -319,8 +324,8 @@ void IslandMenu::updateMarket() {
 	}
 
 	// Update gold
-	shipGoldDisplay->getText().setString("Ship Gold: " + floatToString(ship->getInventoryHandler().getGold()));
-	islandGoldDisplay->getText().setString("Merchant Gold: " + floatToString(gold));
+	shipGoldDisplay->getText().setString("Gold: " + floatToString(ship->getInventoryHandler().getGold()));
+	islandGoldDisplay->getText().setString("Gold: " + floatToString(gold));
 }
 
 

@@ -48,7 +48,7 @@ void LandMass::createMarket() {
 		"Sodalite", "Sunstone", "Tiger's Eye", "Tourmaline", "Zircon"
 	};
 
-	int marketSize = 12;
+	int marketSize = 7;
 
 	for (int i = 0; i < marketSize; i++) {
 		// Randomly select an item that is not already in the market

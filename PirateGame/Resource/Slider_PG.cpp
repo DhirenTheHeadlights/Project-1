@@ -5,6 +5,7 @@ using namespace PirateGame;
 // Set up the slider
 void Slider::customInteractableSetUp() {
 	text.setString(name + ":  " + std::to_string(static_cast<int>(value * 100)));
+    text.setOrigin(0.f, 0.f);
 }
 
 // Set the position of the slider
