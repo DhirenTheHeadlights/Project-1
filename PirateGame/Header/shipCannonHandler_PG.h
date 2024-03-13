@@ -7,7 +7,7 @@
 
 #include "GlobalValues_PG.h"
 #include "Cannonball_PG.h"
-#include "SoundManager_PG.h"
+#include "GlobalSoundManager_PG.h"
 #include "LandMassTextures_PG.h"
 
 namespace PirateGame {
@@ -17,7 +17,6 @@ namespace PirateGame {
 	class ShipCannonHandler {
 	public:
 		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {
-			soundManager.loadSoundBuffer("cannonshot", soundFile);
 		};
 		~ShipCannonHandler() {};
 
@@ -47,9 +46,6 @@ namespace PirateGame {
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;
-
-		std::string soundFile = "Sounds/cannonshot.wav";
-		SoundManager soundManager;
 
 		LandMassTextureHandler textures;
 

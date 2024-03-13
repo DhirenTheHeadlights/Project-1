@@ -14,12 +14,12 @@
 #include "LandMass_PG.h"
 #include "Hashmap_PG.h"
 #include "Map.h"
-#include "SoundManager_PG.h"
+#include "GlobalSoundManager_PG.h"
 
 namespace PirateGame {
     class LandMassHandler {
     public:
-        LandMassHandler() { soundManager.loadSoundBuffer("bonk", soundFile); };
+        LandMassHandler() {};
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
@@ -49,12 +49,6 @@ namespace PirateGame {
 
         // Map to store the land masses
         Map& map = GlobalValues::getInstance().getMap();
-
-        // Temporary string for sound file
-        std::string soundFile = "Sounds/bonk.wav";
-
-        // SoundManager to play sounds
-        SoundManager soundManager;
 
     };
 }

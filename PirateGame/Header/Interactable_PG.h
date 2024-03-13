@@ -8,6 +8,7 @@
 
 #include "GlobalValues_PG.h"
 #include "GlobalTextureHandler_PG.h"
+#include "GlobalSoundManager_PG.h"
 
 namespace PirateGame {
 	class Interactable {
@@ -27,6 +28,7 @@ namespace PirateGame {
 		// Setters for properties
 		virtual void setPosition(sf::Vector2f pos);
 		void setTextPosition(sf::Vector2f pos) { text.setPosition(pos); }
+		void setSoundId(SoundId id) { soundId = id; }
 
 		// Getters for properties
 		sf::Text& getText() { return text; }
@@ -39,6 +41,8 @@ namespace PirateGame {
 		sf::Font font;
 		sf::Text text;
 		sf::RenderWindow* window = nullptr;
+
+		SoundId soundId = SoundId::Select;
 
 		std::string name;
 

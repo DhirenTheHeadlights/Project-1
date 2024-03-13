@@ -39,6 +39,9 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 
+		// Set the speed immediately before the anchor is dropped
+		speedBeforeAnchorDrop = speed;
+
 		// Set the anchor push back flag to be false. This will reset the flag so it can
 		// be set to true again if the anchor is dropped.
 		anchorPushBack = false;
@@ -46,21 +49,25 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 
 	if (dropAnchor) {
 		// Gradually decrease the speed to 0
-		const float deceleration = 20.f; // The deceleration factor
+		const float deceleration = 20.f; // The deceleration factor, proportional to the speed
+
 		// Here, we are going to specify a speed value that will be subtracted from the speed when 
 		// the speed goes to 0. This will create a "backwards" effect as the negative speed will
-		// slowly come back up to 0. This is to simulate the ship pulling back from the anchor
-		const float speedMin = -20.f;
-		const float reacceleration = 10.f;
-		if (speed > 0) speed -= deceleration * elapsedTime;
+		// slowly come back up to 0. This is to simulate the ship pulling back from the anchor.
+		// Anchor will pull back more if the ship is moving faster.
+		const float speedMin = -0.2f * speedBeforeAnchorDrop; 
 
-		else if (speed < 0.01f && !anchorPushBack) {
-			speed = speedMin;
-			anchorPushBack = true;
-			std::cout << "Speed: " << speed << std::endl;
+		// The reacceleration factor, also proportional to the speed before anchor drop
+		const float reacceleration = 0.2f * speedBeforeAnchorDrop;
+
+		if (speed > 0) speed -= deceleration * elapsedTime; // Gradually decrease the speed to 0
+
+		else if (speed < 0.01f && !anchorPushBack && speed > speedMin) { // Start pull back when the speed is close to 0
+			speed -= deceleration;
+			if (speed < speedMin) anchorPushBack = true;
 		}
-
 		else if (speed < 0) speed += reacceleration * elapsedTime; // This will bring the speed back up to 0
+
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 

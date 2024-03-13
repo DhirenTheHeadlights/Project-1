@@ -194,7 +194,7 @@
     <ClCompile Include="PirateGame\Resource\Ship_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShopItem_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp" />
-    <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\GlobalSoundManager.cpp" />
     <ClCompile Include="PirateGame\Resource\StartMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\TextDisplayBox_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\TextInpuBox_PG.cpp" />
@@ -274,7 +274,7 @@
     <ClInclude Include="PirateGame\Header\Ship_PG.h" />
     <ClInclude Include="PirateGame\Header\ShopItem_PG.h" />
     <ClInclude Include="PirateGame\Header\Slider_PG.h" />
-    <ClInclude Include="PirateGame\Header\SoundManager_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalSoundManager_PG.h" />
     <ClInclude Include="PirateGame\Header\StartMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\TextDisplayBox_PG.h" />
     <ClInclude Include="PirateGame\Header\TextInpuBox_PG.h" />
@@ -297,7 +297,8 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Sounds\bonk.wav" />
-    <Media Include="Sounds\cannonshot.wav" />
+    <Media Include="Sounds\cannon_shot.wav" />
+    <Media Include="Sounds\select.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="PirateGameSprites\enter_island_menu_button.png" />

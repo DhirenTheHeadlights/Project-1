@@ -116,7 +116,7 @@ void LandMassHandler::handleCollisions(PlayerShip& ship, std::set<LandMass*> nea
 	}
 
 	// Play the collision sound while the player is colliding with a land mass
-	if (isColliding) soundManager.playSound("bonk");
+	if (isColliding) GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
 	else ship.getMovementHandler().setIsColliding(false);
 }
 

@@ -20,7 +20,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
     }
 
     // Play sound once per volley
-    soundManager.playSound("cannonshot");
+    GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
 
     // Reset the cooldown clock
     cannonCooldownClock.restart();

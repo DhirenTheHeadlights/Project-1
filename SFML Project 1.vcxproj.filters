@@ -188,6 +188,12 @@
     <Filter Include="Source Files\PirateGame\Resource\Menus\Specific Interactables">
       <UniqueIdentifier>{aee0c4e9-d1f5-4b71-8308-851c11c16a77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Globals">
+      <UniqueIdentifier>{8c0730c1-47a6-4d17-89cf-da9aa2ecddd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Globals">
+      <UniqueIdentifier>{512fd131-aace-4509-89dd-c145e0085c22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -322,9 +328,6 @@
     <ClCompile Include="Platformer Game\Resource\Platforms_Plat.cpp">
       <Filter>Source Files\Platformer\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\GlobalValues_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\IslandMenu_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
     </ClCompile>
@@ -379,9 +382,6 @@
     <ClCompile Include="PirateGame\Resource\MenuHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\General</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\SoundManager_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Handlers\General</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\WindController_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\General</Filter>
     </ClCompile>
@@ -402,6 +402,12 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\General</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\GlobalValues_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Globals</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\GlobalSoundManager.cpp">
+      <Filter>Source Files\PirateGame\Resource\Globals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -531,9 +537,6 @@
     <ClInclude Include="PirateGame\Header\DropDown_PG.h">
       <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\GlobalValues_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
-    </ClInclude>
     <ClInclude Include="Platformer Game\Header\Player_Plat.h">
       <Filter>Source Files\Platformer\Header</Filter>
     </ClInclude>
@@ -612,9 +615,6 @@
     <ClInclude Include="PirateGame\Header\MenuHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\SoundManager_PG.h">
-      <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\InputHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
     </ClInclude>
@@ -633,14 +633,20 @@
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\OptionsMenuTextureHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\MarketTextureHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalValues_PG.h">
+      <Filter>Source Files\PirateGame\Header\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalSoundManager_PG.h">
+      <Filter>Source Files\PirateGame\Header\Globals</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -667,7 +673,10 @@
     <Media Include="Sounds\bonk.wav">
       <Filter>Source Files\Sounds</Filter>
     </Media>
-    <Media Include="Sounds\cannonshot.wav">
+    <Media Include="Sounds\cannon_shot.wav">
+      <Filter>Source Files\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\select.wav">
       <Filter>Source Files\Sounds</Filter>
     </Media>
   </ItemGroup>
