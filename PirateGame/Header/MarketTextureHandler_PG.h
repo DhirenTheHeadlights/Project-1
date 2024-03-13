@@ -14,7 +14,7 @@ namespace PirateGame {
 			marketFarLeftRight.loadFromFile("PirateGameSprites/market_interactable_far_left_right_dark_gray.png");
 			leftRightNavigation.loadFromFile("PirateGameSprites/market_left_right_navigation.png");
 			marketMenu.loadFromFile("PirateGameSprites/market_menu.png");
-			marketMiddle.loadFromFile("PirateGameSprites/market_middle_dark_gray.png");
+			marketMiddle.loadFromFile("PirateGameSprites/market_middle.png");
 			marketTopLeftRight.loadFromFile("PirateGameSprites/market_top_left_right_dark_gray.png");
 			initialMenu.loadFromFile("PirateGameSprites/enter_island_menu_initial.png");
 			initialMenuButton.loadFromFile("PirateGameSprites/enter_island_menu_button.png");

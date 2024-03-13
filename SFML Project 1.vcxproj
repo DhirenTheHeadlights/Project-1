@@ -313,7 +313,6 @@
     <Image Include="PirateGameSprites\market_interactable_far_left_right_dark_gray.png" />
     <Image Include="PirateGameSprites\market_left_right_navigation.png" />
     <Image Include="PirateGameSprites\market_menu.png" />
-    <Image Include="PirateGameSprites\market_middle_dark_gray.png" />
     <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png" />
     <Image Include="PirateGameSprites\market_top_middle_dark_gray.png" />
     <Image Include="PirateGameSprites\minimap_ship_icon.png" />

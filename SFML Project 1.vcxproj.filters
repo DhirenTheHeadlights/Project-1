@@ -747,9 +747,6 @@
     <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png">
       <Filter>Source Files\PirateGame\Sprites\Market</Filter>
     </Image>
-    <Image Include="PirateGameSprites\market_middle_dark_gray.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
     <Image Include="PirateGameSprites\market_menu.png">
       <Filter>Source Files\PirateGame\Sprites\Market</Filter>
     </Image>

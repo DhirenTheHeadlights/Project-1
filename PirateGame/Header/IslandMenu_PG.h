@@ -32,6 +32,9 @@ namespace PirateGame {
 		// Menu items
 		float padding = 10.f;
 		float gold = 1000.f;
+		int textSize = 40;
+		int interactableTextSizeSmall = 10;
+		int interactableTextSizeBig = 20;
 
 		bool enteredIsland = false;
 		bool addedShipInventory = false;
@@ -42,7 +45,6 @@ namespace PirateGame {
 		sf::Sprite banner;
 		sf::Sprite initialMenu;
 
-
 		std::vector<std::unique_ptr<Button>> buyButtons;
 		std::vector<std::unique_ptr<Button>> sellButtons;
 		std::vector<std::unique_ptr<TextDisplayBox>> merchandise;
@@ -50,12 +52,16 @@ namespace PirateGame {
 		std::vector<std::unique_ptr<TextDisplayBox>> marketInventory;
 		std::vector<std::unique_ptr<Button>> uiButtons;
 
+		sf::Vector2f bannerScale = sf::Vector2f(1.5f, 1.5f);
+
 		// Gold text display box
 		std::unique_ptr<TextDisplayBox> shipGoldDisplay;
 		std::unique_ptr<TextDisplayBox> islandGoldDisplay;
 
-		// Island name display
+		// Names
 		std::unique_ptr<TextDisplayBox> islandNameDisplay;
+		std::unique_ptr<TextDisplayBox> shipNameDisplay;
+		std::unique_ptr<TextDisplayBox> marketNameDisplay;
 
 		std::vector<ShopItem>& market;
 		std::vector<ShopItem> shipInventory;
@@ -67,7 +73,7 @@ namespace PirateGame {
 		// Specific values for menu item placement
 
 		const sf::Vector2f initialButtonPositionLeft = sf::Vector2f(12.f, 12.f);
-		const sf::Vector2f initialButtonPositionRight = sf::Vector2f(241.f, 12.f);
+		const sf::Vector2f initialButtonPositionRight = sf::Vector2f(251.f, 12.f);
 
 		const sf::Vector2f marketTopMiddle = sf::Vector2f(200.f, 11.f);
 		const sf::Vector2f marketTopLeft = sf::Vector2f(10.f, 11.f);
