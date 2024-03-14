@@ -3,12 +3,13 @@
 using namespace PirateGame;
 
 void PlayerShipInputHandler::handleCannonFire() {
-	// Get the input handler
+	// Grab Globals
 	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	// Fire the cannons
 	if (inputHandler.isKeyPressedOnce(fireKey)) {
-		SCH->shootCannonballs(numCannons);
+		SCH->shootCannonballs(numCannons, window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 	}
 }
 

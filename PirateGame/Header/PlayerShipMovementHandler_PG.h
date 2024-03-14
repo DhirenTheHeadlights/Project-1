@@ -14,7 +14,7 @@ namespace PirateGame {
 		void move(float baseSpeed) override;
 
 	private:
-		void setSpriteRotation(sf::Vector2f& direction) override;
+		void setSpriteRotation() override;
 
 
 		float turningSpeed = 0.1f;

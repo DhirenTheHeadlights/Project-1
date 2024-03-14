@@ -20,7 +20,7 @@ namespace PirateGame {
 		};
 		~ShipCannonHandler() {};
 
-		void shootCannonballs(int numCannons);
+		void shootCannonballs(int numCannons, sf::Vector2f targetPos);
 		void updateCannonballs();
 		void drawCannonballs();
 
@@ -49,6 +49,6 @@ namespace PirateGame {
 
 		LandmassTextureHandler textures;
 
-		sf::Vector2f cannonDirection();
+		sf::Vector2f cannonDirection(sf::Vector2f targetPos);
 	};
 };
