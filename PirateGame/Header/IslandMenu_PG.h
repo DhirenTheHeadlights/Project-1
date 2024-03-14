@@ -7,6 +7,13 @@
 #include "ShopItem_PG.h"
 
 namespace PirateGame {
+	enum class page {
+		marketPage1,
+		marketPage2,
+		marketPage3,
+		shipUpgrades,
+	};
+
 	class IslandMenu : public Menu {
 	public:
 		IslandMenu(std::vector<ShopItem>& market) : market(market) {};

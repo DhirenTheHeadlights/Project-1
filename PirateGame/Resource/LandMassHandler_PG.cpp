@@ -23,23 +23,6 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 		else if (randNum == 1) createLandmass(LandMassType::Rock, points[i]);
 		else createLandmass(LandMassType::Shipwreck, points[i]);
 	}
-
-	// debug print num of islands, rocks, shipwrecks
-	int numIslands = 0, numRocks = 0, numShipwrecks = 0;
-	for (auto& landMass : landMasses) {
-		if (landMass->getType() == LandMassType::Island) numIslands++;
-		else if (landMass->getType() == LandMassType::Rock) numRocks++;
-		else if (landMass->getType() == LandMassType::Shipwreck) numShipwrecks++;
-	}
-
-	std::cout << "Islands: " << numIslands << ", Rocks: " << numRocks << ", Shipwrecks: " << numShipwrecks << std::endl;
-
-	// Temp code to add a single island right by the player at the start
-	LandMass* landMass = new LandMass();
-	landMass->createLandMass(LandMassType::Island, texture);
-	landMass->setPosition(sf::Vector2f(500, 500));
-	landMasses.push_back(landMass);
-	hashmap.addLandMass(landMass);
 }
 
 void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
