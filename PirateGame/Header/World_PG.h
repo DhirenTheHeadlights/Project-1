@@ -9,6 +9,7 @@
 #include "View_PG.h"
 #include "PlayerShip_PG.h"
 #include "LandMassHandler_PG.h"
+#include "CollisionManager_PG.h"
 #include "MenuHandler_PG.h"
 
 namespace PirateGame {
@@ -27,7 +28,7 @@ namespace PirateGame {
 
 		// Game objects
 		Player player;
-		PlayerShip playerShip;
+		std::unique_ptr<PlayerShip> playerShip;
 		View view;
 
 		// Game state manager
@@ -36,6 +37,7 @@ namespace PirateGame {
 		// Handlers
 		std::unique_ptr<LandMassHandler> LMHandler;
 		std::unique_ptr<MenuHandler> MH;
+		std::unique_ptr<CollisionManager> CM;
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;

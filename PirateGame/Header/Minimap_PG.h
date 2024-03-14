@@ -27,7 +27,11 @@ namespace PirateGame {
 
 		// Setters
 		void setMinimapRadius(float size) { this->size = size; }
-		void setLandmasses(std::vector<LandMass*>& landmasses) { this->landmasses = landmasses; }
+		void setLandmasses(std::vector<std::unique_ptr<Landmass>>& landmasses) { 
+			for (auto& landmass : landmasses) {
+				this->landmasses.push_back(landmass.get());
+			}
+		}
 		void setShip(Ship* ship) { this->ship = ship; }
 		void setShips(std::vector<Ship*>& ships) { this->ships = ships; }
 		void setMinimapPosition(sf::Vector2f position) { this->position = position; }
@@ -35,8 +39,8 @@ namespace PirateGame {
 		// Getters
 		sf::Sprite& getMinimapSprite() { return minimapSprite; }
 		sf::CircleShape& getMinimap() { return minimap; }
-		float getMinimapRadius() { return size; }
-		sf::Vector2f getMinimapPosition() { return position; }
+		float getMinimapRadius() const { return size; }
+		sf::Vector2f getMinimapPosition() const { return position; }
 	private:
 		// Values
 		float size = 0;
@@ -57,7 +61,7 @@ namespace PirateGame {
 		sf::RectangleShape shipIcon; // Temp
 
 		std::vector<Ship*> ships;
-		std::vector<LandMass*> landmasses;
+		std::vector<Landmass*> landmasses;
 
 		std::vector<sf::RectangleShape> visibleLandmassRects; // Landmasses on the minimap
 		std::vector<sf::RectangleShape> shipsRects; // Ships on the minimap

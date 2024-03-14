@@ -66,7 +66,7 @@ namespace PirateGame {
 		sf::Vector2f velocity;
 		sf::Vector2f initialPosition;
 
-		bool isColliding = true;
+		bool isColliding = false;
 		bool stopShipRotationFlag = false;
 		bool dropAnchor = false;
 		bool anchorPushBack = false;

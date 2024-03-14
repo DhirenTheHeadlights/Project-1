@@ -30,7 +30,7 @@ namespace PirateGame {
 		bool hasGameStarted() const { return gameStarted; }
 	private:
 		// Variable that stores the GameState
-		GameState currGameState;
+		GameState currGameState = GameState::Start;
 
 		// Track if the game has started
 		bool gameStarted = false;

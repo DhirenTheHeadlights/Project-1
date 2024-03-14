@@ -21,7 +21,7 @@ namespace PirateGame {
 
 		// Getters for texture managers
 		InteractableTextureHandler& getInteractableTextures() { return *interactableTextures; }
-		LandMassTextureHandler& getLandMassTextures() { return *landMassTextures; }
+		LandmassTextureHandler& getLandMassTextures() { return *landMassTextures; }
 		HUDTextureHandler& getHUDTextures() { return *HUDTextures; }
 		OptionsMenuTextureHandler& getOptionsMenuTextures() { return *optionsMenuTextures; }
 		MarketTextureHandler& getMarketTextures() { return *marketTextures; }
@@ -37,7 +37,7 @@ namespace PirateGame {
 
 		// Managers
 		std::unique_ptr<InteractableTextureHandler> interactableTextures = std::make_unique<InteractableTextureHandler>();
-		std::unique_ptr<LandMassTextureHandler> landMassTextures = std::make_unique<LandMassTextureHandler>();
+		std::unique_ptr<LandmassTextureHandler> landMassTextures = std::make_unique<LandmassTextureHandler>();
 		std::unique_ptr<HUDTextureHandler> HUDTextures = std::make_unique<HUDTextureHandler>();
 		std::unique_ptr<OptionsMenuTextureHandler> optionsMenuTextures = std::make_unique<OptionsMenuTextureHandler>();
 		std::unique_ptr<MarketTextureHandler> marketTextures = std::make_unique<MarketTextureHandler>();

@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void LandMass::createLandMass(LandMassType type, LandMassTextureHandler& texture) {
+void Landmass::createLandMass(LandMassType type, LandmassTextureHandler& texture) {
 	// Set the type of landmass
 	this->type = type;
 
@@ -27,7 +27,7 @@ void LandMass::createLandMass(LandMassType type, LandMassTextureHandler& texture
 	//setRandomRotation();
 }
 
-ShopItem& LandMass::getMarketItem(std::string itemName) {
+ShopItem& Landmass::getMarketItem(std::string itemName) {
 	for (auto& it : market) {
 		if (it.name == itemName) {
 			return it;
@@ -38,7 +38,7 @@ ShopItem& LandMass::getMarketItem(std::string itemName) {
 	return market.front();
 }
 
-void LandMass::createMarket() {
+void Landmass::createMarket() {
 	std::set<std::string> itemNames = { 
 		"Banana", "Cannonball", "Wood", "Gold", "Rum", "Cannon", "Sword", "Pistol", "Cloth", "Silk",
 		"Spices", "Tea", "Coffee", "Tobacco", "Sugar", "Cotton", "Indigo", "Dye", "Salt", "Iron",

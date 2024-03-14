@@ -166,13 +166,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\CollisionManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShipInputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShip_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GlobalValues_PG.cpp" />
-    <ClCompile Include="PirateGame\Resource\Hashmap_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\LandmassHashmap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\InputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
@@ -240,6 +241,7 @@
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
+    <ClInclude Include="PirateGame\Header\CollisionManager_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipMovementHandler_PG.h" />
@@ -247,7 +249,7 @@
     <ClInclude Include="PirateGame\Header\GameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
-    <ClInclude Include="PirateGame\Header\Hashmap_PG.h" />
+    <ClInclude Include="PirateGame\Header\LandmassHashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
     <ClInclude Include="PirateGame\Header\InputHandler_PG.h" />
@@ -267,6 +269,7 @@
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipHashmap_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipInventoryHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShip_PG.h" />
@@ -282,6 +285,7 @@
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\WindController_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
+    <ClInclude Include="PirateGame\Resource\ShipHashmap_PG.cpp" />
     <ClInclude Include="Platformer Game\Header\Platforms_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Player_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Textures_Plat.h" />

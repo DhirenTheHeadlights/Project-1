@@ -47,7 +47,7 @@ namespace PirateGame {
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;
 
-		LandMassTextureHandler textures;
+		LandmassTextureHandler textures;
 
 		sf::Vector2f cannonDirection();
 	};

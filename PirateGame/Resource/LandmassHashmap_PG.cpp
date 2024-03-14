@@ -1,17 +1,14 @@
-#include "Hashmap_PG.h"
+#include "LandmassHashmap_PG.h"
 
 using namespace PirateGame;
 
-Hashmap::Hashmap() {
-}
-
 // Generate a key for the hashmap based on position
-std::pair<int, int> Hashmap::generateKey(sf::Vector2f pos) {
+std::pair<int, int> LandMassHashmap::generateKey(sf::Vector2f pos) {
 	return { pos.x, pos.y };
 }
 
 // Add a new object to the hashmap
-void Hashmap::addLandMass(LandMass* landmass) {
+void LandMassHashmap::addLandMass(Landmass* landmass) {
     // Use the bounding box of the sprite for grid calculations
     sf::FloatRect bounds = landmass->getSprite().getGlobalBounds();
     auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
@@ -26,7 +23,7 @@ void Hashmap::addLandMass(LandMass* landmass) {
 }
 
 // Remove an object from the hashmap
-void Hashmap::removeLandMass(LandMass* landmass) {
+void LandMassHashmap::removeLandMass(Landmass* landmass) {
 	// Similar to addLandMass, you need to remove the landmass from all the cells it occupies
 	auto topLeft = map.getGridCoordinates(landmass->getSprite().getPosition().x, landmass->getSprite().getPosition().y);
 	auto bottomRight = map.getGridCoordinates(landmass->getSprite().getPosition().x + landmass->getSprite().getGlobalBounds().width,
@@ -41,9 +38,12 @@ void Hashmap::removeLandMass(LandMass* landmass) {
 }
 
 // Find landmass near to a player, debug is used to visualize the grid cells being checked
-std::set<LandMass*> Hashmap::findLandMassNearPlayer(PlayerShip& ship, sf::RenderWindow& window, bool debug) { 
+std::set<Landmass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug) { 
+    // Grab window
+    sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+
     // Get the global bounds of the player ship's sprite
-    sf::FloatRect shipBounds = ship.getSprite().getGlobalBounds();
+    sf::FloatRect shipBounds = ship->getSprite().getGlobalBounds();
 
     // Use the bounds to calculate the extended area around the ship for finding nearby landmasses
     float left = shipBounds.left - shipBounds.width;
@@ -55,7 +55,7 @@ std::set<LandMass*> Hashmap::findLandMassNearPlayer(PlayerShip& ship, sf::Render
     auto topLeft = map.getGridCoordinates(left, top);
     auto bottomRight = map.getGridCoordinates(right, bottom);
 
-    std::set<LandMass*> landmasses;
+    std::set<Landmass*> landmasses;
 
     // Check the cells in the bounding box
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
@@ -76,7 +76,7 @@ std::set<LandMass*> Hashmap::findLandMassNearPlayer(PlayerShip& ship, sf::Render
             rect.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
             rect.setFillColor(sf::Color::Magenta);  // Color for visualization
             rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize())));  // Adjust position based on your grid sizing
-            window.draw(rect);
+            window->draw(rect);
         }
     }
 

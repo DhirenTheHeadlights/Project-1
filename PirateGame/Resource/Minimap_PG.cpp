@@ -40,7 +40,7 @@ void Minimap::update(float shipRotation) {
             sf::Vector2f(landmasses[i]->getSprite().getGlobalBounds().width / 2, landmasses[i]->getSprite().getGlobalBounds().height / 2);
 
         // Calculate distance from the ship to the landmass
-        float distance = sqrt(pow(shipPos.x - landmassPos.x, 2) + pow(shipPos.y - landmassPos.y, 2));
+        float distance = static_cast<float>(sqrt(pow(shipPos.x - landmassPos.x, 2) + pow(shipPos.y - landmassPos.y, 2)));
 
         if (distance <= visibilityRadius) {
             sf::RectangleShape landmassRect;

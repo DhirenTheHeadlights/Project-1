@@ -30,20 +30,27 @@ World::World(sf::RenderWindow* window_in) {
 	GlobalValues::getInstance().getMap().grid(x, y, cellSize);
 
 	// Set up the pointers
+	playerShip = std::make_unique<PlayerShip>();
 	LMHandler = std::make_unique<LandMassHandler>();
 	MH = std::make_unique<MenuHandler>();
+	CM = std::make_unique<CollisionManager>();
 
 	// Set up the world
 	setUpWorld();
 }
 
 void World::setUpWorld() {
-	playerShip.setUpShip(ShipClass::Frigate);
-	LMHandler->addLandMasses(static_cast<float>(GlobalValues::getInstance().getMapSize().x / 100), GlobalValues::getInstance().getMapSize().x / 40.f);
+	playerShip->setUpShip(ShipClass::Frigate);
+	LMHandler->addLandMasses(static_cast<float>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
+
+	// Set up the collision manager
+	CM->setPlayerShip(playerShip.get());
+	CM->setLandMasses(LMHandler->getLandMasses());
+	CM->addObjectsToHashmaps();
 
 	// Set the ship to a rand pos
 	sf::Vector2f randPos = GlobalValues::getInstance().getMap().getRandomPosition();
-	playerShip.getMovementHandler().setPosition(randPos);
+	playerShip->getMovementHandler().setPosition(randPos);
 
 	// Set the game state to start
 	GSM->changeGameState(GameState::Start);
@@ -64,7 +71,7 @@ void World::setUpWorld() {
 	frameRateText.setFillColor(sf::Color::White);
 
 	// Set up the background
-	background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
+	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
 	background.setFillColor(sf::Color(0, 158, 163));
 }
 
@@ -134,20 +141,22 @@ void World::gameLoop() {
 
 	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
 
-	LMHandler->interactWithLandmasses(playerShip);
+	LMHandler->interactWithLandmasses(playerShip.get());
 
-	playerShip.update();
+	CM->handleCollisions();
 
-	view.setCenter(playerShip.getSprite().getPosition());
+	playerShip->update();
+
+	view.setCenter(playerShip->getSprite().getPosition());
 
 	// Set the ship for the hud
-	MH->getHUD()->setShip(playerShip);
+	MH->getHUD()->setShip(*playerShip);
 }
 
 void World::drawGameLoop() {
 	window->draw(background);
 	LMHandler->drawLandMasses();
 	window->draw(frameRateText);
-	playerShip.draw();
+	playerShip->draw();
 }
 

@@ -9,6 +9,8 @@
 
 #include "GlobalValues_PG.h"
 #include "Ship_PG.h"
+#include "EnemyShipInputHandler_PG.h"
+#include "EnemyShipMovementHandler_PG.h"
 
 namespace PirateGame {
 	class EnemyShip : public Ship {
@@ -17,10 +19,22 @@ namespace PirateGame {
 		void customShipSetUp() override;
 		void customShipUpdate() override;
 		void customShipDraw() override;
+
+		// Getters
+		bool isActive() const { return active; }
+		EnemyShipMovementHandler& getMovementHandler() { return movementHandler; }
+		EnemyShipInputHandler& getInputHandler() { return inputHandler; }
 	private:
 		// Health bars
 		sf::RectangleShape healthBarRed;
 		sf::RectangleShape healthBarGreen;
+
+		// Active flag
+		bool active = false;
+
+		// Handlers
+		EnemyShipInputHandler inputHandler;
+		EnemyShipMovementHandler movementHandler;
 	};
 }
 

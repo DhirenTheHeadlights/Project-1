@@ -5,9 +5,9 @@
 #include "TextureHandler_PG.h"
 
 namespace PirateGame {
-	class LandMassTextureHandler : public TextureHandler {
+	class LandmassTextureHandler : public TextureHandler {
 	public:
-		LandMassTextureHandler() {
+		LandmassTextureHandler() {
 			// Load all island textures
 			sf::Texture island1, island2;
 			island1.loadFromFile("PirateGameSprites/pg_island_1.png");
@@ -34,7 +34,7 @@ namespace PirateGame {
 			// Load cannonball texture
 			cannonballTexture.loadFromFile("PirateGameSprites/pg_misc_cannonball.png");
 		}
-		~LandMassTextureHandler() {};
+		~LandmassTextureHandler() {};
 
 		// These two functions return a random island or rock texture unless a specific one is specified
 		sf::Texture& grabIslandTexture(int index = -1) {
