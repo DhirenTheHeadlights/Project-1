@@ -30,6 +30,7 @@ namespace PirateGame {
 		// Getters
 		ShipCannonHandler* getCannonHandler() { return SCH; }
 	    ShipMovementHandler* getMovementHandler() { return SMH; }
+
 	protected:
 		sf::Sprite& sprite;
 

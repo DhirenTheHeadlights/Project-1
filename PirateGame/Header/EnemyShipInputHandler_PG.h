@@ -18,5 +18,8 @@ namespace PirateGame {
 		void handleCannonFire() override;
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
+
+	private:
+		sf::Vector2f playerPos;
 	};
 }

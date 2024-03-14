@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void ShipCannonHandler::shootCannonballs(int numCannons) {
+void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos) {
     if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
 
     // Fire the cannonballs with the adjusted direction
@@ -15,7 +15,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
         // Considering a more accurate position calculation here based on cannon placement
         float padding = 10.f;
         cannonball->setPos(shipSprite.getPosition() + sf::Vector2f(static_cast<float>(i * padding), static_cast<float>(i * padding)));
-        cannonball->setVelocity(cannonball->getSpeed() * cannonDirection());
+        cannonball->setVelocity(cannonball->getSpeed() * cannonDirection(targetPos));
         cannonballs.push_back(cannonball);
     }
 
@@ -26,7 +26,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons) {
     cannonCooldownClock.restart();
 }
 
-sf::Vector2f ShipCannonHandler::cannonDirection() {
+sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
     const float pi = 3.14159265f;
     if (!aimTowardsMouse) {
         float rotationInRadians = (shipSprite.getRotation() - 180.f) * pi / 180.f;

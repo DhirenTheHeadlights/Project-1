@@ -20,7 +20,7 @@ namespace PirateGame {
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
 		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
-		virtual void setSpriteRotation(sf::Vector2f& direction) = 0;
+		virtual void setSpriteRotation() = 0;
 
 		// These functions stay constant
 		sf::Vector2f normalize(sf::Vector2f vector);

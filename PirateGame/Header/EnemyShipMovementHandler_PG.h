@@ -12,8 +12,12 @@ namespace PirateGame {
 
 		// Movement functions
 		void move(float baseSpeed) override;
-
+		void setPlayerPosition(sf::Vector2f playerPos) { this->playerPos = playerPos; }
+		void setPlayerVelocity(sf::Vector2f playerVelocity) { this->playerVelocity = playerVelocity; }
 	private:
-		void setSpriteRotation(sf::Vector2f& direction) override;
+		void setSpriteRotation() override;
+		sf::Vector2f playerPos;	
+		sf::Vector2f playerVelocity;
+		float turningSpeed = 0.1f;
 	};
 }

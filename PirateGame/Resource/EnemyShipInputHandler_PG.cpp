@@ -4,7 +4,8 @@ using namespace PirateGame;
 
 void EnemyShipInputHandler::handleCannonFire() {
 	// Fire the cannons
-	SCH->shootCannonballs(numCannons);
+	
+	SCH->shootCannonballs(numCannons, getMovementHandler()->getSprite().getPosition() - playerPos);
 }
 
 void EnemyShipInputHandler::handleCannonAim() {

@@ -17,7 +17,7 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
 	updateVelocity(direction, elapsed, baseSpeed);
-	setSpriteRotation(direction);
+	setSpriteRotation();
 	applyBoundaryConstraints(position, map);
 
 	// Set the new position
@@ -25,7 +25,7 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 }
 
 
-void PlayerShipMovementHandler::setSpriteRotation(sf::Vector2f& direction) {
+void PlayerShipMovementHandler::setSpriteRotation() {
 	if (getIsColliding() || getStopShipRotationFlag()) return;
 
 	// Grab window
