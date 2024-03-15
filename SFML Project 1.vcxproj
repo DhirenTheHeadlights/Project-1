@@ -168,6 +168,7 @@
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\CollisionManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\DropDown_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\EnemyShipHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShipInputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\EnemyShip_PG.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipInputHandler_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\ShipHashmap_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipInventoryHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShip_PG.cpp" />
@@ -243,6 +245,7 @@
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
     <ClInclude Include="PirateGame\Header\CollisionManager_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
+    <ClInclude Include="PirateGame\Header\EnemyShipHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShip_PG.h" />
@@ -274,6 +277,7 @@
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShip_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipInputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Ship_PG.h" />
     <ClInclude Include="PirateGame\Header\ShopItem_PG.h" />
     <ClInclude Include="PirateGame\Header\Slider_PG.h" />
@@ -285,7 +289,6 @@
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\WindController_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />
-    <ClInclude Include="PirateGame\Resource\ShipHashmap_PG.cpp" />
     <ClInclude Include="Platformer Game\Header\Platforms_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Player_Plat.h" />
     <ClInclude Include="Platformer Game\Header\Textures_Plat.h" />

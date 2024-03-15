@@ -34,6 +34,7 @@ World::World(sf::RenderWindow* window_in) {
 	LMHandler = std::make_unique<LandMassHandler>();
 	MH = std::make_unique<MenuHandler>();
 	CM = std::make_unique<CollisionManager>();
+	ESH = std::make_unique<EnemyShipHandler>();
 
 	// Set up the world
 	setUpWorld();
@@ -41,10 +42,15 @@ World::World(sf::RenderWindow* window_in) {
 
 void World::setUpWorld() {
 	playerShip->setUpShip(ShipClass::Frigate);
-	LMHandler->addLandMasses(static_cast<float>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
+	LMHandler->addLandMasses(static_cast<int>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
+
+	// Set up the enemy ship handler
+	ESH->addEnemyShips(1000);
+	ESH->setPlayerShip(playerShip.get());
 
 	// Set up the collision manager
-	CM->setPlayerShip(playerShip.get());
+	CM->setPlayerShips(playerShip.get());
+	CM->setEnemyShips(ESH->getEnemyShips());
 	CM->setLandMasses(LMHandler->getLandMasses());
 	CM->addObjectsToHashmaps();
 
@@ -143,6 +149,8 @@ void World::gameLoop() {
 
 	LMHandler->interactWithLandmasses(playerShip.get());
 
+	ESH->update();
+
 	CM->handleCollisions();
 
 	playerShip->update();
@@ -158,5 +166,6 @@ void World::drawGameLoop() {
 	LMHandler->drawLandMasses();
 	window->draw(frameRateText);
 	playerShip->draw();
+	ESH->draw();
 }
 

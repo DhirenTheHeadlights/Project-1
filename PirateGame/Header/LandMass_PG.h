@@ -16,9 +16,9 @@ namespace PirateGame {
 	// This enum will be used to determine the land mass type
 	enum class LandMassType { Island, Rock, Shipwreck };
 
-	class Landmass {
+	class LandMass {
 	public:
-		void createLandMass(LandMassType type, LandmassTextureHandler& texture);
+		void createLandMass(LandMassType type);
 		void setRandomRotation() { sprite.setRotation(static_cast<float>(rand() % 360)); }
 
 		// Setters
@@ -37,7 +37,6 @@ namespace PirateGame {
 	private:
 		// Sprite to represent the land mass
 		sf::Sprite sprite;
-		sf::Texture texture;
 		float scaling = 1;
 		LandMassType type = LandMassType::Island;
 

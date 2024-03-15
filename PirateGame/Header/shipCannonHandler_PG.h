@@ -8,7 +8,7 @@
 #include "GlobalValues_PG.h"
 #include "Cannonball_PG.h"
 #include "GlobalSoundManager_PG.h"
-#include "LandMassTextures_PG.h"
+#include "GlobalTextureHandler_PG.h"
 
 namespace PirateGame {
 
@@ -16,8 +16,7 @@ namespace PirateGame {
 
 	class ShipCannonHandler {
 	public:
-		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {
-		};
+		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
 		~ShipCannonHandler() {};
 
 		void shootCannonballs(int numCannons, sf::Vector2f targetPos);
@@ -46,8 +45,6 @@ namespace PirateGame {
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;
-
-		LandmassTextureHandler textures;
 
 		sf::Vector2f cannonDirection(sf::Vector2f targetPos);
 	};

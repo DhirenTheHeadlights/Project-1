@@ -412,6 +412,12 @@
     <ClCompile Include="PirateGame\Resource\CollisionManager_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\General</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\EnemyShipHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipHashmap_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -657,8 +663,11 @@
     <ClInclude Include="PirateGame\Header\ShipHashmap_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Resource\ShipHashmap_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
+    <ClInclude Include="PirateGame\Header\EnemyShipHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipTextureHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

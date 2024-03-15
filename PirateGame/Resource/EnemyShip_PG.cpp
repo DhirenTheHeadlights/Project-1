@@ -3,11 +3,16 @@
 using namespace PirateGame;
 
 void EnemyShip::customShipSetUp() {
-	// implement later
+	// Add handlers
+	inputHandler = std::make_unique<EnemyShipInputHandler>(getSprite());
+	movementHandler = std::make_unique<EnemyShipMovementHandler>(getSprite());
+
+	// Set a random pos
+	getSprite().setPosition(GlobalValues::getInstance().getMap().getRandomPosition());
 }
 
 void EnemyShip::customShipUpdate() {
-	// implement later
+	inputHandler->update();
 }
 
 void EnemyShip::customShipDraw() {

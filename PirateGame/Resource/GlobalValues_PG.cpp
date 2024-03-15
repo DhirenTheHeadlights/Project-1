@@ -66,6 +66,7 @@ std::string GlobalValues::keyToString(sf::Keyboard::Key key) {
 		case sf::Keyboard::BackSpace: return "Backspace";
 		case sf::Keyboard::Tab: return "Tab";
 	}
+	return "Error: Key not found.";
 }
 
 std::string GlobalValues::buttonToString(sf::Mouse::Button button) {

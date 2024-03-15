@@ -23,21 +23,13 @@ namespace PirateGame {
 		void handleCollisions();
 
 		// Setters
-		void setLandMasses(std::vector<std::unique_ptr<Landmass>>& landMasses) {
-			for (auto& landMass : landMasses) {
-				this->landMasses.push_back(landMass.get());
-			}
-		}
-		void setEnemyShips(std::vector<std::unique_ptr<EnemyShip>>& enemyShips) {
-			for (auto& ship : enemyShips) {
-				this->enemyShips.push_back(ship.get());
-			}
-		}
-		void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
+		void setLandMasses(std::vector<std::shared_ptr<LandMass>>& landMasses) { this->landMasses = landMasses; }
+		void setEnemyShips(std::vector<std::shared_ptr<EnemyShip>>& enemyShips) { this->enemyShips = enemyShips; }
+		void setPlayerShips(PlayerShip* playerShip) { this->playerShip = playerShip; }
 	
 	private:
-		std::vector<Landmass*> landMasses;
-		std::vector<EnemyShip*> enemyShips;
+		std::vector<std::shared_ptr<LandMass>> landMasses;
+		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		PlayerShip* playerShip = nullptr;
 
 		// Hashmaps

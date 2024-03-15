@@ -5,22 +5,22 @@ using namespace PirateGame;
 void CollisionManager::addObjectsToHashmaps() {
 	// Add landmasses to hashmap
 	for (auto& landmass : landMasses) {
-		landMassHashmap.addLandMass(landmass);
+		landMassHashmap.addLandMass(landmass.get());
 	}
 
 	// Add ships to hashmap
-	/*for (auto& enemyShip : enemyShips) {
-		shipHashmap.addShip(enemyShip);
-	}*/
+	for (auto& enemyShip : enemyShips) {
+		shipHashmap.addEnemyShip(enemyShip.get());
+	}
 }
 
 void CollisionManager::handleCollisions() {
 	// Grab the nearby landmasses and ships for the player ship
-	std::set<Landmass*> nearbyLandMasses = landMassHashmap.findLandMassNearShip(playerShip);
-	//std::set<Ship*> nearbyShips = shipHashmap.findShipsNearShip(playerShip);
+	std::set<LandMass*> nearbyLandMasses = landMassHashmap.findLandMassNearShip(playerShip);
+	std::set<EnemyShip*> nearbyShips = shipHashmap.findEnemyShipsNearShip(playerShip);
 
 	// Vector to store colliding land masses
-	std::vector<Landmass*> collidingLandMasses;
+	std::vector<LandMass*> collidingLandMasses;
 	collidingLandMasses.clear();
 
 	// Check if the player is colliding with any of the nearby land masses
@@ -39,26 +39,26 @@ void CollisionManager::handleCollisions() {
 		}
 	}
 
-	//// Grab the nearby landmasses and ships for each active ship
-	//for (auto& enemyShip : enemyShips) {
-	//	if (!enemyShip->isActive()) continue;
+	// Grab the nearby landmasses and ships for each active ship
+	for (auto& enemyShip : enemyShips) {
+		if (!enemyShip->isActive()) continue;
 
-	//	std::set<Landmass*> nearbyLandmasses = landMassHashmap.findLandMassNearShip(enemyShip);
-	//	std::set<Ship*> nearbyShips = shipHashmap.findShipsNearShip(enemyShip);
+		std::set<LandMass*> nearbyLandmasses = landMassHashmap.findLandMassNearShip(enemyShip.get());
+		std::set<EnemyShip*> nearbyShips = shipHashmap.findEnemyShipsNearShip(enemyShip.get());
 
-	//	std::vector<Landmass*> collidingLandMasses;
-	//	collidingLandMasses.clear();
+		std::vector<LandMass*> collidingLandMasses;
+		collidingLandMasses.clear();
 
-	//	// Check if the enemy ship is colliding with any of the nearby land masses
-	//	for (auto& i : nearbyLandmasses) {
-	//		if (pixelPerfectTest(enemyShip->getSprite(), i->getSprite())) {
-	//			enemyShip->getMovementHandler().collisionMovement(i->getSprite());
-	//			enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
+		// Check if the enemy ship is colliding with any of the nearby land masses
+		for (auto& i : nearbyLandmasses) {
+			if (pixelPerfectTest(enemyShip->getSprite(), i->getSprite())) {
+				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
+				enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
 
-	//			collidingLandMasses.push_back(i);
-	//		}
-	//	}
-	//}
+				collidingLandMasses.push_back(i);
+			}
+		}
+	}
 
 }
 

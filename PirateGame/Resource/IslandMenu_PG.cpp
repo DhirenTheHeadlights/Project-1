@@ -42,8 +42,6 @@ void IslandMenu::setUpMenu() {
 	std::sort(market.begin(), market.end(), [](const ShopItem& a, const ShopItem& b) {
 		return a.name < b.name;
 	});
-	
-	addInteractablesToMenu();
 }
 
 void IslandMenu::addInteractablesToMenu() {
@@ -217,7 +215,6 @@ void IslandMenu::addShipInventoryInteractables() {
 		shipInventoryInteractable.push_back(std::move(itemDisplay));
 	}
 	this->shipInventory = ship->getInventoryHandler().getInventory();
-	addedShipInventory = true;
 }
 
 void IslandMenu::setInteractablePositions() {
@@ -226,7 +223,8 @@ void IslandMenu::setInteractablePositions() {
 
 	// Basically, we want the menu to not show if the player pressed the "leave island" button
 	// This flag is set to false for all landmasses not near the player, and is set true when the player
-	// selects the "enter island" button. The flag will be reset in the landmass handler.
+	// selects the "enter island" button. The flag will be reset in the landmass handler when the player
+	// moves away from the landmass
 	if (hasPlayerSaidNo) return;
 
 	if (!enteredIsland) {
@@ -334,8 +332,10 @@ void IslandMenu::draw() {
 	if (hasPlayerSaidNo) return;
 
 	// Draw the ship inventory if the player has entered the island
-	if (enteredIsland && !addedShipInventory) {
+	if (!addedInteractables) {
 		addShipInventoryInteractables();
+		addInteractablesToMenu();
+		addedInteractables = true;
 	}
 
 	setInteractablePositions();

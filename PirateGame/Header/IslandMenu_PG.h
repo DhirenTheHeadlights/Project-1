@@ -44,7 +44,7 @@ namespace PirateGame {
 		int interactableTextSizeBig = 60;
 
 		bool enteredIsland = false;
-		bool addedShipInventory = false;
+		bool addedInteractables = false;
 		bool hasPlayerSaidNo = false;
 
 		PlayerShip* ship = nullptr;

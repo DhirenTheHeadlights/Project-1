@@ -8,11 +8,13 @@
 #include <unordered_map>
 
 #include "GlobalValues_PG.h"
+#include "GlobalTextureHandler_PG.h"
 #include "ShipCannonHandler_PG.h"
 
 namespace PirateGame {
 	// This enum will be used to determine the ship class
 	enum class ShipClass {
+		Random,
 		Sloop,
 		Brigantine,
 		Frigate,
@@ -25,29 +27,24 @@ namespace PirateGame {
 		float baseSpeed = 1.f;
 		float maxHealth = 100.f;
 		float regenRate = 0.5f;
-		std::string texturePath = "";
+		sf::Texture texture = sf::Texture();
 		float scaleX = 1.f, scaleY = 1.f;
 		int numCannons = 1;
 	};
 
 	class Ship {
 	public:
-		Ship() {
-			SCH = std::make_unique<ShipCannonHandler>(sprite);
-		};
+		Ship() {};
 
 		~Ship() {};
 
 		// Create the ship and set its values. Random ship class if not specified.
-		void setUpShip(ShipClass shipClass = ShipClass::Sloop);
+		void setUpShip(ShipClass shipClass = ShipClass::Random);
 		virtual void customShipSetUp() = 0; // Virtual method to allow for custom ship setup
 		void update();
 		virtual void customShipUpdate() = 0; // Virtual method to allow for custom ship update
 		void draw();
 		virtual void customShipDraw() = 0; // Virtual method to allow for custom ship draw
-
-		// Get movement handler
-		ShipCannonHandler& getCannonHandler() { return *SCH; }
 
 		// Setters
 		void damageShip(float damagePerSecond) {
@@ -62,8 +59,11 @@ namespace PirateGame {
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
+
 		ShipProperties& getShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
+
+		virtual ShipCannonHandler& getCannonHandler() { return *SCH; };
 
 		std::string getShipClassString() {
 			switch (shipClass) {
@@ -93,7 +93,6 @@ namespace PirateGame {
 		// SFML Objects
 		sf::Clock deltaTime;
 		sf::Sprite sprite;
-		sf::Texture texture;
 
 		// Variables to store the ship's values
 		float health = 0;

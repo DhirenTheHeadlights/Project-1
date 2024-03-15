@@ -10,6 +10,7 @@
 #include "HUDTextures_PG.h"
 #include "OptionsMenuTextureHandler_PG.h"
 #include "MarketTextureHandler_PG.h"
+#include "ShipTextureHandler_PG.h"
 
 namespace PirateGame {
 	class GlobalTextureHandler {
@@ -25,6 +26,7 @@ namespace PirateGame {
 		HUDTextureHandler& getHUDTextures() { return *HUDTextures; }
 		OptionsMenuTextureHandler& getOptionsMenuTextures() { return *optionsMenuTextures; }
 		MarketTextureHandler& getMarketTextures() { return *marketTextures; }
+		ShipTextureHandler& getShipTextures() { return *shipTextures; }
 
 	private:
 		GlobalTextureHandler() {
@@ -41,5 +43,7 @@ namespace PirateGame {
 		std::unique_ptr<HUDTextureHandler> HUDTextures = std::make_unique<HUDTextureHandler>();
 		std::unique_ptr<OptionsMenuTextureHandler> optionsMenuTextures = std::make_unique<OptionsMenuTextureHandler>();
 		std::unique_ptr<MarketTextureHandler> marketTextures = std::make_unique<MarketTextureHandler>();
+		std::unique_ptr<ShipTextureHandler> shipTextures = std::make_unique<ShipTextureHandler>();
 	};
+
 }

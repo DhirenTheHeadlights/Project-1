@@ -4,6 +4,7 @@
 
 #include "GlobalValues_PG.h"
 #include "PlayerShip_PG.h"
+#include "EnemyShip_PG.h"
 #include "LandMass_PG.h"
 #include "HUDTextures_PG.h"
 
@@ -27,13 +28,9 @@ namespace PirateGame {
 
 		// Setters
 		void setMinimapRadius(float size) { this->size = size; }
-		void setLandmasses(std::vector<std::unique_ptr<Landmass>>& landmasses) { 
-			for (auto& landmass : landmasses) {
-				this->landmasses.push_back(landmass.get());
-			}
-		}
+		void setLandmasses(std::vector<std::shared_ptr<LandMass>>& landmasses) { this->landmasses = landmasses; }
 		void setShip(Ship* ship) { this->ship = ship; }
-		void setShips(std::vector<Ship*>& ships) { this->ships = ships; }
+		void setShips(std::vector<std::shared_ptr<EnemyShip>>& ships) { this->ships = ships; }
 		void setMinimapPosition(sf::Vector2f position) { this->position = position; }
 		
 		// Getters
@@ -48,6 +45,7 @@ namespace PirateGame {
 		sf::Vector2f shipIconSize = { 6.f, 6.f };
 		sf::Vector2f rockIconSize = { 2.f, 2.f };
 		sf::Vector2f islandIconSize = { 4.f, 4.f };
+		sf::Vector2f shipRectSize = { 3.f, 3.f };
 
 		Ship* ship = nullptr;
 
@@ -60,10 +58,10 @@ namespace PirateGame {
 		sf::CircleShape minimap;
 		sf::RectangleShape shipIcon; // Temp
 
-		std::vector<Ship*> ships;
-		std::vector<Landmass*> landmasses;
+		std::vector<std::shared_ptr<EnemyShip>> ships;
+		std::vector<std::shared_ptr<LandMass>> landmasses;
 
 		std::vector<sf::RectangleShape> visibleLandmassRects; // Landmasses on the minimap
-		std::vector<sf::RectangleShape> shipsRects; // Ships on the minimap
+		std::vector<sf::RectangleShape> visibleShipRects; // Ships on the minimap
 	};
 }

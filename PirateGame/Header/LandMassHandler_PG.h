@@ -1,10 +1,8 @@
 #pragma once
 
-/// <summary>
 /// This class is going to handle the land masses in the game.
 /// It will be used to generate the land masses and store them in a vector.
-/// </summary>
-/// 
+
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -27,19 +25,17 @@ namespace PirateGame {
         void interactWithLandmasses(PlayerShip* ship);
 
         // Getters
-        std::vector<std::unique_ptr<Landmass>>& getLandMasses() { return landmasses; }
+        std::vector<std::shared_ptr<LandMass>>& getLandMasses() { return landmasses; }
     private:
         // Helper functions
         void createLandmass(LandMassType type, sf::Vector2f position);
-        void openMarket(PlayerShip& ship, Landmass* landMass);
 
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
-        std::vector<std::unique_ptr<Landmass>> landmasses;
+        std::vector<std::shared_ptr<LandMass>> landmasses;
 
         // Hashmap and Textures
         LandMassHashmap hashmap;
-        LandmassTextureHandler texture;
 
         // Values
         float interactionDistance = 600.f; // Distance for interaction with landmasses

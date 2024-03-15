@@ -10,6 +10,7 @@
 
 #include "GlobalValues_PG.h"
 #include "PlayerShip_PG.h"
+#include "EnemyShip_PG.h"
 #include "Map.h"
 
 namespace PirateGame {
@@ -26,17 +27,17 @@ namespace PirateGame {
 		ShipHashmap() {};
 
 		// Add and remove ship to hashmap
-		void addShip(Ship* ship);
-		void removeShip(Ship* ship);
+		void addEnemyShip(EnemyShip* ship);
+		void removeEnemyShip(EnemyShip* ship);
 
 		// Generate key for hashmap
 		std::pair<int, int> generateKey(sf::Vector2f position);
 
 		// Find ship near other ship
-		std::set<Ship*> findShipsNearShip(Ship* ship, bool debug = false);
+		std::set<EnemyShip*> findEnemyShipsNearShip(Ship* ship, bool debug = false);
 	private:
 		// Hashmap
-		std::unordered_map<std::pair<int, int>, Ship*, pair_hash> hashmap;
+		std::unordered_map<std::pair<int, int>, EnemyShip*, pair_hash> hashmap;
 
 		// Map
 		Map& map = GlobalValues::getInstance().getMap();

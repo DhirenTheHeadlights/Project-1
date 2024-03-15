@@ -16,13 +16,7 @@
 namespace PirateGame {
 	class PlayerShip : public Ship {
 	public:
-		PlayerShip() {
-			SIH = std::make_unique<PlayerShipInputHandler>(getSprite());
-			SMH = std::make_unique<PlayerShipMovementHandler>(getSprite());
-			SIvH = std::make_unique<ShipInventoryHandler>();
-
-			SIvH->addGold(1000);
-		};
+		PlayerShip() {};
 
 		~PlayerShip() {};
 

@@ -25,8 +25,8 @@ void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandm
 }
 
 void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
-	std::unique_ptr<Landmass> landMass = std::make_unique<Landmass>();
-	landMass->createLandMass(type, texture);
+	std::shared_ptr<LandMass> landMass = std::make_unique<LandMass>();
+	landMass->createLandMass(type);
 	landMass->setPosition(position);
 
 
@@ -43,7 +43,7 @@ void LandMassHandler::drawLandMasses() {
 }
 
 void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
-    std::set<Landmass*> nearbyLandMasses = hashmap.findLandMassNearShip(ship);
+    std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearShip(ship);
     
     for (auto& landMass : nearbyLandMasses) {
         sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
@@ -51,8 +51,12 @@ void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
         float distance = sqrt(pow(shipPosition.x - landMassPosition.x, 2.f) + pow(shipPosition.y - landMassPosition.y, 2.f));
 
         if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
+			// Set up the market
+			landMass->getIslandMenu()->setShip(*ship);
+
             // Prompt the player to open the market here
-            openMarket(*ship, landMass);
+            landMass->getIslandMenu()->draw();
+
             break; // Stop checking for other islands
         }
     }
@@ -64,9 +68,4 @@ void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
 			landMass->getIslandMenu()->setHasPlayerSaidNo(false);
         }
     }
-}
-
-void LandMassHandler::openMarket(PlayerShip& ship, Landmass* landMass) {
-	landMass->getIslandMenu()->setShip(ship);
-	landMass->getIslandMenu()->draw();
 }

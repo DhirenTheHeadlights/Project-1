@@ -13,6 +13,11 @@ void Minimap::draw() {
         window->draw(visibleLandmassRects[i]);
     }
 
+    // Iterate only through visible ships
+    for (size_t i = 0; i < visibleShipRects.size(); ++i) {
+		window->draw(visibleShipRects[i]);
+	}
+
     window->draw(shipIconSprite);
 }
 
@@ -55,7 +60,7 @@ void Minimap::update(float shipRotation) {
 
                 // Set landmass type properties
                 if (landmasses[i]->getType() == LandMassType::Island) {
-                    landmassRect.setFillColor(sf::Color::Red);
+                    landmassRect.setFillColor(sf::Color::Green);
                     landmassRect.setSize(islandIconSize);
                 }
                 else if (landmasses[i]->getType() == LandMassType::Rock) {
@@ -63,11 +68,34 @@ void Minimap::update(float shipRotation) {
                     landmassRect.setSize(rockIconSize);
                 }
                 else if (landmasses[i]->getType() == LandMassType::Shipwreck) {
-                    landmassRect.setFillColor(sf::Color::Green);
+                    landmassRect.setFillColor(sf::Color::Blue);
                 }
 
                 visibleLandmassRects.push_back(landmassRect);
             }
         }
     }
+
+    // Clear visible ship rects
+    visibleShipRects.clear();
+
+    for (size_t i = 0; i < ships.size(); ++i) {
+		sf::Vector2f shipPos = ships[i]->getSprite().getPosition();
+		float distance = static_cast<float>(sqrt(pow(shipPos.x - ship->getSprite().getPosition().x, 2) + pow(shipPos.y - ship->getSprite().getPosition().y, 2)));
+
+        if (distance <= visibilityRadius) {
+			sf::RectangleShape shipRect;
+			sf::Vector2f scaledPos = (shipPos - ship->getSprite().getPosition()) * (minimapSprite.getGlobalBounds().height / 2 / visibilityRadius);
+			sf::Vector2f relativePos = minimapCenter + scaledPos;
+
+            if (sqrt(pow(relativePos.x - minimapCenter.x, 2) + pow(relativePos.y - minimapCenter.y, 2)) <= minimapRadius) {
+				shipRect.setPosition(relativePos);
+				shipRect.setFillColor(sf::Color::Red);
+				shipRect.setSize(shipRectSize);
+
+				visibleShipRects.push_back(shipRect);
+			}
+		}
+	}
+
 }

@@ -8,7 +8,7 @@ std::pair<int, int> ShipHashmap::generateKey(sf::Vector2f pos) {
 }
 
 // Add a new object to the hashmap
-void ShipHashmap::addShip(Ship* ship) {
+void ShipHashmap::addEnemyShip(EnemyShip* ship) {
     // Use the bounding box of the sprite for grid calculations
     sf::FloatRect bounds = ship->getSprite().getGlobalBounds();
     auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
@@ -23,8 +23,7 @@ void ShipHashmap::addShip(Ship* ship) {
 }
 
 // Remove an object from the hashmap
-void ShipHashmap::removeShip(Ship* ship) {
-    // Similar to addLandMass, you need to remove the landmass from all the cells it occupies
+void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
     auto topLeft = map.getGridCoordinates(ship->getSprite().getPosition().x, ship->getSprite().getPosition().y);
     auto bottomRight = map.getGridCoordinates(ship->getSprite().getPosition().x + ship->getSprite().getGlobalBounds().width,
         ship->getSprite().getPosition().y + ship->getSprite().getGlobalBounds().height);
@@ -37,15 +36,15 @@ void ShipHashmap::removeShip(Ship* ship) {
     }
 }
 
-// Find landmass near to a player, debug is used to visualize the grid cells being checked
-std::set<Ship*> ShipHashmap::findShipsNearShip(Ship* ship, bool debug) {
+// Find ship near to a player, debug is used to visualize the grid cells being checked
+std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, bool debug) {
     // Grab window
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
     // Get the global bounds of the player ship's sprite
     sf::FloatRect shipBounds = ship->getSprite().getGlobalBounds();
 
-    // Use the bounds to calculate the extended area around the ship for finding nearby landmasses
+    // Use the bounds to calculate the extended area around the ship for finding nearby ships
     float left = shipBounds.left - shipBounds.width;
     float right = shipBounds.left + 2 * shipBounds.width;
     float top = shipBounds.top - shipBounds.height;
@@ -55,14 +54,14 @@ std::set<Ship*> ShipHashmap::findShipsNearShip(Ship* ship, bool debug) {
     auto topLeft = map.getGridCoordinates(left, top);
     auto bottomRight = map.getGridCoordinates(right, bottom);
 
-    std::set<Ship*> nearbyShips;
+    std::set<EnemyShip*> nearbyShips;
 
     // Check the cells in the bounding box
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
             std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
 
-            // If the key exists in the hashmap, add the landmass to the set
+            // If the key exists in the hashmap, add the ship to the set
             if (hashmap.count(key)) {
                 nearbyShips.insert(hashmap.at(key));
             }
@@ -75,7 +74,7 @@ std::set<Ship*> ShipHashmap::findShipsNearShip(Ship* ship, bool debug) {
             sf::RectangleShape rect;
             rect.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
             rect.setFillColor(sf::Color::Magenta);  // Color for visualization
-            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize())));  // Adjust position based on your grid sizing
+            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize()))); 
             window->draw(rect);
         }
     }

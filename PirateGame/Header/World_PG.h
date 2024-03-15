@@ -8,6 +8,7 @@
 #include "Player_PG.h"
 #include "View_PG.h"
 #include "PlayerShip_PG.h"
+#include "EnemyShipHandler_PG.h"
 #include "LandMassHandler_PG.h"
 #include "CollisionManager_PG.h"
 #include "MenuHandler_PG.h"
@@ -38,6 +39,7 @@ namespace PirateGame {
 		std::unique_ptr<LandMassHandler> LMHandler;
 		std::unique_ptr<MenuHandler> MH;
 		std::unique_ptr<CollisionManager> CM;
+		std::unique_ptr<EnemyShipHandler> ESH;
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;

@@ -2,14 +2,14 @@
 
 using namespace PirateGame;
 
-void Landmass::createLandMass(LandMassType type, LandmassTextureHandler& texture) {
+void LandMass::createLandMass(LandMassType type) {
 	// Set the type of landmass
 	this->type = type;
 
 	// Case switch for the type of landmass
 	switch (type) {
 		case LandMassType::Island:
-			sprite.setTexture(texture.grabIslandTexture());
+			sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().grabIslandTexture());
 			sprite.setScale(1.f * scaling, 1.f * scaling);
 
 			// Create the market for the island
@@ -18,7 +18,7 @@ void Landmass::createLandMass(LandMassType type, LandmassTextureHandler& texture
 			islandMenu->setUpMenu();
 			break;
 		case LandMassType::Rock:
-			sprite.setTexture(texture.grabRockTexture());
+			sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().grabRockTexture());
 			sprite.setScale(0.125f * scaling, 0.125f * scaling);
 			break;
 		case LandMassType::Shipwreck:
@@ -27,7 +27,7 @@ void Landmass::createLandMass(LandMassType type, LandmassTextureHandler& texture
 	//setRandomRotation();
 }
 
-ShopItem& Landmass::getMarketItem(std::string itemName) {
+ShopItem& LandMass::getMarketItem(std::string itemName) {
 	for (auto& it : market) {
 		if (it.name == itemName) {
 			return it;
@@ -38,7 +38,7 @@ ShopItem& Landmass::getMarketItem(std::string itemName) {
 	return market.front();
 }
 
-void Landmass::createMarket() {
+void LandMass::createMarket() {
 	std::set<std::string> itemNames = { 
 		"Banana", "Cannonball", "Wood", "Gold", "Rum", "Cannon", "Sword", "Pistol", "Cloth", "Silk",
 		"Spices", "Tea", "Coffee", "Tobacco", "Sugar", "Cotton", "Indigo", "Dye", "Salt", "Iron",

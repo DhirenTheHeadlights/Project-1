@@ -15,6 +15,9 @@
 namespace PirateGame {
 	class EnemyShip : public Ship {
 	public:
+		EnemyShip() {};
+		~EnemyShip() {};
+
 		// Custom functions
 		void customShipSetUp() override;
 		void customShipUpdate() override;
@@ -22,8 +25,9 @@ namespace PirateGame {
 
 		// Getters
 		bool isActive() const { return active; }
-		EnemyShipMovementHandler& getMovementHandler() { return movementHandler; }
-		EnemyShipInputHandler& getInputHandler() { return inputHandler; }
+		EnemyShipMovementHandler& getMovementHandler() { return *movementHandler; }
+		EnemyShipInputHandler& getInputHandler() { return *inputHandler; }
+
 	private:
 		// Health bars
 		sf::RectangleShape healthBarRed;
@@ -33,8 +37,8 @@ namespace PirateGame {
 		bool active = false;
 
 		// Handlers
-		EnemyShipInputHandler inputHandler;
-		EnemyShipMovementHandler movementHandler;
+		std::unique_ptr<EnemyShipInputHandler> inputHandler;
+		std::unique_ptr<EnemyShipMovementHandler> movementHandler;
 	};
 }
 

@@ -28,17 +28,17 @@ namespace PirateGame {
 		LandMassHashmap() {};
 
 		// Add and remove landmass to hashmap
-		void addLandMass(Landmass* landmass);
-		void removeLandMass(Landmass* landmass);
+		void addLandMass(LandMass* landmass);
+		void removeLandMass(LandMass* landmass);
 
 		// Generate key for hashmap
 		std::pair<int, int> generateKey(sf::Vector2f position);
 
 		// Find landmass near player
-		std::set<Landmass*> findLandMassNearShip(Ship* ship, bool debug = false);
+		std::set<LandMass*> findLandMassNearShip(Ship* ship, bool debug = false);
 	private:
 		// Hashmap
-		std::unordered_map<std::pair<int, int>, Landmass*, pair_hash> hashmap;
+		std::unordered_map<std::pair<int, int>, LandMass*, pair_hash> hashmap;
 
 		// Map
 		Map& map = GlobalValues::getInstance().getMap();

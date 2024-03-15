@@ -8,7 +8,7 @@ std::pair<int, int> LandMassHashmap::generateKey(sf::Vector2f pos) {
 }
 
 // Add a new object to the hashmap
-void LandMassHashmap::addLandMass(Landmass* landmass) {
+void LandMassHashmap::addLandMass(LandMass* landmass) {
     // Use the bounding box of the sprite for grid calculations
     sf::FloatRect bounds = landmass->getSprite().getGlobalBounds();
     auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
@@ -23,7 +23,7 @@ void LandMassHashmap::addLandMass(Landmass* landmass) {
 }
 
 // Remove an object from the hashmap
-void LandMassHashmap::removeLandMass(Landmass* landmass) {
+void LandMassHashmap::removeLandMass(LandMass* landmass) {
 	// Similar to addLandMass, you need to remove the landmass from all the cells it occupies
 	auto topLeft = map.getGridCoordinates(landmass->getSprite().getPosition().x, landmass->getSprite().getPosition().y);
 	auto bottomRight = map.getGridCoordinates(landmass->getSprite().getPosition().x + landmass->getSprite().getGlobalBounds().width,
@@ -38,7 +38,7 @@ void LandMassHashmap::removeLandMass(Landmass* landmass) {
 }
 
 // Find landmass near to a player, debug is used to visualize the grid cells being checked
-std::set<Landmass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug) { 
+std::set<LandMass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug) { 
     // Grab window
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
@@ -55,7 +55,7 @@ std::set<Landmass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug
     auto topLeft = map.getGridCoordinates(left, top);
     auto bottomRight = map.getGridCoordinates(right, bottom);
 
-    std::set<Landmass*> landmasses;
+    std::set<LandMass*> landmasses;
 
     // Check the cells in the bounding box
     for (int i = topLeft.first; i <= bottomRight.first; i++) {
