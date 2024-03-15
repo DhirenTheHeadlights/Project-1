@@ -15,7 +15,7 @@ namespace PlatformerGame {
 		void gameLoop(sf::Event event);
 		void createWorld(sf::Event event);
 
-		HealthBar healthBar;
+		HUD hud;
 
 
 	private:

@@ -2,7 +2,7 @@
 
 using namespace PlatformerGame;
 
-HealthBar::HealthBar(float maxHealth, sf::Vector2f position, sf::Vector2f size) {
+HUD::HUD(float maxHealth, sf::Vector2f position, sf::Vector2f size) {
 	this->maxHealth = maxHealth;
 	this->health = maxHealth;
 
@@ -14,22 +14,26 @@ HealthBar::HealthBar(float maxHealth, sf::Vector2f position, sf::Vector2f size) 
 	healthBarBackground.setFillColor(sf::Color(100, 100, 100));
 }
 
-void HealthBar::setHealth(float health) {
+void HUD::setHealth(float health) {
 	this->health = std::max(0.0f, std::min(health, maxHealth));
 }
 
-void HealthBar::setMaxHealth(float maxHealth) {
+void HUD::setMaxHealth(float maxHealth) {
 	this->maxHealth = maxHealth;
 }
 
-void HealthBar::update() {
+void HUD::update(sf::RenderWindow& window) {
 	float percentage = health / maxHealth;
 	sf::Vector2f size = healthBarBackground.getSize();
 	size.x *= percentage;
 	healthBar.setSize(size);
+	//make health bar stay at the top of the screen in relative position to the player sprite
+	sf::Vector2f viewposition = window.getView().getCenter();
+	healthBar.setPosition(viewposition.x - healthBar.getSize().x/2, viewposition.y - window.getSize().y / 2 + 50);
+	healthBarBackground.setPosition(viewposition.x - healthBarBackground.getSize().x / 2, viewposition.y - window.getSize().y / 2 + 50);
 }
 
-void HealthBar::draw(sf::RenderWindow& window) {
+void HUD::draw(sf::RenderWindow& window) {
 	window.draw(healthBarBackground);
 	window.draw(healthBar);
 }

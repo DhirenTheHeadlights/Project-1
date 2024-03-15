@@ -19,6 +19,9 @@ namespace PlatformerGame {
 		//State methods
 		void handlePlayerState();
 
+		//Collision methods
+		void checkPlatformCollision(const std::vector<sf::RectangleShape>& platforms);
+
 		sf::Vector2f getPosition() const { return playerSprite.getPosition(); }
 
 
@@ -33,6 +36,7 @@ namespace PlatformerGame {
 		sf::Vector2f maxVelocity = sf::Vector2f(30.f, 30.f);  // Maximum velocity (x, y)
 		sf::Vector2f position;  // Position of the player
 		sf::Vector2f spriteScale = sf::Vector2f(2, 2);  // Scale of the player sprite
+		sf::Vector2f prevPosition;  // Previous position of the player
 
 		static const sf::Vector2f GRAVITY;  // Gravity constant
 

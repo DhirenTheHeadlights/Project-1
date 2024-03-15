@@ -3,12 +3,12 @@
 #include <iostream>
 
 namespace PlatformerGame {
-	class HealthBar {
+	class HUD {
 	public:
-		HealthBar(float maxHealth, sf::Vector2f position, sf::Vector2f size);
+		HUD(float maxHealth, sf::Vector2f position, sf::Vector2f size);
 		void setHealth(float health);
 		void setMaxHealth(float maxHealth);
-		void update();
+		void update(sf::RenderWindow& window);
 		void draw(sf::RenderWindow& window);
 
 	private:

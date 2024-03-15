@@ -25,12 +25,12 @@ void Player::move() {
 
 	//Horizontal movement logic
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		velocity.x = -6.f;
+		velocity.x = -10.f;
 		playerSprite.setScale(-spriteScale.x, spriteScale.y);
 		
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		velocity.x = 6.f;
+		velocity.x = 10.f;
 		playerSprite.setScale(spriteScale);
 
 	}
@@ -38,7 +38,7 @@ void Player::move() {
 		velocity.x = 0;
 	}
 	if (isOnGround && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		velocity.y = -4.f;
+		velocity.y = -7.f;
 		isOnGround = false;
 	}
 
@@ -49,8 +49,12 @@ void Player::move() {
 	if (position.y < topBoundary) position.y = topBoundary;
 	if (position.y > bottomBoundary - playerSprite.getGlobalBounds().height) position.y = bottomBoundary - playerSprite.getGlobalBounds().height;
 
-	playerSprite.setPosition(position);
+
 	//std::cout << "Player position: " << playerSprite.getPosition().x << ", " << playerSprite.getPosition().y << std::endl;
+	prevPosition = playerSprite.getPosition();
+	playerSprite.setPosition(position);
+
+
 }
 
 void Player::applyGravity() {
@@ -72,4 +76,32 @@ void Player::handlePlayerState() {
 		isOnGround = false;
 	}
 
+}
+
+void Player::checkPlatformCollision(const std::vector<sf::RectangleShape>& platforms) {
+	for (const auto& platform : platforms) {
+		if (playerSprite.getGlobalBounds().intersects(platform.getGlobalBounds())) {
+			//handle collision logic using previous position and let player stand jump from platforms
+			if (prevPosition.y + playerSprite.getGlobalBounds().height <= platform.getPosition().y) {
+				playerSprite.setPosition(playerSprite.getPosition().x, platform.getPosition().y - playerSprite.getGlobalBounds().height);
+				if (velocity.y > 0) {
+					velocity.y = 0.f;
+					isOnGround = true;
+				}
+			}
+			else if (prevPosition.y >= platform.getPosition().y + platform.getGlobalBounds().height) {
+				playerSprite.setPosition(playerSprite.getPosition().x, platform.getPosition().y + platform.getGlobalBounds().height);
+				velocity.y = 0.f;
+			}
+			else if (prevPosition.x + playerSprite.getGlobalBounds().width <= platform.getPosition().x) {
+				playerSprite.setPosition(platform.getPosition().x - playerSprite.getGlobalBounds().width, playerSprite.getPosition().y);
+				velocity.x = 0.f;
+			}
+			else if (prevPosition.x >= platform.getPosition().x + platform.getGlobalBounds().width) {
+				playerSprite.setPosition(platform.getPosition().x + platform.getGlobalBounds().width, playerSprite.getPosition().y);
+				velocity.x = 0.f;
+			}
+			
+		}
+	}
 }

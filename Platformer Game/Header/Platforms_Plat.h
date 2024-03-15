@@ -10,8 +10,14 @@ namespace PlatformerGame {
 
 		//Generate Platformer
 		void generatePlatforms(int numPlatforms);
+		void draw(sf::RenderWindow& window);
+		const std::vector<sf::RectangleShape>& getPlatforms() const {
+			return platforms;
+		}
 
 	private:
+		std::vector<sf::RectangleShape> platforms;
+		sf::Texture platformTexture;
 
 	};
 
