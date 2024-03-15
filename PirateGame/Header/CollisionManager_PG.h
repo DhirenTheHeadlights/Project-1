@@ -6,12 +6,11 @@
 #include <iostream>
 
 #include "GlobalValues_PG.h"
+#include "GlobalHashmapHandler.h"
 #include "LandMass_PG.h"
 #include "PlayerShip_PG.h"
 #include "EnemyShip_PG.h"
 #include "Ship_PG.h"
-#include "LandmassHashmap_PG.h"
-#include "ShipHashmap_PG.h"
 
 namespace PirateGame {
 	class CollisionManager {
@@ -19,7 +18,6 @@ namespace PirateGame {
 		CollisionManager() {};
 		~CollisionManager() {};
 
-		void addObjectsToHashmaps();
 		void handleCollisions();
 
 		// Setters
@@ -31,10 +29,6 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<LandMass>> landMasses;
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		PlayerShip* playerShip = nullptr;
-
-		// Hashmaps
-		LandMassHashmap landMassHashmap;
-		ShipHashmap shipHashmap;
 
 		// Values
 		float collisionDamagePerSecond = 4.f;

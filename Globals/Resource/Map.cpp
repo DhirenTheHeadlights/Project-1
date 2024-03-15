@@ -48,13 +48,13 @@ std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int n
     activeList.push_back(initialPoint);
     samplePoints.push_back(initialPoint);
 
-    while (!activeList.empty()) {
+    while (!activeList.empty() && samplePoints.size() < static_cast<size_t>(numPoints)) {
         std::uniform_int_distribution<> dist(0, static_cast<int>(activeList.size()) - 1);
         int randIndex = dist(gen);
         sf::Vector2f point = activeList[randIndex];
         bool found = false;
 
-        for (int i = 0; i < k; ++i) {
+        for (int i = 0; i < k && samplePoints.size() < static_cast<size_t>(numPoints); ++i) {
             float angle = dis(gen) * 2 * pi;
             float radius = minDistance * (1 + dis(gen));
             sf::Vector2f newPoint(point.x + radius * cos(angle), point.y + radius * sin(angle));
@@ -73,7 +73,9 @@ std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int n
                     activeList.push_back(newPoint);
                     samplePoints.push_back(newPoint);
                     found = true;
-                    break; // Break from the attempts loop
+                    if (samplePoints.size() >= static_cast<size_t>(numPoints)) {
+                        break; // Exit if we have reached the desired number of points
+                    }
                 }
             }
         }
@@ -84,9 +86,8 @@ std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int n
         }
     }
 
-    return samplePoints; // Return all generated points
+    return samplePoints;
 }
-
 
 // Draw the grid
 void Map::drawGrid(sf::RenderWindow& window) const {

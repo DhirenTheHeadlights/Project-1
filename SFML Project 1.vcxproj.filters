@@ -669,6 +669,9 @@
     <ClInclude Include="PirateGame\Header\ShipTextureHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalHashmapHandler.h">
+      <Filter>Source Files\PirateGame\Header\Globals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

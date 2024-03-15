@@ -30,17 +30,12 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	// Calculate the direction to the player
-	sf::Vector2f vectorToPlayer = getSprite().getPosition() - playerPos;
+	sf::Vector2f vectorToPlayer = normalize(playerPos - getSprite().getPosition());
 	float distance = std::sqrt(vectorToPlayer.x * vectorToPlayer.x + vectorToPlayer.y * vectorToPlayer.y);
 
 	sf::Vector2f directionToPlayer = normalize(vectorToPlayer);
-	if (distance < static_cast<float>(window->getSize().x / 2)) {
-		sf::Vector2f directionToPlayer = normalize(vectorToPlayer + sf::Vector2f(playerVelocity.x * 0.33, playerVelocity.y * 0.33));
-	}
-	if (distance < static_cast<float>(window->getSize().x / 5)) {
-		sf::Vector2f directionToPlayer = normalize(sf::Vector2f(vectorToPlayer.y, -vectorToPlayer.x));
-	}
 
+	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), vectorToPlayer * 100.f, sf::Color::Red));
 
 	// Rotate the sprite using conversion from vector to angle with atan2
 	float targetAngle = std::atan2(directionToPlayer.y, directionToPlayer.x) * 180.f / pi + 90.f;

@@ -15,6 +15,8 @@ void PlayerShip::customShipSetUp() {
 	SIH->setBaseSpeed(getShipProperties().baseSpeed);
 	SIH->setCannonHandler(&getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
+
+	getSprite().setPosition(GlobalValues::getInstance().getMap().getRandomPosition());
 }
 
 void PlayerShip::customShipUpdate() {

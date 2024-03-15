@@ -12,9 +12,15 @@ std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
 
 // Create the ship
 void Ship::setUpShip(ShipClass level) {
-	// If the level is random, generate a random number between 0 and 5
+	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
-		shipProperties = ShipConfig[static_cast<ShipClass>(rand() % 5)];
+		// Generate a random number between 1 and 5
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<int> dis(1, 5);
+		level = static_cast<ShipClass>(dis(gen));
+		// Access ship properties from the configuration map using the generated random number
+		shipProperties = ShipConfig[level];
 	}
 	else {
 		// Access ship properties from the configuration map using the provided ship class

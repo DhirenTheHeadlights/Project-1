@@ -37,18 +37,18 @@ void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
 }
 
 // Find ship near to a player, debug is used to visualize the grid cells being checked
-std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, bool debug) {
+std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDistance, bool debug) {
     // Grab window
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
-    // Get the global bounds of the player ship's sprite
-    sf::FloatRect shipBounds = ship->getSprite().getGlobalBounds();
+    // Get the position of the ship
+    sf::Vector2f shipPosition = ship->getSprite().getPosition();
 
-    // Use the bounds to calculate the extended area around the ship for finding nearby ships
-    float left = shipBounds.left - shipBounds.width;
-    float right = shipBounds.left + 2 * shipBounds.width;
-    float top = shipBounds.top - shipBounds.height;
-    float bottom = shipBounds.top + 2 * shipBounds.height;
+    // Calculate the extended area around the ship based on maxDistance
+    float left = shipPosition.x - maxDistance;
+    float right = shipPosition.x + maxDistance;
+    float top = shipPosition.y - maxDistance;
+    float bottom = shipPosition.y + maxDistance;
 
     // Get the top left and bottom right cells of the bounding box
     auto topLeft = map.getGridCoordinates(left, top);
@@ -61,7 +61,7 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, bool debug)
         for (int j = topLeft.second; j <= bottomRight.second; j++) {
             std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
 
-            // If the key exists in the hashmap, add the ship to the set
+            // If the key exists in the hashmap and is within maxDistance, add the ship to the set
             if (hashmap.count(key)) {
                 nearbyShips.insert(hashmap.at(key));
             }
@@ -74,11 +74,12 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, bool debug)
             sf::RectangleShape rect;
             rect.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
             rect.setFillColor(sf::Color::Magenta);  // Color for visualization
-            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize()))); 
+            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize())));
             window->draw(rect);
         }
     }
 
     return nearbyShips;
 }
+
 

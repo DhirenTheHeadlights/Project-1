@@ -34,7 +34,7 @@ namespace PirateGame {
 		std::pair<int, int> generateKey(sf::Vector2f position);
 
 		// Find ship near other ship
-		std::set<EnemyShip*> findEnemyShipsNearShip(Ship* ship, bool debug = false);
+		std::set<EnemyShip*> findEnemyShipsNearShip(Ship* ship, float maxDistance = 1000.f, bool debug = false);
 	private:
 		// Hashmap
 		std::unordered_map<std::pair<int, int>, EnemyShip*, pair_hash> hashmap;

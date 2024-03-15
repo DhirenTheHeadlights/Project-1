@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 LandMassHandler::~LandMassHandler() {
 	for (auto& landMass : landmasses) {
-		hashmap.removeLandMass(landMass.get());
+		GlobalHashmapHandler::getInstance().getLandMassHashmap()->removeLandMass(landMass.get());
 	}
 }
 
@@ -12,6 +12,7 @@ LandMassHandler::~LandMassHandler() {
 void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandmasses) {
 	// Grab a numLandMasses number of points from the map
 	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
+	std::cout << "Number of land masses: " << numLandMasses << std::endl;
 
 	for (int i = 0; i < points.size(); i++) {
 		// Generate a random number between 0 and 2
@@ -30,7 +31,7 @@ void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
 	landMass->setPosition(position);
 
 
-	hashmap.addLandMass(landMass.get());
+	GlobalHashmapHandler::getInstance().getLandMassHashmap()->addLandMass(landMass.get());
 	landmasses.push_back(std::move(landMass));
 }
 
@@ -43,7 +44,7 @@ void LandMassHandler::drawLandMasses() {
 }
 
 void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
-    std::set<LandMass*> nearbyLandMasses = hashmap.findLandMassNearShip(ship);
+    std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findLandMassNearShip(ship);
     
     for (auto& landMass : nearbyLandMasses) {
         sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite

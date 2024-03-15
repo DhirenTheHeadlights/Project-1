@@ -13,7 +13,7 @@ World::World(sf::RenderWindow* window_in) {
 	if (window == nullptr) {
 		std::cerr << "Window is nullptr immediately after setting in World\n";
 	}
-
+	  
 	// Initalize the font
 	sf::Font font;
 	if (!font.loadFromFile("Fonts/PixelifySans-Regular.ttf")) {
@@ -45,18 +45,13 @@ void World::setUpWorld() {
 	LMHandler->addLandMasses(static_cast<int>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
 
 	// Set up the enemy ship handler
-	ESH->addEnemyShips(1000);
+	ESH->addEnemyShips(static_cast<int>(GlobalValues::getInstance().getMapSize().x / 100.f));
 	ESH->setPlayerShip(playerShip.get());
 
 	// Set up the collision manager
 	CM->setPlayerShips(playerShip.get());
 	CM->setEnemyShips(ESH->getEnemyShips());
 	CM->setLandMasses(LMHandler->getLandMasses());
-	CM->addObjectsToHashmaps();
-
-	// Set the ship to a rand pos
-	sf::Vector2f randPos = GlobalValues::getInstance().getMap().getRandomPosition();
-	playerShip->getMovementHandler().setPosition(randPos);
 
 	// Set the game state to start
 	GSM->changeGameState(GameState::Start);
@@ -158,8 +153,6 @@ void World::gameLoop() {
 	playerShip->update();
 
 	view.setCenter(playerShip->getSprite().getPosition());
-
-	// Set the ship for the hud
 }
 
 void World::drawGameLoop() {

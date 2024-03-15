@@ -2,22 +2,14 @@
 
 using namespace PirateGame;
 
-void CollisionManager::addObjectsToHashmaps() {
-	// Add landmasses to hashmap
-	for (auto& landmass : landMasses) {
-		landMassHashmap.addLandMass(landmass.get());
-	}
-
-	// Add ships to hashmap
-	for (auto& enemyShip : enemyShips) {
-		shipHashmap.addEnemyShip(enemyShip.get());
-	}
-}
-
 void CollisionManager::handleCollisions() {
+	// Grab global hashmaps
+	ShipHashmap* shipHashmap = GlobalHashmapHandler::getInstance().getShipHashmap();
+	LandMassHashmap* landMassHashmap = GlobalHashmapHandler::getInstance().getLandMassHashmap();
+
 	// Grab the nearby landmasses and ships for the player ship
-	std::set<LandMass*> nearbyLandMasses = landMassHashmap.findLandMassNearShip(playerShip);
-	std::set<EnemyShip*> nearbyShips = shipHashmap.findEnemyShipsNearShip(playerShip);
+	std::set<LandMass*> nearbyLandMasses = landMassHashmap->findLandMassNearShip(playerShip);
+	std::set<EnemyShip*> nearbyShips = shipHashmap->findEnemyShipsNearShip(playerShip);
 
 	// Vector to store colliding land masses
 	std::vector<LandMass*> collidingLandMasses;
@@ -43,8 +35,8 @@ void CollisionManager::handleCollisions() {
 	for (auto& enemyShip : enemyShips) {
 		if (!enemyShip->isActive()) continue;
 
-		std::set<LandMass*> nearbyLandmasses = landMassHashmap.findLandMassNearShip(enemyShip.get());
-		std::set<EnemyShip*> nearbyShips = shipHashmap.findEnemyShipsNearShip(enemyShip.get());
+		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findLandMassNearShip(enemyShip.get());
+		std::set<EnemyShip*> nearbyShips = shipHashmap->findEnemyShipsNearShip(enemyShip.get());
 
 		std::vector<LandMass*> collidingLandMasses;
 		collidingLandMasses.clear();

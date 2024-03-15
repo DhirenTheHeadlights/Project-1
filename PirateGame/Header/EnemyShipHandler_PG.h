@@ -8,14 +8,20 @@
 #include <memory>
 
 #include "GlobalValues_PG.h"
+#include "GlobalHashmapHandler.h"
 #include "EnemyShip_PG.h"
-#include "ShipHashmap_PG.h"
 
 namespace PirateGame {
 	class EnemyShipHandler {
 	public:
 		EnemyShipHandler() {};
-		~EnemyShipHandler() {};
+		~EnemyShipHandler() {
+			// Remove all enemy ships
+			enemyShips.clear();
+			for (auto& ship : enemyShips) {
+				GlobalHashmapHandler::getInstance().getShipHashmap()->removeEnemyShip(ship.get());
+			}
+		};
 
 		// Add and remove enemy ships
 		void addEnemyShips(int numShips);
@@ -34,7 +40,8 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		PlayerShip* playerShip = nullptr;
 
-		// Hashmap
-		ShipHashmap shipHashmap;
+		// Values
+		float enemyCannonCooldown = 2.f;
+		float maxDetectionDistance = 1000.f;
 	};
 }

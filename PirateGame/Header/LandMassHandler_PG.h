@@ -8,11 +8,12 @@
 #include <vector>
 
 #include "GlobalValues_PG.h"
+#include "GlobalHashmapHandler.h"
+#include "GlobalSoundManager_PG.h"
 #include "TextureHandler_PG.h"
 #include "LandMass_PG.h"
 #include "LandMassHashmap_PG.h"
 #include "Map.h"
-#include "GlobalSoundManager_PG.h"
 
 namespace PirateGame {
     class LandMassHandler {
@@ -33,9 +34,6 @@ namespace PirateGame {
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
         std::vector<std::shared_ptr<LandMass>> landmasses;
-
-        // Hashmap and Textures
-        LandMassHashmap hashmap;
 
         // Values
         float interactionDistance = 600.f; // Distance for interaction with landmasses

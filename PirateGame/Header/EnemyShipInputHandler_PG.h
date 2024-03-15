@@ -21,5 +21,6 @@ namespace PirateGame {
 
 	private:
 		sf::Vector2f playerPos;
+		float firingDistance = 500.f;
 	};
 }
