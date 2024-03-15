@@ -28,7 +28,7 @@ namespace PirateGame {
 		void draw() override;
 
 		// Setters
-		void setShip(PlayerShip& ship) { this->ship = &ship; minimap.setShip(&ship); };
+		void setPlayerShip(PlayerShip& ship) { this->ship = &ship; minimap.setShip(&ship); };
 
 		// Getters
 		Minimap& getMinimap() { return minimap; }

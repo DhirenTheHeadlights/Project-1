@@ -25,8 +25,8 @@ namespace PirateGame {
 
 		// Getters
 		bool isActive() const { return active; }
-		EnemyShipMovementHandler& getMovementHandler() { return *movementHandler; }
-		EnemyShipInputHandler& getInputHandler() { return *inputHandler; }
+		EnemyShipMovementHandler& getMovementHandler() { return *SMH; }
+		EnemyShipInputHandler& getInputHandler() { return *SIH; }
 
 	private:
 		// Health bars
@@ -37,8 +37,8 @@ namespace PirateGame {
 		bool active = false;
 
 		// Handlers
-		std::unique_ptr<EnemyShipInputHandler> inputHandler;
-		std::unique_ptr<EnemyShipMovementHandler> movementHandler;
+		std::unique_ptr<EnemyShipInputHandler> SIH;
+		std::unique_ptr<EnemyShipMovementHandler> SMH;
 	};
 }
 

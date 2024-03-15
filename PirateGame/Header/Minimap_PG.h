@@ -30,7 +30,7 @@ namespace PirateGame {
 		void setMinimapRadius(float size) { this->size = size; }
 		void setLandmasses(std::vector<std::shared_ptr<LandMass>>& landmasses) { this->landmasses = landmasses; }
 		void setShip(Ship* ship) { this->ship = ship; }
-		void setShips(std::vector<std::shared_ptr<EnemyShip>>& ships) { this->ships = ships; }
+		void setEnemyShips(std::vector<std::shared_ptr<EnemyShip>>& ships) { this->ships = ships; }
 		void setMinimapPosition(sf::Vector2f position) { this->position = position; }
 		
 		// Getters

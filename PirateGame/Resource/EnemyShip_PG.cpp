@@ -4,15 +4,20 @@ using namespace PirateGame;
 
 void EnemyShip::customShipSetUp() {
 	// Add handlers
-	inputHandler = std::make_unique<EnemyShipInputHandler>(getSprite());
-	movementHandler = std::make_unique<EnemyShipMovementHandler>(getSprite());
+	SIH = std::make_unique<EnemyShipInputHandler>(getSprite());
+	SMH = std::make_unique<EnemyShipMovementHandler>(getSprite());
+
+	SIH->setNumCannons(getShipProperties().numCannons);
+	SIH->setBaseSpeed(getShipProperties().baseSpeed);
+	SIH->setCannonHandler(&getCannonHandler());
+	SIH->setMovementHandler(SMH.get());
 
 	// Set a random pos
 	getSprite().setPosition(GlobalValues::getInstance().getMap().getRandomPosition());
 }
 
 void EnemyShip::customShipUpdate() {
-	inputHandler->update();
+	SIH->update();
 }
 
 void EnemyShip::customShipDraw() {
@@ -20,4 +25,6 @@ void EnemyShip::customShipDraw() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	window->draw(healthBarRed);
 	window->draw(healthBarGreen);
+
+	SIH->draw();
 }

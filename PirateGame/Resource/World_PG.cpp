@@ -70,6 +70,8 @@ void World::setUpWorld() {
 
 	// Set up the hud minimap
 	MH->getHUD()->getMinimap().setLandmasses(LMHandler->getLandMasses());
+	MH->getHUD()->getMinimap().setEnemyShips(ESH->getEnemyShips());
+	MH->getHUD()->setPlayerShip(*playerShip.get());
 
 	// Set up the frame rate text
 	frameRateText.setFont(GlobalValues::getInstance().getFont());
@@ -158,7 +160,6 @@ void World::gameLoop() {
 	view.setCenter(playerShip->getSprite().getPosition());
 
 	// Set the ship for the hud
-	MH->getHUD()->setShip(*playerShip);
 }
 
 void World::drawGameLoop() {
