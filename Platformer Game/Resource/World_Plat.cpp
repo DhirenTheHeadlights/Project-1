@@ -4,7 +4,7 @@ using namespace PlatformerGame;
 
 World::World(sf::RenderWindow& window) : window(window), player(worldMap, window), hud(100, sf::Vector2f(50, 50), sf::Vector2f(200, 20)) {
 	map.grid(len, wid, 10.f);
-	platforms.generatePlatforms(30);
+	platforms.generatePlatforms(200);
 }
 
 // Game loop
@@ -16,10 +16,10 @@ void World::gameLoop(sf::Event event) {
 	window.draw(background);
 
 
-	player.handlePlayerState();
-	player.move();
 	player.applyGravity();
 	player.checkPlatformCollision(platforms.getPlatforms());
+	player.handlePlayerState();
+	player.move();
 	
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

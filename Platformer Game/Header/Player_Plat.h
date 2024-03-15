@@ -43,6 +43,7 @@ namespace PlatformerGame {
 
 		bool isOnGround = false;                    // Track if the player is on the ground
 		bool isMoving = false;						// Track is player is moving side to side
+		bool isCollided = false;					// Track if the player is colliding with a platform
 
 		// Boundary variables
 		float leftBoundary;
