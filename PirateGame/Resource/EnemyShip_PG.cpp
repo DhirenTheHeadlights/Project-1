@@ -13,7 +13,7 @@ void EnemyShip::customShipSetUp() {
 	SIH->setMovementHandler(SMH.get());
 
 	// Set a random pos
-	getSprite().setPosition(GlobalValues::getInstance().getMap().getRandomPosition());
+	getSprite().setPosition(GlobalMap::getInstance().getMap()->getRandomPosition());
 }
 
 void EnemyShip::customShipUpdate() {

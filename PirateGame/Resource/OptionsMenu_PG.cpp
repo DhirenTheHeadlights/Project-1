@@ -64,7 +64,7 @@ void OptionsMenu::addInteractablesToMenu() {
 	// Create the back button
 	std::function<void()> backFunc = [this]() {
 		// Grab the global game state manager
-		GSM = &GlobalValues::getInstance().getGSM();
+		GSM = &GlobalGameStateManager::getInstance();
 
 		if (GSM->hasGameStarted()) {
 			GSM->changeGameState(GameState::GameLoop);
@@ -154,7 +154,7 @@ void OptionsMenu::addAudioTabInteractables() {
 	std::function<void(float value)> musicSliderFunc = [this](float value) { /*Implement later*/ };
 	addSliderInteractable(musicSliderFunc, "Music Volume", audioTabInteractables);
 
-	std::function<void(float value)> sfxSliderFunc = [this](float value) { GlobalValues::getInstance().setGlobalVolume(value); };
+	std::function<void(float value)> sfxSliderFunc = [this](float value) { GlobalSoundManager::getInstance().setSoundVolume(value); };
 	addSliderInteractable(sfxSliderFunc, "SFX Volume", audioTabInteractables);
 
 	std::function<void(float value)> voiceSliderFunc = [this](float value) { /*Implement later*/ };

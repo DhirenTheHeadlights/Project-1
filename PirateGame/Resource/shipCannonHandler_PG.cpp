@@ -43,15 +43,14 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
     else {
         const float maxAngle = 45.f;
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-        sf::Vector2f mousePos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
         sf::Vector2f shipPos = shipSprite.getPosition();
 
-        // Calculate vector from ship to mouse
-        sf::Vector2f directionToMouse = mousePos - shipPos;
-        directionToMouse *= (side == FiringSide::Starboard) ? -1.f : 1.f;
+        // Calculate vector from ship to target
+        sf::Vector2f directionToTarget = targetPos - shipPos;
+        directionToTarget *= (side == FiringSide::Starboard) ? -1.f : 1.f;
 
-        // Calculate angle from ship to mouse in degrees
-        float angleToMouse = atan2(directionToMouse.y, directionToMouse.x) * 180 / pi;
+        // Calculate angle from ship to target in degrees
+        float angleToMouse = atan2(directionToTarget.y, directionToTarget.x) * 180 / pi;
 
         // Adjust angle based on ship orientation and capped angle
         float shipRotation = (shipSprite.getRotation() - 180);

@@ -28,6 +28,14 @@ namespace PirateGame {
 		EnemyShipMovementHandler& getMovementHandler() { return *SMH; }
 		EnemyShipInputHandler& getInputHandler() { return *SIH; }
 
+		// Setters
+		void setActive(bool active) { this->active = active; }
+		void setPlayerPosition(sf::Vector2f playerPos) { 
+			this->playerPosition = playerPos;
+			SIH->setPlayerPos(playerPos);
+			SMH->setPlayerPosition(playerPos);
+		}
+
 	private:
 		// Health bars
 		sf::RectangleShape healthBarRed;
@@ -39,6 +47,9 @@ namespace PirateGame {
 		// Handlers
 		std::unique_ptr<EnemyShipInputHandler> SIH;
 		std::unique_ptr<EnemyShipMovementHandler> SMH;
+
+		// Variables
+		sf::Vector2f playerPosition;
 	};
 }
 

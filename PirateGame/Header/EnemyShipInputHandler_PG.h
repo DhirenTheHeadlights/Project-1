@@ -19,8 +19,10 @@ namespace PirateGame {
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
 
+		// Setters
+		void setPlayerPos(sf::Vector2f playerPos) { this->playerPos = playerPos; }
 	private:
 		sf::Vector2f playerPos;
-		float firingDistance = 500.f;
+		float firingDistance = 1000.f;
 	};
 }

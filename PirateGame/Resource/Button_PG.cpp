@@ -13,7 +13,7 @@ void Button::interact() {
 }
 
 void Button::interactOnce() {
-	if (GlobalValues::getInstance().getInputHandler().isMouseButtonPressedOnce(sf::Mouse::Left)) {
+	if (GlobalInputHandler::getInstance().isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		sf::Vector2i mousePosition = sf::Vector2i(sf::Mouse::getPosition(*window));
 		sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 

@@ -49,7 +49,7 @@ void DropDown::interact() {
 	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(*window));
 
 	// Check if the mouse is clicked.
-	if (GlobalValues::getInstance().getInputHandler().isMouseButtonPressedOnce(sf::Mouse::Left)) {
+	if (GlobalInputHandler::getInstance().isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		// Toggle the open state if the mouse is over the sprite.
 		if (sprite.getGlobalBounds().contains(mousePos)) {
 			isOpen = !isOpen;

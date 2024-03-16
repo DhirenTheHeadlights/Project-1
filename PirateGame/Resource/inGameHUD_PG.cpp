@@ -16,7 +16,7 @@ void InGameHUD::setUpMenu() {
 
 void InGameHUD::addInteractablesToMenu() {
 	// Grab the global game state manager
-	GSM = &GlobalValues::getInstance().getGSM();
+	GSM = &GlobalGameStateManager::getInstance();
 
 	// Add a settings button
 	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
@@ -43,7 +43,7 @@ void InGameHUD::addInteractablesToMenu() {
 }
 
 // General function to add an info box with a string to the HUD
-void InGameHUD::addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination) {
+void InGameHUD::addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination) const {
 	std::unique_ptr<TextDisplayBox> infoBox = std::make_unique<TextDisplayBox>();
 	sf::Text infoText = sf::Text(text, font, interactableTextSize);
 	infoBox->createInteractable(GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), infoText, infoBoxScale);
@@ -89,7 +89,7 @@ void InGameHUD::updateShipPropertiesString() {
 	shipPropertiesRightSide[3]->getText().setString(speed);
 
 	// Update the wind direction display
-	std::string windDirection = "Wind Direction: " + GlobalValues::getInstance().getWindController().getWindDirectionString();
+	std::string windDirection = "Wind Direction: " + GlobalWindController::getInstance().getWindDirectionString();
 	shipPropertiesRightSide[4]->getText().setString(windDirection);
 }
  
@@ -134,10 +134,10 @@ void InGameHUD::setInteractablePositions() {
 
 	// Set the position of the wind vector to be in the bottom right corner of the screen
 	sf::Vector2f windVectorPosition = sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - padding - 200.f, HUDView.getCenter().y + window->getSize().y / 2u - padding - 200.f);
-	windVector = GlobalValues::getInstance().getWindController().getWindDirectionIndicator(windVectorPosition, 5.f);
+	windVector = GlobalWindController::getInstance().getWindDirectionIndicator(windVectorPosition, 5.f);
 	windCircle.setPosition(windVectorPosition - sf::Vector2f(windCircle.getRadius(), windCircle.getRadius()));
 	windCircle.setRadius(5.f);
-	windText = sf::Text("Wind Speed: " + std::to_string(static_cast<int>(GlobalValues::getInstance().getWindController().getWindSpeed())), font, 20);
+	windText = sf::Text("Wind Speed: " + std::to_string(static_cast<int>(GlobalWindController::getInstance().getWindSpeed())), font, 20);
 	windText.setPosition(windVectorPosition.x - windText.getGlobalBounds().getSize().x / 2, windVectorPosition.y - windText.getGlobalBounds().getSize().y - padding);
 	windText.setFillColor(sf::Color::Black);
 }

@@ -7,6 +7,8 @@
 #include <optional>
 
 #include "GlobalValues_PG.h"
+#include "GlobalMap_PG.h"
+#include "GlobalWindController_PG.h"
 
 namespace PirateGame {
 	class ShipMovementHandler {

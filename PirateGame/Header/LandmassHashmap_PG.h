@@ -9,6 +9,8 @@
 #include <set>
 
 #include "GlobalValues_PG.h"
+#include "GlobalMap_PG.h"
+
 #include "LandMass_PG.h"
 #include "Ship_PG.h"
 #include "Map.h"
@@ -41,7 +43,7 @@ namespace PirateGame {
 		std::unordered_map<std::pair<int, int>, LandMass*, pair_hash> hashmap;
 
 		// Map
-		Map& map = GlobalValues::getInstance().getMap();
+		Map& map = *GlobalMap::getInstance().getMap();
 	};
 }
 

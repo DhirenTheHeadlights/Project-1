@@ -9,6 +9,8 @@
 
 #include "GlobalValues_PG.h"
 #include "GlobalTextureHandler_PG.h"
+#include "GlobalMap_PG.h"
+
 #include "ShipCannonHandler_PG.h"
 
 namespace PirateGame {

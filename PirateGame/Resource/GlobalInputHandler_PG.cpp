@@ -1,15 +1,15 @@
-#include "InputHandler_PG.h"
+#include "GlobalInputHandler_PG.h"
 
 using namespace PirateGame;
 
-void InputHandler::update() {
+void GlobalInputHandler::update() {
     // Update the last state to the current state for keys
     lastKeyState = currentKeyState;
     // Update the last state to the current state for mouse buttons
     lastButtonState = currentButtonState;
 }
 
-bool InputHandler::isKeyPressedOnce(sf::Keyboard::Key key) {
+bool GlobalInputHandler::isKeyPressedOnce(sf::Keyboard::Key key) {
     // Check if the key is currently pressed and was not pressed in the last frame
     bool isPressedNow = sf::Keyboard::isKeyPressed(key);
     bool wasPressedLastFrame = lastKeyState[key];
@@ -25,7 +25,7 @@ bool InputHandler::isKeyPressedOnce(sf::Keyboard::Key key) {
     return false;
 }
 
-bool InputHandler::isKeyToggled(sf::Keyboard::Key key) {
+bool GlobalInputHandler::isKeyToggled(sf::Keyboard::Key key) {
     // Check if the key is currently pressed and was not pressed in the last frame
     bool isPressedNow = sf::Keyboard::isKeyPressed(key);
     bool wasPressedLastFrame = lastKeyState[key];
@@ -43,7 +43,7 @@ bool InputHandler::isKeyToggled(sf::Keyboard::Key key) {
     return toggledKeyState[key];
 }
 
-bool InputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
+bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
     // Check if the button is currently pressed and was not pressed in the last frame
     bool isPressedNow = sf::Mouse::isButtonPressed(button);
     bool wasPressedLastFrame = lastButtonState[button];
@@ -58,7 +58,7 @@ bool InputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
     return false;
 }
 
-bool InputHandler::isMouseButtonToggled(sf::Mouse::Button button) {
+bool GlobalInputHandler::isMouseButtonToggled(sf::Mouse::Button button) {
     // Check if the button is currently pressed and was not pressed in the last frame
     bool isPressedNow = sf::Mouse::isButtonPressed(button);
     bool wasPressedLastFrame = lastButtonState[button];

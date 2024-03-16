@@ -22,7 +22,7 @@ void Minimap::draw() {
 }
 
 void Minimap::update(float shipRotation) {
-    sf::Vector2f mapSize = GlobalValues::getInstance().getMapSize();
+    sf::Vector2f mapSize = GlobalMap::getInstance().getWorldMap();
     sf::Vector2f shipPos = ship->getSprite().getPosition();
     sf::Vector2f minimapCenter = sf::Vector2f(minimapSprite.getPosition().x + minimapSprite.getGlobalBounds().width / 2, minimapSprite.getPosition().y + minimapSprite.getGlobalBounds().height / 2);
 

@@ -4,8 +4,8 @@
 using namespace PirateGame;
 
 void EnemyShipMovementHandler::move(float baseSpeed) {
-	sf::Vector2f map = GlobalValues::getInstance().getMapSize();
-	setBaseSpeed(baseSpeed);
+	sf::Vector2f map = GlobalMap::getInstance().getWorldMap();
+	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
 	setInitialPosition();
 
@@ -15,7 +15,7 @@ void EnemyShipMovementHandler::move(float baseSpeed) {
 	float rotationInRadians = (getSprite().getRotation() - 90.f) * pi / 180.f; // Subtract 90 degrees to align with SFML's rotation
 	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
-	updateVelocity(direction, elapsed, baseSpeed);
+	//updateVelocity(direction, elapsed, baseSpeed);
 	setSpriteRotation();
 	applyBoundaryConstraints(position, map);
 

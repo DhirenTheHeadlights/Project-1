@@ -1,15 +1,22 @@
+#pragma once
+
+/// Singleton class that handles the input from the user
+/// The main functionality is to get a singlular input from the user
+/// per frame and return when needed.
+
 #include <SFML\Graphics.hpp>
 #include <unordered_map>
 #include <iostream>
 
-
-/// This class handles the input from the user
-/// The main functionality is to get a singlular input from the user
-/// per frame and return when needed.
-
 namespace PirateGame {
-    class InputHandler {
+    class GlobalInputHandler {
     public:
+        // Public method to access the instance
+        static GlobalInputHandler& getInstance() {
+			static GlobalInputHandler instance;
+			return instance;
+		}
+
         void update();
 
         bool isKeyPressedOnce(sf::Keyboard::Key key);
@@ -19,6 +26,14 @@ namespace PirateGame {
         bool isMouseButtonToggled(sf::Mouse::Button button);
 
     private:
+        // Private Constructor
+        GlobalInputHandler() {};
+
+        // Delete the copy constructor and assignment operator
+        GlobalInputHandler(GlobalInputHandler const&) = delete;
+        GlobalInputHandler& operator=(GlobalInputHandler const&) = delete;
+
+        // Variables
         std::unordered_map<sf::Keyboard::Key, bool> lastKeyState;
         std::unordered_map<sf::Keyboard::Key, bool> currentKeyState;
         std::unordered_map<sf::Mouse::Button, bool> lastButtonState;

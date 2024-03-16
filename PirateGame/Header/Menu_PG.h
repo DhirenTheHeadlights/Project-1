@@ -10,7 +10,9 @@
 #include <string>
 
 #include "GlobalValues_PG.h"
-#include "GameStateManager_PG.h"
+#include "GlobalGameStateManager_PG.h"
+#include "GlobalFontHandler_PG.h"
+
 #include "Interactable_PG.h"
 #include "Button_PG.h"
 #include "Slider_PG.h"
@@ -50,7 +52,7 @@ namespace PirateGame {
 
 	protected:
 		// SFML objects
-		sf::Font& font = GlobalValues::getInstance().getFont();
+		sf::Font& font = *GlobalFontHandler::getInstance().getGlobalFont();
 		sf::RenderWindow* window = nullptr;
 
 		// Menu items
@@ -75,7 +77,7 @@ namespace PirateGame {
 		float padding = 10.0f;
 
 		// GameStateManager
-		GameStateManager* GSM = nullptr;
+		GlobalGameStateManager* GSM = nullptr;
 
 		// Helper function to convert a float to a string with a set number of decimal places
 		std::string floatToString(float number, int decimalPlaces = 2) {

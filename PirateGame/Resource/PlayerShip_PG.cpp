@@ -16,7 +16,7 @@ void PlayerShip::customShipSetUp() {
 	SIH->setCannonHandler(&getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
 
-	getSprite().setPosition(GlobalValues::getInstance().getMap().getRandomPosition());
+	getSprite().setPosition(GlobalMap::getInstance().getMap()->getRandomPosition());
 }
 
 void PlayerShip::customShipUpdate() {

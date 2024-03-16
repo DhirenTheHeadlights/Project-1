@@ -1,14 +1,18 @@
 #pragma once
 
+/// Singleton class to handle the wind in the game
+
 #include <SFML/Graphics.hpp>
 #include <cmath>
 
 namespace PirateGame {
-    class WindController {
+    class GlobalWindController {
     public:
-        WindController() {
-            randomizeWind();
-        }
+        // Public method to access the instance
+        static GlobalWindController& getInstance() {
+			static GlobalWindController instance;
+			return instance;
+		}
 
         void update() {
             sf::Time elapsed = windChangeTimer.getElapsedTime();
@@ -74,6 +78,16 @@ namespace PirateGame {
         }
 
     private:
+        // Private constructor
+        GlobalWindController() {
+            randomizeWind();
+        }
+
+        // Private copy constructor and assignment operator
+        GlobalWindController(GlobalWindController const&) = delete;
+        GlobalWindController& operator=(GlobalWindController const&) = delete;
+
+        // Wind values
         sf::Vector2f windDirection = sf::Vector2f(0.f, 0.f);
         sf::Vector2f targetWindDirection = sf::Vector2f(0.f, 0.f);
         float windSpeed = 0.f;

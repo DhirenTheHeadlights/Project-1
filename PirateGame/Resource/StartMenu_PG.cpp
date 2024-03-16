@@ -30,7 +30,7 @@ void StartMenu::setInteractablePositions() {
 // Add the interactables to the menu
 void StartMenu::addInteractablesToMenu() {
 	// Grab the global game state manager
-	GSM = &GlobalValues::getInstance().getGSM();
+	GSM = &GlobalGameStateManager::getInstance();
 
 	// Create the start button
 	std::function<void()> startFunc = [this]() { GSM->changeGameState(GameState::GameLoop); };

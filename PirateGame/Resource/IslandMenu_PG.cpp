@@ -46,7 +46,7 @@ void IslandMenu::setUpMenu() {
 
 void IslandMenu::addInteractablesToMenu() {
 	// Grab the global game state manager
-	GSM = &GlobalValues::getInstance().getGSM();
+	GSM = &GlobalGameStateManager::getInstance();
 
 	// Initial buttons to enter the island
 	std::function<void()> enterIsland = [this]() { 

@@ -10,6 +10,8 @@
 #include "GlobalValues_PG.h"
 #include "GlobalHashmapHandler.h"
 #include "GlobalSoundManager_PG.h"
+#include "GlobalMap_PG.h"
+
 #include "TextureHandler_PG.h"
 #include "LandMass_PG.h"
 #include "LandMassHashmap_PG.h"
@@ -39,7 +41,7 @@ namespace PirateGame {
         float interactionDistance = 600.f; // Distance for interaction with landmasses
 
         // Map to store the land masses
-        Map& map = GlobalValues::getInstance().getMap();
+        Map& map = *GlobalMap::getInstance().getMap();
 
     };
 }

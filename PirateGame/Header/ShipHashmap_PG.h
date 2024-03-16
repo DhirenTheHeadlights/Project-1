@@ -9,6 +9,8 @@
 #include <set>
 
 #include "GlobalValues_PG.h"
+#include "GlobalMap_PG.h"
+
 #include "PlayerShip_PG.h"
 #include "EnemyShip_PG.h"
 #include "Map.h"
@@ -40,6 +42,6 @@ namespace PirateGame {
 		std::unordered_map<std::pair<int, int>, EnemyShip*, pair_hash> hashmap;
 
 		// Map
-		Map& map = GlobalValues::getInstance().getMap();
+		Map& map = *GlobalMap::getInstance().getMap();
 	};
 }

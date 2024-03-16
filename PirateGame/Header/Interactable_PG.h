@@ -9,13 +9,15 @@
 #include "GlobalValues_PG.h"
 #include "GlobalTextureHandler_PG.h"
 #include "GlobalSoundManager_PG.h"
+#include "GlobalFontHandler_PG.h"
+#include "GlobalInputHandler_PG.h"
 
 namespace PirateGame {
 	class Interactable {
 	public:
 		Interactable() {
 			window = GlobalValues::getInstance().getWindow();
-			font = GlobalValues::getInstance().getFont();
+			font = *GlobalFontHandler::getInstance().getGlobalFont();
 		};
 
 		~Interactable() {};

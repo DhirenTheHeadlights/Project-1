@@ -7,7 +7,9 @@
 #include "Menu_PG.h"
 #include "PlayerShip_PG.h"
 #include "Minimap_PG.h"
+
 #include "GlobalTextureHandler_PG.h"
+#include "GlobalWindController_PG.h"
 
 namespace PirateGame {
 	class InGameHUD : public Menu {
@@ -23,7 +25,7 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
-		void addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination);
+		void addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination) const;
 		void updateShipPropertiesString();
 		void draw() override;
 

@@ -6,28 +6,10 @@ World::World(sf::RenderWindow* window_in) {
 	// Set the window
 	GlobalValues::getInstance().setWindow(window_in);
 	window = GlobalValues::getInstance().getWindow();
-	GSM = &GlobalValues::getInstance().getGSM();
-
 	view.setUpView();
-
-	if (window == nullptr) {
-		std::cerr << "Window is nullptr immediately after setting in World\n";
-	}
-	  
-	// Initalize the font
-	sf::Font font;
-	if (!font.loadFromFile("Fonts/PixelifySans-Regular.ttf")) {
-		std::cout << "Error loading font" << std::endl;
-	}
-	else {
-		GlobalValues::getInstance().setFont(font);
-	}
 	
 	// Set up the world
-	int x = static_cast<int>(GlobalValues::getInstance().getMapSize().x);
-	int y = static_cast<int>(GlobalValues::getInstance().getMapSize().y);
-	int cellSize = GlobalValues::getInstance().getCellSize();
-	GlobalValues::getInstance().getMap().grid(x, y, cellSize);
+	GlobalMap::getInstance().setUpMap();
 
 	// Set up the pointers
 	playerShip = std::make_unique<PlayerShip>();
@@ -42,10 +24,10 @@ World::World(sf::RenderWindow* window_in) {
 
 void World::setUpWorld() {
 	playerShip->setUpShip(ShipClass::Frigate);
-	LMHandler->addLandMasses(static_cast<int>(GlobalValues::getInstance().getMapSize().x / 100.f), GlobalValues::getInstance().getMapSize().x / 40.f);
+	//LMHandler->addLandMasses(0/*static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f)*/, GlobalMap::getInstance().getWorldMap().x / 40.f);
 
 	// Set up the enemy ship handler
-	ESH->addEnemyShips(static_cast<int>(GlobalValues::getInstance().getMapSize().x / 100.f));
+	ESH->addEnemyShips(1/*static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f)*/);
 	ESH->setPlayerShip(playerShip.get());
 
 	// Set up the collision manager
@@ -54,7 +36,7 @@ void World::setUpWorld() {
 	CM->setLandMasses(LMHandler->getLandMasses());
 
 	// Set the game state to start
-	GSM->changeGameState(GameState::Start);
+	GlobalGameStateManager::getInstance().changeGameState(GameState::Start);
 
 	// Set up the menus
 	MH->createMenus();
@@ -69,7 +51,7 @@ void World::setUpWorld() {
 	MH->getHUD()->setPlayerShip(*playerShip.get());
 
 	// Set up the frame rate text
-	frameRateText.setFont(GlobalValues::getInstance().getFont());
+	frameRateText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
 	frameRateText.setCharacterSize(24);
 	frameRateText.setFillColor(sf::Color::White);
 
@@ -81,7 +63,9 @@ void World::setUpWorld() {
 void World::createWorld(sf::Event event) {
 	window->clear();
 
-	GlobalValues::getInstance().getInputHandler().update();
+	GlobalInputHandler::getInstance().update();
+
+	GlobalGameStateManager* GSM = &GlobalGameStateManager::getInstance();
 
 	// Handle the different game states
 	switch (GSM->getCurrentGameState()) {
@@ -140,7 +124,7 @@ void World::gameLoop() {
 	// Temporary code to draw a grid
 	//GlobalValues::getInstance().getMap().drawGrid(*window);
 
-	GlobalValues::getInstance().getWindController().update();
+	GlobalWindController::getInstance().update();
 
 	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
 

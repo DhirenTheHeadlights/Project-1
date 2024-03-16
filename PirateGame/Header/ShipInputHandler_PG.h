@@ -6,6 +6,9 @@
 #include <SFML/Graphics.hpp>
 
 #include "GlobalValues_PG.h"
+#include "GlobalMap_PG.h"
+#include "GlobalInputHandler_PG.h"
+
 #include "ShipCannonHandler_PG.h"
 #include "ShipMovementHandler_PG.h"
 

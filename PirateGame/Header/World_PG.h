@@ -5,6 +5,13 @@
 #include <SFML/Graphics.hpp>
 
 #include "GlobalValues_PG.h"
+#include "GlobalFontHandler_PG.h"
+#include "GlobalMap_PG.h"
+#include "GlobalGameStateManager_PG.h"
+#include "GlobalInputHandler_PG.h"
+#include "GlobalWindController_PG.h"
+
+
 #include "Player_PG.h"
 #include "View_PG.h"
 #include "PlayerShip_PG.h"
@@ -31,9 +38,6 @@ namespace PirateGame {
 		Player player;
 		std::unique_ptr<PlayerShip> playerShip;
 		View view;
-
-		// Game state manager
-		GameStateManager* GSM = nullptr;
 
 		// Handlers
 		std::unique_ptr<LandMassHandler> LMHandler;

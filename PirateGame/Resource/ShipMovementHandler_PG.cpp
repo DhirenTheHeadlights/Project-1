@@ -28,7 +28,7 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {
 		// Calculate wind effect
-		WindController& windController = GlobalValues::getInstance().getWindController();
+		GlobalWindController& windController = GlobalWindController::getInstance();
 		sf::Vector2f windDirection = normalize(windController.getWindDirection()); // Ensure wind direction is normalized
 		float windEffect = dot(windDirection, direction) * windController.getWindSpeed();
 

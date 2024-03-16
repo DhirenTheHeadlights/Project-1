@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 void PlayerShipInputHandler::handleCannonFire() {
 	// Grab Globals
-	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
+	GlobalInputHandler& inputHandler = GlobalInputHandler::getInstance();
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	// Fire the cannons
@@ -15,7 +15,7 @@ void PlayerShipInputHandler::handleCannonFire() {
 
 void PlayerShipInputHandler::handleCannonAim() {
 	// Get the input handler
-	InputHandler& inputHandler = GlobalValues::getInstance().getInputHandler();
+	GlobalInputHandler& inputHandler = GlobalInputHandler::getInstance();
 
 	// Set the firing side of the ship
 	if (inputHandler.isMouseButtonPressedOnce(portMouseButton)) {
@@ -31,7 +31,7 @@ void PlayerShipInputHandler::handleCannonAim() {
 }
 
 void PlayerShipInputHandler::handleAnchorDrop() {
-	if (GlobalValues::getInstance().getInputHandler().isKeyPressedOnce(anchorDropKey)) {
+	if (GlobalInputHandler::getInstance().isKeyPressedOnce(anchorDropKey)) {
 		SMH->setAnchorDrop(!SMH->getDroppedAnchor());
 	}
 }
