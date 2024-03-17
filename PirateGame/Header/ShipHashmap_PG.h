@@ -31,7 +31,7 @@ namespace PirateGame {
 		// Add and remove ship to hashmap
 		void addEnemyShip(EnemyShip* ship);
 		void removeEnemyShip(EnemyShip* ship);
-
+		void update(EnemyShip* ship);
 		// Generate key for hashmap
 		std::pair<int, int> generateKey(sf::Vector2f position);
 

@@ -19,6 +19,8 @@ namespace PirateGame {
 				      static_cast<int>(worldMap.y), 
 					  cellSize);
 		}
+		// Setters
+		void setMapSize(sf::Vector2f worldMap) { this->worldMap = worldMap; }
 
 		// Getters
 		Map* getMap() { return map.get(); }
@@ -35,7 +37,7 @@ namespace PirateGame {
 		std::unique_ptr<Map> map;
 
 		// Values
-		sf::Vector2f worldMap = sf::Vector2f(1000.f, 1000.f);
+		sf::Vector2f worldMap = sf::Vector2f(100000.f, 100000.f);
 		int cellSize = 10;
 	};
 }
