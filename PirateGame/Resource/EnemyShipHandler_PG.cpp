@@ -9,6 +9,9 @@ void EnemyShipHandler::addEnemyShips(int numShips) {
 		enemyShips.push_back(std::move(ship));
 		enemyShips[i]->setUpShip();
 		enemyShips[i]->getCannonHandler().setCooldown(enemyCannonCooldown);
+		enemyShips[i]->getMovementHandler().setTurningSpeed(turningSpeed);
+		enemyShips[i]->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
+		enemyShips[i]->getInputHandler().setFiringDistance(firingDistance);
 	}
 	// Add the ships to the hashmap
 	for (auto& ship : enemyShips) {
@@ -24,12 +27,11 @@ void EnemyShipHandler::update() {
 	for (auto& ship : nearbyShips) {
 		ship->setActive(true);
 		ship->setPlayerPosition(playerShip->getSprite().getPosition());
-		
 	}
 
 	// Update all the enemy ships
 	for (auto& ship : enemyShips) {
-		GlobalHashmapHandler::getInstance().getShipHashmap()->update(ship.get());
+		GlobalHashmapHandler::getInstance().getShipHashmap()->updateEnemyShipPosition(ship.get());
 		ship->update();
 	}
 }

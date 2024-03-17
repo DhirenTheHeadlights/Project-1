@@ -35,7 +35,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	float distance = std::sqrt(directionToPlayer.x * directionToPlayer.x + directionToPlayer.y * directionToPlayer.y);
 	
 	if (distance < static_cast<float>(4000)) {
-		directionToPlayer = directionToPlayer + sf::Vector2f(playerVelocity.x * 0.33, playerVelocity.y * 0.33);
+		directionToPlayer = directionToPlayer + sf::Vector2f(playerVelocity.x * 0.33f, playerVelocity.y * 0.33f);
 	}
 	if (distance < static_cast<float>(2000)) {
 		directionToPlayer = normalize(sf::Vector2f(directionToPlayer.y, -directionToPlayer.x));

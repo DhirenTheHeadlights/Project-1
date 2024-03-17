@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-World::World(sf::RenderWindow* window_in) {
+World::World(sf::RenderWindow* window_in, bool debug) {
 	// Set the window
 	GlobalValues::getInstance().setWindow(window_in);
 	window = GlobalValues::getInstance().getWindow();
@@ -18,6 +18,18 @@ World::World(sf::RenderWindow* window_in) {
 	CM = std::make_unique<CollisionManager>();
 	ESH = std::make_unique<EnemyShipHandler>();
 
+	// Set up the values
+	if (debug) {
+		numLandMasses = numLandMassesDebug;
+		distanceBetweenLandMasses = distanceBetweenLandMassesDebug;
+		numEnemyShips = numEnemyShipsDebug;
+		distanceBetweenEnemyShips = distanceBetweenEnemyShipsDebug;
+		GlobalMap::getInstance().setMapSize(sf::Vector2f(mapSizeDebug));
+	}
+	else {
+		GlobalMap::getInstance().setMapSize(sf::Vector2f(mapSize));
+	}
+
 	// Set up the world
 	setUpWorld();
 }
@@ -26,21 +38,10 @@ void World::setUpWorld() {
 	playerShip->setUpShip(ShipClass::Frigate);
 
 	// Set up the land masses
-	if(!debug){
-		LMHandler->addLandMasses(/*static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f), GlobalMap::getInstance().getWorldMap().x / 40.f*/0,0);
-	}
-	else {
-		LMHandler->addLandMasses(1, 1000);
-		GlobalMap::getInstance().setMapSize(sf::Vector2f(2500.f, 2500.f));
-	}
+	LMHandler->addLandMasses(numLandMasses, distanceBetweenLandMasses);
 
-	//Set up the enemy ships
-	if (!debug) {
-		ESH->addEnemyShips(static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f));
-	}
-	else {
-		ESH->addEnemyShips(1);
-	}
+	// Set up the enemy ships
+	ESH->addEnemyShips(numEnemyShips);
 	ESH->setPlayerShip(playerShip.get());
 
 	// Set up the collision manager
@@ -70,7 +71,7 @@ void World::setUpWorld() {
 
 	// Set up the background
 	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
-	background.setFillColor(sf::Color(0, 158, 163));
+	background.setFillColor(backgroundColor);
 }
 
 void World::createWorld(sf::Event event) {
@@ -135,7 +136,7 @@ void World::createWorld(sf::Event event) {
 
 void World::gameLoop() {
 	// Temporary code to draw a grid
-	//GlobalValues::getInstance().getMap().drawGrid(*window);
+	GlobalMap::getInstance().getMap()->drawGrid(*window);
 
 	GlobalWindController::getInstance().update();
 

@@ -14,25 +14,33 @@ void ShipHashmap::addEnemyShip(EnemyShip* ship) {
     auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
     auto bottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
+    std::unordered_set<std::pair<int, int>, pair_hash> occupiedPositions;
+
+    // Add the ship to the primary hashmap
     for (int i = topLeft.first; i <= bottomRight.first; ++i) {
         for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-            std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
-            this->hashmap[key] = ship;
+            std::pair<int, int> key = { i, j };
+            this->hashmap[key] = ship; // Update the primary hashmap
+            occupiedPositions.insert(key); // Store positions for the reverse mapping
         }
     }
+
+    // Add the ship to the reverse hashmap
+    this->reverseHashmap[ship] = occupiedPositions;
 }
 
 // Remove an object from the hashmap
 void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
-    auto topLeft = map.getGridCoordinates(ship->getSprite().getPosition().x, ship->getSprite().getPosition().y);
-    auto bottomRight = map.getGridCoordinates(ship->getSprite().getPosition().x + ship->getSprite().getGlobalBounds().width,
-        ship->getSprite().getPosition().y + ship->getSprite().getGlobalBounds().height);
+    // Fetch the ship's current positions from the reverse mapping
+    if (this->reverseHashmap.find(ship) != this->reverseHashmap.end()) {
+        const std::unordered_set<std::pair<int, int>, pair_hash>& occupiedPositions = this->reverseHashmap[ship];
 
-    for (int i = topLeft.first; i <= bottomRight.first; ++i) {
-        for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-            std::pair<int, int> key = generateKey(sf::Vector2f(static_cast<float>(i), static_cast<float>(j)));
-            this->hashmap.erase(key);
+        for (const auto& pos : occupiedPositions) {
+            this->hashmap.erase(pos); // Remove the ship from these positions in the primary hashmap
         }
+
+        // Remove the ship's entry from the reverse mapping
+        this->reverseHashmap.erase(ship);
     }
 }
 
@@ -40,7 +48,9 @@ void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
 std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDistance, bool debug) {
     // Grab window
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-    maxDistance /= 2;
+
+    maxDistance /= 2; // Divide by 2 to get the radius
+
     // Get the position of the ship
     sf::Vector2f shipPosition = ship->getSprite().getPosition();
 
@@ -82,7 +92,43 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDi
     return nearbyShips;
 }
 
-void ShipHashmap::update(EnemyShip* ship) {
-	removeEnemyShip(ship);
-	addEnemyShip(ship);
+// Update the ship's position in the hashmap
+void ShipHashmap::updateEnemyShipPosition(EnemyShip* ship) {
+    // Get the ship's new position from its sprite and calculate new grid cells it occupies
+    sf::FloatRect bounds = ship->getSprite().getGlobalBounds();
+    auto newTopLeft = map.getGridCoordinates(bounds.left, bounds.top);
+    auto newBottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
+
+    std::unordered_set<std::pair<int, int>, pair_hash> newPositions;
+    for (int i = newTopLeft.first; i <= newBottomRight.first; ++i) {
+        for (int j = newTopLeft.second; j <= newBottomRight.second; ++j) {
+            newPositions.insert({ i, j });
+        }
+    }
+
+    // Retrieve the ship's current positions
+    const auto& currentPositions = reverseHashmap[ship];
+
+    std::unordered_set<std::pair<int, int>> positionsToAdd;
+    std::unordered_set<std::pair<int, int>, pair_hash> positionsToRemove;
+
+    // Find new positions to add
+    for (const auto& newPos : positionsToAdd) {
+        hashmap[newPos] = ship; // Add or update ship in new positions
+    }
+
+    // Find old positions to remove
+    for (const auto& pos : currentPositions) {
+        if (newPositions.find(pos) == newPositions.end()) {
+            positionsToRemove.insert(pos);
+        }
+    }
+
+    // Update the hashmap
+    for (const auto& pos : positionsToRemove) {
+        hashmap.erase(pos); // Remove ship from old positions
+    }
+    for (const auto& newPos : positionsToAdd) {
+        hashmap[newPos] = ship; // Add ship to new positions
+    }
 }

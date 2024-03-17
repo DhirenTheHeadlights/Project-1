@@ -50,7 +50,7 @@ public:
         gameName.setPosition(x + 10, y + (button.getSize().y - gameName.getCharacterSize()) / 2); // Center text vertically
     }
 
-    void draw(sf::RenderWindow& window) { // Draw the button
+    void draw(sf::RenderWindow& window) const { // Draw the button
         window.draw(button);
         window.draw(gameName);
     }
@@ -121,6 +121,23 @@ void pirateGame() { // Pirate Game
         }
         world.createWorld(event);
     }
+}
+
+void pirateGameDebug() { // Pirate Game with debug mode
+	initializeGlobals("Pirate Game Window");
+
+	PirateGame::World world(&window, true);
+
+    while (window.isOpen()) {
+		sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+				window.close();
+			}
+		}
+		world.createWorld(event);
+	}
+
 }
 
 void lightAndShadow() {
@@ -197,6 +214,8 @@ int main() {
         Game("Aim Trainer", aimTrainer),
         Game("Light and Shadows", lightAndShadow),
         Game("Pirate Game", pirateGame),
+        Game("Pirate Game (Debug)", pirateGameDebug),
+
         Game("Platformer", Platformer),
         // Add more games here...
 

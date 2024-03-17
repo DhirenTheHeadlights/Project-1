@@ -33,7 +33,7 @@ namespace PirateGame {
 			pixelifySansBold = std::make_unique<sf::Font>();
 
 			// Initalize the fonts
-			if (!timesNewRoman->loadFromFile("Fonts/times-new-roman.ttf")) {
+			if (!timesNewRoman->loadFromFile("Fonts/times_new_roman.ttf")) {
 				std::cout << "Error loading Times New Roman font" << std::endl;
 			}
 			if (!pixelifySansRegular->loadFromFile("Fonts/PixelifySans-Regular.ttf")) {

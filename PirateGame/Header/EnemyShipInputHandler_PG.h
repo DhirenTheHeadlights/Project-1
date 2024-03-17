@@ -21,8 +21,9 @@ namespace PirateGame {
 
 		// Setters
 		void setPlayerPos(sf::Vector2f playerPos) { this->playerPos = playerPos; }
+		void setFiringDistance(float firingDistance) { this->firingDistance = firingDistance; }
 	private:
 		sf::Vector2f playerPos;
-		float firingDistance = 1000.f;
+		float firingDistance = 0.f;
 	};
 }

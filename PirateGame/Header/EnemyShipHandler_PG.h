@@ -43,5 +43,8 @@ namespace PirateGame {
 		// Values
 		float enemyCannonCooldown = 2.f;
 		float maxDetectionDistance = 1000.f;
+		float firingDistance = 1000.f;
+		float turningSpeed = 0.1f;
+		float enemySpeedMultiplier = 0.5f;
 	};
 }

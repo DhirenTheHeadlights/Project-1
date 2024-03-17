@@ -23,7 +23,7 @@
 namespace PirateGame {
 	class World {
 	public:
-		World(sf::RenderWindow* window);
+		World(sf::RenderWindow* window, bool debug = false);
 		~World() {};
 
 		void createWorld(sf::Event event);
@@ -48,6 +48,7 @@ namespace PirateGame {
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;
 		sf::RectangleShape background;
+		sf::Color backgroundColor = sf::Color(0, 158, 163, 255);
 
 		// Frame rate variables
 		sf::Clock frameRateClock;
@@ -56,8 +57,22 @@ namespace PirateGame {
 		int frameCount = 0;
 		const float numFramesToAverage = 40.f;
 
-		//Debug
+		// Debug
 		bool debug = true;
+
+		// Object numbers [not debug]
+		int numLandMasses = 1000;
+		float distanceBetweenLandMasses = 1000.f;
+		int numEnemyShips = 1000;
+		float distanceBetweenEnemyShips = 1000.f;
+		sf::Vector2f mapSize = sf::Vector2f(100000.f, 100000.f);
+
+		// Object numbers [debug]
+		int numLandMassesDebug = 1;
+		float distanceBetweenLandMassesDebug = 1000.f;
+		int numEnemyShipsDebug = 1;
+		float distanceBetweenEnemyShipsDebug = 1000.f;
+		sf::Vector2f mapSizeDebug = sf::Vector2f(2500.f, 2500.f);
 	};
 }
 

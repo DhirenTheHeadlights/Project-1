@@ -38,6 +38,6 @@ namespace PirateGame {
 
 		// Values
 		sf::Vector2f worldMap = sf::Vector2f(100000.f, 100000.f);
-		int cellSize = 10;
+		int cellSize = 100;
 	};
 }

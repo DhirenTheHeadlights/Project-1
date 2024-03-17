@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 void EnemyShipInputHandler::handleCannonFire() {
 	// Only fire if the player is within firingRange
-	float distance = sqrt(pow(playerPos.x - sprite.getPosition().x, 2) + pow(playerPos.y - sprite.getPosition().y, 2));
+	float distance = static_cast<float>(sqrt(pow(playerPos.x - sprite.getPosition().x, 2) + pow(playerPos.y - sprite.getPosition().y, 2)));
 	if (distance > firingDistance) {
 		return;
 	}
