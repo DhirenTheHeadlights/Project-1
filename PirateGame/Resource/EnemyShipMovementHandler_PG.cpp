@@ -45,7 +45,6 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 		directionToPlayer = normalize(directionToPlayer);
 	}
 	
-
 	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), directionToPlayer * 100.f, sf::Color::Red));
 
 	// Rotate the sprite using conversion from vector to angle with atan2

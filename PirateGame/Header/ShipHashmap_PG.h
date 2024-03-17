@@ -57,12 +57,15 @@ namespace PirateGame {
 
 		// Find ship near other ship
 		std::set<EnemyShip*> findEnemyShipsNearShip(Ship* ship, float maxDistance = 1000.f, bool debug = false);
+		
+		// Getters
+		std::unordered_map<std::pair<int, int>, EnemyShip*, pair_hash>& getHashmap() { return hashmap; }
+		std::unordered_map<EnemyShip*, std::set<std::pair<int, int>>>& getReverseHashmap() { return reverseHashmap; }
 	private:
 		// Hashmap
 		std::unordered_map<std::pair<int, int>, EnemyShip*, pair_hash> hashmap;
-		std::unordered_map<EnemyShip*, std::unordered_set<std::pair<int, int>, pair_hash>> reverseHashmap;
+		std::unordered_map<EnemyShip*, std::set<std::pair<int, int>>> reverseHashmap;
 
-		// Map
 		Map& map = *GlobalMap::getInstance().getMap();
 	};
 }

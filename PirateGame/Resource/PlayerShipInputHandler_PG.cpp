@@ -26,7 +26,7 @@ void PlayerShipInputHandler::handleCannonAim() {
 	}
 
 	// Rotate the cannons based on the mouse position if cannon mode is set to manual
-	SCH->setAimTowardsMouse(inputHandler.isKeyToggled(manualAimKey));
+	SCH->setFreeAim(inputHandler.isKeyToggled(manualAimKey));
 	SMH->setStopShipRotationFlag(inputHandler.isKeyToggled(manualAimKey));
 }
 

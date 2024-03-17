@@ -68,7 +68,7 @@ namespace PirateGame {
 		sf::Vector2f mapSize = sf::Vector2f(100000.f, 100000.f);
 
 		// Object numbers [debug]
-		int numLandMassesDebug = 1;
+		int numLandMassesDebug = 0;
 		float distanceBetweenLandMassesDebug = 1000.f;
 		int numEnemyShipsDebug = 1;
 		float distanceBetweenEnemyShipsDebug = 1000.f;

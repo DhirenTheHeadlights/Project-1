@@ -12,6 +12,7 @@ void EnemyShipHandler::addEnemyShips(int numShips) {
 		enemyShips[i]->getMovementHandler().setTurningSpeed(turningSpeed);
 		enemyShips[i]->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
 		enemyShips[i]->getInputHandler().setFiringDistance(firingDistance);
+		enemyShips[i]->getMovementHandler().setAnchorDrop(true);
 	}
 	// Add the ships to the hashmap
 	for (auto& ship : enemyShips) {
@@ -20,12 +21,14 @@ void EnemyShipHandler::addEnemyShips(int numShips) {
 }
 
 void EnemyShipHandler::update() {
+
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findEnemyShipsNearShip(playerShip, maxDetectionDistance);
 
 	// Update all the enemy ships nearby the player
 	for (auto& ship : nearbyShips) {
 		ship->setActive(true);
+		ship->getMovementHandler().setAnchorDrop(false);
 		ship->setPlayerPosition(playerShip->getSprite().getPosition());
 	}
 

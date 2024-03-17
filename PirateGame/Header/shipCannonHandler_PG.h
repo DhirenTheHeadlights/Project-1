@@ -26,7 +26,7 @@ namespace PirateGame {
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };
 		void setCooldown(float cooldown) { this->cooldown = cooldown; };
-		void setAimTowardsMouse(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
+		void setFreeAim(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
 
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };

@@ -14,7 +14,7 @@ void ShipHashmap::addEnemyShip(EnemyShip* ship) {
     auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
     auto bottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
-    std::unordered_set<std::pair<int, int>, pair_hash> occupiedPositions;
+    std::set<std::pair<int, int>> occupiedPositions;
 
     // Add the ship to the primary hashmap
     for (int i = topLeft.first; i <= bottomRight.first; ++i) {
@@ -33,7 +33,7 @@ void ShipHashmap::addEnemyShip(EnemyShip* ship) {
 void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
     // Fetch the ship's current positions from the reverse mapping
     if (this->reverseHashmap.find(ship) != this->reverseHashmap.end()) {
-        const std::unordered_set<std::pair<int, int>, pair_hash>& occupiedPositions = this->reverseHashmap[ship];
+        const std::set<std::pair<int, int>>& occupiedPositions = this->reverseHashmap[ship];
 
         for (const auto& pos : occupiedPositions) {
             this->hashmap.erase(pos); // Remove the ship from these positions in the primary hashmap
@@ -99,36 +99,43 @@ void ShipHashmap::updateEnemyShipPosition(EnemyShip* ship) {
     auto newTopLeft = map.getGridCoordinates(bounds.left, bounds.top);
     auto newBottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
-    std::unordered_set<std::pair<int, int>, pair_hash> newPositions;
+    std::set<std::pair<int, int>> newPositions;
     for (int i = newTopLeft.first; i <= newBottomRight.first; ++i) {
         for (int j = newTopLeft.second; j <= newBottomRight.second; ++j) {
             newPositions.insert({ i, j });
         }
     }
 
-    // Retrieve the ship's current positions
+    // Retrieve the ship's current positions from the reverse hashmap
     const auto& currentPositions = reverseHashmap[ship];
 
-    std::unordered_set<std::pair<int, int>> positionsToAdd;
-    std::unordered_set<std::pair<int, int>, pair_hash> positionsToRemove;
+    std::set<std::pair<int, int>> positionsToAdd;
+    std::set<std::pair<int, int>> positionsToRemove;
 
-    // Find new positions to add
-    for (const auto& newPos : positionsToAdd) {
-        hashmap[newPos] = ship; // Add or update ship in new positions
+    // Determine which new positions need to be added (those not already in currentPositions)
+    for (const auto& newPos : newPositions) {
+        if (currentPositions.find(newPos) == currentPositions.end()) {
+            positionsToAdd.insert(newPos);
+        }
     }
 
-    // Find old positions to remove
+    // Determine which positions need to be removed (those not in newPositions)
     for (const auto& pos : currentPositions) {
         if (newPositions.find(pos) == newPositions.end()) {
             positionsToRemove.insert(pos);
         }
     }
 
-    // Update the hashmap
+    // Update the hashmap and reverseHashmap
     for (const auto& pos : positionsToRemove) {
-        hashmap.erase(pos); // Remove ship from old positions
+        hashmap.erase(pos); // Remove the ship from old positions in the primary hashmap
     }
     for (const auto& newPos : positionsToAdd) {
-        hashmap[newPos] = ship; // Add ship to new positions
+        hashmap[newPos] = ship; // Add or update the ship in new positions in the primary hashmap
+        reverseHashmap[ship].insert(newPos); // Update the reverse hashmap
     }
+
+    // Update the ship's current positions in the reverseHashmap
+    // This could be optimized by directly modifying the set, but for clarity, we're simply replacing it here
+    reverseHashmap[ship] = newPositions;
 }
