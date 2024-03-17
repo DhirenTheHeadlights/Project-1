@@ -27,6 +27,7 @@ void GlobalSoundManager::playSound(SoundId soundId) {
     if (bufferIt != soundBuffers.end()) {
         sf::Sound& sound = findAvailableSound();
         sound.setBuffer(bufferIt->second);
+        sound.setVolume(soundVolume);
         sound.play();
     }
     else {

@@ -25,8 +25,6 @@ void EnemyShipInputHandler::handleCannonAim() {
     // Adjust angle by first sprite's rotation
     float adjustedAngle = angleToHorizontal - sprite.getRotation() - 90.f * 3.14159265359f / 180.f;
 
-    std::cout << "Adjusted angle: " << adjustedAngle << std::endl;
-
     // Normalize the angle to the range [0, 2*PI]
     if (adjustedAngle < 0) adjustedAngle += 2 * 3.14159265359f;
 

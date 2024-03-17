@@ -24,10 +24,10 @@ World::World(sf::RenderWindow* window_in) {
 
 void World::setUpWorld() {
 	playerShip->setUpShip(ShipClass::Frigate);
-	//LMHandler->addLandMasses(0/*static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f)*/, GlobalMap::getInstance().getWorldMap().x / 40.f);
+	LMHandler->addLandMasses(static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f), GlobalMap::getInstance().getWorldMap().x / 40.f);
 
 	// Set up the enemy ship handler
-	ESH->addEnemyShips(1/*static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f)*/);
+	ESH->addEnemyShips(static_cast<int>(GlobalMap::getInstance().getWorldMap().x / 100.f));
 	ESH->setPlayerShip(playerShip.get());
 
 	// Set up the collision manager

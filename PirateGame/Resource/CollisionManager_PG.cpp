@@ -32,14 +32,17 @@ void CollisionManager::handleCollisions() {
 	}
 
 	// Grab the nearby landmasses and ships for each active ship
-	for (auto& enemyShip : enemyShips) {
+	for (auto& enemyShip : nearbyShips) {
 		if (!enemyShip->isActive()) continue;
 
-		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findLandMassNearShip(enemyShip.get());
-		std::set<EnemyShip*> nearbyShips = shipHashmap->findEnemyShipsNearShip(enemyShip.get());
+		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findLandMassNearShip(enemyShip);
+		std::set<EnemyShip*> nearbyShips = shipHashmap->findEnemyShipsNearShip(enemyShip);
 
 		std::vector<LandMass*> collidingLandMasses;
 		collidingLandMasses.clear();
+
+		std::vector<EnemyShip*> collidingShips;
+		collidingShips.clear();
 
 		// Check if the enemy ship is colliding with any of the nearby land masses
 		for (auto& i : nearbyLandmasses) {
@@ -48,6 +51,29 @@ void CollisionManager::handleCollisions() {
 				enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
 
 				collidingLandMasses.push_back(i);
+			}
+		}
+
+		// Check if the enemy ship is colliding with any of the nearby ships
+		for (auto& i : nearbyShips) {
+			if (pixelPerfectTest(enemyShip->getSprite(), i->getSprite())) {
+				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
+				enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
+
+				collidingShips.push_back(i);
+			}
+		}
+
+		// Check if the player ship is colliding with any of the nearby enemy ships
+		for (auto& i : nearbyShips) {
+			if (pixelPerfectTest(playerShip->getSprite(), i->getSprite())) {
+				playerShip->getMovementHandler().collisionMovement(i->getSprite());
+				playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
+
+				collidingShips.push_back(i);
+			}
+			else {
+				playerShip->getMovementHandler().setIsColliding(false);
 			}
 		}
 	}

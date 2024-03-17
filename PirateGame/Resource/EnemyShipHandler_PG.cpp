@@ -22,6 +22,7 @@ void EnemyShipHandler::update() {
 
 	// Update all the enemy ships nearby the player
 	for (auto& ship : nearbyShips) {
+		ship->setActive(true);
 		ship->setPlayerPosition(playerShip->getSprite().getPosition());
 	}
 
