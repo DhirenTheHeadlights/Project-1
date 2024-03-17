@@ -24,10 +24,12 @@ void EnemyShipHandler::update() {
 	for (auto& ship : nearbyShips) {
 		ship->setActive(true);
 		ship->setPlayerPosition(playerShip->getSprite().getPosition());
+		
 	}
 
 	// Update all the enemy ships
 	for (auto& ship : enemyShips) {
+		GlobalHashmapHandler::getInstance().getShipHashmap()->update(ship.get());
 		ship->update();
 	}
 }

@@ -4,6 +4,7 @@
 using namespace PirateGame;
 
 void EnemyShipMovementHandler::move(float baseSpeed) {
+
 	sf::Vector2f map = GlobalMap::getInstance().getWorldMap();
 	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
@@ -30,12 +31,22 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	// Calculate the direction to the player
-	sf::Vector2f vectorToPlayer = normalize(playerPos - getSprite().getPosition());
-	float distance = std::sqrt(vectorToPlayer.x * vectorToPlayer.x + vectorToPlayer.y * vectorToPlayer.y);
+	sf::Vector2f directionToPlayer = playerPos - getSprite().getPosition();
+	float distance = std::sqrt(directionToPlayer.x * directionToPlayer.x + directionToPlayer.y * directionToPlayer.y);
+	
+	if (distance < static_cast<float>(4000)) {
+		directionToPlayer = directionToPlayer + sf::Vector2f(playerVelocity.x * 0.33, playerVelocity.y * 0.33);
+	}
+	if (distance < static_cast<float>(2000)) {
+		directionToPlayer = normalize(sf::Vector2f(directionToPlayer.y, -directionToPlayer.x));
+	}
+	else
+	{
+		directionToPlayer = normalize(directionToPlayer);
+	}
+	
 
-	sf::Vector2f directionToPlayer = normalize(vectorToPlayer);
-
-	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), vectorToPlayer * 100.f, sf::Color::Red));
+	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), directionToPlayer * 100.f, sf::Color::Red));
 
 	// Rotate the sprite using conversion from vector to angle with atan2
 	float targetAngle = std::atan2(directionToPlayer.y, directionToPlayer.x) * 180.f / pi + 90.f;

@@ -55,6 +55,9 @@ namespace PirateGame {
 		sf::Text frameRateText;
 		int frameCount = 0;
 		const float numFramesToAverage = 40.f;
+
+		//Debug
+		bool debug = true;
 	};
 }
 

@@ -40,7 +40,7 @@ void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
 std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDistance, bool debug) {
     // Grab window
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
+    maxDistance /= 2;
     // Get the position of the ship
     sf::Vector2f shipPosition = ship->getSprite().getPosition();
 
@@ -82,4 +82,7 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDi
     return nearbyShips;
 }
 
-
+void ShipHashmap::update(EnemyShip* ship) {
+	removeEnemyShip(ship);
+	addEnemyShip(ship);
+}
