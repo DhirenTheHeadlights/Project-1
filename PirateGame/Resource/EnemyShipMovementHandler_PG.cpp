@@ -25,7 +25,7 @@ void EnemyShipMovementHandler::move(float baseSpeed) {
 }
 
 void EnemyShipMovementHandler::setSpriteRotation() {
-	if (getIsColliding() || getStopShipRotationFlag()) return;
+	if (/*getIsColliding() ||*/ getStopShipRotationFlag()) return;
 
 	// Grab window
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();

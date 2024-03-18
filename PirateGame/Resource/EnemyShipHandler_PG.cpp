@@ -21,7 +21,6 @@ void EnemyShipHandler::addEnemyShips(int numShips) {
 }
 
 void EnemyShipHandler::update() {
-
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findEnemyShipsNearShip(playerShip, maxDetectionDistance);
 

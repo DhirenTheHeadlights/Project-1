@@ -52,21 +52,30 @@ void CollisionManager::handleCollisions() {
 
 				collidingLandMasses.push_back(i);
 			}
+			else {
+				enemyShip->getMovementHandler().setIsColliding(false);
+			}
 		}
 
 		// Check if the enemy ship is colliding with any of the nearby ships
 		for (auto& i : nearbyShips) {
-			if (pixelPerfectTest(enemyShip->getSprite(), i->getSprite())) {
+			if (shipCollisionTest(enemyShip, i)) {
+				// Ignore the collision if the ships are the same
+				if (enemyShip == i) continue;
+
 				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
 				enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
 
 				collidingShips.push_back(i);
 			}
+			else {
+				enemyShip->getMovementHandler().setIsColliding(false);
+			}
 		}
 
 		// Check if the player ship is colliding with any of the nearby enemy ships
 		for (auto& i : nearbyShips) {
-			if (pixelPerfectTest(playerShip->getSprite(), i->getSprite())) {
+			if (shipCollisionTest(playerShip, i)) {
 				playerShip->getMovementHandler().collisionMovement(i->getSprite());
 				playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
 
@@ -80,6 +89,8 @@ void CollisionManager::handleCollisions() {
 
 }
 
+// This pixel perfect test is specifically for ships and land masses
+// This pixel perfect test is specifically for ships and land masses
 bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {
 	sf::RenderWindow& window = *GlobalValues::getInstance().getWindow();
 	sf::FloatRect intersection;
@@ -97,17 +108,20 @@ bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spr
 	sf::IntRect rect1 = sprite1.getTextureRect();
 	sf::IntRect rect2 = sprite2.getTextureRect();
 
-	// Ellipse parameters in sprite1's local coordinate space
-	float a = rect1.width / 2.0f; // Semi-major axis without sails
-	float b = rect1.height / 2.0f; // Semi-minor axis
+	// Assuming sails make up about 20% of the sprite width on each side
+	float sailExclusionFactor = 0.8f; // Use 80% of the width for the body
+
+	// Semi-major axis (long axis) adjusted to be thinner
+	float a = (rect1.width * sailExclusionFactor) / 2.0f;
+	float b = rect1.height / 2.0f; // Semi-minor axis remains the same
 
 	for (int i = static_cast<int>(intersection.left); i < intersection.left + intersection.width; i++) {
 		for (int j = static_cast<int>(intersection.top); j < intersection.top + intersection.height; j++) {
 			// Convert global coordinates to sprite1's local space
 			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 
-			// Check if the point is inside the ellipse defined by sprite1's local bounds
-			float x_rel = localPos1.x - rect1.width / 2.0f;
+			// Adjust for sail exclusion by re-centering the ellipse in the reduced width
+			float x_rel = localPos1.x - (rect1.width * (1 - sailExclusionFactor) / 2.0f) - (a * 2 * sailExclusionFactor) / 2.0f;
 			float y_rel = localPos1.y - rect1.height / 2.0f;
 			if ((x_rel * x_rel) / (a * a) + (y_rel * y_rel) / (b * b) <= 1) {
 				// Now check pixel alpha values for collision
@@ -123,6 +137,42 @@ bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spr
 				}
 			}
 		}
+	}
+
+	return false; // No collision detected
+}
+
+
+// This collision check is specifically for ships and other ships
+bool CollisionManager::shipCollisionTest(Ship* ship1, Ship* ship2) {
+	// Check for global bounds intersection as a preliminary fast reject
+	if (!ship1->getSprite().getGlobalBounds().intersects(ship2->getSprite().getGlobalBounds())) return false;
+
+	// Get sprite references for ease of use
+	const sf::Sprite& sprite1 = ship1->getSprite();
+	const sf::Sprite& sprite2 = ship2->getSprite();
+
+	// Calculate the positions of the ships' centers
+	sf::Vector2f center1 = sprite1.getPosition();
+	sf::Vector2f center2 = sprite2.getPosition();
+
+	// Calculate the semi-major (a) and semi-minor (b) axes for both ships
+	// Assuming the ships' bounding box width is the semi-major axis and height is the semi-minor axis
+	float a1 = sprite1.getGlobalBounds().width / 2.0f;
+	float b1 = sprite1.getGlobalBounds().height / 2.0f;
+	float a2 = sprite2.getGlobalBounds().width / 2.0f;
+	float b2 = sprite2.getGlobalBounds().height / 2.0f;
+
+	// Calculate the distance between the centers of the two ships
+	float distance = sqrt((center2.x - center1.x) * (center2.x - center1.x) + (center2.y - center1.y) * (center2.y - center1.y));
+
+	// Use an adjusted sum of semi-major axes as a simple overlap check
+	// This factor can be tuned based on ship shapes/collision "sensitivity"
+	float collisionDistance = (a1 + a2) * 0.75f; 
+
+	// Check if the distance is less than the adjusted sum of semi-major axes
+	if (distance < collisionDistance) {
+		return true; // Collision detected
 	}
 
 	return false; // No collision detected

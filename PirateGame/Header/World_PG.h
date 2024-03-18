@@ -72,7 +72,7 @@ namespace PirateGame {
 		float distanceBetweenLandMassesDebug = 1000.f;
 		int numEnemyShipsDebug = 1;
 		float distanceBetweenEnemyShipsDebug = 1000.f;
-		sf::Vector2f mapSizeDebug = sf::Vector2f(2500.f, 2500.f);
+		sf::Vector2f mapSizeDebug = sf::Vector2f(5000.f, 5000.f);
 	};
 }
 
