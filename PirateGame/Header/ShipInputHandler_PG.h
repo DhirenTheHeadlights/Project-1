@@ -25,7 +25,7 @@ namespace PirateGame {
 		virtual void handleAnchorDrop() = 0;
 
 		// Setters
-		void setNumCannons(int numCannons) { this->numCannons = numCannons; }
+		void setNumCannons(int numCannons) { this->baseNumCannons = numCannons; }
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
 		void setCannonHandler(ShipCannonHandler* SCH) { this->SCH = SCH; }
 		void setMovementHandler(ShipMovementHandler* SMH) { this->SMH = SMH; }
@@ -42,6 +42,7 @@ namespace PirateGame {
 		ShipMovementHandler* SMH = nullptr;
 
 		// Ship properties
+		int baseNumCannons = 1;
 		int numCannons = 1;
 		float baseSpeed = 1.f;
 	};

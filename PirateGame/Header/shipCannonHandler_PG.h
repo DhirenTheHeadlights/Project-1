@@ -31,6 +31,8 @@ namespace PirateGame {
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };
 		FiringSide getFiringSide() const { return side; };
+		float getFiringDirectionAngle() const { return firingDirectionAngle; };
+		float getMaxFiringAngle() const { return maxFiringAngle; };
 	private:
 		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;
@@ -40,8 +42,10 @@ namespace PirateGame {
 		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
 		
 		bool aimTowardsMouse = false;
+		const float maxFiringAngle = 45.f;
 		float cooldown = 0.1f;
 		float cannonballSpeed = 300;
+		float firingDirectionAngle = 0;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;

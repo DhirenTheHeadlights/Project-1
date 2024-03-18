@@ -5,6 +5,9 @@ using namespace PirateGame;
 void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos) {
     if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
 
+    // Grab the cannon direction
+    sf::Vector2f cannonDirection = this->cannonDirection(targetPos);
+
     // Fire the cannonballs with the adjusted direction
     for (int i = 0; i < numCannons; i++) {
         Cannonball* cannonball = new Cannonball;
@@ -15,12 +18,12 @@ void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos)
         // Considering a more accurate position calculation here based on cannon placement
         float padding = 10.f;
         cannonball->setPos(shipSprite.getPosition() + sf::Vector2f(static_cast<float>(i * padding), static_cast<float>(i * padding)));
-        cannonball->setVelocity(cannonball->getSpeed() * cannonDirection(targetPos));
+        cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
         cannonballs.push_back(cannonball);
     }
 
-    // Play sound once per volley
-    GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
+    // Play sound once per volley if numCannons > 0
+    if (numCannons > 0) GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
 
     // Reset the cooldown clock
     cannonCooldownClock.restart();
@@ -41,7 +44,6 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
         return cannonDirection;
     }
     else {
-        const float maxAngle = 45.f;
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
         sf::Vector2f shipPos = shipSprite.getPosition();
 
@@ -60,8 +62,10 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
         if (angleDifference > 180) angleDifference -= 360;
         else if (angleDifference < -180) angleDifference += 360;
 
+        firingDirectionAngle = angleDifference; // This value is grabbed by the enemy ship input handler
+
         // Cap the angleDifference within the maxAngle
-        angleDifference = std::max(std::min(angleDifference, maxAngle), -maxAngle);
+        angleDifference = std::max(std::min(angleDifference, maxFiringAngle), -maxFiringAngle);
 
         // Calculate final direction vector based on capped angle
         float cappedAngleRadians = (shipRotation + angleDifference) * pi / 180;

@@ -8,6 +8,20 @@ void EnemyShipInputHandler::handleCannonFire() {
 	if (distance > firingDistance) {
 		return;
 	}
+
+    float maxAngle = SCH->getMaxFiringAngle();
+
+    // Check if the angle is within the allowed firing arc
+    if (std::abs(SCH->getFiringDirectionAngle()) <= maxAngle) {
+        // Player is within the firing arc, so determine the number of cannons to fire
+        numCannons = baseNumCannons;
+    }
+    else {
+        // Player is outside the firing arc, so prevent firing
+        numCannons = 0;
+    }
+    
+	// Fire the cannons
 	SCH->shootCannonballs(numCannons, playerPos);
 }
 
