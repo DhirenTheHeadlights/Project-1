@@ -1,0 +1,7 @@
+<map id="PirateGame::LandMassHashmap::findLandMassNearShip" name="PirateGame::LandMassHashmap::findLandMassNearShip">
+<area shape="rect" id="Node000001" title=" " alt="" coords="256,39,469,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_collision_manager.html#a7bf91ab70e6366e491e2cb664cc0c723" title=" " alt="" coords="8,5,205,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="240,47,205,42,206,37,240,41"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_land_mass_handler.html#a958e82fa0250a48b203aa3708d26537f" title=" " alt="" coords="5,72,208,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,79,208,83,208,77,240,73"/>
+</map>

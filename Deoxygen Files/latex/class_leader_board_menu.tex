@@ -1,0 +1,177 @@
+\doxysection{Leader\+Board\+Menu Class Reference}
+\hypertarget{class_leader_board_menu}{}\label{class_leader_board_menu}\index{LeaderBoardMenu@{LeaderBoardMenu}}
+
+
+{\ttfamily \#include $<$Leader\+Board\+Menu\+\_\+\+AT.\+h$>$}
+
+
+
+Inheritance diagram for Leader\+Board\+Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_leader_board_menu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Leader\+Board\+Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{class_leader_board_menu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_leader_board_menu_acb7040c6f00ac6b078961d389a3f8c79}{Leader\+Board\+Menu}} (sf\+::\+Render\+Window \&window, sf\+::\+Font font, \mbox{\hyperlink{class_game_state_manager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}GSM)
+\item 
+void \mbox{\hyperlink{class_leader_board_menu_ac630523ba57ed2c9dde9e2a0208a4129}{set\+Up\+Menu}} ()
+\item 
+void \mbox{\hyperlink{class_leader_board_menu_aaa372ad36c5c27a538e21140e53f7c71}{draw\+Menu}} (sf\+::\+Event current\+Event, sf\+::\+Clock \&main\+Clock, \mbox{\hyperlink{class_crosshair}{Crosshair}} \&crosshair)
+\item 
+void \mbox{\hyperlink{class_leader_board_menu_a3b5057200880a9df67331cad42c2f392}{set\+Up\+Leader\+Board}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_menu}{Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_ac156d3ebd661b32beb7db4cac82f8848}{Menu}} (sf\+::\+Render\+Window \&window, sf\+::\+Font font)
+\item 
+void \mbox{\hyperlink{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d}{open\+Menu}} (sf\+::\+Event \&event\+From\+Main, \mbox{\hyperlink{class_crosshair}{Crosshair}} \&xhair, sf\+::\+Clock \&main\+Clock)
+\item 
+void \mbox{\hyperlink{class_menu_a0860150e58e68d4945a0c19a05a29bb5}{reset\+Redraw\+Flag}} ()
+\item 
+void \mbox{\hyperlink{class_menu_abad8af7b49fa9d0d15c593562e05ac38}{draw\+Menu}} (sf\+::\+Event event)
+\item 
+void \mbox{\hyperlink{class_menu_adab2cbd3a5e67871c468da739e82b547}{toggle\+Menu}} (sf\+::\+Clock \&main\+Clock, \mbox{\hyperlink{class_crosshair}{Crosshair}} \&xhair)
+\item 
+void \mbox{\hyperlink{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}{add\+Interactable}} (std\+::string name, \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable\+::\+Type}} type, std\+::optional$<$ std\+::function$<$ void(float value)$>$ $>$ func)
+\item 
+void \mbox{\hyperlink{class_menu_af8442b2d50df720a8630fd98e1dec9d8}{set\+Total\+Pause\+Time}} (sf\+::\+Time time)
+\item 
+void \mbox{\hyperlink{class_menu_aa409c8b48a18439522b01ef097110ff1}{set\+Title\+String}} (std\+::string title\+String)
+\item 
+void \mbox{\hyperlink{class_menu_a743e40d07edd702c28e983a52da25dbf}{set\+Menu\+Position}} (sf\+::\+Vector2f position)
+\item 
+void \mbox{\hyperlink{class_menu_a461a10addff1e4fc3ec640fb6974d0ee}{set\+Text\+Size}} (float size)
+\item 
+void \mbox{\hyperlink{class_menu_ad515c411adc8498769da5ea7033b693b}{set\+Background\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15}{set\+Text\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d}{set\+Button\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a68c1d0ed72406cd39c68bd658d395917}{set\+Slider\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a1811471af86d9277ff9c5330512442c9}{set\+Slider\+Complement\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a749a7d8b933f95a2940b97b12a14494b}{set\+Hover\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{update\+Interactable\+Colors}} ()
+\item 
+void \mbox{\hyperlink{class_menu_ad77babc9a27ed9eadc340ca44acfc098}{set\+Button\+Size}} (sf\+::\+Vector2f size)
+\item 
+bool \mbox{\hyperlink{class_menu_a0b6f6ad7665f5af60972cc286f0bfe8c}{get\+Is\+Menu\+Open}} () const
+\item 
+bool \mbox{\hyperlink{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de}{needs\+Redraw}} () const
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_menu_a789b3d6e4d5de3cd119404dba4cef17f}{get\+Total\+Time\+In\+Menu}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_menu_a60fc95aea72de07dc2f37dfdd0907c5f}{get\+Input\+String\+For\+InteractableI}} (int i) const
+\item 
+\mbox{\hyperlink{class_interactable}{Interactable}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_menu_af9939c4aac786fcc1f562bdeee1e5166}{get\+InteractableI}} (int i) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_leader_board_menu___a_t_8h_source_l00007}{7}} of file \mbox{\hyperlink{_leader_board_menu___a_t_8h_source}{Leader\+Board\+Menu\+\_\+\+AT.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_leader_board_menu_acb7040c6f00ac6b078961d389a3f8c79}\label{class_leader_board_menu_acb7040c6f00ac6b078961d389a3f8c79} 
+\index{LeaderBoardMenu@{LeaderBoardMenu}!LeaderBoardMenu@{LeaderBoardMenu}}
+\index{LeaderBoardMenu@{LeaderBoardMenu}!LeaderBoardMenu@{LeaderBoardMenu}}
+\doxysubsubsection{\texorpdfstring{LeaderBoardMenu()}{LeaderBoardMenu()}}
+{\footnotesize\ttfamily Leader\+Board\+Menu\+::\+Leader\+Board\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Font}]{font,  }\item[{\mbox{\hyperlink{class_game_state_manager}{Game\+State\+Manager}} \texorpdfstring{$\ast$}{*}}]{GSM }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source}{Leader\+Board\+Menu\+\_\+\+AT.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_leader_board_menu_aaa372ad36c5c27a538e21140e53f7c71}\label{class_leader_board_menu_aaa372ad36c5c27a538e21140e53f7c71} 
+\index{LeaderBoardMenu@{LeaderBoardMenu}!drawMenu@{drawMenu}}
+\index{drawMenu@{drawMenu}!LeaderBoardMenu@{LeaderBoardMenu}}
+\doxysubsubsection{\texorpdfstring{drawMenu()}{drawMenu()}}
+{\footnotesize\ttfamily void Leader\+Board\+Menu\+::draw\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{current\+Event,  }\item[{sf\+::\+Clock \&}]{main\+Clock,  }\item[{\mbox{\hyperlink{class_crosshair}{Crosshair}} \&}]{crosshair }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source}{Leader\+Board\+Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_leader_board_menu_aaa372ad36c5c27a538e21140e53f7c71_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_leader_board_menu_a3b5057200880a9df67331cad42c2f392}\label{class_leader_board_menu_a3b5057200880a9df67331cad42c2f392} 
+\index{LeaderBoardMenu@{LeaderBoardMenu}!setUpLeaderBoard@{setUpLeaderBoard}}
+\index{setUpLeaderBoard@{setUpLeaderBoard}!LeaderBoardMenu@{LeaderBoardMenu}}
+\doxysubsubsection{\texorpdfstring{setUpLeaderBoard()}{setUpLeaderBoard()}}
+{\footnotesize\ttfamily void Leader\+Board\+Menu\+::set\+Up\+Leader\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source}{Leader\+Board\+Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_leader_board_menu_a3b5057200880a9df67331cad42c2f392_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_leader_board_menu_a3b5057200880a9df67331cad42c2f392_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_leader_board_menu_ac630523ba57ed2c9dde9e2a0208a4129}\label{class_leader_board_menu_ac630523ba57ed2c9dde9e2a0208a4129} 
+\index{LeaderBoardMenu@{LeaderBoardMenu}!setUpMenu@{setUpMenu}}
+\index{setUpMenu@{setUpMenu}!LeaderBoardMenu@{LeaderBoardMenu}}
+\doxysubsubsection{\texorpdfstring{setUpMenu()}{setUpMenu()}}
+{\footnotesize\ttfamily void Leader\+Board\+Menu\+::set\+Up\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_leader_board_menu___a_t_8cpp_source}{Leader\+Board\+Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_leader_board_menu_ac630523ba57ed2c9dde9e2a0208a4129_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Header/\mbox{\hyperlink{_leader_board_menu___a_t_8h}{Leader\+Board\+Menu\+\_\+\+AT.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Resource/\mbox{\hyperlink{_leader_board_menu___a_t_8cpp}{Leader\+Board\+Menu\+\_\+\+AT.\+cpp}}\end{DoxyCompactItemize}

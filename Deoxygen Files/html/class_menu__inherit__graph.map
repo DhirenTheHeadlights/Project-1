@@ -1,0 +1,13 @@
+<map id="Menu" name="Menu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="285,5,338,32"/>
+<area shape="rect" id="Node000002" href="$class_end_menu.html" title=" " alt="" coords="5,80,82,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="270,34,83,84,81,79,269,29"/>
+<area shape="rect" id="Node000003" href="$class_insert_name_menu.html" title="This class is for the insert name menu, it is used to get the player&#39;s name and to store it in the sa..." alt="" coords="105,80,225,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="274,42,192,82,189,77,271,37"/>
+<area shape="rect" id="Node000004" href="$class_leader_board_menu.html" title=" " alt="" coords="248,80,375,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="314,48,314,80,309,80,309,48"/>
+<area shape="rect" id="Node000005" href="$class_options_menu.html" title=" " alt="" coords="398,80,497,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="350,37,425,77,422,82,347,42"/>
+<area shape="rect" id="Node000006" href="$class_start_menu.html" title=" " alt="" coords="520,80,602,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="354,29,520,78,519,83,352,35"/>
+</map>

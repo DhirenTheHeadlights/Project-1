@@ -1,0 +1,21 @@
+<map id="Platformer" name="Platformer">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,197,86,224"/>
+<area shape="rect" id="Node000002" href="$class_platformer_game_1_1_world.html#a0126bbea67669484ac85fa2fa0480f99" title=" " alt="" coords="134,160,291,203"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,201,118,195,119,201,87,206"/>
+<area shape="rect" id="Node000010" href="$_globals_8cpp.html#a938aa2cfdb09ba2c7de2b98697e7f1f9" title=" " alt="" coords="156,227,269,253"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="87,215,142,225,141,230,86,220"/>
+<area shape="rect" id="Node000003" href="$class_platformer_game_1_1_player.html#afb2887a559719bb7b39b768d5ee217ea" title=" " alt="" coords="339,5,499,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="230,158,276,109,306,82,337,58,345,53,348,58,341,62,309,86,280,112,234,161"/>
+<area shape="rect" id="Node000004" href="$class_platformer_game_1_1_player.html#ac18c9d30d2997765321c62030a4b20b7" title=" " alt="" coords="339,72,499,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="263,157,338,124,351,119,353,124,340,129,265,162"/>
+<area shape="rect" id="Node000005" href="$class_map.html#a03ce884ba45a6f39da611c726ceea61b" title=" " alt="" coords="367,139,472,165"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="291,168,351,159,352,164,292,173"/>
+<area shape="rect" id="Node000007" href="$class_platformer_game_1_1_player.html#a04112b7a2d57513fe42cd45b7a4a354e" title=" " alt="" coords="339,189,499,232"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="292,190,324,194,323,200,291,195"/>
+<area shape="rect" id="Node000008" href="$class_platformer_game_1_1_player.html#ac3e56852d30d99f36a5dab0b8d1e3782" title=" " alt="" coords="339,256,499,299"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="269,201,292,212,340,242,351,247,348,252,338,246,290,217,266,206"/>
+<area shape="rect" id="Node000009" href="$class_platformer_game_1_1_player.html#ae02ee46d8c20dd0697b975f935b09839" title=" " alt="" coords="339,323,499,365"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="277,201,293,213,311,238,318,262,324,285,341,309,344,311,340,315,337,312,319,288,312,263,306,240,289,217,274,205"/>
+<area shape="rect" id="Node000006" href="$class_map.html#a118e0c5115d9162450534e6e925eeebb" title=" " alt="" coords="547,139,659,165"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="472,149,532,149,532,155,472,155"/>
+</map>

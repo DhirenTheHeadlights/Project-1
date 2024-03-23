@@ -1,0 +1,60 @@
+\doxysection{Enemy\+Ship\+\_\+\+PG.\+h}
+\hypertarget{_enemy_ship___p_g_8h_source}{}\label{_enemy_ship___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/EnemyShip\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/EnemyShip\_PG.h}}
+\mbox{\hyperlink{_enemy_ship___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_values___p_g_8h}{GlobalValues\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ship___p_g_8h}{Ship\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_enemy_ship_input_handler___p_g_8h}{EnemyShipInputHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_enemy_ship_movement_handler___p_g_8h}{EnemyShipMovementHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00015}00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00016}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{00016}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{EnemyShip}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}}\ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00018}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a10a0068374bd66d9c9aebd1f8ba5ebdb_a10a0068374bd66d9c9aebd1f8ba5ebdb}{00018}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a10a0068374bd66d9c9aebd1f8ba5ebdb_a10a0068374bd66d9c9aebd1f8ba5ebdb}{EnemyShip}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00019}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_ab5cc92e46474c5bfece514b40a387f09_ab5cc92e46474c5bfece514b40a387f09}{00019}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_ab5cc92e46474c5bfece514b40a387f09_ab5cc92e46474c5bfece514b40a387f09}{\string~EnemyShip}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Custom\ functions}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_aff5cdb466b1ee51b408301667ff22ba8_aff5cdb466b1ee51b408301667ff22ba8}{customShipSetUp}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a63c0295bec1a2515693bbd0d2d6c1086_a63c0295bec1a2515693bbd0d2d6c1086}{customShipUpdate}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a70cd0413b3d7cd332a5e34d613d87adf_a70cd0413b3d7cd332a5e34d613d87adf}{customShipDraw}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00027}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_af3fda46de9cbe7b9f17616bd29f9bf63_af3fda46de9cbe7b9f17616bd29f9bf63}{00027}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_af3fda46de9cbe7b9f17616bd29f9bf63_af3fda46de9cbe7b9f17616bd29f9bf63}{isActive}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a617866b5bdb406aa61d33f66d462e2c1_a617866b5bdb406aa61d33f66d462e2c1}{active}};\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00028}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_ae6da01e9cf4cebc07383d0c22b083159_ae6da01e9cf4cebc07383d0c22b083159}{00028}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_movement_handler}{EnemyShipMovementHandler}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_ae6da01e9cf4cebc07383d0c22b083159_ae6da01e9cf4cebc07383d0c22b083159}{getMovementHandler}}()\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a2659b841e259bfbdf4e0de592e72c661_a2659b841e259bfbdf4e0de592e72c661}{SMH}};\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00029}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a66b363606bacfaa84664e4eeab32a3d8_a66b363606bacfaa84664e4eeab32a3d8}{00029}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_input_handler}{EnemyShipInputHandler}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a66b363606bacfaa84664e4eeab32a3d8_a66b363606bacfaa84664e4eeab32a3d8}{getInputHandler}}()\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a5195ae86db4ff3e09d09e7b3cef1b05d_a5195ae86db4ff3e09d09e7b3cef1b05d}{SIH}};\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Setters}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00032}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a7eeebba5ae2ae058cfa6a42ba4d0b242_a7eeebba5ae2ae058cfa6a42ba4d0b242}{00032}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a7eeebba5ae2ae058cfa6a42ba4d0b242_a7eeebba5ae2ae058cfa6a42ba4d0b242}{setActive}}(\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a617866b5bdb406aa61d33f66d462e2c1_a617866b5bdb406aa61d33f66d462e2c1}{active}})\ \{\ this-\/>active\ =\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a617866b5bdb406aa61d33f66d462e2c1_a617866b5bdb406aa61d33f66d462e2c1}{active}};\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00033}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_aeb2ba281222cd50a194f3a8dcc973ce9_aeb2ba281222cd50a194f3a8dcc973ce9}{00033}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_aeb2ba281222cd50a194f3a8dcc973ce9_aeb2ba281222cd50a194f3a8dcc973ce9}{setPlayerPosition}}(sf::Vector2f\ playerPos)\ \{\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_aa8983a8451bccb62d2ee06fec17c1abe_aa8983a8451bccb62d2ee06fec17c1abe}{playerPosition}}\ =\ playerPos;}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a5195ae86db4ff3e09d09e7b3cef1b05d_a5195ae86db4ff3e09d09e7b3cef1b05d}{SIH}}-\/>setPlayerPos(playerPos);}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a2659b841e259bfbdf4e0de592e72c661_a2659b841e259bfbdf4e0de592e72c661}{SMH}}-\/>setPlayerPosition(playerPos);}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Health\ bars}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00041}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_ae7c1294dbcae99acebef1105b8cd0e78_ae7c1294dbcae99acebef1105b8cd0e78}{00041}}\ \ \ \ \ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_ae7c1294dbcae99acebef1105b8cd0e78_ae7c1294dbcae99acebef1105b8cd0e78}{healthBarRed}};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00042}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a604a3c4d3736d2554d438ad82e90b6b3_a604a3c4d3736d2554d438ad82e90b6b3}{00042}}\ \ \ \ \ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a604a3c4d3736d2554d438ad82e90b6b3_a604a3c4d3736d2554d438ad82e90b6b3}{healthBarGreen}};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Active\ flag}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00045}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a617866b5bdb406aa61d33f66d462e2c1_a617866b5bdb406aa61d33f66d462e2c1}{00045}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a617866b5bdb406aa61d33f66d462e2c1_a617866b5bdb406aa61d33f66d462e2c1}{active}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handlers}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00048}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a5195ae86db4ff3e09d09e7b3cef1b05d_a5195ae86db4ff3e09d09e7b3cef1b05d}{00048}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<EnemyShipInputHandler>\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a5195ae86db4ff3e09d09e7b3cef1b05d_a5195ae86db4ff3e09d09e7b3cef1b05d}{SIH}};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00049}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a2659b841e259bfbdf4e0de592e72c661_a2659b841e259bfbdf4e0de592e72c661}{00049}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<EnemyShipMovementHandler>\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_a2659b841e259bfbdf4e0de592e72c661_a2659b841e259bfbdf4e0de592e72c661}{SMH}};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Variables}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00052}\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_aa8983a8451bccb62d2ee06fec17c1abe_aa8983a8451bccb62d2ee06fec17c1abe}{00052}}\ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_aa8983a8451bccb62d2ee06fec17c1abe_aa8983a8451bccb62d2ee06fec17c1abe}{playerPosition}};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00053}00053\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_ship___p_g_8h_source_l00055}00055\ }
+
+\end{DoxyCode}

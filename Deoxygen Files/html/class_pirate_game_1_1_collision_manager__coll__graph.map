@@ -1,0 +1,9 @@
+<map id="PirateGame::CollisionManager" name="PirateGame::CollisionManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,263,203,289"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_player_ship.html" title=" " alt="" coords="23,172,185,199"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,214,107,262,101,262,101,214"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_ship.html" title=" " alt="" coords="42,96,166,123"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,138,107,172,101,172,101,138"/>
+<area shape="rect" id="Node000004" href="$struct_pirate_game_1_1_ship_properties.html" title=" " alt="" coords="12,5,196,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="107,48,107,95,101,95,101,48"/>
+</map>

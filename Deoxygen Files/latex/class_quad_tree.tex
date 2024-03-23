@@ -1,0 +1,112 @@
+\doxysection{Quad\+Tree Class Reference}
+\hypertarget{class_quad_tree}{}\label{class_quad_tree}\index{QuadTree@{QuadTree}}
+
+
+{\ttfamily \#include $<$Quadtree.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_quad_tree_ad363bec87e9adb4bdd1be60d5b13bc6a}{Quad\+Tree}} (const \mbox{\hyperlink{struct_boundary}{Boundary}} \&boundary, int capacity)
+\item 
+bool \mbox{\hyperlink{class_quad_tree_a0ce82c5b9bc22b302bb66346ba6ef9bc}{insert}} (\mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*}pellet)
+\item 
+bool \mbox{\hyperlink{class_quad_tree_ad7fe77e65234556381f3402408aaefd6}{is\+Empty}} () const
+\item 
+bool \mbox{\hyperlink{class_quad_tree_a4b930e533ae36a22c747647e5fbb48e8}{collides\+With}} (const \mbox{\hyperlink{class_circle}{Circle}} \&circle, \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*}pellet) const
+\item 
+void \mbox{\hyperlink{class_quad_tree_aba2d8132a1f57a753516ddf5b48ed972}{query}} (const \mbox{\hyperlink{struct_boundary}{Boundary}} \&range, std\+::vector$<$ \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*} $>$ \&found) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_quadtree_8h_source_l00018}{18}} of file \mbox{\hyperlink{_quadtree_8h_source}{Quadtree.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_quad_tree_ad363bec87e9adb4bdd1be60d5b13bc6a}\label{class_quad_tree_ad363bec87e9adb4bdd1be60d5b13bc6a} 
+\index{QuadTree@{QuadTree}!QuadTree@{QuadTree}}
+\index{QuadTree@{QuadTree}!QuadTree@{QuadTree}}
+\doxysubsubsection{\texorpdfstring{QuadTree()}{QuadTree()}}
+{\footnotesize\ttfamily Quad\+Tree\+::\+Quad\+Tree (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_boundary}{Boundary}} \&}]{boundary,  }\item[{int}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_quadtree_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_quadtree_8cpp_source}{Quadtree.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_quad_tree_a4b930e533ae36a22c747647e5fbb48e8}\label{class_quad_tree_a4b930e533ae36a22c747647e5fbb48e8} 
+\index{QuadTree@{QuadTree}!collidesWith@{collidesWith}}
+\index{collidesWith@{collidesWith}!QuadTree@{QuadTree}}
+\doxysubsubsection{\texorpdfstring{collidesWith()}{collidesWith()}}
+{\footnotesize\ttfamily bool Quad\+Tree\+::collides\+With (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle}{Circle}} \&}]{circle,  }\item[{\mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*}}]{pellet }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_quadtree_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{_quadtree_8cpp_source}{Quadtree.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{class_quad_tree_a4b930e533ae36a22c747647e5fbb48e8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_quad_tree_a0ce82c5b9bc22b302bb66346ba6ef9bc}\label{class_quad_tree_a0ce82c5b9bc22b302bb66346ba6ef9bc} 
+\index{QuadTree@{QuadTree}!insert@{insert}}
+\index{insert@{insert}!QuadTree@{QuadTree}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily bool Quad\+Tree\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*}}]{pellet }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_quadtree_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_quadtree_8cpp_source}{Quadtree.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{class_quad_tree_a0ce82c5b9bc22b302bb66346ba6ef9bc_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_quad_tree_ad7fe77e65234556381f3402408aaefd6}\label{class_quad_tree_ad7fe77e65234556381f3402408aaefd6} 
+\index{QuadTree@{QuadTree}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!QuadTree@{QuadTree}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Quad\+Tree\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_quadtree_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_quadtree_8cpp_source}{Quadtree.\+cpp}}.
+
+\Hypertarget{class_quad_tree_aba2d8132a1f57a753516ddf5b48ed972}\label{class_quad_tree_aba2d8132a1f57a753516ddf5b48ed972} 
+\index{QuadTree@{QuadTree}!query@{query}}
+\index{query@{query}!QuadTree@{QuadTree}}
+\doxysubsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily void Quad\+Tree\+::query (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_boundary}{Boundary}} \&}]{range,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*} $>$ \&}]{found }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_quadtree_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_quadtree_8cpp_source}{Quadtree.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{class_quad_tree_aba2d8132a1f57a753516ddf5b48ed972_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Globals/\+Header/\mbox{\hyperlink{_quadtree_8h}{Quadtree.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Globals/\+Resource/\mbox{\hyperlink{_quadtree_8cpp}{Quadtree.\+cpp}}\end{DoxyCompactItemize}

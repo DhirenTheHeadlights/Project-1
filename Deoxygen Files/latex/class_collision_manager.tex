@@ -1,0 +1,264 @@
+\doxysection{Collision\+Manager Class Reference}
+\hypertarget{class_collision_manager}{}\label{class_collision_manager}\index{CollisionManager@{CollisionManager}}
+
+
+{\ttfamily \#include $<$Collision\+Manager\+\_\+\+AG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_manager_a0bde5706844778414f5ac5c92ae17bd7}{Collision\+Manager}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+std\+::set$<$ \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_collision_manager_a54dd9f8c0148cf0abb9a54f962b792d3}{pellet\+Collision\+Within\+Bounds\+Of\+Circle}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, \mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*}circle, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+void \mbox{\hyperlink{class_collision_manager_ac268784ef58355dd65c1b8152c7fab91}{check\+Collision\+With\+Pellet}} (const std\+::string \&key, \mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*}circle, std\+::set$<$ \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*} $>$ \&collided\+Pellets)
+\item 
+void \mbox{\hyperlink{class_collision_manager_a7e2e35d89e0addcb46c5c4ee34dcbc8a}{separate\+All\+Cells}} (\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&cells, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+void \mbox{\hyperlink{class_collision_manager_ad43ee55963b7bb63e717a086058970f9}{remove\+Pellet\+When\+Collision}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, \mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*}cell, \mbox{\hyperlink{class_map}{Map}} \&map, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pellet}{Pellet}} $>$ $>$ active\+Pellets)
+\item 
+void \mbox{\hyperlink{class_collision_manager_a37285011823aae286bc612eaea350286}{check\+Pellet\+Collision\+For\+Every\+Cell}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, \mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&cells, \mbox{\hyperlink{class_map}{Map}} \&map, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pellet}{Pellet}} $>$ $>$ active\+Pellets)
+\item 
+void \mbox{\hyperlink{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf}{assign\+Cells}} (\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&cells, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+void \mbox{\hyperlink{class_collision_manager_aec880c871a1401e27311b738eaac172a}{assign\+Pellets}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pellet}{Pellet}} $>$ $>$ active\+Pellets, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+void \mbox{\hyperlink{class_collision_manager_a419192f27b854dfb46e3175db9e28f26}{move\+And\+Separate\+Cells}} (\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&cells, \mbox{\hyperlink{class_map}{Map}} \&map, sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, float move\+Speed)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8h_source_l00014}{14}} of file \mbox{\hyperlink{_collision_manager___a_g_8h_source}{Collision\+Manager\+\_\+\+AG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_collision_manager_a0bde5706844778414f5ac5c92ae17bd7}\label{class_collision_manager_a0bde5706844778414f5ac5c92ae17bd7} 
+\index{CollisionManager@{CollisionManager}!CollisionManager@{CollisionManager}}
+\index{CollisionManager@{CollisionManager}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CollisionManager()}{CollisionManager()}}
+{\footnotesize\ttfamily Collision\+Manager\+::\+Collision\+Manager (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf}\label{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf} 
+\index{CollisionManager@{CollisionManager}!assignCells@{assignCells}}
+\index{assignCells@{assignCells}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{assignCells()}{assignCells()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::assign\+Cells (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&}]{cells,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_aec880c871a1401e27311b738eaac172a}\label{class_collision_manager_aec880c871a1401e27311b738eaac172a} 
+\index{CollisionManager@{CollisionManager}!assignPellets@{assignPellets}}
+\index{assignPellets@{assignPellets}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{assignPellets()}{assignPellets()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::assign\+Pellets (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pellet}{Pellet}} $>$ $>$}]{active\+Pellets,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_aec880c871a1401e27311b738eaac172a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_aec880c871a1401e27311b738eaac172a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_ac268784ef58355dd65c1b8152c7fab91}\label{class_collision_manager_ac268784ef58355dd65c1b8152c7fab91} 
+\index{CollisionManager@{CollisionManager}!checkCollisionWithPellet@{checkCollisionWithPellet}}
+\index{checkCollisionWithPellet@{checkCollisionWithPellet}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{checkCollisionWithPellet()}{checkCollisionWithPellet()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::check\+Collision\+With\+Pellet (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key,  }\item[{\mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*}}]{circle,  }\item[{std\+::set$<$ \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*} $>$ \&}]{collided\+Pellets }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_ac268784ef58355dd65c1b8152c7fab91_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_ac268784ef58355dd65c1b8152c7fab91_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_a37285011823aae286bc612eaea350286}\label{class_collision_manager_a37285011823aae286bc612eaea350286} 
+\index{CollisionManager@{CollisionManager}!checkPelletCollisionForEveryCell@{checkPelletCollisionForEveryCell}}
+\index{checkPelletCollisionForEveryCell@{checkPelletCollisionForEveryCell}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{checkPelletCollisionForEveryCell()}{checkPelletCollisionForEveryCell()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::check\+Pellet\+Collision\+For\+Every\+Cell (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&}]{cells,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pellet}{Pellet}} $>$ $>$}]{active\+Pellets }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a37285011823aae286bc612eaea350286_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a37285011823aae286bc612eaea350286_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_a419192f27b854dfb46e3175db9e28f26}\label{class_collision_manager_a419192f27b854dfb46e3175db9e28f26} 
+\index{CollisionManager@{CollisionManager}!moveAndSeparateCells@{moveAndSeparateCells}}
+\index{moveAndSeparateCells@{moveAndSeparateCells}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{moveAndSeparateCells()}{moveAndSeparateCells()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::move\+And\+Separate\+Cells (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&}]{cells,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map,  }\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{float}]{move\+Speed }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a419192f27b854dfb46e3175db9e28f26_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a419192f27b854dfb46e3175db9e28f26_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_a54dd9f8c0148cf0abb9a54f962b792d3}\label{class_collision_manager_a54dd9f8c0148cf0abb9a54f962b792d3} 
+\index{CollisionManager@{CollisionManager}!pelletCollisionWithinBoundsOfCircle@{pelletCollisionWithinBoundsOfCircle}}
+\index{pelletCollisionWithinBoundsOfCircle@{pelletCollisionWithinBoundsOfCircle}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{pelletCollisionWithinBoundsOfCircle()}{pelletCollisionWithinBoundsOfCircle()}}
+{\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{class_pellet}{Pellet}} \texorpdfstring{$\ast$}{*} $>$ Collision\+Manager\+::pellet\+Collision\+Within\+Bounds\+Of\+Circle (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*}}]{circle,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a54dd9f8c0148cf0abb9a54f962b792d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a54dd9f8c0148cf0abb9a54f962b792d3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_ad43ee55963b7bb63e717a086058970f9}\label{class_collision_manager_ad43ee55963b7bb63e717a086058970f9} 
+\index{CollisionManager@{CollisionManager}!removePelletWhenCollision@{removePelletWhenCollision}}
+\index{removePelletWhenCollision@{removePelletWhenCollision}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{removePelletWhenCollision()}{removePelletWhenCollision()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::remove\+Pellet\+When\+Collision (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{\mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*}}]{cell,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map,  }\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pellet}{Pellet}} $>$ $>$}]{active\+Pellets }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_ad43ee55963b7bb63e717a086058970f9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_ad43ee55963b7bb63e717a086058970f9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_collision_manager_a7e2e35d89e0addcb46c5c4ee34dcbc8a}\label{class_collision_manager_a7e2e35d89e0addcb46c5c4ee34dcbc8a} 
+\index{CollisionManager@{CollisionManager}!separateAllCells@{separateAllCells}}
+\index{separateAllCells@{separateAllCells}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{separateAllCells()}{separateAllCells()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::separate\+All\+Cells (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cell_group}{Cell\+Group}} \&}]{cells,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___a_g_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_collision_manager___a_g_8cpp_source}{Collision\+Manager\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a7e2e35d89e0addcb46c5c4ee34dcbc8a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_collision_manager_a7e2e35d89e0addcb46c5c4ee34dcbc8a_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Agar\+Game/\+Header/\mbox{\hyperlink{_collision_manager___a_g_8h}{Collision\+Manager\+\_\+\+AG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Agar\+Game/\+Resource/\mbox{\hyperlink{_collision_manager___a_g_8cpp}{Collision\+Manager\+\_\+\+AG.\+cpp}}\end{DoxyCompactItemize}

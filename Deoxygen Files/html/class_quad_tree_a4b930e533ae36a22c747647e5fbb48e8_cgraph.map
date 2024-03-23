@@ -1,0 +1,9 @@
+<map id="QuadTree::collidesWith" name="QuadTree::collidesWith">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,162,83"/>
+<area shape="rect" id="Node000002" href="$class_circle.html#a4f2038c4e879f84a06d7bc79c0625d7f" title=" " alt="" coords="210,5,349,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,53,209,34,211,39,139,58"/>
+<area shape="rect" id="Node000003" href="$class_circle.html#a1b37e8973c5a83ac381fda84716e1b0d" title=" " alt="" coords="216,56,343,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,67,200,67,200,72,162,72"/>
+<area shape="rect" id="Node000004" href="$class_pellet.html#a1dc15dba50ba763418b301de39d7e4bc" title=" " alt="" coords="216,107,343,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="139,81,211,100,209,105,137,86"/>
+</map>

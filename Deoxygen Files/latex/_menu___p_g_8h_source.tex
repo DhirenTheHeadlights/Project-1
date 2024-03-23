@@ -1,0 +1,93 @@
+\doxysection{Menu\+\_\+\+PG.\+h}
+\hypertarget{_menu___p_g_8h_source}{}\label{_menu___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/Menu\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/Menu\_PG.h}}
+\mbox{\hyperlink{_menu___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_values___p_g_8h}{GlobalValues\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_game_state_manager___p_g_8h}{GlobalGameStateManager\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_font_handler___p_g_8h}{GlobalFontHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interactable___p_g_8h}{Interactable\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_button___p_g_8h}{Button\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_slider___p_g_8h}{Slider\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_text_display_box___p_g_8h}{TextDisplayBox\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_text_inpu_box___p_g_8h}{TextInpuBox\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_drop_down___p_g_8h}{DropDown\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00023}00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00024}\mbox{\hyperlink{class_pirate_game_1_1_menu}{00024}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_menu}{Menu}}\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00026}\mbox{\hyperlink{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7}{00026}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7}{Menu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{GlobalValues::getInstance}}().getWindow()\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Attempted\ to\ set\ a\ nullptr\ window\ in\ Menu\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>\mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{window}}\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{GlobalValues::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_values_ac0271b79e8e02295ca8095a22bfb0ae2_ac0271b79e8e02295ca8095a22bfb0ae2}{getWindow}}();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00033}\mbox{\hyperlink{class_pirate_game_1_1_menu_a81992f7e69ad5e3d74cbdfa7221a657d_a81992f7e69ad5e3d74cbdfa7221a657d}{00033}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_a81992f7e69ad5e3d74cbdfa7221a657d_a81992f7e69ad5e3d74cbdfa7221a657d}{\string~Menu}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00035}\mbox{\hyperlink{class_pirate_game_1_1_menu_af37430becf7c9a51839c9f987641e4fe_af37430becf7c9a51839c9f987641e4fe}{00035}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_af37430becf7c9a51839c9f987641e4fe_af37430becf7c9a51839c9f987641e4fe}{setUpMenu}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6}{draw}}();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9}{addInteractableToMenu}}(std::unique\_ptr<Interactable>\ interactable);}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00038}\mbox{\hyperlink{class_pirate_game_1_1_menu_af25b85eb0f77a928795263982afca72c_af25b85eb0f77a928795263982afca72c}{00038}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_af25b85eb0f77a928795263982afca72c_af25b85eb0f77a928795263982afca72c}{addInteractablesToMenu}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00039}\mbox{\hyperlink{class_pirate_game_1_1_menu_a18c8186b4de93451d59221426b4cab2a_a18c8186b4de93451d59221426b4cab2a}{00039}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a18c8186b4de93451d59221426b4cab2a_a18c8186b4de93451d59221426b4cab2a}{setInteractablePositions}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}{interactWithMenuItems}}();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ Menu\ items}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00043}\mbox{\hyperlink{class_pirate_game_1_1_menu_a1f1b7cf033c4402af929aa52fe04bb0e_a1f1b7cf033c4402af929aa52fe04bb0e}{00043}}\ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<Interactable>>\&\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a1f1b7cf033c4402af929aa52fe04bb0e_a1f1b7cf033c4402af929aa52fe04bb0e}{getInteractables}}()\ \{\ \textcolor{keywordflow}{return}\ this-\/>\mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}};\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Menu\ variables}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00047}\mbox{\hyperlink{class_pirate_game_1_1_menu_ae78b2307f231406af5c9c8dc73f66217_ae78b2307f231406af5c9c8dc73f66217}{00047}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_ae78b2307f231406af5c9c8dc73f66217_ae78b2307f231406af5c9c8dc73f66217}{isMenuOpen}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00048}\mbox{\hyperlink{class_pirate_game_1_1_menu_aff8b0b625241e5d5509775caac3cb66e_aff8b0b625241e5d5509775caac3cb66e}{00048}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_aff8b0b625241e5d5509775caac3cb66e_aff8b0b625241e5d5509775caac3cb66e}{redraw}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00049}\mbox{\hyperlink{class_pirate_game_1_1_menu_a287eb42a8378ce0d7b4f5b64b70cd5b0_a287eb42a8378ce0d7b4f5b64b70cd5b0}{00049}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a287eb42a8378ce0d7b4f5b64b70cd5b0_a287eb42a8378ce0d7b4f5b64b70cd5b0}{positionUpdated}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00050}\mbox{\hyperlink{class_pirate_game_1_1_menu_a50c327637bed4e6d0bfd27391e4fff48_a50c327637bed4e6d0bfd27391e4fff48}{00050}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a50c327637bed4e6d0bfd27391e4fff48_a50c327637bed4e6d0bfd27391e4fff48}{wasButtonPressedLastFrame}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00051}\mbox{\hyperlink{class_pirate_game_1_1_menu_a50d3fb6e23faddea1a5872ae70960c7a_a50d3fb6e23faddea1a5872ae70960c7a}{00051}}\ \ \ \ \ \ \ \ \ sf::Time\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a50d3fb6e23faddea1a5872ae70960c7a_a50d3fb6e23faddea1a5872ae70960c7a}{totalPauseDuration}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SFML\ objects}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00055}\mbox{\hyperlink{class_pirate_game_1_1_menu_a8e2cda68dcab9bcfab54e531d5ca9bd9_a8e2cda68dcab9bcfab54e531d5ca9bd9}{00055}}\ \ \ \ \ \ \ \ \ sf::Font\&\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a8e2cda68dcab9bcfab54e531d5ca9bd9_a8e2cda68dcab9bcfab54e531d5ca9bd9}{font}}\ =\ *\mbox{\hyperlink{class_pirate_game_1_1_global_font_handler_a6e7f1b64b90d51339f8bf86c1212f98d_a6e7f1b64b90d51339f8bf86c1212f98d}{GlobalFontHandler::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_font_handler_a6fefb18febfc972e8f18b55964d92559_a6fefb18febfc972e8f18b55964d92559}{getGlobalFont}}();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00056}\mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{00056}}\ \ \ \ \ \ \ \ \ sf::RenderWindow*\ \mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Menu\ items}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00059}\mbox{\hyperlink{class_pirate_game_1_1_menu_a797a747eb919730b7ce58b45c774c9cb_a797a747eb919730b7ce58b45c774c9cb}{00059}}\ \ \ \ \ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a797a747eb919730b7ce58b45c774c9cb_a797a747eb919730b7ce58b45c774c9cb}{background}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00060}\mbox{\hyperlink{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9}{00060}}\ \ \ \ \ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9}{menu}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Menu\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00063}\mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{00063}}\ \ \ \ \ \ \ \ \ std::vector<std::unique\_ptr<Interactable>>\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Menu\ Text}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00066}\mbox{\hyperlink{class_pirate_game_1_1_menu_ae36288a2909158a0a0673aa225ddebdb_ae36288a2909158a0a0673aa225ddebdb}{00066}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_pirate_game_1_1_menu_ae36288a2909158a0a0673aa225ddebdb_ae36288a2909158a0a0673aa225ddebdb}{title}}\ =\ \textcolor{stringliteral}{"{}Title\ not\ set"{}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00067}\mbox{\hyperlink{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420}{00067}}\ \ \ \ \ \ \ \ \ sf::Text\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420}{titleText}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Menu\ properties}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00070}\mbox{\hyperlink{class_pirate_game_1_1_menu_a3ec588c10bf6d12ff15f486e35c0582b_a3ec588c10bf6d12ff15f486e35c0582b}{00070}}\ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a3ec588c10bf6d12ff15f486e35c0582b_a3ec588c10bf6d12ff15f486e35c0582b}{backgroundScale}}\ =\ \{\ 1,\ 1\ \};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00071}\mbox{\hyperlink{class_pirate_game_1_1_menu_ad215314e0a79b0534bf898fa04f431ef_ad215314e0a79b0534bf898fa04f431ef}{00071}}\ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_pirate_game_1_1_menu_ad215314e0a79b0534bf898fa04f431ef_ad215314e0a79b0534bf898fa04f431ef}{menuScale}}\ =\ \{\ 1,\ 1\ \};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00073}\mbox{\hyperlink{class_pirate_game_1_1_menu_a1527c6ee0109cc6fd0d0fa64df75b5f4_a1527c6ee0109cc6fd0d0fa64df75b5f4}{00073}}\ \ \ \ \ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a1527c6ee0109cc6fd0d0fa64df75b5f4_a1527c6ee0109cc6fd0d0fa64df75b5f4}{textColor}}\ =\ sf::Color(0,\ 0,\ 0,\ 200);\ \textcolor{comment}{//\ Black}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00075}\mbox{\hyperlink{class_pirate_game_1_1_menu_a6ce5a2285e0c370a78a79200335b05de_a6ce5a2285e0c370a78a79200335b05de}{00075}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a6ce5a2285e0c370a78a79200335b05de_a6ce5a2285e0c370a78a79200335b05de}{textSize}}\ =\ 20u;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00076}\mbox{\hyperlink{class_pirate_game_1_1_menu_a4cb0d9f41b37b5381abbd6b5f6bbd2a2_a4cb0d9f41b37b5381abbd6b5f6bbd2a2}{00076}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a4cb0d9f41b37b5381abbd6b5f6bbd2a2_a4cb0d9f41b37b5381abbd6b5f6bbd2a2}{interactableTextSize}}\ =\ 10u;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00077}\mbox{\hyperlink{class_pirate_game_1_1_menu_a26777840c3bd0b4332aa2a2910dd5490_a26777840c3bd0b4332aa2a2910dd5490}{00077}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a26777840c3bd0b4332aa2a2910dd5490_a26777840c3bd0b4332aa2a2910dd5490}{padding}}\ =\ 10.0f;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GameStateManager}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00080}\mbox{\hyperlink{class_pirate_game_1_1_menu_a809c3a77071b35903d4c29777935f1d6_a809c3a77071b35903d4c29777935f1d6}{00080}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{GlobalGameStateManager}}*\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a809c3a77071b35903d4c29777935f1d6_a809c3a77071b35903d4c29777935f1d6}{GSM}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Helper\ function\ to\ convert\ a\ float\ to\ a\ string\ with\ a\ set\ number\ of\ decimal\ places}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00083}\mbox{\hyperlink{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767}{00083}}\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767}{floatToString}}(\textcolor{keywordtype}{float}\ number,\ \textcolor{keywordtype}{int}\ decimalPlaces\ =\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ stream;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ stream\ <<\ std::fixed\ <<\ std::setprecision(decimalPlaces)\ <<\ number;}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ stream.str();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00088}00088\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8h_source_l00089}00089\ \}}
+
+\end{DoxyCode}

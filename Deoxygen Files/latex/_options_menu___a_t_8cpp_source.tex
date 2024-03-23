@@ -1,0 +1,72 @@
+\doxysection{Options\+Menu\+\_\+\+AT.\+cpp}
+\hypertarget{_options_menu___a_t_8cpp_source}{}\label{_options_menu___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/OptionsMenu\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/OptionsMenu\_AT.cpp}}
+\mbox{\hyperlink{_options_menu___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_options_menu___a_t_8h}{OptionsMenu\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00003}\mbox{\hyperlink{class_options_menu_a41b4eeb576fb58ffd562afb161a60247}{00003}}\ \mbox{\hyperlink{class_options_menu_a41b4eeb576fb58ffd562afb161a60247}{OptionsMenu::OptionsMenu}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Font\ font,\ \mbox{\hyperlink{class_game_state_manager}{GameStateManager}}*\ GSM)\ :\ \mbox{\hyperlink{class_menu}{Menu}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font),\ GSM(GSM)\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00004}00004\ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00006}00006\ \textcolor{comment}{//\ Set\ up\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00008}\mbox{\hyperlink{class_options_menu_aa0ce29d14cd75203600da5bbc8f3576f}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_menu_aa0ce29d14cd75203600da5bbc8f3576f}{OptionsMenu::setUpMenu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ title\ of\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{class_menu_aa409c8b48a18439522b01ef097110ff1}{Menu::setTitleString}}(\textcolor{stringliteral}{"{}Options"{}});}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ length,\ width\ and\ text\ size\ of\ the\ buttons\ to\ be\ larger\ than\ default}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{class_menu_ad77babc9a27ed9eadc340ca44acfc098}{Menu::setButtonSize}}(sf::Vector2f(400.0f,\ 200.0f));}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ Lambda\ wrapper\ functions\ for\ menu\ interactions}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00016}00016\ \ \ \ \ maxTargetFunc\ =\ [\textcolor{keyword}{this}](\textcolor{keywordtype}{float}\ value)\ \{\ this-\/>maxTarget();\ \};}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00017}00017\ \ \ \ \ setTargetSizeFunc\ =\ [\textcolor{keyword}{this}](\textcolor{keywordtype}{float}\ value)\ \{\ this-\/>setTargetSize(value);\ \};}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00018}00018\ \ \ \ \ setMouseSensitivityFunc\ =\ [\textcolor{keyword}{this}](\textcolor{keywordtype}{float}\ value)\ \{\ this-\/>setMouseSensitivity(value);\ \};}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ buttons\ to\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00021}00021\ \ \ \ \ \mbox{\hyperlink{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}{Menu::addInteractable}}(\textcolor{stringliteral}{"{}Change\ target\ size"{}},\ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da2d9b9a764fb0be4be10e1b2fce63f561}{Interactable::Type::Slider}},\ setTargetSizeFunc);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}{Menu::addInteractable}}(\textcolor{stringliteral}{"{}Change\ mouse\ sensitivity"{}},\ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da2d9b9a764fb0be4be10e1b2fce63f561}{Interactable::Type::Slider}},\ setMouseSensitivityFunc);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00025}00025\ \textcolor{comment}{//\ To\ draw\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00026}\mbox{\hyperlink{class_options_menu_a1fd433be60f3e6cc57fc9b47700a2b16}{00026}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_menu_a1fd433be60f3e6cc57fc9b47700a2b16}{OptionsMenu::drawMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair)\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Make\ sure\ the\ menu\ is\ drawn\ once}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de}{Menu::needsRedraw}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_menu_abad8af7b49fa9d0d15c593562e05ac38}{Menu::drawMenu}}(currentEvent);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_menu_a0860150e58e68d4945a0c19a05a29bb5}{Menu::resetRedrawFlag}}();}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Set\ individual\ colors}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{class_menu_ad515c411adc8498769da5ea7033b693b}{Menu::setBackgroundColor}}(backgroundColor);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15}{Menu::setTextColor}}(textColor);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d}{Menu::setButtonColor}}(buttonColor);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{class_menu_a68c1d0ed72406cd39c68bd658d395917}{Menu::setSliderColor}}(sliderTrackColor);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{class_menu_a1811471af86d9277ff9c5330512442c9}{Menu::setSliderComplementColor}}(sliderThumbColor);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{class_menu_a749a7d8b933f95a2940b97b12a14494b}{Menu::setHoverColor}}(interactableHoverColor);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)\ \&\&\ !wasTabPressedLastFrame)\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ GSM-\/>\mbox{\hyperlink{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece}{changeGameState}}(\mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a02f519bea27ccd0b93582be6dfde7330}{GameState::OptionsMenu}});}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_menu_adab2cbd3a5e67871c468da739e82b547}{Menu::toggleMenu}}(mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ wasTabPressedLastFrame\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!sf::Keyboard::isKeyPressed(sf::Keyboard::Tab))\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ wasTabPressedLastFrame\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Toggle\ the\ menu\ if\ the\ escape\ key\ is\ pressed}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d}{Menu::openMenu}}(currentEvent,\ crosshair,\ mainClock);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00054}00054\ \textcolor{comment}{//\ Functions\ for\ the\ menu\ interactions}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00056}00056\ \textcolor{keywordtype}{void}\ OptionsMenu::maxTarget()\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ to\ do}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00060}00060\ \textcolor{keywordtype}{void}\ OptionsMenu::setTargetSize(\textcolor{keywordtype}{float}\ newSize)\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00064}00064\ \textcolor{keywordtype}{void}\ OptionsMenu::setMouseSensitivity(\textcolor{keywordtype}{float}\ sens)\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00065}00065\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8cpp_source_l00066}00066\ \}}
+
+\end{DoxyCode}

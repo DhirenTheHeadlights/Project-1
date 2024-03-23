@@ -1,0 +1,287 @@
+\doxysection{Pirate\+Game\+::Button Class Reference}
+\hypertarget{class_pirate_game_1_1_button}{}\label{class_pirate_game_1_1_button}\index{PirateGame::Button@{PirateGame::Button}}
+
+
+{\ttfamily \#include $<$Button\+\_\+\+PG.\+h$>$}
+
+
+
+Inheritance diagram for Pirate\+Game\+::Button\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_pirate_game_1_1_button__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pirate\+Game\+::Button\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_pirate_game_1_1_button__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_button_a069f72ea16ca3fc73c7c844ad3c59a2a_a069f72ea16ca3fc73c7c844ad3c59a2a}{Button}} (\mbox{\hyperlink{namespace_pirate_game_a744e0364624d383739c9e13daf325563_a744e0364624d383739c9e13daf325563}{Button\+Function}} \mbox{\hyperlink{class_pirate_game_1_1_button_aac6a3da0c6d303c09e0ef2720bc26b22_aac6a3da0c6d303c09e0ef2720bc26b22}{func}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_button_a7259728d4284d036c113f595695dd4a0_a7259728d4284d036c113f595695dd4a0}{\texorpdfstring{$\sim$}{\string~}\+Button}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_button_a4370612bd9d41e8aecee85c32ae903b5_a4370612bd9d41e8aecee85c32ae903b5}{interact}} () override
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_button_a8f3cb046d43532f9e1fad9e0b7193c65_a8f3cb046d43532f9e1fad9e0b7193c65}{custom\+Interactable\+Set\+Up}} () override
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_button_a438ab4273ab11d1cf438d83376efd157_a438ab4273ab11d1cf438d83376efd157}{interact\+Once}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_button_ad9d0c9eac4303dfdba7f242270936456_ad9d0c9eac4303dfdba7f242270936456}{interact\+Hold}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_button_a7a2d77640a7581de1800000ce57fd61e_a7a2d77640a7581de1800000ce57fd61e}{set\+Cooldown\+Time}} (sf\+::\+Time time)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_button_aa9e8e332507567aaa7a6353acaa2e4fb_aa9e8e332507567aaa7a6353acaa2e4fb}{set\+Hold\+Down}} (bool hold)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Pirate\+Game\+::\+Interactable}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_interactable_adc7cd5257d83813e65fead38ab12f554_adc7cd5257d83813e65fead38ab12f554}{Interactable}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_interactable_a23320327c24d398f26f631fbdb6afe7c_a23320327c24d398f26f631fbdb6afe7c}{\texorpdfstring{$\sim$}{\string~}\+Interactable}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_interactable_a56b0242505f80aa9d6dc30e25ea2f307_a56b0242505f80aa9d6dc30e25ea2f307}{create\+Interactable}} (sf\+::\+Texture \&\mbox{\hyperlink{class_pirate_game_1_1_interactable_a196c715c29c8639d0b5a5a62b36c8891_a196c715c29c8639d0b5a5a62b36c8891}{texture}}, sf\+::\+Text \&title, sf\+::\+Vector2f scale=\{ 1.f, 1.f \})
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_interactable_ac5b12aca90c3beb00c225ab9933a811d_ac5b12aca90c3beb00c225ab9933a811d}{draw}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_interactable_aace08f6ae6906053f602b9a79ffcbd74_aace08f6ae6906053f602b9a79ffcbd74}{set\+Position}} (sf\+::\+Vector2f pos)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_interactable_aa2141ebb1a039bc11efbd10c53c7e47a_aa2141ebb1a039bc11efbd10c53c7e47a}{set\+Text\+Position}} (sf\+::\+Vector2f pos)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_interactable_afd3451caafc1b26001f28c13d69daea3_afd3451caafc1b26001f28c13d69daea3}{set\+Sound\+Id}} (\mbox{\hyperlink{namespace_pirate_game_ab5b1a6ae9100dc837e2a87ff172d2eb6_ab5b1a6ae9100dc837e2a87ff172d2eb6}{Sound\+Id}} id)
+\item 
+sf\+::\+Text \& \mbox{\hyperlink{class_pirate_game_1_1_interactable_a1f3271471b9cb22f0dfb31f0c6e06037_a1f3271471b9cb22f0dfb31f0c6e06037}{get\+Text}} ()
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_interactable_ab0ff3b60ae754a1bf1ced1222547f094_ab0ff3b60ae754a1bf1ced1222547f094}{get\+Sprite}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_pirate_game_a744e0364624d383739c9e13daf325563_a744e0364624d383739c9e13daf325563}{Button\+Function}} \mbox{\hyperlink{class_pirate_game_1_1_button_aac6a3da0c6d303c09e0ef2720bc26b22_aac6a3da0c6d303c09e0ef2720bc26b22}{func}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_button_a1e4b3f4021f77179f1fd8e4bf2d9f8a3_a1e4b3f4021f77179f1fd8e4bf2d9f8a3}{cooldown}}
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_pirate_game_1_1_button_a56c2245ebea4ab4a7d2f4b5dd887a1e2_a56c2245ebea4ab4a7d2f4b5dd887a1e2}{cooldown\+Time}} = sf\+::milliseconds(100)
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_button_ad0b05d7433b9f73236bb4b3a171b9f94_ad0b05d7433b9f73236bb4b3a171b9f94}{hold\+Down}} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Pirate\+Game\+::\+Interactable}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_interactable_ac3d95bc45c01a14e55cce6ec6ebf8fc9_ac3d95bc45c01a14e55cce6ec6ebf8fc9}{sprite}}
+\item 
+sf\+::\+Texture \mbox{\hyperlink{class_pirate_game_1_1_interactable_a196c715c29c8639d0b5a5a62b36c8891_a196c715c29c8639d0b5a5a62b36c8891}{texture}}
+\item 
+sf\+::\+Font \mbox{\hyperlink{class_pirate_game_1_1_interactable_adbd25d8ba15be1996c87d4fbd48dab88_adbd25d8ba15be1996c87d4fbd48dab88}{font}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_pirate_game_1_1_interactable_a7207c1cf9ea8847fc5c50f200deb12b3_a7207c1cf9ea8847fc5c50f200deb12b3}{text}}
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_interactable_a8d93427db0414e9260f92e463a484c20_a8d93427db0414e9260f92e463a484c20}{window}} = nullptr
+\item 
+\mbox{\hyperlink{namespace_pirate_game_ab5b1a6ae9100dc837e2a87ff172d2eb6_ab5b1a6ae9100dc837e2a87ff172d2eb6}{Sound\+Id}} \mbox{\hyperlink{class_pirate_game_1_1_interactable_ab78bc94e933f41523df5acab61896f13_ab78bc94e933f41523df5acab61896f13}{sound\+Id}} = \mbox{\hyperlink{namespace_pirate_game_ab5b1a6ae9100dc837e2a87ff172d2eb6_ab5b1a6ae9100dc837e2a87ff172d2eb6ae0626222614bdee31951d84c64e5e9ff}{Sound\+Id\+::\+Select}}
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_interactable_a0d2603d66255e7220c75df06d5e8f37e_a0d2603d66255e7220c75df06d5e8f37e}{name}}
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_interactable_af976858e4ab74c46f6bf6d06cf52e44d_af976858e4ab74c46f6bf6d06cf52e44d}{default\+Text\+Size}} = 20.\+0f
+\item 
+sf\+::\+Color \mbox{\hyperlink{class_pirate_game_1_1_interactable_a7ce899cf962d7009904366fd763cd25c_a7ce899cf962d7009904366fd763cd25c}{text\+Color}} = sf\+::\+Color(0, 0, 0, 200)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00017}{17}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_button_a069f72ea16ca3fc73c7c844ad3c59a2a_a069f72ea16ca3fc73c7c844ad3c59a2a}\label{class_pirate_game_1_1_button_a069f72ea16ca3fc73c7c844ad3c59a2a_a069f72ea16ca3fc73c7c844ad3c59a2a} 
+\index{PirateGame::Button@{PirateGame::Button}!Button@{Button}}
+\index{Button@{Button}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Button\+::\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_pirate_game_a744e0364624d383739c9e13daf325563_a744e0364624d383739c9e13daf325563}{Button\+Function}}}]{func }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_button_a7259728d4284d036c113f595695dd4a0_a7259728d4284d036c113f595695dd4a0}\label{class_pirate_game_1_1_button_a7259728d4284d036c113f595695dd4a0_a7259728d4284d036c113f595695dd4a0} 
+\index{PirateGame::Button@{PirateGame::Button}!````~Button@{\texorpdfstring{$\sim$}{\string~}Button}}
+\index{````~Button@{\texorpdfstring{$\sim$}{\string~}Button}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Button()}{\string~Button()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Button\+::\texorpdfstring{$\sim$}{\string~}\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00020}{20}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_button_a8f3cb046d43532f9e1fad9e0b7193c65_a8f3cb046d43532f9e1fad9e0b7193c65}\label{class_pirate_game_1_1_button_a8f3cb046d43532f9e1fad9e0b7193c65_a8f3cb046d43532f9e1fad9e0b7193c65} 
+\index{PirateGame::Button@{PirateGame::Button}!customInteractableSetUp@{customInteractableSetUp}}
+\index{customInteractableSetUp@{customInteractableSetUp}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{customInteractableSetUp()}{customInteractableSetUp()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Button\+::custom\+Interactable\+Set\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pirate_game_1_1_interactable_a423fc7a7e9d039545a630af06dcf20fa_a423fc7a7e9d039545a630af06dcf20fa}{Pirate\+Game\+::\+Interactable}}.
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00023}{23}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_button_a4370612bd9d41e8aecee85c32ae903b5_a4370612bd9d41e8aecee85c32ae903b5}\label{class_pirate_game_1_1_button_a4370612bd9d41e8aecee85c32ae903b5_a4370612bd9d41e8aecee85c32ae903b5} 
+\index{PirateGame::Button@{PirateGame::Button}!interact@{interact}}
+\index{interact@{interact}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{interact()}{interact()}}
+{\footnotesize\ttfamily void Button\+::interact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pirate_game_1_1_interactable_a1fcccc9fa41633c7c750e998dd95efbf_a1fcccc9fa41633c7c750e998dd95efbf}{Pirate\+Game\+::\+Interactable}}.
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_button___p_g_8cpp_source}{Button\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_button_a4370612bd9d41e8aecee85c32ae903b5_a4370612bd9d41e8aecee85c32ae903b5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_button_ad9d0c9eac4303dfdba7f242270936456_ad9d0c9eac4303dfdba7f242270936456}\label{class_pirate_game_1_1_button_ad9d0c9eac4303dfdba7f242270936456_ad9d0c9eac4303dfdba7f242270936456} 
+\index{PirateGame::Button@{PirateGame::Button}!interactHold@{interactHold}}
+\index{interactHold@{interactHold}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{interactHold()}{interactHold()}}
+{\footnotesize\ttfamily void Button\+::interact\+Hold (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_button___p_g_8cpp_source}{Button\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_button_ad9d0c9eac4303dfdba7f242270936456_ad9d0c9eac4303dfdba7f242270936456_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_pirate_game_1_1_button_ad9d0c9eac4303dfdba7f242270936456_ad9d0c9eac4303dfdba7f242270936456_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_button_a438ab4273ab11d1cf438d83376efd157_a438ab4273ab11d1cf438d83376efd157}\label{class_pirate_game_1_1_button_a438ab4273ab11d1cf438d83376efd157_a438ab4273ab11d1cf438d83376efd157} 
+\index{PirateGame::Button@{PirateGame::Button}!interactOnce@{interactOnce}}
+\index{interactOnce@{interactOnce}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{interactOnce()}{interactOnce()}}
+{\footnotesize\ttfamily void Button\+::interact\+Once (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_button___p_g_8cpp_source}{Button\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_button_a438ab4273ab11d1cf438d83376efd157_a438ab4273ab11d1cf438d83376efd157_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{class_pirate_game_1_1_button_a438ab4273ab11d1cf438d83376efd157_a438ab4273ab11d1cf438d83376efd157_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_button_a7a2d77640a7581de1800000ce57fd61e_a7a2d77640a7581de1800000ce57fd61e}\label{class_pirate_game_1_1_button_a7a2d77640a7581de1800000ce57fd61e_a7a2d77640a7581de1800000ce57fd61e} 
+\index{PirateGame::Button@{PirateGame::Button}!setCooldownTime@{setCooldownTime}}
+\index{setCooldownTime@{setCooldownTime}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{setCooldownTime()}{setCooldownTime()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Button\+::set\+Cooldown\+Time (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00027}{27}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_button_aa9e8e332507567aaa7a6353acaa2e4fb_aa9e8e332507567aaa7a6353acaa2e4fb}\label{class_pirate_game_1_1_button_aa9e8e332507567aaa7a6353acaa2e4fb_aa9e8e332507567aaa7a6353acaa2e4fb} 
+\index{PirateGame::Button@{PirateGame::Button}!setHoldDown@{setHoldDown}}
+\index{setHoldDown@{setHoldDown}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{setHoldDown()}{setHoldDown()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Button\+::set\+Hold\+Down (\begin{DoxyParamCaption}\item[{bool}]{hold }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00029}{29}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_button_a1e4b3f4021f77179f1fd8e4bf2d9f8a3_a1e4b3f4021f77179f1fd8e4bf2d9f8a3}\label{class_pirate_game_1_1_button_a1e4b3f4021f77179f1fd8e4bf2d9f8a3_a1e4b3f4021f77179f1fd8e4bf2d9f8a3} 
+\index{PirateGame::Button@{PirateGame::Button}!cooldown@{cooldown}}
+\index{cooldown@{cooldown}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{cooldown}{cooldown}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Button\+::cooldown\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00032}{32}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_button_a56c2245ebea4ab4a7d2f4b5dd887a1e2_a56c2245ebea4ab4a7d2f4b5dd887a1e2}\label{class_pirate_game_1_1_button_a56c2245ebea4ab4a7d2f4b5dd887a1e2_a56c2245ebea4ab4a7d2f4b5dd887a1e2} 
+\index{PirateGame::Button@{PirateGame::Button}!cooldownTime@{cooldownTime}}
+\index{cooldownTime@{cooldownTime}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{cooldownTime}{cooldownTime}}
+{\footnotesize\ttfamily sf\+::\+Time Pirate\+Game\+::\+Button\+::cooldown\+Time = sf\+::milliseconds(100)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00033}{33}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_button_aac6a3da0c6d303c09e0ef2720bc26b22_aac6a3da0c6d303c09e0ef2720bc26b22}\label{class_pirate_game_1_1_button_aac6a3da0c6d303c09e0ef2720bc26b22_aac6a3da0c6d303c09e0ef2720bc26b22} 
+\index{PirateGame::Button@{PirateGame::Button}!func@{func}}
+\index{func@{func}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{func}{func}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_pirate_game_a744e0364624d383739c9e13daf325563_a744e0364624d383739c9e13daf325563}{Button\+Function}} Pirate\+Game\+::\+Button\+::func\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00031}{31}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_button_ad0b05d7433b9f73236bb4b3a171b9f94_ad0b05d7433b9f73236bb4b3a171b9f94}\label{class_pirate_game_1_1_button_ad0b05d7433b9f73236bb4b3a171b9f94_ad0b05d7433b9f73236bb4b3a171b9f94} 
+\index{PirateGame::Button@{PirateGame::Button}!holdDown@{holdDown}}
+\index{holdDown@{holdDown}!PirateGame::Button@{PirateGame::Button}}
+\doxysubsubsection{\texorpdfstring{holdDown}{holdDown}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Button\+::hold\+Down = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_button___p_g_8h_source_l00035}{35}} of file \mbox{\hyperlink{_button___p_g_8h_source}{Button\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_button___p_g_8h}{Button\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_button___p_g_8cpp}{Button\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

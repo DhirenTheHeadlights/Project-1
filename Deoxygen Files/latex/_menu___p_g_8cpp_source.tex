@@ -1,0 +1,37 @@
+\doxysection{Menu\+\_\+\+PG.\+cpp}
+\hypertarget{_menu___p_g_8cpp_source}{}\label{_menu___p_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/Menu\_PG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/Menu\_PG.cpp}}
+\mbox{\hyperlink{_menu___p_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_menu___p_g_8h}{Menu\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}};}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Add\ an\ interactable\ to\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00006}\mbox{\hyperlink{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9}{00006}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9}{Menu::addInteractableToMenu}}(std::unique\_ptr<Interactable>\ interactable)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ interactable\ to\ the\ list\ of\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}}.push\_back(std::move(interactable));}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00011}00011\ \textcolor{comment}{//\ Draw\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00012}\mbox{\hyperlink{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6}{Menu::draw}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ menu\ items}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{window}}-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9}{menu}});}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{window}}-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420}{titleText}});}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ interactable\ :\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}})\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ interactable-\/>draw();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Interact\ with\ the\ menu\ items}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}{interactWithMenuItems}}();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00026}00026\ \textcolor{comment}{//\ Interact\ with\ the\ menu\ items}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00027}\mbox{\hyperlink{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}{Menu::interactWithMenuItems}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ interactable\ :\ \mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}})\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ interactable-\/>interact();}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___p_g_8cpp_source_l00031}00031\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,11 @@
+<map id="PirateGame::Minimap" name="PirateGame::Minimap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="123,187,271,213"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_ship.html" title=" " alt="" coords="39,96,163,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,131,185,184,181,188,124,135"/>
+<area shape="rect" id="Node000003" href="$struct_pirate_game_1_1_ship_properties.html" title=" " alt="" coords="5,5,189,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,48,103,95,98,96,96,48"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_h_u_d_texture_handler.html" title=" " alt="" coords="195,96,407,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="276,135,214,188,210,184,273,131"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_texture_handler.html" title=" " alt="" coords="212,5,398,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="306,48,304,96,299,95,301,48"/>
+</map>

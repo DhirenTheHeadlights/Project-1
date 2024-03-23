@@ -1,0 +1,9 @@
+<map id="Menu::setButtonSize" name="Menu::setButtonSize">
+<area shape="rect" id="Node000001" title=" " alt="" coords="254,56,397,83"/>
+<area shape="rect" id="Node000002" href="$class_insert_name_menu.html#a00832201f1c981d6328e2ff865d9837c" title=" " alt="" coords="9,5,202,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,55,166,35,167,30,250,49"/>
+<area shape="rect" id="Node000003" href="$class_leader_board_menu.html#ac630523ba57ed2c9dde9e2a0208a4129" title=" " alt="" coords="5,56,206,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="238,72,206,72,206,67,238,67"/>
+<area shape="rect" id="Node000004" href="$class_options_menu.html#aa0ce29d14cd75203600da5bbc8f3576f" title=" " alt="" coords="19,107,192,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="250,89,167,109,166,103,249,84"/>
+</map>

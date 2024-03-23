@@ -1,0 +1,29 @@
+\doxysection{Game\+Call\+Backs\+\_\+\+AT.\+h}
+\hypertarget{_game_call_backs___a_t_8h_source}{}\label{_game_call_backs___a_t_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/GameCallBacks\_AT.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/GameCallBacks\_AT.h}}
+\mbox{\hyperlink{_game_call_backs___a_t_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00003}00003\ \textcolor{comment}{//\ This\ class\ defines\ callbacks\ for\ the\ game\ functions}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00004}00004\ \textcolor{comment}{//\ This\ enables\ the\ callbacks\ to\ be\ used\ in\ multiple\ classes}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00007}00007\ \textcolor{comment}{//\ Start\ menu\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00008}\mbox{\hyperlink{_game_call_backs___a_t_8h_af1a03fbe15237c1782b4f6d5c34146ea}{00008}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_af1a03fbe15237c1782b4f6d5c34146ea}{StartCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00009}\mbox{\hyperlink{_game_call_backs___a_t_8h_af5ee352e3d777a1748f6d1c84165c9ee}{00009}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_af5ee352e3d777a1748f6d1c84165c9ee}{OpenLeaderBoardCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00011}00011\ \textcolor{comment}{//\ Options\ menu\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00012}\mbox{\hyperlink{_game_call_backs___a_t_8h_aa6e88acf7c59c38d5f16dee02a55653a}{00012}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_aa6e88acf7c59c38d5f16dee02a55653a}{MaxTargetCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00013}\mbox{\hyperlink{_game_call_backs___a_t_8h_a2c7042f5c7d1c8580a7c6c7999309d9c}{00013}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_a2c7042f5c7d1c8580a7c6c7999309d9c}{SetTargetSizeCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00014}\mbox{\hyperlink{_game_call_backs___a_t_8h_a964bacaaf37fc584cb514c0deb17ab10}{00014}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_a964bacaaf37fc584cb514c0deb17ab10}{SetMouseSensitivityCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00016}00016\ \textcolor{comment}{//\ Leaderboard\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00017}\mbox{\hyperlink{_game_call_backs___a_t_8h_aa84581f11af7a9cdd8474da0dee9a0cf}{00017}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_aa84581f11af7a9cdd8474da0dee9a0cf}{ExitCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00019}00019\ \textcolor{comment}{//\ Game\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00021}00021\ \textcolor{comment}{//\ End\ menu\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00022}\mbox{\hyperlink{_game_call_backs___a_t_8h_a0471326e67f75ef5a777bd2fecb387b4}{00022}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_a0471326e67f75ef5a777bd2fecb387b4}{RestartCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_game_call_backs___a_t_8h_source_l00023}\mbox{\hyperlink{_game_call_backs___a_t_8h_a79027295892bb3153be5583e416d1df7}{00023}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_game_call_backs___a_t_8h_a79027295892bb3153be5583e416d1df7}{ReturnToTitleCallBack}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+
+\end{DoxyCode}

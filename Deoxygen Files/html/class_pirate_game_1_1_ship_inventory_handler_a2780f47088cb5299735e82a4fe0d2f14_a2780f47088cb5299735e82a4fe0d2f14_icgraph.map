@@ -1,0 +1,15 @@
+<map id="PirateGame::ShipInventoryHandler::getInventory" name="PirateGame::ShipInventoryHandler::getInventory">
+<area shape="rect" id="Node000001" title=" " alt="" coords="679,72,855,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a.html#a660bb48fb74708e330990d16a8b2070a" title=" " alt="" coords="467,9,631,52"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="675,70,625,55,626,50,677,65"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2.html#aff1afee8aaf8c6dc82f6de5a643d49c2" title=" " alt="" coords="218,72,419,115"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="664,96,420,96,420,91,664,91"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef.html#af05d9ba589a749a903e76e5b7d33d2ef" title=" " alt="" coords="467,131,631,173"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="671,122,632,133,630,127,670,117"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="233,5,404,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="452,32,404,31,404,25,452,26"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258.html#a033e176d81986a92d34e121d2cd59258" title=" " alt="" coords="5,72,170,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="229,55,165,74,163,69,227,50"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="202,96,170,96,170,91,202,91"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="451,152,339,144,217,129,164,118,165,113,218,124,339,139,452,146"/>
+</map>

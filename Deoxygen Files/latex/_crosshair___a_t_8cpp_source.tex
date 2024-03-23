@@ -1,0 +1,56 @@
+\doxysection{Crosshair\+\_\+\+AT.\+cpp}
+\hypertarget{_crosshair___a_t_8cpp_source}{}\label{_crosshair___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/Crosshair\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/Crosshair\_AT.cpp}}
+\mbox{\hyperlink{_crosshair___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_crosshair___a_t_8h}{Crosshair\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00004}\mbox{\hyperlink{class_crosshair_afd7646442f1bf4324e1388a2e48d4eab}{00004}}\ \mbox{\hyperlink{class_crosshair_afd7646442f1bf4324e1388a2e48d4eab}{Crosshair::Crosshair}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ :\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00005}00005\ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00007}00007\ \textcolor{comment}{//\ Draw\ the\ crosshair}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00008}\mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{00008}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{Crosshair::draw}}(\textcolor{keywordtype}{bool}\ visible)\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (visible)\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ window.setMouseCursorVisible(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_crosshair_af6ddd9e78378b921c71d1a3614a9b431}{setPosition}}();}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ window.draw(horizontal);}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ window.draw(vertical);}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ window.setMouseCursorVisible(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00021}00021\ \textcolor{comment}{//\ Set\ the\ position\ of\ the\ crosshair}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00022}\mbox{\hyperlink{class_crosshair_af6ddd9e78378b921c71d1a3614a9b431}{00022}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_crosshair_af6ddd9e78378b921c71d1a3614a9b431}{Crosshair::setPosition}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00023}00023\ \ \ \ \ mousePos\ =\ sf::Vector2f(sf::Mouse::getPosition(window));}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00024}00024\ \ \ \ \ horizontal.setSize(sf::Vector2f(length,\ thickness));}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00025}00025\ \ \ \ \ horizontal.setFillColor(colour);}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00026}00026\ \ \ \ \ horizontal.setPosition(mousePos.x\ -\/\ length\ /\ 2,\ mousePos.y);}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00027}00027\ \ \ \ \ vertical.setSize(sf::Vector2f(thickness,\ height));}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00028}00028\ \ \ \ \ vertical.setFillColor(colour);}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00029}00029\ \ \ \ \ vertical.setPosition(mousePos.x,\ mousePos.y\ -\/\ height\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00032}00032\ \textcolor{comment}{//\ Set\ the\ length\ of\ the\ crosshair}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00033}\mbox{\hyperlink{class_crosshair_a1ebaba966832754cc4ab720f8fdfa6c5}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_crosshair_a1ebaba966832754cc4ab720f8fdfa6c5}{Crosshair::setLength}}(\textcolor{keywordtype}{float}\ length)\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00034}00034\ \ \ \ \ this-\/>length\ =\ length;}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00037}00037\ \textcolor{comment}{//\ Set\ the\ height\ of\ the\ crosshair}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00038}\mbox{\hyperlink{class_crosshair_af2ff48758ea65d9b9d305f3ee582f297}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_crosshair_af2ff48758ea65d9b9d305f3ee582f297}{Crosshair::setHeight}}(\textcolor{keywordtype}{float}\ height)\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00039}00039\ \ \ \ \ this-\/>height\ =\ height;}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00042}00042\ \textcolor{comment}{//\ Set\ the\ thickness\ of\ the\ crosshair}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00043}\mbox{\hyperlink{class_crosshair_a709bb5882f1c1932f0ea004bb78d55fd}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_crosshair_a709bb5882f1c1932f0ea004bb78d55fd}{Crosshair::setThickness}}(\textcolor{keywordtype}{float}\ thickness)\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00044}00044\ \ \ \ \ this-\/>thickness\ =\ thickness;}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00047}00047\ \textcolor{comment}{//\ Set\ the\ colour\ of\ the\ crosshair}}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00048}\mbox{\hyperlink{class_crosshair_a839e7e0dd8a9b0f4f55c1cbbbc447ad7}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_crosshair_a839e7e0dd8a9b0f4f55c1cbbbc447ad7}{Crosshair::setColour}}(sf::Color\ colour)\ \{}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00049}00049\ \ \ \ \ this-\/>colour\ =\ colour;}
+\DoxyCodeLine{\Hypertarget{_crosshair___a_t_8cpp_source_l00050}00050\ \}}
+
+\end{DoxyCode}

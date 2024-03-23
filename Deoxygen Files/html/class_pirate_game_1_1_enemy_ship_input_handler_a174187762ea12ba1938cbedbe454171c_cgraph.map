@@ -1,0 +1,9 @@
+<map id="PirateGame::EnemyShipInputHandler::handleCannonAim" name="PirateGame::EnemyShipInputHandler::handleCannonAim">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,199,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_ship_input_handler.html#ac62ce5142f4c728d8748ff9ec492e7e3" title=" " alt="" coords="255,5,451,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,69,255,50,256,55,186,74"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_ship_cannon_handler.html#aa22816e3fef1adc186731ccc2442bff4" title=" " alt="" coords="247,72,459,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,91,231,91,231,96,199,96"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_ship_cannon_handler.html#a1bf73c7fa4cd94e56444d46b423f680a" title=" " alt="" coords="247,139,459,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,113,256,132,255,137,184,118"/>
+</map>

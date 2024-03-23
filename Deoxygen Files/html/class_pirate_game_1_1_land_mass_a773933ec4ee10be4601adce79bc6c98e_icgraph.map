@@ -1,0 +1,9 @@
+<map id="PirateGame::LandMass::getSprite" name="PirateGame::LandMass::getSprite">
+<area shape="rect" id="Node000001" title=" " alt="" coords="517,39,675,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_land_mass_hashmap.html#a049cb1ec837632d96978faa06298abbd" title=" " alt="" coords="256,5,469,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="501,49,469,45,470,39,502,44"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_land_mass_hashmap.html#a5a88895b22d17763294909f3a8f2931a" title=" " alt="" coords="256,72,469,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="502,76,470,81,469,75,501,71"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_land_mass_handler.html#a93defdfcdb7ff2a41c80296289b4bfbd" title=" " alt="" coords="5,72,208,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="240,96,208,96,208,91,240,91"/>
+</map>

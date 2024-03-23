@@ -1,0 +1,487 @@
+\doxysection{Pirate\+Game\+::World Class Reference}
+\hypertarget{class_pirate_game_1_1_world}{}\label{class_pirate_game_1_1_world}\index{PirateGame::World@{PirateGame::World}}
+
+
+{\ttfamily \#include $<$World\+\_\+\+PG.\+h$>$}
+
+
+
+Collaboration diagram for Pirate\+Game\+::World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{class_pirate_game_1_1_world__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_world_acb2b22112a28eda532344d2daf630227_acb2b22112a28eda532344d2daf630227}{World}} (sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_world_a7bdb2dd81bbe0642f0930651b3f41e8c_a7bdb2dd81bbe0642f0930651b3f41e8c}{window}}, bool \mbox{\hyperlink{class_pirate_game_1_1_world_a56f61a091d264f6eb03bdb335b921907_a56f61a091d264f6eb03bdb335b921907}{debug}}=false)
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_world_a1b07fd716c6b20a03a0be613427a443e_a1b07fd716c6b20a03a0be613427a443e}{\texorpdfstring{$\sim$}{\string~}\+World}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf_a986a575b4bfafc40fb7ae6aee47294bf}{create\+World}} (sf\+::\+Event event)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce_a6bb91988626bec56db0729c0cb680cce}{set\+Up\+World}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_world_af2b4ba4ce188c2770f13108e4277414f_af2b4ba4ce188c2770f13108e4277414f}{game\+Loop}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_world_ab20c0b876a14ffe4e11e512ba1a19de8_ab20c0b876a14ffe4e11e512ba1a19de8}{draw\+Game\+Loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_player}{Player}} \mbox{\hyperlink{class_pirate_game_1_1_world_a57510c2fd896568664460eff660c962a_a57510c2fd896568664460eff660c962a}{player}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_world_af5c135d550f21f796fa4cbd7e38b4914_af5c135d550f21f796fa4cbd7e38b4914}{player\+Ship}}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_view}{View}} \mbox{\hyperlink{class_pirate_game_1_1_world_a3f73f285fa639e9427b9e239a8fc11a0_a3f73f285fa639e9427b9e239a8fc11a0}{view}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler}{Land\+Mass\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_world_ae0a07d509081c94919d8861fb3594291_ae0a07d509081c94919d8861fb3594291}{LMHandler}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler}{Menu\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_world_adce9d029a5622551eae8b346976d8aa4_adce9d029a5622551eae8b346976d8aa4}{MH}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_collision_manager}{Collision\+Manager}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_world_af856db17d418401e84ddce402f6ec5b1_af856db17d418401e84ddce402f6ec5b1}{CM}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_handler}{Enemy\+Ship\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_world_afe39ad94049b6436c3adca31d4211e0e_afe39ad94049b6436c3adca31d4211e0e}{ESH}}
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_world_a7bdb2dd81bbe0642f0930651b3f41e8c_a7bdb2dd81bbe0642f0930651b3f41e8c}{window}} = nullptr
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_pirate_game_1_1_world_ab9e5e67d87a30acd28e358aef3b5e0aa_ab9e5e67d87a30acd28e358aef3b5e0aa}{background}}
+\item 
+sf\+::\+Color \mbox{\hyperlink{class_pirate_game_1_1_world_a94184625f8224f44eaf50e5470337b9b_a94184625f8224f44eaf50e5470337b9b}{background\+Color}} = sf\+::\+Color(0, 158, 163, 255)
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_world_ab8b44e4f553b32ff054aa98eca4a915a_ab8b44e4f553b32ff054aa98eca4a915a}{frame\+Rate\+Clock}}
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_pirate_game_1_1_world_aeb7adc5fc8f3b45d9ae3d4331e43c230_aeb7adc5fc8f3b45d9ae3d4331e43c230}{frame\+Rate\+Update\+Time}}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_pirate_game_1_1_world_a604eea17fdf9ca9201db368bf376b03d_a604eea17fdf9ca9201db368bf376b03d}{frame\+Rate\+Text}}
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_world_a6fcd9421218120edd0135306efe53282_a6fcd9421218120edd0135306efe53282}{frame\+Count}} = 0
+\item 
+const float \mbox{\hyperlink{class_pirate_game_1_1_world_a1b37e103f547e450bca500704c28bba8_a1b37e103f547e450bca500704c28bba8}{num\+Frames\+To\+Average}} = 40.f
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_world_a56f61a091d264f6eb03bdb335b921907_a56f61a091d264f6eb03bdb335b921907}{debug}} = true
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_world_ac95f0274aabecd1b289c4ada2d0403ec_ac95f0274aabecd1b289c4ada2d0403ec}{num\+Land\+Masses}} = 1000
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_world_aa673cd088ce68ff4379267ef6438f98a_aa673cd088ce68ff4379267ef6438f98a}{distance\+Between\+Land\+Masses}} = 1000.f
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_world_a6aec9fd6d74ff7c578697d6806a1eafe_a6aec9fd6d74ff7c578697d6806a1eafe}{num\+Enemy\+Ships}} = 1000
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_world_ab4c2e686764cd5a060850a99958cb8fb_ab4c2e686764cd5a060850a99958cb8fb}{distance\+Between\+Enemy\+Ships}} = 1000.f
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_world_aa2c981a97a3897f4d3b99d02eaa8b772_aa2c981a97a3897f4d3b99d02eaa8b772}{map\+Size}} = sf\+::\+Vector2f(100000.f, 100000.f)
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_world_ab1cea5f479817ee3744c46ed0962657f_ab1cea5f479817ee3744c46ed0962657f}{num\+Land\+Masses\+Debug}} = 0
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_world_a0212f0aa240870b3d3f88be9a914ec5d_a0212f0aa240870b3d3f88be9a914ec5d}{distance\+Between\+Land\+Masses\+Debug}} = 1000.f
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_world_ab2055e120892f96b7817006b70527060_ab2055e120892f96b7817006b70527060}{num\+Enemy\+Ships\+Debug}} = 1
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_world_a9be071e52a94c898318655c9f636bfd0_a9be071e52a94c898318655c9f636bfd0}{distance\+Between\+Enemy\+Ships\+Debug}} = 1000.f
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_world_ac040529e07eaea2dce42d3ffe3f3bbdb_ac040529e07eaea2dce42d3ffe3f3bbdb}{map\+Size\+Debug}} = sf\+::\+Vector2f(5000.f, 5000.f)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00024}{24}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_world_acb2b22112a28eda532344d2daf630227_acb2b22112a28eda532344d2daf630227}\label{class_pirate_game_1_1_world_acb2b22112a28eda532344d2daf630227_acb2b22112a28eda532344d2daf630227} 
+\index{PirateGame::World@{PirateGame::World}!World@{World}}
+\index{World@{World}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{World()}{World()}}
+{\footnotesize\ttfamily World\+::\+World (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*}}]{window,  }\item[{bool}]{debug = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_world___p_g_8cpp_source}{World\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_world_acb2b22112a28eda532344d2daf630227_acb2b22112a28eda532344d2daf630227_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_world_a1b07fd716c6b20a03a0be613427a443e_a1b07fd716c6b20a03a0be613427a443e}\label{class_pirate_game_1_1_world_a1b07fd716c6b20a03a0be613427a443e_a1b07fd716c6b20a03a0be613427a443e} 
+\index{PirateGame::World@{PirateGame::World}!````~World@{\texorpdfstring{$\sim$}{\string~}World}}
+\index{````~World@{\texorpdfstring{$\sim$}{\string~}World}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}World()}{\string~World()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+World\+::\texorpdfstring{$\sim$}{\string~}\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00027}{27}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf_a986a575b4bfafc40fb7ae6aee47294bf}\label{class_pirate_game_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf_a986a575b4bfafc40fb7ae6aee47294bf} 
+\index{PirateGame::World@{PirateGame::World}!createWorld@{createWorld}}
+\index{createWorld@{createWorld}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{createWorld()}{createWorld()}}
+{\footnotesize\ttfamily void World\+::create\+World (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_world___p_g_8cpp_source}{World\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf_a986a575b4bfafc40fb7ae6aee47294bf_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_world_ab20c0b876a14ffe4e11e512ba1a19de8_ab20c0b876a14ffe4e11e512ba1a19de8}\label{class_pirate_game_1_1_world_ab20c0b876a14ffe4e11e512ba1a19de8_ab20c0b876a14ffe4e11e512ba1a19de8} 
+\index{PirateGame::World@{PirateGame::World}!drawGameLoop@{drawGameLoop}}
+\index{drawGameLoop@{drawGameLoop}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{drawGameLoop()}{drawGameLoop()}}
+{\footnotesize\ttfamily void World\+::draw\+Game\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8cpp_source_l00156}{156}} of file \mbox{\hyperlink{_world___p_g_8cpp_source}{World\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_pirate_game_1_1_world_ab20c0b876a14ffe4e11e512ba1a19de8_ab20c0b876a14ffe4e11e512ba1a19de8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_world_af2b4ba4ce188c2770f13108e4277414f_af2b4ba4ce188c2770f13108e4277414f}\label{class_pirate_game_1_1_world_af2b4ba4ce188c2770f13108e4277414f_af2b4ba4ce188c2770f13108e4277414f} 
+\index{PirateGame::World@{PirateGame::World}!gameLoop@{gameLoop}}
+\index{gameLoop@{gameLoop}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{gameLoop()}{gameLoop()}}
+{\footnotesize\ttfamily void World\+::game\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{_world___p_g_8cpp_source}{World\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_world_af2b4ba4ce188c2770f13108e4277414f_af2b4ba4ce188c2770f13108e4277414f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_pirate_game_1_1_world_af2b4ba4ce188c2770f13108e4277414f_af2b4ba4ce188c2770f13108e4277414f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce_a6bb91988626bec56db0729c0cb680cce}\label{class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce_a6bb91988626bec56db0729c0cb680cce} 
+\index{PirateGame::World@{PirateGame::World}!setUpWorld@{setUpWorld}}
+\index{setUpWorld@{setUpWorld}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{setUpWorld()}{setUpWorld()}}
+{\footnotesize\ttfamily void World\+::set\+Up\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{_world___p_g_8cpp_source}{World\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce_a6bb91988626bec56db0729c0cb680cce_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce_a6bb91988626bec56db0729c0cb680cce_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_world_ab9e5e67d87a30acd28e358aef3b5e0aa_ab9e5e67d87a30acd28e358aef3b5e0aa}\label{class_pirate_game_1_1_world_ab9e5e67d87a30acd28e358aef3b5e0aa_ab9e5e67d87a30acd28e358aef3b5e0aa} 
+\index{PirateGame::World@{PirateGame::World}!background@{background}}
+\index{background@{background}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Pirate\+Game\+::\+World\+::background\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00050}{50}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a94184625f8224f44eaf50e5470337b9b_a94184625f8224f44eaf50e5470337b9b}\label{class_pirate_game_1_1_world_a94184625f8224f44eaf50e5470337b9b_a94184625f8224f44eaf50e5470337b9b} 
+\index{PirateGame::World@{PirateGame::World}!backgroundColor@{backgroundColor}}
+\index{backgroundColor@{backgroundColor}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{backgroundColor}{backgroundColor}}
+{\footnotesize\ttfamily sf\+::\+Color Pirate\+Game\+::\+World\+::background\+Color = sf\+::\+Color(0, 158, 163, 255)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00051}{51}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_af856db17d418401e84ddce402f6ec5b1_af856db17d418401e84ddce402f6ec5b1}\label{class_pirate_game_1_1_world_af856db17d418401e84ddce402f6ec5b1_af856db17d418401e84ddce402f6ec5b1} 
+\index{PirateGame::World@{PirateGame::World}!CM@{CM}}
+\index{CM@{CM}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{CM}{CM}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_collision_manager}{Collision\+Manager}}$>$ Pirate\+Game\+::\+World\+::\+CM\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a56f61a091d264f6eb03bdb335b921907_a56f61a091d264f6eb03bdb335b921907}\label{class_pirate_game_1_1_world_a56f61a091d264f6eb03bdb335b921907_a56f61a091d264f6eb03bdb335b921907} 
+\index{PirateGame::World@{PirateGame::World}!debug@{debug}}
+\index{debug@{debug}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{debug}{debug}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+World\+::debug = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00061}{61}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ab4c2e686764cd5a060850a99958cb8fb_ab4c2e686764cd5a060850a99958cb8fb}\label{class_pirate_game_1_1_world_ab4c2e686764cd5a060850a99958cb8fb_ab4c2e686764cd5a060850a99958cb8fb} 
+\index{PirateGame::World@{PirateGame::World}!distanceBetweenEnemyShips@{distanceBetweenEnemyShips}}
+\index{distanceBetweenEnemyShips@{distanceBetweenEnemyShips}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{distanceBetweenEnemyShips}{distanceBetweenEnemyShips}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+World\+::distance\+Between\+Enemy\+Ships = 1000.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00067}{67}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a9be071e52a94c898318655c9f636bfd0_a9be071e52a94c898318655c9f636bfd0}\label{class_pirate_game_1_1_world_a9be071e52a94c898318655c9f636bfd0_a9be071e52a94c898318655c9f636bfd0} 
+\index{PirateGame::World@{PirateGame::World}!distanceBetweenEnemyShipsDebug@{distanceBetweenEnemyShipsDebug}}
+\index{distanceBetweenEnemyShipsDebug@{distanceBetweenEnemyShipsDebug}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{distanceBetweenEnemyShipsDebug}{distanceBetweenEnemyShipsDebug}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+World\+::distance\+Between\+Enemy\+Ships\+Debug = 1000.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00074}{74}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_aa673cd088ce68ff4379267ef6438f98a_aa673cd088ce68ff4379267ef6438f98a}\label{class_pirate_game_1_1_world_aa673cd088ce68ff4379267ef6438f98a_aa673cd088ce68ff4379267ef6438f98a} 
+\index{PirateGame::World@{PirateGame::World}!distanceBetweenLandMasses@{distanceBetweenLandMasses}}
+\index{distanceBetweenLandMasses@{distanceBetweenLandMasses}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{distanceBetweenLandMasses}{distanceBetweenLandMasses}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+World\+::distance\+Between\+Land\+Masses = 1000.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00065}{65}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a0212f0aa240870b3d3f88be9a914ec5d_a0212f0aa240870b3d3f88be9a914ec5d}\label{class_pirate_game_1_1_world_a0212f0aa240870b3d3f88be9a914ec5d_a0212f0aa240870b3d3f88be9a914ec5d} 
+\index{PirateGame::World@{PirateGame::World}!distanceBetweenLandMassesDebug@{distanceBetweenLandMassesDebug}}
+\index{distanceBetweenLandMassesDebug@{distanceBetweenLandMassesDebug}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{distanceBetweenLandMassesDebug}{distanceBetweenLandMassesDebug}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+World\+::distance\+Between\+Land\+Masses\+Debug = 1000.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00072}{72}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_afe39ad94049b6436c3adca31d4211e0e_afe39ad94049b6436c3adca31d4211e0e}\label{class_pirate_game_1_1_world_afe39ad94049b6436c3adca31d4211e0e_afe39ad94049b6436c3adca31d4211e0e} 
+\index{PirateGame::World@{PirateGame::World}!ESH@{ESH}}
+\index{ESH@{ESH}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{ESH}{ESH}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_handler}{Enemy\+Ship\+Handler}}$>$ Pirate\+Game\+::\+World\+::\+ESH\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a6fcd9421218120edd0135306efe53282_a6fcd9421218120edd0135306efe53282}\label{class_pirate_game_1_1_world_a6fcd9421218120edd0135306efe53282_a6fcd9421218120edd0135306efe53282} 
+\index{PirateGame::World@{PirateGame::World}!frameCount@{frameCount}}
+\index{frameCount@{frameCount}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{frameCount}{frameCount}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+World\+::frame\+Count = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00057}{57}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ab8b44e4f553b32ff054aa98eca4a915a_ab8b44e4f553b32ff054aa98eca4a915a}\label{class_pirate_game_1_1_world_ab8b44e4f553b32ff054aa98eca4a915a_ab8b44e4f553b32ff054aa98eca4a915a} 
+\index{PirateGame::World@{PirateGame::World}!frameRateClock@{frameRateClock}}
+\index{frameRateClock@{frameRateClock}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{frameRateClock}{frameRateClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+World\+::frame\+Rate\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00054}{54}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a604eea17fdf9ca9201db368bf376b03d_a604eea17fdf9ca9201db368bf376b03d}\label{class_pirate_game_1_1_world_a604eea17fdf9ca9201db368bf376b03d_a604eea17fdf9ca9201db368bf376b03d} 
+\index{PirateGame::World@{PirateGame::World}!frameRateText@{frameRateText}}
+\index{frameRateText@{frameRateText}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{frameRateText}{frameRateText}}
+{\footnotesize\ttfamily sf\+::\+Text Pirate\+Game\+::\+World\+::frame\+Rate\+Text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00056}{56}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_aeb7adc5fc8f3b45d9ae3d4331e43c230_aeb7adc5fc8f3b45d9ae3d4331e43c230}\label{class_pirate_game_1_1_world_aeb7adc5fc8f3b45d9ae3d4331e43c230_aeb7adc5fc8f3b45d9ae3d4331e43c230} 
+\index{PirateGame::World@{PirateGame::World}!frameRateUpdateTime@{frameRateUpdateTime}}
+\index{frameRateUpdateTime@{frameRateUpdateTime}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{frameRateUpdateTime}{frameRateUpdateTime}}
+{\footnotesize\ttfamily sf\+::\+Time Pirate\+Game\+::\+World\+::frame\+Rate\+Update\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00055}{55}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ae0a07d509081c94919d8861fb3594291_ae0a07d509081c94919d8861fb3594291}\label{class_pirate_game_1_1_world_ae0a07d509081c94919d8861fb3594291_ae0a07d509081c94919d8861fb3594291} 
+\index{PirateGame::World@{PirateGame::World}!LMHandler@{LMHandler}}
+\index{LMHandler@{LMHandler}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{LMHandler}{LMHandler}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler}{Land\+Mass\+Handler}}$>$ Pirate\+Game\+::\+World\+::\+LMHandler\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_aa2c981a97a3897f4d3b99d02eaa8b772_aa2c981a97a3897f4d3b99d02eaa8b772}\label{class_pirate_game_1_1_world_aa2c981a97a3897f4d3b99d02eaa8b772_aa2c981a97a3897f4d3b99d02eaa8b772} 
+\index{PirateGame::World@{PirateGame::World}!mapSize@{mapSize}}
+\index{mapSize@{mapSize}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{mapSize}{mapSize}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+World\+::map\+Size = sf\+::\+Vector2f(100000.f, 100000.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00068}{68}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ac040529e07eaea2dce42d3ffe3f3bbdb_ac040529e07eaea2dce42d3ffe3f3bbdb}\label{class_pirate_game_1_1_world_ac040529e07eaea2dce42d3ffe3f3bbdb_ac040529e07eaea2dce42d3ffe3f3bbdb} 
+\index{PirateGame::World@{PirateGame::World}!mapSizeDebug@{mapSizeDebug}}
+\index{mapSizeDebug@{mapSizeDebug}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{mapSizeDebug}{mapSizeDebug}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+World\+::map\+Size\+Debug = sf\+::\+Vector2f(5000.f, 5000.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00075}{75}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_adce9d029a5622551eae8b346976d8aa4_adce9d029a5622551eae8b346976d8aa4}\label{class_pirate_game_1_1_world_adce9d029a5622551eae8b346976d8aa4_adce9d029a5622551eae8b346976d8aa4} 
+\index{PirateGame::World@{PirateGame::World}!MH@{MH}}
+\index{MH@{MH}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{MH}{MH}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_menu_handler}{Menu\+Handler}}$>$ Pirate\+Game\+::\+World\+::\+MH\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a6aec9fd6d74ff7c578697d6806a1eafe_a6aec9fd6d74ff7c578697d6806a1eafe}\label{class_pirate_game_1_1_world_a6aec9fd6d74ff7c578697d6806a1eafe_a6aec9fd6d74ff7c578697d6806a1eafe} 
+\index{PirateGame::World@{PirateGame::World}!numEnemyShips@{numEnemyShips}}
+\index{numEnemyShips@{numEnemyShips}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{numEnemyShips}{numEnemyShips}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+World\+::num\+Enemy\+Ships = 1000\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00066}{66}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ab2055e120892f96b7817006b70527060_ab2055e120892f96b7817006b70527060}\label{class_pirate_game_1_1_world_ab2055e120892f96b7817006b70527060_ab2055e120892f96b7817006b70527060} 
+\index{PirateGame::World@{PirateGame::World}!numEnemyShipsDebug@{numEnemyShipsDebug}}
+\index{numEnemyShipsDebug@{numEnemyShipsDebug}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{numEnemyShipsDebug}{numEnemyShipsDebug}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+World\+::num\+Enemy\+Ships\+Debug = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00073}{73}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a1b37e103f547e450bca500704c28bba8_a1b37e103f547e450bca500704c28bba8}\label{class_pirate_game_1_1_world_a1b37e103f547e450bca500704c28bba8_a1b37e103f547e450bca500704c28bba8} 
+\index{PirateGame::World@{PirateGame::World}!numFramesToAverage@{numFramesToAverage}}
+\index{numFramesToAverage@{numFramesToAverage}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{numFramesToAverage}{numFramesToAverage}}
+{\footnotesize\ttfamily const float Pirate\+Game\+::\+World\+::num\+Frames\+To\+Average = 40.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00058}{58}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ac95f0274aabecd1b289c4ada2d0403ec_ac95f0274aabecd1b289c4ada2d0403ec}\label{class_pirate_game_1_1_world_ac95f0274aabecd1b289c4ada2d0403ec_ac95f0274aabecd1b289c4ada2d0403ec} 
+\index{PirateGame::World@{PirateGame::World}!numLandMasses@{numLandMasses}}
+\index{numLandMasses@{numLandMasses}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{numLandMasses}{numLandMasses}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+World\+::num\+Land\+Masses = 1000\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00064}{64}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_ab1cea5f479817ee3744c46ed0962657f_ab1cea5f479817ee3744c46ed0962657f}\label{class_pirate_game_1_1_world_ab1cea5f479817ee3744c46ed0962657f_ab1cea5f479817ee3744c46ed0962657f} 
+\index{PirateGame::World@{PirateGame::World}!numLandMassesDebug@{numLandMassesDebug}}
+\index{numLandMassesDebug@{numLandMassesDebug}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{numLandMassesDebug}{numLandMassesDebug}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+World\+::num\+Land\+Masses\+Debug = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00071}{71}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a57510c2fd896568664460eff660c962a_a57510c2fd896568664460eff660c962a}\label{class_pirate_game_1_1_world_a57510c2fd896568664460eff660c962a_a57510c2fd896568664460eff660c962a} 
+\index{PirateGame::World@{PirateGame::World}!player@{player}}
+\index{player@{player}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_player}{Player}} Pirate\+Game\+::\+World\+::player\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_af5c135d550f21f796fa4cbd7e38b4914_af5c135d550f21f796fa4cbd7e38b4914}\label{class_pirate_game_1_1_world_af5c135d550f21f796fa4cbd7e38b4914_af5c135d550f21f796fa4cbd7e38b4914} 
+\index{PirateGame::World@{PirateGame::World}!playerShip@{playerShip}}
+\index{playerShip@{playerShip}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{playerShip}{playerShip}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}}$>$ Pirate\+Game\+::\+World\+::player\+Ship\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a3f73f285fa639e9427b9e239a8fc11a0_a3f73f285fa639e9427b9e239a8fc11a0}\label{class_pirate_game_1_1_world_a3f73f285fa639e9427b9e239a8fc11a0_a3f73f285fa639e9427b9e239a8fc11a0} 
+\index{PirateGame::World@{PirateGame::World}!view@{view}}
+\index{view@{view}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{view}{view}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_view}{View}} Pirate\+Game\+::\+World\+::view\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00040}{40}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_world_a7bdb2dd81bbe0642f0930651b3f41e8c_a7bdb2dd81bbe0642f0930651b3f41e8c}\label{class_pirate_game_1_1_world_a7bdb2dd81bbe0642f0930651b3f41e8c_a7bdb2dd81bbe0642f0930651b3f41e8c} 
+\index{PirateGame::World@{PirateGame::World}!window@{window}}
+\index{window@{window}!PirateGame::World@{PirateGame::World}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+World\+::window = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_world___p_g_8h_source_l00049}{49}} of file \mbox{\hyperlink{_world___p_g_8h_source}{World\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_world___p_g_8h}{World\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_world___p_g_8cpp}{World\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

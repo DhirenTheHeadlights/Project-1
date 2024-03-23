@@ -1,0 +1,37 @@
+\doxysection{Collision\+Manager\+\_\+\+AG.\+h}
+\hypertarget{_collision_manager___a_g_8h_source}{}\label{_collision_manager___a_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Header/CollisionManager\_AG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Header/CollisionManager\_AG.h}}
+\mbox{\hyperlink{_collision_manager___a_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_pellet___a_g_8h}{Pellet\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_circle___a_g_8h}{Circle\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_8h}{Map.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cell_group___a_g_8h}{CellGroup\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_hashmap___a_g_8h}{Hashmap\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_debugger___a_g_8h}{Debugger\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00014}\mbox{\hyperlink{class_collision_manager}{00014}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_collision_manager}{CollisionManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00015}00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00016}00016\ \ \ \ \ \mbox{\hyperlink{class_collision_manager_a0bde5706844778414f5ac5c92ae17bd7}{CollisionManager}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00017}00017\ \ \ \ \ std::set<Pellet*>\ \mbox{\hyperlink{class_collision_manager_a54dd9f8c0148cf0abb9a54f962b792d3}{pelletCollisionWithinBoundsOfCircle}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \mbox{\hyperlink{class_circle}{Circle}}*\ circle,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_ac268784ef58355dd65c1b8152c7fab91}{checkCollisionWithPellet}}(\textcolor{keyword}{const}\ std::string\&\ key,\ \mbox{\hyperlink{class_circle}{Circle}}*\ circle,\ std::set<Pellet*>\&\ collidedPellets);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_a7e2e35d89e0addcb46c5c4ee34dcbc8a}{separateAllCells}}(\mbox{\hyperlink{class_cell_group}{CellGroup}}\&\ cells,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_ad43ee55963b7bb63e717a086058970f9}{removePelletWhenCollision}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \mbox{\hyperlink{class_circle}{Circle}}*\ cell,\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ std::vector<std::shared\_ptr<Pellet>>\ activePellets);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_a37285011823aae286bc612eaea350286}{checkPelletCollisionForEveryCell}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \mbox{\hyperlink{class_cell_group}{CellGroup}}\&\ cells,\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ std::vector<std::shared\_ptr<Pellet>>\ activePellets);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf}{assignCells}}(\mbox{\hyperlink{class_cell_group}{CellGroup}}\&\ cells,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_aec880c871a1401e27311b738eaac172a}{assignPellets}}(std::vector<std::shared\_ptr<Pellet>>\ activePellets,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_collision_manager_a419192f27b854dfb46e3175db9e28f26}{moveAndSeparateCells}}(\mbox{\hyperlink{class_cell_group}{CellGroup}}\&\ cells,\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \textcolor{keywordtype}{float}\ moveSpeed);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00025}00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ separateCells(\mbox{\hyperlink{class_circle}{Circle}}*\ cell,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00027}00027\ \ \ \ \ \textcolor{keywordtype}{float}\ minDistForCollision\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00028}00028\ \ \ \ \ sf::Clock\ separateClock;}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_hashmap}{Hashmap}}\ hashmap;}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{class_debugger}{Debugger}}\ debugger;}
+\DoxyCodeLine{\Hypertarget{_collision_manager___a_g_8h_source_l00031}00031\ \};}
+
+\end{DoxyCode}

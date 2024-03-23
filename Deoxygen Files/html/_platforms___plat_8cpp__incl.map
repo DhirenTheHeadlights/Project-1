@@ -1,0 +1,16 @@
+<map id="C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project&#45;1/Platformer Game/Resource/Platforms_Plat.cpp" name="C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project&#45;1/Platformer Game/Resource/Platforms_Plat.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="90,5,285,80"/>
+<area shape="rect" id="Node000002" href="$_platforms___plat_8h.html" title=" " alt="" coords="129,128,246,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,80,190,112,185,112,185,80"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,277,143,304"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,157,147,178,121,204,102,234,87,264,82,262,97,232,117,201,143,174,168,153"/>
+<area shape="rect" id="Node000004" href="$_textures___plat_8h.html" title=" " alt="" coords="131,203,244,229"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="190,155,190,187,185,187,185,155"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="268,203,339,229"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="209,153,271,192,269,196,206,157"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="169,232,108,271,105,266,166,228"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="166,277,222,304"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="191,230,194,261,189,262,186,230"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="246,277,310,304"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="205,228,252,266,249,270,201,232"/>
+</map>

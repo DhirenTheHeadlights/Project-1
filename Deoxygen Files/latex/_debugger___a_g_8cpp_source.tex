@@ -1,0 +1,56 @@
+\doxysection{Debugger\+\_\+\+AG.\+cpp}
+\hypertarget{_debugger___a_g_8cpp_source}{}\label{_debugger___a_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/Debugger\_AG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/Debugger\_AG.cpp}}
+\mbox{\hyperlink{_debugger___a_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_debugger___a_g_8h}{Debugger\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00003}\mbox{\hyperlink{class_debugger_a7b59f4ec81dff920245615ceb3689c38}{00003}}\ \mbox{\hyperlink{class_debugger_a7b59f4ec81dff920245615ceb3689c38}{Debugger::Debugger}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00004}00004\ \ \ \ \ \textcolor{keywordflow}{if}\ (!font.loadFromFile(\textcolor{stringliteral}{"{}Fonts/times\_new\_roman.ttf"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00005}00005\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load\ font\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00006}00006\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00009}\mbox{\hyperlink{class_debugger_a84355ced171a22774ba558bfb141824b}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_debugger_a84355ced171a22774ba558bfb141824b}{Debugger::drawInformation}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \textcolor{keyword}{const}\ std::string\&\ info,\ \textcolor{keywordtype}{int}\ textSize,\ \textcolor{keywordtype}{float}\ setPosX,\ \textcolor{keywordtype}{float}\ setPosY)\ \{}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00010}00010\ \ \ \ \ sf::Text\ text;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00011}00011\ \ \ \ \ text.setFont(font);\ \ \textcolor{comment}{//\ Use\ the\ preloaded\ font}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00012}00012\ \ \ \ \ text.setString(info);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00013}00013\ \ \ \ \ text.setCharacterSize(textSize);\ \textcolor{comment}{//\ in\ pixels,\ not\ points!}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00014}00014\ \ \ \ \ text.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Center\ the\ text\ based\ on\ its\ local\ bounds}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{float}\ offsetX\ =\ text.getLocalBounds().width\ /\ 2.0f;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{float}\ offsetY\ =\ text.getLocalBounds().height\ /\ 2.0f;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00020}00020\ \ \ \ \ text.setPosition(setPosX\ -\/\ offsetX,\ setPosY\ -\/\ offsetY);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00022}00022\ \ \ \ \ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.draw(text);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Drawing\ text\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00027}\mbox{\hyperlink{class_debugger_add3059123f5c7df96fe526fd22ad5274}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_debugger_add3059123f5c7df96fe526fd22ad5274}{Debugger::drawVector}}(\textcolor{keyword}{const}\ sf::Vector2f\&\ start,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ direction,\ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \textcolor{keywordtype}{float}\ magnitude,\ sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00028}00028\ \ \ \ \ sf::VertexArray\ lines(sf::Lines,\ 2);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00030}00030\ \ \ \ \ lines[0].position\ =\ start;\ \textcolor{comment}{//\ start\ position}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00031}00031\ \ \ \ \ lines[0].color\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ calculate\ end\ position\ by\ adding\ the\ direction\ (normalized)\ multiplied\ by\ the\ magnitude}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00034}00034\ \ \ \ \ lines[1].position\ =\ start\ +\ direction\ /\ std::sqrt(direction.x\ *\ direction.x\ +\ direction.y\ *\ direction.y)\ *\ magnitude;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00035}00035\ \ \ \ \ lines[1].color\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.draw(lines);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Drawing\ vector\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00042}\mbox{\hyperlink{class_debugger_ad46c0ddf0fe1084871a17af6c6a6d579}{00042}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_debugger_ad46c0ddf0fe1084871a17af6c6a6d579}{Debugger::drawCell}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00043}00043\ \ \ \ \ sf::RectangleShape\ rectangle;}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00044}00044\ \ \ \ \ rectangle.setSize(sf::Vector2f(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(map.\mbox{\hyperlink{class_map_a80e8b85b93384b533f7484f0463c91ec}{getCellSize}}()),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(map.\mbox{\hyperlink{class_map_a80e8b85b93384b533f7484f0463c91ec}{getCellSize}}())));}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00045}00045\ \ \ \ \ rectangle.setFillColor(color);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00046}00046\ \ \ \ \ rectangle.setPosition(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x\ *\ map.\mbox{\hyperlink{class_map_a80e8b85b93384b533f7484f0463c91ec}{getCellSize}}()),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y\ *\ map.\mbox{\hyperlink{class_map_a80e8b85b93384b533f7484f0463c91ec}{getCellSize}}()));}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00047}00047\ \ \ \ \ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.draw(rectangle);}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Drawing\ cell\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{_debugger___a_g_8cpp_source_l00050}00050\ \}}
+
+\end{DoxyCode}

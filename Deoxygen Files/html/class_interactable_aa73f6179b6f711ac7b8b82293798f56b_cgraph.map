@@ -1,0 +1,5 @@
+<map id="Interactable::setPos" name="Interactable::setPos">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,143,40"/>
+<area shape="rect" id="Node000002" href="$class_player_input_box.html#a09b142d5939449bcfd68c0e401c579b3" title=" " alt="" coords="191,5,363,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,24,175,24,175,29,143,29"/>
+</map>

@@ -1,0 +1,32 @@
+\doxysection{Save\+Data\+\_\+\+AT.\+h}
+\hypertarget{_save_data___a_t_8h_source}{}\label{_save_data___a_t_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/SaveData\_AT.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/SaveData\_AT.h}}
+\mbox{\hyperlink{_save_data___a_t_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <utility>}\ \textcolor{comment}{//\ For\ std::pair}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00010}\mbox{\hyperlink{class_save_data}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_save_data}{SaveData}}\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00011}00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_save_data_a2383d23b0937fbe4fcc6a62f674070cc}{SaveData}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_data_a4c3f8821006401f67c9dc4c87adbc8ed}{addData}}(\textcolor{keyword}{const}\ std::vector<std::pair<std::string,\ int>>\&\ newScores);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_data_a15f719423e521d38425028105fcdd575}{clearData}}();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_data_a28a761f074c909d0939891b741162a01}{file\_write}}();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00016}00016\ \ \ \ \ std::vector<std::pair<std::string,\ int>>\ \mbox{\hyperlink{class_save_data_a88033bab9dc56b7048d4f77e27bba206}{file\_read}}();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00017}\mbox{\hyperlink{class_save_data_a9893ae02cc1e7ca7323e6bc6af6384f0}{00017}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_save_data_a9893ae02cc1e7ca7323e6bc6af6384f0}{fileName}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ filename;\ \};}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00018}\mbox{\hyperlink{class_save_data_a134b7349ccea7777a3889d0e3700fa4d}{00018}}\ \ \ \ \ std::vector<std::pair<std::string,\ int>>\ \mbox{\hyperlink{class_save_data_a134b7349ccea7777a3889d0e3700fa4d}{scores}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ leaderboard;\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00019}\mbox{\hyperlink{class_save_data_a8e42c6e80b09189eda6adc17b4d3b1cc}{00019}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_save_data_a8e42c6e80b09189eda6adc17b4d3b1cc}{getSessionHigh}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ sessionHigh;\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00020}\mbox{\hyperlink{class_save_data_a33e6ec13ebdde6dbc23faf5e81672770}{00020}}\ \ \ \ \ std::pair<std::string,\ int>\ \mbox{\hyperlink{class_save_data_a33e6ec13ebdde6dbc23faf5e81672770}{getHighScore}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ !leaderboard.empty()\ ?\ leaderboard.front()\ :\ std::make\_pair(\textcolor{stringliteral}{"{}"{}},\ 0);\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00022}00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00023}00023\ \ \ \ \ std::vector<std::pair<std::string,\ int>>\ leaderboard;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00024}00024\ \ \ \ \ std::string\ filename;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ sessionHigh\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8h_source_l00026}00026\ \};}
+
+\end{DoxyCode}

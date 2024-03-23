@@ -1,0 +1,13 @@
+<map id="PirateGame::ShipMovementHandler::getSprite" name="PirateGame::ShipMovementHandler::getSprite">
+<area shape="rect" id="Node000001" title=" " alt="" coords="550,59,733,102"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_movement_handler_a8f15ce9a9b6d0af801b82058c2730faf.html#a8f15ce9a9b6d0af801b82058c2730faf" title=" " alt="" coords="5,14,230,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="589,54,547,35,501,21,432,11,361,8,293,11,230,18,230,13,292,6,361,3,433,5,503,15,549,30,591,49"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_player_ship_movement_handler_ad6ce0e94877aa23b691d854fb48579f2.html#ad6ce0e94877aa23b691d854fb48579f2" title=" " alt="" coords="7,106,228,149"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="535,93,228,120,228,115,534,87"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_enemy_ship_movement_handler_a4886f422f284fbc741c8adf6e65c2567.html#a4886f422f284fbc741c8adf6e65c2567" title=" " alt="" coords="278,30,502,73"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="534,71,502,67,503,62,535,66"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_player_ship_movement_handler_a81c98b333191598a26a49f3f05f4182d.html#a81c98b333191598a26a49f3f05f4182d" title=" " alt="" coords="280,147,500,190"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="565,110,454,149,452,144,563,105"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="262,47,230,45,230,39,262,41"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="264,152,228,147,229,141,265,147"/>
+</map>

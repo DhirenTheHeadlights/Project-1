@@ -1,0 +1,231 @@
+\doxysection{Pirate\+Game\+::Global\+Texture\+Handler Class Reference}
+\hypertarget{class_pirate_game_1_1_global_texture_handler}{}\label{class_pirate_game_1_1_global_texture_handler}\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+
+
+{\ttfamily \#include $<$Global\+Texture\+Handler\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_interactable_texture_handler}{Interactable\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a49d6d67980dbf14af275d1b79b9ab1c1_a49d6d67980dbf14af275d1b79b9ab1c1}{get\+Interactable\+Textures}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_landmass_texture_handler}{Landmass\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a3d84df0075eb7af98edf33fa2a4c0a4c_a3d84df0075eb7af98edf33fa2a4c0a4c}{get\+Land\+Mass\+Textures}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a52e11f791a7d28f285362728a8fd581e_a52e11f791a7d28f285362728a8fd581e}{get\+HUDTextures}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_options_menu_texture_handler}{Options\+Menu\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_ad2c9fda3ae1af266301c6edf74507451_ad2c9fda3ae1af266301c6edf74507451}{get\+Options\+Menu\+Textures}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_market_texture_handler}{Market\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a76385e2080d71ca71089dc5a97999de0_a76385e2080d71ca71089dc5a97999de0}{get\+Market\+Textures}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_texture_handler}{Ship\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_ac81f00d41f437356cc17a3d9065a1282_ac81f00d41f437356cc17a3d9065a1282}{get\+Ship\+Textures}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02_abd67dde4db181d4afcdf8c3b1dbcef02}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a562bd102b25269c1823b8dcb197728ad_a562bd102b25269c1823b8dcb197728ad}{Global\+Texture\+Handler}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a41ac6171def76e6923ea6a1c39e1cbb5_a41ac6171def76e6923ea6a1c39e1cbb5}{Global\+Texture\+Handler}} (\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} const \&)=delete
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_ae3314f57d0855af67a32a84966e5d866_ae3314f57d0855af67a32a84966e5d866}{operator=}} (\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} const \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable_texture_handler}{Interactable\+Texture\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a2cac8c5770e18045cd7460026657d833_a2cac8c5770e18045cd7460026657d833}{interactable\+Textures}} = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_interactable_texture_handler}{Interactable\+Texture\+Handler}}$>$()
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_landmass_texture_handler}{Landmass\+Texture\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a200f7a16af0719e3bbda64a05a3b2c89_a200f7a16af0719e3bbda64a05a3b2c89}{land\+Mass\+Textures}} = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_landmass_texture_handler}{Landmass\+Texture\+Handler}}$>$()
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_ab8a86b77cc7af1186b2255db5b8f5bca_ab8a86b77cc7af1186b2255db5b8f5bca}{HUDTextures}} = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}}$>$()
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_options_menu_texture_handler}{Options\+Menu\+Texture\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a47167f51fd7ced58a83e5e69ea37d627_a47167f51fd7ced58a83e5e69ea37d627}{options\+Menu\+Textures}} = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_options_menu_texture_handler}{Options\+Menu\+Texture\+Handler}}$>$()
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_market_texture_handler}{Market\+Texture\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_a633ed454cf9f3faf544e48dbc9becd8e_a633ed454cf9f3faf544e48dbc9becd8e}{market\+Textures}} = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_market_texture_handler}{Market\+Texture\+Handler}}$>$()
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_texture_handler}{Ship\+Texture\+Handler}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_adc26da59204c0b5907c4eab1c8508dcd_adc26da59204c0b5907c4eab1c8508dcd}{ship\+Textures}} = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_ship_texture_handler}{Ship\+Texture\+Handler}}$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00016}{16}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a562bd102b25269c1823b8dcb197728ad_a562bd102b25269c1823b8dcb197728ad}\label{class_pirate_game_1_1_global_texture_handler_a562bd102b25269c1823b8dcb197728ad_a562bd102b25269c1823b8dcb197728ad} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!GlobalTextureHandler@{GlobalTextureHandler}}
+\index{GlobalTextureHandler@{GlobalTextureHandler}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{GlobalTextureHandler()}{GlobalTextureHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Texture\+Handler\+::\+Global\+Texture\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00032}{32}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a41ac6171def76e6923ea6a1c39e1cbb5_a41ac6171def76e6923ea6a1c39e1cbb5}\label{class_pirate_game_1_1_global_texture_handler_a41ac6171def76e6923ea6a1c39e1cbb5_a41ac6171def76e6923ea6a1c39e1cbb5} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!GlobalTextureHandler@{GlobalTextureHandler}}
+\index{GlobalTextureHandler@{GlobalTextureHandler}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{GlobalTextureHandler()}{GlobalTextureHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Texture\+Handler\+::\+Global\+Texture\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a52e11f791a7d28f285362728a8fd581e_a52e11f791a7d28f285362728a8fd581e}\label{class_pirate_game_1_1_global_texture_handler_a52e11f791a7d28f285362728a8fd581e_a52e11f791a7d28f285362728a8fd581e} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getHUDTextures@{getHUDTextures}}
+\index{getHUDTextures@{getHUDTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getHUDTextures()}{getHUDTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+HUDTextures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00026}{26}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02_abd67dde4db181d4afcdf8c3b1dbcef02}\label{class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02_abd67dde4db181d4afcdf8c3b1dbcef02} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00018}{18}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02_abd67dde4db181d4afcdf8c3b1dbcef02_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a49d6d67980dbf14af275d1b79b9ab1c1_a49d6d67980dbf14af275d1b79b9ab1c1}\label{class_pirate_game_1_1_global_texture_handler_a49d6d67980dbf14af275d1b79b9ab1c1_a49d6d67980dbf14af275d1b79b9ab1c1} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getInteractableTextures@{getInteractableTextures}}
+\index{getInteractableTextures@{getInteractableTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getInteractableTextures()}{getInteractableTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_interactable_texture_handler}{Interactable\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+Interactable\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00024}{24}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a3d84df0075eb7af98edf33fa2a4c0a4c_a3d84df0075eb7af98edf33fa2a4c0a4c}\label{class_pirate_game_1_1_global_texture_handler_a3d84df0075eb7af98edf33fa2a4c0a4c_a3d84df0075eb7af98edf33fa2a4c0a4c} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getLandMassTextures@{getLandMassTextures}}
+\index{getLandMassTextures@{getLandMassTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getLandMassTextures()}{getLandMassTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_landmass_texture_handler}{Landmass\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+Land\+Mass\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00025}{25}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a76385e2080d71ca71089dc5a97999de0_a76385e2080d71ca71089dc5a97999de0}\label{class_pirate_game_1_1_global_texture_handler_a76385e2080d71ca71089dc5a97999de0_a76385e2080d71ca71089dc5a97999de0} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getMarketTextures@{getMarketTextures}}
+\index{getMarketTextures@{getMarketTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getMarketTextures()}{getMarketTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_market_texture_handler}{Market\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+Market\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00028}{28}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_ad2c9fda3ae1af266301c6edf74507451_ad2c9fda3ae1af266301c6edf74507451}\label{class_pirate_game_1_1_global_texture_handler_ad2c9fda3ae1af266301c6edf74507451_ad2c9fda3ae1af266301c6edf74507451} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getOptionsMenuTextures@{getOptionsMenuTextures}}
+\index{getOptionsMenuTextures@{getOptionsMenuTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getOptionsMenuTextures()}{getOptionsMenuTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_options_menu_texture_handler}{Options\+Menu\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+Options\+Menu\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00027}{27}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_ac81f00d41f437356cc17a3d9065a1282_ac81f00d41f437356cc17a3d9065a1282}\label{class_pirate_game_1_1_global_texture_handler_ac81f00d41f437356cc17a3d9065a1282_ac81f00d41f437356cc17a3d9065a1282} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!getShipTextures@{getShipTextures}}
+\index{getShipTextures@{getShipTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{getShipTextures()}{getShipTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_texture_handler}{Ship\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::get\+Ship\+Textures (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00029}{29}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_ae3314f57d0855af67a32a84966e5d866_ae3314f57d0855af67a32a84966e5d866}\label{class_pirate_game_1_1_global_texture_handler_ae3314f57d0855af67a32a84966e5d866_ae3314f57d0855af67a32a84966e5d866} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!operator=@{operator=}}
+\index{operator=@{operator=}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} \& Pirate\+Game\+::\+Global\+Texture\+Handler\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler}{Global\+Texture\+Handler}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_ab8a86b77cc7af1186b2255db5b8f5bca_ab8a86b77cc7af1186b2255db5b8f5bca}\label{class_pirate_game_1_1_global_texture_handler_ab8a86b77cc7af1186b2255db5b8f5bca_ab8a86b77cc7af1186b2255db5b8f5bca} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!HUDTextures@{HUDTextures}}
+\index{HUDTextures@{HUDTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{HUDTextures}{HUDTextures}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}}$>$ Pirate\+Game\+::\+Global\+Texture\+Handler\+::\+HUDTextures = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a2cac8c5770e18045cd7460026657d833_a2cac8c5770e18045cd7460026657d833}\label{class_pirate_game_1_1_global_texture_handler_a2cac8c5770e18045cd7460026657d833_a2cac8c5770e18045cd7460026657d833} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!interactableTextures@{interactableTextures}}
+\index{interactableTextures@{interactableTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{interactableTextures}{interactableTextures}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_interactable_texture_handler}{Interactable\+Texture\+Handler}}$>$ Pirate\+Game\+::\+Global\+Texture\+Handler\+::interactable\+Textures = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_interactable_texture_handler}{Interactable\+Texture\+Handler}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00041}{41}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a200f7a16af0719e3bbda64a05a3b2c89_a200f7a16af0719e3bbda64a05a3b2c89}\label{class_pirate_game_1_1_global_texture_handler_a200f7a16af0719e3bbda64a05a3b2c89_a200f7a16af0719e3bbda64a05a3b2c89} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!landMassTextures@{landMassTextures}}
+\index{landMassTextures@{landMassTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{landMassTextures}{landMassTextures}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_landmass_texture_handler}{Landmass\+Texture\+Handler}}$>$ Pirate\+Game\+::\+Global\+Texture\+Handler\+::land\+Mass\+Textures = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_landmass_texture_handler}{Landmass\+Texture\+Handler}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a633ed454cf9f3faf544e48dbc9becd8e_a633ed454cf9f3faf544e48dbc9becd8e}\label{class_pirate_game_1_1_global_texture_handler_a633ed454cf9f3faf544e48dbc9becd8e_a633ed454cf9f3faf544e48dbc9becd8e} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!marketTextures@{marketTextures}}
+\index{marketTextures@{marketTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{marketTextures}{marketTextures}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_market_texture_handler}{Market\+Texture\+Handler}}$>$ Pirate\+Game\+::\+Global\+Texture\+Handler\+::market\+Textures = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_market_texture_handler}{Market\+Texture\+Handler}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_a47167f51fd7ced58a83e5e69ea37d627_a47167f51fd7ced58a83e5e69ea37d627}\label{class_pirate_game_1_1_global_texture_handler_a47167f51fd7ced58a83e5e69ea37d627_a47167f51fd7ced58a83e5e69ea37d627} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!optionsMenuTextures@{optionsMenuTextures}}
+\index{optionsMenuTextures@{optionsMenuTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{optionsMenuTextures}{optionsMenuTextures}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_options_menu_texture_handler}{Options\+Menu\+Texture\+Handler}}$>$ Pirate\+Game\+::\+Global\+Texture\+Handler\+::options\+Menu\+Textures = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_options_menu_texture_handler}{Options\+Menu\+Texture\+Handler}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_texture_handler_adc26da59204c0b5907c4eab1c8508dcd_adc26da59204c0b5907c4eab1c8508dcd}\label{class_pirate_game_1_1_global_texture_handler_adc26da59204c0b5907c4eab1c8508dcd_adc26da59204c0b5907c4eab1c8508dcd} 
+\index{PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}!shipTextures@{shipTextures}}
+\index{shipTextures@{shipTextures}!PirateGame::GlobalTextureHandler@{PirateGame::GlobalTextureHandler}}
+\doxysubsubsection{\texorpdfstring{shipTextures}{shipTextures}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_ship_texture_handler}{Ship\+Texture\+Handler}}$>$ Pirate\+Game\+::\+Global\+Texture\+Handler\+::ship\+Textures = std\+::make\+\_\+unique$<$\mbox{\hyperlink{class_pirate_game_1_1_ship_texture_handler}{Ship\+Texture\+Handler}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_texture_handler___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_global_texture_handler___p_g_8h_source}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_global_texture_handler___p_g_8h}{Global\+Texture\+Handler\+\_\+\+PG.\+h}}\end{DoxyCompactItemize}

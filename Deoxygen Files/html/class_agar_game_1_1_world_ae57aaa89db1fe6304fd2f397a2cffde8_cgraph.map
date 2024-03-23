@@ -1,0 +1,5 @@
+<map id="AgarGame::World::restart" name="AgarGame::World::restart">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,176,32"/>
+<area shape="rect" id="Node000002" href="$class_cell_group.html#aaf4a33964224b9e0d668d6f23a79e6b6" title=" " alt="" coords="224,5,339,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,16,208,16,208,21,176,21"/>
+</map>

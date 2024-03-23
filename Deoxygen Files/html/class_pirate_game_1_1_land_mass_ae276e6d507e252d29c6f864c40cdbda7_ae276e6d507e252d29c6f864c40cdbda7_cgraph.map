@@ -1,0 +1,7 @@
+<map id="PirateGame::LandMass::createLandMass" name="PirateGame::LandMass::createLandMass">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,164,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_land_mass_aa5bf6b8e097de70b3fa20d5d2d68f3ad.html#aa5bf6b8e097de70b3fa20d5d2d68f3ad" title=" " alt="" coords="222,5,380,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,45,206,39,207,44,165,50"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="212,72,390,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,70,196,75,196,80,164,75"/>
+</map>

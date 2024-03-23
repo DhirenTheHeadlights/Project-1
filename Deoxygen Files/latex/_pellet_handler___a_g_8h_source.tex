@@ -1,0 +1,22 @@
+\doxysection{Pellet\+Handler\+\_\+\+AG.\+h}
+\hypertarget{_pellet_handler___a_g_8h_source}{}\label{_pellet_handler___a_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Header/PelletHandler\_AG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Header/PelletHandler\_AG.h}}
+\mbox{\hyperlink{_pellet_handler___a_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_pellet___a_g_8h}{Pellet\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_map_8h}{Map.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00006}\mbox{\hyperlink{class_pellet_handler}{00006}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pellet_handler}{PelletHandler}}\ \{}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00007}00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_pellet_handler_a15912b2237051d0d752554a029b16554}{PelletHandler}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}});}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00009}00009\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pellet_handler_a71bbc32ddba90697a02f5be6f08c74a3}{drawPellets}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numPellets);}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00010}00010\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pellet_handler_ad904cbc2407b65d42dc51a289a423b4e}{eraseIfInactive}}();}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00011}00011\ \ \ \ \ std::vector<std::shared\_ptr<Pellet>>\ \mbox{\hyperlink{class_pellet_handler_ab4d1d30cd467898d967f7036b4fb9928}{getActivePellets}}();}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00012}00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00013}00013\ \ \ \ \ sf::Clock\ mainTime;}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{float}\ timeBetweenPelletsSpawning\ =\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00015}00015\ \ \ \ \ std::vector<std::shared\_ptr<Pellet>>\ activePellets;}
+\DoxyCodeLine{\Hypertarget{_pellet_handler___a_g_8h_source_l00016}00016\ \};}
+
+\end{DoxyCode}

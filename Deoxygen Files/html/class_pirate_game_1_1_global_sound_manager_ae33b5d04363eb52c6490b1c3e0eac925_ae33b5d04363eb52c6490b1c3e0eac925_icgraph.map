@@ -1,0 +1,20 @@
+<map id="PirateGame::GlobalSoundManager::findAvailableSound" name="PirateGame::GlobalSoundManager::findAvailableSound">
+<area shape="rect" id="Node000001" title=" " alt="" coords="777,105,1000,148"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_sound_manager_a01c210694daf9b56f0846e7bf3c96e99.html#a01c210694daf9b56f0846e7bf3c96e99" title=" " alt="" coords="507,105,729,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="762,129,730,129,730,124,762,124"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_collision_manager_a7bf91ab70e6366e491e2cb664cc0c723.html#a7bf91ab70e6366e491e2cb664cc0c723" title=" " alt="" coords="254,5,452,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="553,101,458,62,425,51,427,46,460,58,555,96"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_button_ad9d0c9eac4303dfdba7f242270936456.html#ad9d0c9eac4303dfdba7f242270936456" title=" " alt="" coords="285,72,421,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="491,113,421,105,422,99,492,108"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_button_a438ab4273ab11d1cf438d83376efd157.html#a438ab4273ab11d1cf438d83376efd157" title=" " alt="" coords="285,139,421,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="492,145,422,154,421,149,491,140"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_ship_cannon_handler_a71aa3cdcd3065dda3bfd37ed49096447.html#a71aa3cdcd3065dda3bfd37ed49096447" title=" " alt="" coords="247,205,459,248"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="555,157,460,196,427,207,425,202,458,191,553,152"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_button_a4370612bd9d41e8aecee85c32ae903b5.html#a4370612bd9d41e8aecee85c32ae903b5" title=" " alt="" coords="34,89,170,132"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="270,102,171,109,170,103,269,96"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="269,146,170,127,171,121,270,141"/>
+<area shape="rect" id="Node000008" href="$class_pirate_game_1_1_enemy_ship_input_handler_ace65fc69d78d1fda05946f5458e702e3.html#ace65fc69d78d1fda05946f5458e702e3" title=" " alt="" coords="5,172,199,215"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="231,213,199,209,200,204,232,208"/>
+<area shape="rect" id="Node000009" href="$class_pirate_game_1_1_player_ship_input_handler_a72b45fdd66031c659bef4efd8e0ea644.html#a72b45fdd66031c659bef4efd8e0ea644" title=" " alt="" coords="7,239,197,281"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="232,245,197,250,197,245,231,240"/>
+</map>

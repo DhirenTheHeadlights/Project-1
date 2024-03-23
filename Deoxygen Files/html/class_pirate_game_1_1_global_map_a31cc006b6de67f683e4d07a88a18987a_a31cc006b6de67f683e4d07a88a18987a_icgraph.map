@@ -1,0 +1,11 @@
+<map id="PirateGame::GlobalMap::getWorldMap" name="PirateGame::GlobalMap::getWorldMap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="496,72,656,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_movement_handler_a8f15ce9a9b6d0af801b82058c2730faf.html#a8f15ce9a9b6d0af801b82058c2730faf" title=" " alt="" coords="224,5,448,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="482,70,415,51,416,46,483,65"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_player_ship_movement_handler_ad6ce0e94877aa23b691d854fb48579f2.html#ad6ce0e94877aa23b691d854fb48579f2" title=" " alt="" coords="226,72,446,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="481,96,446,96,446,91,481,91"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840.html#a8473b1ddf53528d802853a69164cd840" title=" " alt="" coords="262,139,410,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="483,122,411,142,409,137,482,117"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_in_game_h_u_d_a767dc4fec0e06a06a56cd55af8887e42.html#a767dc4fec0e06a06a56cd55af8887e42" title=" " alt="" coords="5,139,176,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="247,163,176,163,176,157,247,157"/>
+</map>

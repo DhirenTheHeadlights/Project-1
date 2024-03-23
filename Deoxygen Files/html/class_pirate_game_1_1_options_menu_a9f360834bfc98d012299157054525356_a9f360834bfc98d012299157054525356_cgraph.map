@@ -1,0 +1,11 @@
+<map id="PirateGame::OptionsMenu::addAudioTabInteractables" name="PirateGame::OptionsMenu::addAudioTabInteractables">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,184,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_options_menu_aa50f7f13f4213b4903d6b5b264b6719d.html#aa50f7f13f4213b4903d6b5b264b6719d" title=" " alt="" coords="255,5,431,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,69,245,50,247,55,177,74"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_global_sound_manager_afc885196315697a58ce66d83d4cb3008.html#afc885196315697a58ce66d83d4cb3008" title=" " alt="" coords="232,72,454,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,91,216,91,216,96,184,96"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_global_sound_manager_a5ca0c78840830cd131a80b6d9e034ba6.html#a5ca0c78840830cd131a80b6d9e034ba6" title=" " alt="" coords="232,139,454,181"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="177,113,247,131,245,137,176,118"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="502,5,680,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="431,24,486,24,486,29,431,29"/>
+</map>

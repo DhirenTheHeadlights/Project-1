@@ -1,0 +1,30 @@
+<map id="CollisionManager::checkPelletCollisionForEveryCell" name="CollisionManager::checkPelletCollisionForEveryCell">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,88,202,130"/>
+<area shape="rect" id="Node000002" href="$class_cell_group.html#a6f4895e8efa9e46e125427fddf1d3033" title=" " alt="" coords="254,66,415,93"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,94,238,89,239,94,203,99"/>
+<area shape="rect" id="Node000003" href="$class_collision_manager.html#ad43ee55963b7bb63e717a086058970f9" title=" " alt="" coords="250,117,419,160"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,119,235,123,234,128,202,124"/>
+<area shape="rect" id="Node000004" href="$class_circle.html#a4f2038c4e879f84a06d7bc79c0625d7f" title=" " alt="" coords="998,8,1138,34"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="393,114,562,54,648,26,712,10,771,4,818,4,925,10,983,13,983,18,925,16,818,9,772,9,713,16,649,31,564,59,395,119"/>
+<area shape="rect" id="Node000005" href="$class_collision_manager.html#a54dd9f8c0148cf0abb9a54f962b792d3" title=" " alt="" coords="467,117,664,160"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="420,136,451,136,451,141,420,141"/>
+<area shape="rect" id="Node000013" href="$class_circle.html#a62c4afa16bb668a9b3eb3ce3f4ce1a85" title=" " alt="" coords="496,184,635,210"/>
+<area shape="poly" id="edge15_Node000003_Node000013" title=" " alt="" coords="420,157,496,177,495,182,419,162"/>
+<area shape="poly" id="edge12_Node000005_Node000004" title=" " alt="" coords="591,114,644,76,677,58,711,44,781,26,853,17,922,13,983,13,983,18,922,18,854,22,782,32,713,49,679,63,647,81,594,119"/>
+<area shape="rect" id="Node000006" href="$class_collision_manager.html#ac268784ef58355dd65c1b8152c7fab91" title=" " alt="" coords="712,58,925,101"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="660,114,708,102,709,108,661,119"/>
+<area shape="rect" id="Node000008" href="$class_circle.html#a1b37e8973c5a83ac381fda84716e1b0d" title=" " alt="" coords="1004,121,1132,148"/>
+<area shape="poly" id="edge14_Node000005_Node000008" title=" " alt="" coords="664,135,988,132,989,138,665,140"/>
+<area shape="rect" id="Node000009" href="$class_debugger.html#ad46c0ddf0fe1084871a17af6c6a6d579" title=" " alt="" coords="752,176,885,202"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="665,156,737,170,736,175,664,161"/>
+<area shape="rect" id="Node000011" href="$class_hashmap.html#a1e798fd089a1c73ec891fb1301d289fc" title=" " alt="" coords="740,226,897,253"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="642,158,666,169,681,181,690,192,699,202,714,212,728,218,725,223,711,217,696,206,686,195,677,184,663,174,640,163"/>
+<area shape="rect" id="Node000012" href="$class_map.html#a89742492811493b8038ee188848cfcd7" title=" " alt="" coords="736,277,901,304"/>
+<area shape="poly" id="edge13_Node000005_Node000012" title=" " alt="" coords="649,158,666,170,684,194,690,218,697,241,714,263,723,269,720,274,711,267,692,244,685,220,679,196,662,174,646,162"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="911,55,992,36,993,41,913,60"/>
+<area shape="rect" id="Node000007" href="$class_hashmap.html#a05381892111309d544310d9fb108a763" title=" " alt="" coords="973,66,1163,93"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="925,77,957,77,957,82,925,82"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="920,99,989,114,988,120,919,104"/>
+<area shape="rect" id="Node000010" href="$class_map.html#a80e8b85b93384b533f7484f0463c91ec" title=" " alt="" coords="1008,176,1128,202"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="885,186,992,186,992,192,885,192"/>
+</map>

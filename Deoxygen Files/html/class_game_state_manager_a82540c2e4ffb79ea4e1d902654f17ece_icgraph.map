@@ -1,0 +1,7 @@
+<map id="GameStateManager::changeGameState" name="GameStateManager::changeGameState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="224,35,411,77"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_start_menu.html#a2b25ce3e2d927005e7cc49fe256c2af5" title=" " alt="" coords="5,5,176,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,45,176,40,177,35,209,39"/>
+<area shape="rect" id="Node000003" href="$class_options_menu.html#a1fd433be60f3e6cc57fc9b47700a2b16" title=" " alt="" coords="8,72,173,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,73,174,77,173,72,208,67"/>
+</map>

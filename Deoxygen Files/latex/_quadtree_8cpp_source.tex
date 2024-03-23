@@ -1,0 +1,90 @@
+\doxysection{Quadtree.\+cpp}
+\hypertarget{_quadtree_8cpp_source}{}\label{_quadtree_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Globals/Resource/Quadtree.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Globals/Resource/Quadtree.cpp}}
+\mbox{\hyperlink{_quadtree_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_quadtree_8h}{QuadTree.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00003}\mbox{\hyperlink{struct_boundary_a22397906d9c214901a4342b174129bbe}{00003}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_boundary_a22397906d9c214901a4342b174129bbe}{Boundary::contains}}(\textcolor{keyword}{const}\ sf::Vector2f\&\ point)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00004}00004\ \ \ \ \ \textcolor{keywordflow}{return}\ (point.x\ >=\ (\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x\ -\/\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}))\ \&\&}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00005}00005\ \ \ \ \ \ \ \ \ (point.x\ <\ (\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x\ +\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}))\ \&\&}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00006}00006\ \ \ \ \ \ \ \ \ (point.y\ >=\ (\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y\ -\/\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}))\ \&\&}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00007}00007\ \ \ \ \ \ \ \ \ (point.y\ <\ (\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y\ +\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}));}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00010}\mbox{\hyperlink{struct_boundary_af10897edb130718cc8804b079f5fc385}{00010}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_boundary_af10897edb130718cc8804b079f5fc385}{Boundary::intersects}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_boundary}{Boundary}}\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{return}\ !(other.\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x\ -\/\ other.\mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ >\ \mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x\ +\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ ||}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ other.\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x\ +\ other.\mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ <\ \mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x\ -\/\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ ||}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ other.\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y\ -\/\ other.\mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ >\ \mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y\ +\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ ||}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ other.\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y\ +\ other.\mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ <\ \mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y\ -\/\ \mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}});}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00017}\mbox{\hyperlink{class_quad_tree_ad363bec87e9adb4bdd1be60d5b13bc6a}{00017}}\ \mbox{\hyperlink{class_quad_tree_ad363bec87e9adb4bdd1be60d5b13bc6a}{QuadTree::QuadTree}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_boundary}{Boundary}}\&\ boundary,\ \textcolor{keywordtype}{int}\ capacity)}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00018}00018\ \ \ \ \ :\ boundary(boundary),\ capacity(capacity)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00020}\mbox{\hyperlink{class_quad_tree_a0ce82c5b9bc22b302bb66346ba6ef9bc}{00020}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_quad_tree_a0ce82c5b9bc22b302bb66346ba6ef9bc}{QuadTree::insert}}(\mbox{\hyperlink{class_pellet}{Pellet}}*\ pellet)\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (!boundary.\mbox{\hyperlink{struct_boundary_a22397906d9c214901a4342b174129bbe}{contains}}(pellet-\/>\mbox{\hyperlink{class_pellet_a1dc15dba50ba763418b301de39d7e4bc}{getPosition}}()))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{if}\ (pellets.size()\ <\ capacity)\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ pellets.push\_back(pellet);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!divided)\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ subdivide();}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (northWest-\/>insert(pellet)\ ||}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ northEast-\/>insert(pellet)\ ||}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ southWest-\/>insert(pellet)\ ||}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ southEast-\/>insert(pellet));}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00038}\mbox{\hyperlink{class_quad_tree_aba2d8132a1f57a753516ddf5b48ed972}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quad_tree_aba2d8132a1f57a753516ddf5b48ed972}{QuadTree::query}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_boundary}{Boundary}}\&\ range,\ std::vector<Pellet*>\&\ found)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (!boundary.\mbox{\hyperlink{struct_boundary_af10897edb130718cc8804b079f5fc385}{intersects}}(range))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_pellet}{Pellet}}*\ pellet\ :\ pellets)\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (range.\mbox{\hyperlink{struct_boundary_a22397906d9c214901a4342b174129bbe}{contains}}(pellet-\/>getPosition()))\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ found.push\_back(pellet);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (divided)\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ northWest-\/>query(range,\ found);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ northEast-\/>query(range,\ found);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ southWest-\/>query(range,\ found);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ southEast-\/>query(range,\ found);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00055}00055\ \textcolor{keywordtype}{void}\ QuadTree::subdivide()\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ boundary.\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.x;}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ boundary.\mbox{\hyperlink{struct_boundary_ad83581961fa761e8c1c0633c152c6ce2}{center}}.y;}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{float}\ h\ =\ boundary.\mbox{\hyperlink{struct_boundary_adf8c8f93f15272e6579282522dc12779}{halfDimension}}\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00060}00060\ \ \ \ \ northWest\ =\ std::make\_unique<QuadTree>(\mbox{\hyperlink{struct_boundary}{Boundary}}(x\ -\/\ h,\ y\ -\/\ h,\ h),\ capacity);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00061}00061\ \ \ \ \ northEast\ =\ std::make\_unique<QuadTree>(\mbox{\hyperlink{struct_boundary}{Boundary}}(x\ +\ h,\ y\ -\/\ h,\ h),\ capacity);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00062}00062\ \ \ \ \ southWest\ =\ std::make\_unique<QuadTree>(\mbox{\hyperlink{struct_boundary}{Boundary}}(x\ -\/\ h,\ y\ +\ h,\ h),\ capacity);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00063}00063\ \ \ \ \ southEast\ =\ std::make\_unique<QuadTree>(\mbox{\hyperlink{struct_boundary}{Boundary}}(x\ +\ h,\ y\ +\ h,\ h),\ capacity);}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00064}00064\ \ \ \ \ divided\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00067}\mbox{\hyperlink{class_quad_tree_ad7fe77e65234556381f3402408aaefd6}{00067}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_quad_tree_ad7fe77e65234556381f3402408aaefd6}{QuadTree::isEmpty}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (!pellets.empty())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (divided)\ \{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ northWest-\/>isEmpty()\ \&\&\ northEast-\/>isEmpty()\ \&\&\ southWest-\/>isEmpty()\ \&\&\ southEast-\/>isEmpty();}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00075}\mbox{\hyperlink{class_quad_tree_a4b930e533ae36a22c747647e5fbb48e8}{00075}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_quad_tree_a4b930e533ae36a22c747647e5fbb48e8}{QuadTree::collidesWith}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_circle}{Circle}}\&\ circle,\ \mbox{\hyperlink{class_pellet}{Pellet}}*\ pellet)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00076}00076\ \ \ \ \ sf::Vector2f\ circlePos\ =\ circle.\mbox{\hyperlink{class_circle_a1b37e8973c5a83ac381fda84716e1b0d}{getPosition}}();}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00077}00077\ \ \ \ \ sf::Vector2f\ pelletPos\ =\ pellet-\/>\mbox{\hyperlink{class_pellet_a1dc15dba50ba763418b301de39d7e4bc}{getPosition}}();}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ std::sqrt((circlePos.x\ -\/\ pelletPos.x)\ *\ (circlePos.x\ -\/\ pelletPos.x)\ +}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ (circlePos.y\ -\/\ pelletPos.y)\ *\ (circlePos.y\ -\/\ pelletPos.y));}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return}\ distance\ <=\ circle.\mbox{\hyperlink{class_circle_a4f2038c4e879f84a06d7bc79c0625d7f}{getCircleSize}}();}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{_quadtree_8cpp_source_l00084}00084\ }
+
+\end{DoxyCode}

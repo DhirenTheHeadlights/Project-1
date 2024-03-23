@@ -1,0 +1,83 @@
+\doxysection{Cell\+Group\+\_\+\+AG.\+cpp}
+\hypertarget{_cell_group___a_g_8cpp_source}{}\label{_cell_group___a_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/CellGroup\_AG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/CellGroup\_AG.cpp}}
+\mbox{\hyperlink{_cell_group___a_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cell_group___a_g_8h}{CellGroup\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00003}\mbox{\hyperlink{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6}{00003}}\ \mbox{\hyperlink{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6}{CellGroup::CellGroup}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ startSize,\ \mbox{\hyperlink{class_map}{Map}}\&\ map)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00004}00004\ \ \ \ \ x\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(std::rand()\ \%\ map.\mbox{\hyperlink{class_map_a118e0c5115d9162450534e6e925eeebb}{getLength}}());}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00005}00005\ \ \ \ \ y\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(std::rand()\ \%\ map.\mbox{\hyperlink{class_map_a118e0c5115d9162450534e6e925eeebb}{getLength}}());}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00006}00006\ \ \ \ \ \mbox{\hyperlink{class_circle}{Circle}}*\ cell\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_circle}{Circle}}(startSize);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00007}00007\ \ \ \ \ cell-\/>\mbox{\hyperlink{class_circle_a8583cdd42262cec318c169257f3fbc28}{setPosition}}(x,\ y);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00008}00008\ \ \ \ \ cells.push\_back(cell);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00011}\mbox{\hyperlink{class_cell_group_a8d83f2c0d13b7d662f34deadf0b53894}{00011}}\ \mbox{\hyperlink{class_cell_group_a8d83f2c0d13b7d662f34deadf0b53894}{CellGroup::\string~CellGroup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_circle}{Circle}}*\ cell\ :\ cells)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ cell;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00017}\mbox{\hyperlink{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5}{00017}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5}{CellGroup::split}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00018}00018\ \ \ \ \ std::vector<Circle*>\ newCells;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_circle}{Circle}}*\ cell\ :\ cells)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ newSize\ =\ cell-\/>getCircleSize()\ /\ 2.0f;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newSize\ <\ minSize\ ||\ cells.size()\ >=\ 16)\ \{\ \textcolor{comment}{//\ prevent\ cell\ from\ getting\ too\ small}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ cell-\/>setCircleSize(newSize);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_circle}{Circle}}*\ newCell\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_circle}{Circle}}(newSize);\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ newCell-\/>\mbox{\hyperlink{class_circle_a8583cdd42262cec318c169257f3fbc28}{setPosition}}(cell-\/>getPosition().x\ +\ newSize,\ cell-\/>getPosition().y\ +\ newSize);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ newCells.push\_back(newCell);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00030}00030\ \ \ \ \ cells.insert(cells.end(),\ newCells.begin(),\ newCells.end());}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00033}\mbox{\hyperlink{class_cell_group_aeb996e3418187cc676b7d0b959882e6e}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_aeb996e3418187cc676b7d0b959882e6e}{CellGroup::removeCircle}}(\mbox{\hyperlink{class_circle}{Circle}}\&\ cell,\ \mbox{\hyperlink{class_map}{Map}}\&\ map)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::find\_if(cells.begin(),\ cells.end(),\ [\&](\textcolor{keyword}{const}\ \mbox{\hyperlink{class_circle}{Circle}}*\ c)\ \{\ return\ *c\ ==\ cell;\ \});}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ cells.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}*\ it;\ \textcolor{comment}{//\ Deallocate\ memory}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ cells.erase(it);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00041}\mbox{\hyperlink{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc}{CellGroup::draw}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_circle}{Circle}}*\ cell\ :\ cells)\ cell-\/>draw(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}});}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00045}\mbox{\hyperlink{class_cell_group_a672126a955b0c03250ef3e5034adb242}{00045}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_a672126a955b0c03250ef3e5034adb242}{CellGroup::move}}(\textcolor{keywordtype}{double}\ moveSpeed,\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00046}00046\ \ \ \ \ sf::Vector2f\ viewPos\ =\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.mapPixelToCoords(sf::Mouse::getPosition(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}));}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_circle}{Circle}}*\ cell\ :\ cells)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ sf::Vector2f\ dirToMouse\ =\ viewPos\ -\/\ cell-\/>getPosition();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ cell-\/>move(moveSpeed,\ dirToMouse,\ map,\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}});}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00053}\mbox{\hyperlink{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6}{00053}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6}{CellGroup::reset}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00054}00054\ \ \ \ \ cells.clear();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00055}00055\ \ \ \ \ numSplits\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00056}00056\ \ \ \ \ numCells\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00059}\mbox{\hyperlink{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033}{00059}}\ std::vector<Circle*>\ \mbox{\hyperlink{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033}{CellGroup::getCellGroup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ cells;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00063}\mbox{\hyperlink{class_cell_group_a47c41f7d789705cc0ed3cc15d4454be3}{00063}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_cell_group_a47c41f7d789705cc0ed3cc15d4454be3}{CellGroup::getMinSize}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{return}\ minSize;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00067}\mbox{\hyperlink{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}{00067}}\ \textcolor{keyword}{const}\ sf::Vector2f\ \mbox{\hyperlink{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}{CellGroup::getAvgPos}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00068}00068\ \ \ \ \ sf::Vector2f\ avgPos;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_circle}{Circle}}*\ cell\ :\ cells)\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ avgPos.x\ +=\ cell-\/>getPosition().x;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ avgPos.y\ +=\ cell-\/>getPosition().y;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00073}00073\ \ \ \ \ avgPos.x\ /=\ cells.size();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00074}00074\ \ \ \ \ avgPos.y\ /=\ cells.size();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{return}\ avgPos;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8cpp_source_l00077}00077\ \}}
+
+\end{DoxyCode}

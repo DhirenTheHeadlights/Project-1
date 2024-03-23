@@ -1,0 +1,54 @@
+<map id="PirateGame::IslandMenu::draw" name="PirateGame::IslandMenu::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,501,170,544"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="218,531,388,573"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,531,202,536,202,541,169,536"/>
+<area shape="rect" id="Node000017" href="$class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2.html#aff1afee8aaf8c6dc82f6de5a643d49c2" title=" " alt="" coords="449,339,650,381"/>
+<area shape="poly" id="edge17_Node000001_Node000017" title=" " alt="" coords="143,498,276,448,435,391,457,384,458,389,437,396,278,453,145,503"/>
+<area shape="rect" id="Node000018" href="$class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7.html#a10d3a1555c9f783a4f0fb03c7be71bc7" title=" " alt="" coords="219,689,387,732"/>
+<area shape="poly" id="edge21_Node000001_Node000018" title=" " alt="" coords="115,543,267,677,264,681,112,547"/>
+<area shape="rect" id="Node000020" href="$class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef.html#af05d9ba589a749a903e76e5b7d33d2ef" title=" " alt="" coords="467,272,631,315"/>
+<area shape="poly" id="edge27_Node000001_Node000020" title=" " alt="" coords="112,499,159,461,216,422,275,389,323,366,435,324,454,317,456,322,437,329,325,371,278,393,219,426,162,465,115,503"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9.html#a256554b4d372def295062a76351230e9" title=" " alt="" coords="436,472,662,515"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="388,529,441,516,442,521,389,534"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a.html#a660bb48fb74708e330990d16a8b2070a" title=" " alt="" coords="467,205,631,248"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="305,530,317,475,341,402,358,363,379,325,404,289,434,258,451,246,454,250,438,262,408,293,383,328,363,365,346,404,322,477,310,531"/>
+<area shape="rect" id="Node000008" href="$class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="710,405,889,448"/>
+<area shape="poly" id="edge12_Node000002_Node000008" title=" " alt="" coords="388,556,450,557,519,554,592,543,661,524,690,511,718,494,764,456,768,461,721,498,693,515,663,529,593,549,520,559,450,563,388,562"/>
+<area shape="rect" id="Node000012" href="$class_pirate_game_1_1_global_game_state_manager_ad62c617d29c72bf2e81113a3b53aa1ab.html#ad62c617d29c72bf2e81113a3b53aa1ab" title=" " alt="" coords="449,405,650,448"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="328,528,376,492,435,458,448,452,451,456,437,462,379,497,331,532"/>
+<area shape="rect" id="Node000013" href="$class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97.html#a40abd855ad2ca0e405e066ec43502a97" title=" " alt="" coords="462,789,637,832"/>
+<area shape="poly" id="edge13_Node000002_Node000013" title=" " alt="" coords="322,572,355,619,390,676,403,706,410,731,418,753,438,775,449,784,446,788,434,779,414,756,405,732,398,707,386,679,350,622,318,575"/>
+<area shape="rect" id="Node000014" href="$class_pirate_game_1_1_player_ship_a5d95ebf7b049c6b1e0097633387006b8.html#a5d95ebf7b049c6b1e0097633387006b8" title=" " alt="" coords="469,589,630,632"/>
+<area shape="poly" id="edge14_Node000002_Node000014" title=" " alt="" coords="389,570,454,585,453,591,388,575"/>
+<area shape="rect" id="Node000015" href="$class_pirate_game_1_1_ship_movement_handler_ae2068bb47adcba1fefd860be7badcdba.html#ae2068bb47adcba1fefd860be7badcdba" title=" " alt="" coords="458,656,641,699"/>
+<area shape="poly" id="edge15_Node000002_Node000015" title=" " alt="" coords="331,572,379,607,437,642,451,648,448,652,435,646,376,612,328,576"/>
+<area shape="rect" id="Node000016" href="$class_pirate_game_1_1_global_values_ab1f507a0d3ca352140f3eb127ba33ff4.html#ab1f507a0d3ca352140f3eb127ba33ff4" title=" " alt="" coords="462,723,637,765"/>
+<area shape="poly" id="edge16_Node000002_Node000016" title=" " alt="" coords="319,572,365,640,399,677,438,708,449,715,446,720,434,713,395,681,361,643,314,575"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_ship_inventory_handler_a6e3eff38256532183572a88405716414.html#a6e3eff38256532183572a88405716414" title=" " alt="" coords="712,72,887,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="580,203,639,164,709,124,721,119,723,123,712,129,641,169,583,207"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767.html#a1a2c717d58240add16ecfee9972ab767" title=" " alt="" coords="711,139,888,181"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="631,202,702,183,703,188,633,207"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_ship_inventory_handler_adf212961470b22db6f3acd0f7a6626a8.html#adf212961470b22db6f3acd0f7a6626a8" title=" " alt="" coords="712,205,887,248"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="632,224,697,224,697,229,632,229"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="633,239,664,258,678,275,686,292,690,326,693,359,700,375,712,392,715,394,711,398,708,395,695,378,688,360,684,326,680,293,673,278,661,262,630,243"/>
+<area shape="rect" id="Node000009" href="$class_pirate_game_1_1_ship_inventory_handler_a2780f47088cb5299735e82a4fe0d2f14.html#a2780f47088cb5299735e82a4fe0d2f14" title=" " alt="" coords="712,272,887,315"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="633,246,703,265,702,270,631,251"/>
+<area shape="rect" id="Node000010" href="$class_pirate_game_1_1_player_ship_a448ebe382f3a8d107fa43e15a1d62935.html#a448ebe382f3a8d107fa43e15a1d62935" title=" " alt="" coords="719,339,880,381"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="633,242,664,258,680,275,689,292,697,308,712,325,717,328,714,333,709,329,693,311,684,294,676,278,661,262,630,246"/>
+<area shape="rect" id="Node000011" href="$class_pirate_game_1_1_ship_inventory_handler_a71c28c835b1c52fb0d257869445bec72.html#a71c28c835b1c52fb0d257869445bec72" title=" " alt="" coords="712,5,887,48"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="564,203,623,133,664,93,709,58,716,53,719,58,712,62,667,97,627,136,568,206"/>
+<area shape="poly" id="edge18_Node000017_Node000008" title=" " alt="" coords="633,379,703,398,702,403,631,384"/>
+<area shape="poly" id="edge19_Node000017_Node000009" title=" " alt="" coords="631,336,702,317,703,322,633,341"/>
+<area shape="poly" id="edge20_Node000017_Node000010" title=" " alt="" coords="650,357,703,357,703,363,650,363"/>
+<area shape="poly" id="edge22_Node000018_Node000013" title=" " alt="" coords="344,730,437,775,455,781,453,786,435,780,341,735"/>
+<area shape="poly" id="edge23_Node000018_Node000014" title=" " alt="" coords="341,687,435,642,453,635,455,640,437,646,344,691"/>
+<area shape="poly" id="edge24_Node000018_Node000015" title=" " alt="" coords="387,697,442,689,442,694,388,702"/>
+<area shape="poly" id="edge25_Node000018_Node000016" title=" " alt="" coords="388,719,446,727,446,733,387,725"/>
+<area shape="rect" id="Node000019" href="$class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba.html#a546c025610a211cbfe65e7b237676cba" title=" " alt="" coords="441,856,658,899"/>
+<area shape="poly" id="edge26_Node000018_Node000019" title=" " alt="" coords="322,731,370,786,402,816,437,842,446,847,444,851,435,846,399,820,366,790,318,734"/>
+<area shape="poly" id="edge28_Node000020_Node000006" title=" " alt="" coords="630,274,661,258,676,242,684,226,693,209,709,191,714,187,717,192,712,195,697,212,689,228,680,245,664,262,633,278"/>
+<area shape="poly" id="edge29_Node000020_Node000007" title=" " alt="" coords="631,269,702,250,703,255,633,274"/>
+<area shape="poly" id="edge30_Node000020_Node000008" title=" " alt="" coords="633,308,664,325,680,341,689,358,697,375,712,391,717,395,714,399,709,395,693,378,684,361,676,344,661,329,630,313"/>
+<area shape="poly" id="edge31_Node000020_Node000009" title=" " alt="" coords="632,291,697,291,697,296,632,296"/>
+<area shape="poly" id="edge32_Node000020_Node000010" title=" " alt="" coords="633,313,705,332,703,337,631,318"/>
+</map>

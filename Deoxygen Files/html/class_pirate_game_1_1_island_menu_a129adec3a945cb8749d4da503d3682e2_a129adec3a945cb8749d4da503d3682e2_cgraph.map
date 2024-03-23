@@ -1,0 +1,5 @@
+<map id="PirateGame::IslandMenu::setUpMenu" name="PirateGame::IslandMenu::setUpMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,170,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="218,5,396,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,24,202,24,202,29,170,29"/>
+</map>

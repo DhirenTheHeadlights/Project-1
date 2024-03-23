@@ -1,0 +1,441 @@
+\doxysection{Pirate\+Game\+::Ship\+Cannon\+Handler Class Reference}
+\hypertarget{class_pirate_game_1_1_ship_cannon_handler}{}\label{class_pirate_game_1_1_ship_cannon_handler}\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+
+
+{\ttfamily \#include $<$Ship\+Cannon\+Handler\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a23af97d4c1c23f2cd23804433aff1bb6_a23af97d4c1c23f2cd23804433aff1bb6}{Ship\+Cannon\+Handler}} (sf\+::\+Sprite \&\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a9251bb334ecafdaf71eefe74ce7c7c3c_a9251bb334ecafdaf71eefe74ce7c7c3c}{ship\+Sprite}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a59d1bff89d5531af44b1526b5a891569_a59d1bff89d5531af44b1526b5a891569}{\texorpdfstring{$\sim$}{\string~}\+Ship\+Cannon\+Handler}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a71aa3cdcd3065dda3bfd37ed49096447_a71aa3cdcd3065dda3bfd37ed49096447}{shoot\+Cannonballs}} (int num\+Cannons, sf\+::\+Vector2f target\+Pos)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a30be47f3983e72304688fa10e3f85af0_a30be47f3983e72304688fa10e3f85af0}{update\+Cannonballs}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ac17861b5d7876ef3dfb9479c4f7d9ce7_ac17861b5d7876ef3dfb9479c4f7d9ce7}{draw\+Cannonballs}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_aa22816e3fef1adc186731ccc2442bff4_aa22816e3fef1adc186731ccc2442bff4}{set\+Firing\+Side}} (\mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261}{Firing\+Side}} \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ac2f0eba24946c140857eac0d86911c6c_ac2f0eba24946c140857eac0d86911c6c}{side}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ab0d51cfc79cf428d016d831217c86bbc_ab0d51cfc79cf428d016d831217c86bbc}{set\+Cooldown}} (float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a395193a4e2ddfdbaa39940c59e4d78d5_a395193a4e2ddfdbaa39940c59e4d78d5}{cooldown}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a1bf73c7fa4cd94e56444d46b423f680a_a1bf73c7fa4cd94e56444d46b423f680a}{set\+Free\+Aim}} (bool \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a30f4bf4b9d72cebb6eb64e1efab49cfe_a30f4bf4b9d72cebb6eb64e1efab49cfe}{aim\+Towards\+Mouse}})
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ad1941523ce68b0d1944a54c7cb0a5ea4_ad1941523ce68b0d1944a54c7cb0a5ea4}{get\+Aim\+Towards\+Mouse}} () const
+\item 
+\mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261}{Firing\+Side}} \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a5613bbdb211d38dffb62761510636242_a5613bbdb211d38dffb62761510636242}{get\+Firing\+Side}} () const
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ad63e8430189bd0f32cbb2c82c7df021a_ad63e8430189bd0f32cbb2c82c7df021a}{get\+Firing\+Direction\+Angle}} () const
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ac65394869eec6e6cb3b9e7c09dacc3e8_ac65394869eec6e6cb3b9e7c09dacc3e8}{get\+Max\+Firing\+Angle}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a01ef3a1a813dada4cf83a49c65f3e5a1_a01ef3a1a813dada4cf83a49c65f3e5a1}{cannon\+Direction}} (sf\+::\+Vector2f target\+Pos)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_pirate_game_1_1_cannonball}{Cannonball}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a0ac32fc49ddb7d9239d64d818c07f308_a0ac32fc49ddb7d9239d64d818c07f308}{cannonballs}} \{\}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a33931731f15748cde471e96a14de365b_a33931731f15748cde471e96a14de365b}{cannon\+Cooldown\+Clock}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_aa51d89ee45049d80b68a8df837df3f15_aa51d89ee45049d80b68a8df837df3f15}{delta\+Time}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a19edef202f04dbf543b2c6233e6c4f6a_a19edef202f04dbf543b2c6233e6c4f6a}{cannonball\+Direction}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a0a172e793af155a61060305b3cb93247_a0a172e793af155a61060305b3cb93247}{cannonball\+Scale}} = \{ 0.\+5f, 0.\+5f \}
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a30f4bf4b9d72cebb6eb64e1efab49cfe_a30f4bf4b9d72cebb6eb64e1efab49cfe}{aim\+Towards\+Mouse}} = false
+\item 
+const float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a5354863fdf8a03f847faec3bb5254a0f_a5354863fdf8a03f847faec3bb5254a0f}{max\+Firing\+Angle}} = 45.f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a395193a4e2ddfdbaa39940c59e4d78d5_a395193a4e2ddfdbaa39940c59e4d78d5}{cooldown}} = 0.\+1f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a89a1942f8b225a8888dd601f63beccfe_a89a1942f8b225a8888dd601f63beccfe}{cannonball\+Speed}} = 300
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_aa29d244395598c2ae6064a74b5cea583_aa29d244395598c2ae6064a74b5cea583}{firing\+Direction\+Angle}} = 0
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_a9251bb334ecafdaf71eefe74ce7c7c3c_a9251bb334ecafdaf71eefe74ce7c7c3c}{ship\+Sprite}}
+\item 
+\mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261}{Firing\+Side}} \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler_ac2f0eba24946c140857eac0d86911c6c_ac2f0eba24946c140857eac0d86911c6c}{side}} = \mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261a60aaf44d4b562252c04db7f98497e9aa}{Firing\+Side\+::\+Port}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00017}{17}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a23af97d4c1c23f2cd23804433aff1bb6_a23af97d4c1c23f2cd23804433aff1bb6}\label{class_pirate_game_1_1_ship_cannon_handler_a23af97d4c1c23f2cd23804433aff1bb6_a23af97d4c1c23f2cd23804433aff1bb6} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!ShipCannonHandler@{ShipCannonHandler}}
+\index{ShipCannonHandler@{ShipCannonHandler}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{ShipCannonHandler()}{ShipCannonHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::\+Ship\+Cannon\+Handler (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite \&}]{ship\+Sprite }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a59d1bff89d5531af44b1526b5a891569_a59d1bff89d5531af44b1526b5a891569}\label{class_pirate_game_1_1_ship_cannon_handler_a59d1bff89d5531af44b1526b5a891569_a59d1bff89d5531af44b1526b5a891569} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!````~ShipCannonHandler@{\texorpdfstring{$\sim$}{\string~}ShipCannonHandler}}
+\index{````~ShipCannonHandler@{\texorpdfstring{$\sim$}{\string~}ShipCannonHandler}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ShipCannonHandler()}{\string~ShipCannonHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::\texorpdfstring{$\sim$}{\string~}\+Ship\+Cannon\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00020}{20}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a01ef3a1a813dada4cf83a49c65f3e5a1_a01ef3a1a813dada4cf83a49c65f3e5a1}\label{class_pirate_game_1_1_ship_cannon_handler_a01ef3a1a813dada4cf83a49c65f3e5a1_a01ef3a1a813dada4cf83a49c65f3e5a1} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cannonDirection@{cannonDirection}}
+\index{cannonDirection@{cannonDirection}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cannonDirection()}{cannonDirection()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Ship\+Cannon\+Handler\+::cannon\+Direction (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{target\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a01ef3a1a813dada4cf83a49c65f3e5a1_a01ef3a1a813dada4cf83a49c65f3e5a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a01ef3a1a813dada4cf83a49c65f3e5a1_a01ef3a1a813dada4cf83a49c65f3e5a1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_ac17861b5d7876ef3dfb9479c4f7d9ce7_ac17861b5d7876ef3dfb9479c4f7d9ce7}\label{class_pirate_game_1_1_ship_cannon_handler_ac17861b5d7876ef3dfb9479c4f7d9ce7_ac17861b5d7876ef3dfb9479c4f7d9ce7} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!drawCannonballs@{drawCannonballs}}
+\index{drawCannonballs@{drawCannonballs}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{drawCannonballs()}{drawCannonballs()}}
+{\footnotesize\ttfamily void Ship\+Cannon\+Handler\+::draw\+Cannonballs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_ac17861b5d7876ef3dfb9479c4f7d9ce7_ac17861b5d7876ef3dfb9479c4f7d9ce7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_ac17861b5d7876ef3dfb9479c4f7d9ce7_ac17861b5d7876ef3dfb9479c4f7d9ce7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_ad1941523ce68b0d1944a54c7cb0a5ea4_ad1941523ce68b0d1944a54c7cb0a5ea4}\label{class_pirate_game_1_1_ship_cannon_handler_ad1941523ce68b0d1944a54c7cb0a5ea4_ad1941523ce68b0d1944a54c7cb0a5ea4} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!getAimTowardsMouse@{getAimTowardsMouse}}
+\index{getAimTowardsMouse@{getAimTowardsMouse}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{getAimTowardsMouse()}{getAimTowardsMouse()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::get\+Aim\+Towards\+Mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00032}{32}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_ad1941523ce68b0d1944a54c7cb0a5ea4_ad1941523ce68b0d1944a54c7cb0a5ea4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_ad63e8430189bd0f32cbb2c82c7df021a_ad63e8430189bd0f32cbb2c82c7df021a}\label{class_pirate_game_1_1_ship_cannon_handler_ad63e8430189bd0f32cbb2c82c7df021a_ad63e8430189bd0f32cbb2c82c7df021a} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!getFiringDirectionAngle@{getFiringDirectionAngle}}
+\index{getFiringDirectionAngle@{getFiringDirectionAngle}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{getFiringDirectionAngle()}{getFiringDirectionAngle()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::get\+Firing\+Direction\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00034}{34}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_ad63e8430189bd0f32cbb2c82c7df021a_ad63e8430189bd0f32cbb2c82c7df021a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a5613bbdb211d38dffb62761510636242_a5613bbdb211d38dffb62761510636242}\label{class_pirate_game_1_1_ship_cannon_handler_a5613bbdb211d38dffb62761510636242_a5613bbdb211d38dffb62761510636242} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!getFiringSide@{getFiringSide}}
+\index{getFiringSide@{getFiringSide}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{getFiringSide()}{getFiringSide()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261}{Firing\+Side}} Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::get\+Firing\+Side (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00033}{33}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a5613bbdb211d38dffb62761510636242_a5613bbdb211d38dffb62761510636242_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_ac65394869eec6e6cb3b9e7c09dacc3e8_ac65394869eec6e6cb3b9e7c09dacc3e8}\label{class_pirate_game_1_1_ship_cannon_handler_ac65394869eec6e6cb3b9e7c09dacc3e8_ac65394869eec6e6cb3b9e7c09dacc3e8} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!getMaxFiringAngle@{getMaxFiringAngle}}
+\index{getMaxFiringAngle@{getMaxFiringAngle}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{getMaxFiringAngle()}{getMaxFiringAngle()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::get\+Max\+Firing\+Angle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00035}{35}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_ac65394869eec6e6cb3b9e7c09dacc3e8_ac65394869eec6e6cb3b9e7c09dacc3e8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_ab0d51cfc79cf428d016d831217c86bbc_ab0d51cfc79cf428d016d831217c86bbc}\label{class_pirate_game_1_1_ship_cannon_handler_ab0d51cfc79cf428d016d831217c86bbc_ab0d51cfc79cf428d016d831217c86bbc} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!setCooldown@{setCooldown}}
+\index{setCooldown@{setCooldown}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{setCooldown()}{setCooldown()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::set\+Cooldown (\begin{DoxyParamCaption}\item[{float}]{cooldown }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00028}{28}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_aa22816e3fef1adc186731ccc2442bff4_aa22816e3fef1adc186731ccc2442bff4}\label{class_pirate_game_1_1_ship_cannon_handler_aa22816e3fef1adc186731ccc2442bff4_aa22816e3fef1adc186731ccc2442bff4} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!setFiringSide@{setFiringSide}}
+\index{setFiringSide@{setFiringSide}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{setFiringSide()}{setFiringSide()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::set\+Firing\+Side (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261}{Firing\+Side}}}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00027}{27}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_aa22816e3fef1adc186731ccc2442bff4_aa22816e3fef1adc186731ccc2442bff4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a1bf73c7fa4cd94e56444d46b423f680a_a1bf73c7fa4cd94e56444d46b423f680a}\label{class_pirate_game_1_1_ship_cannon_handler_a1bf73c7fa4cd94e56444d46b423f680a_a1bf73c7fa4cd94e56444d46b423f680a} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!setFreeAim@{setFreeAim}}
+\index{setFreeAim@{setFreeAim}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{setFreeAim()}{setFreeAim()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::set\+Free\+Aim (\begin{DoxyParamCaption}\item[{bool}]{aim\+Towards\+Mouse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00029}{29}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a1bf73c7fa4cd94e56444d46b423f680a_a1bf73c7fa4cd94e56444d46b423f680a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a71aa3cdcd3065dda3bfd37ed49096447_a71aa3cdcd3065dda3bfd37ed49096447}\label{class_pirate_game_1_1_ship_cannon_handler_a71aa3cdcd3065dda3bfd37ed49096447_a71aa3cdcd3065dda3bfd37ed49096447} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!shootCannonballs@{shootCannonballs}}
+\index{shootCannonballs@{shootCannonballs}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{shootCannonballs()}{shootCannonballs()}}
+{\footnotesize\ttfamily void Ship\+Cannon\+Handler\+::shoot\+Cannonballs (\begin{DoxyParamCaption}\item[{int}]{num\+Cannons,  }\item[{sf\+::\+Vector2f}]{target\+Pos }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a71aa3cdcd3065dda3bfd37ed49096447_a71aa3cdcd3065dda3bfd37ed49096447_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a71aa3cdcd3065dda3bfd37ed49096447_a71aa3cdcd3065dda3bfd37ed49096447_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a30be47f3983e72304688fa10e3f85af0_a30be47f3983e72304688fa10e3f85af0}\label{class_pirate_game_1_1_ship_cannon_handler_a30be47f3983e72304688fa10e3f85af0_a30be47f3983e72304688fa10e3f85af0} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!updateCannonballs@{updateCannonballs}}
+\index{updateCannonballs@{updateCannonballs}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{updateCannonballs()}{updateCannonballs()}}
+{\footnotesize\ttfamily void Ship\+Cannon\+Handler\+::update\+Cannonballs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_cannon_handler_a30be47f3983e72304688fa10e3f85af0_a30be47f3983e72304688fa10e3f85af0_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a30f4bf4b9d72cebb6eb64e1efab49cfe_a30f4bf4b9d72cebb6eb64e1efab49cfe}\label{class_pirate_game_1_1_ship_cannon_handler_a30f4bf4b9d72cebb6eb64e1efab49cfe_a30f4bf4b9d72cebb6eb64e1efab49cfe} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!aimTowardsMouse@{aimTowardsMouse}}
+\index{aimTowardsMouse@{aimTowardsMouse}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{aimTowardsMouse}{aimTowardsMouse}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::aim\+Towards\+Mouse = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a19edef202f04dbf543b2c6233e6c4f6a_a19edef202f04dbf543b2c6233e6c4f6a}\label{class_pirate_game_1_1_ship_cannon_handler_a19edef202f04dbf543b2c6233e6c4f6a_a19edef202f04dbf543b2c6233e6c4f6a} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cannonballDirection@{cannonballDirection}}
+\index{cannonballDirection@{cannonballDirection}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cannonballDirection}{cannonballDirection}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::cannonball\+Direction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00041}{41}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a0ac32fc49ddb7d9239d64d818c07f308_a0ac32fc49ddb7d9239d64d818c07f308}\label{class_pirate_game_1_1_ship_cannon_handler_a0ac32fc49ddb7d9239d64d818c07f308_a0ac32fc49ddb7d9239d64d818c07f308} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cannonballs@{cannonballs}}
+\index{cannonballs@{cannonballs}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cannonballs}{cannonballs}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_pirate_game_1_1_cannonball}{Cannonball}}\texorpdfstring{$\ast$}{*}$>$ Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::cannonballs \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00037}{37}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a0a172e793af155a61060305b3cb93247_a0a172e793af155a61060305b3cb93247}\label{class_pirate_game_1_1_ship_cannon_handler_a0a172e793af155a61060305b3cb93247_a0a172e793af155a61060305b3cb93247} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cannonballScale@{cannonballScale}}
+\index{cannonballScale@{cannonballScale}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cannonballScale}{cannonballScale}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::cannonball\+Scale = \{ 0.\+5f, 0.\+5f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a89a1942f8b225a8888dd601f63beccfe_a89a1942f8b225a8888dd601f63beccfe}\label{class_pirate_game_1_1_ship_cannon_handler_a89a1942f8b225a8888dd601f63beccfe_a89a1942f8b225a8888dd601f63beccfe} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cannonballSpeed@{cannonballSpeed}}
+\index{cannonballSpeed@{cannonballSpeed}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cannonballSpeed}{cannonballSpeed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::cannonball\+Speed = 300\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00047}{47}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a33931731f15748cde471e96a14de365b_a33931731f15748cde471e96a14de365b}\label{class_pirate_game_1_1_ship_cannon_handler_a33931731f15748cde471e96a14de365b_a33931731f15748cde471e96a14de365b} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cannonCooldownClock@{cannonCooldownClock}}
+\index{cannonCooldownClock@{cannonCooldownClock}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cannonCooldownClock}{cannonCooldownClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::cannon\+Cooldown\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a395193a4e2ddfdbaa39940c59e4d78d5_a395193a4e2ddfdbaa39940c59e4d78d5}\label{class_pirate_game_1_1_ship_cannon_handler_a395193a4e2ddfdbaa39940c59e4d78d5_a395193a4e2ddfdbaa39940c59e4d78d5} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!cooldown@{cooldown}}
+\index{cooldown@{cooldown}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{cooldown}{cooldown}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::cooldown = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_aa51d89ee45049d80b68a8df837df3f15_aa51d89ee45049d80b68a8df837df3f15}\label{class_pirate_game_1_1_ship_cannon_handler_aa51d89ee45049d80b68a8df837df3f15_aa51d89ee45049d80b68a8df837df3f15} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!deltaTime@{deltaTime}}
+\index{deltaTime@{deltaTime}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{deltaTime}{deltaTime}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::delta\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_aa29d244395598c2ae6064a74b5cea583_aa29d244395598c2ae6064a74b5cea583}\label{class_pirate_game_1_1_ship_cannon_handler_aa29d244395598c2ae6064a74b5cea583_aa29d244395598c2ae6064a74b5cea583} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!firingDirectionAngle@{firingDirectionAngle}}
+\index{firingDirectionAngle@{firingDirectionAngle}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{firingDirectionAngle}{firingDirectionAngle}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::firing\+Direction\+Angle = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00048}{48}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a5354863fdf8a03f847faec3bb5254a0f_a5354863fdf8a03f847faec3bb5254a0f}\label{class_pirate_game_1_1_ship_cannon_handler_a5354863fdf8a03f847faec3bb5254a0f_a5354863fdf8a03f847faec3bb5254a0f} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!maxFiringAngle@{maxFiringAngle}}
+\index{maxFiringAngle@{maxFiringAngle}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{maxFiringAngle}{maxFiringAngle}}
+{\footnotesize\ttfamily const float Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::max\+Firing\+Angle = 45.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_a9251bb334ecafdaf71eefe74ce7c7c3c_a9251bb334ecafdaf71eefe74ce7c7c3c}\label{class_pirate_game_1_1_ship_cannon_handler_a9251bb334ecafdaf71eefe74ce7c7c3c_a9251bb334ecafdaf71eefe74ce7c7c3c} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!shipSprite@{shipSprite}}
+\index{shipSprite@{shipSprite}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{shipSprite}{shipSprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite\& Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::ship\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00050}{50}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_cannon_handler_ac2f0eba24946c140857eac0d86911c6c_ac2f0eba24946c140857eac0d86911c6c}\label{class_pirate_game_1_1_ship_cannon_handler_ac2f0eba24946c140857eac0d86911c6c_ac2f0eba24946c140857eac0d86911c6c} 
+\index{PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}!side@{side}}
+\index{side@{side}!PirateGame::ShipCannonHandler@{PirateGame::ShipCannonHandler}}
+\doxysubsubsection{\texorpdfstring{side}{side}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261}{Firing\+Side}} Pirate\+Game\+::\+Ship\+Cannon\+Handler\+::side = \mbox{\hyperlink{namespace_pirate_game_a0614fb747946bfdb2fd1edfbcb23b261_a0614fb747946bfdb2fd1edfbcb23b261a60aaf44d4b562252c04db7f98497e9aa}{Firing\+Side\+::\+Port}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source_l00051}{51}} of file \mbox{\hyperlink{_ship_cannon_handler___p_g_8h_source}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_ship_cannon_handler___p_g_8h}{Ship\+Cannon\+Handler\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_ship_cannon_handler___p_g_8cpp}{Ship\+Cannon\+Handler\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

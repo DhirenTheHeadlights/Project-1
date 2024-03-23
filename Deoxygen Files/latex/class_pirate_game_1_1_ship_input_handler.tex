@@ -1,0 +1,328 @@
+\doxysection{Pirate\+Game\+::Ship\+Input\+Handler Class Reference}
+\hypertarget{class_pirate_game_1_1_ship_input_handler}{}\label{class_pirate_game_1_1_ship_input_handler}\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+
+
+{\ttfamily \#include $<$Ship\+Input\+Handler\+\_\+\+PG.\+h$>$}
+
+
+
+Inheritance diagram for Pirate\+Game\+::Ship\+Input\+Handler\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pirate\+Game\+::Ship\+Input\+Handler\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a4639b66d1422a69ade3bc05605ccba5f_a4639b66d1422a69ade3bc05605ccba5f}{Ship\+Input\+Handler}} (sf\+::\+Sprite \&\mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a32b34639aad9f682e41e85e46d804b88_a32b34639aad9f682e41e85e46d804b88}{sprite}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a50feaf972944d1ef40c05819ea0095b4_a50feaf972944d1ef40c05819ea0095b4}{\texorpdfstring{$\sim$}{\string~}\+Ship\+Input\+Handler}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a6f7d5ee048205e210357df5810cdff8f_a6f7d5ee048205e210357df5810cdff8f}{update}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a957badb0b002dc81cdd445f32926434d_a957badb0b002dc81cdd445f32926434d}{draw}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a145c09cc5281e9efb9ee3991b166bcdf_a145c09cc5281e9efb9ee3991b166bcdf}{handle\+Cannon\+Fire}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a1fd2f2f055299e0622af56244435b12d_a1fd2f2f055299e0622af56244435b12d}{handle\+Cannon\+Aim}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a5b145d39baf6d3ecc0e55b9e8284dbff_a5b145d39baf6d3ecc0e55b9e8284dbff}{handle\+Anchor\+Drop}} ()=0
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a0143e59ff8577e64896cb0e708e01942_a0143e59ff8577e64896cb0e708e01942}{set\+Num\+Cannons}} (int \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_aff88afd80a31a74979eab985874535c7_aff88afd80a31a74979eab985874535c7}{num\+Cannons}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a55b4ffe793d7017f9f793de135f6edb1_a55b4ffe793d7017f9f793de135f6edb1}{set\+Base\+Speed}} (float \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a6875ab242d74994f5cd4c3cef8c2d133_a6875ab242d74994f5cd4c3cef8c2d133}{base\+Speed}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a3845208d9885a4e8f7069fbe42937354_a3845208d9885a4e8f7069fbe42937354}{set\+Cannon\+Handler}} (\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler}{Ship\+Cannon\+Handler}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a0a657f344e364b519e6fc8e48992a889_a0a657f344e364b519e6fc8e48992a889}{SCH}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a5ad120b448bf56deecfda2d09dcf7b2f_a5ad120b448bf56deecfda2d09dcf7b2f}{set\+Movement\+Handler}} (\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler}{Ship\+Movement\+Handler}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a2fa2521ddf186ae0e22f1d6610326942_a2fa2521ddf186ae0e22f1d6610326942}{SMH}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler}{Ship\+Cannon\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_ac62ce5142f4c728d8748ff9ec492e7e3_ac62ce5142f4c728d8748ff9ec492e7e3}{get\+Cannon\+Handler}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler}{Ship\+Movement\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_ae97192f6fde723a8b529fe76f1dfd46a_ae97192f6fde723a8b529fe76f1dfd46a}{get\+Movement\+Handler}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a32b34639aad9f682e41e85e46d804b88_a32b34639aad9f682e41e85e46d804b88}{sprite}}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler}{Ship\+Cannon\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a0a657f344e364b519e6fc8e48992a889_a0a657f344e364b519e6fc8e48992a889}{SCH}} = nullptr
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler}{Ship\+Movement\+Handler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a2fa2521ddf186ae0e22f1d6610326942_a2fa2521ddf186ae0e22f1d6610326942}{SMH}} = nullptr
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_abb876d0820465a041e9b8e177d43a371_abb876d0820465a041e9b8e177d43a371}{base\+Num\+Cannons}} = 1
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_aff88afd80a31a74979eab985874535c7_aff88afd80a31a74979eab985874535c7}{num\+Cannons}} = 1
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_input_handler_a6875ab242d74994f5cd4c3cef8c2d133_a6875ab242d74994f5cd4c3cef8c2d133}{base\+Speed}} = 1.f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00016}{16}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a4639b66d1422a69ade3bc05605ccba5f_a4639b66d1422a69ade3bc05605ccba5f}\label{class_pirate_game_1_1_ship_input_handler_a4639b66d1422a69ade3bc05605ccba5f_a4639b66d1422a69ade3bc05605ccba5f} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!ShipInputHandler@{ShipInputHandler}}
+\index{ShipInputHandler@{ShipInputHandler}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{ShipInputHandler()}{ShipInputHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Input\+Handler\+::\+Ship\+Input\+Handler (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite \&}]{sprite }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00018}{18}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a50feaf972944d1ef40c05819ea0095b4_a50feaf972944d1ef40c05819ea0095b4}\label{class_pirate_game_1_1_ship_input_handler_a50feaf972944d1ef40c05819ea0095b4_a50feaf972944d1ef40c05819ea0095b4} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!````~ShipInputHandler@{\texorpdfstring{$\sim$}{\string~}ShipInputHandler}}
+\index{````~ShipInputHandler@{\texorpdfstring{$\sim$}{\string~}ShipInputHandler}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ShipInputHandler()}{\string~ShipInputHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Input\+Handler\+::\texorpdfstring{$\sim$}{\string~}\+Ship\+Input\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a957badb0b002dc81cdd445f32926434d_a957badb0b002dc81cdd445f32926434d}\label{class_pirate_game_1_1_ship_input_handler_a957badb0b002dc81cdd445f32926434d_a957badb0b002dc81cdd445f32926434d} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!draw@{draw}}
+\index{draw@{draw}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Ship\+Input\+Handler\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8cpp_source}{Ship\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler_a957badb0b002dc81cdd445f32926434d_a957badb0b002dc81cdd445f32926434d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_ac62ce5142f4c728d8748ff9ec492e7e3_ac62ce5142f4c728d8748ff9ec492e7e3}\label{class_pirate_game_1_1_ship_input_handler_ac62ce5142f4c728d8748ff9ec492e7e3_ac62ce5142f4c728d8748ff9ec492e7e3} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!getCannonHandler@{getCannonHandler}}
+\index{getCannonHandler@{getCannonHandler}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{getCannonHandler()}{getCannonHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler}{Ship\+Cannon\+Handler}} \texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Ship\+Input\+Handler\+::get\+Cannon\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00034}{34}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler_ac62ce5142f4c728d8748ff9ec492e7e3_ac62ce5142f4c728d8748ff9ec492e7e3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_ae97192f6fde723a8b529fe76f1dfd46a_ae97192f6fde723a8b529fe76f1dfd46a}\label{class_pirate_game_1_1_ship_input_handler_ae97192f6fde723a8b529fe76f1dfd46a_ae97192f6fde723a8b529fe76f1dfd46a} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!getMovementHandler@{getMovementHandler}}
+\index{getMovementHandler@{getMovementHandler}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{getMovementHandler()}{getMovementHandler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler}{Ship\+Movement\+Handler}} \texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Ship\+Input\+Handler\+::get\+Movement\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00035}{35}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a5b145d39baf6d3ecc0e55b9e8284dbff_a5b145d39baf6d3ecc0e55b9e8284dbff}\label{class_pirate_game_1_1_ship_input_handler_a5b145d39baf6d3ecc0e55b9e8284dbff_a5b145d39baf6d3ecc0e55b9e8284dbff} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!handleAnchorDrop@{handleAnchorDrop}}
+\index{handleAnchorDrop@{handleAnchorDrop}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{handleAnchorDrop()}{handleAnchorDrop()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Ship\+Input\+Handler\+::handle\+Anchor\+Drop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_input_handler_ab2e3dea5e2a8b973fa25888390b5b9f4_ab2e3dea5e2a8b973fa25888390b5b9f4}{Pirate\+Game\+::\+Enemy\+Ship\+Input\+Handler}}, and \mbox{\hyperlink{class_pirate_game_1_1_player_ship_input_handler_a7c62a971b7e11876663f538fb2d41bf8_a7c62a971b7e11876663f538fb2d41bf8}{Pirate\+Game\+::\+Player\+Ship\+Input\+Handler}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler_a5b145d39baf6d3ecc0e55b9e8284dbff_a5b145d39baf6d3ecc0e55b9e8284dbff_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a1fd2f2f055299e0622af56244435b12d_a1fd2f2f055299e0622af56244435b12d}\label{class_pirate_game_1_1_ship_input_handler_a1fd2f2f055299e0622af56244435b12d_a1fd2f2f055299e0622af56244435b12d} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!handleCannonAim@{handleCannonAim}}
+\index{handleCannonAim@{handleCannonAim}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{handleCannonAim()}{handleCannonAim()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Ship\+Input\+Handler\+::handle\+Cannon\+Aim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_input_handler_a174187762ea12ba1938cbedbe454171c_a174187762ea12ba1938cbedbe454171c}{Pirate\+Game\+::\+Enemy\+Ship\+Input\+Handler}}, and \mbox{\hyperlink{class_pirate_game_1_1_player_ship_input_handler_a163b967c34fb4925508f51717f22aed5_a163b967c34fb4925508f51717f22aed5}{Pirate\+Game\+::\+Player\+Ship\+Input\+Handler}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler_a1fd2f2f055299e0622af56244435b12d_a1fd2f2f055299e0622af56244435b12d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a145c09cc5281e9efb9ee3991b166bcdf_a145c09cc5281e9efb9ee3991b166bcdf}\label{class_pirate_game_1_1_ship_input_handler_a145c09cc5281e9efb9ee3991b166bcdf_a145c09cc5281e9efb9ee3991b166bcdf} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!handleCannonFire@{handleCannonFire}}
+\index{handleCannonFire@{handleCannonFire}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{handleCannonFire()}{handleCannonFire()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Ship\+Input\+Handler\+::handle\+Cannon\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_input_handler_ace65fc69d78d1fda05946f5458e702e3_ace65fc69d78d1fda05946f5458e702e3}{Pirate\+Game\+::\+Enemy\+Ship\+Input\+Handler}}, and \mbox{\hyperlink{class_pirate_game_1_1_player_ship_input_handler_a72b45fdd66031c659bef4efd8e0ea644_a72b45fdd66031c659bef4efd8e0ea644}{Pirate\+Game\+::\+Player\+Ship\+Input\+Handler}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler_a145c09cc5281e9efb9ee3991b166bcdf_a145c09cc5281e9efb9ee3991b166bcdf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a55b4ffe793d7017f9f793de135f6edb1_a55b4ffe793d7017f9f793de135f6edb1}\label{class_pirate_game_1_1_ship_input_handler_a55b4ffe793d7017f9f793de135f6edb1_a55b4ffe793d7017f9f793de135f6edb1} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!setBaseSpeed@{setBaseSpeed}}
+\index{setBaseSpeed@{setBaseSpeed}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{setBaseSpeed()}{setBaseSpeed()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Input\+Handler\+::set\+Base\+Speed (\begin{DoxyParamCaption}\item[{float}]{base\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00029}{29}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a3845208d9885a4e8f7069fbe42937354_a3845208d9885a4e8f7069fbe42937354}\label{class_pirate_game_1_1_ship_input_handler_a3845208d9885a4e8f7069fbe42937354_a3845208d9885a4e8f7069fbe42937354} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!setCannonHandler@{setCannonHandler}}
+\index{setCannonHandler@{setCannonHandler}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{setCannonHandler()}{setCannonHandler()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Input\+Handler\+::set\+Cannon\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler}{Ship\+Cannon\+Handler}} \texorpdfstring{$\ast$}{*}}]{SCH }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a5ad120b448bf56deecfda2d09dcf7b2f_a5ad120b448bf56deecfda2d09dcf7b2f}\label{class_pirate_game_1_1_ship_input_handler_a5ad120b448bf56deecfda2d09dcf7b2f_a5ad120b448bf56deecfda2d09dcf7b2f} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!setMovementHandler@{setMovementHandler}}
+\index{setMovementHandler@{setMovementHandler}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{setMovementHandler()}{setMovementHandler()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Input\+Handler\+::set\+Movement\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler}{Ship\+Movement\+Handler}} \texorpdfstring{$\ast$}{*}}]{SMH }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00031}{31}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a0143e59ff8577e64896cb0e708e01942_a0143e59ff8577e64896cb0e708e01942}\label{class_pirate_game_1_1_ship_input_handler_a0143e59ff8577e64896cb0e708e01942_a0143e59ff8577e64896cb0e708e01942} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!setNumCannons@{setNumCannons}}
+\index{setNumCannons@{setNumCannons}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{setNumCannons()}{setNumCannons()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Input\+Handler\+::set\+Num\+Cannons (\begin{DoxyParamCaption}\item[{int}]{num\+Cannons }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00028}{28}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a6f7d5ee048205e210357df5810cdff8f_a6f7d5ee048205e210357df5810cdff8f}\label{class_pirate_game_1_1_ship_input_handler_a6f7d5ee048205e210357df5810cdff8f_a6f7d5ee048205e210357df5810cdff8f} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!update@{update}}
+\index{update@{update}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Ship\+Input\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8cpp_source}{Ship\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_input_handler_a6f7d5ee048205e210357df5810cdff8f_a6f7d5ee048205e210357df5810cdff8f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_abb876d0820465a041e9b8e177d43a371_abb876d0820465a041e9b8e177d43a371}\label{class_pirate_game_1_1_ship_input_handler_abb876d0820465a041e9b8e177d43a371_abb876d0820465a041e9b8e177d43a371} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!baseNumCannons@{baseNumCannons}}
+\index{baseNumCannons@{baseNumCannons}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{baseNumCannons}{baseNumCannons}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+Ship\+Input\+Handler\+::base\+Num\+Cannons = 1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a6875ab242d74994f5cd4c3cef8c2d133_a6875ab242d74994f5cd4c3cef8c2d133}\label{class_pirate_game_1_1_ship_input_handler_a6875ab242d74994f5cd4c3cef8c2d133_a6875ab242d74994f5cd4c3cef8c2d133} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!baseSpeed@{baseSpeed}}
+\index{baseSpeed@{baseSpeed}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{baseSpeed}{baseSpeed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Input\+Handler\+::base\+Speed = 1.f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00047}{47}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_aff88afd80a31a74979eab985874535c7_aff88afd80a31a74979eab985874535c7}\label{class_pirate_game_1_1_ship_input_handler_aff88afd80a31a74979eab985874535c7_aff88afd80a31a74979eab985874535c7} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!numCannons@{numCannons}}
+\index{numCannons@{numCannons}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{numCannons}{numCannons}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+Ship\+Input\+Handler\+::num\+Cannons = 1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a0a657f344e364b519e6fc8e48992a889_a0a657f344e364b519e6fc8e48992a889}\label{class_pirate_game_1_1_ship_input_handler_a0a657f344e364b519e6fc8e48992a889_a0a657f344e364b519e6fc8e48992a889} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!SCH@{SCH}}
+\index{SCH@{SCH}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{SCH}{SCH}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_cannon_handler}{Ship\+Cannon\+Handler}}\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Ship\+Input\+Handler\+::\+SCH = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00041}{41}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a2fa2521ddf186ae0e22f1d6610326942_a2fa2521ddf186ae0e22f1d6610326942}\label{class_pirate_game_1_1_ship_input_handler_a2fa2521ddf186ae0e22f1d6610326942_a2fa2521ddf186ae0e22f1d6610326942} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!SMH@{SMH}}
+\index{SMH@{SMH}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{SMH}{SMH}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler}{Ship\+Movement\+Handler}}\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Ship\+Input\+Handler\+::\+SMH = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_input_handler_a32b34639aad9f682e41e85e46d804b88_a32b34639aad9f682e41e85e46d804b88}\label{class_pirate_game_1_1_ship_input_handler_a32b34639aad9f682e41e85e46d804b88_a32b34639aad9f682e41e85e46d804b88} 
+\index{PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}!sprite@{sprite}}
+\index{sprite@{sprite}!PirateGame::ShipInputHandler@{PirateGame::ShipInputHandler}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite\& Pirate\+Game\+::\+Ship\+Input\+Handler\+::sprite\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_input_handler___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_ship_input_handler___p_g_8h_source}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_ship_input_handler___p_g_8h}{Ship\+Input\+Handler\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_ship_input_handler___p_g_8cpp}{Ship\+Input\+Handler\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

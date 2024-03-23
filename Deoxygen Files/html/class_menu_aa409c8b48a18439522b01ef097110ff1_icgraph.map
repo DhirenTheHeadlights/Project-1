@@ -1,0 +1,13 @@
+<map id="Menu::setTitleString" name="Menu::setTitleString">
+<area shape="rect" id="Node000001" title=" " alt="" coords="254,107,391,133"/>
+<area shape="rect" id="Node000002" href="$class_end_menu.html#a5042e4e8ebc287a379365f2cfddfa492" title=" " alt="" coords="30,5,181,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,99,251,72,205,46,173,35,175,30,207,42,254,67,294,95"/>
+<area shape="rect" id="Node000003" href="$class_insert_name_menu.html#a00832201f1c981d6328e2ff865d9837c" title=" " alt="" coords="9,56,202,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,105,165,86,166,81,248,100"/>
+<area shape="rect" id="Node000004" href="$class_leader_board_menu.html#ac630523ba57ed2c9dde9e2a0208a4129" title=" " alt="" coords="5,107,206,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="238,123,206,123,206,117,238,117"/>
+<area shape="rect" id="Node000005" href="$class_options_menu.html#aa0ce29d14cd75203600da5bbc8f3576f" title=" " alt="" coords="19,157,192,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="248,140,166,159,165,154,246,135"/>
+<area shape="rect" id="Node000006" href="$class_start_menu.html#ada099b29b3be7c76bb0201c5f60d6747" title=" " alt="" coords="28,208,183,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="294,145,254,173,207,198,175,210,173,205,205,194,251,168,291,141"/>
+</map>

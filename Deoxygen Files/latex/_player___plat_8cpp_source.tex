@@ -1,0 +1,77 @@
+\doxysection{Player\+\_\+\+Plat.\+cpp}
+\hypertarget{_player___plat_8cpp_source}{}\label{_player___plat_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Platformer Game/Resource/Player\_Plat.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Platformer Game/Resource/Player\_Plat.cpp}}
+\mbox{\hyperlink{_player___plat_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player___plat_8h}{Player\_Plat.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_platformer_game}{PlatformerGame}};}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00006}00006\ \textcolor{keyword}{const}\ sf::Vector2f\ Player::GRAVITY\ =\ sf::Vector2f(0,\ 0.05f);\ \ \textcolor{comment}{//\ Gravity\ value}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00008}\mbox{\hyperlink{class_platformer_game_1_1_player_a5119f34a7c053768d3ccf2da78eff19b}{00008}}\ \mbox{\hyperlink{class_platformer_game_1_1_player_a5119f34a7c053768d3ccf2da78eff19b}{Player::Player}}(sf::Vector2f\&\ map,\ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ :\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ player\ sprite}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00010}00010\ \ \ \ \ playerSprite.setPosition(100.f,\ 100.f);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00011}00011\ \ \ \ \ playerSprite.setScale(2.0f,\ 2.0f);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00012}00012\ \ \ \ \ playerSprite.setTexture(texture.\mbox{\hyperlink{class_platformer_game_1_1_textures_ab73312ce610b0c6ec5a2a309235d0303}{grabPlayerTexture}}(0));}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00013}00013\ \ \ \ \ playerSprite.setOrigin(playerSprite.getGlobalBounds().width\ /\ 2.0f,\ playerSprite.getGlobalBounds().height\ /\ 2.0f);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00014}00014\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00015}00015\ \ \ \ \ leftBoundary\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00016}00016\ \ \ \ \ rightBoundary\ =\ 100000;\ \textcolor{comment}{//\ windowSize\ should\ be\ passed\ to\ the\ Player\ or\ known\ globally}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00017}00017\ \ \ \ \ topBoundary\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00018}00018\ \ \ \ \ bottomBoundary\ =\ 1000;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00021}\mbox{\hyperlink{class_platformer_game_1_1_player_ae02ee46d8c20dd0697b975f935b09839}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_ae02ee46d8c20dd0697b975f935b09839}{Player::move}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00023}00023\ \ \ \ \ elapsed\ =\ frametimeClock.restart().asMilliseconds();}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//Horizontal\ movement\ logic}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::A))\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ velocity.x\ =\ -\/6.f;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ playerSprite.setScale(-\/2.f,\ 2.f);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::D))\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ velocity.x\ =\ 6.f;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ playerSprite.setScale(2.f,\ 2.f);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ velocity.x\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{if}\ (isOnGround\ \&\&\ sf::Keyboard::isKeyPressed(sf::Keyboard::Space))\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ velocity.y\ =\ -\/4.f;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ isOnGround\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Bounds\ check}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00043}00043\ \ \ \ \ sf::Vector2f\ newPosition\ =\ playerSprite.getPosition()\ +\ velocity;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (newPosition.x\ <\ leftBoundary)\ newPosition.x\ =\ leftBoundary;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (newPosition.x\ >\ rightBoundary\ -\/\ playerSprite.getGlobalBounds().width)\ newPosition.x\ =\ rightBoundary\ -\/\ playerSprite.getGlobalBounds().width;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (newPosition.y\ <\ topBoundary)\ newPosition.y\ =\ topBoundary;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (newPosition.y\ >\ bottomBoundary\ -\/\ playerSprite.getGlobalBounds().height)\ newPosition.y\ =\ bottomBoundary\ -\/\ playerSprite.getGlobalBounds().height;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00049}00049\ \ \ \ \ playerSprite.setPosition(newPosition);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00052}\mbox{\hyperlink{class_platformer_game_1_1_player_afb2887a559719bb7b39b768d5ee217ea}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_afb2887a559719bb7b39b768d5ee217ea}{Player::applyGravity}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (!isOnGround)\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ velocity\ +=\ GRAVITY;\ \ \textcolor{comment}{//\ Apply\ gravity\ to\ the\ velocity}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00058}\mbox{\hyperlink{class_platformer_game_1_1_player_ac18c9d30d2997765321c62030a4b20b7}{00058}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_ac18c9d30d2997765321c62030a4b20b7}{Player::draw}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00059}00059\ \ \ \ \ window.draw(playerSprite);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00062}\mbox{\hyperlink{class_platformer_game_1_1_player_ac3e56852d30d99f36a5dab0b8d1e3782}{00062}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_ac3e56852d30d99f36a5dab0b8d1e3782}{Player::handlePlayerState}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{if}\ (playerSprite.getPosition().y\ ==\ 1000.f\ -\/\ playerSprite.getGlobalBounds().height)\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ isOnGround\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ velocity.y\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ isOnGround\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8cpp_source_l00071}00071\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,7 @@
+<map id="QuadTree::query" name="QuadTree::query">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,123,57"/>
+<area shape="rect" id="Node000002" href="$struct_boundary.html#a22397906d9c214901a4342b174129bbe" title=" " alt="" coords="175,5,308,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,33,159,28,160,33,123,38"/>
+<area shape="rect" id="Node000003" href="$struct_boundary.html#af10897edb130718cc8804b079f5fc385" title=" " alt="" coords="171,56,312,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,50,156,54,155,60,123,55"/>
+</map>

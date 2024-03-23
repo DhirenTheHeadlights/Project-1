@@ -1,0 +1,7 @@
+<map id="PirateGame::StartMenu::setUpInteractable" name="PirateGame::StartMenu::setUpInteractable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,164,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_menu.html#a256554b4d372def295062a76351230e9" title=" " alt="" coords="212,5,438,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,46,196,42,197,47,165,52"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_texture_handler.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="236,72,414,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,68,221,76,220,82,164,74"/>
+</map>

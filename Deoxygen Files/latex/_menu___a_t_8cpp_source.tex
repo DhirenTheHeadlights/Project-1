@@ -1,0 +1,225 @@
+\doxysection{Menu\+\_\+\+AT.\+cpp}
+\hypertarget{_menu___a_t_8cpp_source}{}\label{_menu___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/Menu\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/Menu\_AT.cpp}}
+\mbox{\hyperlink{_menu___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_menu___a_t_8h}{Menu\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00003}\mbox{\hyperlink{class_menu_ac156d3ebd661b32beb7db4cac82f8848}{00003}}\ \mbox{\hyperlink{class_menu_ac156d3ebd661b32beb7db4cac82f8848}{Menu::Menu}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Font\ font\_in)\ :\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ font(font\_in)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ size\ of\ the\ menu\ background}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00006}00006\ \ \ \ \ backgroundRect\ =\ sf::RectangleShape(sf::Vector2f(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getSize().x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getSize().y)));}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00007}00007\ \ \ \ \ backgroundRect.setFillColor(backgroundColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ size\ and\ color\ of\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00010}00010\ \ \ \ \ menu\ =\ sf::RectangleShape(sf::Vector2f(length,\ width));\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00011}00011\ \ \ \ \ menu.setFillColor(backgroundColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ title\ properties}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00014}00014\ \ \ \ \ title\ =\ sf::Text(\textcolor{stringliteral}{"{}Title\ Not\ Set"{}}\ ,\ font);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00015}00015\ \ \ \ \ title.setCharacterSize(50);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00016}00016\ \ \ \ \ title.setFillColor(textColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00017}00017\ \ \ \ \ title.setStyle(sf::Text::Bold);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00021}00021\ \textcolor{comment}{//\ Constructor\ Functions\ for\ the\ Menu\ /////////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00024}\mbox{\hyperlink{class_menu_af8442b2d50df720a8630fd98e1dec9d8}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_af8442b2d50df720a8630fd98e1dec9d8}{Menu::setTotalPauseTime}}(sf::Time\ time)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00025}00025\ \ \ \ \ totalPauseDuration\ =\ time;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00028}\mbox{\hyperlink{class_menu_a0860150e58e68d4945a0c19a05a29bb5}{00028}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a0860150e58e68d4945a0c19a05a29bb5}{Menu::resetRedrawFlag}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00029}00029\ \ \ \ \ redraw\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00032}\mbox{\hyperlink{class_menu_aa409c8b48a18439522b01ef097110ff1}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_aa409c8b48a18439522b01ef097110ff1}{Menu::setTitleString}}(std::string\ titleString)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00033}00033\ \ \ \ \ title.setString(titleString);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00036}\mbox{\hyperlink{class_menu_a743e40d07edd702c28e983a52da25dbf}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a743e40d07edd702c28e983a52da25dbf}{Menu::setMenuPosition}}(sf::Vector2f\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00037}00037\ \ \ \ \ menu.setPosition(position);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00040}\mbox{\hyperlink{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}{00040}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}{Menu::addInteractable}}(std::string\ name,\ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable::Type}}\ type,\ std::optional<std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{float}\ value)>>\ func)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ interactable\ and\ add\ it\ to\ the\ vector\ if\ there\ is\ room}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00042}00042\ \ \ \ \ \mbox{\hyperlink{class_interactable}{Interactable}}*\ interactable\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_interactable}{Interactable}}(func,\ type);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00043}00043\ \ \ \ \ interactable-\/>\mbox{\hyperlink{class_interactable_ac959d281b79eef952cf04e87db1fd536}{createInteractable}}(name,\ buttonLen,\ buttonWid,\ textSize);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00044}00044\ \ \ \ \ interactables.push\_back(interactable);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00047}\mbox{\hyperlink{class_menu_ad77babc9a27ed9eadc340ca44acfc098}{00047}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ad77babc9a27ed9eadc340ca44acfc098}{Menu::setButtonSize}}(sf::Vector2f\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00048}00048\ \ \ \ \ buttonLen\ =\ size.x;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00049}00049\ \ \ \ \ buttonWid\ =\ size.y;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00052}\mbox{\hyperlink{class_menu_a461a10addff1e4fc3ec640fb6974d0ee}{00052}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a461a10addff1e4fc3ec640fb6974d0ee}{Menu::setTextSize}}(\textcolor{keywordtype}{float}\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00053}00053\ \ \ \ \ textSize\ =\ size;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00056}00056\ \textcolor{comment}{//\ Functions\ for\ the\ Menu\ /////////////////////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00059}\mbox{\hyperlink{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d}{00059}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d}{Menu::openMenu}}(sf::Event\&\ eventFromMain,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ xhair,\ sf::Clock\&\ mainClock)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (isMenuOpen)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_menu_abad8af7b49fa9d0d15c593562e05ac38}{drawMenu}}(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ interactWithMenuItems();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ xhair.\mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{draw}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00067}00067\ \textcolor{comment}{//\ Toggle\ the\ menu\ open\ or\ closed}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00069}\mbox{\hyperlink{class_menu_adab2cbd3a5e67871c468da739e82b547}{00069}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_adab2cbd3a5e67871c468da739e82b547}{Menu::toggleMenu}}(sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ xhair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00070}00070\ \ \ \ \ isMenuOpen\ =\ !isMenuOpen;\ \textcolor{comment}{//\ Toggle\ the\ state\ of\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Handle\ the\ pausing\ of\ the\ main\ clock\ when\ the\ menu\ is\ open}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (isMenuOpen)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ xhair.\mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{draw}}(\textcolor{keyword}{false});\ \textcolor{comment}{//\ Optionally\ update\ the\ crosshair\ or\ other\ UI\ elements}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ pauseTimeStart\ =\ mainClock.getElapsedTime();\ \textcolor{comment}{//\ Start\ measuring\ pause\ duration}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ totalPauseDuration\ +=\ mainClock.getElapsedTime()\ -\/\ pauseTimeStart;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ pauseTimeStart\ =\ sf::Time::Zero;\ \textcolor{comment}{//\ Reset\ pause\ start\ time}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00082}00082\ \ \ \ \ redraw\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Indicate\ that\ the\ menu\ needs\ to\ be\ redrawn}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00086}00086\ \textcolor{comment}{//\ Handle\ the\ pausing\ of\ the\ main\ clock\ when\ the\ menu\ is\ open}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00088}00088\ \textcolor{keywordtype}{void}\ Menu::handlePauseTime(sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ xhair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{if}\ (isMenuOpen)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ xhair.\mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{draw}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ pauseTimeStart\ =\ mainClock.getElapsedTime();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ totalPauseDuration\ +=\ mainClock.getElapsedTime()\ -\/\ pauseTimeStart;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ pauseTimeStart\ =\ sf::Time::Zero;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00099}00099\ \textcolor{comment}{//\ Draw\ the\ menu\ to\ the\ screen\ and\ set\ the\ positions\ of\ the\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00101}\mbox{\hyperlink{class_menu_abad8af7b49fa9d0d15c593562e05ac38}{00101}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_abad8af7b49fa9d0d15c593562e05ac38}{Menu::drawMenu}}(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (!isMenuOpen)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ size\ and\ position\ of\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{float}\ inputBoxOffset\ =\ 10.0f;\ \textcolor{comment}{//\ Offset\ between\ the\ input\ box\ and\ the\ slider}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordtype}{float}\ menuWidth\ =\ buttonLen\ +\ 50.0f\ +\ inputBoxOffset\ +\ buttonLen\ /\ 10;\ \textcolor{comment}{//\ This\ adds\ the\ input\ box\ and\ offset\ to\ the\ menu\ width}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordtype}{float}\ menuHeight\ =\ calculateMenuHeight();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00108}00108\ \ \ \ \ menu.setSize(sf::Vector2f(menuWidth,\ menuHeight));}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00109}00109\ \ \ \ \ menu.setPosition(window.getSize().x\ /\ 2\ -\/\ menuWidth\ /\ 2,\ window.getSize().y\ /\ 2\ -\/\ menuHeight\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00110}00110\ \ \ \ \ menu.setOutlineColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00111}00111\ \ \ \ \ menu.setOutlineThickness(5.0f);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ menu\ background}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00114}00114\ \ \ \ \ window.draw(backgroundRect);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00115}00115\ \ \ \ \ window.draw(menu);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ positions\ of\ the\ interactables\ and\ draw\ them}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00118}00118\ \ \ \ \ setInteractablePositions();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ interactable\ :\ interactables)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ interactable-\/>draw(window,\ event);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00121}00121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Set\ and\ draw\ the\ title}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordtype}{float}\ titleSpacing\ =\ 50.0f;\ \textcolor{comment}{//\ Spacing\ between\ title\ and\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00125}00125\ \ \ \ \ title.setPosition(window.getSize().x\ /\ 2\ -\/\ title.getGlobalBounds().width\ /\ 2,\ menu.getPosition().y\ -\/\ title.getGlobalBounds().height\ -\/\ titleSpacing);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00126}00126\ \ \ \ \ window.draw(title);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00129}00129\ \textcolor{keywordtype}{float}\ Menu::calculateMenuHeight()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ Calculate\ total\ height\ required\ for\ all\ interactables\ with\ padding\ and\ spacing}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{float}\ spacing\ =\ 20.0f;\ \textcolor{comment}{//\ Spacing\ between\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00132}00132\ \ \ \ \ \textcolor{keywordtype}{float}\ interactableHeight\ =\ buttonWid;\ \textcolor{comment}{//\ Assuming\ all\ interactables\ have\ the\ same\ height}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{float}\ totalHeight\ =\ interactables.size()\ *\ (interactableHeight\ +\ spacing)\ +\ spacing;\ \textcolor{comment}{//\ Add\ the\ height\ of\ each\ interactable\ and\ spacing}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00134}00134\ \ \ \ \ \textcolor{keywordflow}{return}\ totalHeight;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00138}00138\ \textcolor{keywordtype}{void}\ Menu::setInteractablePositions()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ spacing\ =\ 20.0f;\ \textcolor{comment}{//\ Spacing\ between\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordtype}{float}\ startY\ =\ menu.getPosition().y\ +\ spacing;\ \textcolor{comment}{//\ Start\ Y\ position\ below\ title\ with\ padding}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ interactables.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ x\ =\ window.getSize().x\ /\ 2\ -\/\ interactables[i]-\/>getSize().x\ /\ 2;\ \textcolor{comment}{//\ Centered\ X\ position}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ y\ =\ startY\ +\ i\ *\ (buttonWid\ +\ spacing);\ \textcolor{comment}{//\ Stacked\ Y\ positions\ for\ interactables}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ interactables[i]-\/>setPos(sf::Vector2f(x,\ y));}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00150}00150\ \textcolor{comment}{//\ Interact\ with\ the\ menu\ items\ (activate\ them)}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00152}00152\ sf::Clock\ Menu::buttonPressClock;\ \ \textcolor{comment}{//\ Initialize\ the\ static\ member}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00154}00154\ \textcolor{keywordtype}{void}\ Menu::interactWithMenuItems()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ interactable\ :\ interactables)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ interactable-\/>interact(window,\ buttonPressClock);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00158}00158\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00161}00161\ \textcolor{comment}{//\ Set\ the\ color\ of\ all\ of\ the\ menu\ elements\ //////////////////////}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00164}\mbox{\hyperlink{class_menu_ad515c411adc8498769da5ea7033b693b}{00164}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_ad515c411adc8498769da5ea7033b693b}{Menu::setBackgroundColor}}(sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00165}00165\ \ \ \ \ backgroundColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00166}00166\ \ \ \ \ menu.setFillColor(color);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00167}00167\ \ \ \ \ backgroundRect.setFillColor(color);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00168}00168\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00170}\mbox{\hyperlink{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15}{00170}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15}{Menu::setTextColor}}(sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00171}00171\ \ \ \ \ textColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00172}00172\ \ \ \ \ title.setFillColor(color);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00173}00173\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00175}\mbox{\hyperlink{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d}{00175}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d}{Menu::setButtonColor}}(sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00176}00176\ \ \ \ \ buttonColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00177}00177\ \ \ \ \ \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{updateInteractableColors}}();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00178}00178\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00180}\mbox{\hyperlink{class_menu_a68c1d0ed72406cd39c68bd658d395917}{00180}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a68c1d0ed72406cd39c68bd658d395917}{Menu::setSliderColor}}(sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00181}00181\ \ \ \ \ sliderColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{updateInteractableColors}}();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00185}\mbox{\hyperlink{class_menu_a1811471af86d9277ff9c5330512442c9}{00185}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a1811471af86d9277ff9c5330512442c9}{Menu::setSliderComplementColor}}(sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00186}00186\ \ \ \ \ sliderColorComplement\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00187}00187\ \ \ \ \ \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{updateInteractableColors}}();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00188}00188\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00190}\mbox{\hyperlink{class_menu_a749a7d8b933f95a2940b97b12a14494b}{00190}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a749a7d8b933f95a2940b97b12a14494b}{Menu::setHoverColor}}(sf::Color\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00191}00191\ \ \ \ \ hoverColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00192}00192\ \ \ \ \ \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{updateInteractableColors}}();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00193}00193\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00195}\mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{00195}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{Menu::updateInteractableColors}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ interactable\ :\ interactables)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ interactable-\/>setTextColor(textColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ interactable-\/>setButtonColor(buttonColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ interactable-\/>setSliderColor(sliderColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ interactable-\/>setSliderComplementColor(sliderColorComplement);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ interactable-\/>setHoverColor(hoverColor);}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00203}00203\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00206}00206\ \textcolor{comment}{//\ Getter\ Functions\ for\ the\ Menu\ //////////////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00209}\mbox{\hyperlink{class_menu_a789b3d6e4d5de3cd119404dba4cef17f}{00209}}\ sf::Time\ \mbox{\hyperlink{class_menu_a789b3d6e4d5de3cd119404dba4cef17f}{Menu::getTotalTimeInMenu}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00210}00210\ \ \ \ \ \textcolor{keywordflow}{return}\ totalPauseDuration;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00213}\mbox{\hyperlink{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de}{00213}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de}{Menu::needsRedraw}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{return}\ redraw;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00217}\mbox{\hyperlink{class_menu_a0b6f6ad7665f5af60972cc286f0bfe8c}{00217}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_menu_a0b6f6ad7665f5af60972cc286f0bfe8c}{Menu::getIsMenuOpen}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{return}\ isMenuOpen;}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00221}\mbox{\hyperlink{class_menu_a60fc95aea72de07dc2f37dfdd0907c5f}{00221}}\ std::string\ \mbox{\hyperlink{class_menu_a60fc95aea72de07dc2f37dfdd0907c5f}{Menu::getInputStringForInteractableI}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00222}00222\ \ \ \ \ \textcolor{keywordflow}{return}\ interactables[i]-\/>getInputString();}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00223}00223\ \}}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00225}\mbox{\hyperlink{class_menu_af9939c4aac786fcc1f562bdeee1e5166}{00225}}\ \mbox{\hyperlink{class_interactable}{Interactable}}*\ \mbox{\hyperlink{class_menu_af9939c4aac786fcc1f562bdeee1e5166}{Menu::getInteractableI}}(\textcolor{keywordtype}{int}\ i)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{return}\ interactables[i];}
+\DoxyCodeLine{\Hypertarget{_menu___a_t_8cpp_source_l00227}00227\ \}}
+
+\end{DoxyCode}

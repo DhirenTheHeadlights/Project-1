@@ -1,0 +1,13 @@
+<map id="Menu::setSliderColor" name="Menu::setSliderColor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="247,107,389,133"/>
+<area shape="rect" id="Node000002" href="$class_end_menu.html#ac3887677bb72c43710580323a2351882" title=" " alt="" coords="30,5,174,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="285,99,245,72,198,46,166,35,168,30,200,42,248,67,288,95"/>
+<area shape="rect" id="Node000003" href="$class_insert_name_menu.html#a386aec88a3c5fe1e8df3208afb7d248b" title=" " alt="" coords="9,56,195,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,105,161,86,163,81,244,100"/>
+<area shape="rect" id="Node000004" href="$class_leader_board_menu.html#aaa372ad36c5c27a538e21140e53f7c71" title=" " alt="" coords="5,107,199,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="231,123,199,123,199,117,231,117"/>
+<area shape="rect" id="Node000005" href="$class_options_menu.html#a1fd433be60f3e6cc57fc9b47700a2b16" title=" " alt="" coords="19,157,185,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="244,140,163,159,161,154,242,135"/>
+<area shape="rect" id="Node000006" href="$class_start_menu.html#a66572d2f00f9a9651b0ded8e57109133" title=" " alt="" coords="28,208,176,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="288,145,248,173,200,198,168,210,166,205,198,194,245,168,285,141"/>
+</map>

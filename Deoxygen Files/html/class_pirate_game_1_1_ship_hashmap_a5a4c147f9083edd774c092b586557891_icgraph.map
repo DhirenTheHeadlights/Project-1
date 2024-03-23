@@ -1,0 +1,5 @@
+<map id="PirateGame::ShipHashmap::removeEnemyShip" name="PirateGame::ShipHashmap::removeEnemyShip">
+<area shape="rect" id="Node000001" title=" " alt="" coords="263,5,442,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_handler.html#a000435fec37a45b5f76fc4404948e12e" title=" " alt="" coords="5,5,215,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="247,29,215,29,215,24,247,24"/>
+</map>

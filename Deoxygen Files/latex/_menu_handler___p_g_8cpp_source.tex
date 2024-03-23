@@ -1,0 +1,41 @@
+\doxysection{Menu\+Handler\+\_\+\+PG.\+cpp}
+\hypertarget{_menu_handler___p_g_8cpp_source}{}\label{_menu_handler___p_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/MenuHandler\_PG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/MenuHandler\_PG.cpp}}
+\mbox{\hyperlink{_menu_handler___p_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_menu_handler___p_g_8h}{MenuHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}};}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00005}\mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a037e3f90a920fc2f32123c4246c352c9_a037e3f90a920fc2f32123c4246c352c9}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a037e3f90a920fc2f32123c4246c352c9_a037e3f90a920fc2f32123c4246c352c9}{MenuHandler::createMenus}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ menu\ pointers\ and\ set\ up\ the\ menus}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_abfd2083446e25e86b8383d1400702755_abfd2083446e25e86b8383d1400702755}{startMenu}}\ =\ std::make\_unique<StartMenu>();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_aedd48a61a7f6ce4a93e191e0a5881ad0_aedd48a61a7f6ce4a93e191e0a5881ad0}{optionsMenu}}\ =\ std::make\_unique<OptionsMenu>();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a31c6c8de15981233fa29827d522af96e_a31c6c8de15981233fa29827d522af96e}{HUD}}\ =\ std::make\_unique<InGameHUD>();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00012}\mbox{\hyperlink{class_pirate_game_1_1_menu_handler_aac233e4a256a98119b273231fb235375_aac233e4a256a98119b273231fb235375}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_aac233e4a256a98119b273231fb235375_aac233e4a256a98119b273231fb235375}{MenuHandler::openMenu}}(\mbox{\hyperlink{namespace_pirate_game_a09bb96ac630116080748b73ed092f34a_a09bb96ac630116080748b73ed092f34a}{MenuType}}\ menuType)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ This\ will\ reset\ the\ view\ so\ that\ the\ menu\ is\ correctly\ visible.\ However,\ it\ should\ not\ happen\ w\ the\ hud.}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{if}\ (menuType\ !=\ \mbox{\hyperlink{namespace_pirate_game_a09bb96ac630116080748b73ed092f34a_a09bb96ac630116080748b73ed092f34aad2d84c1fc4f2d5d5f1c43bdb29dc236f}{MenuType::HUD}})\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{GlobalValues::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_values_ac0271b79e8e02295ca8095a22bfb0ae2_ac0271b79e8e02295ca8095a22bfb0ae2}{getWindow}}()-\/>setView(\mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{GlobalValues::getInstance}}().getWindow()-\/>getDefaultView());}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00016}00016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{switch}\ (menuType)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pirate_game_a09bb96ac630116080748b73ed092f34a_a09bb96ac630116080748b73ed092f34aa11be5a46cecdc713a8bf9daf0aca0590}{MenuType::StartMenu}}:}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_abfd2083446e25e86b8383d1400702755_abfd2083446e25e86b8383d1400702755}{startMenu}}-\/>draw();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pirate_game_a09bb96ac630116080748b73ed092f34a_a09bb96ac630116080748b73ed092f34aa02f519bea27ccd0b93582be6dfde7330}{MenuType::OptionsMenu}}:}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_aedd48a61a7f6ce4a93e191e0a5881ad0_aedd48a61a7f6ce4a93e191e0a5881ad0}{optionsMenu}}-\/>draw();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pirate_game_a09bb96ac630116080748b73ed092f34a_a09bb96ac630116080748b73ed092f34aad2d84c1fc4f2d5d5f1c43bdb29dc236f}{MenuType::HUD}}:}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a31c6c8de15981233fa29827d522af96e_a31c6c8de15981233fa29827d522af96e}{HUD}}-\/>draw();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00030}\mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a97cf5328e8c6bf60d344cd97a3bc09e9_a97cf5328e8c6bf60d344cd97a3bc09e9}{00030}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a97cf5328e8c6bf60d344cd97a3bc09e9_a97cf5328e8c6bf60d344cd97a3bc09e9}{MenuHandler::setUpMenus}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Set\ up\ the\ menus}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00032}00032\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_abfd2083446e25e86b8383d1400702755_abfd2083446e25e86b8383d1400702755}{startMenu}}-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_aedd48a61a7f6ce4a93e191e0a5881ad0_aedd48a61a7f6ce4a93e191e0a5881ad0}{optionsMenu}}-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_menu_handler_a31c6c8de15981233fa29827d522af96e_a31c6c8de15981233fa29827d522af96e}{HUD}}-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___p_g_8cpp_source_l00035}00035\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,19 @@
+<map id="Interactable::createInteractable" name="Interactable::createInteractable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,189,205,216"/>
+<area shape="rect" id="Node000002" href="$class_player_input_box.html#a09b142d5939449bcfd68c0e401c579b3" title=" " alt="" coords="278,5,451,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,187,168,125,207,89,251,58,262,52,265,56,254,62,211,93,172,129,118,191"/>
+<area shape="rect" id="Node000003" href="$class_player_input_box.html#ab9b2953f5ff7d0584863ada9c61cae76" title=" " alt="" coords="278,72,451,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,187,184,156,252,124,269,118,271,123,254,129,186,161,131,191"/>
+<area shape="rect" id="Node000004" href="$class_player_input_box.html#a4de1d2d4aa33d46d10ed489e5b268930" title=" " alt="" coords="264,139,465,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,186,277,166,278,171,178,191"/>
+<area shape="rect" id="Node000006" href="$class_player_input_box.html#aa2a968cf89415855ad05c86d435870dd" title=" " alt="" coords="284,189,445,216"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="205,200,269,200,269,205,205,205"/>
+<area shape="rect" id="Node000007" href="$class_player_input_box.html#a05a6bb5f79f9f96bc0d5c853bd3b3310" title=" " alt="" coords="253,240,476,267"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="178,214,278,234,277,239,177,219"/>
+<area shape="rect" id="Node000008" href="$class_player_input_box.html#ada1590d8bfe82f7adff173343bfef4a4" title=" " alt="" coords="257,291,472,317"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="130,214,185,245,254,276,277,284,275,289,252,281,183,250,128,219"/>
+<area shape="rect" id="Node000009" href="$class_player_input_box.html#ace4127363c64824fba3fa86309407e19" title=" " alt="" coords="280,341,449,384"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="120,215,175,269,213,300,254,327,267,333,265,338,251,332,210,304,171,273,117,219"/>
+<area shape="rect" id="Node000005" href="$class_player_input_box.html#a0da3aa4a0c2ced1fe8d62af89a9dd5fa" title=" " alt="" coords="524,139,693,165"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="465,149,508,149,508,155,465,155"/>
+</map>

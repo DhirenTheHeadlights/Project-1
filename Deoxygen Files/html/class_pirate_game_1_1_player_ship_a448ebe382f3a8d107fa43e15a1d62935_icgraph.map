@@ -1,0 +1,19 @@
+<map id="PirateGame::PlayerShip::getInventoryHandler" name="PirateGame::PlayerShip::getInventoryHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="685,101,847,144"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_island_menu.html#a660bb48fb74708e330990d16a8b2070a" title=" " alt="" coords="455,5,619,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="710,97,636,62,606,51,608,46,638,58,712,92"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_island_menu.html#aff1afee8aaf8c6dc82f6de5a643d49c2" title=" " alt="" coords="436,72,637,115"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="669,113,638,109,638,104,670,108"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_island_menu.html#af05d9ba589a749a903e76e5b7d33d2ef" title=" " alt="" coords="221,128,385,171"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="670,131,386,147,385,142,670,125"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_in_game_h_u_d.html#a5db9fbf2e7e4e5ec419e0393ef8e52a5" title=" " alt="" coords="443,191,630,233"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="696,153,595,193,593,188,694,148"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_island_menu.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="218,8,388,51"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="439,30,389,31,388,26,439,25"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_island_menu.html#a033e176d81986a92d34e121d2cd59258" title=" " alt="" coords="5,69,170,112"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="212,58,166,71,164,66,210,53"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="420,95,170,94,170,88,420,90"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="207,126,168,115,169,110,208,121"/>
+<area shape="rect" id="Node000008" href="$class_pirate_game_1_1_in_game_h_u_d.html#a767dc4fec0e06a06a56cd55af8887e42" title=" " alt="" coords="218,195,388,237"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="427,217,389,217,389,212,427,211"/>
+</map>

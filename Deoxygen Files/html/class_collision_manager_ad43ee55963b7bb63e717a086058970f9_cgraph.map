@@ -1,0 +1,26 @@
+<map id="CollisionManager::removePelletWhenCollision" name="CollisionManager::removePelletWhenCollision">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,117,175,160"/>
+<area shape="rect" id="Node000002" href="$class_circle.html#a4f2038c4e879f84a06d7bc79c0625d7f" title=" " alt="" coords="754,8,893,34"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,114,284,58,375,31,468,10,527,4,574,4,680,10,738,13,738,18,680,16,574,9,527,9,468,16,376,36,286,63,141,119"/>
+<area shape="rect" id="Node000003" href="$class_collision_manager.html#a54dd9f8c0148cf0abb9a54f962b792d3" title=" " alt="" coords="223,117,420,160"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,136,207,136,207,141,175,141"/>
+<area shape="rect" id="Node000011" href="$class_circle.html#a62c4afa16bb668a9b3eb3ce3f4ce1a85" title=" " alt="" coords="252,184,391,210"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="176,157,252,177,250,182,175,162"/>
+<area shape="poly" id="edge10_Node000003_Node000002" title=" " alt="" coords="347,114,400,76,433,58,467,44,537,26,609,17,678,13,738,13,738,18,678,18,609,22,538,32,469,49,435,63,403,81,350,119"/>
+<area shape="rect" id="Node000004" href="$class_collision_manager.html#ac268784ef58355dd65c1b8152c7fab91" title=" " alt="" coords="468,58,680,101"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="416,114,464,102,465,108,417,119"/>
+<area shape="rect" id="Node000006" href="$class_circle.html#a1b37e8973c5a83ac381fda84716e1b0d" title=" " alt="" coords="760,121,887,148"/>
+<area shape="poly" id="edge12_Node000003_Node000006" title=" " alt="" coords="420,135,744,132,744,138,420,140"/>
+<area shape="rect" id="Node000007" href="$class_debugger.html#ad46c0ddf0fe1084871a17af6c6a6d579" title=" " alt="" coords="508,176,641,202"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="421,156,493,170,492,175,420,161"/>
+<area shape="rect" id="Node000009" href="$class_hashmap.html#a1e798fd089a1c73ec891fb1301d289fc" title=" " alt="" coords="496,226,653,253"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="398,158,421,169,436,181,446,192,455,202,469,212,483,218,481,223,467,217,452,206,442,195,433,184,419,174,396,163"/>
+<area shape="rect" id="Node000010" href="$class_map.html#a89742492811493b8038ee188848cfcd7" title=" " alt="" coords="492,277,657,304"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="405,158,422,170,440,194,446,218,452,241,470,263,479,269,476,274,466,267,448,244,441,220,435,196,418,174,402,162"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="667,55,748,36,749,41,668,60"/>
+<area shape="rect" id="Node000005" href="$class_hashmap.html#a05381892111309d544310d9fb108a763" title=" " alt="" coords="728,66,919,93"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="681,77,712,77,712,82,681,82"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="675,99,745,114,744,120,674,104"/>
+<area shape="rect" id="Node000008" href="$class_map.html#a80e8b85b93384b533f7484f0463c91ec" title=" " alt="" coords="763,176,884,202"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="641,186,748,186,748,192,641,192"/>
+</map>

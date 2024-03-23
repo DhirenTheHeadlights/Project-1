@@ -1,0 +1,5 @@
+<map id="PirateGame::Ship" name="PirateGame::Ship">
+<area shape="rect" id="Node000001" title=" " alt="" coords="35,96,159,123"/>
+<area shape="rect" id="Node000002" href="$struct_pirate_game_1_1_ship_properties.html" title=" " alt="" coords="5,5,189,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,48,100,95,94,95,94,48"/>
+</map>

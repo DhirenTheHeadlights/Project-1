@@ -1,0 +1,13 @@
+<map id="PirateGame::IslandMenu" name="PirateGame::IslandMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="116,293,280,320"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_menu.html" title=" " alt="" coords="49,203,179,229"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,239,188,291,184,295,135,243"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_game_state_manager.html" title=" " alt="" coords="5,96,207,139"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="112,154,116,202,110,202,106,154"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_player_ship.html" title=" " alt="" coords="207,203,368,229"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="266,242,213,295,209,291,262,239"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_ship.html" title=" " alt="" coords="231,104,355,131"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="294,147,291,203,285,202,288,146"/>
+<area shape="rect" id="Node000006" href="$struct_pirate_game_1_1_ship_properties.html" title=" " alt="" coords="201,5,384,32"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="295,48,295,104,290,104,290,48"/>
+</map>

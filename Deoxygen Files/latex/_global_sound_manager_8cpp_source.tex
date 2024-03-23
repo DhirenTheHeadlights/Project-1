@@ -1,0 +1,53 @@
+\doxysection{Global\+Sound\+Manager.\+cpp}
+\hypertarget{_global_sound_manager_8cpp_source}{}\label{_global_sound_manager_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/GlobalSoundManager.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/GlobalSoundManager.cpp}}
+\mbox{\hyperlink{_global_sound_manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_sound_manager___p_g_8h}{GlobalSoundManager\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}};}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00005}\mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_aaf531c542ddad74318f184eb4524d048_aaf531c542ddad74318f184eb4524d048}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_aaf531c542ddad74318f184eb4524d048_aaf531c542ddad74318f184eb4524d048}{GlobalSoundManager::setSoundFilePath}}(\mbox{\hyperlink{namespace_pirate_game_ab5b1a6ae9100dc837e2a87ff172d2eb6_ab5b1a6ae9100dc837e2a87ff172d2eb6}{SoundId}}\ soundId,\ \textcolor{keyword}{const}\ std::string\&\ filePath)\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00006}00006\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a93c63fa1dae281cc95ce9be3c807baed_a93c63fa1dae281cc95ce9be3c807baed}{soundFilePaths}}[soundId]\ =\ filePath;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00009}\mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a1110d527091607e431d5898889957436_a1110d527091607e431d5898889957436}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a1110d527091607e431d5898889957436_a1110d527091607e431d5898889957436}{GlobalSoundManager::loadSound}}(\mbox{\hyperlink{namespace_pirate_game_ab5b1a6ae9100dc837e2a87ff172d2eb6_ab5b1a6ae9100dc837e2a87ff172d2eb6}{SoundId}}\ soundId)\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{auto}\ filePathIt\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a93c63fa1dae281cc95ce9be3c807baed_a93c63fa1dae281cc95ce9be3c807baed}{soundFilePaths}}.find(soundId);}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (filePathIt\ !=\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a93c63fa1dae281cc95ce9be3c807baed_a93c63fa1dae281cc95ce9be3c807baed}{soundFilePaths}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ sf::SoundBuffer\ buffer;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buffer.loadFromFile(filePathIt-\/>second))\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a5dffa8d4763b1a6a634125f04c5e4d85_a5dffa8d4763b1a6a634125f04c5e4d85}{soundBuffers}}[soundId]\ =\ buffer;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load\ sound\ buffer:\ "{}}\ <<\ filePathIt-\/>second\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Sound\ ID\ not\ found\ in\ file\ path\ map."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00025}\mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a01c210694daf9b56f0846e7bf3c96e99_a01c210694daf9b56f0846e7bf3c96e99}{00025}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a01c210694daf9b56f0846e7bf3c96e99_a01c210694daf9b56f0846e7bf3c96e99}{GlobalSoundManager::playSound}}(\mbox{\hyperlink{namespace_pirate_game_ab5b1a6ae9100dc837e2a87ff172d2eb6_ab5b1a6ae9100dc837e2a87ff172d2eb6}{SoundId}}\ soundId)\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{auto}\ bufferIt\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a5dffa8d4763b1a6a634125f04c5e4d85_a5dffa8d4763b1a6a634125f04c5e4d85}{soundBuffers}}.find(soundId);}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (bufferIt\ !=\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a5dffa8d4763b1a6a634125f04c5e4d85_a5dffa8d4763b1a6a634125f04c5e4d85}{soundBuffers}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ sf::Sound\&\ sound\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_ae33b5d04363eb52c6490b1c3e0eac925_ae33b5d04363eb52c6490b1c3e0eac925}{findAvailableSound}}();}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ sound.setBuffer(bufferIt-\/>second);}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ sound.setVolume(\mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_acc3558322c2d8947d5cae3c61e999e47_acc3558322c2d8947d5cae3c61e999e47}{soundVolume}});}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ sound.play();}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Sound\ ID\ not\ found\ in\ loaded\ buffers.\ Did\ you\ forget\ to\ load\ it\ in\ the\ Global\ class?"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00038}\mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_ae33b5d04363eb52c6490b1c3e0eac925_ae33b5d04363eb52c6490b1c3e0eac925}{00038}}\ sf::Sound\&\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_ae33b5d04363eb52c6490b1c3e0eac925_ae33b5d04363eb52c6490b1c3e0eac925}{GlobalSoundManager::findAvailableSound}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ sound\ :\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a4fa100f9d1b7f851dc41ce22aeaa6f23_a4fa100f9d1b7f851dc41ce22aeaa6f23}{sounds}})\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sound.getStatus()\ !=\ sf::Sound::Playing)\ \{}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sound;}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a4fa100f9d1b7f851dc41ce22aeaa6f23_a4fa100f9d1b7f851dc41ce22aeaa6f23}{sounds}}.emplace\_back();}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_global_sound_manager_a4fa100f9d1b7f851dc41ce22aeaa6f23_a4fa100f9d1b7f851dc41ce22aeaa6f23}{sounds}}.back();}
+\DoxyCodeLine{\Hypertarget{_global_sound_manager_8cpp_source_l00047}00047\ \}}
+
+\end{DoxyCode}

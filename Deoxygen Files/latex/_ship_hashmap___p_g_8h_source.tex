@@ -1,0 +1,75 @@
+\doxysection{Ship\+Hashmap\+\_\+\+PG.\+h}
+\hypertarget{_ship_hashmap___p_g_8h_source}{}\label{_ship_hashmap___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/ShipHashmap\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/ShipHashmap\_PG.h}}
+\mbox{\hyperlink{_ship_hashmap___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_values___p_g_8h}{GlobalValues\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_map___p_g_8h}{GlobalMap\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_ship___p_g_8h}{PlayerShip\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_enemy_ship___p_g_8h}{EnemyShip\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}Map.h"{}}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00020}00020\ \textcolor{comment}{//\ This\ template\ specialization\ is\ used\ to\ create\ a\ custom\ hash\ function\ for\ std::pair<int,\ int>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00021}\mbox{\hyperlink{namespacestd}{00021}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacestd}{std}}\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00023}\mbox{\hyperlink{structstd_1_1hash_3_01pair_3_01int_00_01int_01_4_01_4}{00023}}\ \ \ \ \ \textcolor{keyword}{struct\ }hash<pair<int,\ int>>\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00024}\mbox{\hyperlink{structstd_1_1hash_3_01pair_3_01int_00_01int_01_4_01_4_aac5417f3476980c48ccc9e2a771fef47_aac5417f3476980c48ccc9e2a771fef47}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1hash_3_01pair_3_01int_00_01int_01_4_01_4_aac5417f3476980c48ccc9e2a771fef47_aac5417f3476980c48ccc9e2a771fef47}{operator()}}(\textcolor{keyword}{const}\ pair<int,\ int>\&\ pair)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ h1\ =\ hash<int>()(pair.first);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ h2\ =\ hash<int>()(pair.second);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ h1\ \string^=\ h2\ +\ 0x9e3779b9\ +\ (h1\ <<\ 6)\ +\ (h1\ >>\ 2);\ \textcolor{comment}{//\ Use\ a\ magic\ number\ from\ the\ golden\ ratio}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ h1;}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00030}00030\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00033}00033\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00034}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap}{00034}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap}{ShipHashmap}}\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ A\ custom\ hash\ function\ for\ std::pair<int,\ int>}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00036}\mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{00036}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\_hash}}\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00037}\mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash_a5ff84b201a0add278eda9ff335c8d3af_a5ff84b201a0add278eda9ff335c8d3af}{00037}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash_a5ff84b201a0add278eda9ff335c8d3af_a5ff84b201a0add278eda9ff335c8d3af}{operator()}}(\textcolor{keyword}{const}\ std::pair<int,\ int>\&\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{pair}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h1}}\ =\ std::hash<int>()(\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{pair}}.first);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h2}}\ =\ std::hash<int>()(\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{pair}}.second);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h1}}\ \string^=\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h2}}\ +\ 0x9e3779b9\ +\ (\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h1}}\ <<\ 6)\ +\ (\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h1}}\ >>\ 2);\ \textcolor{comment}{//\ Use\ a\ magic\ number\ from\ the\ golden\ ratio}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{h1}};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00046}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a222595ed10bdc022f4b5ae6a097dbca0_a222595ed10bdc022f4b5ae6a097dbca0}{00046}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a222595ed10bdc022f4b5ae6a097dbca0_a222595ed10bdc022f4b5ae6a097dbca0}{ShipHashmap}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ and\ remove\ ship\ to\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_adc8240ba58077ec4a231b33f9d79c1fb_adc8240ba58077ec4a231b33f9d79c1fb}{addEnemyShip}}(\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{EnemyShip}}*\ ship);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a5a4c147f9083edd774c092b586557891_a5a4c147f9083edd774c092b586557891}{removeEnemyShip}}(\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{EnemyShip}}*\ ship);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ ship\ in\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_acde8976ea9fdb1dbef613eb37d9ae2dc_acde8976ea9fdb1dbef613eb37d9ae2dc}{updateEnemyShipPosition}}(\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{EnemyShip}}*\ ship);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ key\ for\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a87de32c90fee58a44579b4dab8936018_a87de32c90fee58a44579b4dab8936018}{generateKey}}(sf::Vector2f\ position);}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ ship\ near\ other\ ship}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ std::set<EnemyShip*>\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a45a12db5943daf9150ea143f8ce911a2_a45a12db5943daf9150ea143f8ce911a2}{findEnemyShipsNearShip}}(\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}}*\ ship,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{maxDistance}}\ =\ 1000.f,\ \textcolor{keywordtype}{bool}\ debug\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00062}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a5beaba9a5107d9a6a2f6b782df4299f6_a5beaba9a5107d9a6a2f6b782df4299f6}{00062}}\ \ \ \ \ \ \ \ \ std::unordered\_map<std::pair<int,\ int>,\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{EnemyShip}}*,\ \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\_hash}}>\&\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a5beaba9a5107d9a6a2f6b782df4299f6_a5beaba9a5107d9a6a2f6b782df4299f6}{getHashmap}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ae3b6f0615246119b9cc9b5b829496b1c_ae3b6f0615246119b9cc9b5b829496b1c}{hashmap}};\ \}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00063}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a755cac3e620d84d7b625641c6cbe7ee0_a755cac3e620d84d7b625641c6cbe7ee0}{00063}}\ \ \ \ \ \ \ \ \ std::unordered\_map<EnemyShip*,\ std::set<std::pair<int,\ int>>>\&\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a755cac3e620d84d7b625641c6cbe7ee0_a755cac3e620d84d7b625641c6cbe7ee0}{getReverseHashmap}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_adaeb927cd5defd9f9fc7f671f822c1c0_adaeb927cd5defd9f9fc7f671f822c1c0}{reverseHashmap}};\ \}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hashmap}}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00066}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ae3b6f0615246119b9cc9b5b829496b1c_ae3b6f0615246119b9cc9b5b829496b1c}{00066}}\ \ \ \ \ \ \ \ \ std::unordered\_map<std::pair<int,\ int>,\ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{EnemyShip}}*,\ \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\_hash}}>\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ae3b6f0615246119b9cc9b5b829496b1c_ae3b6f0615246119b9cc9b5b829496b1c}{hashmap}};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00067}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_adaeb927cd5defd9f9fc7f671f822c1c0_adaeb927cd5defd9f9fc7f671f822c1c0}{00067}}\ \ \ \ \ \ \ \ \ std::unordered\_map<EnemyShip*,\ std::set<std::pair<int,\ int>>>\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_adaeb927cd5defd9f9fc7f671f822c1c0_adaeb927cd5defd9f9fc7f671f822c1c0}{reverseHashmap}};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00069}\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{00069}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{Map}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{map}}\ =\ *\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{GlobalMap::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_map_a591b9d06dd49b9c7f47ef8ee0aa60e5b_a591b9d06dd49b9c7f47ef8ee0aa60e5b}{getMap}}();}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00070}00070\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_ship_hashmap___p_g_8h_source_l00071}00071\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,284 @@
+\doxysection{World\+\_\+\+AT.\+cpp}
+\hypertarget{_world___a_t_8cpp_source}{}\label{_world___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/World\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/World\_AT.cpp}}
+\mbox{\hyperlink{_world___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_world___a_t_8h}{World\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_aim_trainer}{AimTrainer}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00005}\mbox{\hyperlink{class_aim_trainer_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{00005}}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{World::World}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ :\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ hashmap(),\ crosshair(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ leaderboardData(\textcolor{stringliteral}{"{}HighScores.txt"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ initialize\ the\ font}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (!font.loadFromFile(\textcolor{stringliteral}{"{}Fonts/times\_new\_roman.ttf"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error\ loading\ font"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ menus}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ up\ the\ menu\ handler}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ menuHandler\ =\ std::make\_unique<MenuHandler>(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ up\ the\ menus}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ menuHandler-\/>setUpMenus();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ Set\ up\ the\ background\ rectangle}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00022}00022\ \ \ \ \ backgroundRect.setSize(sf::Vector2f(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getSize().x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getSize().y)));}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00023}00023\ \ \ \ \ backgroundRect.setFillColor(sf::Color(0,\ 191,\ 255));}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00024}00024\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Set\ up\ the\ arena\ box}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00026}00026\ \ \ \ \ arenaBox.setSize(sf::Vector2f(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getSize().x\ -\/\ 200.f,\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getSize().y\ -\/\ 200.f));}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00027}00027\ \ \ \ \ arenaBox.setFillColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00028}00028\ \ \ \ \ arenaBox.setPosition(100.f,\ 100.f);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00032}00032\ \textcolor{comment}{//\ This\ function\ is\ called\ from\ main.cpp\ //////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00035}\mbox{\hyperlink{class_aim_trainer_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf}{World::createWorld}}(sf::Event\ eventFromMain)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Clear\ the\ window\ and\ assign\ eventFromMain\ to\ currentEvent}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00037}00037\ \ \ \ \ window.clear();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Handle\ different\ game\ states}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{switch}\ (currentGameState)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a19cbf12edccab4b14c7ae28487c48abf}{GameState::TitleScreen}}:}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ handleTitleScreen(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4b53372778f83f4841bbce28fa40a987}{GameState::GameLoop}}:}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ game\ loop}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ window.draw(backgroundRect);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ window.draw(arenaBox);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ updateTargets();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ handleTargetCollision(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ showTimer();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ crosshair.\mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{draw}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ handleOptionsMenu(eventFromMain);\ \textcolor{comment}{//\ Check\ and\ handle\ options\ menu}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a83918c373f328eda5d8b9204336f2478}{GameState::EndScreen}}:}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ handleEndScreen(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a7413a67fc34de9d0a4c042a290f1fce1}{GameState::LeaderBoardScreen}}:}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ handleLeaderBoardScreen(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a02f519bea27ccd0b93582be6dfde7330}{GameState::OptionsMenu}}:}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ handleOptionsMenu(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!menuHandler-\/>getOptionsMenu()-\/>getIsMenuOpen())\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4b53372778f83f4841bbce28fa40a987}{GameState::GameLoop}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285ad3be1d1c0a82ff556d3da24bf15dc904}{GameState::InsertNameMenu}}:}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ handleInsertNameMenu(eventFromMain);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ endGame();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ name\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00089}00089\ \ \ \ \ window.display();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00092}00092\ \textcolor{keywordtype}{void}\ World::gameLoop(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ The\ game\ loop}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00095}00095\ \ \ \ \ window.draw(arenaBox);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00096}00096\ \ \ \ \ updateTargets();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00097}00097\ \ \ \ \ handleTargetCollision(event);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00098}00098\ \ \ \ \ showTimer();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00099}00099\ \ \ \ \ crosshair.\mbox{\hyperlink{class_crosshair_ac176333f2b41ea0607aacc5e9d501954}{draw}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00101}00101\ \ \ \ \ handleOptionsMenu(event);\ \textcolor{comment}{//\ Check\ and\ handle\ options\ menu}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00104}00104\ \textcolor{comment}{//\ This\ function\ updates\ the\ targets\ on\ the\ screen}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00106}00106\ \textcolor{keywordtype}{void}\ World::updateTargets()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Remove\ all\ deactivated\ targets\ from\ the\ activeTargets\ vector}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00108}00108\ \ \ \ \ activeTargets.erase(}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ std::remove\_if(}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ activeTargets.begin(),\ activeTargets.end(),}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ [](\mbox{\hyperlink{class_target}{Target}}*\ target)\ \{\ return\ !target-\/>isActive();\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ ),}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ activeTargets.end()}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00114}00114\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Draw\ new\ targets\ if\ there\ are\ less\ than\ the\ maxTargets}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{if}\ (activeTargets.size()\ <\ maxTargets)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ createTarget();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Draw\ all\ active\ targets}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_target}{Target}}*\ target\ :\ activeTargets)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ window.draw(target-\/>\mbox{\hyperlink{class_target_a28d46f5835db0447ebdb7b44cc5dfbc0}{getShape}}());}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ hashmap.\mbox{\hyperlink{class_hashmap___a_t_acec5408c40bdedb93e4513754ecb4124}{addTarget}}(target);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00124}00124\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00126}00126\ \textcolor{comment}{//\ This\ function\ creates\ a\ new\ target\ and\ adds\ it\ to\ the\ activeTargets\ vector}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00128}00128\ \mbox{\hyperlink{class_target}{Target}}*\ World::createTarget()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ position\ and\ size\ of\ the\ arenaBox}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00130}00130\ \ \ \ \ sf::Vector2f\ arenaPos\ =\ arenaBox.getPosition();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00131}00131\ \ \ \ \ sf::Vector2f\ arenaSize\ =\ arenaBox.getSize();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ Adjust\ the\ target\ position\ to\ be\ within\ the\ bounds\ of\ arenaBox}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00134}00134\ \ \ \ \ sf::Vector2f\ pos\ =\ sf::Vector2f(}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ std::rand()\ \%\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(arenaSize.x)\ -\/\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(size))\ +\ arenaPos.x\ +\ size\ /\ 2,}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ std::rand()\ \%\ (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(arenaSize.y)\ -\/\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(size))\ +\ arenaPos.y\ +\ size\ /\ 2}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00137}00137\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ target\ and\ add\ it\ to\ the\ activeTargets\ vector}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00140}00140\ \ \ \ \ \mbox{\hyperlink{class_target}{Target}}*\ target\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_target}{Target}}(pos,\ size);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00141}00141\ \ \ \ \ activeTargets.push\_back(target);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{return}\ target;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00145}00145\ \textcolor{comment}{//\ This\ function\ handles\ mouse\ events}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00147}00147\ \textcolor{keywordtype}{void}\ World::handleTargetCollision(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00148}00148\ \ \ \ \ sf::Vector2f\ mousePos\ =\ sf::Vector2f(sf::Mouse::getPosition(window));}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00149}00149\ \ \ \ \ sf::Vector2f\ windowSize\ =\ sf::Vector2f(window.getSize());}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (mousePos.x\ <\ 0\ ||\ mousePos.x\ >\ windowSize.x\ ||\ mousePos.y\ <\ 0\ ||\ mousePos.y\ >\ windowSize.y)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ Exit\ if\ the\ mouse\ is\ outside\ the\ window}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00153}00153\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::MouseButtonPressed\ \&\&\ event.mouseButton.button\ ==\ sf::Mouse::Left)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!mousePressed\ \&\&\ currentGameState\ ==\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4b53372778f83f4841bbce28fa40a987}{GameState::GameLoop}})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_target}{Target}}*\ target\ =\ hashmap.\mbox{\hyperlink{class_hashmap___a_t_a3c9c78c89d5fd2138cce6243fdcde456}{getTargetAtCollision}}(mousePos,\ size);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ target-\/>\mbox{\hyperlink{class_target_ac1c36ec403f441ccfd7059d50f278796}{deActivate}}();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ target-\/>\mbox{\hyperlink{class_target_a18102a6c58a268fb1466771463fdc9b3}{\string~Target}}();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ score\ +=\ 100;\ \textcolor{comment}{//\ Increase\ score\ for\ hitting\ a\ target}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ score\ -\/=\ 50;\ \textcolor{comment}{//\ Decrease\ score\ for\ a\ missed\ click}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ mousePressed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00169}00169\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (event.type\ ==\ sf::Event::MouseButtonReleased\ \&\&\ event.mouseButton.button\ ==\ sf::Mouse::Left)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ mousePressed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00171}00171\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00174}00174\ \textcolor{comment}{//\ This\ function\ displays\ the\ timer\ and\ score}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00176}00176\ \textcolor{keywordtype}{void}\ World::showTimer()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentGameState\ ==\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4b53372778f83f4841bbce28fa40a987}{GameState::GameLoop}})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ time\ left\ in\ the\ game}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ timeElapsed\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(mainClock.getElapsedTime().asSeconds()\ -\/\ menuHandler-\/>getOptionsMenu()-\/>getTotalTimeInMenu().asSeconds());}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ timeLeft\ =\ timerTime\ -\/\ timeElapsed;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ game\ is\ running\ and\ display\ the\ score}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timeLeft\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ scoreAndTime\ =\ \textcolor{stringliteral}{"{}Time\ Left:\ "{}}\ +\ std::to\_string(timeLeft)\ +\ \textcolor{stringliteral}{"{}\ \ Score:\ "{}}\ +\ std::to\_string(score);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Text\ timerText;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ timerText.setFont(font);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ timerText.setString(scoreAndTime);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ timerText.Bold;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ timerText.setFillColor(sf::Color::White);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ timerText.setPosition(window.getSize().x\ /\ 2\ -\/\ timerText.getGlobalBounds().width\ /\ 2,\ 0);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ timerText.setCharacterSize(40);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ window.draw(timerText);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ game\ is\ over,\ display\ the\ score\ and\ reset\ the\ game}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a83918c373f328eda5d8b9204336f2478}{GameState::EndScreen}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00200}00200\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00201}00201\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00203}00203\ \textcolor{comment}{//\ This\ function\ ends\ the\ game}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00205}00205\ \textcolor{keywordtype}{void}\ World::endGame()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{if}\ (score\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ scores.push\_back(std::make\_pair(name,\ score));}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ leaderboardData.\mbox{\hyperlink{class_save_data_a4c3f8821006401f67c9dc4c87adbc8ed}{addData}}(scores);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00210}00210\ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00214}00214\ \textcolor{comment}{//\ Functions\ for\ handling\ different\ game\ Menus\ ////////////////////}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00217}00217\ \textcolor{keywordtype}{void}\ World::handleTitleScreen(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00218}00218\ \ \ \ \ menuHandler-\/>drawStartMenu(event,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00221}00221\ \textcolor{keywordtype}{void}\ World::handleEndScreen(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00222}00222\ \ \ \ \ menuHandler-\/>drawEndMenu(event,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00223}00223\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00225}00225\ \textcolor{keywordtype}{void}\ World::handleLeaderBoardScreen(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00226}00226\ \ \ \ \ menuHandler-\/>drawLeaderBoardMenu(event,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00227}00227\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00229}00229\ \textcolor{keywordtype}{void}\ World::handleOptionsMenu(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00230}00230\ \ \ \ \ menuHandler-\/>drawOptionsMenu(event,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00231}00231\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00233}00233\ \textcolor{keywordtype}{void}\ World::handleInsertNameMenu(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00234}00234\ \ \ \ \ menuHandler-\/>drawInsertNameMenu(event,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00235}00235\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00238}00238\ \textcolor{comment}{//\ Overridden\ Functions\ for\ the\ game\ //////////////////////////////}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00241}\mbox{\hyperlink{class_aim_trainer_1_1_world_ac9cb330c146c676136de122ce82fb652}{00241}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_ac9cb330c146c676136de122ce82fb652}{World::changeGameState}}(\mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ newState)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00242}00242\ \ \ \ \ currentGameState\ =\ newState;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00245}\mbox{\hyperlink{class_aim_trainer_1_1_world_abd1f95f2e7a633a687e213925d80794e}{00245}}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_abd1f95f2e7a633a687e213925d80794e}{World::getCurrentGameState}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{return}\ currentGameState;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00247}00247\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00249}\mbox{\hyperlink{class_aim_trainer_1_1_world_a144aeca12d7828e638f00029bbfa4830}{00249}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a144aeca12d7828e638f00029bbfa4830}{World::startGame}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00250}00250\ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4b53372778f83f4841bbce28fa40a987}{GameState::GameLoop}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00251}00251\ \ \ \ \ mainClock.restart();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00252}00252\ \ \ \ \ scores.push\_back(std::make\_pair(name,\ score));}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00253}00253\ \ \ \ \ score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00254}00254\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00256}\mbox{\hyperlink{class_aim_trainer_1_1_world_ad6d1c27120f4ff00f2ff7cd98011c0aa}{00256}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_ad6d1c27120f4ff00f2ff7cd98011c0aa}{World::setName}}(std::string\ name\_in)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00257}00257\ \ \ \ \ \textcolor{keywordflow}{if}\ (name\_in\ !=\ \textcolor{stringliteral}{"{}"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ name\ =\ name\_in;}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00259}00259\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00260}00260\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00262}\mbox{\hyperlink{class_aim_trainer_1_1_world_a0d79e562314cb9df0540f0d043d12640}{00262}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a0d79e562314cb9df0540f0d043d12640}{World::openLeaderBoardMenu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00263}00263\ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a7413a67fc34de9d0a4c042a290f1fce1}{GameState::LeaderBoardScreen}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00264}00264\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00266}\mbox{\hyperlink{class_aim_trainer_1_1_world_aa48cbdd6a946158b6036eb557b43723a}{00266}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_aa48cbdd6a946158b6036eb557b43723a}{World::openOptionsMenu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00267}00267\ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a02f519bea27ccd0b93582be6dfde7330}{GameState::OptionsMenu}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00270}\mbox{\hyperlink{class_aim_trainer_1_1_world_ac1857125112d5f92f9cf820a3c003099}{00270}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_ac1857125112d5f92f9cf820a3c003099}{World::openStartMenu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00271}00271\ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a19cbf12edccab4b14c7ae28487c48abf}{GameState::TitleScreen}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00272}00272\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00274}\mbox{\hyperlink{class_aim_trainer_1_1_world_a8c5a85d825a6162843ac7ed4d3ee708a}{00274}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a8c5a85d825a6162843ac7ed4d3ee708a}{World::openEndScreen}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00275}00275\ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a83918c373f328eda5d8b9204336f2478}{GameState::EndScreen}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00276}00276\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00278}\mbox{\hyperlink{class_aim_trainer_1_1_world_a61107665030b8f44e3d3e20bb85371b3}{00278}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a61107665030b8f44e3d3e20bb85371b3}{World::openInsertNameMenu}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00279}00279\ \ \ \ \ currentGameState\ =\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285ad3be1d1c0a82ff556d3da24bf15dc904}{GameState::InsertNameMenu}};}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00280}00280\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00282}\mbox{\hyperlink{class_aim_trainer_1_1_world_a0ed9c1422206f7cea5dfd8083cd71089}{00282}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_trainer_1_1_world_a0ed9c1422206f7cea5dfd8083cd71089}{World::exit}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00283}00283\ \ \ \ \ endGame();}
+\DoxyCodeLine{\Hypertarget{_world___a_t_8cpp_source_l00284}00284\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,7 @@
+<map id="QuadTree::insert" name="QuadTree::insert">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,123,57"/>
+<area shape="rect" id="Node000002" href="$struct_boundary.html#a22397906d9c214901a4342b174129bbe" title=" " alt="" coords="171,5,304,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,33,155,28,155,33,124,38"/>
+<area shape="rect" id="Node000003" href="$class_pellet.html#a1dc15dba50ba763418b301de39d7e4bc" title=" " alt="" coords="174,56,301,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,50,158,55,157,60,123,55"/>
+</map>

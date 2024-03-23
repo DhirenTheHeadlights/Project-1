@@ -1,0 +1,472 @@
+\doxysection{Pirate\+Game\+::Minimap Class Reference}
+\hypertarget{class_pirate_game_1_1_minimap}{}\label{class_pirate_game_1_1_minimap}\index{PirateGame::Minimap@{PirateGame::Minimap}}
+
+
+{\ttfamily \#include $<$Minimap\+\_\+\+PG.\+h$>$}
+
+
+
+Collaboration diagram for Pirate\+Game\+::Minimap\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_minimap_a5ddcb6f0e5ea897cd3748792528decd8_a5ddcb6f0e5ea897cd3748792528decd8}{Minimap}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_minimap_a334525e886b1c3979283c80881daee48_a334525e886b1c3979283c80881daee48}{\texorpdfstring{$\sim$}{\string~}\+Minimap}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0}{draw}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840}{update}} (float ship\+Rotation)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_a4a7091afef3c6b93b42becc4cec80885_a4a7091afef3c6b93b42becc4cec80885}{set\+Minimap\+Radius}} (float \mbox{\hyperlink{class_pirate_game_1_1_minimap_a5a35ae25d6250d59de7e928a2cd67363_a5a35ae25d6250d59de7e928a2cd67363}{size}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_a1269c6a982ff7758a0fe215b6ee6d1aa_a1269c6a982ff7758a0fe215b6ee6d1aa}{set\+Landmasses}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \&\mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_a31becf3551c79719186f749baa9771cb_a31becf3551c79719186f749baa9771cb}{set\+Ship}} (\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}{ship}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_acdc479d78225d93e39eca1cd315ee918_acdc479d78225d93e39eca1cd315ee918}{set\+Enemy\+Ships}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} $>$ $>$ \&\mbox{\hyperlink{class_pirate_game_1_1_minimap_af870e031057e98309e9f3796dffc7a65_af870e031057e98309e9f3796dffc7a65}{ships}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_minimap_adb02719b01ad5735403b34c2db944ec0_adb02719b01ad5735403b34c2db944ec0}{set\+Minimap\+Position}} (sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_a6514468087c98095d498755010c88013_a6514468087c98095d498755010c88013}{position}})
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_minimap_aeab64300c081593770104b81fa1a5d82_aeab64300c081593770104b81fa1a5d82}{get\+Minimap\+Sprite}} ()
+\item 
+sf\+::\+Circle\+Shape \& \mbox{\hyperlink{class_pirate_game_1_1_minimap_a9194acba0ec1dab5ebd05140bccf0175_a9194acba0ec1dab5ebd05140bccf0175}{get\+Minimap}} ()
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_minimap_abacf92be88f0eb8a84d38d87ebcf556a_abacf92be88f0eb8a84d38d87ebcf556a}{get\+Minimap\+Radius}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_af837088092cebcccc8b1381ba44a27f0_af837088092cebcccc8b1381ba44a27f0}{get\+Minimap\+Position}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_minimap_a5a35ae25d6250d59de7e928a2cd67363_a5a35ae25d6250d59de7e928a2cd67363}{size}} = 0
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_a6514468087c98095d498755010c88013_a6514468087c98095d498755010c88013}{position}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_a8ac2d79fc417ca29a388bb387bc1c12c_a8ac2d79fc417ca29a388bb387bc1c12c}{ship\+Icon\+Size}} = \{ 6.f, 6.f \}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_ab7ad2ab30e63aaccc1191a1e83f9b95a_ab7ad2ab30e63aaccc1191a1e83f9b95a}{rock\+Icon\+Size}} = \{ 2.f, 2.f \}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_a14a911873b938c24d37ea8405b908d14_a14a911873b938c24d37ea8405b908d14}{island\+Icon\+Size}} = \{ 4.f, 4.f \}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_minimap_a7d575ad96b095fc7b34425d52727cfab_a7d575ad96b095fc7b34425d52727cfab}{ship\+Rect\+Size}} = \{ 3.f, 3.f \}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}{ship}} = nullptr
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimap\+Sprite}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{ship\+Icon\+Sprite}}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}} \mbox{\hyperlink{class_pirate_game_1_1_minimap_abb5e3c65419e4bd244e9a2bd1cb7d04c_abb5e3c65419e4bd244e9a2bd1cb7d04c}{textures}}
+\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{class_pirate_game_1_1_minimap_a4960a2b14d1eac5d1fa9e2051c0de475_a4960a2b14d1eac5d1fa9e2051c0de475}{minimap}}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_pirate_game_1_1_minimap_a6e2ab8d34c1b991d3bd12bf68db9e522_a6e2ab8d34c1b991d3bd12bf68db9e522}{ship\+Icon}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af870e031057e98309e9f3796dffc7a65_af870e031057e98309e9f3796dffc7a65}{ships}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97}{visible\+Landmass\+Rects}}
+\item 
+std\+::vector$<$ sf\+::\+Rectangle\+Shape $>$ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d}{visible\+Ship\+Rects}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00014}{14}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_minimap_a5ddcb6f0e5ea897cd3748792528decd8_a5ddcb6f0e5ea897cd3748792528decd8}\label{class_pirate_game_1_1_minimap_a5ddcb6f0e5ea897cd3748792528decd8_a5ddcb6f0e5ea897cd3748792528decd8} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!Minimap@{Minimap}}
+\index{Minimap@{Minimap}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{Minimap()}{Minimap()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Minimap\+::\+Minimap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00016}{16}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a5ddcb6f0e5ea897cd3748792528decd8_a5ddcb6f0e5ea897cd3748792528decd8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_a334525e886b1c3979283c80881daee48_a334525e886b1c3979283c80881daee48}\label{class_pirate_game_1_1_minimap_a334525e886b1c3979283c80881daee48_a334525e886b1c3979283c80881daee48} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!````~Minimap@{\texorpdfstring{$\sim$}{\string~}Minimap}}
+\index{````~Minimap@{\texorpdfstring{$\sim$}{\string~}Minimap}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Minimap()}{\string~Minimap()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Minimap\+::\texorpdfstring{$\sim$}{\string~}\+Minimap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00024}{24}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0}\label{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!draw@{draw}}
+\index{draw@{draw}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Minimap\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_minimap___p_g_8cpp_source}{Minimap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_a9194acba0ec1dab5ebd05140bccf0175_a9194acba0ec1dab5ebd05140bccf0175}\label{class_pirate_game_1_1_minimap_a9194acba0ec1dab5ebd05140bccf0175_a9194acba0ec1dab5ebd05140bccf0175} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!getMinimap@{getMinimap}}
+\index{getMinimap@{getMinimap}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{getMinimap()}{getMinimap()}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape \& Pirate\+Game\+::\+Minimap\+::get\+Minimap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_af837088092cebcccc8b1381ba44a27f0_af837088092cebcccc8b1381ba44a27f0}\label{class_pirate_game_1_1_minimap_af837088092cebcccc8b1381ba44a27f0_af837088092cebcccc8b1381ba44a27f0} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!getMinimapPosition@{getMinimapPosition}}
+\index{getMinimapPosition@{getMinimapPosition}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{getMinimapPosition()}{getMinimapPosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Minimap\+::get\+Minimap\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00040}{40}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_af837088092cebcccc8b1381ba44a27f0_af837088092cebcccc8b1381ba44a27f0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_abacf92be88f0eb8a84d38d87ebcf556a_abacf92be88f0eb8a84d38d87ebcf556a}\label{class_pirate_game_1_1_minimap_abacf92be88f0eb8a84d38d87ebcf556a_abacf92be88f0eb8a84d38d87ebcf556a} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!getMinimapRadius@{getMinimapRadius}}
+\index{getMinimapRadius@{getMinimapRadius}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{getMinimapRadius()}{getMinimapRadius()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Minimap\+::get\+Minimap\+Radius (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_abacf92be88f0eb8a84d38d87ebcf556a_abacf92be88f0eb8a84d38d87ebcf556a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_aeab64300c081593770104b81fa1a5d82_aeab64300c081593770104b81fa1a5d82}\label{class_pirate_game_1_1_minimap_aeab64300c081593770104b81fa1a5d82_aeab64300c081593770104b81fa1a5d82} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!getMinimapSprite@{getMinimapSprite}}
+\index{getMinimapSprite@{getMinimapSprite}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{getMinimapSprite()}{getMinimapSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Pirate\+Game\+::\+Minimap\+::get\+Minimap\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00037}{37}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_acdc479d78225d93e39eca1cd315ee918_acdc479d78225d93e39eca1cd315ee918}\label{class_pirate_game_1_1_minimap_acdc479d78225d93e39eca1cd315ee918_acdc479d78225d93e39eca1cd315ee918} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!setEnemyShips@{setEnemyShips}}
+\index{setEnemyShips@{setEnemyShips}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{setEnemyShips()}{setEnemyShips()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Minimap\+::set\+Enemy\+Ships (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} $>$ $>$ \&}]{ships }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00033}{33}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a1269c6a982ff7758a0fe215b6ee6d1aa_a1269c6a982ff7758a0fe215b6ee6d1aa}\label{class_pirate_game_1_1_minimap_a1269c6a982ff7758a0fe215b6ee6d1aa_a1269c6a982ff7758a0fe215b6ee6d1aa} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!setLandmasses@{setLandmasses}}
+\index{setLandmasses@{setLandmasses}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{setLandmasses()}{setLandmasses()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Minimap\+::set\+Landmasses (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \&}]{landmasses }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00031}{31}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_adb02719b01ad5735403b34c2db944ec0_adb02719b01ad5735403b34c2db944ec0}\label{class_pirate_game_1_1_minimap_adb02719b01ad5735403b34c2db944ec0_adb02719b01ad5735403b34c2db944ec0} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!setMinimapPosition@{setMinimapPosition}}
+\index{setMinimapPosition@{setMinimapPosition}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{setMinimapPosition()}{setMinimapPosition()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Minimap\+::set\+Minimap\+Position (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00034}{34}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_adb02719b01ad5735403b34c2db944ec0_adb02719b01ad5735403b34c2db944ec0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_a4a7091afef3c6b93b42becc4cec80885_a4a7091afef3c6b93b42becc4cec80885}\label{class_pirate_game_1_1_minimap_a4a7091afef3c6b93b42becc4cec80885_a4a7091afef3c6b93b42becc4cec80885} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!setMinimapRadius@{setMinimapRadius}}
+\index{setMinimapRadius@{setMinimapRadius}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{setMinimapRadius()}{setMinimapRadius()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Minimap\+::set\+Minimap\+Radius (\begin{DoxyParamCaption}\item[{float}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a4a7091afef3c6b93b42becc4cec80885_a4a7091afef3c6b93b42becc4cec80885_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_a31becf3551c79719186f749baa9771cb_a31becf3551c79719186f749baa9771cb}\label{class_pirate_game_1_1_minimap_a31becf3551c79719186f749baa9771cb_a31becf3551c79719186f749baa9771cb} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!setShip@{setShip}}
+\index{setShip@{setShip}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{setShip()}{setShip()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Minimap\+::set\+Ship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}}]{ship }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00032}{32}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a31becf3551c79719186f749baa9771cb_a31becf3551c79719186f749baa9771cb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840}\label{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!update@{update}}
+\index{update@{update}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Minimap\+::update (\begin{DoxyParamCaption}\item[{float}]{ship\+Rotation }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_minimap___p_g_8cpp_source}{Minimap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_minimap_a14a911873b938c24d37ea8405b908d14_a14a911873b938c24d37ea8405b908d14}\label{class_pirate_game_1_1_minimap_a14a911873b938c24d37ea8405b908d14_a14a911873b938c24d37ea8405b908d14} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!islandIconSize@{islandIconSize}}
+\index{islandIconSize@{islandIconSize}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{islandIconSize}{islandIconSize}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Minimap\+::island\+Icon\+Size = \{ 4.f, 4.f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00047}{47}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}\label{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!landmasses@{landmasses}}
+\index{landmasses@{landmasses}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{landmasses}{landmasses}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}}$>$ $>$ Pirate\+Game\+::\+Minimap\+::landmasses\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00062}{62}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a4960a2b14d1eac5d1fa9e2051c0de475_a4960a2b14d1eac5d1fa9e2051c0de475}\label{class_pirate_game_1_1_minimap_a4960a2b14d1eac5d1fa9e2051c0de475_a4960a2b14d1eac5d1fa9e2051c0de475} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!minimap@{minimap}}
+\index{minimap@{minimap}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{minimap}{minimap}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Pirate\+Game\+::\+Minimap\+::minimap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00058}{58}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}\label{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!minimapSprite@{minimapSprite}}
+\index{minimapSprite@{minimapSprite}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{minimapSprite}{minimapSprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Minimap\+::minimap\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00052}{52}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a6514468087c98095d498755010c88013_a6514468087c98095d498755010c88013}\label{class_pirate_game_1_1_minimap_a6514468087c98095d498755010c88013_a6514468087c98095d498755010c88013} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!position@{position}}
+\index{position@{position}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Minimap\+::position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_ab7ad2ab30e63aaccc1191a1e83f9b95a_ab7ad2ab30e63aaccc1191a1e83f9b95a}\label{class_pirate_game_1_1_minimap_ab7ad2ab30e63aaccc1191a1e83f9b95a_ab7ad2ab30e63aaccc1191a1e83f9b95a} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!rockIconSize@{rockIconSize}}
+\index{rockIconSize@{rockIconSize}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{rockIconSize}{rockIconSize}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Minimap\+::rock\+Icon\+Size = \{ 2.f, 2.f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}\label{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!ship@{ship}}
+\index{ship@{ship}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{ship}{ship}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}}\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Minimap\+::ship = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00050}{50}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a6e2ab8d34c1b991d3bd12bf68db9e522_a6e2ab8d34c1b991d3bd12bf68db9e522}\label{class_pirate_game_1_1_minimap_a6e2ab8d34c1b991d3bd12bf68db9e522_a6e2ab8d34c1b991d3bd12bf68db9e522} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!shipIcon@{shipIcon}}
+\index{shipIcon@{shipIcon}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{shipIcon}{shipIcon}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Pirate\+Game\+::\+Minimap\+::ship\+Icon\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00059}{59}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a8ac2d79fc417ca29a388bb387bc1c12c_a8ac2d79fc417ca29a388bb387bc1c12c}\label{class_pirate_game_1_1_minimap_a8ac2d79fc417ca29a388bb387bc1c12c_a8ac2d79fc417ca29a388bb387bc1c12c} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!shipIconSize@{shipIconSize}}
+\index{shipIconSize@{shipIconSize}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{shipIconSize}{shipIconSize}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Minimap\+::ship\+Icon\+Size = \{ 6.f, 6.f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}\label{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!shipIconSprite@{shipIconSprite}}
+\index{shipIconSprite@{shipIconSprite}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{shipIconSprite}{shipIconSprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Minimap\+::ship\+Icon\+Sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00053}{53}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a7d575ad96b095fc7b34425d52727cfab_a7d575ad96b095fc7b34425d52727cfab}\label{class_pirate_game_1_1_minimap_a7d575ad96b095fc7b34425d52727cfab_a7d575ad96b095fc7b34425d52727cfab} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!shipRectSize@{shipRectSize}}
+\index{shipRectSize@{shipRectSize}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{shipRectSize}{shipRectSize}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Minimap\+::ship\+Rect\+Size = \{ 3.f, 3.f \}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00048}{48}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_af870e031057e98309e9f3796dffc7a65_af870e031057e98309e9f3796dffc7a65}\label{class_pirate_game_1_1_minimap_af870e031057e98309e9f3796dffc7a65_af870e031057e98309e9f3796dffc7a65} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!ships@{ships}}
+\index{ships@{ships}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{ships}{ships}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}}$>$ $>$ Pirate\+Game\+::\+Minimap\+::ships\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00061}{61}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a5a35ae25d6250d59de7e928a2cd67363_a5a35ae25d6250d59de7e928a2cd67363}\label{class_pirate_game_1_1_minimap_a5a35ae25d6250d59de7e928a2cd67363_a5a35ae25d6250d59de7e928a2cd67363} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!size@{size}}
+\index{size@{size}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Minimap\+::size = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_abb5e3c65419e4bd244e9a2bd1cb7d04c_abb5e3c65419e4bd244e9a2bd1cb7d04c}\label{class_pirate_game_1_1_minimap_abb5e3c65419e4bd244e9a2bd1cb7d04c_abb5e3c65419e4bd244e9a2bd1cb7d04c} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!textures@{textures}}
+\index{textures@{textures}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{textures}{textures}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_h_u_d_texture_handler}{HUDTexture\+Handler}} Pirate\+Game\+::\+Minimap\+::textures\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00055}{55}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97}\label{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!visibleLandmassRects@{visibleLandmassRects}}
+\index{visibleLandmassRects@{visibleLandmassRects}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{visibleLandmassRects}{visibleLandmassRects}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Pirate\+Game\+::\+Minimap\+::visible\+Landmass\+Rects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00064}{64}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d}\label{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d} 
+\index{PirateGame::Minimap@{PirateGame::Minimap}!visibleShipRects@{visibleShipRects}}
+\index{visibleShipRects@{visibleShipRects}!PirateGame::Minimap@{PirateGame::Minimap}}
+\doxysubsubsection{\texorpdfstring{visibleShipRects}{visibleShipRects}}
+{\footnotesize\ttfamily std\+::vector$<$sf\+::\+Rectangle\+Shape$>$ Pirate\+Game\+::\+Minimap\+::visible\+Ship\+Rects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_minimap___p_g_8h_source_l00065}{65}} of file \mbox{\hyperlink{_minimap___p_g_8h_source}{Minimap\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_minimap___p_g_8h}{Minimap\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_minimap___p_g_8cpp}{Minimap\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

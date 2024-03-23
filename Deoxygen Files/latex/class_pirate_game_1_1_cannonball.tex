@@ -1,0 +1,265 @@
+\doxysection{Pirate\+Game\+::Cannonball Class Reference}
+\hypertarget{class_pirate_game_1_1_cannonball}{}\label{class_pirate_game_1_1_cannonball}\index{PirateGame::Cannonball@{PirateGame::Cannonball}}
+
+
+{\ttfamily \#include $<$Cannonball\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_cannonball_a21d62f6f6fb1b1cd15dba910bbc815ca_a21d62f6f6fb1b1cd15dba910bbc815ca}{Cannonball}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_cannonball_a74305a92e8bb9bd57b03aa378e0c6a68_a74305a92e8bb9bd57b03aa378e0c6a68}{\texorpdfstring{$\sim$}{\string~}\+Cannonball}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_cannonball_ab12245cdf8f388e4fb2e91ff0bac091a_ab12245cdf8f388e4fb2e91ff0bac091a}{set\+Pos}} (sf\+::\+Vector2f pos)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_cannonball_af51d85792e5c8bf877e91500d107e8e9_af51d85792e5c8bf877e91500d107e8e9}{set\+Velocity}} (sf\+::\+Vector2f vel)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a6871248d1f02f7322a72bce0189dea63_a6871248d1f02f7322a72bce0189dea63}{arrr\+Matey}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a0e3202064b8255939f7948afcf94abd4_a0e3202064b8255939f7948afcf94abd4}{set\+Speed}} (float \mbox{\hyperlink{class_pirate_game_1_1_cannonball_aa7f41e3d9f463b5305602b3db377fc55_aa7f41e3d9f463b5305602b3db377fc55}{speed}})
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a3aa3d4b0c2f87cd6c366dd82fd825906_a3aa3d4b0c2f87cd6c366dd82fd825906}{get\+Clock}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a8483faff88efbac8dfc951ba7d13d78a_a8483faff88efbac8dfc951ba7d13d78a}{get\+Pos}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_cannonball_adc9959474e8214b8f5bbd8227896fb7c_adc9959474e8214b8f5bbd8227896fb7c}{get\+Velocity}} () const
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a6e3b486a2c6d1d81f719e78456634b59_a6e3b486a2c6d1d81f719e78456634b59}{get\+Sprite}} ()
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a5ef928b5ca47ef1da7d8511e48c8ad8b_a5ef928b5ca47ef1da7d8511e48c8ad8b}{get\+Speed}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_cannonball_ae8d141e77108ddfb4c3702e1e232483b_ae8d141e77108ddfb4c3702e1e232483b}{operator==}} (const \mbox{\hyperlink{class_pirate_game_1_1_cannonball}{Cannonball}} \&other) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a0470fc9c140509e7d668d409c113836a_a0470fc9c140509e7d668d409c113836a}{clock}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_cannonball_ac5d1b11d4508cc65196e1a48d00685ee_ac5d1b11d4508cc65196e1a48d00685ee}{velocity}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_cannonball_a3862cf6de092ef9390846c01b0ea0822_a3862cf6de092ef9390846c01b0ea0822}{sprite}}
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_cannonball_aa7f41e3d9f463b5305602b3db377fc55_aa7f41e3d9f463b5305602b3db377fc55}{speed}} = 10.f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00012}{12}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_cannonball_a21d62f6f6fb1b1cd15dba910bbc815ca_a21d62f6f6fb1b1cd15dba910bbc815ca}\label{class_pirate_game_1_1_cannonball_a21d62f6f6fb1b1cd15dba910bbc815ca_a21d62f6f6fb1b1cd15dba910bbc815ca} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!Cannonball@{Cannonball}}
+\index{Cannonball@{Cannonball}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{Cannonball()}{Cannonball()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Cannonball\+::\+Cannonball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00014}{14}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_a74305a92e8bb9bd57b03aa378e0c6a68_a74305a92e8bb9bd57b03aa378e0c6a68}\label{class_pirate_game_1_1_cannonball_a74305a92e8bb9bd57b03aa378e0c6a68_a74305a92e8bb9bd57b03aa378e0c6a68} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!````~Cannonball@{\texorpdfstring{$\sim$}{\string~}Cannonball}}
+\index{````~Cannonball@{\texorpdfstring{$\sim$}{\string~}Cannonball}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Cannonball()}{\string~Cannonball()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Cannonball\+::\texorpdfstring{$\sim$}{\string~}\+Cannonball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00015}{15}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_cannonball_a6871248d1f02f7322a72bce0189dea63_a6871248d1f02f7322a72bce0189dea63}\label{class_pirate_game_1_1_cannonball_a6871248d1f02f7322a72bce0189dea63_a6871248d1f02f7322a72bce0189dea63} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!arrrMatey@{arrrMatey}}
+\index{arrrMatey@{arrrMatey}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{arrrMatey()}{arrrMatey()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Cannonball\+::arrr\+Matey (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00020}{20}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_a3aa3d4b0c2f87cd6c366dd82fd825906_a3aa3d4b0c2f87cd6c366dd82fd825906}\label{class_pirate_game_1_1_cannonball_a3aa3d4b0c2f87cd6c366dd82fd825906_a3aa3d4b0c2f87cd6c366dd82fd825906} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!getClock@{getClock}}
+\index{getClock@{getClock}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{getClock()}{getClock()}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Cannonball\+::get\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00024}{24}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_a8483faff88efbac8dfc951ba7d13d78a_a8483faff88efbac8dfc951ba7d13d78a}\label{class_pirate_game_1_1_cannonball_a8483faff88efbac8dfc951ba7d13d78a_a8483faff88efbac8dfc951ba7d13d78a} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!getPos@{getPos}}
+\index{getPos@{getPos}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Cannonball\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00025}{25}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_a5ef928b5ca47ef1da7d8511e48c8ad8b_a5ef928b5ca47ef1da7d8511e48c8ad8b}\label{class_pirate_game_1_1_cannonball_a5ef928b5ca47ef1da7d8511e48c8ad8b_a5ef928b5ca47ef1da7d8511e48c8ad8b} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Cannonball\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00028}{28}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_cannonball_a5ef928b5ca47ef1da7d8511e48c8ad8b_a5ef928b5ca47ef1da7d8511e48c8ad8b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_cannonball_a6e3b486a2c6d1d81f719e78456634b59_a6e3b486a2c6d1d81f719e78456634b59}\label{class_pirate_game_1_1_cannonball_a6e3b486a2c6d1d81f719e78456634b59_a6e3b486a2c6d1d81f719e78456634b59} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!getSprite@{getSprite}}
+\index{getSprite@{getSprite}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{getSprite()}{getSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Pirate\+Game\+::\+Cannonball\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00027}{27}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_cannonball_a6e3b486a2c6d1d81f719e78456634b59_a6e3b486a2c6d1d81f719e78456634b59_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_cannonball_adc9959474e8214b8f5bbd8227896fb7c_adc9959474e8214b8f5bbd8227896fb7c}\label{class_pirate_game_1_1_cannonball_adc9959474e8214b8f5bbd8227896fb7c_adc9959474e8214b8f5bbd8227896fb7c} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Cannonball\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00026}{26}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_ae8d141e77108ddfb4c3702e1e232483b_ae8d141e77108ddfb4c3702e1e232483b}\label{class_pirate_game_1_1_cannonball_ae8d141e77108ddfb4c3702e1e232483b_ae8d141e77108ddfb4c3702e1e232483b} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!operator==@{operator==}}
+\index{operator==@{operator==}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Cannonball\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_pirate_game_1_1_cannonball}{Cannonball}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_ab12245cdf8f388e4fb2e91ff0bac091a_ab12245cdf8f388e4fb2e91ff0bac091a}\label{class_pirate_game_1_1_cannonball_ab12245cdf8f388e4fb2e91ff0bac091a_ab12245cdf8f388e4fb2e91ff0bac091a} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!setPos@{setPos}}
+\index{setPos@{setPos}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Cannonball\+::set\+Pos (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00018}{18}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_cannonball_ab12245cdf8f388e4fb2e91ff0bac091a_ab12245cdf8f388e4fb2e91ff0bac091a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_cannonball_a0e3202064b8255939f7948afcf94abd4_a0e3202064b8255939f7948afcf94abd4}\label{class_pirate_game_1_1_cannonball_a0e3202064b8255939f7948afcf94abd4_a0e3202064b8255939f7948afcf94abd4} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Cannonball\+::set\+Speed (\begin{DoxyParamCaption}\item[{float}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00021}{21}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_cannonball_a0e3202064b8255939f7948afcf94abd4_a0e3202064b8255939f7948afcf94abd4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_cannonball_af51d85792e5c8bf877e91500d107e8e9_af51d85792e5c8bf877e91500d107e8e9}\label{class_pirate_game_1_1_cannonball_af51d85792e5c8bf877e91500d107e8e9_af51d85792e5c8bf877e91500d107e8e9} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!setVelocity@{setVelocity}}
+\index{setVelocity@{setVelocity}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Cannonball\+::set\+Velocity (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{vel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_cannonball_af51d85792e5c8bf877e91500d107e8e9_af51d85792e5c8bf877e91500d107e8e9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_cannonball_a0470fc9c140509e7d668d409c113836a_a0470fc9c140509e7d668d409c113836a}\label{class_pirate_game_1_1_cannonball_a0470fc9c140509e7d668d409c113836a_a0470fc9c140509e7d668d409c113836a} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!clock@{clock}}
+\index{clock@{clock}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{clock}{clock}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Cannonball\+::clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00035}{35}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_aa7f41e3d9f463b5305602b3db377fc55_aa7f41e3d9f463b5305602b3db377fc55}\label{class_pirate_game_1_1_cannonball_aa7f41e3d9f463b5305602b3db377fc55_aa7f41e3d9f463b5305602b3db377fc55} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!speed@{speed}}
+\index{speed@{speed}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Cannonball\+::speed = 10.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_a3862cf6de092ef9390846c01b0ea0822_a3862cf6de092ef9390846c01b0ea0822}\label{class_pirate_game_1_1_cannonball_a3862cf6de092ef9390846c01b0ea0822_a3862cf6de092ef9390846c01b0ea0822} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!sprite@{sprite}}
+\index{sprite@{sprite}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Cannonball\+::sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00037}{37}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_cannonball_ac5d1b11d4508cc65196e1a48d00685ee_ac5d1b11d4508cc65196e1a48d00685ee}\label{class_pirate_game_1_1_cannonball_ac5d1b11d4508cc65196e1a48d00685ee_ac5d1b11d4508cc65196e1a48d00685ee} 
+\index{PirateGame::Cannonball@{PirateGame::Cannonball}!velocity@{velocity}}
+\index{velocity@{velocity}!PirateGame::Cannonball@{PirateGame::Cannonball}}
+\doxysubsubsection{\texorpdfstring{velocity}{velocity}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Cannonball\+::velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_cannonball___p_g_8h_source_l00036}{36}} of file \mbox{\hyperlink{_cannonball___p_g_8h_source}{Cannonball\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_cannonball___p_g_8h}{Cannonball\+\_\+\+PG.\+h}}\end{DoxyCompactItemize}

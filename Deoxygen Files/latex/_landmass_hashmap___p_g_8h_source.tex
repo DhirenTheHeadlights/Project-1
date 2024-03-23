@@ -1,0 +1,53 @@
+\doxysection{Landmass\+Hashmap\+\_\+\+PG.\+h}
+\hypertarget{_landmass_hashmap___p_g_8h_source}{}\label{_landmass_hashmap___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/LandmassHashmap\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/LandmassHashmap\_PG.h}}
+\mbox{\hyperlink{_landmass_hashmap___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_values___p_g_8h}{GlobalValues\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_map___p_g_8h}{GlobalMap\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_land_mass___p_g_8h}{LandMass\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ship___p_g_8h}{Ship\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}Map.h"{}}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00018}00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00019}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap}{00019}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap}{LandMassHashmap}}\ \{}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ A\ custom\ hash\ function\ for\ std::pair<int,\ int>}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00021}\mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash}{00021}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash}{pair\_hash}}\ \{}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T1,\ \textcolor{keyword}{class}\ T2>}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00023}\mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash_a9ad13f58998e117daecca60166cfd322_a9ad13f58998e117daecca60166cfd322}{00023}}\ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ \mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash_a9ad13f58998e117daecca60166cfd322_a9ad13f58998e117daecca60166cfd322}{operator\ ()\ }}(\textcolor{keyword}{const}\ std::pair<T1,\ T2>\&\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{pair}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::hash<T1>()(\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{pair}}.first)\ \string^\ std::hash<T2>()(\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{pair}}.second);}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00030}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_ac52452fd2acfa7049076d2fa80b89f1c_ac52452fd2acfa7049076d2fa80b89f1c}{00030}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_ac52452fd2acfa7049076d2fa80b89f1c_ac52452fd2acfa7049076d2fa80b89f1c}{LandMassHashmap}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ and\ remove\ landmass\ to\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd_a049cb1ec837632d96978faa06298abbd}{addLandMass}}(\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{LandMass}}*\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{landmass}});}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a5a88895b22d17763294909f3a8f2931a_a5a88895b22d17763294909f3a8f2931a}{removeLandMass}}(\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{LandMass}}*\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{landmass}});}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ key\ for\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_aa8788390e2eaee8928ae2571e83723fe_aa8788390e2eaee8928ae2571e83723fe}{generateKey}}(sf::Vector2f\ position);}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ landmass\ near\ player}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ std::set<LandMass*>\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a713febaf170f865080532c74bc1472b2_a713febaf170f865080532c74bc1472b2}{findLandMassNearShip}}(\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}}*\ ship,\ \textcolor{keywordtype}{bool}\ debug\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hashmap}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00043}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_afb1e03f3875e14da0d7237ab667cf3fa_afb1e03f3875e14da0d7237ab667cf3fa}{00043}}\ \ \ \ \ \ \ \ \ std::unordered\_map<std::pair<int,\ int>,\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{LandMass}}*,\ \mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash}{pair\_hash}}>\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_afb1e03f3875e14da0d7237ab667cf3fa_afb1e03f3875e14da0d7237ab667cf3fa}{hashmap}};}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Map}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00046}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{00046}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{Map}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{map}}\ =\ *\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{GlobalMap::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_map_a591b9d06dd49b9c7f47ef8ee0aa60e5b_a591b9d06dd49b9c7f47ef8ee0aa60e5b}{getMap}}();}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00047}00047\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_landmass_hashmap___p_g_8h_source_l00049}00049\ }
+
+\end{DoxyCode}

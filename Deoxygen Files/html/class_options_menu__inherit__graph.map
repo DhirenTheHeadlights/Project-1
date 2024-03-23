@@ -1,0 +1,5 @@
+<map id="OptionsMenu" name="OptionsMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,104,107"/>
+<area shape="rect" id="Node000002" href="$class_menu.html" title=" " alt="" coords="28,5,81,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,48,57,80,52,80,52,48"/>
+</map>

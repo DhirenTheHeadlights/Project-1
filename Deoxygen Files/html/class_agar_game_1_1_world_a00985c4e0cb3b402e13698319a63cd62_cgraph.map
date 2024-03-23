@@ -1,0 +1,5 @@
+<map id="AgarGame::World::World" name="AgarGame::World::World">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,173,32"/>
+<area shape="rect" id="Node000002" href="$class_map.html#a0347b6493df6034d91b07e808b1dbf2d" title=" " alt="" coords="221,5,296,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,16,205,16,205,21,173,21"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="PirateGame::ShipMovementHandler::dot" name="PirateGame::ShipMovementHandler::dot">
+<area shape="rect" id="Node000001" title=" " alt="" coords="754,35,938,77"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_ship_movement_handler_a3fa4b4d0f5f025fc3af31f25aaca37c2.html#a3fa4b4d0f5f025fc3af31f25aaca37c2" title=" " alt="" coords="271,5,455,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="753,33,706,25,641,20,575,18,455,22,455,17,575,13,641,15,707,20,754,28"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_ship_movement_handler_a1f5afc292fbc6424810d0742f770e16e.html#a1f5afc292fbc6424810d0742f770e16e" title=" " alt="" coords="523,35,706,77"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="739,59,707,59,707,53,739,53"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_ship_movement_handler_a75d1275722138cfe2c3b121e4c4a4ef9.html#a75d1275722138cfe2c3b121e4c4a4ef9" title=" " alt="" coords="523,101,706,144"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="756,85,692,103,691,98,755,79"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_collision_manager_a7bf91ab70e6366e491e2cb664cc0c723.html#a7bf91ab70e6366e491e2cb664cc0c723" title=" " alt="" coords="5,5,203,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="256,29,203,29,203,24,256,24"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="507,46,454,40,455,35,508,41"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_enemy_ship_movement_handler_a8f15ce9a9b6d0af801b82058c2730faf.html#a8f15ce9a9b6d0af801b82058c2730faf" title=" " alt="" coords="251,87,475,129"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="507,119,475,117,476,112,508,114"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_player_ship_movement_handler_ad6ce0e94877aa23b691d854fb48579f2.html#ad6ce0e94877aa23b691d854fb48579f2" title=" " alt="" coords="253,153,473,196"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="508,147,470,155,469,150,507,142"/>
+</map>

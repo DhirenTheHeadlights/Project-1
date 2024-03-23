@@ -1,0 +1,7 @@
+<map id="PirateGame::ShipMovementHandler::getIsColliding" name="PirateGame::ShipMovementHandler::getIsColliding">
+<area shape="rect" id="Node000001" title=" " alt="" coords="542,5,725,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_player_ship_movement_handler_a81c98b333191598a26a49f3f05f4182d.html#a81c98b333191598a26a49f3f05f4182d" title=" " alt="" coords="274,5,494,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="526,29,494,29,494,24,526,24"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_player_ship_movement_handler_ad6ce0e94877aa23b691d854fb48579f2.html#ad6ce0e94877aa23b691d854fb48579f2" title=" " alt="" coords="5,5,226,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,29,226,29,226,24,258,24"/>
+</map>

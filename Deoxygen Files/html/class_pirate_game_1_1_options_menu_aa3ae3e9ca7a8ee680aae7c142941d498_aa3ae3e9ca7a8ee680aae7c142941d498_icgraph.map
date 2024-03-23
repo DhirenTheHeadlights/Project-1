@@ -1,0 +1,5 @@
+<map id="PirateGame::OptionsMenu::interactWithMenuItems" name="PirateGame::OptionsMenu::interactWithMenuItems">
+<area shape="rect" id="Node000001" title="Draw/Interact with the menu." alt="" coords="229,5,404,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_options_menu_a77301182d127cf85abf33fb9f4750097.html#a77301182d127cf85abf33fb9f4750097" title=" " alt="" coords="5,5,181,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,29,181,29,181,24,213,24"/>
+</map>

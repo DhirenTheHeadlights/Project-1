@@ -1,0 +1,17 @@
+<map id="PirateGame::GlobalGameStateManager::getInstance" name="PirateGame::GlobalGameStateManager::getInstance">
+<area shape="rect" id="Node000001" title=" " alt="" coords="442,105,643,148"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_in_game_h_u_d.html#a82cec8172c1312480f521a9c949c9e02" title=" " alt="" coords="224,5,394,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="480,101,393,62,365,51,367,46,395,58,482,96"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_island_menu.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="224,72,394,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="426,113,394,108,395,103,427,108"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_start_menu.html#a2b25ce3e2d927005e7cc49fe256c2af5" title=" " alt="" coords="224,139,394,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="427,146,395,151,394,145,426,141"/>
+<area shape="rect" id="Node000008" href="$class_pirate_game_1_1_world.html#a986a575b4bfafc40fb7ae6aee47294bf" title=" " alt="" coords="239,205,379,248"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="482,157,395,196,367,207,365,202,393,191,480,152"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_in_game_h_u_d.html#a13b7614a0828e4a3b37523394a853be8" title=" " alt="" coords="5,5,176,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,29,176,29,176,24,208,24"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_island_menu.html#a033e176d81986a92d34e121d2cd59258" title=" " alt="" coords="8,72,173,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="208,96,173,96,173,91,208,91"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_start_menu.html#a82d72194e0bb736ff4511d26aeb47f3b" title=" " alt="" coords="11,139,170,181"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="209,163,170,163,170,157,209,157"/>
+</map>

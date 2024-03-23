@@ -1,0 +1,9 @@
+<map id="Menu::openMenu" name="Menu::openMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,127,57"/>
+<area shape="rect" id="Node000002" href="$class_crosshair.html#ac176333f2b41ea0607aacc5e9d501954" title=" " alt="" coords="179,5,291,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,32,163,27,164,32,128,37"/>
+<area shape="rect" id="Node000004" href="$class_menu.html#abad8af7b49fa9d0d15c593562e05ac38" title=" " alt="" coords="175,56,295,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="128,51,160,55,159,61,127,56"/>
+<area shape="rect" id="Node000003" href="$class_crosshair.html#af6ddd9e78378b921c71d1a3614a9b431" title=" " alt="" coords="343,5,492,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,16,327,16,327,21,291,21"/>
+</map>

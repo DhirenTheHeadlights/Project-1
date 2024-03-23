@@ -1,0 +1,7 @@
+<map id="PirateGame::PlayerShipInputHandler::getManualAimKeyString" name="PirateGame::PlayerShipInputHandler::getManualAimKeyString">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,219,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_values.html#a40abd855ad2ca0e405e066ec43502a97" title=" " alt="" coords="267,5,442,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="219,43,250,38,251,44,220,48"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_values.html#a429661fd8c09152670aa94cde1e6af8b" title=" " alt="" coords="267,72,442,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,72,251,76,250,82,219,77"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="PirateGame::GlobalWindController::randomizeWind" name="PirateGame::GlobalWindController::randomizeWind">
+<area shape="rect" id="Node000001" title=" " alt="" coords="650,39,871,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_wind_controller_a2ef4dd05ce890e4db9629830dbfab3c9.html#a2ef4dd05ce890e4db9629830dbfab3c9" title=" " alt="" coords="382,5,602,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="635,47,602,43,603,38,635,42"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_wind_controller_a66cc5daef818eeffdcd104e3d9dd12a2.html#a66cc5daef818eeffdcd104e3d9dd12a2" title=" " alt="" coords="382,72,602,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="635,78,603,82,602,77,635,73"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_world_af2b4ba4ce188c2770f13108e4277414f.html#af2b4ba4ce188c2770f13108e4277414f" title=" " alt="" coords="194,72,334,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="367,96,334,96,334,91,367,91"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf.html#a986a575b4bfafc40fb7ae6aee47294bf" title=" " alt="" coords="5,72,146,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="178,96,146,96,146,91,178,91"/>
+</map>

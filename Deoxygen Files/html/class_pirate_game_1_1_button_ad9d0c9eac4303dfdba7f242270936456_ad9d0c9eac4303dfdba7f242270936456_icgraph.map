@@ -1,0 +1,5 @@
+<map id="PirateGame::Button::interactHold" name="PirateGame::Button::interactHold">
+<area shape="rect" id="Node000001" title=" " alt="" coords="190,5,326,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_button_a4370612bd9d41e8aecee85c32ae903b5.html#a4370612bd9d41e8aecee85c32ae903b5" title=" " alt="" coords="5,5,142,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,29,142,29,142,24,174,24"/>
+</map>

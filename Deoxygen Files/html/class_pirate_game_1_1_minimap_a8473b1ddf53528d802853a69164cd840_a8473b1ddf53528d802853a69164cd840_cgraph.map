@@ -1,0 +1,9 @@
+<map id="PirateGame::Minimap::update" name="PirateGame::Minimap::update">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,153,107"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd.html#a1ffb02317c3441081d1bda96b69a27bd" title=" " alt="" coords="213,5,373,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,63,197,50,199,55,154,68"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_ship_a2dc314c9925ed058504207d26c7c4385.html#a2dc314c9925ed058504207d26c7c4385" title=" " alt="" coords="201,72,385,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,83,185,83,185,88,153,88"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_global_map_a31cc006b6de67f683e4d07a88a18987a.html#a31cc006b6de67f683e4d07a88a18987a" title=" " alt="" coords="213,123,373,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,103,199,116,197,121,152,108"/>
+</map>

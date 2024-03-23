@@ -1,0 +1,171 @@
+\doxysection{Pirate\+Game\+::Global\+Game\+State\+Manager Class Reference}
+\hypertarget{class_pirate_game_1_1_global_game_state_manager}{}\label{class_pirate_game_1_1_global_game_state_manager}\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+
+
+{\ttfamily \#include $<$Global\+Game\+State\+Manager\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_ab98af48b54e99b0dbdb231c42b5c994b_ab98af48b54e99b0dbdb231c42b5c994b}{change\+Game\+State}} (\mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73}{Game\+State}} game\+State)
+\item 
+\mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73}{Game\+State}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_a0dde9b187845e918ac88f7e40f7d4ce7_a0dde9b187845e918ac88f7e40f7d4ce7}{get\+Current\+Game\+State}} ()
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_a8decdacbeafc38db3fda052313f1cd58_a8decdacbeafc38db3fda052313f1cd58}{has\+Game\+Started}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_ad62c617d29c72bf2e81113a3b53aa1ab_ad62c617d29c72bf2e81113a3b53aa1ab}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_a8f7c34bff81202b095b0e23ce734d751_a8f7c34bff81202b095b0e23ce734d751}{Global\+Game\+State\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_abe8b7bbc21cce04732a9860baf7af5da_abe8b7bbc21cce04732a9860baf7af5da}{Global\+Game\+State\+Manager}} (\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} const \&)=delete
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_aab64b0fa0d989c720f280f0269604a13_aab64b0fa0d989c720f280f0269604a13}{operator=}} (\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} const \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73}{Game\+State}} \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_abec8fa5267b1dc742843cd73ba6fa70f_abec8fa5267b1dc742843cd73ba6fa70f}{curr\+Game\+State}} = \mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73aa6122a65eaa676f700ae68d393054a37}{Game\+State\+::\+Start}}
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager_af2dab5030225a5efc44bf1bcdcc9003a_af2dab5030225a5efc44bf1bcdcc9003a}{game\+Started}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00016}{16}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_a8f7c34bff81202b095b0e23ce734d751_a8f7c34bff81202b095b0e23ce734d751}\label{class_pirate_game_1_1_global_game_state_manager_a8f7c34bff81202b095b0e23ce734d751_a8f7c34bff81202b095b0e23ce734d751} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!GlobalGameStateManager@{GlobalGameStateManager}}
+\index{GlobalGameStateManager@{GlobalGameStateManager}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{GlobalGameStateManager()}{GlobalGameStateManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::\+Global\+Game\+State\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_abe8b7bbc21cce04732a9860baf7af5da_abe8b7bbc21cce04732a9860baf7af5da}\label{class_pirate_game_1_1_global_game_state_manager_abe8b7bbc21cce04732a9860baf7af5da_abe8b7bbc21cce04732a9860baf7af5da} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!GlobalGameStateManager@{GlobalGameStateManager}}
+\index{GlobalGameStateManager@{GlobalGameStateManager}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{GlobalGameStateManager()}{GlobalGameStateManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::\+Global\+Game\+State\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_ab98af48b54e99b0dbdb231c42b5c994b_ab98af48b54e99b0dbdb231c42b5c994b}\label{class_pirate_game_1_1_global_game_state_manager_ab98af48b54e99b0dbdb231c42b5c994b_ab98af48b54e99b0dbdb231c42b5c994b} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!changeGameState@{changeGameState}}
+\index{changeGameState@{changeGameState}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{changeGameState()}{changeGameState()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::change\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73}{Game\+State}}}]{game\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00025}{25}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_game_state_manager_ab98af48b54e99b0dbdb231c42b5c994b_ab98af48b54e99b0dbdb231c42b5c994b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_a0dde9b187845e918ac88f7e40f7d4ce7_a0dde9b187845e918ac88f7e40f7d4ce7}\label{class_pirate_game_1_1_global_game_state_manager_a0dde9b187845e918ac88f7e40f7d4ce7_a0dde9b187845e918ac88f7e40f7d4ce7} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!getCurrentGameState@{getCurrentGameState}}
+\index{getCurrentGameState@{getCurrentGameState}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentGameState()}{getCurrentGameState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73}{Game\+State}} \& Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::get\+Current\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00033}{33}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_game_state_manager_a0dde9b187845e918ac88f7e40f7d4ce7_a0dde9b187845e918ac88f7e40f7d4ce7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_ad62c617d29c72bf2e81113a3b53aa1ab_ad62c617d29c72bf2e81113a3b53aa1ab}\label{class_pirate_game_1_1_global_game_state_manager_ad62c617d29c72bf2e81113a3b53aa1ab_ad62c617d29c72bf2e81113a3b53aa1ab} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} \& Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_game_state_manager_ad62c617d29c72bf2e81113a3b53aa1ab_ad62c617d29c72bf2e81113a3b53aa1ab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_a8decdacbeafc38db3fda052313f1cd58_a8decdacbeafc38db3fda052313f1cd58}\label{class_pirate_game_1_1_global_game_state_manager_a8decdacbeafc38db3fda052313f1cd58_a8decdacbeafc38db3fda052313f1cd58} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!hasGameStarted@{hasGameStarted}}
+\index{hasGameStarted@{hasGameStarted}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{hasGameStarted()}{hasGameStarted()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::has\+Game\+Started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00036}{36}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_game_state_manager_a8decdacbeafc38db3fda052313f1cd58_a8decdacbeafc38db3fda052313f1cd58_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_aab64b0fa0d989c720f280f0269604a13_aab64b0fa0d989c720f280f0269604a13}\label{class_pirate_game_1_1_global_game_state_manager_aab64b0fa0d989c720f280f0269604a13_aab64b0fa0d989c720f280f0269604a13} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!operator=@{operator=}}
+\index{operator=@{operator=}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} \& Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_abec8fa5267b1dc742843cd73ba6fa70f_abec8fa5267b1dc742843cd73ba6fa70f}\label{class_pirate_game_1_1_global_game_state_manager_abec8fa5267b1dc742843cd73ba6fa70f_abec8fa5267b1dc742843cd73ba6fa70f} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!currGameState@{currGameState}}
+\index{currGameState@{currGameState}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{currGameState}{currGameState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73}{Game\+State}} Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::curr\+Game\+State = \mbox{\hyperlink{namespace_pirate_game_a60c874f74b72313e81cd91012f35ae73_a60c874f74b72313e81cd91012f35ae73aa6122a65eaa676f700ae68d393054a37}{Game\+State\+::\+Start}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_game_state_manager_af2dab5030225a5efc44bf1bcdcc9003a_af2dab5030225a5efc44bf1bcdcc9003a}\label{class_pirate_game_1_1_global_game_state_manager_af2dab5030225a5efc44bf1bcdcc9003a_af2dab5030225a5efc44bf1bcdcc9003a} 
+\index{PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}!gameStarted@{gameStarted}}
+\index{gameStarted@{gameStarted}!PirateGame::GlobalGameStateManager@{PirateGame::GlobalGameStateManager}}
+\doxysubsubsection{\texorpdfstring{gameStarted}{gameStarted}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Global\+Game\+State\+Manager\+::game\+Started = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source_l00049}{49}} of file \mbox{\hyperlink{_global_game_state_manager___p_g_8h_source}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_global_game_state_manager___p_g_8h}{Global\+Game\+State\+Manager\+\_\+\+PG.\+h}}\end{DoxyCompactItemize}

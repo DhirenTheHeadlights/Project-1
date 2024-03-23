@@ -1,0 +1,51 @@
+\doxysection{Land\+Mass\+Handler\+\_\+\+PG.\+h}
+\hypertarget{_land_mass_handler___p_g_8h_source}{}\label{_land_mass_handler___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/LandMassHandler\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/LandMassHandler\_PG.h}}
+\mbox{\hyperlink{_land_mass_handler___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_values___p_g_8h}{GlobalValues\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_hashmap_handler_8h}{GlobalHashmapHandler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_sound_manager___p_g_8h}{GlobalSoundManager\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_map___p_g_8h}{GlobalMap\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_texture_handler___p_g_8h}{TextureHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_land_mass___p_g_8h}{LandMass\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_landmass_hashmap___p_g_8h}{LandMassHashmap\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}Map.h"{}}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00020}00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00021}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler}{00021}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler}{LandMassHandler}}\ \{}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00023}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a755acdf9dbc446cde8cda17febcc7ca5_a755acdf9dbc446cde8cda17febcc7ca5}{00023}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a755acdf9dbc446cde8cda17febcc7ca5_a755acdf9dbc446cde8cda17febcc7ca5}{LandMassHandler}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a93defdfcdb7ff2a41c80296289b4bfbd_a93defdfcdb7ff2a41c80296289b4bfbd}{\string~LandMassHandler}}();}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a5d00f5a480d74cc4e3230435db3dcda0_a5d00f5a480d74cc4e3230435db3dcda0}{addLandMasses}}(\textcolor{keywordtype}{int}\ numLandMasses,\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{minDistBetweenLandmasses}});}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_ae332410cdacb1380516a3fd79038b498_ae332410cdacb1380516a3fd79038b498}{drawLandMasses}}();}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a958e82fa0250a48b203aa3708d26537f_a958e82fa0250a48b203aa3708d26537f}{interactWithLandmasses}}(\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{PlayerShip}}*\ ship);}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00031}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_af0d089db25cb6021534765d98516f0f7_af0d089db25cb6021534765d98516f0f7}{00031}}\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<LandMass>>\&\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_af0d089db25cb6021534765d98516f0f7_af0d089db25cb6021534765d98516f0f7}{getLandMasses}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a742f1988facfcc221bc14f7fcd7c5c92_a742f1988facfcc221bc14f7fcd7c5c92}{landmasses}};\ \}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Helper\ functions}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38_a13fe50a7f1ca159e3ebaa80d01effd38}{createLandmass}}(\mbox{\hyperlink{namespace_pirate_game_a4e0749d6092d6fe4cb5a3a671674b80a_a4e0749d6092d6fe4cb5a3a671674b80a}{LandMassType}}\ type,\ sf::Vector2f\ position);}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00036}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a68c7a62f22f6c18ce8371f04ad73514b_a68c7a62f22f6c18ce8371f04ad73514b}{00036}}\ \ \ \ \ \ \ \ \ sf::RenderWindow*\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a68c7a62f22f6c18ce8371f04ad73514b_a68c7a62f22f6c18ce8371f04ad73514b}{window}}\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{GlobalValues::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_values_ac0271b79e8e02295ca8095a22bfb0ae2_ac0271b79e8e02295ca8095a22bfb0ae2}{getWindow}}();}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00038}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a742f1988facfcc221bc14f7fcd7c5c92_a742f1988facfcc221bc14f7fcd7c5c92}{00038}}\ \ \ \ \ \ \ \ \ std::vector<std::shared\_ptr<LandMass>>\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a742f1988facfcc221bc14f7fcd7c5c92_a742f1988facfcc221bc14f7fcd7c5c92}{landmasses}};}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Values}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00041}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a1e45e6641003bfb4cb5d831a9fd6721f_a1e45e6641003bfb4cb5d831a9fd6721f}{00041}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a1e45e6641003bfb4cb5d831a9fd6721f_a1e45e6641003bfb4cb5d831a9fd6721f}{interactionDistance}}\ =\ 600.f;\ \textcolor{comment}{//\ Distance\ for\ interaction\ with\ landmasses}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Map\ to\ store\ the\ land\ masses}}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00044}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{00044}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{Map}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{map}}\ =\ *\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{GlobalMap::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_map_a591b9d06dd49b9c7f47ef8ee0aa60e5b_a591b9d06dd49b9c7f47ef8ee0aa60e5b}{getMap}}();}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00046}00046\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_land_mass_handler___p_g_8h_source_l00047}00047\ \}}
+
+\end{DoxyCode}

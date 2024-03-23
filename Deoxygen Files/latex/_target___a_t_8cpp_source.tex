@@ -1,0 +1,46 @@
+\doxysection{Target\+\_\+\+AT.\+cpp}
+\hypertarget{_target___a_t_8cpp_source}{}\label{_target___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/Target\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/Target\_AT.cpp}}
+\mbox{\hyperlink{_target___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_target___a_t_8h}{Target\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Constructor\ for\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00004}\mbox{\hyperlink{class_target_aab7c4f92985e7a283b4da262095f4089}{00004}}\ \mbox{\hyperlink{class_target_aab7c4f92985e7a283b4da262095f4089}{Target::Target}}(sf::Vector2f\ position,\ \textcolor{keywordtype}{float}\ radius)\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00005}00005\ \ \ \ \ this-\/>position\ =\ position;}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00006}00006\ \ \ \ \ shape.setRadius(radius);}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00007}00007\ \ \ \ \ shape.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00008}00008\ \ \ \ \ shape.setPosition(position);}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00009}00009\ \}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00011}00011\ \textcolor{comment}{//\ Destructor\ for\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00012}\mbox{\hyperlink{class_target_a18102a6c58a268fb1466771463fdc9b3}{00012}}\ \mbox{\hyperlink{class_target_a18102a6c58a268fb1466771463fdc9b3}{Target::\string~Target}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}Target\ destroyed"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00016}00016\ \textcolor{comment}{//\ Draw\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00017}\mbox{\hyperlink{class_target_a6adf17b124b8142380ea76035eae267d}{00017}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_target_a6adf17b124b8142380ea76035eae267d}{Target::setPos}}(sf::Vector2f\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00018}00018\ \ \ \ \ this-\/>position\ =\ position;}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00019}00019\ \ \ \ \ shape.setPosition(position);}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00020}00020\ \}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00022}00022\ \textcolor{comment}{//\ Get\ the\ position\ of\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00023}\mbox{\hyperlink{class_target_a10ca070654a7b0c2eb3a613abd58967e}{00023}}\ sf::Vector2f\ \mbox{\hyperlink{class_target_a10ca070654a7b0c2eb3a613abd58967e}{Target::getPos}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{return}\ shape.getPosition()\ +\ sf::Vector2f(shape.getRadius(),\ shape.getRadius());}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00027}00027\ \textcolor{comment}{//\ Get\ the\ shape\ of\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00028}\mbox{\hyperlink{class_target_a28d46f5835db0447ebdb7b44cc5dfbc0}{00028}}\ sf::CircleShape\ \mbox{\hyperlink{class_target_a28d46f5835db0447ebdb7b44cc5dfbc0}{Target::getShape}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ shape;}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00032}00032\ \textcolor{comment}{//\ Get\ the\ radius\ of\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00033}\mbox{\hyperlink{class_target_a5945a0ac7f813d9048e315b846da102e}{00033}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_target_a5945a0ac7f813d9048e315b846da102e}{Target::isActive}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ activeStatus;}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00037}00037\ \textcolor{comment}{//\ Set\ the\ radius\ of\ the\ target}}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00038}\mbox{\hyperlink{class_target_ac1c36ec403f441ccfd7059d50f278796}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_target_ac1c36ec403f441ccfd7059d50f278796}{Target::deActivate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00039}00039\ \ \ \ \ activeStatus\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_target___a_t_8cpp_source_l00040}00040\ \}}
+
+\end{DoxyCode}

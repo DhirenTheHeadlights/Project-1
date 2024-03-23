@@ -1,0 +1,5 @@
+<map id="PirateGame::OptionsMenu::setInteractablePositions" name="PirateGame::OptionsMenu::setInteractablePositions">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,181,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_options_menu_ade2b9cf5aad01412e1a7f9943fad4a77.html#ade2b9cf5aad01412e1a7f9943fad4a77" title=" " alt="" coords="229,5,418,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,24,213,24,213,29,181,29"/>
+</map>

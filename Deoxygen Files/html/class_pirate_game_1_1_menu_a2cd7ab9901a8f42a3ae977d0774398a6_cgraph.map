@@ -1,0 +1,5 @@
+<map id="PirateGame::Menu::draw" name="PirateGame::Menu::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,171,40"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_menu.html#aceaf603905fd949bf7969100fba9a79f" title=" " alt="" coords="219,5,400,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,24,203,24,203,29,171,29"/>
+</map>

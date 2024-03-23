@@ -1,0 +1,9 @@
+<map id="PirateGame::GlobalFontHandler::getInstance" name="PirateGame::GlobalFontHandler::getInstance">
+<area shape="rect" id="Node000001" title=" " alt="" coords="407,39,612,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_interactable_adc7cd5257d83813e65fead38ab12f554.html#adc7cd5257d83813e65fead38ab12f554" title=" " alt="" coords="194,5,359,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="391,46,359,41,360,36,392,40"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce.html#a6bb91988626bec56db0729c0cb680cce" title=" " alt="" coords="206,72,347,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="392,80,347,86,346,81,391,74"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_world_acb2b22112a28eda532344d2daf630227.html#acb2b22112a28eda532344d2daf630227" title=" " alt="" coords="5,72,146,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="190,96,146,96,146,91,190,91"/>
+</map>

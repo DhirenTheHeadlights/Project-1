@@ -1,0 +1,41 @@
+\doxysection{Options\+Menu\+\_\+\+AT.\+h}
+\hypertarget{_options_menu___a_t_8h_source}{}\label{_options_menu___a_t_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/OptionsMenu\_AT.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/OptionsMenu\_AT.h}}
+\mbox{\hyperlink{_options_menu___a_t_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_menu___a_t_8h}{Menu\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00004}00004\ \textcolor{comment}{//\ This\ class\ is\ for\ the\ options\ menu}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00006}\mbox{\hyperlink{class_options_menu}{00006}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_options_menu}{OptionsMenu}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_menu}{Menu}}\ \{}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00007}00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a02f519bea27ccd0b93582be6dfde7330}{OptionsMenu}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Font\ font,\ \mbox{\hyperlink{class_game_state_manager}{GameStateManager}}*\ GSM);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00009}00009\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_menu_aa0ce29d14cd75203600da5bbc8f3576f}{setUpMenu}}();}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00010}00010\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_options_menu_a1fd433be60f3e6cc57fc9b47700a2b16}{drawMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00011}00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Functions\ for\ the\ menu\ interactions}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{void}\ maxTarget();}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{void}\ setTargetSize(\textcolor{keywordtype}{float}\ newSize);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ setMouseSensitivity(\textcolor{keywordtype}{float}\ sens);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Lambda\ functions\ for\ menu\ interactions}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00018}00018\ \ \ \ \ std::function<void(\textcolor{keywordtype}{float}\ value)>\ maxTargetFunc;}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00019}00019\ \ \ \ \ std::function<void(\textcolor{keywordtype}{float}\ value)>\ setTargetSizeFunc;}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00020}00020\ \ \ \ \ std::function<void(\textcolor{keywordtype}{float}\ value)>\ setMouseSensitivityFunc;}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Variable\ to\ store\ the\ current\ game\ state}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00023}00023\ \ \ \ \ \mbox{\hyperlink{class_game_state_manager}{GameStateManager}}*\ GSM;}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Colors\ for\ the\ menu}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00026}00026\ \ \ \ \ sf::Color\ backgroundColor\ =\ sf::Color(245,\ 245,\ 245);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00027}00027\ \ \ \ \ sf::Color\ buttonColor\ =\ sf::Color(0,\ 191,\ 255);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00028}00028\ \ \ \ \ sf::Color\ sliderTrackColor\ =\ sf::Color(112,\ 128,\ 144);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00029}00029\ \ \ \ \ sf::Color\ sliderThumbColor\ =\ sf::Color(255,\ 99,\ 71);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00030}00030\ \ \ \ \ sf::Color\ interactableHoverColor\ =\ sf::Color(135,\ 206,\ 250);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00031}00031\ \ \ \ \ sf::Color\ textColor\ =\ sf::Color(34,\ 34,\ 34);}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ Variable\ to\ store\ whether\ the\ tab\ key\ was\ pressed\ last\ frame}}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ wasTabPressedLastFrame\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_options_menu___a_t_8h_source_l00035}00035\ \};}
+
+\end{DoxyCode}

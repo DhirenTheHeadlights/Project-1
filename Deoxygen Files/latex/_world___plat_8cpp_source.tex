@@ -1,0 +1,31 @@
+\doxysection{World\+\_\+\+Plat.\+cpp}
+\hypertarget{_world___plat_8cpp_source}{}\label{_world___plat_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Platformer Game/Resource/World\_Plat.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Platformer Game/Resource/World\_Plat.cpp}}
+\mbox{\hyperlink{_world___plat_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_world___plat_8h}{World\_Plat.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_platformer_game}{PlatformerGame}};}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00005}\mbox{\hyperlink{class_platformer_game_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{00005}}\ \mbox{\hyperlink{class_platformer_game_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{World::World}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ :\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ player(worldMap,\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00006}00006\ \ \ \ \ map.\mbox{\hyperlink{class_map_a0347b6493df6034d91b07e808b1dbf2d}{grid}}(len,\ wid,\ 10);}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00009}00009\ \textcolor{comment}{//\ Game\ loop}}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00010}\mbox{\hyperlink{class_platformer_game_1_1_world_a0126bbea67669484ac85fa2fa0480f99}{00010}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_world_a0126bbea67669484ac85fa2fa0480f99}{World::gameLoop}}(sf::Event\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00011}00011\ \ \ \ \ player.\mbox{\hyperlink{class_platformer_game_1_1_player_ac3e56852d30d99f36a5dab0b8d1e3782}{handlePlayerState}}();}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00012}00012\ \ \ \ \ player.\mbox{\hyperlink{class_platformer_game_1_1_player_ae02ee46d8c20dd0697b975f935b09839}{move}}();}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00013}00013\ \ \ \ \ player.\mbox{\hyperlink{class_platformer_game_1_1_player_afb2887a559719bb7b39b768d5ee217ea}{applyGravity}}();}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00014}00014\ \ \ \ \ player.\mbox{\hyperlink{class_platformer_game_1_1_player_ac18c9d30d2997765321c62030a4b20b7}{draw}}();}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordflow}{if}\ (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))\ \{}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ window.close();}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00020}00020\ \ \ \ \ map.\mbox{\hyperlink{class_map_a03ce884ba45a6f39da611c726ceea61b}{drawGrid}}(window);}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00021}00021\ \ \ \ \ view.setCenter(player.\mbox{\hyperlink{class_platformer_game_1_1_player_a04112b7a2d57513fe42cd45b7a4a354e}{getPosition}}());}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00022}00022\ \ \ \ \ view.setSize(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(window.getSize().x),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(window.getSize().y));}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00023}00023\ \ \ \ \ window.setView(view);}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{_world___plat_8cpp_source_l00025}00025\ }
+
+\end{DoxyCode}

@@ -1,0 +1,13 @@
+<map id="CollisionManager::assignPellets" name="CollisionManager::assignPellets">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,73,172,116"/>
+<area shape="rect" id="Node000002" href="$class_hashmap.html#a8320f256b1ca65bed29945a9140947f4" title=" " alt="" coords="220,81,375,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,92,204,92,204,97,172,97"/>
+<area shape="rect" id="Node000003" href="$class_hashmap.html#a1e798fd089a1c73ec891fb1301d289fc" title=" " alt="" coords="423,5,580,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,78,422,42,441,35,442,40,424,46,332,83"/>
+<area shape="rect" id="Node000004" href="$class_map.html#a80e8b85b93384b533f7484f0463c91ec" title=" " alt="" coords="442,56,562,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="375,82,426,76,427,81,376,88"/>
+<area shape="rect" id="Node000005" href="$class_pellet.html#a1dc15dba50ba763418b301de39d7e4bc" title=" " alt="" coords="438,107,565,133"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="376,102,423,108,422,113,375,107"/>
+<area shape="rect" id="Node000006" href="$class_pellet.html#a9d245e63e44a24e75ef9d3df9045e500" title=" " alt="" coords="448,157,555,184"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="332,106,424,143,442,149,441,154,422,148,330,111"/>
+</map>

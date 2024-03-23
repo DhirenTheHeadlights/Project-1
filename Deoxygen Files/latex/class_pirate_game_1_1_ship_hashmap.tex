@@ -1,0 +1,235 @@
+\doxysection{Pirate\+Game\+::Ship\+Hashmap Class Reference}
+\hypertarget{class_pirate_game_1_1_ship_hashmap}{}\label{class_pirate_game_1_1_ship_hashmap}\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+
+
+{\ttfamily \#include $<$Ship\+Hashmap\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\+\_\+hash}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a222595ed10bdc022f4b5ae6a097dbca0_a222595ed10bdc022f4b5ae6a097dbca0}{Ship\+Hashmap}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_adc8240ba58077ec4a231b33f9d79c1fb_adc8240ba58077ec4a231b33f9d79c1fb}{add\+Enemy\+Ship}} (\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}ship)
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a5a4c147f9083edd774c092b586557891_a5a4c147f9083edd774c092b586557891}{remove\+Enemy\+Ship}} (\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}ship)
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_acde8976ea9fdb1dbef613eb37d9ae2dc_acde8976ea9fdb1dbef613eb37d9ae2dc}{update\+Enemy\+Ship\+Position}} (\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}ship)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a87de32c90fee58a44579b4dab8936018_a87de32c90fee58a44579b4dab8936018}{generate\+Key}} (sf\+::\+Vector2f position)
+\item 
+std\+::set$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a45a12db5943daf9150ea143f8ce911a2_a45a12db5943daf9150ea143f8ce911a2}{find\+Enemy\+Ships\+Near\+Ship}} (\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}ship, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{float}} \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{max\+Distance}}=1000.\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{f}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{bool}} debug=\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{false}})
+\item 
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$, \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\+\_\+hash}} $>$ \& \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a5beaba9a5107d9a6a2f6b782df4299f6_a5beaba9a5107d9a6a2f6b782df4299f6}{get\+Hashmap}} ()
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}, std\+::set$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$ $>$ $>$ \& \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_a755cac3e620d84d7b625641c6cbe7ee0_a755cac3e620d84d7b625641c6cbe7ee0}{get\+Reverse\+Hashmap}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$, \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ae3b6f0615246119b9cc9b5b829496b1c_ae3b6f0615246119b9cc9b5b829496b1c}{hashmap}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}, std\+::set$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$ $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_adaeb927cd5defd9f9fc7f671f822c1c0_adaeb927cd5defd9f9fc7f671f822c1c0}{reverse\+Hashmap}}
+\item 
+Map \& \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{map}} = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{Global\+Map\+::get\+Instance}}().get\+Map()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00034}{34}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_a222595ed10bdc022f4b5ae6a097dbca0_a222595ed10bdc022f4b5ae6a097dbca0}\label{class_pirate_game_1_1_ship_hashmap_a222595ed10bdc022f4b5ae6a097dbca0_a222595ed10bdc022f4b5ae6a097dbca0} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!ShipHashmap@{ShipHashmap}}
+\index{ShipHashmap@{ShipHashmap}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{ShipHashmap()}{ShipHashmap()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Hashmap\+::\+Ship\+Hashmap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_adc8240ba58077ec4a231b33f9d79c1fb_adc8240ba58077ec4a231b33f9d79c1fb}\label{class_pirate_game_1_1_ship_hashmap_adc8240ba58077ec4a231b33f9d79c1fb_adc8240ba58077ec4a231b33f9d79c1fb} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!addEnemyShip@{addEnemyShip}}
+\index{addEnemyShip@{addEnemyShip}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{addEnemyShip()}{addEnemyShip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{void}} Ship\+Hashmap\+::add\+Enemy\+Ship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}}]{ship }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source}{Ship\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_adc8240ba58077ec4a231b33f9d79c1fb_adc8240ba58077ec4a231b33f9d79c1fb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_adc8240ba58077ec4a231b33f9d79c1fb_adc8240ba58077ec4a231b33f9d79c1fb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_a45a12db5943daf9150ea143f8ce911a2_a45a12db5943daf9150ea143f8ce911a2}\label{class_pirate_game_1_1_ship_hashmap_a45a12db5943daf9150ea143f8ce911a2_a45a12db5943daf9150ea143f8ce911a2} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!findEnemyShipsNearShip@{findEnemyShipsNearShip}}
+\index{findEnemyShipsNearShip@{findEnemyShipsNearShip}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{findEnemyShipsNearShip()}{findEnemyShipsNearShip()}}
+{\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*} $>$ Ship\+Hashmap\+::find\+Enemy\+Ships\+Near\+Ship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}}]{ship,  }\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{float}}}]{max\+Distance = {\ttfamily 1000.\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{f}}},  }\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{bool}}}]{debug = {\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{false}}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source}{Ship\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_a45a12db5943daf9150ea143f8ce911a2_a45a12db5943daf9150ea143f8ce911a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_a45a12db5943daf9150ea143f8ce911a2_a45a12db5943daf9150ea143f8ce911a2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_a87de32c90fee58a44579b4dab8936018_a87de32c90fee58a44579b4dab8936018}\label{class_pirate_game_1_1_ship_hashmap_a87de32c90fee58a44579b4dab8936018_a87de32c90fee58a44579b4dab8936018} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!generateKey@{generateKey}}
+\index{generateKey@{generateKey}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{generateKey()}{generateKey()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$ Ship\+Hashmap\+::generate\+Key (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source}{Ship\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_a87de32c90fee58a44579b4dab8936018_a87de32c90fee58a44579b4dab8936018_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_a5beaba9a5107d9a6a2f6b782df4299f6_a5beaba9a5107d9a6a2f6b782df4299f6}\label{class_pirate_game_1_1_ship_hashmap_a5beaba9a5107d9a6a2f6b782df4299f6_a5beaba9a5107d9a6a2f6b782df4299f6} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!getHashmap@{getHashmap}}
+\index{getHashmap@{getHashmap}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{getHashmap()}{getHashmap()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$, \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\+\_\+hash}} $>$ \& Pirate\+Game\+::\+Ship\+Hashmap\+::get\+Hashmap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00062}{62}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_a755cac3e620d84d7b625641c6cbe7ee0_a755cac3e620d84d7b625641c6cbe7ee0}\label{class_pirate_game_1_1_ship_hashmap_a755cac3e620d84d7b625641c6cbe7ee0_a755cac3e620d84d7b625641c6cbe7ee0} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!getReverseHashmap@{getReverseHashmap}}
+\index{getReverseHashmap@{getReverseHashmap}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{getReverseHashmap()}{getReverseHashmap()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}, std\+::set$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}} $>$ $>$ $>$ \& Pirate\+Game\+::\+Ship\+Hashmap\+::get\+Reverse\+Hashmap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00063}{63}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_a5a4c147f9083edd774c092b586557891_a5a4c147f9083edd774c092b586557891}\label{class_pirate_game_1_1_ship_hashmap_a5a4c147f9083edd774c092b586557891_a5a4c147f9083edd774c092b586557891} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!removeEnemyShip@{removeEnemyShip}}
+\index{removeEnemyShip@{removeEnemyShip}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{removeEnemyShip()}{removeEnemyShip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{void}} Ship\+Hashmap\+::remove\+Enemy\+Ship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}}]{ship }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source}{Ship\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_a5a4c147f9083edd774c092b586557891_a5a4c147f9083edd774c092b586557891_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_acde8976ea9fdb1dbef613eb37d9ae2dc_acde8976ea9fdb1dbef613eb37d9ae2dc}\label{class_pirate_game_1_1_ship_hashmap_acde8976ea9fdb1dbef613eb37d9ae2dc_acde8976ea9fdb1dbef613eb37d9ae2dc} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!updateEnemyShipPosition@{updateEnemyShipPosition}}
+\index{updateEnemyShipPosition@{updateEnemyShipPosition}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{updateEnemyShipPosition()}{updateEnemyShipPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{void}} Ship\+Hashmap\+::update\+Enemy\+Ship\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} \texorpdfstring{$\ast$}{*}}]{ship }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source_l00096}{96}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8cpp_source}{Ship\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_acde8976ea9fdb1dbef613eb37d9ae2dc_acde8976ea9fdb1dbef613eb37d9ae2dc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_hashmap_acde8976ea9fdb1dbef613eb37d9ae2dc_acde8976ea9fdb1dbef613eb37d9ae2dc_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_ae3b6f0615246119b9cc9b5b829496b1c_ae3b6f0615246119b9cc9b5b829496b1c}\label{class_pirate_game_1_1_ship_hashmap_ae3b6f0615246119b9cc9b5b829496b1c_ae3b6f0615246119b9cc9b5b829496b1c} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!hashmap@{hashmap}}
+\index{hashmap@{hashmap}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{hashmap}{hashmap}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}$>$, \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}}\texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{struct_pirate_game_1_1_ship_hashmap_1_1pair__hash}{pair\+\_\+hash}}$>$ Pirate\+Game\+::\+Ship\+Hashmap\+::hashmap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00066}{66}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}\label{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!map@{map}}
+\index{map@{map}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily Map\& Pirate\+Game\+::\+Ship\+Hashmap\+::map = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{Global\+Map\+::get\+Instance}}().get\+Map()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00069}{69}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_hashmap_adaeb927cd5defd9f9fc7f671f822c1c0_adaeb927cd5defd9f9fc7f671f822c1c0}\label{class_pirate_game_1_1_ship_hashmap_adaeb927cd5defd9f9fc7f671f822c1c0_adaeb927cd5defd9f9fc7f671f822c1c0} 
+\index{PirateGame::ShipHashmap@{PirateGame::ShipHashmap}!reverseHashmap@{reverseHashmap}}
+\index{reverseHashmap@{reverseHashmap}!PirateGame::ShipHashmap@{PirateGame::ShipHashmap}}
+\doxysubsubsection{\texorpdfstring{reverseHashmap}{reverseHashmap}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}}\texorpdfstring{$\ast$}{*}, std\+::set$<$std\+::pair$<$\mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_ship_hashmap_ab981545d19bb00efe3e70dc94bd90cef_ab981545d19bb00efe3e70dc94bd90cef}{int}}$>$ $>$ $>$ Pirate\+Game\+::\+Ship\+Hashmap\+::reverse\+Hashmap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_hashmap___p_g_8h_source_l00067}{67}} of file \mbox{\hyperlink{_ship_hashmap___p_g_8h_source}{Ship\+Hashmap\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_ship_hashmap___p_g_8h}{Ship\+Hashmap\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_ship_hashmap___p_g_8cpp}{Ship\+Hashmap\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

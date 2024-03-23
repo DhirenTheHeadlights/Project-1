@@ -1,0 +1,11 @@
+<map id="PirateGame::GlobalHashmapHandler::getShipHashmap" name="PirateGame::GlobalHashmapHandler::getShipHashmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="263,105,453,148"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_handler.html#a02a2b56cbf3bd2ea1135093f4e24f4e9" title=" " alt="" coords="5,5,215,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="299,101,214,62,183,51,184,46,216,58,301,96"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_collision_manager.html#a7bf91ab70e6366e491e2cb664cc0c723" title=" " alt="" coords="11,72,209,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="247,114,209,109,209,104,248,109"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_enemy_ship_handler.html#ab62178e8de440497836b307238ff6eb2" title=" " alt="" coords="5,139,215,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="247,144,215,149,215,143,247,139"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_enemy_ship_handler.html#a000435fec37a45b5f76fc4404948e12e" title=" " alt="" coords="5,205,215,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="301,158,216,196,184,207,183,202,214,191,299,153"/>
+</map>

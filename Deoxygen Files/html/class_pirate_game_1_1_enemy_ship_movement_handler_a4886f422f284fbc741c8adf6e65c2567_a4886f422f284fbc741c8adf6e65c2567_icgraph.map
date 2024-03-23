@@ -1,0 +1,5 @@
+<map id="PirateGame::EnemyShipMovementHandler::setSpriteRotation" name="PirateGame::EnemyShipMovementHandler::setSpriteRotation">
+<area shape="rect" id="Node000001" title=" " alt="" coords="278,5,502,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_movement_handler_a8f15ce9a9b6d0af801b82058c2730faf.html#a8f15ce9a9b6d0af801b82058c2730faf" title=" " alt="" coords="5,5,230,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,29,230,29,230,24,262,24"/>
+</map>

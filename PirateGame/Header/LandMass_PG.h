@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "LandMassTextures_PG.h"
+#include "GlobalTextureHandler_PG.h"
 #include "ShopItem_PG.h"
 #include "IslandMenu_PG.h"
 

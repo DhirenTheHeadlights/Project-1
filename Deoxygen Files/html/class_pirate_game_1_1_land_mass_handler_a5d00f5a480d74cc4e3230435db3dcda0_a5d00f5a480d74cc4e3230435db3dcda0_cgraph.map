@@ -1,0 +1,13 @@
+<map id="PirateGame::LandMassHandler::addLandMasses" name="PirateGame::LandMassHandler::addLandMasses">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,208,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38.html#a13fe50a7f1ca159e3ebaa80d01effd38" title=" " alt="" coords="256,72,458,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,91,240,91,240,96,208,96"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd.html#a049cb1ec837632d96978faa06298abbd" title=" " alt="" coords="506,5,719,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="441,69,513,50,514,55,442,74"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_global_hashmap_handler_a6d8848ebea3cedb1f440ff097568fe75.html#a6d8848ebea3cedb1f440ff097568fe75" title=" " alt="" coords="518,72,708,115"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="459,91,502,91,502,96,459,96"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_global_hashmap_handler_a88b95d6ee543ad4d8d00e41afaa4f5f6.html#a88b95d6ee543ad4d8d00e41afaa4f5f6" title=" " alt="" coords="510,139,716,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="442,113,514,132,513,137,441,118"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_land_mass_hashmap_aa8788390e2eaee8928ae2571e83723fe.html#aa8788390e2eaee8928ae2571e83723fe" title=" " alt="" coords="767,5,981,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="720,24,752,24,752,29,720,29"/>
+</map>

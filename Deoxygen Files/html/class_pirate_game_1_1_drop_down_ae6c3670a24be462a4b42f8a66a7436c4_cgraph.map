@@ -1,0 +1,5 @@
+<map id="PirateGame::DropDown::interact" name="PirateGame::DropDown::interact">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,163,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_input_handler.html#a4cdb8e4159d465ef1c3a037ef35efe20" title=" " alt="" coords="211,5,418,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,24,195,24,195,29,163,29"/>
+</map>

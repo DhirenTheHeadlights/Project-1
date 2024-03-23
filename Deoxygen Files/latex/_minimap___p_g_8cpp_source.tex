@@ -1,0 +1,107 @@
+\doxysection{Minimap\+\_\+\+PG.\+cpp}
+\hypertarget{_minimap___p_g_8cpp_source}{}\label{_minimap___p_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/Minimap\_PG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/Minimap\_PG.cpp}}
+\mbox{\hyperlink{_minimap___p_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_minimap___p_g_8h}{Minimap\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}};}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00005}\mbox{\hyperlink{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a38b33c78bf3e033a32207f7412bce3b0_a38b33c78bf3e033a32207f7412bce3b0}{Minimap::draw}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00006}00006\ \ \ \ \ sf::RenderWindow*\ window\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{GlobalValues::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_values_ac0271b79e8e02295ca8095a22bfb0ae2_ac0271b79e8e02295ca8095a22bfb0ae2}{getWindow}}();}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00008}00008\ \ \ \ \ window-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a4960a2b14d1eac5d1fa9e2051c0de475_a4960a2b14d1eac5d1fa9e2051c0de475}{minimap}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00009}00009\ \ \ \ \ window-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ Iterate\ only\ through\ visible\ landmasses}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97}{visibleLandmassRects}}.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ window-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97}{visibleLandmassRects}}[i]);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Iterate\ only\ through\ visible\ ships}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d}{visibleShipRects}}.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ window-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d}{visibleShipRects}}[i]);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00021}00021\ \ \ \ \ window-\/>draw(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{shipIconSprite}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00024}\mbox{\hyperlink{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840}{00024}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a8473b1ddf53528d802853a69164cd840_a8473b1ddf53528d802853a69164cd840}{Minimap::update}}(\textcolor{keywordtype}{float}\ shipRotation)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00025}00025\ \ \ \ \ sf::Vector2f\ mapSize\ =\ \mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{GlobalMap::getInstance}}().\mbox{\hyperlink{class_pirate_game_1_1_global_map_a31cc006b6de67f683e4d07a88a18987a_a31cc006b6de67f683e4d07a88a18987a}{getWorldMap}}();}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00026}00026\ \ \ \ \ sf::Vector2f\ shipPos\ =\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}{ship}}-\/>\mbox{\hyperlink{class_pirate_game_1_1_ship_a2dc314c9925ed058504207d26c7c4385_a2dc314c9925ed058504207d26c7c4385}{getSprite}}().getPosition();}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00027}00027\ \ \ \ \ sf::Vector2f\ minimapCenter\ =\ sf::Vector2f(\mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getPosition().x\ +\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getGlobalBounds().width\ /\ 2,\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getPosition().y\ +\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00029}00029\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.setPosition(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a6514468087c98095d498755010c88013_a6514468087c98095d498755010c88013}{position}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Define\ the\ visibility\ radius\ around\ the\ ship\ for\ the\ minimap}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{float}\ visibilityRadius\ =\ 10000.0f;}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00034}00034\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{shipIconSprite}}.setPosition(minimapCenter);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{shipIconSprite}}.setOrigin(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{shipIconSprite}}.getLocalBounds().width\ /\ 2,\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{shipIconSprite}}.getLocalBounds().height\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00036}00036\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a997d9e6a2ca25499b4cbc3b830f08a26_a997d9e6a2ca25499b4cbc3b830f08a26}{shipIconSprite}}.setRotation(shipRotation);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Clear\ the\ previous\ visible\ landmasses}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97}{visibleLandmassRects}}.clear();}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{float}\ minimapRadius\ =\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getGlobalBounds().width\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ sf::Vector2f\ landmassPos\ =\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}[i]-\/>getSprite().getPosition()\ +\ \textcolor{comment}{//\ Adjust\ for\ the\ center\ of\ the\ landmass}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f(\mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}[i]-\/>getSprite().getGlobalBounds().width\ /\ 2,\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}[i]-\/>getSprite().getGlobalBounds().height\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ distance\ from\ the\ ship\ to\ the\ landmass}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sqrt(pow(shipPos.x\ -\/\ landmassPos.x,\ 2)\ +\ pow(shipPos.y\ -\/\ landmassPos.y,\ 2)));}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (distance\ <=\ visibilityRadius)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RectangleShape\ landmassRect;}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ position\ relative\ to\ the\ ship's\ position\ on\ the\ minimap}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ scaledPos\ =\ (landmassPos\ -\/\ shipPos)\ *\ (\mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getGlobalBounds().height\ /\ 2\ /\ visibilityRadius);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ relativePos\ =\ minimapCenter\ +\ scaledPos;}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ landmassRect\ is\ within\ the\ minimap's\ bounds}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sqrt(pow(relativePos.x\ -\/\ minimapCenter.x,\ 2)\ +\ pow(relativePos.y\ -\/\ minimapCenter.y,\ 2))\ <=\ minimapRadius)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ landmassRect.setPosition(relativePos);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ landmass\ type\ properties}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}[i]-\/>getType()\ ==\ \mbox{\hyperlink{namespace_pirate_game_a4e0749d6092d6fe4cb5a3a671674b80a_a4e0749d6092d6fe4cb5a3a671674b80aaac0ce97fbbf9358c19452118b49eeacc}{LandMassType::Island}})\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ landmassRect.setFillColor(sf::Color::Green);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ landmassRect.setSize(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a14a911873b938c24d37ea8405b908d14_a14a911873b938c24d37ea8405b908d14}{islandIconSize}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}[i]-\/>getType()\ ==\ \mbox{\hyperlink{namespace_pirate_game_a4e0749d6092d6fe4cb5a3a671674b80a_a4e0749d6092d6fe4cb5a3a671674b80aa4cfbb125e9878528bab91d12421134d8}{LandMassType::Rock}})\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ landmassRect.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ landmassRect.setSize(\mbox{\hyperlink{class_pirate_game_1_1_minimap_ab7ad2ab30e63aaccc1191a1e83f9b95a_ab7ad2ab30e63aaccc1191a1e83f9b95a}{rockIconSize}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pirate_game_1_1_minimap_af1cf14f740b413adb3e350bfa42c8a3b_af1cf14f740b413adb3e350bfa42c8a3b}{landmasses}}[i]-\/>getType()\ ==\ \mbox{\hyperlink{namespace_pirate_game_a4e0749d6092d6fe4cb5a3a671674b80a_a4e0749d6092d6fe4cb5a3a671674b80aab6be2d35107bddb0b954a0c7536fb122}{LandMassType::Shipwreck}})\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ landmassRect.setFillColor(sf::Color::Blue);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a10e22b04b8c643ee058048f8a1268e97_a10e22b04b8c643ee058048f8a1268e97}{visibleLandmassRects}}.push\_back(landmassRect);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ Clear\ visible\ ship\ rects}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d}{visibleShipRects}}.clear();}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af870e031057e98309e9f3796dffc7a65_af870e031057e98309e9f3796dffc7a65}{ships}}.size();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ sf::Vector2f\ shipPos\ =\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_af870e031057e98309e9f3796dffc7a65_af870e031057e98309e9f3796dffc7a65}{ships}}[i]-\/>getSprite().getPosition();}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(sqrt(pow(shipPos.x\ -\/\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}{ship}}-\/>\mbox{\hyperlink{class_pirate_game_1_1_ship_a2dc314c9925ed058504207d26c7c4385_a2dc314c9925ed058504207d26c7c4385}{getSprite}}().getPosition().x,\ 2)\ +\ pow(shipPos.y\ -\/\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}{ship}}-\/>\mbox{\hyperlink{class_pirate_game_1_1_ship_a2dc314c9925ed058504207d26c7c4385_a2dc314c9925ed058504207d26c7c4385}{getSprite}}().getPosition().y,\ 2)));}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (distance\ <=\ visibilityRadius)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ sf::RectangleShape\ shipRect;}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ scaledPos\ =\ (shipPos\ -\/\ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a2e459d5a517b54e9b847e0a52f0aa044_a2e459d5a517b54e9b847e0a52f0aa044}{ship}}-\/>\mbox{\hyperlink{class_pirate_game_1_1_ship_a2dc314c9925ed058504207d26c7c4385_a2dc314c9925ed058504207d26c7c4385}{getSprite}}().getPosition())\ *\ (\mbox{\hyperlink{class_pirate_game_1_1_minimap_afc999e7a3ed49076f0346138be4e0593_afc999e7a3ed49076f0346138be4e0593}{minimapSprite}}.getGlobalBounds().height\ /\ 2\ /\ visibilityRadius);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ relativePos\ =\ minimapCenter\ +\ scaledPos;}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sqrt(pow(relativePos.x\ -\/\ minimapCenter.x,\ 2)\ +\ pow(relativePos.y\ -\/\ minimapCenter.y,\ 2))\ <=\ minimapRadius)\ \{}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shipRect.setPosition(relativePos);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shipRect.setFillColor(sf::Color::Red);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shipRect.setSize(\mbox{\hyperlink{class_pirate_game_1_1_minimap_a7d575ad96b095fc7b34425d52727cfab_a7d575ad96b095fc7b34425d52727cfab}{shipRectSize}});}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_minimap_a63f54ea6fe59e37859dad6754631f14d_a63f54ea6fe59e37859dad6754631f14d}{visibleShipRects}}.push\_back(shipRect);}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_minimap___p_g_8cpp_source_l00101}00101\ \}}
+
+\end{DoxyCode}

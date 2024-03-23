@@ -1,0 +1,44 @@
+\doxysection{Player\+Ship\+\_\+\+PG.\+h}
+\hypertarget{_player_ship___p_g_8h_source}{}\label{_player_ship___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/PlayerShip\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/PlayerShip\_PG.h}}
+\mbox{\hyperlink{_player_ship___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_global_values___p_g_8h}{GlobalValues\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ship___p_g_8h}{Ship\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_ship_input_handler___p_g_8h}{PlayerShipInputHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_ship_movement_handler___p_g_8h}{PlayerShipMovementHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ship_inventory_handler___p_g_8h}{ShipInventoryHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00016}00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00017}\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{00017}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{PlayerShip}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00019}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_aed4c1581145dfd1a1819f49269fafcb9_aed4c1581145dfd1a1819f49269fafcb9}{00019}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_aed4c1581145dfd1a1819f49269fafcb9_aed4c1581145dfd1a1819f49269fafcb9}{PlayerShip}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00021}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a1c148d787186f1777b5e98aad2b5e48b_a1c148d787186f1777b5e98aad2b5e48b}{00021}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a1c148d787186f1777b5e98aad2b5e48b_a1c148d787186f1777b5e98aad2b5e48b}{\string~PlayerShip}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ ship\ and\ set\ its\ values}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_af8967dc5acc2302fcbc5b4e0a6e31464_af8967dc5acc2302fcbc5b4e0a6e31464}{customShipSetUp}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a5fe3d27c96d345ea0586d49ff6a3eac5_a5fe3d27c96d345ea0586d49ff6a3eac5}{customShipUpdate}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a229c93b2c78c55ac338349988c1e583b_a229c93b2c78c55ac338349988c1e583b}{customShipDraw}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ movement\ handler}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00029}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_ad2da46bed57c3ba8014114d1a29e5483_ad2da46bed57c3ba8014114d1a29e5483}{00029}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_input_handler}{PlayerShipInputHandler}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_ad2da46bed57c3ba8014114d1a29e5483_ad2da46bed57c3ba8014114d1a29e5483}{getInputHandler}}()\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a977fc39b8c88ff6240d65099d91fcafb_a977fc39b8c88ff6240d65099d91fcafb}{SIH}};\ \}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00030}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a448ebe382f3a8d107fa43e15a1d62935_a448ebe382f3a8d107fa43e15a1d62935}{00030}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler}{ShipInventoryHandler}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a448ebe382f3a8d107fa43e15a1d62935_a448ebe382f3a8d107fa43e15a1d62935}{getInventoryHandler}}()\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a7edc73d5fd4d4807ad159f30ed5e47e2_a7edc73d5fd4d4807ad159f30ed5e47e2}{SIvH}};\ \}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00031}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a5d95ebf7b049c6b1e0097633387006b8_a5d95ebf7b049c6b1e0097633387006b8}{00031}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_movement_handler}{PlayerShipMovementHandler}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a5d95ebf7b049c6b1e0097633387006b8_a5d95ebf7b049c6b1e0097633387006b8}{getMovementHandler}}()\ \{\ \textcolor{keywordflow}{return}\ *\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a5ac15ec05c473cde96632cd5fe492b2d_a5ac15ec05c473cde96632cd5fe492b2d}{SMH}};\ \}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handlers}}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00035}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a977fc39b8c88ff6240d65099d91fcafb_a977fc39b8c88ff6240d65099d91fcafb}{00035}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<PlayerShipInputHandler>\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a977fc39b8c88ff6240d65099d91fcafb_a977fc39b8c88ff6240d65099d91fcafb}{SIH}};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00036}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a7edc73d5fd4d4807ad159f30ed5e47e2_a7edc73d5fd4d4807ad159f30ed5e47e2}{00036}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<ShipInventoryHandler>\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a7edc73d5fd4d4807ad159f30ed5e47e2_a7edc73d5fd4d4807ad159f30ed5e47e2}{SIvH}};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00037}\mbox{\hyperlink{class_pirate_game_1_1_player_ship_a5ac15ec05c473cde96632cd5fe492b2d_a5ac15ec05c473cde96632cd5fe492b2d}{00037}}\ \ \ \ \ \ \ \ \ std::unique\_ptr<PlayerShipMovementHandler>\ \mbox{\hyperlink{class_pirate_game_1_1_player_ship_a5ac15ec05c473cde96632cd5fe492b2d_a5ac15ec05c473cde96632cd5fe492b2d}{SMH}};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00038}00038\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_player_ship___p_g_8h_source_l00039}00039\ \}}
+
+\end{DoxyCode}

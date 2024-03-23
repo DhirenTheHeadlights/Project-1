@@ -1,0 +1,887 @@
+\doxysection{Pirate\+Game\+::Island\+Menu Class Reference}
+\hypertarget{class_pirate_game_1_1_island_menu}{}\label{class_pirate_game_1_1_island_menu}\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+
+
+{\ttfamily \#include $<$Island\+Menu\+\_\+\+PG.\+h$>$}
+
+
+
+Inheritance diagram for Pirate\+Game\+::Island\+Menu\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{class_pirate_game_1_1_island_menu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pirate\+Game\+::Island\+Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_island_menu_a93333913d7a1ca55a613a725189257a6_a93333913d7a1ca55a613a725189257a6}{Island\+Menu}} (std\+::vector$<$ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}} $>$ \&\mbox{\hyperlink{class_pirate_game_1_1_island_menu_a3917f7c6b78532a716e1967ed4e14519_a3917f7c6b78532a716e1967ed4e14519}{market}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a129adec3a945cb8749d4da503d3682e2_a129adec3a945cb8749d4da503d3682e2}{set\+Up\+Menu}} () override
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7_a10d3a1555c9f783a4f0fb03c7be71bc7}{set\+Interactable\+Positions}} () override
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe_aea15e9c09c71b449ece20386964100fe}{add\+Interactables\+To\+Menu}} () override
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a_a660bb48fb74708e330990d16a8b2070a}{add\+Market\+Interactables}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2_aff1afee8aaf8c6dc82f6de5a643d49c2}{add\+Ship\+Inventory\+Interactables}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef_af05d9ba589a749a903e76e5b7d33d2ef}{update\+Market}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258_a033e176d81986a92d34e121d2cd59258}{draw}} () override
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a829912f4388ccfe9544b587da8688a8f_a829912f4388ccfe9544b587da8688a8f}{set\+Ship}} (\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \&\mbox{\hyperlink{class_pirate_game_1_1_island_menu_a10790ae096e466a6bac8804d10d3f524_a10790ae096e466a6bac8804d10d3f524}{ship}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ad6e421b83bd6120f3b0670b02a0edbed_ad6e421b83bd6120f3b0670b02a0edbed}{set\+Market}} (std\+::vector$<$ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a3917f7c6b78532a716e1967ed4e14519_a3917f7c6b78532a716e1967ed4e14519}{market}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_aedb33dc4a18d77cb5b133afc408f8d2e_aedb33dc4a18d77cb5b133afc408f8d2e}{set\+Entered\+Island}} (bool \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a0172d0506bffb8db8b5e6cdd24754437_a0172d0506bffb8db8b5e6cdd24754437}{entered\+Island}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a42b8e82010c7e678b4b765933684c260_a42b8e82010c7e678b4b765933684c260}{set\+Has\+Player\+Said\+No}} (bool player\+Prompted\+Once)
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_island_menu_acd2259c5b499dac6cf299ddfbe3ebe00_acd2259c5b499dac6cf299ddfbe3ebe00}{get\+Entered\+Island}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a862795295d502b7168e515eb38dc8e18_a862795295d502b7168e515eb38dc8e18}{get\+Player\+Prompted\+Once}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_pirate_game_1_1_menu}{Pirate\+Game\+::\+Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7}{Menu}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_menu_a81992f7e69ad5e3d74cbdfa7221a657d_a81992f7e69ad5e3d74cbdfa7221a657d}{\texorpdfstring{$\sim$}{\string~}\+Menu}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9}{add\+Interactable\+To\+Menu}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ interactable)
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}{interact\+With\+Menu\+Items}} ()
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ $>$ \& \mbox{\hyperlink{class_pirate_game_1_1_menu_a1f1b7cf033c4402af929aa52fe04bb0e_a1f1b7cf033c4402af929aa52fe04bb0e}{get\+Interactables}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_island_menu_acc8ce77efde7c05aab65f0d8bda3802e_acc8ce77efde7c05aab65f0d8bda3802e}{padding}} = 10.f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a199eb5b1bd58a78d8d023c2dd09b166e_a199eb5b1bd58a78d8d023c2dd09b166e}{gold}} = 1000.f
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_island_menu_acbfc7bfce402b41407a7a6ee01bfa58c_acbfc7bfce402b41407a7a6ee01bfa58c}{text\+Size}} = 40
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a7d7a4c118e01bab4bfb15503a945361a_a7d7a4c118e01bab4bfb15503a945361a}{interactable\+Text\+Size\+Small}} = 30
+\item 
+int \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a3308c4a3606a564c18583839c604933e_a3308c4a3606a564c18583839c604933e}{interactable\+Text\+Size\+Big}} = 60
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a0172d0506bffb8db8b5e6cdd24754437_a0172d0506bffb8db8b5e6cdd24754437}{entered\+Island}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ae5a6d1e346e7e0993c273babea547032_ae5a6d1e346e7e0993c273babea547032}{added\+Interactables}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a63ece1542c7c699f2f08ae74d684e26c_a63ece1542c7c699f2f08ae74d684e26c}{has\+Player\+Said\+No}} = false
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a10790ae096e466a6bac8804d10d3f524_a10790ae096e466a6bac8804d10d3f524}{ship}} = nullptr
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a61f372b09da7e93d40520d2d6a785d39_a61f372b09da7e93d40520d2d6a785d39}{banner}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a4a1ce2eaba30f5eb6fb3aa8a6cb07958_a4a1ce2eaba30f5eb6fb3aa8a6cb07958}{initial\+Menu}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_button}{Button}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a428ca4da1c8fc276014b71aa5d4b371f_a428ca4da1c8fc276014b71aa5d4b371f}{buy\+Buttons}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_button}{Button}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a9eb59a2963a80d696d68e3b93e037f78_a9eb59a2963a80d696d68e3b93e037f78}{sell\+Buttons}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_acf4b7624dc1c6d5d5f75d34070cdf5df_acf4b7624dc1c6d5d5f75d34070cdf5df}{merchandise}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a049f4edece1424133c7090fdee40ecb4_a049f4edece1424133c7090fdee40ecb4}{ship\+Inventory\+Interactable}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a454b66182b33ba3d3a3833d7d1c7d019_a454b66182b33ba3d3a3833d7d1c7d019}{market\+Inventory}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_button}{Button}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a1350a4fe384e3e2120dddd562d3fc438_a1350a4fe384e3e2120dddd562d3fc438}{ui\+Buttons}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ab31d419f4c153345535ebc138017c44b_ab31d419f4c153345535ebc138017c44b}{banner\+Scale}} = sf\+::\+Vector2f(1.\+5f, 1.\+5f)
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_aed45684cd01f04b13384f03cdabd5ebd_aed45684cd01f04b13384f03cdabd5ebd}{ship\+Gold\+Display}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a093a4cfbd6616c7e82467961b6f5660b_a093a4cfbd6616c7e82467961b6f5660b}{island\+Gold\+Display}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a3a23ea721634bc35a3baa9868830bea7_a3a23ea721634bc35a3baa9868830bea7}{island\+Name\+Display}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_aa774674a1598acfb22153a3aa9433300_aa774674a1598acfb22153a3aa9433300}{ship\+Name\+Display}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a465e7a671dec3836764893726f64f61e_a465e7a671dec3836764893726f64f61e}{market\+Name\+Display}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}} $>$ \& \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a3917f7c6b78532a716e1967ed4e14519_a3917f7c6b78532a716e1967ed4e14519}{market}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ae8265bcf381727d84280f0704fc8fc69_ae8265bcf381727d84280f0704fc8fc69}{ship\+Inventory}}
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a960b4cb0cebe166a9efa30224f773b72_a960b4cb0cebe166a9efa30224f773b72}{island\+Name}} = "{}Island Name"{}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a5bd77be626dea846a207d99782df9363_a5bd77be626dea846a207d99782df9363}{buy\+Clock}}
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ad93c8f4a4144ee84522b7a3fd4ed52a9_ad93c8f4a4144ee84522b7a3fd4ed52a9}{initial\+Button\+Position\+Left}} = sf\+::\+Vector2f(12.f, 12.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_af749d7b22c969be6415402cccc4c4ecd_af749d7b22c969be6415402cccc4c4ecd}{initial\+Button\+Position\+Right}} = sf\+::\+Vector2f(251.f, 12.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a9cbc4f70b8514ce26efc6c52b01c32f4_a9cbc4f70b8514ce26efc6c52b01c32f4}{market\+Top\+Middle}} = sf\+::\+Vector2f(400.f, 22.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ad79d2cfcfa149af6fce01a25570e1976_ad79d2cfcfa149af6fce01a25570e1976}{market\+Top\+Left}} = sf\+::\+Vector2f(20.f, 22.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a7f9194c2d5595bb6c68fd33ef763a532_a7f9194c2d5595bb6c68fd33ef763a532}{market\+Top\+Right}} = sf\+::\+Vector2f(1204.f, 22.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a13bacce9b8e8fe1f06b0c779063036b3_a13bacce9b8e8fe1f06b0c779063036b3}{market\+Middle}} = sf\+::\+Vector2f(400.f, 162.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_af559b7641f49f3202c42c3f204e7dd57_af559b7641f49f3202c42c3f204e7dd57}{market\+Left\+Middle}} = sf\+::\+Vector2f(20.f, 162.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a4396958d23085962ac4e3c7f64c9cc52_a4396958d23085962ac4e3c7f64c9cc52}{market\+Sell}} = sf\+::\+Vector2f(210.f, 162.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a97b3e22f34e60d1167a2ad88c2ebe276_a97b3e22f34e60d1167a2ad88c2ebe276}{market\+Buy}} = sf\+::\+Vector2f(1204.f, 162.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ad62a50f00798d2bbfceaf074d77eb176_ad62a50f00798d2bbfceaf074d77eb176}{market\+Right\+Middle}} = sf\+::\+Vector2f(1394.f, 162.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ab46c47ced2c8ac24261c999fd091408f_ab46c47ced2c8ac24261c999fd091408f}{market\+Bottom\+Left}} = sf\+::\+Vector2f(20.f, 883.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a0efd4ca1ea98b8caeaaf9d652658a2b2_a0efd4ca1ea98b8caeaaf9d652658a2b2}{market\+Navigation\+Left}} = sf\+::\+Vector2f(304.f, 883.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a4086ec2d168c4af10757b6742fd7959b_a4086ec2d168c4af10757b6742fd7959b}{market\+Navigation\+Right}} = sf\+::\+Vector2f(1204.f, 883.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_ac9de9bc586bc8e52cbd592f7a2c1c9ad_ac9de9bc586bc8e52cbd592f7a2c1c9ad}{market\+Bottom\+Right}} = sf\+::\+Vector2f(1300.f, 883.f)
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_island_menu_af6b434346a079f46540f74542d6192ae_af6b434346a079f46540f74542d6192ae}{market\+Bottom\+Middle}} = sf\+::\+Vector2f(400.f, 883.f)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_pirate_game_1_1_menu}{Pirate\+Game\+::\+Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767}{float\+To\+String}} (float number, int decimal\+Places=2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_pirate_game_1_1_menu}{Pirate\+Game\+::\+Menu}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Font \& \mbox{\hyperlink{class_pirate_game_1_1_menu_a8e2cda68dcab9bcfab54e531d5ca9bd9_a8e2cda68dcab9bcfab54e531d5ca9bd9}{font}} = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_font_handler_a6e7f1b64b90d51339f8bf86c1212f98d_a6e7f1b64b90d51339f8bf86c1212f98d}{Global\+Font\+Handler\+::get\+Instance}}().get\+Global\+Font()
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{window}} = nullptr
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_menu_a797a747eb919730b7ce58b45c774c9cb_a797a747eb919730b7ce58b45c774c9cb}{background}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9}{menu}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}}
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_menu_ae36288a2909158a0a0673aa225ddebdb_ae36288a2909158a0a0673aa225ddebdb}{title}} = "{}Title not set"{}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420}{title\+Text}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_menu_a3ec588c10bf6d12ff15f486e35c0582b_a3ec588c10bf6d12ff15f486e35c0582b}{background\+Scale}} = \{ 1, 1 \}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_menu_ad215314e0a79b0534bf898fa04f431ef_ad215314e0a79b0534bf898fa04f431ef}{menu\+Scale}} = \{ 1, 1 \}
+\item 
+sf\+::\+Color \mbox{\hyperlink{class_pirate_game_1_1_menu_a1527c6ee0109cc6fd0d0fa64df75b5f4_a1527c6ee0109cc6fd0d0fa64df75b5f4}{text\+Color}} = sf\+::\+Color(0, 0, 0, 200)
+\item 
+unsigned \mbox{\hyperlink{class_pirate_game_1_1_menu_a6ce5a2285e0c370a78a79200335b05de_a6ce5a2285e0c370a78a79200335b05de}{text\+Size}} = 20u
+\item 
+unsigned \mbox{\hyperlink{class_pirate_game_1_1_menu_a4cb0d9f41b37b5381abbd6b5f6bbd2a2_a4cb0d9f41b37b5381abbd6b5f6bbd2a2}{interactable\+Text\+Size}} = 10u
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_menu_a26777840c3bd0b4332aa2a2910dd5490_a26777840c3bd0b4332aa2a2910dd5490}{padding}} = 10.\+0f
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_menu_a809c3a77071b35903d4c29777935f1d6_a809c3a77071b35903d4c29777935f1d6}{GSM}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00017}{17}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_island_menu_a93333913d7a1ca55a613a725189257a6_a93333913d7a1ca55a613a725189257a6}\label{class_pirate_game_1_1_island_menu_a93333913d7a1ca55a613a725189257a6_a93333913d7a1ca55a613a725189257a6} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!IslandMenu@{IslandMenu}}
+\index{IslandMenu@{IslandMenu}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{IslandMenu()}{IslandMenu()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Island\+Menu\+::\+Island\+Menu (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}} $>$ \&}]{market }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe_aea15e9c09c71b449ece20386964100fe}\label{class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe_aea15e9c09c71b449ece20386964100fe} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!addInteractablesToMenu@{addInteractablesToMenu}}
+\index{addInteractablesToMenu@{addInteractablesToMenu}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{addInteractablesToMenu()}{addInteractablesToMenu()}}
+{\footnotesize\ttfamily void Island\+Menu\+::add\+Interactables\+To\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pirate_game_1_1_menu_af25b85eb0f77a928795263982afca72c_af25b85eb0f77a928795263982afca72c}{Pirate\+Game\+::\+Menu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe_aea15e9c09c71b449ece20386964100fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe_aea15e9c09c71b449ece20386964100fe_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a_a660bb48fb74708e330990d16a8b2070a}\label{class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a_a660bb48fb74708e330990d16a8b2070a} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!addMarketInteractables@{addMarketInteractables}}
+\index{addMarketInteractables@{addMarketInteractables}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{addMarketInteractables()}{addMarketInteractables()}}
+{\footnotesize\ttfamily void Island\+Menu\+::add\+Market\+Interactables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00078}{78}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a_a660bb48fb74708e330990d16a8b2070a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_a660bb48fb74708e330990d16a8b2070a_a660bb48fb74708e330990d16a8b2070a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2_aff1afee8aaf8c6dc82f6de5a643d49c2}\label{class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2_aff1afee8aaf8c6dc82f6de5a643d49c2} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!addShipInventoryInteractables@{addShipInventoryInteractables}}
+\index{addShipInventoryInteractables@{addShipInventoryInteractables}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{addShipInventoryInteractables()}{addShipInventoryInteractables()}}
+{\footnotesize\ttfamily void Island\+Menu\+::add\+Ship\+Inventory\+Interactables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00196}{196}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2_aff1afee8aaf8c6dc82f6de5a643d49c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_aff1afee8aaf8c6dc82f6de5a643d49c2_aff1afee8aaf8c6dc82f6de5a643d49c2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258_a033e176d81986a92d34e121d2cd59258}\label{class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258_a033e176d81986a92d34e121d2cd59258} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!draw@{draw}}
+\index{draw@{draw}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Island\+Menu\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6}{Pirate\+Game\+::\+Menu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00330}{330}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258_a033e176d81986a92d34e121d2cd59258_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_island_menu_acd2259c5b499dac6cf299ddfbe3ebe00_acd2259c5b499dac6cf299ddfbe3ebe00}\label{class_pirate_game_1_1_island_menu_acd2259c5b499dac6cf299ddfbe3ebe00_acd2259c5b499dac6cf299ddfbe3ebe00} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!getEnteredIsland@{getEnteredIsland}}
+\index{getEnteredIsland@{getEnteredIsland}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{getEnteredIsland()}{getEnteredIsland()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Island\+Menu\+::get\+Entered\+Island (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00036}{36}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a862795295d502b7168e515eb38dc8e18_a862795295d502b7168e515eb38dc8e18}\label{class_pirate_game_1_1_island_menu_a862795295d502b7168e515eb38dc8e18_a862795295d502b7168e515eb38dc8e18} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!getPlayerPromptedOnce@{getPlayerPromptedOnce}}
+\index{getPlayerPromptedOnce@{getPlayerPromptedOnce}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{getPlayerPromptedOnce()}{getPlayerPromptedOnce()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Island\+Menu\+::get\+Player\+Prompted\+Once (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00037}{37}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_aedb33dc4a18d77cb5b133afc408f8d2e_aedb33dc4a18d77cb5b133afc408f8d2e}\label{class_pirate_game_1_1_island_menu_aedb33dc4a18d77cb5b133afc408f8d2e_aedb33dc4a18d77cb5b133afc408f8d2e} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!setEnteredIsland@{setEnteredIsland}}
+\index{setEnteredIsland@{setEnteredIsland}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{setEnteredIsland()}{setEnteredIsland()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Island\+Menu\+::set\+Entered\+Island (\begin{DoxyParamCaption}\item[{bool}]{entered\+Island }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00032}{32}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a42b8e82010c7e678b4b765933684c260_a42b8e82010c7e678b4b765933684c260}\label{class_pirate_game_1_1_island_menu_a42b8e82010c7e678b4b765933684c260_a42b8e82010c7e678b4b765933684c260} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!setHasPlayerSaidNo@{setHasPlayerSaidNo}}
+\index{setHasPlayerSaidNo@{setHasPlayerSaidNo}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{setHasPlayerSaidNo()}{setHasPlayerSaidNo()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Island\+Menu\+::set\+Has\+Player\+Said\+No (\begin{DoxyParamCaption}\item[{bool}]{player\+Prompted\+Once }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00033}{33}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7_a10d3a1555c9f783a4f0fb03c7be71bc7}\label{class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7_a10d3a1555c9f783a4f0fb03c7be71bc7} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!setInteractablePositions@{setInteractablePositions}}
+\index{setInteractablePositions@{setInteractablePositions}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{setInteractablePositions()}{setInteractablePositions()}}
+{\footnotesize\ttfamily void Island\+Menu\+::set\+Interactable\+Positions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pirate_game_1_1_menu_a18c8186b4de93451d59221426b4cab2a_a18c8186b4de93451d59221426b4cab2a}{Pirate\+Game\+::\+Menu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00220}{220}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7_a10d3a1555c9f783a4f0fb03c7be71bc7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7_a10d3a1555c9f783a4f0fb03c7be71bc7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_island_menu_ad6e421b83bd6120f3b0670b02a0edbed_ad6e421b83bd6120f3b0670b02a0edbed}\label{class_pirate_game_1_1_island_menu_ad6e421b83bd6120f3b0670b02a0edbed_ad6e421b83bd6120f3b0670b02a0edbed} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!setMarket@{setMarket}}
+\index{setMarket@{setMarket}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{setMarket()}{setMarket()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Island\+Menu\+::set\+Market (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}} $>$}]{market }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00031}{31}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a829912f4388ccfe9544b587da8688a8f_a829912f4388ccfe9544b587da8688a8f}\label{class_pirate_game_1_1_island_menu_a829912f4388ccfe9544b587da8688a8f_a829912f4388ccfe9544b587da8688a8f} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!setShip@{setShip}}
+\index{setShip@{setShip}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{setShip()}{setShip()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Island\+Menu\+::set\+Ship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \&}]{ship }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a129adec3a945cb8749d4da503d3682e2_a129adec3a945cb8749d4da503d3682e2}\label{class_pirate_game_1_1_island_menu_a129adec3a945cb8749d4da503d3682e2_a129adec3a945cb8749d4da503d3682e2} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!setUpMenu@{setUpMenu}}
+\index{setUpMenu@{setUpMenu}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{setUpMenu()}{setUpMenu()}}
+{\footnotesize\ttfamily void Island\+Menu\+::set\+Up\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_pirate_game_1_1_menu_af37430becf7c9a51839c9f987641e4fe_af37430becf7c9a51839c9f987641e4fe}{Pirate\+Game\+::\+Menu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_a129adec3a945cb8749d4da503d3682e2_a129adec3a945cb8749d4da503d3682e2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef_af05d9ba589a749a903e76e5b7d33d2ef}\label{class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef_af05d9ba589a749a903e76e5b7d33d2ef} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!updateMarket@{updateMarket}}
+\index{updateMarket@{updateMarket}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{updateMarket()}{updateMarket()}}
+{\footnotesize\ttfamily void Island\+Menu\+::update\+Market (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8cpp_source_l00279}{279}} of file \mbox{\hyperlink{_island_menu___p_g_8cpp_source}{Island\+Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef_af05d9ba589a749a903e76e5b7d33d2ef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_island_menu_af05d9ba589a749a903e76e5b7d33d2ef_af05d9ba589a749a903e76e5b7d33d2ef_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_island_menu_ae5a6d1e346e7e0993c273babea547032_ae5a6d1e346e7e0993c273babea547032}\label{class_pirate_game_1_1_island_menu_ae5a6d1e346e7e0993c273babea547032_ae5a6d1e346e7e0993c273babea547032} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!addedInteractables@{addedInteractables}}
+\index{addedInteractables@{addedInteractables}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{addedInteractables}{addedInteractables}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Island\+Menu\+::added\+Interactables = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00047}{47}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a61f372b09da7e93d40520d2d6a785d39_a61f372b09da7e93d40520d2d6a785d39}\label{class_pirate_game_1_1_island_menu_a61f372b09da7e93d40520d2d6a785d39_a61f372b09da7e93d40520d2d6a785d39} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!banner@{banner}}
+\index{banner@{banner}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{banner}{banner}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Island\+Menu\+::banner\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00052}{52}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ab31d419f4c153345535ebc138017c44b_ab31d419f4c153345535ebc138017c44b}\label{class_pirate_game_1_1_island_menu_ab31d419f4c153345535ebc138017c44b_ab31d419f4c153345535ebc138017c44b} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!bannerScale@{bannerScale}}
+\index{bannerScale@{bannerScale}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{bannerScale}{bannerScale}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::banner\+Scale = sf\+::\+Vector2f(1.\+5f, 1.\+5f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00062}{62}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a428ca4da1c8fc276014b71aa5d4b371f_a428ca4da1c8fc276014b71aa5d4b371f}\label{class_pirate_game_1_1_island_menu_a428ca4da1c8fc276014b71aa5d4b371f_a428ca4da1c8fc276014b71aa5d4b371f} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!buyButtons@{buyButtons}}
+\index{buyButtons@{buyButtons}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{buyButtons}{buyButtons}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_button}{Button}}$>$ $>$ Pirate\+Game\+::\+Island\+Menu\+::buy\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00055}{55}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a5bd77be626dea846a207d99782df9363_a5bd77be626dea846a207d99782df9363}\label{class_pirate_game_1_1_island_menu_a5bd77be626dea846a207d99782df9363_a5bd77be626dea846a207d99782df9363} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!buyClock@{buyClock}}
+\index{buyClock@{buyClock}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{buyClock}{buyClock}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Island\+Menu\+::buy\+Clock\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00078}{78}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a0172d0506bffb8db8b5e6cdd24754437_a0172d0506bffb8db8b5e6cdd24754437}\label{class_pirate_game_1_1_island_menu_a0172d0506bffb8db8b5e6cdd24754437_a0172d0506bffb8db8b5e6cdd24754437} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!enteredIsland@{enteredIsland}}
+\index{enteredIsland@{enteredIsland}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{enteredIsland}{enteredIsland}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Island\+Menu\+::entered\+Island = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a199eb5b1bd58a78d8d023c2dd09b166e_a199eb5b1bd58a78d8d023c2dd09b166e}\label{class_pirate_game_1_1_island_menu_a199eb5b1bd58a78d8d023c2dd09b166e_a199eb5b1bd58a78d8d023c2dd09b166e} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!gold@{gold}}
+\index{gold@{gold}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{gold}{gold}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Island\+Menu\+::gold = 1000.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00041}{41}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a63ece1542c7c699f2f08ae74d684e26c_a63ece1542c7c699f2f08ae74d684e26c}\label{class_pirate_game_1_1_island_menu_a63ece1542c7c699f2f08ae74d684e26c_a63ece1542c7c699f2f08ae74d684e26c} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!hasPlayerSaidNo@{hasPlayerSaidNo}}
+\index{hasPlayerSaidNo@{hasPlayerSaidNo}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{hasPlayerSaidNo}{hasPlayerSaidNo}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Island\+Menu\+::has\+Player\+Said\+No = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00048}{48}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ad93c8f4a4144ee84522b7a3fd4ed52a9_ad93c8f4a4144ee84522b7a3fd4ed52a9}\label{class_pirate_game_1_1_island_menu_ad93c8f4a4144ee84522b7a3fd4ed52a9_ad93c8f4a4144ee84522b7a3fd4ed52a9} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!initialButtonPositionLeft@{initialButtonPositionLeft}}
+\index{initialButtonPositionLeft@{initialButtonPositionLeft}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{initialButtonPositionLeft}{initialButtonPositionLeft}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::initial\+Button\+Position\+Left = sf\+::\+Vector2f(12.f, 12.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00082}{82}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_af749d7b22c969be6415402cccc4c4ecd_af749d7b22c969be6415402cccc4c4ecd}\label{class_pirate_game_1_1_island_menu_af749d7b22c969be6415402cccc4c4ecd_af749d7b22c969be6415402cccc4c4ecd} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!initialButtonPositionRight@{initialButtonPositionRight}}
+\index{initialButtonPositionRight@{initialButtonPositionRight}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{initialButtonPositionRight}{initialButtonPositionRight}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::initial\+Button\+Position\+Right = sf\+::\+Vector2f(251.f, 12.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00083}{83}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a4a1ce2eaba30f5eb6fb3aa8a6cb07958_a4a1ce2eaba30f5eb6fb3aa8a6cb07958}\label{class_pirate_game_1_1_island_menu_a4a1ce2eaba30f5eb6fb3aa8a6cb07958_a4a1ce2eaba30f5eb6fb3aa8a6cb07958} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!initialMenu@{initialMenu}}
+\index{initialMenu@{initialMenu}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{initialMenu}{initialMenu}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Island\+Menu\+::initial\+Menu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00053}{53}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a3308c4a3606a564c18583839c604933e_a3308c4a3606a564c18583839c604933e}\label{class_pirate_game_1_1_island_menu_a3308c4a3606a564c18583839c604933e_a3308c4a3606a564c18583839c604933e} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!interactableTextSizeBig@{interactableTextSizeBig}}
+\index{interactableTextSizeBig@{interactableTextSizeBig}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{interactableTextSizeBig}{interactableTextSizeBig}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+Island\+Menu\+::interactable\+Text\+Size\+Big = 60\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a7d7a4c118e01bab4bfb15503a945361a_a7d7a4c118e01bab4bfb15503a945361a}\label{class_pirate_game_1_1_island_menu_a7d7a4c118e01bab4bfb15503a945361a_a7d7a4c118e01bab4bfb15503a945361a} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!interactableTextSizeSmall@{interactableTextSizeSmall}}
+\index{interactableTextSizeSmall@{interactableTextSizeSmall}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{interactableTextSizeSmall}{interactableTextSizeSmall}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+Island\+Menu\+::interactable\+Text\+Size\+Small = 30\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a093a4cfbd6616c7e82467961b6f5660b_a093a4cfbd6616c7e82467961b6f5660b}\label{class_pirate_game_1_1_island_menu_a093a4cfbd6616c7e82467961b6f5660b_a093a4cfbd6616c7e82467961b6f5660b} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!islandGoldDisplay@{islandGoldDisplay}}
+\index{islandGoldDisplay@{islandGoldDisplay}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{islandGoldDisplay}{islandGoldDisplay}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ Pirate\+Game\+::\+Island\+Menu\+::island\+Gold\+Display\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00066}{66}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a960b4cb0cebe166a9efa30224f773b72_a960b4cb0cebe166a9efa30224f773b72}\label{class_pirate_game_1_1_island_menu_a960b4cb0cebe166a9efa30224f773b72_a960b4cb0cebe166a9efa30224f773b72} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!islandName@{islandName}}
+\index{islandName@{islandName}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{islandName}{islandName}}
+{\footnotesize\ttfamily std\+::string Pirate\+Game\+::\+Island\+Menu\+::island\+Name = "{}Island Name"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00076}{76}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a3a23ea721634bc35a3baa9868830bea7_a3a23ea721634bc35a3baa9868830bea7}\label{class_pirate_game_1_1_island_menu_a3a23ea721634bc35a3baa9868830bea7_a3a23ea721634bc35a3baa9868830bea7} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!islandNameDisplay@{islandNameDisplay}}
+\index{islandNameDisplay@{islandNameDisplay}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{islandNameDisplay}{islandNameDisplay}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ Pirate\+Game\+::\+Island\+Menu\+::island\+Name\+Display\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00069}{69}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a3917f7c6b78532a716e1967ed4e14519_a3917f7c6b78532a716e1967ed4e14519}\label{class_pirate_game_1_1_island_menu_a3917f7c6b78532a716e1967ed4e14519_a3917f7c6b78532a716e1967ed4e14519} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!market@{market}}
+\index{market@{market}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{market}{market}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}}$>$\& Pirate\+Game\+::\+Island\+Menu\+::market\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00073}{73}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ab46c47ced2c8ac24261c999fd091408f_ab46c47ced2c8ac24261c999fd091408f}\label{class_pirate_game_1_1_island_menu_ab46c47ced2c8ac24261c999fd091408f_ab46c47ced2c8ac24261c999fd091408f} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketBottomLeft@{marketBottomLeft}}
+\index{marketBottomLeft@{marketBottomLeft}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketBottomLeft}{marketBottomLeft}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Bottom\+Left = sf\+::\+Vector2f(20.f, 883.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00093}{93}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_af6b434346a079f46540f74542d6192ae_af6b434346a079f46540f74542d6192ae}\label{class_pirate_game_1_1_island_menu_af6b434346a079f46540f74542d6192ae_af6b434346a079f46540f74542d6192ae} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketBottomMiddle@{marketBottomMiddle}}
+\index{marketBottomMiddle@{marketBottomMiddle}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketBottomMiddle}{marketBottomMiddle}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Bottom\+Middle = sf\+::\+Vector2f(400.f, 883.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00097}{97}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ac9de9bc586bc8e52cbd592f7a2c1c9ad_ac9de9bc586bc8e52cbd592f7a2c1c9ad}\label{class_pirate_game_1_1_island_menu_ac9de9bc586bc8e52cbd592f7a2c1c9ad_ac9de9bc586bc8e52cbd592f7a2c1c9ad} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketBottomRight@{marketBottomRight}}
+\index{marketBottomRight@{marketBottomRight}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketBottomRight}{marketBottomRight}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Bottom\+Right = sf\+::\+Vector2f(1300.f, 883.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00096}{96}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a97b3e22f34e60d1167a2ad88c2ebe276_a97b3e22f34e60d1167a2ad88c2ebe276}\label{class_pirate_game_1_1_island_menu_a97b3e22f34e60d1167a2ad88c2ebe276_a97b3e22f34e60d1167a2ad88c2ebe276} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketBuy@{marketBuy}}
+\index{marketBuy@{marketBuy}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketBuy}{marketBuy}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Buy = sf\+::\+Vector2f(1204.f, 162.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00091}{91}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a454b66182b33ba3d3a3833d7d1c7d019_a454b66182b33ba3d3a3833d7d1c7d019}\label{class_pirate_game_1_1_island_menu_a454b66182b33ba3d3a3833d7d1c7d019_a454b66182b33ba3d3a3833d7d1c7d019} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketInventory@{marketInventory}}
+\index{marketInventory@{marketInventory}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketInventory}{marketInventory}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ $>$ Pirate\+Game\+::\+Island\+Menu\+::market\+Inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00059}{59}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_af559b7641f49f3202c42c3f204e7dd57_af559b7641f49f3202c42c3f204e7dd57}\label{class_pirate_game_1_1_island_menu_af559b7641f49f3202c42c3f204e7dd57_af559b7641f49f3202c42c3f204e7dd57} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketLeftMiddle@{marketLeftMiddle}}
+\index{marketLeftMiddle@{marketLeftMiddle}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketLeftMiddle}{marketLeftMiddle}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Left\+Middle = sf\+::\+Vector2f(20.f, 162.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00089}{89}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a13bacce9b8e8fe1f06b0c779063036b3_a13bacce9b8e8fe1f06b0c779063036b3}\label{class_pirate_game_1_1_island_menu_a13bacce9b8e8fe1f06b0c779063036b3_a13bacce9b8e8fe1f06b0c779063036b3} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketMiddle@{marketMiddle}}
+\index{marketMiddle@{marketMiddle}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketMiddle}{marketMiddle}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Middle = sf\+::\+Vector2f(400.f, 162.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00088}{88}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a465e7a671dec3836764893726f64f61e_a465e7a671dec3836764893726f64f61e}\label{class_pirate_game_1_1_island_menu_a465e7a671dec3836764893726f64f61e_a465e7a671dec3836764893726f64f61e} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketNameDisplay@{marketNameDisplay}}
+\index{marketNameDisplay@{marketNameDisplay}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketNameDisplay}{marketNameDisplay}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ Pirate\+Game\+::\+Island\+Menu\+::market\+Name\+Display\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00071}{71}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a0efd4ca1ea98b8caeaaf9d652658a2b2_a0efd4ca1ea98b8caeaaf9d652658a2b2}\label{class_pirate_game_1_1_island_menu_a0efd4ca1ea98b8caeaaf9d652658a2b2_a0efd4ca1ea98b8caeaaf9d652658a2b2} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketNavigationLeft@{marketNavigationLeft}}
+\index{marketNavigationLeft@{marketNavigationLeft}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketNavigationLeft}{marketNavigationLeft}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Navigation\+Left = sf\+::\+Vector2f(304.f, 883.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00094}{94}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a4086ec2d168c4af10757b6742fd7959b_a4086ec2d168c4af10757b6742fd7959b}\label{class_pirate_game_1_1_island_menu_a4086ec2d168c4af10757b6742fd7959b_a4086ec2d168c4af10757b6742fd7959b} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketNavigationRight@{marketNavigationRight}}
+\index{marketNavigationRight@{marketNavigationRight}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketNavigationRight}{marketNavigationRight}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Navigation\+Right = sf\+::\+Vector2f(1204.f, 883.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00095}{95}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ad62a50f00798d2bbfceaf074d77eb176_ad62a50f00798d2bbfceaf074d77eb176}\label{class_pirate_game_1_1_island_menu_ad62a50f00798d2bbfceaf074d77eb176_ad62a50f00798d2bbfceaf074d77eb176} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketRightMiddle@{marketRightMiddle}}
+\index{marketRightMiddle@{marketRightMiddle}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketRightMiddle}{marketRightMiddle}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Right\+Middle = sf\+::\+Vector2f(1394.f, 162.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00092}{92}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a4396958d23085962ac4e3c7f64c9cc52_a4396958d23085962ac4e3c7f64c9cc52}\label{class_pirate_game_1_1_island_menu_a4396958d23085962ac4e3c7f64c9cc52_a4396958d23085962ac4e3c7f64c9cc52} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketSell@{marketSell}}
+\index{marketSell@{marketSell}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketSell}{marketSell}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Sell = sf\+::\+Vector2f(210.f, 162.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00090}{90}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ad79d2cfcfa149af6fce01a25570e1976_ad79d2cfcfa149af6fce01a25570e1976}\label{class_pirate_game_1_1_island_menu_ad79d2cfcfa149af6fce01a25570e1976_ad79d2cfcfa149af6fce01a25570e1976} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketTopLeft@{marketTopLeft}}
+\index{marketTopLeft@{marketTopLeft}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketTopLeft}{marketTopLeft}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Top\+Left = sf\+::\+Vector2f(20.f, 22.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00086}{86}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a9cbc4f70b8514ce26efc6c52b01c32f4_a9cbc4f70b8514ce26efc6c52b01c32f4}\label{class_pirate_game_1_1_island_menu_a9cbc4f70b8514ce26efc6c52b01c32f4_a9cbc4f70b8514ce26efc6c52b01c32f4} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketTopMiddle@{marketTopMiddle}}
+\index{marketTopMiddle@{marketTopMiddle}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketTopMiddle}{marketTopMiddle}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Top\+Middle = sf\+::\+Vector2f(400.f, 22.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00085}{85}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a7f9194c2d5595bb6c68fd33ef763a532_a7f9194c2d5595bb6c68fd33ef763a532}\label{class_pirate_game_1_1_island_menu_a7f9194c2d5595bb6c68fd33ef763a532_a7f9194c2d5595bb6c68fd33ef763a532} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!marketTopRight@{marketTopRight}}
+\index{marketTopRight@{marketTopRight}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{marketTopRight}{marketTopRight}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Pirate\+Game\+::\+Island\+Menu\+::market\+Top\+Right = sf\+::\+Vector2f(1204.f, 22.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00087}{87}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_acf4b7624dc1c6d5d5f75d34070cdf5df_acf4b7624dc1c6d5d5f75d34070cdf5df}\label{class_pirate_game_1_1_island_menu_acf4b7624dc1c6d5d5f75d34070cdf5df_acf4b7624dc1c6d5d5f75d34070cdf5df} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!merchandise@{merchandise}}
+\index{merchandise@{merchandise}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{merchandise}{merchandise}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ $>$ Pirate\+Game\+::\+Island\+Menu\+::merchandise\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00057}{57}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_acc8ce77efde7c05aab65f0d8bda3802e_acc8ce77efde7c05aab65f0d8bda3802e}\label{class_pirate_game_1_1_island_menu_acc8ce77efde7c05aab65f0d8bda3802e_acc8ce77efde7c05aab65f0d8bda3802e} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!padding@{padding}}
+\index{padding@{padding}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{padding}{padding}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Island\+Menu\+::padding = 10.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00040}{40}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a9eb59a2963a80d696d68e3b93e037f78_a9eb59a2963a80d696d68e3b93e037f78}\label{class_pirate_game_1_1_island_menu_a9eb59a2963a80d696d68e3b93e037f78_a9eb59a2963a80d696d68e3b93e037f78} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!sellButtons@{sellButtons}}
+\index{sellButtons@{sellButtons}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{sellButtons}{sellButtons}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_button}{Button}}$>$ $>$ Pirate\+Game\+::\+Island\+Menu\+::sell\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00056}{56}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a10790ae096e466a6bac8804d10d3f524_a10790ae096e466a6bac8804d10d3f524}\label{class_pirate_game_1_1_island_menu_a10790ae096e466a6bac8804d10d3f524_a10790ae096e466a6bac8804d10d3f524} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!ship@{ship}}
+\index{ship@{ship}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{ship}{ship}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}}\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Island\+Menu\+::ship = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00050}{50}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_aed45684cd01f04b13384f03cdabd5ebd_aed45684cd01f04b13384f03cdabd5ebd}\label{class_pirate_game_1_1_island_menu_aed45684cd01f04b13384f03cdabd5ebd_aed45684cd01f04b13384f03cdabd5ebd} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!shipGoldDisplay@{shipGoldDisplay}}
+\index{shipGoldDisplay@{shipGoldDisplay}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{shipGoldDisplay}{shipGoldDisplay}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ Pirate\+Game\+::\+Island\+Menu\+::ship\+Gold\+Display\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00065}{65}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_ae8265bcf381727d84280f0704fc8fc69_ae8265bcf381727d84280f0704fc8fc69}\label{class_pirate_game_1_1_island_menu_ae8265bcf381727d84280f0704fc8fc69_ae8265bcf381727d84280f0704fc8fc69} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!shipInventory@{shipInventory}}
+\index{shipInventory@{shipInventory}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{shipInventory}{shipInventory}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{Shop\+Item}}$>$ Pirate\+Game\+::\+Island\+Menu\+::ship\+Inventory\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00074}{74}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a049f4edece1424133c7090fdee40ecb4_a049f4edece1424133c7090fdee40ecb4}\label{class_pirate_game_1_1_island_menu_a049f4edece1424133c7090fdee40ecb4_a049f4edece1424133c7090fdee40ecb4} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!shipInventoryInteractable@{shipInventoryInteractable}}
+\index{shipInventoryInteractable@{shipInventoryInteractable}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{shipInventoryInteractable}{shipInventoryInteractable}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ $>$ Pirate\+Game\+::\+Island\+Menu\+::ship\+Inventory\+Interactable\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00058}{58}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_aa774674a1598acfb22153a3aa9433300_aa774674a1598acfb22153a3aa9433300}\label{class_pirate_game_1_1_island_menu_aa774674a1598acfb22153a3aa9433300_aa774674a1598acfb22153a3aa9433300} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!shipNameDisplay@{shipNameDisplay}}
+\index{shipNameDisplay@{shipNameDisplay}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{shipNameDisplay}{shipNameDisplay}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_text_display_box}{Text\+Display\+Box}}$>$ Pirate\+Game\+::\+Island\+Menu\+::ship\+Name\+Display\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00070}{70}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_acbfc7bfce402b41407a7a6ee01bfa58c_acbfc7bfce402b41407a7a6ee01bfa58c}\label{class_pirate_game_1_1_island_menu_acbfc7bfce402b41407a7a6ee01bfa58c_acbfc7bfce402b41407a7a6ee01bfa58c} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!textSize@{textSize}}
+\index{textSize@{textSize}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{textSize}{textSize}}
+{\footnotesize\ttfamily int Pirate\+Game\+::\+Island\+Menu\+::text\+Size = 40\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_island_menu_a1350a4fe384e3e2120dddd562d3fc438_a1350a4fe384e3e2120dddd562d3fc438}\label{class_pirate_game_1_1_island_menu_a1350a4fe384e3e2120dddd562d3fc438_a1350a4fe384e3e2120dddd562d3fc438} 
+\index{PirateGame::IslandMenu@{PirateGame::IslandMenu}!uiButtons@{uiButtons}}
+\index{uiButtons@{uiButtons}!PirateGame::IslandMenu@{PirateGame::IslandMenu}}
+\doxysubsubsection{\texorpdfstring{uiButtons}{uiButtons}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_button}{Button}}$>$ $>$ Pirate\+Game\+::\+Island\+Menu\+::ui\+Buttons\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_island_menu___p_g_8h_source_l00060}{60}} of file \mbox{\hyperlink{_island_menu___p_g_8h_source}{Island\+Menu\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_island_menu___p_g_8h}{Island\+Menu\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_island_menu___p_g_8cpp}{Island\+Menu\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

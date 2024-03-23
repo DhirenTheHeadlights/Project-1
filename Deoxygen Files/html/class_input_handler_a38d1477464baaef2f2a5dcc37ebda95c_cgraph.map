@@ -1,0 +1,7 @@
+<map id="InputHandler::split" name="InputHandler::split">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,131,32"/>
+<area shape="rect" id="Node000002" href="$class_cell_group.html#a9b4c06d7212b12984a162a7fc088a0e5" title=" " alt="" coords="179,5,289,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,16,163,16,163,21,131,21"/>
+<area shape="rect" id="Node000003" href="$class_circle.html#a8583cdd42262cec318c169257f3fbc28" title=" " alt="" coords="337,5,464,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,16,321,16,321,21,289,21"/>
+</map>

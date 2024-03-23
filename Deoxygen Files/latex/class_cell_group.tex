@@ -1,0 +1,212 @@
+\doxysection{Cell\+Group Class Reference}
+\hypertarget{class_cell_group}{}\label{class_cell_group}\index{CellGroup@{CellGroup}}
+
+
+{\ttfamily \#include $<$Cell\+Group\+\_\+\+AG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6}{Cell\+Group}} (const float start\+Size, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+\mbox{\hyperlink{class_cell_group_a8d83f2c0d13b7d662f34deadf0b53894}{\texorpdfstring{$\sim$}{\string~}\+Cell\+Group}} ()
+\item 
+void \mbox{\hyperlink{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5}{split}} ()
+\item 
+void \mbox{\hyperlink{class_cell_group_aeb996e3418187cc676b7d0b959882e6e}{remove\+Circle}} (\mbox{\hyperlink{class_circle}{Circle}} \&cell, \mbox{\hyperlink{class_map}{Map}} \&map)
+\item 
+void \mbox{\hyperlink{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc}{draw}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})
+\item 
+void \mbox{\hyperlink{class_cell_group_a672126a955b0c03250ef3e5034adb242}{move}} (double move\+Speed, \mbox{\hyperlink{class_map}{Map}} \&map, sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})
+\item 
+void \mbox{\hyperlink{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6}{reset}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033}{get\+Cell\+Group}} ()
+\item 
+const float \mbox{\hyperlink{class_cell_group_a47c41f7d789705cc0ed3cc15d4454be3}{get\+Min\+Size}} () const
+\item 
+const sf\+::\+Vector2f \mbox{\hyperlink{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}{get\+Avg\+Pos}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8h_source_l00007}{7}} of file \mbox{\hyperlink{_cell_group___a_g_8h_source}{Cell\+Group\+\_\+\+AG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6}\label{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6} 
+\index{CellGroup@{CellGroup}!CellGroup@{CellGroup}}
+\index{CellGroup@{CellGroup}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{CellGroup()}{CellGroup()}}
+{\footnotesize\ttfamily Cell\+Group\+::\+Cell\+Group (\begin{DoxyParamCaption}\item[{const float}]{start\+Size,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cell_group_a8d83f2c0d13b7d662f34deadf0b53894}\label{class_cell_group_a8d83f2c0d13b7d662f34deadf0b53894} 
+\index{CellGroup@{CellGroup}!````~CellGroup@{\texorpdfstring{$\sim$}{\string~}CellGroup}}
+\index{````~CellGroup@{\texorpdfstring{$\sim$}{\string~}CellGroup}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CellGroup()}{\string~CellGroup()}}
+{\footnotesize\ttfamily Cell\+Group\+::\texorpdfstring{$\sim$}{\string~}\+Cell\+Group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc}\label{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc} 
+\index{CellGroup@{CellGroup}!draw@{draw}}
+\index{draw@{draw}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Cell\+Group\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}\label{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d} 
+\index{CellGroup@{CellGroup}!getAvgPos@{getAvgPos}}
+\index{getAvgPos@{getAvgPos}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{getAvgPos()}{getAvgPos()}}
+{\footnotesize\ttfamily const sf\+::\+Vector2f Cell\+Group\+::get\+Avg\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033}\label{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033} 
+\index{CellGroup@{CellGroup}!getCellGroup@{getCellGroup}}
+\index{getCellGroup@{getCellGroup}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{getCellGroup()}{getCellGroup()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_circle}{Circle}} \texorpdfstring{$\ast$}{*} $>$ Cell\+Group\+::get\+Cell\+Group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cell_group_a47c41f7d789705cc0ed3cc15d4454be3}\label{class_cell_group_a47c41f7d789705cc0ed3cc15d4454be3} 
+\index{CellGroup@{CellGroup}!getMinSize@{getMinSize}}
+\index{getMinSize@{getMinSize}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{getMinSize()}{getMinSize()}}
+{\footnotesize\ttfamily const float Cell\+Group\+::get\+Min\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+\Hypertarget{class_cell_group_a672126a955b0c03250ef3e5034adb242}\label{class_cell_group_a672126a955b0c03250ef3e5034adb242} 
+\index{CellGroup@{CellGroup}!move@{move}}
+\index{move@{move}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Cell\+Group\+::move (\begin{DoxyParamCaption}\item[{double}]{move\+Speed,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cell_group_a672126a955b0c03250ef3e5034adb242_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cell_group_aeb996e3418187cc676b7d0b959882e6e}\label{class_cell_group_aeb996e3418187cc676b7d0b959882e6e} 
+\index{CellGroup@{CellGroup}!removeCircle@{removeCircle}}
+\index{removeCircle@{removeCircle}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{removeCircle()}{removeCircle()}}
+{\footnotesize\ttfamily void Cell\+Group\+::remove\+Circle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_circle}{Circle}} \&}]{cell,  }\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{map }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+\Hypertarget{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6}\label{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6} 
+\index{CellGroup@{CellGroup}!reset@{reset}}
+\index{reset@{reset}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Cell\+Group\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5}\label{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5} 
+\index{CellGroup@{CellGroup}!split@{split}}
+\index{split@{split}!CellGroup@{CellGroup}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily void Cell\+Group\+::split (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_cell_group___a_g_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_cell_group___a_g_8cpp_source}{Cell\+Group\+\_\+\+AG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Agar\+Game/\+Header/\mbox{\hyperlink{_cell_group___a_g_8h}{Cell\+Group\+\_\+\+AG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Agar\+Game/\+Resource/\mbox{\hyperlink{_cell_group___a_g_8cpp}{Cell\+Group\+\_\+\+AG.\+cpp}}\end{DoxyCompactItemize}

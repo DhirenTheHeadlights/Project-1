@@ -1,0 +1,13 @@
+<map id="PirateGame::StartMenu::addInteractablesToMenu" name="PirateGame::StartMenu::addInteractablesToMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,176,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_game_state_manager.html#ab98af48b54e99b0dbdb231c42b5c994b" title=" " alt="" coords="224,5,425,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,69,231,50,233,55,168,74"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_game_state_manager.html#ad62c617d29c72bf2e81113a3b53aa1ab" title=" " alt="" coords="224,72,425,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,91,208,91,208,96,176,96"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_start_menu.html#a0ccc8aedcda85d72c13abcb4721e0886" title=" " alt="" coords="245,139,404,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="168,113,233,131,231,136,167,118"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_menu.html#a256554b4d372def295062a76351230e9" title=" " alt="" coords="473,105,699,148"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="404,147,458,140,458,146,404,153"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_global_texture_handler.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="497,172,675,215"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="404,167,482,177,481,183,404,173"/>
+</map>

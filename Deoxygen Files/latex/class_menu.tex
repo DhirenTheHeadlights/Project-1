@@ -1,0 +1,507 @@
+\doxysection{Menu Class Reference}
+\hypertarget{class_menu}{}\label{class_menu}\index{Menu@{Menu}}
+
+
+{\ttfamily \#include $<$Menu\+\_\+\+AT.\+h$>$}
+
+
+
+Inheritance diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_ac156d3ebd661b32beb7db4cac82f8848}{Menu}} (sf\+::\+Render\+Window \&window, sf\+::\+Font font)
+\item 
+void \mbox{\hyperlink{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d}{open\+Menu}} (sf\+::\+Event \&event\+From\+Main, \mbox{\hyperlink{class_crosshair}{Crosshair}} \&xhair, sf\+::\+Clock \&main\+Clock)
+\item 
+void \mbox{\hyperlink{class_menu_a0860150e58e68d4945a0c19a05a29bb5}{reset\+Redraw\+Flag}} ()
+\item 
+void \mbox{\hyperlink{class_menu_abad8af7b49fa9d0d15c593562e05ac38}{draw\+Menu}} (sf\+::\+Event event)
+\item 
+void \mbox{\hyperlink{class_menu_adab2cbd3a5e67871c468da739e82b547}{toggle\+Menu}} (sf\+::\+Clock \&main\+Clock, \mbox{\hyperlink{class_crosshair}{Crosshair}} \&xhair)
+\item 
+void \mbox{\hyperlink{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}{add\+Interactable}} (std\+::string name, \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable\+::\+Type}} type, std\+::optional$<$ std\+::function$<$ void(float value)$>$ $>$ func)
+\item 
+void \mbox{\hyperlink{class_menu_af8442b2d50df720a8630fd98e1dec9d8}{set\+Total\+Pause\+Time}} (sf\+::\+Time time)
+\item 
+void \mbox{\hyperlink{class_menu_aa409c8b48a18439522b01ef097110ff1}{set\+Title\+String}} (std\+::string title\+String)
+\item 
+void \mbox{\hyperlink{class_menu_a743e40d07edd702c28e983a52da25dbf}{set\+Menu\+Position}} (sf\+::\+Vector2f position)
+\item 
+void \mbox{\hyperlink{class_menu_a461a10addff1e4fc3ec640fb6974d0ee}{set\+Text\+Size}} (float size)
+\item 
+void \mbox{\hyperlink{class_menu_ad515c411adc8498769da5ea7033b693b}{set\+Background\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15}{set\+Text\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d}{set\+Button\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a68c1d0ed72406cd39c68bd658d395917}{set\+Slider\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a1811471af86d9277ff9c5330512442c9}{set\+Slider\+Complement\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a749a7d8b933f95a2940b97b12a14494b}{set\+Hover\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}{update\+Interactable\+Colors}} ()
+\item 
+void \mbox{\hyperlink{class_menu_ad77babc9a27ed9eadc340ca44acfc098}{set\+Button\+Size}} (sf\+::\+Vector2f size)
+\item 
+bool \mbox{\hyperlink{class_menu_a0b6f6ad7665f5af60972cc286f0bfe8c}{get\+Is\+Menu\+Open}} () const
+\item 
+bool \mbox{\hyperlink{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de}{needs\+Redraw}} () const
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_menu_a789b3d6e4d5de3cd119404dba4cef17f}{get\+Total\+Time\+In\+Menu}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_menu_a60fc95aea72de07dc2f37dfdd0907c5f}{get\+Input\+String\+For\+InteractableI}} (int i) const
+\item 
+\mbox{\hyperlink{class_interactable}{Interactable}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_menu_af9939c4aac786fcc1f562bdeee1e5166}{get\+InteractableI}} (int i) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8h_source_l00011}{11}} of file \mbox{\hyperlink{_menu___a_t_8h_source}{Menu\+\_\+\+AT.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_menu_ac156d3ebd661b32beb7db4cac82f8848}\label{class_menu_ac156d3ebd661b32beb7db4cac82f8848} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Font}]{font }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d}\label{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d} 
+\index{Menu@{Menu}!addInteractable@{addInteractable}}
+\index{addInteractable@{addInteractable}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addInteractable()}{addInteractable()}}
+{\footnotesize\ttfamily void Menu\+::add\+Interactable (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable\+::\+Type}}}]{type,  }\item[{std\+::optional$<$ std\+::function$<$ void(float value)$>$ $>$}]{func }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a02fb4cf8ae3114b61a7b4b1267c9655d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_abad8af7b49fa9d0d15c593562e05ac38}\label{class_menu_abad8af7b49fa9d0d15c593562e05ac38} 
+\index{Menu@{Menu}!drawMenu@{drawMenu}}
+\index{drawMenu@{drawMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{drawMenu()}{drawMenu()}}
+{\footnotesize\ttfamily void Menu\+::draw\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_abad8af7b49fa9d0d15c593562e05ac38_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a60fc95aea72de07dc2f37dfdd0907c5f}\label{class_menu_a60fc95aea72de07dc2f37dfdd0907c5f} 
+\index{Menu@{Menu}!getInputStringForInteractableI@{getInputStringForInteractableI}}
+\index{getInputStringForInteractableI@{getInputStringForInteractableI}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getInputStringForInteractableI()}{getInputStringForInteractableI()}}
+{\footnotesize\ttfamily std\+::string Menu\+::get\+Input\+String\+For\+InteractableI (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_menu_af9939c4aac786fcc1f562bdeee1e5166}\label{class_menu_af9939c4aac786fcc1f562bdeee1e5166} 
+\index{Menu@{Menu}!getInteractableI@{getInteractableI}}
+\index{getInteractableI@{getInteractableI}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getInteractableI()}{getInteractableI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_interactable}{Interactable}} \texorpdfstring{$\ast$}{*} Menu\+::get\+InteractableI (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00225}{225}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_af9939c4aac786fcc1f562bdeee1e5166_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a0b6f6ad7665f5af60972cc286f0bfe8c}\label{class_menu_a0b6f6ad7665f5af60972cc286f0bfe8c} 
+\index{Menu@{Menu}!getIsMenuOpen@{getIsMenuOpen}}
+\index{getIsMenuOpen@{getIsMenuOpen}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getIsMenuOpen()}{getIsMenuOpen()}}
+{\footnotesize\ttfamily bool Menu\+::get\+Is\+Menu\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_menu_a789b3d6e4d5de3cd119404dba4cef17f}\label{class_menu_a789b3d6e4d5de3cd119404dba4cef17f} 
+\index{Menu@{Menu}!getTotalTimeInMenu@{getTotalTimeInMenu}}
+\index{getTotalTimeInMenu@{getTotalTimeInMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getTotalTimeInMenu()}{getTotalTimeInMenu()}}
+{\footnotesize\ttfamily sf\+::\+Time Menu\+::get\+Total\+Time\+In\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de}\label{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de} 
+\index{Menu@{Menu}!needsRedraw@{needsRedraw}}
+\index{needsRedraw@{needsRedraw}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{needsRedraw()}{needsRedraw()}}
+{\footnotesize\ttfamily bool Menu\+::needs\+Redraw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00213}{213}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a6d7ad0ecdf318c2d8dc7ef6469a1b9de_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d}\label{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d} 
+\index{Menu@{Menu}!openMenu@{openMenu}}
+\index{openMenu@{openMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{openMenu()}{openMenu()}}
+{\footnotesize\ttfamily void Menu\+::open\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Event \&}]{event\+From\+Main,  }\item[{\mbox{\hyperlink{class_crosshair}{Crosshair}} \&}]{xhair,  }\item[{sf\+::\+Clock \&}]{main\+Clock }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_ababcbeef8fe4d2373b6e7cfc0001cd5d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a0860150e58e68d4945a0c19a05a29bb5}\label{class_menu_a0860150e58e68d4945a0c19a05a29bb5} 
+\index{Menu@{Menu}!resetRedrawFlag@{resetRedrawFlag}}
+\index{resetRedrawFlag@{resetRedrawFlag}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{resetRedrawFlag()}{resetRedrawFlag()}}
+{\footnotesize\ttfamily void Menu\+::reset\+Redraw\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a0860150e58e68d4945a0c19a05a29bb5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_ad515c411adc8498769da5ea7033b693b}\label{class_menu_ad515c411adc8498769da5ea7033b693b} 
+\index{Menu@{Menu}!setBackgroundColor@{setBackgroundColor}}
+\index{setBackgroundColor@{setBackgroundColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setBackgroundColor()}{setBackgroundColor()}}
+{\footnotesize\ttfamily void Menu\+::set\+Background\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_ad515c411adc8498769da5ea7033b693b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d}\label{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d} 
+\index{Menu@{Menu}!setButtonColor@{setButtonColor}}
+\index{setButtonColor@{setButtonColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setButtonColor()}{setButtonColor()}}
+{\footnotesize\ttfamily void Menu\+::set\+Button\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_abfc33eb8c307f0a16ac96cb0e1f62f8d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_ad77babc9a27ed9eadc340ca44acfc098}\label{class_menu_ad77babc9a27ed9eadc340ca44acfc098} 
+\index{Menu@{Menu}!setButtonSize@{setButtonSize}}
+\index{setButtonSize@{setButtonSize}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setButtonSize()}{setButtonSize()}}
+{\footnotesize\ttfamily void Menu\+::set\+Button\+Size (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_ad77babc9a27ed9eadc340ca44acfc098_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a749a7d8b933f95a2940b97b12a14494b}\label{class_menu_a749a7d8b933f95a2940b97b12a14494b} 
+\index{Menu@{Menu}!setHoverColor@{setHoverColor}}
+\index{setHoverColor@{setHoverColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setHoverColor()}{setHoverColor()}}
+{\footnotesize\ttfamily void Menu\+::set\+Hover\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00190}{190}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_menu_a749a7d8b933f95a2940b97b12a14494b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a749a7d8b933f95a2940b97b12a14494b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a743e40d07edd702c28e983a52da25dbf}\label{class_menu_a743e40d07edd702c28e983a52da25dbf} 
+\index{Menu@{Menu}!setMenuPosition@{setMenuPosition}}
+\index{setMenuPosition@{setMenuPosition}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setMenuPosition()}{setMenuPosition()}}
+{\footnotesize\ttfamily void Menu\+::set\+Menu\+Position (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_menu_a68c1d0ed72406cd39c68bd658d395917}\label{class_menu_a68c1d0ed72406cd39c68bd658d395917} 
+\index{Menu@{Menu}!setSliderColor@{setSliderColor}}
+\index{setSliderColor@{setSliderColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setSliderColor()}{setSliderColor()}}
+{\footnotesize\ttfamily void Menu\+::set\+Slider\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_menu_a68c1d0ed72406cd39c68bd658d395917_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a68c1d0ed72406cd39c68bd658d395917_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a1811471af86d9277ff9c5330512442c9}\label{class_menu_a1811471af86d9277ff9c5330512442c9} 
+\index{Menu@{Menu}!setSliderComplementColor@{setSliderComplementColor}}
+\index{setSliderComplementColor@{setSliderComplementColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setSliderComplementColor()}{setSliderComplementColor()}}
+{\footnotesize\ttfamily void Menu\+::set\+Slider\+Complement\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00185}{185}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a1811471af86d9277ff9c5330512442c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a1811471af86d9277ff9c5330512442c9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15}\label{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15} 
+\index{Menu@{Menu}!setTextColor@{setTextColor}}
+\index{setTextColor@{setTextColor}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setTextColor()}{setTextColor()}}
+{\footnotesize\ttfamily void Menu\+::set\+Text\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00170}{170}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a2f27d3ecaa114f758bb908a1b07c5f15_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a461a10addff1e4fc3ec640fb6974d0ee}\label{class_menu_a461a10addff1e4fc3ec640fb6974d0ee} 
+\index{Menu@{Menu}!setTextSize@{setTextSize}}
+\index{setTextSize@{setTextSize}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setTextSize()}{setTextSize()}}
+{\footnotesize\ttfamily void Menu\+::set\+Text\+Size (\begin{DoxyParamCaption}\item[{float}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a461a10addff1e4fc3ec640fb6974d0ee_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_aa409c8b48a18439522b01ef097110ff1}\label{class_menu_aa409c8b48a18439522b01ef097110ff1} 
+\index{Menu@{Menu}!setTitleString@{setTitleString}}
+\index{setTitleString@{setTitleString}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setTitleString()}{setTitleString()}}
+{\footnotesize\ttfamily void Menu\+::set\+Title\+String (\begin{DoxyParamCaption}\item[{std\+::string}]{title\+String }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_aa409c8b48a18439522b01ef097110ff1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_af8442b2d50df720a8630fd98e1dec9d8}\label{class_menu_af8442b2d50df720a8630fd98e1dec9d8} 
+\index{Menu@{Menu}!setTotalPauseTime@{setTotalPauseTime}}
+\index{setTotalPauseTime@{setTotalPauseTime}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{setTotalPauseTime()}{setTotalPauseTime()}}
+{\footnotesize\ttfamily void Menu\+::set\+Total\+Pause\+Time (\begin{DoxyParamCaption}\item[{sf\+::\+Time}]{time }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_menu_adab2cbd3a5e67871c468da739e82b547}\label{class_menu_adab2cbd3a5e67871c468da739e82b547} 
+\index{Menu@{Menu}!toggleMenu@{toggleMenu}}
+\index{toggleMenu@{toggleMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{toggleMenu()}{toggleMenu()}}
+{\footnotesize\ttfamily void Menu\+::toggle\+Menu (\begin{DoxyParamCaption}\item[{sf\+::\+Clock \&}]{main\+Clock,  }\item[{\mbox{\hyperlink{class_crosshair}{Crosshair}} \&}]{xhair }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_adab2cbd3a5e67871c468da739e82b547_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_adab2cbd3a5e67871c468da739e82b547_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c}\label{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c} 
+\index{Menu@{Menu}!updateInteractableColors@{updateInteractableColors}}
+\index{updateInteractableColors@{updateInteractableColors}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{updateInteractableColors()}{updateInteractableColors()}}
+{\footnotesize\ttfamily void Menu\+::update\+Interactable\+Colors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___a_t_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{_menu___a_t_8cpp_source}{Menu\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_menu_a72c818fcfdb596ab5ba1b5e477b60a9c_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Header/\mbox{\hyperlink{_menu___a_t_8h}{Menu\+\_\+\+AT.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Resource/\mbox{\hyperlink{_menu___a_t_8cpp}{Menu\+\_\+\+AT.\+cpp}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_menu___p_g_8cpp}{Menu\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

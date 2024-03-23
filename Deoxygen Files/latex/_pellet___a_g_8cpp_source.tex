@@ -1,0 +1,46 @@
+\doxysection{Pellet\+\_\+\+AG.\+cpp}
+\hypertarget{_pellet___a_g_8cpp_source}{}\label{_pellet___a_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/Pellet\_AG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/Pellet\_AG.cpp}}
+\mbox{\hyperlink{_pellet___a_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_pellet___a_g_8h}{Pellet\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00003}00003\ \textcolor{keyword}{const}\ std::vector<sf::Color>\ Pellet::colors\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00004}00004\ \ \ \ \ sf::Color::Red,}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00005}00005\ \ \ \ \ sf::Color::Green,}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00006}00006\ \ \ \ \ sf::Color::Blue,}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00007}00007\ \ \ \ \ sf::Color::Yellow,}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00008}00008\ \ \ \ \ sf::Color::Cyan,}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00009}00009\ \ \ \ \ sf::Color::Magenta,}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00010}00010\ \ \ \ \ sf::Color::White}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00011}00011\ \};}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00013}\mbox{\hyperlink{class_pellet_ae8173b8411312c00f7fe59e4730bd966}{00013}}\ \mbox{\hyperlink{class_pellet_ae8173b8411312c00f7fe59e4730bd966}{Pellet::Pellet}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00014}00014\ \ \ \ \ shape.setPosition(x,\ y);}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00015}00015\ \ \ \ \ shape.setRadius(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(radius));}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{int}\ randomIndex\ =\ std::rand()\ \%\ colors.size();}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00017}00017\ \ \ \ \ sf::Color\ randomColor\ =\ colors[randomIndex];}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00018}00018\ \ \ \ \ shape.setFillColor(randomColor);}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00021}\mbox{\hyperlink{class_pellet_a1dc15dba50ba763418b301de39d7e4bc}{00021}}\ sf::Vector2f\ \mbox{\hyperlink{class_pellet_a1dc15dba50ba763418b301de39d7e4bc}{Pellet::getPosition}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ shape.getPosition()\ +\ sf::Vector2f(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(radius),\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(radius));}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00025}\mbox{\hyperlink{class_pellet_a72817c08b29f1f48e689b7db03f67d61}{00025}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_pellet_a72817c08b29f1f48e689b7db03f67d61}{Pellet::getRadius}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ radius;}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00029}\mbox{\hyperlink{class_pellet_a4f96149d59d3ad26842ed910eeb34a19}{00029}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pellet_a4f96149d59d3ad26842ed910eeb34a19}{Pellet::draw}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (active)\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.draw(shape);}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00033}\mbox{\hyperlink{class_pellet_ae0e529b8db8073542600a737d533bc1d}{00033}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pellet_ae0e529b8db8073542600a737d533bc1d}{Pellet::deActivate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00034}00034\ \ \ \ \ active\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ active;}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00038}\mbox{\hyperlink{class_pellet_a9d245e63e44a24e75ef9d3df9045e500}{00038}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pellet_a9d245e63e44a24e75ef9d3df9045e500}{Pellet::isActive}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ active;}
+\DoxyCodeLine{\Hypertarget{_pellet___a_g_8cpp_source_l00040}00040\ \}}
+
+\end{DoxyCode}

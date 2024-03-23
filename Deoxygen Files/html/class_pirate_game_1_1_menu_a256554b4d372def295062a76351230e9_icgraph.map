@@ -1,0 +1,17 @@
+<map id="PirateGame::Menu::addInteractableToMenu" name="PirateGame::Menu::addInteractableToMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="648,72,875,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_in_game_h_u_d.html#a82cec8172c1312480f521a9c949c9e02" title=" " alt="" coords="430,5,600,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="665,70,596,51,597,46,666,65"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_island_menu.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="430,72,600,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="633,96,601,96,601,91,633,91"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_start_menu.html#a0ccc8aedcda85d72c13abcb4721e0886" title=" " alt="" coords="436,139,594,181"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="666,122,595,141,594,136,665,117"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_in_game_h_u_d.html#a13b7614a0828e4a3b37523394a853be8" title=" " alt="" coords="212,5,382,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="415,29,383,29,383,24,415,24"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_island_menu.html#a033e176d81986a92d34e121d2cd59258" title=" " alt="" coords="215,72,379,115"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="415,96,379,96,379,91,415,91"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_start_menu.html#a2b25ce3e2d927005e7cc49fe256c2af5" title=" " alt="" coords="212,139,382,181"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="420,163,382,163,382,157,420,157"/>
+<area shape="rect" id="Node000008" href="$class_pirate_game_1_1_start_menu.html#a82d72194e0bb736ff4511d26aeb47f3b" title=" " alt="" coords="5,139,164,181"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="196,163,164,163,164,157,196,157"/>
+</map>

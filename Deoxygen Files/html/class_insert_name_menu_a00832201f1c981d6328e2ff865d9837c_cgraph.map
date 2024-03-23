@@ -1,0 +1,27 @@
+<map id="InsertNameMenu::setUpMenu" name="InsertNameMenu::setUpMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,240,199,267"/>
+<area shape="rect" id="Node000002" href="$class_menu.html#a02fb4cf8ae3114b61a7b4b1267c9655d" title=" " alt="" coords="247,189,396,216"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,237,245,217,246,223,164,242"/>
+<area shape="rect" id="Node000012" href="$class_menu.html#ad77babc9a27ed9eadc340ca44acfc098" title=" " alt="" coords="250,240,393,267"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="199,251,235,251,235,256,199,256"/>
+<area shape="rect" id="Node000013" href="$class_menu.html#aa409c8b48a18439522b01ef097110ff1" title=" " alt="" coords="253,291,390,317"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="164,265,246,284,245,289,163,270"/>
+<area shape="rect" id="Node000003" href="$class_interactable.html#ac959d281b79eef952cf04e87db1fd536" title=" " alt="" coords="444,189,643,216"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="396,200,428,200,428,205,396,205"/>
+<area shape="rect" id="Node000004" href="$class_player_input_box.html#a09b142d5939449bcfd68c0e401c579b3" title=" " alt="" coords="717,5,889,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="553,187,607,125,646,89,690,58,701,52,704,56,693,62,649,93,611,129,557,191"/>
+<area shape="rect" id="Node000005" href="$class_player_input_box.html#ab9b2953f5ff7d0584863ada9c61cae76" title=" " alt="" coords="717,72,889,115"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="567,187,622,156,690,124,707,118,709,123,692,129,625,161,569,191"/>
+<area shape="rect" id="Node000006" href="$class_player_input_box.html#a4de1d2d4aa33d46d10ed489e5b268930" title=" " alt="" coords="703,139,903,165"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="615,186,716,166,717,171,616,191"/>
+<area shape="rect" id="Node000008" href="$class_player_input_box.html#aa2a968cf89415855ad05c86d435870dd" title=" " alt="" coords="722,189,884,216"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="644,200,707,200,707,205,644,205"/>
+<area shape="rect" id="Node000009" href="$class_player_input_box.html#a05a6bb5f79f9f96bc0d5c853bd3b3310" title=" " alt="" coords="691,240,915,267"/>
+<area shape="poly" id="edge8_Node000003_Node000009" title=" " alt="" coords="616,214,717,234,716,239,615,219"/>
+<area shape="rect" id="Node000010" href="$class_player_input_box.html#ada1590d8bfe82f7adff173343bfef4a4" title=" " alt="" coords="696,291,910,317"/>
+<area shape="poly" id="edge9_Node000003_Node000010" title=" " alt="" coords="569,214,624,245,692,276,716,284,714,289,690,281,621,250,566,219"/>
+<area shape="rect" id="Node000011" href="$class_player_input_box.html#ace4127363c64824fba3fa86309407e19" title=" " alt="" coords="718,341,888,384"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="559,215,614,269,651,300,693,327,706,333,703,338,690,332,648,304,610,273,555,219"/>
+<area shape="rect" id="Node000007" href="$class_player_input_box.html#a0da3aa4a0c2ced1fe8d62af89a9dd5fa" title=" " alt="" coords="963,139,1132,165"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="904,149,947,149,947,155,904,155"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="PirateGame::ShipMovementHandler::collisionMovement" name="PirateGame::ShipMovementHandler::collisionMovement">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,189,77"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_ship_movement_handler.html#a76e63ce57456104350d1653e39173d98" title=" " alt="" coords="468,5,651,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="175,31,236,20,348,14,452,16,452,21,348,19,237,25,176,37"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_ship_movement_handler.html#a1f5afc292fbc6424810d0742f770e16e" title=" " alt="" coords="237,35,420,77"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,53,221,53,221,59,189,59"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_ship_movement_handler.html#a060b2c8469300f147c387d5814844114" title=" " alt="" coords="237,101,420,144"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="174,75,238,94,236,99,172,80"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="420,42,452,38,453,43,420,47"/>
+</map>

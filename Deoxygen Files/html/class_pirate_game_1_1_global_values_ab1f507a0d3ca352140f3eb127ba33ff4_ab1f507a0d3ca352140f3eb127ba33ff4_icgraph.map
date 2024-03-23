@@ -1,0 +1,10 @@
+<map id="PirateGame::GlobalValues::setShowHUD" name="PirateGame::GlobalValues::setShowHUD">
+<area shape="rect" id="Node000001" title=" " alt="" coords="436,39,611,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="218,5,388,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="420,47,388,42,389,37,421,42"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7.html#a10d3a1555c9f783a4f0fb03c7be71bc7" title=" " alt="" coords="219,72,387,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="421,78,388,83,387,78,420,73"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258.html#a033e176d81986a92d34e121d2cd59258" title=" " alt="" coords="5,39,170,81"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="203,45,171,50,170,45,202,40"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="203,81,170,75,171,70,204,75"/>
+</map>

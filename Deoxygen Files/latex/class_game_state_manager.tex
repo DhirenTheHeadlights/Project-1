@@ -1,0 +1,178 @@
+\doxysection{Game\+State\+Manager Class Reference}
+\hypertarget{class_game_state_manager}{}\label{class_game_state_manager}\index{GameStateManager@{GameStateManager}}
+
+
+This class is for the game state manager, it is used to change the game state and to open the different menus. It is used to make the code more readable and to make it easier to change the game state. This class is passed to the different menus so that they can change the game state.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State\+Manager\+\_\+\+AT.\+h$>$}
+
+
+
+Inheritance diagram for Game\+State\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{class_game_state_manager__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_game_state_manager_a2f88c43aa592b15c2ded1e20d04f8532}{\texorpdfstring{$\sim$}{\string~}\+Game\+State\+Manager}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece}{change\+Game\+State}} (\mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} new\+State)=0
+\item 
+virtual \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{class_game_state_manager_a99007d51a9718f931f2e79f5bd0c430c}{get\+Current\+Game\+State}} () const =0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_af9ba5b073132fa2a9424e1227cfe82e4}{start\+Game}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_a4f04bf97264e4e5b362f0bddec76ec25}{open\+Leader\+Board\+Menu}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_a1dd54c98ab56234d8a8d7f7de294a75d}{open\+Options\+Menu}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_a954a50e945a49ff62ed3aa5c8c3cd1e9}{open\+Start\+Menu}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_aa8bd2ef482e0c24e4be718c73cbc9e43}{open\+End\+Screen}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_aa3adab4e29b9614f3e06bff916c147f0}{open\+Insert\+Name\+Menu}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_aa5622b29fbf8076e9c7739f32cd5ba72}{set\+Name}} (std\+::string name)=0
+\item 
+virtual void \mbox{\hyperlink{class_game_state_manager_a761131a1b869aeca913e7459101779cb}{exit}} ()=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is for the game state manager, it is used to change the game state and to open the different menus. It is used to make the code more readable and to make it easier to change the game state. This class is passed to the different menus so that they can change the game state. 
+
+Definition at line \mbox{\hyperlink{_game_state_manager___a_t_8h_source_l00022}{22}} of file \mbox{\hyperlink{_game_state_manager___a_t_8h_source}{Game\+State\+Manager\+\_\+\+AT.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_state_manager_a2f88c43aa592b15c2ded1e20d04f8532}\label{class_game_state_manager_a2f88c43aa592b15c2ded1e20d04f8532} 
+\index{GameStateManager@{GameStateManager}!````~GameStateManager@{\texorpdfstring{$\sim$}{\string~}GameStateManager}}
+\index{````~GameStateManager@{\texorpdfstring{$\sim$}{\string~}GameStateManager}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameStateManager()}{\string~GameStateManager()}}
+{\footnotesize\ttfamily virtual Game\+State\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Game\+State\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece}\label{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece} 
+\index{GameStateManager@{GameStateManager}!changeGameState@{changeGameState}}
+\index{changeGameState@{changeGameState}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{changeGameState()}{changeGameState()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::change\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}]{new\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_ac9cb330c146c676136de122ce82fb652}{Aim\+Trainer\+::\+World}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_game_state_manager_a761131a1b869aeca913e7459101779cb}\label{class_game_state_manager_a761131a1b869aeca913e7459101779cb} 
+\index{GameStateManager@{GameStateManager}!exit@{exit}}
+\index{exit@{exit}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{exit()}{exit()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::exit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_a0ed9c1422206f7cea5dfd8083cd71089}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_a99007d51a9718f931f2e79f5bd0c430c}\label{class_game_state_manager_a99007d51a9718f931f2e79f5bd0c430c} 
+\index{GameStateManager@{GameStateManager}!getCurrentGameState@{getCurrentGameState}}
+\index{getCurrentGameState@{getCurrentGameState}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentGameState()}{getCurrentGameState()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} Game\+State\+Manager\+::get\+Current\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_abd1f95f2e7a633a687e213925d80794e}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_aa8bd2ef482e0c24e4be718c73cbc9e43}\label{class_game_state_manager_aa8bd2ef482e0c24e4be718c73cbc9e43} 
+\index{GameStateManager@{GameStateManager}!openEndScreen@{openEndScreen}}
+\index{openEndScreen@{openEndScreen}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{openEndScreen()}{openEndScreen()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::open\+End\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_a8c5a85d825a6162843ac7ed4d3ee708a}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_aa3adab4e29b9614f3e06bff916c147f0}\label{class_game_state_manager_aa3adab4e29b9614f3e06bff916c147f0} 
+\index{GameStateManager@{GameStateManager}!openInsertNameMenu@{openInsertNameMenu}}
+\index{openInsertNameMenu@{openInsertNameMenu}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{openInsertNameMenu()}{openInsertNameMenu()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::open\+Insert\+Name\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_a61107665030b8f44e3d3e20bb85371b3}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_a4f04bf97264e4e5b362f0bddec76ec25}\label{class_game_state_manager_a4f04bf97264e4e5b362f0bddec76ec25} 
+\index{GameStateManager@{GameStateManager}!openLeaderBoardMenu@{openLeaderBoardMenu}}
+\index{openLeaderBoardMenu@{openLeaderBoardMenu}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{openLeaderBoardMenu()}{openLeaderBoardMenu()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::open\+Leader\+Board\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_a0d79e562314cb9df0540f0d043d12640}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_a1dd54c98ab56234d8a8d7f7de294a75d}\label{class_game_state_manager_a1dd54c98ab56234d8a8d7f7de294a75d} 
+\index{GameStateManager@{GameStateManager}!openOptionsMenu@{openOptionsMenu}}
+\index{openOptionsMenu@{openOptionsMenu}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{openOptionsMenu()}{openOptionsMenu()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::open\+Options\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_aa48cbdd6a946158b6036eb557b43723a}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_a954a50e945a49ff62ed3aa5c8c3cd1e9}\label{class_game_state_manager_a954a50e945a49ff62ed3aa5c8c3cd1e9} 
+\index{GameStateManager@{GameStateManager}!openStartMenu@{openStartMenu}}
+\index{openStartMenu@{openStartMenu}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{openStartMenu()}{openStartMenu()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::open\+Start\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_ac1857125112d5f92f9cf820a3c003099}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_aa5622b29fbf8076e9c7739f32cd5ba72}\label{class_game_state_manager_aa5622b29fbf8076e9c7739f32cd5ba72} 
+\index{GameStateManager@{GameStateManager}!setName@{setName}}
+\index{setName@{setName}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::set\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_ad6d1c27120f4ff00f2ff7cd98011c0aa}{Aim\+Trainer\+::\+World}}.
+
+\Hypertarget{class_game_state_manager_af9ba5b073132fa2a9424e1227cfe82e4}\label{class_game_state_manager_af9ba5b073132fa2a9424e1227cfe82e4} 
+\index{GameStateManager@{GameStateManager}!startGame@{startGame}}
+\index{startGame@{startGame}!GameStateManager@{GameStateManager}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily virtual void Game\+State\+Manager\+::start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_aim_trainer_1_1_world_a144aeca12d7828e638f00029bbfa4830}{Aim\+Trainer\+::\+World}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Header/\mbox{\hyperlink{_game_state_manager___a_t_8h}{Game\+State\+Manager\+\_\+\+AT.\+h}}\end{DoxyCompactItemize}

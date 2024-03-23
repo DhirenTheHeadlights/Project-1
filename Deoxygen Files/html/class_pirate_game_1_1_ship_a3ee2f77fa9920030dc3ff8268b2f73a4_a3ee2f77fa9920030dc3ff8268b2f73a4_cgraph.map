@@ -1,0 +1,7 @@
+<map id="PirateGame::Ship::update" name="PirateGame::Ship::update">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,47,177,73"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_ship_ac64fa8e564785ec40c3cb414ac3022f8.html#ac64fa8e564785ec40c3cb414ac3022f8" title=" " alt="" coords="234,5,409,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,45,218,39,219,44,177,50"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_ship_ad0af2d0c1bda473cb457b71b531e7b3e.html#ad0af2d0c1bda473cb457b71b531e7b3e" title=" " alt="" coords="225,72,418,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,70,209,74,209,80,177,75"/>
+</map>

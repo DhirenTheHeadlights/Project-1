@@ -1,0 +1,5 @@
+<map id="AimTrainer::World" name="AimTrainer::World">
+<area shape="rect" id="Node000001" title=" " alt="" coords="11,80,137,107"/>
+<area shape="rect" id="Node000002" href="$class_game_state_manager.html" title="This class is for the game state manager, it is used to change the game state and to open the differe..." alt="" coords="5,5,143,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,48,77,80,71,80,71,48"/>
+</map>

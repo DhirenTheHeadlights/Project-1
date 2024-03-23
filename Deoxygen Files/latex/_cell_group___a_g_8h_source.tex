@@ -1,0 +1,32 @@
+\doxysection{Cell\+Group\+\_\+\+AG.\+h}
+\hypertarget{_cell_group___a_g_8h_source}{}\label{_cell_group___a_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Header/CellGroup\_AG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Header/CellGroup\_AG.h}}
+\mbox{\hyperlink{_cell_group___a_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_circle___a_g_8h}{Circle\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00007}\mbox{\hyperlink{class_cell_group}{00007}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cell_group}{CellGroup}}\ \{}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00008}00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{class_cell_group_a11bf8298f59da8f9d9bafb251b2712c6}{CellGroup}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ startSize,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{class_cell_group_a8d83f2c0d13b7d662f34deadf0b53894}{\string~CellGroup}}();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_a9b4c06d7212b12984a162a7fc088a0e5}{split}}();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_aeb996e3418187cc676b7d0b959882e6e}{removeCircle}}(\mbox{\hyperlink{class_circle}{Circle}}\&\ cell,\ \mbox{\hyperlink{class_map}{Map}}\&\ map);}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc}{draw}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}});}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_a672126a955b0c03250ef3e5034adb242}{move}}(\textcolor{keywordtype}{double}\ moveSpeed,\ \mbox{\hyperlink{class_map}{Map}}\&\ map,\ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}});}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00016}00016\ \ \ \ \ std::vector<Circle*>\ \mbox{\hyperlink{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033}{getCellGroup}}();}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_cell_group_a47c41f7d789705cc0ed3cc15d4454be3}{getMinSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00018}00018\ \ \ \ \ \textcolor{keyword}{const}\ sf::Vector2f\ \mbox{\hyperlink{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}{getAvgPos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00019}00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{float}\ x,\ y;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{float}\ cellSize\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{float}\ minSize\ =\ 16.0f;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00023}00023\ \ \ \ \ std::vector<Circle*>\ cells;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{int}\ numSplits\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ numCells\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_cell_group___a_g_8h_source_l00026}00026\ \};}
+
+\end{DoxyCode}

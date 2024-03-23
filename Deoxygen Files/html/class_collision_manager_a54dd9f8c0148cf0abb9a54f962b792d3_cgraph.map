@@ -1,0 +1,21 @@
+<map id="CollisionManager::pelletCollisionWithinBoundsOfCircle" name="CollisionManager::pelletCollisionWithinBoundsOfCircle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,136,203,179"/>
+<area shape="rect" id="Node000002" href="$class_collision_manager.html#ac268784ef58355dd65c1b8152c7fab91" title=" " alt="" coords="251,52,463,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,133,275,97,277,103,171,138"/>
+<area shape="rect" id="Node000003" href="$class_circle.html#a4f2038c4e879f84a06d7bc79c0625d7f" title=" " alt="" coords="537,5,676,32"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="122,134,175,83,211,57,250,38,319,18,391,8,460,5,521,7,521,12,460,10,391,13,320,23,252,42,213,62,179,87,126,138"/>
+<area shape="rect" id="Node000005" href="$class_circle.html#a1b37e8973c5a83ac381fda84716e1b0d" title=" " alt="" coords="543,115,670,141"/>
+<area shape="poly" id="edge10_Node000001_Node000005" title=" " alt="" coords="203,149,527,130,527,135,203,154"/>
+<area shape="rect" id="Node000006" href="$class_debugger.html#ad46c0ddf0fe1084871a17af6c6a6d579" title=" " alt="" coords="290,169,424,196"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="203,165,275,172,275,177,203,170"/>
+<area shape="rect" id="Node000008" href="$class_hashmap.html#a1e798fd089a1c73ec891fb1301d289fc" title=" " alt="" coords="278,220,436,247"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="165,177,251,205,280,213,278,218,250,211,163,182"/>
+<area shape="rect" id="Node000009" href="$class_map.html#a89742492811493b8038ee188848cfcd7" title=" " alt="" coords="274,271,440,297"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="132,177,185,218,252,256,269,263,267,268,250,261,182,222,129,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="457,49,526,33,528,39,458,54"/>
+<area shape="rect" id="Node000004" href="$class_hashmap.html#a05381892111309d544310d9fb108a763" title=" " alt="" coords="511,60,701,87"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="463,71,495,71,495,76,463,76"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="458,93,528,108,526,113,457,98"/>
+<area shape="rect" id="Node000007" href="$class_map.html#a80e8b85b93384b533f7484f0463c91ec" title=" " alt="" coords="546,169,666,196"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="424,180,530,180,530,185,424,185"/>
+</map>

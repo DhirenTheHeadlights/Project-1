@@ -1,0 +1,62 @@
+\doxysection{Player\+\_\+\+Plat.\+h}
+\hypertarget{_player___plat_8h_source}{}\label{_player___plat_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Platformer Game/Header/Player\_Plat.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/Platformer Game/Header/Player\_Plat.h}}
+\mbox{\hyperlink{_player___plat_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_textures___plat_8h}{Textures\_Plat.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00007}00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_platformer_game}{PlatformerGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00008}\mbox{\hyperlink{class_platformer_game_1_1_player}{00008}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_platformer_game_1_1_player}{Player}}\ \{}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00010}00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_platformer_game_1_1_player_a5119f34a7c053768d3ccf2da78eff19b}{Player}}(sf::Vector2f\&\ map,\ sf::RenderWindow\&\ window);}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Movement\ methods}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_ae02ee46d8c20dd0697b975f935b09839}{move}}();}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_ac18c9d30d2997765321c62030a4b20b7}{draw}}();}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Physics\ methods}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_afb2887a559719bb7b39b768d5ee217ea}{applyGravity}}();}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//State\ methods}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_platformer_game_1_1_player_ac3e56852d30d99f36a5dab0b8d1e3782}{handlePlayerState}}();}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00022}\mbox{\hyperlink{class_platformer_game_1_1_player_a04112b7a2d57513fe42cd45b7a4a354e}{00022}}\ \ \ \ \ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_platformer_game_1_1_player_a04112b7a2d57513fe42cd45b7a4a354e}{getPosition}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ playerSprite.getPosition();\ \}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SFML\ variables}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ sf::Clock\ frametimeClock;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}};}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Physics\ variables}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ sf::Vector2f\ velocity;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ sf::Vector2f\ accel;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ sf::Vector2f\ maxVelocity\ =\ sf::Vector2f(30.f,\ 30.f);\ \ \textcolor{comment}{//\ Maximum\ velocity\ (x,\ y)}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ sf::Vector2f\ position;\ \ \textcolor{comment}{//\ Position\ of\ the\ player}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ sf::Vector2f\ GRAVITY;\ \ \textcolor{comment}{//\ Gravity\ constant}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isOnGround\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Track\ if\ the\ player\ is\ on\ the\ ground}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isMoving\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Track\ is\ player\ is\ moving\ side\ to\ side}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Boundary\ variables}}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ leftBoundary;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ rightBoundary;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ topBoundary;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ bottomBoundary;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ elapsed\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ scaling\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_platformer_game_1_1_textures}{Textures}}\ texture;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ sf::Texture\ playerTexture;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ sf::Sprite\ playerSprite;}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00055}00055\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_player___plat_8h_source_l00056}00056\ \}}
+
+\end{DoxyCode}

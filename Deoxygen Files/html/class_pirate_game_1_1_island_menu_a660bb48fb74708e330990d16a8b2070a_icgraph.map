@@ -1,0 +1,7 @@
+<map id="PirateGame::IslandMenu::addMarketInteractables" name="PirateGame::IslandMenu::addMarketInteractables">
+<area shape="rect" id="Node000001" title=" " alt="" coords="436,5,600,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_island_menu.html#aea15e9c09c71b449ece20386964100fe" title=" " alt="" coords="218,5,388,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="421,29,388,29,388,24,421,24"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_island_menu.html#a033e176d81986a92d34e121d2cd59258" title=" " alt="" coords="5,5,170,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="202,29,170,29,170,24,202,24"/>
+</map>

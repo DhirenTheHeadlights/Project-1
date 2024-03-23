@@ -1,0 +1,15 @@
+<map id="PirateGame::TextureHandler" name="PirateGame::TextureHandler">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,164,191,191"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_h_u_d_texture_handler.html" title=" " alt="" coords="242,5,454,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,150,167,95,201,66,237,42,265,30,267,35,240,46,204,70,171,99,121,154"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_interactable_texture_handler.html" title=" " alt="" coords="265,56,431,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,154,238,108,270,97,271,102,240,113,140,159"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_landmass_texture_handler.html" title=" " alt="" coords="247,123,449,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,160,246,155,247,160,206,166"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_market_texture_handler.html" title=" " alt="" coords="257,189,439,232"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="206,189,257,196,256,201,205,194"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_options_menu_texture_handler.html" title=" " alt="" coords="239,256,457,299"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="140,196,240,242,271,253,270,258,238,246,138,201"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_ship_texture_handler.html" title=" " alt="" coords="242,323,454,349"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="121,201,171,256,204,284,240,308,267,320,265,325,237,313,201,289,167,260,117,205"/>
+</map>

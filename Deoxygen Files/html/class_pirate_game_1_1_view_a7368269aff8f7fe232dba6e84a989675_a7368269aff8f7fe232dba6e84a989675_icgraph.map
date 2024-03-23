@@ -1,0 +1,8 @@
+<map id="PirateGame::View::setUpView" name="PirateGame::View::setUpView">
+<area shape="rect" id="Node000001" title=" " alt="" coords="382,43,578,69"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_world_a6bb91988626bec56db0729c0cb680cce.html#a6bb91988626bec56db0729c0cb680cce" title=" " alt="" coords="194,5,334,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="366,43,334,39,335,34,367,38"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_world_acb2b22112a28eda532344d2daf630227.html#acb2b22112a28eda532344d2daf630227" title=" " alt="" coords="5,35,146,77"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="366,62,334,63,194,63,146,61,146,56,194,57,334,57,366,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="179,43,146,48,146,42,178,37"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="PirateGame::Button::interactHold" name="PirateGame::Button::interactHold">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,142,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_sound_manager_afc885196315697a58ce66d83d4cb3008.html#afc885196315697a58ce66d83d4cb3008" title=" " alt="" coords="190,5,412,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,47,174,43,175,48,143,53"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_sound_manager_a01c210694daf9b56f0846e7bf3c96e99.html#a01c210694daf9b56f0846e7bf3c96e99" title=" " alt="" coords="190,72,412,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,67,175,72,174,77,142,73"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_global_sound_manager_ae33b5d04363eb52c6490b1c3e0eac925.html#ae33b5d04363eb52c6490b1c3e0eac925" title=" " alt="" coords="460,72,682,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="413,91,445,91,445,96,413,96"/>
+</map>

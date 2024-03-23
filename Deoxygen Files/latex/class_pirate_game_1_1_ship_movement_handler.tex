@@ -1,0 +1,894 @@
+\doxysection{Pirate\+Game\+::Ship\+Movement\+Handler Class Reference}
+\hypertarget{class_pirate_game_1_1_ship_movement_handler}{}\label{class_pirate_game_1_1_ship_movement_handler}\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+
+
+{\ttfamily \#include $<$Ship\+Movement\+Handler\+\_\+\+PG.\+h$>$}
+
+
+
+Inheritance diagram for Pirate\+Game\+::Ship\+Movement\+Handler\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_aed953b12141c6b16df887c5ee7248881_aed953b12141c6b16df887c5ee7248881}{Ship\+Movement\+Handler}} (sf\+::\+Sprite \&\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a9921d5e04de6073f98013e14c97107a2_a9921d5e04de6073f98013e14c97107a2}{sprite}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a3980ac5aa2364395483084b1e090150f_a3980ac5aa2364395483084b1e090150f}{\texorpdfstring{$\sim$}{\string~}\+Ship\+Movement\+Handler}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a77a70ff70975b5ad39e7a1dd57bfb523_a77a70ff70975b5ad39e7a1dd57bfb523}{move}} (float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a25aa9fa07cfc0b374ca13add9684ee97_a25aa9fa07cfc0b374ca13add9684ee97}{base\+Speed}})=0
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a3fa4b4d0f5f025fc3af31f25aaca37c2_a3fa4b4d0f5f025fc3af31f25aaca37c2}{collision\+Movement}} (sf\+::\+Sprite \&colliding\+Sprite)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a3e23dbc766a2c267f7510e60b800871d_a3e23dbc766a2c267f7510e60b800871d}{add\+Cannon\+Recoil}} (sf\+::\+Vector2f direction, float recoil)
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a75d1275722138cfe2c3b121e4c4a4ef9_a75d1275722138cfe2c3b121e4c4a4ef9}{update\+Velocity}} (const sf\+::\+Vector2f \&direction, float elapsed\+Time, const float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a25aa9fa07cfc0b374ca13add9684ee97_a25aa9fa07cfc0b374ca13add9684ee97}{base\+Speed}})
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_af318c9c2632c2997fbdc114b3d94a25d_af318c9c2632c2997fbdc114b3d94a25d}{set\+Sprite\+Rotation}} ()=0
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a060b2c8469300f147c387d5814844114_a060b2c8469300f147c387d5814844114}{normalize}} (sf\+::\+Vector2f vector)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a6b8a7eafd522cce76d6ca7749709deeb_a6b8a7eafd522cce76d6ca7749709deeb}{apply\+Boundary\+Constraints}} (sf\+::\+Vector2f \&\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ae3f6ba0f881c5327195167a6f098b6e9_ae3f6ba0f881c5327195167a6f098b6e9}{position}}, const sf\+::\+Vector2f \&map\+Size)
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a76e63ce57456104350d1653e39173d98_a76e63ce57456104350d1653e39173d98}{dot}} (const sf\+::\+Vector2f \&v1, const sf\+::\+Vector2f \&v2)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a1f5afc292fbc6424810d0742f770e16e_a1f5afc292fbc6424810d0742f770e16e}{ensure\+Separation}} (sf\+::\+Vector2f \&\mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ae3f6ba0f881c5327195167a6f098b6e9_ae3f6ba0f881c5327195167a6f098b6e9}{position}}, const sf\+::\+Vector2f \&normal, const sf\+::\+Sprite \&colliding\+Sprite)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a95a5d40338d075f36b9a86def829dfc5_a95a5d40338d075f36b9a86def829dfc5}{set\+Initial\+Position}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a4d38a474895f73c63dc2b89fbcd13db6_a4d38a474895f73c63dc2b89fbcd13db6}{set\+Velocity}} (sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a311f80c7db4192b07f9b62a1ff022b65_a311f80c7db4192b07f9b62a1ff022b65}{velocity}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_afc8088051b4a9440b8eff5d05800583f_afc8088051b4a9440b8eff5d05800583f}{set\+Is\+Colliding}} (bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a816adbf482ad9aaade1a99d0e0859700_a816adbf482ad9aaade1a99d0e0859700}{is\+Colliding}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ad36d0bb26a00d45c7fdf3d2a877b3e9f_ad36d0bb26a00d45c7fdf3d2a877b3e9f}{set\+Position}} (sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ae3f6ba0f881c5327195167a6f098b6e9_ae3f6ba0f881c5327195167a6f098b6e9}{position}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a9b60c4834c504e54f279f6bf424b6d52_a9b60c4834c504e54f279f6bf424b6d52}{set\+Initial\+Position\+Variable}} (sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ac2b62ff2d262cea147d6939667065cfc_ac2b62ff2d262cea147d6939667065cfc}{initial\+Position}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba_a546c025610a211cbfe65e7b237676cba}{set\+Stop\+Ship\+Rotation\+Flag}} (bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a717731b0d14abb3db8b17df09540d312_a717731b0d14abb3db8b17df09540d312}{stop\+Ship\+Rotation\+Flag}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ae2068bb47adcba1fefd860be7badcdba_ae2068bb47adcba1fefd860be7badcdba}{set\+Anchor\+Drop}} (bool anchor\+Drop)
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a8874247bbc0ba8d2f97225514b77b5ad_a8874247bbc0ba8d2f97225514b77b5ad}{set\+Speed}} (float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a5d82f89e0e280c9b6dba95aba2ef8a07_a5d82f89e0e280c9b6dba95aba2ef8a07}{speed}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a8f8d30cbbfeab3b82af844e14a9348a5_a8f8d30cbbfeab3b82af844e14a9348a5}{set\+Base\+Speed}} (float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a25aa9fa07cfc0b374ca13add9684ee97_a25aa9fa07cfc0b374ca13add9684ee97}{base\+Speed}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a47fdee0b3fd567a6b7b915ba8067c139_a47fdee0b3fd567a6b7b915ba8067c139}{set\+Wind\+Speed\+Applied}} (bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ac5ec0636400b60719fafae6b74b0e2b2_ac5ec0636400b60719fafae6b74b0e2b2}{wind\+Speed\+Applied}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a6378471affedc6ef3b32ea720be79e0d_a6378471affedc6ef3b32ea720be79e0d}{set\+Initial\+Position\+Set}} (bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_afe4f7411a4f448679040af1820823619_afe4f7411a4f448679040af1820823619}{initial\+Position\+Set}})
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a079cb2e1a9c29200ed055899c8c85655_a079cb2e1a9c29200ed055899c8c85655}{get\+Speed}} () const
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a37172050635246410d20abcaab29b7ca_a37172050635246410d20abcaab29b7ca}{get\+Base\+Speed}} () const
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a11e4f9226cb35705bfff3d612ca40e97_a11e4f9226cb35705bfff3d612ca40e97}{get\+Sprite}} ()
+\item 
+sf\+::\+Clock \& \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ad298d2920d7d5dedf621d13b9fcdffa2_ad298d2920d7d5dedf621d13b9fcdffa2}{get\+Delta\+Time}} ()
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ac254a1c69f8a0b09f546908d46a13d07_ac254a1c69f8a0b09f546908d46a13d07}{get\+Velocity}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_aae2456eab1e34161d9a1f66ff3b4021f_aae2456eab1e34161d9a1f66ff3b4021f}{get\+Initial\+Position}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_aec10c664bbd63d3b65510391a6dc3e4b_aec10c664bbd63d3b65510391a6dc3e4b}{get\+Stop\+Ship\+Rotation\+Flag}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_aabb4ef48d13354dab97ad73e0244cd56_aabb4ef48d13354dab97ad73e0244cd56}{get\+Dropped\+Anchor}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a8bfb82ba8f436cc8bbbb36f619697775_a8bfb82ba8f436cc8bbbb36f619697775}{get\+Is\+Colliding}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a776afb0ac08ec9fce5e9a5b3f45be046_a776afb0ac08ec9fce5e9a5b3f45be046}{get\+Wind\+Speed\+Applied}} () const
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_acac27029d1a10328c2bf83df943a159e_acac27029d1a10328c2bf83df943a159e}{get\+Initial\+Position\+Set}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ad00b1e5a061c541252c823ae9925535f_ad00b1e5a061c541252c823ae9925535f}{pi}} = 3.\+14159265359f
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ae3f6ba0f881c5327195167a6f098b6e9_ae3f6ba0f881c5327195167a6f098b6e9}{position}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a5853b7a5e11f286af2f9491da290fbd3_a5853b7a5e11f286af2f9491da290fbd3}{window}} = nullptr
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_acde0adad4a9b7792e0c8adb4ce03f397_acde0adad4a9b7792e0c8adb4ce03f397}{delta\+Time}}
+\item 
+sf\+::\+Sprite \& \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a9921d5e04de6073f98013e14c97107a2_a9921d5e04de6073f98013e14c97107a2}{sprite}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a311f80c7db4192b07f9b62a1ff022b65_a311f80c7db4192b07f9b62a1ff022b65}{velocity}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ac2b62ff2d262cea147d6939667065cfc_ac2b62ff2d262cea147d6939667065cfc}{initial\+Position}}
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a816adbf482ad9aaade1a99d0e0859700_a816adbf482ad9aaade1a99d0e0859700}{is\+Colliding}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a717731b0d14abb3db8b17df09540d312_a717731b0d14abb3db8b17df09540d312}{stop\+Ship\+Rotation\+Flag}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a8d66b8dad5c7893c758784756b630e8c_a8d66b8dad5c7893c758784756b630e8c}{drop\+Anchor}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a3aa7e11935577781b135c25e51ef4657_a3aa7e11935577781b135c25e51ef4657}{anchor\+Push\+Back}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ac5ec0636400b60719fafae6b74b0e2b2_ac5ec0636400b60719fafae6b74b0e2b2}{wind\+Speed\+Applied}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_afe4f7411a4f448679040af1820823619_afe4f7411a4f448679040af1820823619}{initial\+Position\+Set}} = false
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a6b442906eaff0ed5b5671460571fddd9_a6b442906eaff0ed5b5671460571fddd9}{rotation}} = 0
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a5d82f89e0e280c9b6dba95aba2ef8a07_a5d82f89e0e280c9b6dba95aba2ef8a07}{speed}} = 0
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_ab5c9a79120eb18035a79c923e2d7815f_ab5c9a79120eb18035a79c923e2d7815f}{speed\+Before\+Anchor\+Drop}} = 0
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a25aa9fa07cfc0b374ca13add9684ee97_a25aa9fa07cfc0b374ca13add9684ee97}{base\+Speed}} = 0
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a3ca02a6a18419cba1e242cc2ca8c5409_a3ca02a6a18419cba1e242cc2ca8c5409}{friction\+Coefficient}} = 0.\+1f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a6f9ac8d942039e9a48e5ebd9a5c0136e_a6f9ac8d942039e9a48e5ebd9a5c0136e}{damping\+Factor}} = 0.\+5f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_a1b4691b10593581f142d0cf7f987e0e7_a1b4691b10593581f142d0cf7f987e0e7}{separation\+Distance}} = 5.\+0f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_ship_movement_handler_adda4cc1a3e0bf8a4b5942da8ae7687a7_adda4cc1a3e0bf8a4b5942da8ae7687a7}{push\+Out\+Distance}} = 1.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00014}{14}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_aed953b12141c6b16df887c5ee7248881_aed953b12141c6b16df887c5ee7248881}\label{class_pirate_game_1_1_ship_movement_handler_aed953b12141c6b16df887c5ee7248881_aed953b12141c6b16df887c5ee7248881} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!ShipMovementHandler@{ShipMovementHandler}}
+\index{ShipMovementHandler@{ShipMovementHandler}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{ShipMovementHandler()}{ShipMovementHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Movement\+Handler\+::\+Ship\+Movement\+Handler (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite \&}]{sprite }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00016}{16}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a3980ac5aa2364395483084b1e090150f_a3980ac5aa2364395483084b1e090150f}\label{class_pirate_game_1_1_ship_movement_handler_a3980ac5aa2364395483084b1e090150f_a3980ac5aa2364395483084b1e090150f} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!````~ShipMovementHandler@{\texorpdfstring{$\sim$}{\string~}ShipMovementHandler}}
+\index{````~ShipMovementHandler@{\texorpdfstring{$\sim$}{\string~}ShipMovementHandler}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ShipMovementHandler()}{\string~ShipMovementHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Ship\+Movement\+Handler\+::\texorpdfstring{$\sim$}{\string~}\+Ship\+Movement\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00017}{17}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a3e23dbc766a2c267f7510e60b800871d_a3e23dbc766a2c267f7510e60b800871d}\label{class_pirate_game_1_1_ship_movement_handler_a3e23dbc766a2c267f7510e60b800871d_a3e23dbc766a2c267f7510e60b800871d} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!addCannonRecoil@{addCannonRecoil}}
+\index{addCannonRecoil@{addCannonRecoil}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{addCannonRecoil()}{addCannonRecoil()}}
+{\footnotesize\ttfamily void Ship\+Movement\+Handler\+::add\+Cannon\+Recoil (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{direction,  }\item[{float}]{recoil }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a6b8a7eafd522cce76d6ca7749709deeb_a6b8a7eafd522cce76d6ca7749709deeb}\label{class_pirate_game_1_1_ship_movement_handler_a6b8a7eafd522cce76d6ca7749709deeb_a6b8a7eafd522cce76d6ca7749709deeb} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!applyBoundaryConstraints@{applyBoundaryConstraints}}
+\index{applyBoundaryConstraints@{applyBoundaryConstraints}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{applyBoundaryConstraints()}{applyBoundaryConstraints()}}
+{\footnotesize\ttfamily void Ship\+Movement\+Handler\+::apply\+Boundary\+Constraints (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{position,  }\item[{const sf\+::\+Vector2f \&}]{map\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a6b8a7eafd522cce76d6ca7749709deeb_a6b8a7eafd522cce76d6ca7749709deeb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a3fa4b4d0f5f025fc3af31f25aaca37c2_a3fa4b4d0f5f025fc3af31f25aaca37c2}\label{class_pirate_game_1_1_ship_movement_handler_a3fa4b4d0f5f025fc3af31f25aaca37c2_a3fa4b4d0f5f025fc3af31f25aaca37c2} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!collisionMovement@{collisionMovement}}
+\index{collisionMovement@{collisionMovement}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{collisionMovement()}{collisionMovement()}}
+{\footnotesize\ttfamily void Ship\+Movement\+Handler\+::collision\+Movement (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite \&}]{colliding\+Sprite }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a3fa4b4d0f5f025fc3af31f25aaca37c2_a3fa4b4d0f5f025fc3af31f25aaca37c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a3fa4b4d0f5f025fc3af31f25aaca37c2_a3fa4b4d0f5f025fc3af31f25aaca37c2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a76e63ce57456104350d1653e39173d98_a76e63ce57456104350d1653e39173d98}\label{class_pirate_game_1_1_ship_movement_handler_a76e63ce57456104350d1653e39173d98_a76e63ce57456104350d1653e39173d98} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!dot@{dot}}
+\index{dot@{dot}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily float Ship\+Movement\+Handler\+::dot (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{v1,  }\item[{const sf\+::\+Vector2f \&}]{v2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a76e63ce57456104350d1653e39173d98_a76e63ce57456104350d1653e39173d98_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a1f5afc292fbc6424810d0742f770e16e_a1f5afc292fbc6424810d0742f770e16e}\label{class_pirate_game_1_1_ship_movement_handler_a1f5afc292fbc6424810d0742f770e16e_a1f5afc292fbc6424810d0742f770e16e} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!ensureSeparation@{ensureSeparation}}
+\index{ensureSeparation@{ensureSeparation}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{ensureSeparation()}{ensureSeparation()}}
+{\footnotesize\ttfamily void Ship\+Movement\+Handler\+::ensure\+Separation (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f \&}]{position,  }\item[{const sf\+::\+Vector2f \&}]{normal,  }\item[{const sf\+::\+Sprite \&}]{colliding\+Sprite }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a1f5afc292fbc6424810d0742f770e16e_a1f5afc292fbc6424810d0742f770e16e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a1f5afc292fbc6424810d0742f770e16e_a1f5afc292fbc6424810d0742f770e16e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a37172050635246410d20abcaab29b7ca_a37172050635246410d20abcaab29b7ca}\label{class_pirate_game_1_1_ship_movement_handler_a37172050635246410d20abcaab29b7ca_a37172050635246410d20abcaab29b7ca} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getBaseSpeed@{getBaseSpeed}}
+\index{getBaseSpeed@{getBaseSpeed}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getBaseSpeed()}{getBaseSpeed()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Base\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00048}{48}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a37172050635246410d20abcaab29b7ca_a37172050635246410d20abcaab29b7ca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ad298d2920d7d5dedf621d13b9fcdffa2_ad298d2920d7d5dedf621d13b9fcdffa2}\label{class_pirate_game_1_1_ship_movement_handler_ad298d2920d7d5dedf621d13b9fcdffa2_ad298d2920d7d5dedf621d13b9fcdffa2} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getDeltaTime@{getDeltaTime}}
+\index{getDeltaTime@{getDeltaTime}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getDeltaTime()}{getDeltaTime()}}
+{\footnotesize\ttfamily sf\+::\+Clock \& Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Delta\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00051}{51}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_ad298d2920d7d5dedf621d13b9fcdffa2_ad298d2920d7d5dedf621d13b9fcdffa2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_aabb4ef48d13354dab97ad73e0244cd56_aabb4ef48d13354dab97ad73e0244cd56}\label{class_pirate_game_1_1_ship_movement_handler_aabb4ef48d13354dab97ad73e0244cd56_aabb4ef48d13354dab97ad73e0244cd56} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getDroppedAnchor@{getDroppedAnchor}}
+\index{getDroppedAnchor@{getDroppedAnchor}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getDroppedAnchor()}{getDroppedAnchor()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Dropped\+Anchor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00057}{57}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_aabb4ef48d13354dab97ad73e0244cd56_aabb4ef48d13354dab97ad73e0244cd56_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_aae2456eab1e34161d9a1f66ff3b4021f_aae2456eab1e34161d9a1f66ff3b4021f}\label{class_pirate_game_1_1_ship_movement_handler_aae2456eab1e34161d9a1f66ff3b4021f_aae2456eab1e34161d9a1f66ff3b4021f} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getInitialPosition@{getInitialPosition}}
+\index{getInitialPosition@{getInitialPosition}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getInitialPosition()}{getInitialPosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Initial\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00054}{54}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_acac27029d1a10328c2bf83df943a159e_acac27029d1a10328c2bf83df943a159e}\label{class_pirate_game_1_1_ship_movement_handler_acac27029d1a10328c2bf83df943a159e_acac27029d1a10328c2bf83df943a159e} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getInitialPositionSet@{getInitialPositionSet}}
+\index{getInitialPositionSet@{getInitialPositionSet}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getInitialPositionSet()}{getInitialPositionSet()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Initial\+Position\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00060}{60}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_acac27029d1a10328c2bf83df943a159e_acac27029d1a10328c2bf83df943a159e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a8bfb82ba8f436cc8bbbb36f619697775_a8bfb82ba8f436cc8bbbb36f619697775}\label{class_pirate_game_1_1_ship_movement_handler_a8bfb82ba8f436cc8bbbb36f619697775_a8bfb82ba8f436cc8bbbb36f619697775} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getIsColliding@{getIsColliding}}
+\index{getIsColliding@{getIsColliding}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getIsColliding()}{getIsColliding()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Is\+Colliding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00058}{58}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a8bfb82ba8f436cc8bbbb36f619697775_a8bfb82ba8f436cc8bbbb36f619697775_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a079cb2e1a9c29200ed055899c8c85655_a079cb2e1a9c29200ed055899c8c85655}\label{class_pirate_game_1_1_ship_movement_handler_a079cb2e1a9c29200ed055899c8c85655_a079cb2e1a9c29200ed055899c8c85655} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00047}{47}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a079cb2e1a9c29200ed055899c8c85655_a079cb2e1a9c29200ed055899c8c85655_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a11e4f9226cb35705bfff3d612ca40e97_a11e4f9226cb35705bfff3d612ca40e97}\label{class_pirate_game_1_1_ship_movement_handler_a11e4f9226cb35705bfff3d612ca40e97_a11e4f9226cb35705bfff3d612ca40e97} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getSprite@{getSprite}}
+\index{getSprite@{getSprite}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getSprite()}{getSprite()}}
+{\footnotesize\ttfamily sf\+::\+Sprite \& Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00050}{50}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a11e4f9226cb35705bfff3d612ca40e97_a11e4f9226cb35705bfff3d612ca40e97_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_aec10c664bbd63d3b65510391a6dc3e4b_aec10c664bbd63d3b65510391a6dc3e4b}\label{class_pirate_game_1_1_ship_movement_handler_aec10c664bbd63d3b65510391a6dc3e4b_aec10c664bbd63d3b65510391a6dc3e4b} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getStopShipRotationFlag@{getStopShipRotationFlag}}
+\index{getStopShipRotationFlag@{getStopShipRotationFlag}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getStopShipRotationFlag()}{getStopShipRotationFlag()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Stop\+Ship\+Rotation\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00056}{56}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_aec10c664bbd63d3b65510391a6dc3e4b_aec10c664bbd63d3b65510391a6dc3e4b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ac254a1c69f8a0b09f546908d46a13d07_ac254a1c69f8a0b09f546908d46a13d07}\label{class_pirate_game_1_1_ship_movement_handler_ac254a1c69f8a0b09f546908d46a13d07_ac254a1c69f8a0b09f546908d46a13d07} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00053}{53}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_ac254a1c69f8a0b09f546908d46a13d07_ac254a1c69f8a0b09f546908d46a13d07_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a776afb0ac08ec9fce5e9a5b3f45be046_a776afb0ac08ec9fce5e9a5b3f45be046}\label{class_pirate_game_1_1_ship_movement_handler_a776afb0ac08ec9fce5e9a5b3f45be046_a776afb0ac08ec9fce5e9a5b3f45be046} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!getWindSpeedApplied@{getWindSpeedApplied}}
+\index{getWindSpeedApplied@{getWindSpeedApplied}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{getWindSpeedApplied()}{getWindSpeedApplied()}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::get\+Wind\+Speed\+Applied (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00059}{59}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a77a70ff70975b5ad39e7a1dd57bfb523_a77a70ff70975b5ad39e7a1dd57bfb523}\label{class_pirate_game_1_1_ship_movement_handler_a77a70ff70975b5ad39e7a1dd57bfb523_a77a70ff70975b5ad39e7a1dd57bfb523} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!move@{move}}
+\index{move@{move}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::move (\begin{DoxyParamCaption}\item[{float}]{base\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_movement_handler_a8f15ce9a9b6d0af801b82058c2730faf_a8f15ce9a9b6d0af801b82058c2730faf}{Pirate\+Game\+::\+Enemy\+Ship\+Movement\+Handler}}, and \mbox{\hyperlink{class_pirate_game_1_1_player_ship_movement_handler_ad6ce0e94877aa23b691d854fb48579f2_ad6ce0e94877aa23b691d854fb48579f2}{Pirate\+Game\+::\+Player\+Ship\+Movement\+Handler}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a77a70ff70975b5ad39e7a1dd57bfb523_a77a70ff70975b5ad39e7a1dd57bfb523_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a060b2c8469300f147c387d5814844114_a060b2c8469300f147c387d5814844114}\label{class_pirate_game_1_1_ship_movement_handler_a060b2c8469300f147c387d5814844114_a060b2c8469300f147c387d5814844114} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!normalize@{normalize}}
+\index{normalize@{normalize}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Ship\+Movement\+Handler\+::normalize (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{vector }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a060b2c8469300f147c387d5814844114_a060b2c8469300f147c387d5814844114_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ae2068bb47adcba1fefd860be7badcdba_ae2068bb47adcba1fefd860be7badcdba}\label{class_pirate_game_1_1_ship_movement_handler_ae2068bb47adcba1fefd860be7badcdba_ae2068bb47adcba1fefd860be7badcdba} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setAnchorDrop@{setAnchorDrop}}
+\index{setAnchorDrop@{setAnchorDrop}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setAnchorDrop()}{setAnchorDrop()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Anchor\+Drop (\begin{DoxyParamCaption}\item[{bool}]{anchor\+Drop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00040}{40}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_ae2068bb47adcba1fefd860be7badcdba_ae2068bb47adcba1fefd860be7badcdba_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a8f8d30cbbfeab3b82af844e14a9348a5_a8f8d30cbbfeab3b82af844e14a9348a5}\label{class_pirate_game_1_1_ship_movement_handler_a8f8d30cbbfeab3b82af844e14a9348a5_a8f8d30cbbfeab3b82af844e14a9348a5} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setBaseSpeed@{setBaseSpeed}}
+\index{setBaseSpeed@{setBaseSpeed}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setBaseSpeed()}{setBaseSpeed()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Base\+Speed (\begin{DoxyParamCaption}\item[{float}]{base\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a8f8d30cbbfeab3b82af844e14a9348a5_a8f8d30cbbfeab3b82af844e14a9348a5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a95a5d40338d075f36b9a86def829dfc5_a95a5d40338d075f36b9a86def829dfc5}\label{class_pirate_game_1_1_ship_movement_handler_a95a5d40338d075f36b9a86def829dfc5_a95a5d40338d075f36b9a86def829dfc5} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setInitialPosition@{setInitialPosition}}
+\index{setInitialPosition@{setInitialPosition}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setInitialPosition()}{setInitialPosition()}}
+{\footnotesize\ttfamily void Ship\+Movement\+Handler\+::set\+Initial\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a95a5d40338d075f36b9a86def829dfc5_a95a5d40338d075f36b9a86def829dfc5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a95a5d40338d075f36b9a86def829dfc5_a95a5d40338d075f36b9a86def829dfc5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a6378471affedc6ef3b32ea720be79e0d_a6378471affedc6ef3b32ea720be79e0d}\label{class_pirate_game_1_1_ship_movement_handler_a6378471affedc6ef3b32ea720be79e0d_a6378471affedc6ef3b32ea720be79e0d} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setInitialPositionSet@{setInitialPositionSet}}
+\index{setInitialPositionSet@{setInitialPositionSet}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setInitialPositionSet()}{setInitialPositionSet()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Initial\+Position\+Set (\begin{DoxyParamCaption}\item[{bool}]{initial\+Position\+Set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a9b60c4834c504e54f279f6bf424b6d52_a9b60c4834c504e54f279f6bf424b6d52}\label{class_pirate_game_1_1_ship_movement_handler_a9b60c4834c504e54f279f6bf424b6d52_a9b60c4834c504e54f279f6bf424b6d52} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setInitialPositionVariable@{setInitialPositionVariable}}
+\index{setInitialPositionVariable@{setInitialPositionVariable}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setInitialPositionVariable()}{setInitialPositionVariable()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Initial\+Position\+Variable (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{initial\+Position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_afc8088051b4a9440b8eff5d05800583f_afc8088051b4a9440b8eff5d05800583f}\label{class_pirate_game_1_1_ship_movement_handler_afc8088051b4a9440b8eff5d05800583f_afc8088051b4a9440b8eff5d05800583f} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setIsColliding@{setIsColliding}}
+\index{setIsColliding@{setIsColliding}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setIsColliding()}{setIsColliding()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Is\+Colliding (\begin{DoxyParamCaption}\item[{bool}]{is\+Colliding }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00036}{36}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_afc8088051b4a9440b8eff5d05800583f_afc8088051b4a9440b8eff5d05800583f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ad36d0bb26a00d45c7fdf3d2a877b3e9f_ad36d0bb26a00d45c7fdf3d2a877b3e9f}\label{class_pirate_game_1_1_ship_movement_handler_ad36d0bb26a00d45c7fdf3d2a877b3e9f_ad36d0bb26a00d45c7fdf3d2a877b3e9f} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Position (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00037}{37}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a8874247bbc0ba8d2f97225514b77b5ad_a8874247bbc0ba8d2f97225514b77b5ad}\label{class_pirate_game_1_1_ship_movement_handler_a8874247bbc0ba8d2f97225514b77b5ad_a8874247bbc0ba8d2f97225514b77b5ad} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Speed (\begin{DoxyParamCaption}\item[{float}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00041}{41}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_af318c9c2632c2997fbdc114b3d94a25d_af318c9c2632c2997fbdc114b3d94a25d}\label{class_pirate_game_1_1_ship_movement_handler_af318c9c2632c2997fbdc114b3d94a25d_af318c9c2632c2997fbdc114b3d94a25d} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setSpriteRotation@{setSpriteRotation}}
+\index{setSpriteRotation@{setSpriteRotation}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setSpriteRotation()}{setSpriteRotation()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Sprite\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship_movement_handler_a4886f422f284fbc741c8adf6e65c2567_a4886f422f284fbc741c8adf6e65c2567}{Pirate\+Game\+::\+Enemy\+Ship\+Movement\+Handler}}, and \mbox{\hyperlink{class_pirate_game_1_1_player_ship_movement_handler_a81c98b333191598a26a49f3f05f4182d_a81c98b333191598a26a49f3f05f4182d}{Pirate\+Game\+::\+Player\+Ship\+Movement\+Handler}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba_a546c025610a211cbfe65e7b237676cba}\label{class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba_a546c025610a211cbfe65e7b237676cba} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setStopShipRotationFlag@{setStopShipRotationFlag}}
+\index{setStopShipRotationFlag@{setStopShipRotationFlag}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setStopShipRotationFlag()}{setStopShipRotationFlag()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Stop\+Ship\+Rotation\+Flag (\begin{DoxyParamCaption}\item[{bool}]{stop\+Ship\+Rotation\+Flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba_a546c025610a211cbfe65e7b237676cba_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a4d38a474895f73c63dc2b89fbcd13db6_a4d38a474895f73c63dc2b89fbcd13db6}\label{class_pirate_game_1_1_ship_movement_handler_a4d38a474895f73c63dc2b89fbcd13db6_a4d38a474895f73c63dc2b89fbcd13db6} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setVelocity@{setVelocity}}
+\index{setVelocity@{setVelocity}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setVelocity()}{setVelocity()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Velocity (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{velocity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00035}{35}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a47fdee0b3fd567a6b7b915ba8067c139_a47fdee0b3fd567a6b7b915ba8067c139}\label{class_pirate_game_1_1_ship_movement_handler_a47fdee0b3fd567a6b7b915ba8067c139_a47fdee0b3fd567a6b7b915ba8067c139} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!setWindSpeedApplied@{setWindSpeedApplied}}
+\index{setWindSpeedApplied@{setWindSpeedApplied}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{setWindSpeedApplied()}{setWindSpeedApplied()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Ship\+Movement\+Handler\+::set\+Wind\+Speed\+Applied (\begin{DoxyParamCaption}\item[{bool}]{wind\+Speed\+Applied }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a75d1275722138cfe2c3b121e4c4a4ef9_a75d1275722138cfe2c3b121e4c4a4ef9}\label{class_pirate_game_1_1_ship_movement_handler_a75d1275722138cfe2c3b121e4c4a4ef9_a75d1275722138cfe2c3b121e4c4a4ef9} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!updateVelocity@{updateVelocity}}
+\index{updateVelocity@{updateVelocity}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{updateVelocity()}{updateVelocity()}}
+{\footnotesize\ttfamily void Ship\+Movement\+Handler\+::update\+Velocity (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{direction,  }\item[{float}]{elapsed\+Time,  }\item[{const float}]{base\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8cpp_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a75d1275722138cfe2c3b121e4c4a4ef9_a75d1275722138cfe2c3b121e4c4a4ef9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_ship_movement_handler_a75d1275722138cfe2c3b121e4c4a4ef9_a75d1275722138cfe2c3b121e4c4a4ef9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a3aa7e11935577781b135c25e51ef4657_a3aa7e11935577781b135c25e51ef4657}\label{class_pirate_game_1_1_ship_movement_handler_a3aa7e11935577781b135c25e51ef4657_a3aa7e11935577781b135c25e51ef4657} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!anchorPushBack@{anchorPushBack}}
+\index{anchorPushBack@{anchorPushBack}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{anchorPushBack}{anchorPushBack}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::anchor\+Push\+Back = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00074}{74}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a25aa9fa07cfc0b374ca13add9684ee97_a25aa9fa07cfc0b374ca13add9684ee97}\label{class_pirate_game_1_1_ship_movement_handler_a25aa9fa07cfc0b374ca13add9684ee97_a25aa9fa07cfc0b374ca13add9684ee97} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!baseSpeed@{baseSpeed}}
+\index{baseSpeed@{baseSpeed}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{baseSpeed}{baseSpeed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::base\+Speed = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00081}{81}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a6f9ac8d942039e9a48e5ebd9a5c0136e_a6f9ac8d942039e9a48e5ebd9a5c0136e}\label{class_pirate_game_1_1_ship_movement_handler_a6f9ac8d942039e9a48e5ebd9a5c0136e_a6f9ac8d942039e9a48e5ebd9a5c0136e} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!dampingFactor@{dampingFactor}}
+\index{dampingFactor@{dampingFactor}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{dampingFactor}{dampingFactor}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::damping\+Factor = 0.\+5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00083}{83}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_acde0adad4a9b7792e0c8adb4ce03f397_acde0adad4a9b7792e0c8adb4ce03f397}\label{class_pirate_game_1_1_ship_movement_handler_acde0adad4a9b7792e0c8adb4ce03f397_acde0adad4a9b7792e0c8adb4ce03f397} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!deltaTime@{deltaTime}}
+\index{deltaTime@{deltaTime}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{deltaTime}{deltaTime}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Ship\+Movement\+Handler\+::delta\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00065}{65}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a8d66b8dad5c7893c758784756b630e8c_a8d66b8dad5c7893c758784756b630e8c}\label{class_pirate_game_1_1_ship_movement_handler_a8d66b8dad5c7893c758784756b630e8c_a8d66b8dad5c7893c758784756b630e8c} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!dropAnchor@{dropAnchor}}
+\index{dropAnchor@{dropAnchor}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{dropAnchor}{dropAnchor}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::drop\+Anchor = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00073}{73}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a3ca02a6a18419cba1e242cc2ca8c5409_a3ca02a6a18419cba1e242cc2ca8c5409}\label{class_pirate_game_1_1_ship_movement_handler_a3ca02a6a18419cba1e242cc2ca8c5409_a3ca02a6a18419cba1e242cc2ca8c5409} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!frictionCoefficient@{frictionCoefficient}}
+\index{frictionCoefficient@{frictionCoefficient}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{frictionCoefficient}{frictionCoefficient}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::friction\+Coefficient = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00082}{82}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ac2b62ff2d262cea147d6939667065cfc_ac2b62ff2d262cea147d6939667065cfc}\label{class_pirate_game_1_1_ship_movement_handler_ac2b62ff2d262cea147d6939667065cfc_ac2b62ff2d262cea147d6939667065cfc} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!initialPosition@{initialPosition}}
+\index{initialPosition@{initialPosition}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{initialPosition}{initialPosition}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Movement\+Handler\+::initial\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00069}{69}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_afe4f7411a4f448679040af1820823619_afe4f7411a4f448679040af1820823619}\label{class_pirate_game_1_1_ship_movement_handler_afe4f7411a4f448679040af1820823619_afe4f7411a4f448679040af1820823619} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!initialPositionSet@{initialPositionSet}}
+\index{initialPositionSet@{initialPositionSet}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{initialPositionSet}{initialPositionSet}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::initial\+Position\+Set = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00076}{76}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a816adbf482ad9aaade1a99d0e0859700_a816adbf482ad9aaade1a99d0e0859700}\label{class_pirate_game_1_1_ship_movement_handler_a816adbf482ad9aaade1a99d0e0859700_a816adbf482ad9aaade1a99d0e0859700} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!isColliding@{isColliding}}
+\index{isColliding@{isColliding}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{isColliding}{isColliding}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::is\+Colliding = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00071}{71}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ad00b1e5a061c541252c823ae9925535f_ad00b1e5a061c541252c823ae9925535f}\label{class_pirate_game_1_1_ship_movement_handler_ad00b1e5a061c541252c823ae9925535f_ad00b1e5a061c541252c823ae9925535f} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!pi@{pi}}
+\index{pi@{pi}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{pi}{pi}}
+{\footnotesize\ttfamily const float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::pi = 3.\+14159265359f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00088}{88}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ae3f6ba0f881c5327195167a6f098b6e9_ae3f6ba0f881c5327195167a6f098b6e9}\label{class_pirate_game_1_1_ship_movement_handler_ae3f6ba0f881c5327195167a6f098b6e9_ae3f6ba0f881c5327195167a6f098b6e9} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!position@{position}}
+\index{position@{position}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Movement\+Handler\+::position\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00089}{89}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_adda4cc1a3e0bf8a4b5942da8ae7687a7_adda4cc1a3e0bf8a4b5942da8ae7687a7}\label{class_pirate_game_1_1_ship_movement_handler_adda4cc1a3e0bf8a4b5942da8ae7687a7_adda4cc1a3e0bf8a4b5942da8ae7687a7} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!pushOutDistance@{pushOutDistance}}
+\index{pushOutDistance@{pushOutDistance}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{pushOutDistance}{pushOutDistance}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::push\+Out\+Distance = 1.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00085}{85}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a6b442906eaff0ed5b5671460571fddd9_a6b442906eaff0ed5b5671460571fddd9}\label{class_pirate_game_1_1_ship_movement_handler_a6b442906eaff0ed5b5671460571fddd9_a6b442906eaff0ed5b5671460571fddd9} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!rotation@{rotation}}
+\index{rotation@{rotation}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::rotation = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00078}{78}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a1b4691b10593581f142d0cf7f987e0e7_a1b4691b10593581f142d0cf7f987e0e7}\label{class_pirate_game_1_1_ship_movement_handler_a1b4691b10593581f142d0cf7f987e0e7_a1b4691b10593581f142d0cf7f987e0e7} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!separationDistance@{separationDistance}}
+\index{separationDistance@{separationDistance}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{separationDistance}{separationDistance}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::separation\+Distance = 5.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00084}{84}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a5d82f89e0e280c9b6dba95aba2ef8a07_a5d82f89e0e280c9b6dba95aba2ef8a07}\label{class_pirate_game_1_1_ship_movement_handler_a5d82f89e0e280c9b6dba95aba2ef8a07_a5d82f89e0e280c9b6dba95aba2ef8a07} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!speed@{speed}}
+\index{speed@{speed}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::speed = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00079}{79}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ab5c9a79120eb18035a79c923e2d7815f_ab5c9a79120eb18035a79c923e2d7815f}\label{class_pirate_game_1_1_ship_movement_handler_ab5c9a79120eb18035a79c923e2d7815f_ab5c9a79120eb18035a79c923e2d7815f} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!speedBeforeAnchorDrop@{speedBeforeAnchorDrop}}
+\index{speedBeforeAnchorDrop@{speedBeforeAnchorDrop}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{speedBeforeAnchorDrop}{speedBeforeAnchorDrop}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Ship\+Movement\+Handler\+::speed\+Before\+Anchor\+Drop = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00080}{80}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a9921d5e04de6073f98013e14c97107a2_a9921d5e04de6073f98013e14c97107a2}\label{class_pirate_game_1_1_ship_movement_handler_a9921d5e04de6073f98013e14c97107a2_a9921d5e04de6073f98013e14c97107a2} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!sprite@{sprite}}
+\index{sprite@{sprite}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{sprite}{sprite}}
+{\footnotesize\ttfamily sf\+::\+Sprite\& Pirate\+Game\+::\+Ship\+Movement\+Handler\+::sprite\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00066}{66}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a717731b0d14abb3db8b17df09540d312_a717731b0d14abb3db8b17df09540d312}\label{class_pirate_game_1_1_ship_movement_handler_a717731b0d14abb3db8b17df09540d312_a717731b0d14abb3db8b17df09540d312} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!stopShipRotationFlag@{stopShipRotationFlag}}
+\index{stopShipRotationFlag@{stopShipRotationFlag}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{stopShipRotationFlag}{stopShipRotationFlag}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::stop\+Ship\+Rotation\+Flag = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00072}{72}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a311f80c7db4192b07f9b62a1ff022b65_a311f80c7db4192b07f9b62a1ff022b65}\label{class_pirate_game_1_1_ship_movement_handler_a311f80c7db4192b07f9b62a1ff022b65_a311f80c7db4192b07f9b62a1ff022b65} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!velocity@{velocity}}
+\index{velocity@{velocity}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{velocity}{velocity}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Ship\+Movement\+Handler\+::velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00068}{68}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_a5853b7a5e11f286af2f9491da290fbd3_a5853b7a5e11f286af2f9491da290fbd3}\label{class_pirate_game_1_1_ship_movement_handler_a5853b7a5e11f286af2f9491da290fbd3_a5853b7a5e11f286af2f9491da290fbd3} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!window@{window}}
+\index{window@{window}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Ship\+Movement\+Handler\+::window = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00064}{64}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_ship_movement_handler_ac5ec0636400b60719fafae6b74b0e2b2_ac5ec0636400b60719fafae6b74b0e2b2}\label{class_pirate_game_1_1_ship_movement_handler_ac5ec0636400b60719fafae6b74b0e2b2_ac5ec0636400b60719fafae6b74b0e2b2} 
+\index{PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}!windSpeedApplied@{windSpeedApplied}}
+\index{windSpeedApplied@{windSpeedApplied}!PirateGame::ShipMovementHandler@{PirateGame::ShipMovementHandler}}
+\doxysubsubsection{\texorpdfstring{windSpeedApplied}{windSpeedApplied}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Ship\+Movement\+Handler\+::wind\+Speed\+Applied = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source_l00075}{75}} of file \mbox{\hyperlink{_ship_movement_handler___p_g_8h_source}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_ship_movement_handler___p_g_8h}{Ship\+Movement\+Handler\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_ship_movement_handler___p_g_8cpp}{Ship\+Movement\+Handler\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,13 @@
+<map id="PirateGame::IslandMenu::setInteractablePositions" name="PirateGame::IslandMenu::setInteractablePositions">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,139,174,181"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97.html#a40abd855ad2ca0e405e066ec43502a97" title=" " alt="" coords="243,5,418,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,136,160,96,220,58,232,52,235,57,223,62,163,101,116,140"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_player_ship_a5d95ebf7b049c6b1e0097633387006b8.html#a5d95ebf7b049c6b1e0097633387006b8" title=" " alt="" coords="250,72,411,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,136,235,117,237,122,170,141"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_ship_movement_handler_ae2068bb47adcba1fefd860be7badcdba.html#ae2068bb47adcba1fefd860be7badcdba" title=" " alt="" coords="239,139,422,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="174,157,223,157,223,163,174,163"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_global_values_ab1f507a0d3ca352140f3eb127ba33ff4.html#ab1f507a0d3ca352140f3eb127ba33ff4" title=" " alt="" coords="243,205,418,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="170,179,237,198,235,203,168,184"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba.html#a546c025610a211cbfe65e7b237676cba" title=" " alt="" coords="222,272,439,315"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="116,180,163,219,223,258,235,263,232,268,220,262,160,224,112,184"/>
+</map>

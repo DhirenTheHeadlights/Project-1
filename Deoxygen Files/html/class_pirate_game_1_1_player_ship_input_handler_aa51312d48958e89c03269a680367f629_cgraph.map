@@ -1,0 +1,7 @@
+<map id="PirateGame::PlayerShipInputHandler::getAnchorDropKeyString" name="PirateGame::PlayerShipInputHandler::getAnchorDropKeyString">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,222,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_values.html#a40abd855ad2ca0e405e066ec43502a97" title=" " alt="" coords="270,5,445,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,43,254,38,255,43,222,48"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_values.html#a429661fd8c09152670aa94cde1e6af8b" title=" " alt="" coords="270,72,445,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,72,255,77,254,82,222,77"/>
+</map>

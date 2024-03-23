@@ -1,0 +1,7 @@
+<map id="PirateGame::ShipMovementHandler::applyBoundaryConstraints" name="PirateGame::ShipMovementHandler::applyBoundaryConstraints">
+<area shape="rect" id="Node000001" title=" " alt="" coords="278,39,503,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_movement_handler.html#a8f15ce9a9b6d0af801b82058c2730faf" title=" " alt="" coords="5,5,230,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,47,230,43,230,38,262,42"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_player_ship_movement_handler.html#ad6ce0e94877aa23b691d854fb48579f2" title=" " alt="" coords="7,72,228,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="263,78,228,83,228,77,262,73"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="PlatformerGame::Player::Player" name="PlatformerGame::Player::Player">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,166,48"/>
+<area shape="rect" id="Node000002" href="$class_platformer_game_1_1_textures.html#ab73312ce610b0c6ec5a2a309235d0303" title=" " alt="" coords="214,5,387,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,24,198,24,198,29,166,29"/>
+</map>

@@ -12,7 +12,6 @@
 #include "GlobalSoundManager_PG.h"
 #include "GlobalMap_PG.h"
 
-#include "TextureHandler_PG.h"
 #include "LandMass_PG.h"
 #include "LandMassHashmap_PG.h"
 #include "Map.h"

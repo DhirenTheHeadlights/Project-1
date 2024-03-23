@@ -1,0 +1,45 @@
+\doxysection{Game\+State\+Manager\+\_\+\+AT.\+h}
+\hypertarget{_game_state_manager___a_t_8h_source}{}\label{_game_state_manager___a_t_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/GameStateManager\_AT.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/GameStateManager\_AT.h}}
+\mbox{\hyperlink{_game_state_manager___a_t_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00004}00004\ \textcolor{comment}{//\ GameState\ defnition}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00005}\mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{00005}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00006}00006\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a19cbf12edccab4b14c7ae28487c48abf}{TitleScreen}},}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a02f519bea27ccd0b93582be6dfde7330}{OptionsMenu}},}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00008}00008\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a7413a67fc34de9d0a4c042a290f1fce1}{LeaderBoardScreen}},}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a83918c373f328eda5d8b9204336f2478}{EndScreen}},}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285a4b53372778f83f4841bbce28fa40a987}{GameLoop}},}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285ae99180abf47a8b3a856e0bcb2656990a}{Paused}},}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_insert_name_menu}{InsertNameMenu}}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00013}00013\ \};}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00022}\mbox{\hyperlink{class_game_state_manager}{00022}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game_state_manager}{GameStateManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00023}00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00024}\mbox{\hyperlink{class_game_state_manager_a2f88c43aa592b15c2ded1e20d04f8532}{00024}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_game_state_manager_a2f88c43aa592b15c2ded1e20d04f8532}{\string~GameStateManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Interface\ methods\ for\ changing\ game\ state}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00027}\mbox{\hyperlink{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece}{00027}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_a82540c2e4ffb79ea4e1d902654f17ece}{changeGameState}}(\mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ newState)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00028}\mbox{\hyperlink{class_game_state_manager_a99007d51a9718f931f2e79f5bd0c430c}{00028}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{_game_state_manager___a_t_8h_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ \mbox{\hyperlink{class_game_state_manager_a99007d51a9718f931f2e79f5bd0c430c}{getCurrentGameState}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00030}\mbox{\hyperlink{class_game_state_manager_af9ba5b073132fa2a9424e1227cfe82e4}{00030}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_af9ba5b073132fa2a9424e1227cfe82e4}{startGame}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Interface\ methods\ for\ opening\ menus}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00033}\mbox{\hyperlink{class_game_state_manager_a4f04bf97264e4e5b362f0bddec76ec25}{00033}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_a4f04bf97264e4e5b362f0bddec76ec25}{openLeaderBoardMenu}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00034}\mbox{\hyperlink{class_game_state_manager_a1dd54c98ab56234d8a8d7f7de294a75d}{00034}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_a1dd54c98ab56234d8a8d7f7de294a75d}{openOptionsMenu}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00035}\mbox{\hyperlink{class_game_state_manager_a954a50e945a49ff62ed3aa5c8c3cd1e9}{00035}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_a954a50e945a49ff62ed3aa5c8c3cd1e9}{openStartMenu}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00036}\mbox{\hyperlink{class_game_state_manager_aa8bd2ef482e0c24e4be718c73cbc9e43}{00036}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_aa8bd2ef482e0c24e4be718c73cbc9e43}{openEndScreen}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00037}\mbox{\hyperlink{class_game_state_manager_aa3adab4e29b9614f3e06bff916c147f0}{00037}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_aa3adab4e29b9614f3e06bff916c147f0}{openInsertNameMenu}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Interface\ methods\ for\ game\ interactions}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00040}\mbox{\hyperlink{class_game_state_manager_aa5622b29fbf8076e9c7739f32cd5ba72}{00040}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_aa5622b29fbf8076e9c7739f32cd5ba72}{setName}}(std::string\ name)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00041}\mbox{\hyperlink{class_game_state_manager_a761131a1b869aeca913e7459101779cb}{00041}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_state_manager_a761131a1b869aeca913e7459101779cb}{exit}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00043}00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Nothing\ here}}
+\DoxyCodeLine{\Hypertarget{_game_state_manager___a_t_8h_source_l00045}00045\ \};}
+
+\end{DoxyCode}

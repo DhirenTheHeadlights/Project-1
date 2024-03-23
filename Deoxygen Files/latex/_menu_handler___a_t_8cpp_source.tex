@@ -1,0 +1,50 @@
+\doxysection{Menu\+Handler\+\_\+\+AT.\+cpp}
+\hypertarget{_menu_handler___a_t_8cpp_source}{}\label{_menu_handler___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/MenuHandler\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/MenuHandler\_AT.cpp}}
+\mbox{\hyperlink{_menu_handler___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_menu_handler___a_t_8h}{MenuHandler\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00003}\mbox{\hyperlink{class_menu_handler_a48dffa808e4ed4bbb879b77b97073a51}{00003}}\ \mbox{\hyperlink{class_menu_handler_a48dffa808e4ed4bbb879b77b97073a51}{MenuHandler::MenuHandler}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Font\&\ font,\ \mbox{\hyperlink{class_game_state_manager}{GameStateManager}}*\ GSM)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00004}00004\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ menus}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00005}00005\ \ \ \ \ startMenu\ =\ std::make\_unique<StartMenu>(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font,\ GSM);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00006}00006\ \ \ \ \ optionsMenu\ =\ std::make\_unique<OptionsMenu>(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font,\ GSM);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00007}00007\ \ \ \ \ leaderBoardMenu\ =\ std::make\_unique<LeaderBoardMenu>(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font,\ GSM);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00008}00008\ \ \ \ \ endMenu\ =\ std::make\_unique<EndMenu>(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font,\ GSM);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00009}00009\ \ \ \ \ insertNameMenu\ =\ std::make\_unique<InsertNameMenu>(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ font,\ GSM);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00010}00010\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00012}\mbox{\hyperlink{class_menu_handler_a97cf5328e8c6bf60d344cd97a3bc09e9}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_handler_a97cf5328e8c6bf60d344cd97a3bc09e9}{MenuHandler::setUpMenus}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Set\ up\ the\ menus}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00014}00014\ \ \ \ \ startMenu-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00015}00015\ \ \ \ \ optionsMenu-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00016}00016\ \ \ \ \ leaderBoardMenu-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00017}00017\ \ \ \ \ endMenu-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00018}00018\ \ \ \ \ insertNameMenu-\/>setUpMenu();}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00021}\mbox{\hyperlink{class_menu_handler_a8fffe13076bde7778cf905dfeaa9e8a2}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_handler_a8fffe13076bde7778cf905dfeaa9e8a2}{MenuHandler::drawStartMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ start\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00023}00023\ \ \ \ \ startMenu-\/>drawMenu(currentEvent,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00026}\mbox{\hyperlink{class_menu_handler_a2d1360a9d4ca13c80b28ce8d5ca4a966}{00026}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_handler_a2d1360a9d4ca13c80b28ce8d5ca4a966}{MenuHandler::drawOptionsMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ options\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00028}00028\ \ \ \ \ optionsMenu-\/>drawMenu(currentEvent,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00031}\mbox{\hyperlink{class_menu_handler_a854ab7fe3318c5adc511187705babd62}{00031}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_handler_a854ab7fe3318c5adc511187705babd62}{MenuHandler::drawLeaderBoardMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ leader\ board\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00033}00033\ \ \ \ \ leaderBoardMenu-\/>drawMenu(currentEvent,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00036}\mbox{\hyperlink{class_menu_handler_a4c5cf3531fdbef668bd39917eb36aa9e}{00036}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_handler_a4c5cf3531fdbef668bd39917eb36aa9e}{MenuHandler::drawInsertNameMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ insert\ name\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00038}00038\ \ \ \ \ insertNameMenu-\/>drawMenu(currentEvent,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00041}\mbox{\hyperlink{class_menu_handler_a52016ce36c26d2ea95e422c6456877f6}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_menu_handler_a52016ce36c26d2ea95e422c6456877f6}{MenuHandler::drawEndMenu}}(sf::Event\ currentEvent,\ sf::Clock\&\ mainClock,\ \mbox{\hyperlink{class_crosshair}{Crosshair}}\&\ crosshair)\ \{}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ end\ menu}}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00043}00043\ \ \ \ \ endMenu-\/>drawMenu(currentEvent,\ mainClock,\ crosshair);}
+\DoxyCodeLine{\Hypertarget{_menu_handler___a_t_8cpp_source_l00044}00044\ \}}
+
+\end{DoxyCode}

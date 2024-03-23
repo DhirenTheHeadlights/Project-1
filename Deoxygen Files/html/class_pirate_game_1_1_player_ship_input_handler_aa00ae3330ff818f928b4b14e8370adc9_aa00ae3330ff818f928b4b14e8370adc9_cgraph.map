@@ -1,0 +1,7 @@
+<map id="PirateGame::PlayerShipInputHandler::getStarboardMouseButtonString" name="PirateGame::PlayerShipInputHandler::getStarboardMouseButtonString">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,230,89"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_values_ae84a23dcbbbf63ef8848b327f3d67ef6.html#ae84a23dcbbbf63ef8848b327f3d67ef6" title=" " alt="" coords="278,5,453,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,42,262,38,262,43,231,47"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97.html#a40abd855ad2ca0e405e066ec43502a97" title=" " alt="" coords="278,72,453,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,73,262,77,262,82,230,78"/>
+</map>

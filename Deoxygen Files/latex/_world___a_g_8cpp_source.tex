@@ -1,0 +1,63 @@
+\doxysection{World\+\_\+\+AG.\+cpp}
+\hypertarget{_world___a_g_8cpp_source}{}\label{_world___a_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/World\_AG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AgarGame/Resource/World\_AG.cpp}}
+\mbox{\hyperlink{_world___a_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_world___a_g_8h}{World\_AG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_agar_game}{AgarGame}};}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00005}\mbox{\hyperlink{class_agar_game_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{00005}}\ \mbox{\hyperlink{class_agar_game_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{World::World}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ :\ colMan(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ map),\ view(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}.getDefaultView()),\ pelHan(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ debug(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ input(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}),\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}(\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00006}00006\ \ \ \ \ map.\mbox{\hyperlink{class_map_a0347b6493df6034d91b07e808b1dbf2d}{grid}}(10000,\ 10000,\ 100);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00007}00007\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00009}\mbox{\hyperlink{class_agar_game_1_1_world_ac2ba4a5e37834cf03e65a8fd038f81d2}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_agar_game_1_1_world_ac2ba4a5e37834cf03e65a8fd038f81d2}{World::createWorld}}(sf::Event\&\ event)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00011}00011\ \ \ \ \ colMan.\mbox{\hyperlink{class_collision_manager_a419192f27b854dfb46e3175db9e28f26}{moveAndSeparateCells}}(cellGroup,\ map,\ window,\ 200);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}After\ move:\ Cell\ A\ Position:\ "{}\ <<\ cellGroup.getCellGroup()[0]-\/>getPosition().x\ <<\ "{},\ "{}\ <<\ cellGroup.getCellGroup()[0]-\/>getPosition().y\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00014}00014\ \ \ \ \ colMan.\mbox{\hyperlink{class_collision_manager_a37285011823aae286bc612eaea350286}{checkPelletCollisionForEveryCell}}(window,\ cellGroup,\ map,\ pelHan.\mbox{\hyperlink{class_pellet_handler_ab4d1d30cd467898d967f7036b4fb9928}{getActivePellets}}());}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00015}00015\ \ \ \ \ colMan.\mbox{\hyperlink{class_collision_manager_aec880c871a1401e27311b738eaac172a}{assignPellets}}(pelHan.\mbox{\hyperlink{class_pellet_handler_ab4d1d30cd467898d967f7036b4fb9928}{getActivePellets}}(),\ map);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00016}00016\ \ \ \ \ pelHan.\mbox{\hyperlink{class_pellet_handler_a71bbc32ddba90697a02f5be6f08c74a3}{drawPellets}}(window,\ map,\ 10000);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00017}00017\ \ \ \ \ pelHan.\mbox{\hyperlink{class_pellet_handler_ad904cbc2407b65d42dc51a289a423b4e}{eraseIfInactive}}();}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00018}00018\ \ \ \ \ map.\mbox{\hyperlink{class_map_a03ce884ba45a6f39da611c726ceea61b}{drawGrid}}(window);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00019}00019\ \ \ \ \ cellGroup.\mbox{\hyperlink{class_cell_group_a6810fcaf2c72c28135f66f0c3b0d6ddc}{draw}}(window);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{if}\ (gameOver)\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ debug.\mbox{\hyperlink{class_debugger_a84355ced171a22774ba558bfb141824b}{drawInformation}}(window,\ \textcolor{stringliteral}{"{}Game\ Over!\ Press\ R\ to\ restart"{}},\ 50,\ view.getCenter().x,\ view.getCenter().y);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00026}00026\ \ \ \ \ \mbox{\hyperlink{class_agar_game_1_1_world_af37dcea059bdc0820f56441bb395b91d}{displayInfo}}();}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00028}00028\ \ \ \ \ colMan.\mbox{\hyperlink{class_collision_manager_abcce43d1eaddbf6b420f979115bd0aaf}{assignCells}}(cellGroup,\ map);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}After\ separation:\ Cell\ A\ Position:\ "{}\ <<\ cellGroup.getCellGroup()[0]-\/>getPosition().x\ <<\ "{},\ "{}\ <<\ cellGroup.getCellGroup()[0]-\/>getPosition().y\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00032}00032\ \ \ \ \ view.setCenter(cellGroup.\mbox{\hyperlink{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}{getAvgPos}}().x,\ cellGroup.\mbox{\hyperlink{class_cell_group_a67f58cd35b815e2a94d0707b4d822a7d}{getAvgPos}}().y);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00033}00033\ \ \ \ \ view.setSize(window.getDefaultView().getSize()\ *\ input.\mbox{\hyperlink{class_input_handler_a95752bb4422789b1bd84bce345daae14}{getZoomOffset}}());}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00035}00035\ \ \ \ \ input.\mbox{\hyperlink{class_input_handler_ac16bd46d01c89815ec24c99942838e68}{zoomWithScrollWheel}}(event);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00036}00036\ \ \ \ \ input.\mbox{\hyperlink{class_input_handler_a38d1477464baaef2f2a5dcc37ebda95c}{split}}(cellGroup);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00038}00038\ \ \ \ \ window.setView(view);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00041}\mbox{\hyperlink{class_agar_game_1_1_world_af37dcea059bdc0820f56441bb395b91d}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_agar_game_1_1_world_af37dcea059bdc0820f56441bb395b91d}{World::displayInfo}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{class_circle}{Circle}}*\ cell\ :\ cellGroup.\mbox{\hyperlink{class_cell_group_a6f4895e8efa9e46e125427fddf1d3033}{getCellGroup}}())\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ cell-\/>setColor(sf::Color::Blue);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ debug.\mbox{\hyperlink{class_debugger_add3059123f5c7df96fe526fd22ad5274}{drawVector}}(cell-\/>getPosition(),\ cell-\/>getDirection(),\ window,\ 100.0f,\ sf::Color::Red);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ debug.\mbox{\hyperlink{class_debugger_a84355ced171a22774ba558bfb141824b}{drawInformation}}(window,\ \textcolor{stringliteral}{"{}Mass:\ "{}}\ +\ std::to\_string(cell-\/>getCircleSize()),\ 10,\ cell-\/>getPosition().x,\ cell-\/>getPosition().y);}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00049}\mbox{\hyperlink{class_agar_game_1_1_world_ae57aaa89db1fe6304fd2f397a2cffde8}{00049}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_agar_game_1_1_world_ae57aaa89db1fe6304fd2f397a2cffde8}{World::restart}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00050}00050\ \ \ \ \ gameOver\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00051}00051\ \ \ \ \ cellGroup.\mbox{\hyperlink{class_cell_group_aaf4a33964224b9e0d668d6f23a79e6b6}{reset}}();}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00052}00052\ \ \ \ \ addSize\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00055}\mbox{\hyperlink{class_agar_game_1_1_world_a0ccb7137db33414179c4bdc1609331bd}{00055}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_agar_game_1_1_world_a0ccb7137db33414179c4bdc1609331bd}{World::isGameOver}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return}\ gameOver;}
+\DoxyCodeLine{\Hypertarget{_world___a_g_8cpp_source_l00057}00057\ \}}
+
+\end{DoxyCode}

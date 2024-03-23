@@ -1,0 +1,209 @@
+\doxysection{Pirate\+Game\+::Land\+Mass\+Handler Class Reference}
+\hypertarget{class_pirate_game_1_1_land_mass_handler}{}\label{class_pirate_game_1_1_land_mass_handler}\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+
+
+{\ttfamily \#include $<$Land\+Mass\+Handler\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a755acdf9dbc446cde8cda17febcc7ca5_a755acdf9dbc446cde8cda17febcc7ca5}{Land\+Mass\+Handler}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a93defdfcdb7ff2a41c80296289b4bfbd_a93defdfcdb7ff2a41c80296289b4bfbd}{\texorpdfstring{$\sim$}{\string~}\+Land\+Mass\+Handler}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a5d00f5a480d74cc4e3230435db3dcda0_a5d00f5a480d74cc4e3230435db3dcda0}{add\+Land\+Masses}} (\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{int}} num\+Land\+Masses, \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{float}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{min\+Dist\+Between\+Landmasses}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_ae332410cdacb1380516a3fd79038b498_ae332410cdacb1380516a3fd79038b498}{draw\+Land\+Masses}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a958e82fa0250a48b203aa3708d26537f_a958e82fa0250a48b203aa3708d26537f}{interact\+With\+Landmasses}} (\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \texorpdfstring{$\ast$}{*}ship)
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \& \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_af0d089db25cb6021534765d98516f0f7_af0d089db25cb6021534765d98516f0f7}{get\+Land\+Masses}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38_a13fe50a7f1ca159e3ebaa80d01effd38}{create\+Landmass}} (\mbox{\hyperlink{namespace_pirate_game_a4e0749d6092d6fe4cb5a3a671674b80a_a4e0749d6092d6fe4cb5a3a671674b80a}{Land\+Mass\+Type}} type, sf\+::\+Vector2f position)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a68c7a62f22f6c18ce8371f04ad73514b_a68c7a62f22f6c18ce8371f04ad73514b}{window}} = \mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{Global\+Values\+::get\+Instance}}().get\+Window()
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a742f1988facfcc221bc14f7fcd7c5c92_a742f1988facfcc221bc14f7fcd7c5c92}{landmasses}}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{float}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a1e45e6641003bfb4cb5d831a9fd6721f_a1e45e6641003bfb4cb5d831a9fd6721f}{interaction\+Distance}} = 600.\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{f}}
+\item 
+Map \& \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{map}} = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{Global\+Map\+::get\+Instance}}().get\+Map()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00021}{21}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a755acdf9dbc446cde8cda17febcc7ca5_a755acdf9dbc446cde8cda17febcc7ca5}\label{class_pirate_game_1_1_land_mass_handler_a755acdf9dbc446cde8cda17febcc7ca5_a755acdf9dbc446cde8cda17febcc7ca5} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!LandMassHandler@{LandMassHandler}}
+\index{LandMassHandler@{LandMassHandler}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{LandMassHandler()}{LandMassHandler()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Land\+Mass\+Handler\+::\+Land\+Mass\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00023}{23}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a93defdfcdb7ff2a41c80296289b4bfbd_a93defdfcdb7ff2a41c80296289b4bfbd}\label{class_pirate_game_1_1_land_mass_handler_a93defdfcdb7ff2a41c80296289b4bfbd_a93defdfcdb7ff2a41c80296289b4bfbd} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!````~LandMassHandler@{\texorpdfstring{$\sim$}{\string~}LandMassHandler}}
+\index{````~LandMassHandler@{\texorpdfstring{$\sim$}{\string~}LandMassHandler}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}LandMassHandler()}{\string~LandMassHandler()}}
+{\footnotesize\ttfamily Land\+Mass\+Handler\+::\texorpdfstring{$\sim$}{\string~}\+Land\+Mass\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source}{Land\+Mass\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_handler_a93defdfcdb7ff2a41c80296289b4bfbd_a93defdfcdb7ff2a41c80296289b4bfbd_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a5d00f5a480d74cc4e3230435db3dcda0_a5d00f5a480d74cc4e3230435db3dcda0}\label{class_pirate_game_1_1_land_mass_handler_a5d00f5a480d74cc4e3230435db3dcda0_a5d00f5a480d74cc4e3230435db3dcda0} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!addLandMasses@{addLandMasses}}
+\index{addLandMasses@{addLandMasses}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{addLandMasses()}{addLandMasses()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} Land\+Mass\+Handler\+::add\+Land\+Masses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{int}}}]{num\+Land\+Masses,  }\item[{\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{float}}}]{min\+Dist\+Between\+Landmasses }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source}{Land\+Mass\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_handler_a5d00f5a480d74cc4e3230435db3dcda0_a5d00f5a480d74cc4e3230435db3dcda0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38_a13fe50a7f1ca159e3ebaa80d01effd38}\label{class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38_a13fe50a7f1ca159e3ebaa80d01effd38} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!createLandmass@{createLandmass}}
+\index{createLandmass@{createLandmass}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{createLandmass()}{createLandmass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} Land\+Mass\+Handler\+::create\+Landmass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_pirate_game_a4e0749d6092d6fe4cb5a3a671674b80a_a4e0749d6092d6fe4cb5a3a671674b80a}{Land\+Mass\+Type}}}]{type,  }\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source}{Land\+Mass\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38_a13fe50a7f1ca159e3ebaa80d01effd38_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_handler_a13fe50a7f1ca159e3ebaa80d01effd38_a13fe50a7f1ca159e3ebaa80d01effd38_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_ae332410cdacb1380516a3fd79038b498_ae332410cdacb1380516a3fd79038b498}\label{class_pirate_game_1_1_land_mass_handler_ae332410cdacb1380516a3fd79038b498_ae332410cdacb1380516a3fd79038b498} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!drawLandMasses@{drawLandMasses}}
+\index{drawLandMasses@{drawLandMasses}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{drawLandMasses()}{drawLandMasses()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} Land\+Mass\+Handler\+::draw\+Land\+Masses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source}{Land\+Mass\+Handler\+\_\+\+PG.\+cpp}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_af0d089db25cb6021534765d98516f0f7_af0d089db25cb6021534765d98516f0f7}\label{class_pirate_game_1_1_land_mass_handler_af0d089db25cb6021534765d98516f0f7_af0d089db25cb6021534765d98516f0f7} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!getLandMasses@{getLandMasses}}
+\index{getLandMasses@{getLandMasses}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{getLandMasses()}{getLandMasses()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \& Pirate\+Game\+::\+Land\+Mass\+Handler\+::get\+Land\+Masses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00031}{31}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a958e82fa0250a48b203aa3708d26537f_a958e82fa0250a48b203aa3708d26537f}\label{class_pirate_game_1_1_land_mass_handler_a958e82fa0250a48b203aa3708d26537f_a958e82fa0250a48b203aa3708d26537f} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!interactWithLandmasses@{interactWithLandmasses}}
+\index{interactWithLandmasses@{interactWithLandmasses}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{interactWithLandmasses()}{interactWithLandmasses()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{void}} Land\+Mass\+Handler\+::interact\+With\+Landmasses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \texorpdfstring{$\ast$}{*}}]{ship }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8cpp_source}{Land\+Mass\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_handler_a958e82fa0250a48b203aa3708d26537f_a958e82fa0250a48b203aa3708d26537f_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a1e45e6641003bfb4cb5d831a9fd6721f_a1e45e6641003bfb4cb5d831a9fd6721f}\label{class_pirate_game_1_1_land_mass_handler_a1e45e6641003bfb4cb5d831a9fd6721f_a1e45e6641003bfb4cb5d831a9fd6721f} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!interactionDistance@{interactionDistance}}
+\index{interactionDistance@{interactionDistance}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{interactionDistance}{interactionDistance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{float}} Pirate\+Game\+::\+Land\+Mass\+Handler\+::interaction\+Distance = 600.\mbox{\hyperlink{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}{f}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00041}{41}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a742f1988facfcc221bc14f7fcd7c5c92_a742f1988facfcc221bc14f7fcd7c5c92}\label{class_pirate_game_1_1_land_mass_handler_a742f1988facfcc221bc14f7fcd7c5c92_a742f1988facfcc221bc14f7fcd7c5c92} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!landmasses@{landmasses}}
+\index{landmasses@{landmasses}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{landmasses}{landmasses}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}}$>$ $>$ Pirate\+Game\+::\+Land\+Mass\+Handler\+::landmasses\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef}\label{class_pirate_game_1_1_land_mass_handler_a6499367f6ac6bcb083d8043b1de525ef_a6499367f6ac6bcb083d8043b1de525ef} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!map@{map}}
+\index{map@{map}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily Map\& Pirate\+Game\+::\+Land\+Mass\+Handler\+::map = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{Global\+Map\+::get\+Instance}}().get\+Map()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00044}{44}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_handler_a68c7a62f22f6c18ce8371f04ad73514b_a68c7a62f22f6c18ce8371f04ad73514b}\label{class_pirate_game_1_1_land_mass_handler_a68c7a62f22f6c18ce8371f04ad73514b_a68c7a62f22f6c18ce8371f04ad73514b} 
+\index{PirateGame::LandMassHandler@{PirateGame::LandMassHandler}!window@{window}}
+\index{window@{window}!PirateGame::LandMassHandler@{PirateGame::LandMassHandler}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Land\+Mass\+Handler\+::window = \mbox{\hyperlink{class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97_a40abd855ad2ca0e405e066ec43502a97}{Global\+Values\+::get\+Instance}}().get\+Window()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_land_mass_handler___p_g_8h_source_l00036}{36}} of file \mbox{\hyperlink{_land_mass_handler___p_g_8h_source}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_land_mass_handler___p_g_8h}{Land\+Mass\+Handler\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_land_mass_handler___p_g_8cpp}{Land\+Mass\+Handler\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

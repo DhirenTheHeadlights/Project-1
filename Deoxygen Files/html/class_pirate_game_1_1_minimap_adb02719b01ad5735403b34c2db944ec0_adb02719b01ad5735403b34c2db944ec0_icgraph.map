@@ -1,0 +1,7 @@
+<map id="PirateGame::Minimap::setMinimapPosition" name="PirateGame::Minimap::setMinimapPosition">
+<area shape="rect" id="Node000001" title=" " alt="" coords="442,5,589,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_in_game_h_u_d_a878b84050756f164fa1956ae40510de1.html#a878b84050756f164fa1956ae40510de1" title=" " alt="" coords="224,5,394,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="427,29,394,29,394,24,427,24"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_in_game_h_u_d_a767dc4fec0e06a06a56cd55af8887e42.html#a767dc4fec0e06a06a56cd55af8887e42" title=" " alt="" coords="5,5,176,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="208,29,176,29,176,24,208,24"/>
+</map>

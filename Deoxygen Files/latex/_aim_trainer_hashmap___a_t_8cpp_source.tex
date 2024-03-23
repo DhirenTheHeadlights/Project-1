@@ -1,0 +1,66 @@
+\doxysection{Aim\+Trainer\+Hashmap\+\_\+\+AT.\+cpp}
+\hypertarget{_aim_trainer_hashmap___a_t_8cpp_source}{}\label{_aim_trainer_hashmap___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/AimTrainerHashmap\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/AimTrainerHashmap\_AT.cpp}}
+\mbox{\hyperlink{_aim_trainer_hashmap___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_aim_trainer_hashmap___a_t_8h}{AimTrainerHashmap\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00003}\mbox{\hyperlink{class_hashmap___a_t_a130553b1d284f4fae0879906a1017d31}{00003}}\ \mbox{\hyperlink{class_hashmap___a_t_a130553b1d284f4fae0879906a1017d31}{Hashmap\_AT::Hashmap\_AT}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00004}00004\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00006}00006\ \textcolor{comment}{//\ Function\ to\ add\ a\ target\ to\ the\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00007}\mbox{\hyperlink{class_hashmap___a_t_acec5408c40bdedb93e4513754ecb4124}{00007}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hashmap___a_t_acec5408c40bdedb93e4513754ecb4124}{Hashmap\_AT::addTarget}}(\mbox{\hyperlink{class_target}{Target}}*\ target)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00008}00008\ \ \ \ \ std::string\ key\ =\ generateKey(target-\/>\mbox{\hyperlink{class_target_a10ca070654a7b0c2eb3a613abd58967e}{getPos}}());}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{keywordflow}{if}\ (target-\/>\mbox{\hyperlink{class_target_a5945a0ac7f813d9048e315b846da102e}{isActive}}())\ map[key]\ =\ target;}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keywordflow}{else}\ map.erase(key);}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00013}00013\ \textcolor{comment}{//\ Helper\ function\ to\ generate\ a\ key\ for\ the\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00014}00014\ std::string\ Hashmap\_AT::generateKey(sf::Vector2f\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordtype}{int}\ x\_key\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(position.x)\ /\ grid\_size;}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{int}\ y\_key\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(position.y)\ /\ grid\_size;}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{return}\ std::to\_string(x\_key)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ std::to\_string(y\_key);}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00020}00020\ \textcolor{comment}{//\ Helper\ function\ to\ check\ for\ target\ at\ a\ specific\ grid\ position}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00021}00021\ \mbox{\hyperlink{class_target}{Target}}*\ Hashmap\_AT::getTargetInGrid(\textcolor{keyword}{const}\ std::string\&\ key,\ sf::Vector2f\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (map.count(key))\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_target}{Target}}*\ target\ =\ map.at(key);}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ position\ is\ actually\ within\ the\ target's\ radius}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (distance(position,\ target-\/>\mbox{\hyperlink{class_target_a10ca070654a7b0c2eb3a613abd58967e}{getPos}}())\ <=\ target-\/>\mbox{\hyperlink{class_target_a28d46f5835db0447ebdb7b44cc5dfbc0}{getShape}}().getRadius())\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ target;}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00032}00032\ \textcolor{comment}{//\ Function\ to\ iterate\ over\ grid\ squares\ and\ find\ a\ collision}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00033}\mbox{\hyperlink{class_hashmap___a_t_a3c9c78c89d5fd2138cce6243fdcde456}{00033}}\ \mbox{\hyperlink{class_target}{Target}}*\ \mbox{\hyperlink{class_hashmap___a_t_a3c9c78c89d5fd2138cce6243fdcde456}{Hashmap\_AT::getTargetAtCollision}}(sf::Vector2f\ position,\ \textcolor{keywordtype}{float}\ radius)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ the\ grid\ squares\ within\ the\ radius\ for\ a\ collision}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\_offset\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(-\/\ radius);\ x\_offset\ <=\ radius;\ x\_offset\ +=\ grid\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y\_offset\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(-\/radius);\ y\_offset\ <=\ radius;\ y\_offset\ +=\ grid\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ sf::Vector2f\ check\_position\ =\ \{\ position.x\ +\ x\_offset,\ position.y\ +\ y\_offset\ \};}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ key\ =\ generateKey(check\_position);}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_target}{Target}}*\ target\ =\ getTargetInGrid(key,\ position);}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ target;}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00048}00048\ \textcolor{comment}{//\ Helper\ function\ to\ calculate\ distance\ between\ two\ points}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00049}00049\ \textcolor{keywordtype}{float}\ Hashmap\_AT::distance(sf::Vector2f\ a,\ sf::Vector2f\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00050}00050\ \ \ \ \ sf::Vector2f\ diff\ =\ a\ -\/\ b;}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(diff.x\ *\ diff.x\ +\ diff.y\ *\ diff.y);}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00054}00054\ \textcolor{comment}{//\ Function\ to\ clear\ the\ hashmap}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00056}\mbox{\hyperlink{class_hashmap___a_t_a4df5cdb501bacf7f61126e398d5cf6ce}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hashmap___a_t_a4df5cdb501bacf7f61126e398d5cf6ce}{Hashmap\_AT::clear}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ [key,\ target]\ :\ map)\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ target-\/>\mbox{\hyperlink{class_target_ac1c36ec403f441ccfd7059d50f278796}{deActivate}}();}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_trainer_hashmap___a_t_8cpp_source_l00060}00060\ \}}
+
+\end{DoxyCode}

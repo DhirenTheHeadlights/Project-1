@@ -1,0 +1,7 @@
+<map id="PirateGame::OptionsMenu" name="PirateGame::OptionsMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="18,188,194,215"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_menu.html" title=" " alt="" coords="41,112,171,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,154,109,188,103,188,103,154"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_game_state_manager.html" title=" " alt="" coords="5,5,207,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,64,109,112,103,112,103,64"/>
+</map>

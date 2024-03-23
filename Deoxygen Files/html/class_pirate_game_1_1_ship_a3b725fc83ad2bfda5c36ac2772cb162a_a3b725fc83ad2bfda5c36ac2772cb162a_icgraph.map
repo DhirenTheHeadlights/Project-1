@@ -1,0 +1,13 @@
+<map id="PirateGame::Ship::getShipProperties" name="PirateGame::Ship::getShipProperties">
+<area shape="rect" id="Node000001" title=" " alt="" coords="442,105,618,148"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_enemy_ship_aff5cdb466b1ee51b408301667ff22ba8.html#aff5cdb466b1ee51b408301667ff22ba8" title=" " alt="" coords="226,5,392,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="472,100,393,62,366,51,368,46,395,58,474,95"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_player_ship_af8967dc5acc2302fcbc5b4e0a6e31464.html#af8967dc5acc2302fcbc5b4e0a6e31464" title="Custom functions." alt="" coords="228,72,390,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="426,114,389,108,390,103,427,108"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_player_ship_a5fe3d27c96d345ea0586d49ff6a3eac5.html#a5fe3d27c96d345ea0586d49ff6a3eac5" title=" " alt="" coords="228,139,390,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="427,145,390,150,389,145,426,140"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_in_game_h_u_d_a878b84050756f164fa1956ae40510de1.html#a878b84050756f164fa1956ae40510de1" title=" " alt="" coords="224,205,394,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="474,158,395,196,368,207,366,202,393,191,472,153"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_in_game_h_u_d_a767dc4fec0e06a06a56cd55af8887e42.html#a767dc4fec0e06a06a56cd55af8887e42" title=" " alt="" coords="5,205,176,248"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="208,229,176,229,176,224,208,224"/>
+</map>

@@ -1,0 +1,29 @@
+\doxysection{Ship\+Inventory\+Handler\+\_\+\+PG.\+cpp}
+\hypertarget{_ship_inventory_handler___p_g_8cpp_source}{}\label{_ship_inventory_handler___p_g_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/ShipInventoryHandler\_PG.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Resource/ShipInventoryHandler\_PG.cpp}}
+\mbox{\hyperlink{_ship_inventory_handler___p_g_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_ship_inventory_handler___p_g_8h}{ShipInventoryHandler\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00003}00003\ \textcolor{keyword}{using\ namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}};}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00005}\mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab9f6855e4a3c5f4f3436bc622ad8d633_ab9f6855e4a3c5f4f3436bc622ad8d633}{00005}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab9f6855e4a3c5f4f3436bc622ad8d633_ab9f6855e4a3c5f4f3436bc622ad8d633}{ShipInventoryHandler::removeItem}}(\mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{ShopItem}}\ item)\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ it\ :\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}})\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00007}00007\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it.name\ ==\ item.\mbox{\hyperlink{struct_pirate_game_1_1_shop_item_a42806f86644fd533ee67b25d4199f5c9_a42806f86644fd533ee67b25d4199f5c9}{name}})\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00008}00008\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}}.erase(std::remove(\mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}}.begin(),\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}}.end(),\ it),\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}}.end());}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00010}00010\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00012}00012\ \}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00014}\mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab44261cf0beb804b8170c03e39e91ff4_ab44261cf0beb804b8170c03e39e91ff4}{00014}}\ \mbox{\hyperlink{struct_pirate_game_1_1_shop_item}{ShopItem}}\&\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab44261cf0beb804b8170c03e39e91ff4_ab44261cf0beb804b8170c03e39e91ff4}{ShipInventoryHandler::getItem}}(std::string\ itemName)\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ it\ :\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}})\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it.name\ ==\ itemName)\ \{}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it;}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ If\ the\ item\ is\ not\ found,\ return\ the\ first\ item\ in\ the\ inventory}}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_pirate_game_1_1_ship_inventory_handler_ab634d1d1d1eb75d6eac2be35b0b8a9fb_ab634d1d1d1eb75d6eac2be35b0b8a9fb}{inventory}}.front();}
+\DoxyCodeLine{\Hypertarget{_ship_inventory_handler___p_g_8cpp_source_l00023}00023\ \}}
+
+\end{DoxyCode}

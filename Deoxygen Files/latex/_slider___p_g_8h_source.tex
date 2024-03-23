@@ -1,0 +1,42 @@
+\doxysection{Slider\+\_\+\+PG.\+h}
+\hypertarget{_slider___p_g_8h_source}{}\label{_slider___p_g_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/Slider\_PG.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/PirateGame/Header/Slider\_PG.h}}
+\mbox{\hyperlink{_slider___p_g_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_interactable___p_g_8h}{Interactable\_PG.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00010}00010\ \textcolor{comment}{//\ Function\ for\ the\ slider,\ returns\ nothing\ but\ takes\ in\ a\ float}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00011}\mbox{\hyperlink{_slider___p_g_8h_a78a21a29f6611ad169bbd13c86d16b58_a78a21a29f6611ad169bbd13c86d16b58}{00011}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_slider___p_g_8h_a78a21a29f6611ad169bbd13c86d16b58_a78a21a29f6611ad169bbd13c86d16b58}{SliderFunction}}\ =\ std::function<void(\textcolor{keywordtype}{float}\ value)>;}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pirate_game}{PirateGame}}\ \{}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00014}\mbox{\hyperlink{class_pirate_game_1_1_slider}{00014}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pirate_game_1_1_slider}{Slider}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}}\ \{}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00016}\mbox{\hyperlink{class_pirate_game_1_1_slider_a82e65381dbd5d5db5a8c49a5f8149e91_a82e65381dbd5d5db5a8c49a5f8149e91}{00016}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_slider_a82e65381dbd5d5db5a8c49a5f8149e91_a82e65381dbd5d5db5a8c49a5f8149e91}{Slider}}(\mbox{\hyperlink{_slider___p_g_8h_a78a21a29f6611ad169bbd13c86d16b58_a78a21a29f6611ad169bbd13c86d16b58}{SliderFunction}}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a01b21db31dfc79e77a9ea3165d382bff_a01b21db31dfc79e77a9ea3165d382bff}{func}})\ :\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a01b21db31dfc79e77a9ea3165d382bff_a01b21db31dfc79e77a9ea3165d382bff}{func}}(\mbox{\hyperlink{class_pirate_game_1_1_slider_a01b21db31dfc79e77a9ea3165d382bff_a01b21db31dfc79e77a9ea3165d382bff}{func}})\ \{}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ now,\ we\ are\ going\ to\ load\ default\ thumb\ and\ track\ textures}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ will\ need\ to\ change\ this\ to\ be\ more\ flexible}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_slider_a4850fe6032baf8cd361808b6862b1de2_a4850fe6032baf8cd361808b6862b1de2}{sliderTrack}}.setTexture(\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02_abd67dde4db181d4afcdf8c3b1dbcef02}{GlobalTextureHandler::getInstance}}().getInteractableTextures().getSliderTrack());}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_slider_a02c973940bc06bcfec631f04f0555bee_a02c973940bc06bcfec631f04f0555bee}{sliderThumb}}.setTexture(\mbox{\hyperlink{class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02_abd67dde4db181d4afcdf8c3b1dbcef02}{GlobalTextureHandler::getInstance}}().getInteractableTextures().getSliderThumb());}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_slider_a02c973940bc06bcfec631f04f0555bee_a02c973940bc06bcfec631f04f0555bee}{sliderThumb}}.setScale(4.f,\ 4.f);}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00023}\mbox{\hyperlink{class_pirate_game_1_1_slider_a20c9e680c23b812bdd8a30944bf7ca2d_a20c9e680c23b812bdd8a30944bf7ca2d}{00023}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pirate_game_1_1_slider_a20c9e680c23b812bdd8a30944bf7ca2d_a20c9e680c23b812bdd8a30944bf7ca2d}{\string~Slider}}()\ \{\};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_aafe7d849dae7442fb6168ecb0d850031_aafe7d849dae7442fb6168ecb0d850031}{customInteractableSetUp}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_ab76209724f539bbe06055923248d9152_ab76209724f539bbe06055923248d9152}{interact}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a4a3727f40be79a7cc6543086435b8194_a4a3727f40be79a7cc6543086435b8194}{draw}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_ad9414725b2ed6894634a74831218de9a_ad9414725b2ed6894634a74831218de9a}{setPosition}}(sf::Vector2f\ pos)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00031}\mbox{\hyperlink{class_pirate_game_1_1_slider_a01b21db31dfc79e77a9ea3165d382bff_a01b21db31dfc79e77a9ea3165d382bff}{00031}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_slider___p_g_8h_a78a21a29f6611ad169bbd13c86d16b58_a78a21a29f6611ad169bbd13c86d16b58}{SliderFunction}}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a01b21db31dfc79e77a9ea3165d382bff_a01b21db31dfc79e77a9ea3165d382bff}{func}};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00033}\mbox{\hyperlink{class_pirate_game_1_1_slider_a591bf96f7cffc22f9a11d43b7d1c2b3d_a591bf96f7cffc22f9a11d43b7d1c2b3d}{00033}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a591bf96f7cffc22f9a11d43b7d1c2b3d_a591bf96f7cffc22f9a11d43b7d1c2b3d}{value}}\ =\ 0.5f;\ \textcolor{comment}{//\ Default\ value}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00034}\mbox{\hyperlink{class_pirate_game_1_1_slider_a2fb4d7e8334cea7424b2050b1dab86f1_a2fb4d7e8334cea7424b2050b1dab86f1}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a2fb4d7e8334cea7424b2050b1dab86f1_a2fb4d7e8334cea7424b2050b1dab86f1}{isGrabbing}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00036}\mbox{\hyperlink{class_pirate_game_1_1_slider_a4850fe6032baf8cd361808b6862b1de2_a4850fe6032baf8cd361808b6862b1de2}{00036}}\ \ \ \ \ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a4850fe6032baf8cd361808b6862b1de2_a4850fe6032baf8cd361808b6862b1de2}{sliderTrack}};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00037}\mbox{\hyperlink{class_pirate_game_1_1_slider_a02c973940bc06bcfec631f04f0555bee_a02c973940bc06bcfec631f04f0555bee}{00037}}\ \ \ \ \ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_pirate_game_1_1_slider_a02c973940bc06bcfec631f04f0555bee_a02c973940bc06bcfec631f04f0555bee}{sliderThumb}};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00038}00038\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{_slider___p_g_8h_source_l00040}00040\ }
+
+\end{DoxyCode}

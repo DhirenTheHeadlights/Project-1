@@ -1,0 +1,9 @@
+<map id="PirateGame::Ship::getHealth" name="PirateGame::Ship::getHealth">
+<area shape="rect" id="Node000001" title=" " alt="" coords="442,47,629,73"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_player_ship_a5fe3d27c96d345ea0586d49ff6a3eac5.html#a5fe3d27c96d345ea0586d49ff6a3eac5" title=" " alt="" coords="228,5,390,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="426,47,390,41,390,36,427,41"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_in_game_h_u_d_a878b84050756f164fa1956ae40510de1.html#a878b84050756f164fa1956ae40510de1" title=" " alt="" coords="224,72,394,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="427,79,395,83,394,78,427,73"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_in_game_h_u_d_a767dc4fec0e06a06a56cd55af8887e42.html#a767dc4fec0e06a06a56cd55af8887e42" title=" " alt="" coords="5,72,176,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="208,96,176,96,176,91,208,91"/>
+</map>

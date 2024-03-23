@@ -1,0 +1,5 @@
+<map id="PirateGame::OptionsMenu::addInteractablesToMenu" name="PirateGame::OptionsMenu::addInteractablesToMenu">
+<area shape="rect" id="Node000001" title="Tabs." alt="" coords="229,5,404,48"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_options_menu_a26f02fe03683c0ce6a5d63d3dd251d62.html#a26f02fe03683c0ce6a5d63d3dd251d62" title=" " alt="" coords="5,5,181,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,29,181,29,181,24,213,24"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="PirateGame::ShipInputHandler::draw" name="PirateGame::ShipInputHandler::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,202,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_ship_cannon_handler_ac17861b5d7876ef3dfb9479c4f7d9ce7.html#ac17861b5d7876ef3dfb9479c4f7d9ce7" title=" " alt="" coords="250,39,462,81"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,57,234,57,234,63,202,63"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_values_a40abd855ad2ca0e405e066ec43502a97.html#a40abd855ad2ca0e405e066ec43502a97" title=" " alt="" coords="510,5,685,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="462,43,494,38,495,43,463,48"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_global_values_ac0271b79e8e02295ca8095a22bfb0ae2.html#ac0271b79e8e02295ca8095a22bfb0ae2" title=" " alt="" coords="510,72,685,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="463,72,495,77,494,82,462,77"/>
+</map>

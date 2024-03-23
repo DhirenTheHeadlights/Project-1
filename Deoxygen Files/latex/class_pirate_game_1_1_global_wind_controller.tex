@@ -1,0 +1,395 @@
+\doxysection{Pirate\+Game\+::Global\+Wind\+Controller Class Reference}
+\hypertarget{class_pirate_game_1_1_global_wind_controller}{}\label{class_pirate_game_1_1_global_wind_controller}\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+
+
+{\ttfamily \#include $<$Global\+Wind\+Controller\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a66cc5daef818eeffdcd104e3d9dd12a2_a66cc5daef818eeffdcd104e3d9dd12a2}{update}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a8af84b3071fb869bc045b6f9c45676ed_a8af84b3071fb869bc045b6f9c45676ed}{set\+Wind\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a26234106c793cbd452ef99ac4ff69ff0_a26234106c793cbd452ef99ac4ff69ff0}{wind\+Direction}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ac79fe83585c99fc3064198d0de6d728e_ac79fe83585c99fc3064198d0de6d728e}{set\+Wind\+Speed}} (float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ae906bcba259abc36132caa52994b574d_ae906bcba259abc36132caa52994b574d}{wind\+Speed}})
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a63349efc33e28874977cd6784a2b015b_a63349efc33e28874977cd6784a2b015b}{get\+Wind\+Direction}} () const
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ab97aa89e0efe84793d84626acc9bedbe_ab97aa89e0efe84793d84626acc9bedbe}{get\+Wind\+Speed}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a5917baa913df939bfd34cefc57e3ba67_a5917baa913df939bfd34cefc57e3ba67}{get\+Wind\+Direction\+String}} () const
+\item 
+sf\+::\+Vertex\+Array \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ac2161e90e16ef3c0a4f883556a2bfdb5_ac2161e90e16ef3c0a4f883556a2bfdb5}{get\+Wind\+Direction\+Indicator}} (const sf\+::\+Vector2f \&start\+Position, float scale=1.\+0f) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_acaf541c9731aa4cfc744803f38979e42_acaf541c9731aa4cfc744803f38979e42}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a2ef4dd05ce890e4db9629830dbfab3c9_a2ef4dd05ce890e4db9629830dbfab3c9}{Global\+Wind\+Controller}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a49cfe442b23261756c4dc876a9d60628_a49cfe442b23261756c4dc876a9d60628}{Global\+Wind\+Controller}} (\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} const \&)=delete
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a4f8fd8959e8d62da094e1a0a8da17cf9_a4f8fd8959e8d62da094e1a0a8da17cf9}{operator=}} (\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} const \&)=delete
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ada098445cfc17880d6a6273f809aad75_ada098445cfc17880d6a6273f809aad75}{randomize\+Wind}} ()
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ae6c7c635a3a805bcd2cf3feb533a06ca_ae6c7c635a3a805bcd2cf3feb533a06ca}{normalize}} (sf\+::\+Vector2f vector)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a26234106c793cbd452ef99ac4ff69ff0_a26234106c793cbd452ef99ac4ff69ff0}{wind\+Direction}} = sf\+::\+Vector2f(0.f, 0.f)
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_aeedcf802612dd50904ceef31e2ce6c93_aeedcf802612dd50904ceef31e2ce6c93}{target\+Wind\+Direction}} = sf\+::\+Vector2f(0.f, 0.f)
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_ae906bcba259abc36132caa52994b574d_ae906bcba259abc36132caa52994b574d}{wind\+Speed}} = 0.f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a86f2bce4303b641331421ef43956a50e_a86f2bce4303b641331421ef43956a50e}{target\+Wind\+Speed}} = 0.f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a4fccdab17b22f1420b0e88a7a977961d_a4fccdab17b22f1420b0e88a7a977961d}{wind\+Speed\+Change}} = 0.\+5f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a24e0a512f226ff904c94c8ee9ccc18aa_a24e0a512f226ff904c94c8ee9ccc18aa}{wind\+Direction\+Change}} = 0.\+1f
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a5a966e68d748d874819ac042f62e416f_a5a966e68d748d874819ac042f62e416f}{wind\+Speed\+Max}} = 100.f
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a0130b1651e7ce049b726fa9457c651e0_a0130b1651e7ce049b726fa9457c651e0}{wind\+Change\+Timer}}
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a1bc1936adf9c4d0522468aa06f916329_a1bc1936adf9c4d0522468aa06f916329}{wind\+Change\+Time}} = sf\+::seconds(10.f)
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller_a3088a6dbc65e22be9839a022a556ef55_a3088a6dbc65e22be9839a022a556ef55}{delta\+Time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00009}{9}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a2ef4dd05ce890e4db9629830dbfab3c9_a2ef4dd05ce890e4db9629830dbfab3c9}\label{class_pirate_game_1_1_global_wind_controller_a2ef4dd05ce890e4db9629830dbfab3c9_a2ef4dd05ce890e4db9629830dbfab3c9} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!GlobalWindController@{GlobalWindController}}
+\index{GlobalWindController@{GlobalWindController}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{GlobalWindController()}{GlobalWindController()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Wind\+Controller\+::\+Global\+Wind\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00082}{82}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_a2ef4dd05ce890e4db9629830dbfab3c9_a2ef4dd05ce890e4db9629830dbfab3c9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a49cfe442b23261756c4dc876a9d60628_a49cfe442b23261756c4dc876a9d60628}\label{class_pirate_game_1_1_global_wind_controller_a49cfe442b23261756c4dc876a9d60628_a49cfe442b23261756c4dc876a9d60628} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!GlobalWindController@{GlobalWindController}}
+\index{GlobalWindController@{GlobalWindController}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{GlobalWindController()}{GlobalWindController()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Wind\+Controller\+::\+Global\+Wind\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_acaf541c9731aa4cfc744803f38979e42_acaf541c9731aa4cfc744803f38979e42}\label{class_pirate_game_1_1_global_wind_controller_acaf541c9731aa4cfc744803f38979e42_acaf541c9731aa4cfc744803f38979e42} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} \& Pirate\+Game\+::\+Global\+Wind\+Controller\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00012}{12}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_acaf541c9731aa4cfc744803f38979e42_acaf541c9731aa4cfc744803f38979e42_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a63349efc33e28874977cd6784a2b015b_a63349efc33e28874977cd6784a2b015b}\label{class_pirate_game_1_1_global_wind_controller_a63349efc33e28874977cd6784a2b015b_a63349efc33e28874977cd6784a2b015b} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!getWindDirection@{getWindDirection}}
+\index{getWindDirection@{getWindDirection}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{getWindDirection()}{getWindDirection()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Global\+Wind\+Controller\+::get\+Wind\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_a63349efc33e28874977cd6784a2b015b_a63349efc33e28874977cd6784a2b015b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_ac2161e90e16ef3c0a4f883556a2bfdb5_ac2161e90e16ef3c0a4f883556a2bfdb5}\label{class_pirate_game_1_1_global_wind_controller_ac2161e90e16ef3c0a4f883556a2bfdb5_ac2161e90e16ef3c0a4f883556a2bfdb5} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!getWindDirectionIndicator@{getWindDirectionIndicator}}
+\index{getWindDirectionIndicator@{getWindDirectionIndicator}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{getWindDirectionIndicator()}{getWindDirectionIndicator()}}
+{\footnotesize\ttfamily sf\+::\+Vertex\+Array Pirate\+Game\+::\+Global\+Wind\+Controller\+::get\+Wind\+Direction\+Indicator (\begin{DoxyParamCaption}\item[{const sf\+::\+Vector2f \&}]{start\+Position,  }\item[{float}]{scale = {\ttfamily 1.0f} }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00066}{66}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_ac2161e90e16ef3c0a4f883556a2bfdb5_ac2161e90e16ef3c0a4f883556a2bfdb5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a5917baa913df939bfd34cefc57e3ba67_a5917baa913df939bfd34cefc57e3ba67}\label{class_pirate_game_1_1_global_wind_controller_a5917baa913df939bfd34cefc57e3ba67_a5917baa913df939bfd34cefc57e3ba67} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!getWindDirectionString@{getWindDirectionString}}
+\index{getWindDirectionString@{getWindDirectionString}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{getWindDirectionString()}{getWindDirectionString()}}
+{\footnotesize\ttfamily std\+::string Pirate\+Game\+::\+Global\+Wind\+Controller\+::get\+Wind\+Direction\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_a5917baa913df939bfd34cefc57e3ba67_a5917baa913df939bfd34cefc57e3ba67_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_ab97aa89e0efe84793d84626acc9bedbe_ab97aa89e0efe84793d84626acc9bedbe}\label{class_pirate_game_1_1_global_wind_controller_ab97aa89e0efe84793d84626acc9bedbe_ab97aa89e0efe84793d84626acc9bedbe} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!getWindSpeed@{getWindSpeed}}
+\index{getWindSpeed@{getWindSpeed}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{getWindSpeed()}{getWindSpeed()}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Global\+Wind\+Controller\+::get\+Wind\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_ab97aa89e0efe84793d84626acc9bedbe_ab97aa89e0efe84793d84626acc9bedbe_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_ae6c7c635a3a805bcd2cf3feb533a06ca_ae6c7c635a3a805bcd2cf3feb533a06ca}\label{class_pirate_game_1_1_global_wind_controller_ae6c7c635a3a805bcd2cf3feb533a06ca_ae6c7c635a3a805bcd2cf3feb533a06ca} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!normalize@{normalize}}
+\index{normalize@{normalize}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Global\+Wind\+Controller\+::normalize (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{vector }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00109}{109}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_ae6c7c635a3a805bcd2cf3feb533a06ca_ae6c7c635a3a805bcd2cf3feb533a06ca_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a4f8fd8959e8d62da094e1a0a8da17cf9_a4f8fd8959e8d62da094e1a0a8da17cf9}\label{class_pirate_game_1_1_global_wind_controller_a4f8fd8959e8d62da094e1a0a8da17cf9_a4f8fd8959e8d62da094e1a0a8da17cf9} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!operator=@{operator=}}
+\index{operator=@{operator=}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} \& Pirate\+Game\+::\+Global\+Wind\+Controller\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_wind_controller}{Global\+Wind\+Controller}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_ada098445cfc17880d6a6273f809aad75_ada098445cfc17880d6a6273f809aad75}\label{class_pirate_game_1_1_global_wind_controller_ada098445cfc17880d6a6273f809aad75_ada098445cfc17880d6a6273f809aad75} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!randomizeWind@{randomizeWind}}
+\index{randomizeWind@{randomizeWind}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{randomizeWind()}{randomizeWind()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Global\+Wind\+Controller\+::randomize\+Wind (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00104}{104}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_ada098445cfc17880d6a6273f809aad75_ada098445cfc17880d6a6273f809aad75_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a8af84b3071fb869bc045b6f9c45676ed_a8af84b3071fb869bc045b6f9c45676ed}\label{class_pirate_game_1_1_global_wind_controller_a8af84b3071fb869bc045b6f9c45676ed_a8af84b3071fb869bc045b6f9c45676ed} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!setWindDirection@{setWindDirection}}
+\index{setWindDirection@{setWindDirection}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{setWindDirection()}{setWindDirection()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Global\+Wind\+Controller\+::set\+Wind\+Direction (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{wind\+Direction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_a8af84b3071fb869bc045b6f9c45676ed_a8af84b3071fb869bc045b6f9c45676ed_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_ac79fe83585c99fc3064198d0de6d728e_ac79fe83585c99fc3064198d0de6d728e}\label{class_pirate_game_1_1_global_wind_controller_ac79fe83585c99fc3064198d0de6d728e_ac79fe83585c99fc3064198d0de6d728e} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!setWindSpeed@{setWindSpeed}}
+\index{setWindSpeed@{setWindSpeed}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{setWindSpeed()}{setWindSpeed()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Global\+Wind\+Controller\+::set\+Wind\+Speed (\begin{DoxyParamCaption}\item[{float}]{wind\+Speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a66cc5daef818eeffdcd104e3d9dd12a2_a66cc5daef818eeffdcd104e3d9dd12a2}\label{class_pirate_game_1_1_global_wind_controller_a66cc5daef818eeffdcd104e3d9dd12a2_a66cc5daef818eeffdcd104e3d9dd12a2} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!update@{update}}
+\index{update@{update}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Global\+Wind\+Controller\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00017}{17}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_a66cc5daef818eeffdcd104e3d9dd12a2_a66cc5daef818eeffdcd104e3d9dd12a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_wind_controller_a66cc5daef818eeffdcd104e3d9dd12a2_a66cc5daef818eeffdcd104e3d9dd12a2_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a3088a6dbc65e22be9839a022a556ef55_a3088a6dbc65e22be9839a022a556ef55}\label{class_pirate_game_1_1_global_wind_controller_a3088a6dbc65e22be9839a022a556ef55_a3088a6dbc65e22be9839a022a556ef55} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!deltaTime@{deltaTime}}
+\index{deltaTime@{deltaTime}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{deltaTime}{deltaTime}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Global\+Wind\+Controller\+::delta\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00102}{102}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_aeedcf802612dd50904ceef31e2ce6c93_aeedcf802612dd50904ceef31e2ce6c93}\label{class_pirate_game_1_1_global_wind_controller_aeedcf802612dd50904ceef31e2ce6c93_aeedcf802612dd50904ceef31e2ce6c93} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!targetWindDirection@{targetWindDirection}}
+\index{targetWindDirection@{targetWindDirection}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{targetWindDirection}{targetWindDirection}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Global\+Wind\+Controller\+::target\+Wind\+Direction = sf\+::\+Vector2f(0.f, 0.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00092}{92}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a86f2bce4303b641331421ef43956a50e_a86f2bce4303b641331421ef43956a50e}\label{class_pirate_game_1_1_global_wind_controller_a86f2bce4303b641331421ef43956a50e_a86f2bce4303b641331421ef43956a50e} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!targetWindSpeed@{targetWindSpeed}}
+\index{targetWindSpeed@{targetWindSpeed}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{targetWindSpeed}{targetWindSpeed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Global\+Wind\+Controller\+::target\+Wind\+Speed = 0.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00094}{94}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a1bc1936adf9c4d0522468aa06f916329_a1bc1936adf9c4d0522468aa06f916329}\label{class_pirate_game_1_1_global_wind_controller_a1bc1936adf9c4d0522468aa06f916329_a1bc1936adf9c4d0522468aa06f916329} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windChangeTime@{windChangeTime}}
+\index{windChangeTime@{windChangeTime}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windChangeTime}{windChangeTime}}
+{\footnotesize\ttfamily sf\+::\+Time Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Change\+Time = sf\+::seconds(10.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00101}{101}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a0130b1651e7ce049b726fa9457c651e0_a0130b1651e7ce049b726fa9457c651e0}\label{class_pirate_game_1_1_global_wind_controller_a0130b1651e7ce049b726fa9457c651e0_a0130b1651e7ce049b726fa9457c651e0} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windChangeTimer@{windChangeTimer}}
+\index{windChangeTimer@{windChangeTimer}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windChangeTimer}{windChangeTimer}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Change\+Timer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00100}{100}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a26234106c793cbd452ef99ac4ff69ff0_a26234106c793cbd452ef99ac4ff69ff0}\label{class_pirate_game_1_1_global_wind_controller_a26234106c793cbd452ef99ac4ff69ff0_a26234106c793cbd452ef99ac4ff69ff0} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windDirection@{windDirection}}
+\index{windDirection@{windDirection}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windDirection}{windDirection}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Direction = sf\+::\+Vector2f(0.f, 0.f)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00091}{91}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a24e0a512f226ff904c94c8ee9ccc18aa_a24e0a512f226ff904c94c8ee9ccc18aa}\label{class_pirate_game_1_1_global_wind_controller_a24e0a512f226ff904c94c8ee9ccc18aa_a24e0a512f226ff904c94c8ee9ccc18aa} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windDirectionChange@{windDirectionChange}}
+\index{windDirectionChange@{windDirectionChange}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windDirectionChange}{windDirectionChange}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Direction\+Change = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00097}{97}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_ae906bcba259abc36132caa52994b574d_ae906bcba259abc36132caa52994b574d}\label{class_pirate_game_1_1_global_wind_controller_ae906bcba259abc36132caa52994b574d_ae906bcba259abc36132caa52994b574d} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windSpeed@{windSpeed}}
+\index{windSpeed@{windSpeed}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windSpeed}{windSpeed}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Speed = 0.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00093}{93}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a4fccdab17b22f1420b0e88a7a977961d_a4fccdab17b22f1420b0e88a7a977961d}\label{class_pirate_game_1_1_global_wind_controller_a4fccdab17b22f1420b0e88a7a977961d_a4fccdab17b22f1420b0e88a7a977961d} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windSpeedChange@{windSpeedChange}}
+\index{windSpeedChange@{windSpeedChange}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windSpeedChange}{windSpeedChange}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Speed\+Change = 0.\+5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00096}{96}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_wind_controller_a5a966e68d748d874819ac042f62e416f_a5a966e68d748d874819ac042f62e416f}\label{class_pirate_game_1_1_global_wind_controller_a5a966e68d748d874819ac042f62e416f_a5a966e68d748d874819ac042f62e416f} 
+\index{PirateGame::GlobalWindController@{PirateGame::GlobalWindController}!windSpeedMax@{windSpeedMax}}
+\index{windSpeedMax@{windSpeedMax}!PirateGame::GlobalWindController@{PirateGame::GlobalWindController}}
+\doxysubsubsection{\texorpdfstring{windSpeedMax}{windSpeedMax}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Global\+Wind\+Controller\+::wind\+Speed\+Max = 100.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_wind_controller___p_g_8h_source_l00098}{98}} of file \mbox{\hyperlink{_global_wind_controller___p_g_8h_source}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_global_wind_controller___p_g_8h}{Global\+Wind\+Controller\+\_\+\+PG.\+h}}\end{DoxyCompactItemize}

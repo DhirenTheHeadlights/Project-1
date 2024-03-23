@@ -1,0 +1,454 @@
+\doxysection{Pirate\+Game\+::Menu Class Reference}
+\hypertarget{class_pirate_game_1_1_menu}{}\label{class_pirate_game_1_1_menu}\index{PirateGame::Menu@{PirateGame::Menu}}
+
+
+{\ttfamily \#include $<$Menu\+\_\+\+PG.\+h$>$}
+
+
+
+Inheritance diagram for Pirate\+Game\+::Menu\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{class_pirate_game_1_1_menu__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pirate\+Game\+::Menu\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{class_pirate_game_1_1_menu__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7}{Menu}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_menu_a81992f7e69ad5e3d74cbdfa7221a657d_a81992f7e69ad5e3d74cbdfa7221a657d}{\texorpdfstring{$\sim$}{\string~}\+Menu}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_af37430becf7c9a51839c9f987641e4fe_af37430becf7c9a51839c9f987641e4fe}{set\+Up\+Menu}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6}{draw}} ()
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9}{add\+Interactable\+To\+Menu}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ interactable)
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_af25b85eb0f77a928795263982afca72c_af25b85eb0f77a928795263982afca72c}{add\+Interactables\+To\+Menu}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_a18c8186b4de93451d59221426b4cab2a_a18c8186b4de93451d59221426b4cab2a}{set\+Interactable\+Positions}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}{interact\+With\+Menu\+Items}} ()
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ $>$ \& \mbox{\hyperlink{class_pirate_game_1_1_menu_a1f1b7cf033c4402af929aa52fe04bb0e_a1f1b7cf033c4402af929aa52fe04bb0e}{get\+Interactables}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767}{float\+To\+String}} (float number, int decimal\+Places=2)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Font \& \mbox{\hyperlink{class_pirate_game_1_1_menu_a8e2cda68dcab9bcfab54e531d5ca9bd9_a8e2cda68dcab9bcfab54e531d5ca9bd9}{font}} = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_font_handler_a6e7f1b64b90d51339f8bf86c1212f98d_a6e7f1b64b90d51339f8bf86c1212f98d}{Global\+Font\+Handler\+::get\+Instance}}().get\+Global\+Font()
+\item 
+sf\+::\+Render\+Window \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}{window}} = nullptr
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_menu_a797a747eb919730b7ce58b45c774c9cb_a797a747eb919730b7ce58b45c774c9cb}{background}}
+\item 
+sf\+::\+Sprite \mbox{\hyperlink{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9}{menu}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}{interactables}}
+\item 
+std\+::string \mbox{\hyperlink{class_pirate_game_1_1_menu_ae36288a2909158a0a0673aa225ddebdb_ae36288a2909158a0a0673aa225ddebdb}{title}} = "{}Title not set"{}
+\item 
+sf\+::\+Text \mbox{\hyperlink{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420}{title\+Text}}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_menu_a3ec588c10bf6d12ff15f486e35c0582b_a3ec588c10bf6d12ff15f486e35c0582b}{background\+Scale}} = \{ 1, 1 \}
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_pirate_game_1_1_menu_ad215314e0a79b0534bf898fa04f431ef_ad215314e0a79b0534bf898fa04f431ef}{menu\+Scale}} = \{ 1, 1 \}
+\item 
+sf\+::\+Color \mbox{\hyperlink{class_pirate_game_1_1_menu_a1527c6ee0109cc6fd0d0fa64df75b5f4_a1527c6ee0109cc6fd0d0fa64df75b5f4}{text\+Color}} = sf\+::\+Color(0, 0, 0, 200)
+\item 
+unsigned \mbox{\hyperlink{class_pirate_game_1_1_menu_a6ce5a2285e0c370a78a79200335b05de_a6ce5a2285e0c370a78a79200335b05de}{text\+Size}} = 20u
+\item 
+unsigned \mbox{\hyperlink{class_pirate_game_1_1_menu_a4cb0d9f41b37b5381abbd6b5f6bbd2a2_a4cb0d9f41b37b5381abbd6b5f6bbd2a2}{interactable\+Text\+Size}} = 10u
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_menu_a26777840c3bd0b4332aa2a2910dd5490_a26777840c3bd0b4332aa2a2910dd5490}{padding}} = 10.\+0f
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_menu_a809c3a77071b35903d4c29777935f1d6_a809c3a77071b35903d4c29777935f1d6}{GSM}} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_menu_ae78b2307f231406af5c9c8dc73f66217_ae78b2307f231406af5c9c8dc73f66217}{is\+Menu\+Open}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_menu_aff8b0b625241e5d5509775caac3cb66e_aff8b0b625241e5d5509775caac3cb66e}{redraw}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_menu_a287eb42a8378ce0d7b4f5b64b70cd5b0_a287eb42a8378ce0d7b4f5b64b70cd5b0}{position\+Updated}} = false
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_menu_a50c327637bed4e6d0bfd27391e4fff48_a50c327637bed4e6d0bfd27391e4fff48}{was\+Button\+Pressed\+Last\+Frame}} = false
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_pirate_game_1_1_menu_a50d3fb6e23faddea1a5872ae70960c7a_a50d3fb6e23faddea1a5872ae70960c7a}{total\+Pause\+Duration}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00024}{24}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7}\label{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7} 
+\index{PirateGame::Menu@{PirateGame::Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Menu\+::\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00026}{26}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_menu_ae39d4637f1da16e425c1eb40c24506b7_ae39d4637f1da16e425c1eb40c24506b7_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_menu_a81992f7e69ad5e3d74cbdfa7221a657d_a81992f7e69ad5e3d74cbdfa7221a657d}\label{class_pirate_game_1_1_menu_a81992f7e69ad5e3d74cbdfa7221a657d_a81992f7e69ad5e3d74cbdfa7221a657d} 
+\index{PirateGame::Menu@{PirateGame::Menu}!````~Menu@{\texorpdfstring{$\sim$}{\string~}Menu}}
+\index{````~Menu@{\texorpdfstring{$\sim$}{\string~}Menu}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Menu()}{\string~Menu()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Menu\+::\texorpdfstring{$\sim$}{\string~}\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00033}{33}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_menu_af25b85eb0f77a928795263982afca72c_af25b85eb0f77a928795263982afca72c}\label{class_pirate_game_1_1_menu_af25b85eb0f77a928795263982afca72c_af25b85eb0f77a928795263982afca72c} 
+\index{PirateGame::Menu@{PirateGame::Menu}!addInteractablesToMenu@{addInteractablesToMenu}}
+\index{addInteractablesToMenu@{addInteractablesToMenu}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{addInteractablesToMenu()}{addInteractablesToMenu()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Menu\+::add\+Interactables\+To\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_in_game_h_u_d_a82cec8172c1312480f521a9c949c9e02_a82cec8172c1312480f521a9c949c9e02}{Pirate\+Game\+::\+In\+Game\+HUD}}, \mbox{\hyperlink{class_pirate_game_1_1_island_menu_aea15e9c09c71b449ece20386964100fe_aea15e9c09c71b449ece20386964100fe}{Pirate\+Game\+::\+Island\+Menu}}, \mbox{\hyperlink{class_pirate_game_1_1_options_menu_ac2aa762c88e629d90c02ae3f673d943f_ac2aa762c88e629d90c02ae3f673d943f}{Pirate\+Game\+::\+Options\+Menu}}, and \mbox{\hyperlink{class_pirate_game_1_1_start_menu_a2b25ce3e2d927005e7cc49fe256c2af5_a2b25ce3e2d927005e7cc49fe256c2af5}{Pirate\+Game\+::\+Start\+Menu}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9}\label{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9} 
+\index{PirateGame::Menu@{PirateGame::Menu}!addInteractableToMenu@{addInteractableToMenu}}
+\index{addInteractableToMenu@{addInteractableToMenu}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{addInteractableToMenu()}{addInteractableToMenu()}}
+{\footnotesize\ttfamily void Menu\+::add\+Interactable\+To\+Menu (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$}]{interactable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_menu___p_g_8cpp_source}{Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9_a256554b4d372def295062a76351230e9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6}\label{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6} 
+\index{PirateGame::Menu@{PirateGame::Menu}!draw@{draw}}
+\index{draw@{draw}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Menu\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_pirate_game_1_1_in_game_h_u_d_a767dc4fec0e06a06a56cd55af8887e42_a767dc4fec0e06a06a56cd55af8887e42}{Pirate\+Game\+::\+In\+Game\+HUD}}, \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a033e176d81986a92d34e121d2cd59258_a033e176d81986a92d34e121d2cd59258}{Pirate\+Game\+::\+Island\+Menu}}, and \mbox{\hyperlink{class_pirate_game_1_1_options_menu_a77301182d127cf85abf33fb9f4750097_a77301182d127cf85abf33fb9f4750097}{Pirate\+Game\+::\+Options\+Menu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_menu___p_g_8cpp_source}{Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_menu_a2cd7ab9901a8f42a3ae977d0774398a6_a2cd7ab9901a8f42a3ae977d0774398a6_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767}\label{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767} 
+\index{PirateGame::Menu@{PirateGame::Menu}!floatToString@{floatToString}}
+\index{floatToString@{floatToString}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{floatToString()}{floatToString()}}
+{\footnotesize\ttfamily std\+::string Pirate\+Game\+::\+Menu\+::float\+To\+String (\begin{DoxyParamCaption}\item[{float}]{number,  }\item[{int}]{decimal\+Places = {\ttfamily 2} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00083}{83}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_menu_a1a2c717d58240add16ecfee9972ab767_a1a2c717d58240add16ecfee9972ab767_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_menu_a1f1b7cf033c4402af929aa52fe04bb0e_a1f1b7cf033c4402af929aa52fe04bb0e}\label{class_pirate_game_1_1_menu_a1f1b7cf033c4402af929aa52fe04bb0e_a1f1b7cf033c4402af929aa52fe04bb0e} 
+\index{PirateGame::Menu@{PirateGame::Menu}!getInteractables@{getInteractables}}
+\index{getInteractables@{getInteractables}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{getInteractables()}{getInteractables()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}} $>$ $>$ \& Pirate\+Game\+::\+Menu\+::get\+Interactables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f}\label{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f} 
+\index{PirateGame::Menu@{PirateGame::Menu}!interactWithMenuItems@{interactWithMenuItems}}
+\index{interactWithMenuItems@{interactWithMenuItems}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{interactWithMenuItems()}{interactWithMenuItems()}}
+{\footnotesize\ttfamily void Menu\+::interact\+With\+Menu\+Items (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{class_pirate_game_1_1_options_menu_aa3ae3e9ca7a8ee680aae7c142941d498_aa3ae3e9ca7a8ee680aae7c142941d498}{Pirate\+Game\+::\+Options\+Menu}}.
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_menu___p_g_8cpp_source}{Menu\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_menu_aceaf603905fd949bf7969100fba9a79f_aceaf603905fd949bf7969100fba9a79f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_menu_a18c8186b4de93451d59221426b4cab2a_a18c8186b4de93451d59221426b4cab2a}\label{class_pirate_game_1_1_menu_a18c8186b4de93451d59221426b4cab2a_a18c8186b4de93451d59221426b4cab2a} 
+\index{PirateGame::Menu@{PirateGame::Menu}!setInteractablePositions@{setInteractablePositions}}
+\index{setInteractablePositions@{setInteractablePositions}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{setInteractablePositions()}{setInteractablePositions()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Menu\+::set\+Interactable\+Positions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_in_game_h_u_d_a878b84050756f164fa1956ae40510de1_a878b84050756f164fa1956ae40510de1}{Pirate\+Game\+::\+In\+Game\+HUD}}, \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a10d3a1555c9f783a4f0fb03c7be71bc7_a10d3a1555c9f783a4f0fb03c7be71bc7}{Pirate\+Game\+::\+Island\+Menu}}, \mbox{\hyperlink{class_pirate_game_1_1_options_menu_a75f9f95a09a0621b31be9a040506f428_a75f9f95a09a0621b31be9a040506f428}{Pirate\+Game\+::\+Options\+Menu}}, and \mbox{\hyperlink{class_pirate_game_1_1_start_menu_a884f665d10966573cea6ecb4c283defe_a884f665d10966573cea6ecb4c283defe}{Pirate\+Game\+::\+Start\+Menu}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_af37430becf7c9a51839c9f987641e4fe_af37430becf7c9a51839c9f987641e4fe}\label{class_pirate_game_1_1_menu_af37430becf7c9a51839c9f987641e4fe_af37430becf7c9a51839c9f987641e4fe} 
+\index{PirateGame::Menu@{PirateGame::Menu}!setUpMenu@{setUpMenu}}
+\index{setUpMenu@{setUpMenu}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{setUpMenu()}{setUpMenu()}}
+{\footnotesize\ttfamily virtual void Pirate\+Game\+::\+Menu\+::set\+Up\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_pirate_game_1_1_in_game_h_u_d_a13b7614a0828e4a3b37523394a853be8_a13b7614a0828e4a3b37523394a853be8}{Pirate\+Game\+::\+In\+Game\+HUD}}, \mbox{\hyperlink{class_pirate_game_1_1_island_menu_a129adec3a945cb8749d4da503d3682e2_a129adec3a945cb8749d4da503d3682e2}{Pirate\+Game\+::\+Island\+Menu}}, \mbox{\hyperlink{class_pirate_game_1_1_options_menu_a26f02fe03683c0ce6a5d63d3dd251d62_a26f02fe03683c0ce6a5d63d3dd251d62}{Pirate\+Game\+::\+Options\+Menu}}, and \mbox{\hyperlink{class_pirate_game_1_1_start_menu_a82d72194e0bb736ff4511d26aeb47f3b_a82d72194e0bb736ff4511d26aeb47f3b}{Pirate\+Game\+::\+Start\+Menu}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_menu_a797a747eb919730b7ce58b45c774c9cb_a797a747eb919730b7ce58b45c774c9cb}\label{class_pirate_game_1_1_menu_a797a747eb919730b7ce58b45c774c9cb_a797a747eb919730b7ce58b45c774c9cb} 
+\index{PirateGame::Menu@{PirateGame::Menu}!background@{background}}
+\index{background@{background}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{background}{background}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Menu\+::background\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00059}{59}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a3ec588c10bf6d12ff15f486e35c0582b_a3ec588c10bf6d12ff15f486e35c0582b}\label{class_pirate_game_1_1_menu_a3ec588c10bf6d12ff15f486e35c0582b_a3ec588c10bf6d12ff15f486e35c0582b} 
+\index{PirateGame::Menu@{PirateGame::Menu}!backgroundScale@{backgroundScale}}
+\index{backgroundScale@{backgroundScale}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{backgroundScale}{backgroundScale}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Menu\+::background\+Scale = \{ 1, 1 \}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00070}{70}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a8e2cda68dcab9bcfab54e531d5ca9bd9_a8e2cda68dcab9bcfab54e531d5ca9bd9}\label{class_pirate_game_1_1_menu_a8e2cda68dcab9bcfab54e531d5ca9bd9_a8e2cda68dcab9bcfab54e531d5ca9bd9} 
+\index{PirateGame::Menu@{PirateGame::Menu}!font@{font}}
+\index{font@{font}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily sf\+::\+Font\& Pirate\+Game\+::\+Menu\+::font = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_font_handler_a6e7f1b64b90d51339f8bf86c1212f98d_a6e7f1b64b90d51339f8bf86c1212f98d}{Global\+Font\+Handler\+::get\+Instance}}().get\+Global\+Font()\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00055}{55}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a809c3a77071b35903d4c29777935f1d6_a809c3a77071b35903d4c29777935f1d6}\label{class_pirate_game_1_1_menu_a809c3a77071b35903d4c29777935f1d6_a809c3a77071b35903d4c29777935f1d6} 
+\index{PirateGame::Menu@{PirateGame::Menu}!GSM@{GSM}}
+\index{GSM@{GSM}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{GSM}{GSM}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_global_game_state_manager}{Global\+Game\+State\+Manager}}\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Menu\+::\+GSM = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00080}{80}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1}\label{class_pirate_game_1_1_menu_a5bf1f33f9cd689ca0d26e34f1838ffb1_a5bf1f33f9cd689ca0d26e34f1838ffb1} 
+\index{PirateGame::Menu@{PirateGame::Menu}!interactables@{interactables}}
+\index{interactables@{interactables}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{interactables}{interactables}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_interactable}{Interactable}}$>$ $>$ Pirate\+Game\+::\+Menu\+::interactables\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00063}{63}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a4cb0d9f41b37b5381abbd6b5f6bbd2a2_a4cb0d9f41b37b5381abbd6b5f6bbd2a2}\label{class_pirate_game_1_1_menu_a4cb0d9f41b37b5381abbd6b5f6bbd2a2_a4cb0d9f41b37b5381abbd6b5f6bbd2a2} 
+\index{PirateGame::Menu@{PirateGame::Menu}!interactableTextSize@{interactableTextSize}}
+\index{interactableTextSize@{interactableTextSize}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{interactableTextSize}{interactableTextSize}}
+{\footnotesize\ttfamily unsigned Pirate\+Game\+::\+Menu\+::interactable\+Text\+Size = 10u\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00076}{76}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_ae78b2307f231406af5c9c8dc73f66217_ae78b2307f231406af5c9c8dc73f66217}\label{class_pirate_game_1_1_menu_ae78b2307f231406af5c9c8dc73f66217_ae78b2307f231406af5c9c8dc73f66217} 
+\index{PirateGame::Menu@{PirateGame::Menu}!isMenuOpen@{isMenuOpen}}
+\index{isMenuOpen@{isMenuOpen}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{isMenuOpen}{isMenuOpen}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Menu\+::is\+Menu\+Open = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00047}{47}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9}\label{class_pirate_game_1_1_menu_aad4d16d94ff5f052eeacfea84fc550a9_aad4d16d94ff5f052eeacfea84fc550a9} 
+\index{PirateGame::Menu@{PirateGame::Menu}!menu@{menu}}
+\index{menu@{menu}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{menu}{menu}}
+{\footnotesize\ttfamily sf\+::\+Sprite Pirate\+Game\+::\+Menu\+::menu\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00060}{60}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_ad215314e0a79b0534bf898fa04f431ef_ad215314e0a79b0534bf898fa04f431ef}\label{class_pirate_game_1_1_menu_ad215314e0a79b0534bf898fa04f431ef_ad215314e0a79b0534bf898fa04f431ef} 
+\index{PirateGame::Menu@{PirateGame::Menu}!menuScale@{menuScale}}
+\index{menuScale@{menuScale}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{menuScale}{menuScale}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Pirate\+Game\+::\+Menu\+::menu\+Scale = \{ 1, 1 \}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00071}{71}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a26777840c3bd0b4332aa2a2910dd5490_a26777840c3bd0b4332aa2a2910dd5490}\label{class_pirate_game_1_1_menu_a26777840c3bd0b4332aa2a2910dd5490_a26777840c3bd0b4332aa2a2910dd5490} 
+\index{PirateGame::Menu@{PirateGame::Menu}!padding@{padding}}
+\index{padding@{padding}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{padding}{padding}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Menu\+::padding = 10.\+0f\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00077}{77}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a287eb42a8378ce0d7b4f5b64b70cd5b0_a287eb42a8378ce0d7b4f5b64b70cd5b0}\label{class_pirate_game_1_1_menu_a287eb42a8378ce0d7b4f5b64b70cd5b0_a287eb42a8378ce0d7b4f5b64b70cd5b0} 
+\index{PirateGame::Menu@{PirateGame::Menu}!positionUpdated@{positionUpdated}}
+\index{positionUpdated@{positionUpdated}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{positionUpdated}{positionUpdated}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Menu\+::position\+Updated = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00049}{49}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_aff8b0b625241e5d5509775caac3cb66e_aff8b0b625241e5d5509775caac3cb66e}\label{class_pirate_game_1_1_menu_aff8b0b625241e5d5509775caac3cb66e_aff8b0b625241e5d5509775caac3cb66e} 
+\index{PirateGame::Menu@{PirateGame::Menu}!redraw@{redraw}}
+\index{redraw@{redraw}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{redraw}{redraw}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Menu\+::redraw = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00048}{48}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a1527c6ee0109cc6fd0d0fa64df75b5f4_a1527c6ee0109cc6fd0d0fa64df75b5f4}\label{class_pirate_game_1_1_menu_a1527c6ee0109cc6fd0d0fa64df75b5f4_a1527c6ee0109cc6fd0d0fa64df75b5f4} 
+\index{PirateGame::Menu@{PirateGame::Menu}!textColor@{textColor}}
+\index{textColor@{textColor}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{textColor}{textColor}}
+{\footnotesize\ttfamily sf\+::\+Color Pirate\+Game\+::\+Menu\+::text\+Color = sf\+::\+Color(0, 0, 0, 200)\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00073}{73}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a6ce5a2285e0c370a78a79200335b05de_a6ce5a2285e0c370a78a79200335b05de}\label{class_pirate_game_1_1_menu_a6ce5a2285e0c370a78a79200335b05de_a6ce5a2285e0c370a78a79200335b05de} 
+\index{PirateGame::Menu@{PirateGame::Menu}!textSize@{textSize}}
+\index{textSize@{textSize}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{textSize}{textSize}}
+{\footnotesize\ttfamily unsigned Pirate\+Game\+::\+Menu\+::text\+Size = 20u\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00075}{75}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_ae36288a2909158a0a0673aa225ddebdb_ae36288a2909158a0a0673aa225ddebdb}\label{class_pirate_game_1_1_menu_ae36288a2909158a0a0673aa225ddebdb_ae36288a2909158a0a0673aa225ddebdb} 
+\index{PirateGame::Menu@{PirateGame::Menu}!title@{title}}
+\index{title@{title}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily std\+::string Pirate\+Game\+::\+Menu\+::title = "{}Title not set"{}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00066}{66}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420}\label{class_pirate_game_1_1_menu_a67d3aaa61eb5f48d06ae9c4770de2420_a67d3aaa61eb5f48d06ae9c4770de2420} 
+\index{PirateGame::Menu@{PirateGame::Menu}!titleText@{titleText}}
+\index{titleText@{titleText}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{titleText}{titleText}}
+{\footnotesize\ttfamily sf\+::\+Text Pirate\+Game\+::\+Menu\+::title\+Text\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00067}{67}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a50d3fb6e23faddea1a5872ae70960c7a_a50d3fb6e23faddea1a5872ae70960c7a}\label{class_pirate_game_1_1_menu_a50d3fb6e23faddea1a5872ae70960c7a_a50d3fb6e23faddea1a5872ae70960c7a} 
+\index{PirateGame::Menu@{PirateGame::Menu}!totalPauseDuration@{totalPauseDuration}}
+\index{totalPauseDuration@{totalPauseDuration}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{totalPauseDuration}{totalPauseDuration}}
+{\footnotesize\ttfamily sf\+::\+Time Pirate\+Game\+::\+Menu\+::total\+Pause\+Duration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00051}{51}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_a50c327637bed4e6d0bfd27391e4fff48_a50c327637bed4e6d0bfd27391e4fff48}\label{class_pirate_game_1_1_menu_a50c327637bed4e6d0bfd27391e4fff48_a50c327637bed4e6d0bfd27391e4fff48} 
+\index{PirateGame::Menu@{PirateGame::Menu}!wasButtonPressedLastFrame@{wasButtonPressedLastFrame}}
+\index{wasButtonPressedLastFrame@{wasButtonPressedLastFrame}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{wasButtonPressedLastFrame}{wasButtonPressedLastFrame}}
+{\footnotesize\ttfamily bool Pirate\+Game\+::\+Menu\+::was\+Button\+Pressed\+Last\+Frame = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00050}{50}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9}\label{class_pirate_game_1_1_menu_aad7479e2e20fbd199d977ea9f18978c9_aad7479e2e20fbd199d977ea9f18978c9} 
+\index{PirateGame::Menu@{PirateGame::Menu}!window@{window}}
+\index{window@{window}!PirateGame::Menu@{PirateGame::Menu}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily sf\+::\+Render\+Window\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Menu\+::window = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \mbox{\hyperlink{_menu___p_g_8h_source_l00056}{56}} of file \mbox{\hyperlink{_menu___p_g_8h_source}{Menu\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_menu___p_g_8h}{Menu\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_menu___p_g_8cpp}{Menu\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

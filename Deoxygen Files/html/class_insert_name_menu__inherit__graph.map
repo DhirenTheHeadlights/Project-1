@@ -1,0 +1,5 @@
+<map id="InsertNameMenu" name="InsertNameMenu">
+<area shape="rect" id="Node000001" title="This class is for the insert name menu, it is used to get the player&#39;s name and to store it in the sa..." alt="" coords="5,80,125,107"/>
+<area shape="rect" id="Node000002" href="$class_menu.html" title=" " alt="" coords="38,5,92,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,48,68,80,62,80,62,48"/>
+</map>

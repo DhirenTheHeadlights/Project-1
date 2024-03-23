@@ -1,0 +1,79 @@
+\doxysection{Save\+Data\+\_\+\+AT.\+cpp}
+\hypertarget{_save_data___a_t_8cpp_source}{}\label{_save_data___a_t_8cpp_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/SaveData\_AT.cpp@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Resource/SaveData\_AT.cpp}}
+\mbox{\hyperlink{_save_data___a_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_save_data___a_t_8h}{SaveData\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00003}\mbox{\hyperlink{class_save_data_a2383d23b0937fbe4fcc6a62f674070cc}{00003}}\ \mbox{\hyperlink{class_save_data_a2383d23b0937fbe4fcc6a62f674070cc}{SaveData::SaveData}}(\textcolor{keyword}{const}\ std::string\&\ givenFileName)\ :\ filename(givenFileName)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00004}00004\ \ \ \ \ leaderboard\ =\ \mbox{\hyperlink{class_save_data_a88033bab9dc56b7048d4f77e27bba206}{file\_read}}();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{keywordflow}{if}\ (!leaderboard.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00006}00006\ \ \ \ \ \ \ \ \ sessionHigh\ =\ leaderboard.front().second;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00007}00007\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00009}00009\ \ \ \ \ \ \ \ \ sessionHigh\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00010}00010\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00013}\mbox{\hyperlink{class_save_data_a4c3f8821006401f67c9dc4c87adbc8ed}{00013}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_data_a4c3f8821006401f67c9dc4c87adbc8ed}{SaveData::addData}}(\textcolor{keyword}{const}\ std::vector<std::pair<std::string,\ int>>\&\ newScores)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ entry\ :\ newScores)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ leaderboard.push\_back(entry);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry.second\ >\ sessionHigh)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ sessionHigh\ =\ entry.second;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00020}00020\ \ \ \ \ std::sort(leaderboard.begin(),\ leaderboard.end(),}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ [](\textcolor{keyword}{const}\ std::pair<std::string,\ int>\&\ a,\ \textcolor{keyword}{const}\ std::pair<std::string,\ int>\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.second\ >\ b.second;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00024}00024\ \ \ \ \ \mbox{\hyperlink{class_save_data_a28a761f074c909d0939891b741162a01}{file\_write}}();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00027}\mbox{\hyperlink{class_save_data_a15f719423e521d38425028105fcdd575}{00027}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_data_a15f719423e521d38425028105fcdd575}{SaveData::clearData}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00028}00028\ \ \ \ \ leaderboard.clear();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00029}00029\ \ \ \ \ sessionHigh\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00030}00030\ \ \ \ \ \mbox{\hyperlink{class_save_data_a28a761f074c909d0939891b741162a01}{file\_write}}();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00033}\mbox{\hyperlink{class_save_data_a28a761f074c909d0939891b741162a01}{00033}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_save_data_a28a761f074c909d0939891b741162a01}{SaveData::file\_write}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00034}00034\ \ \ \ \ std::ofstream\ outdata(filename);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (!outdata)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ file\ could\ not\ be\ opened"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [name,\ score]\ :\ leaderboard)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ outdata\ <<\ name\ <<\ \textcolor{stringliteral}{"{},"{}}\ <<\ score\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00043}00043\ \ \ \ \ outdata.close();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00046}\mbox{\hyperlink{class_save_data_a88033bab9dc56b7048d4f77e27bba206}{00046}}\ std::vector<std::pair<std::string,\ int>>\ \mbox{\hyperlink{class_save_data_a88033bab9dc56b7048d4f77e27bba206}{SaveData::file\_read}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00047}00047\ \ \ \ \ std::fstream\ indata(filename);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00048}00048\ \ \ \ \ std::vector<std::pair<std::string,\ int>>\ data;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (!indata)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Error:\ file\ could\ not\ be\ opened"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;\ \textcolor{comment}{//\ If\ the\ file\ couldn't\ be\ opened\ or\ doesn't\ exist,\ return\ an\ empty\ vector}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00054}00054\ \ \ \ \ std::string\ filetext;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{int}\ lineCount\ =\ 0;\ \textcolor{comment}{//\ Initialize\ a\ counter\ for\ the\ number\ of\ lines\ read}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(indata,\ filetext)\ \&\&\ lineCount\ <\ 10)\ \{\ \textcolor{comment}{//\ Check\ both\ for\ EOF\ and\ line\ count}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!filetext.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ commaPos\ =\ filetext.find(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ filetext.substr(0,\ commaPos);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ score\ =\ std::stoi(filetext.substr(commaPos\ +\ 1));}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ data.emplace\_back(name,\ score);}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ lineCount++;\ \textcolor{comment}{//\ Increment\ the\ counter\ for\ each\ line\ read}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00066}00066\ \ \ \ \ indata.close();}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Sort\ and\ return\ the\ read\ data}}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00068}00068\ \ \ \ \ std::sort(data.begin(),\ data.end(),\ [](\textcolor{keyword}{const}\ std::pair<std::string,\ int>\&\ a,\ \textcolor{keyword}{const}\ std::pair<std::string,\ int>\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ return\ a.second\ >\ b.second;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{\Hypertarget{_save_data___a_t_8cpp_source_l00073}00073\ \}}
+
+\end{DoxyCode}

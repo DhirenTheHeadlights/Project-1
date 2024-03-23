@@ -1,0 +1,7 @@
+<map id="Interactable::draw" name="Interactable::draw">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,129,40"/>
+<area shape="rect" id="Node000002" href="$class_player_input_box.html#a3483a4687690bc7ef67a127009e8e7ac" title=" " alt="" coords="177,5,358,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,24,161,24,161,29,129,29"/>
+<area shape="rect" id="Node000003" href="$class_player_input_box.html#a360a7fdb16a91fb4126abe590ca3958d" title=" " alt="" coords="406,5,596,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="358,24,390,24,390,29,358,29"/>
+</map>

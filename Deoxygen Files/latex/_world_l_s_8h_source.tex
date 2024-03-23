@@ -1,0 +1,39 @@
+\doxysection{World\+LS.\+h}
+\hypertarget{_world_l_s_8h_source}{}\label{_world_l_s_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/LightAndShadow/Header/WorldLS.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/LightAndShadow/Header/WorldLS.h}}
+\mbox{\hyperlink{_world_l_s_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00008}\mbox{\hyperlink{namespace_light_and_shadow}{00008}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_light_and_shadow}{LightAndShadow}}\ \{}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00009}\mbox{\hyperlink{class_light_and_shadow_1_1_world}{00009}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_light_and_shadow_1_1_world}{World}}\ \{}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_light_and_shadow_1_1_world_a00985c4e0cb3b402e13698319a63cd62}{World}}(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_light_and_shadow_1_1_world_a986a575b4bfafc40fb7ae6aee47294bf}{createWorld}}(sf::Event\ event);}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ initializeGameEntities();}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ generateObstacles();}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ std::vector<sf::Vector2f>\ calculateShadow(\textcolor{keyword}{const}\ sf::RectangleShape\&\ box,\ \textcolor{keyword}{const}\ sf::Vector2f\&\ lightPos);}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ sf::ConvexShape\ createShadowShape(\textcolor{keyword}{const}\ std::vector<sf::Vector2f>\&\ points);}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}};}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ sf::RectangleShape\ background;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ sf::CircleShape\ lightEmitter;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ sf::ConvexShape\ lightShape;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ sf::ConvexShape\ player;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ sf::Clock\ mainClock;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ std::vector<sf::RectangleShape>\ obstacles;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ obstacleSize\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ playerSize\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ lightEmitterSize\ =\ 30;}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00032}00032\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_world_l_s_8h_source_l00033}00033\ \}}
+
+\end{DoxyCode}

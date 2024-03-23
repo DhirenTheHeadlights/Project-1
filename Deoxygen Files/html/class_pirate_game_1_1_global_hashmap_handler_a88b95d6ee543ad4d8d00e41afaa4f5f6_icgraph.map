@@ -1,0 +1,9 @@
+<map id="PirateGame::GlobalHashmapHandler::getLandMassHashmap" name="PirateGame::GlobalHashmapHandler::getLandMassHashmap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="256,72,462,115"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_collision_manager.html#a7bf91ab70e6366e491e2cb664cc0c723" title=" " alt="" coords="8,5,205,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,70,189,51,191,46,262,65"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_land_mass_handler.html#a958e82fa0250a48b203aa3708d26537f" title=" " alt="" coords="5,72,208,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,96,208,96,208,91,240,91"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_land_mass_handler.html#a93defdfcdb7ff2a41c80296289b4bfbd" title=" " alt="" coords="5,139,208,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="262,122,191,141,189,135,260,117"/>
+</map>

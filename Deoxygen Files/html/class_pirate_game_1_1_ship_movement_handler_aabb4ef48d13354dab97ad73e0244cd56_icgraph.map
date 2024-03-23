@@ -1,0 +1,9 @@
+<map id="PirateGame::ShipMovementHandler::getDroppedAnchor" name="PirateGame::ShipMovementHandler::getDroppedAnchor">
+<area shape="rect" id="Node000001" title=" " alt="" coords="461,39,644,81"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_player_ship_input_handler.html#a7c62a971b7e11876663f538fb2d41bf8" title=" " alt="" coords="224,5,413,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="445,47,413,43,414,38,446,42"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_in_game_h_u_d.html#a5db9fbf2e7e4e5ec419e0393ef8e52a5" title=" " alt="" coords="225,72,412,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="446,78,413,83,412,77,445,73"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_in_game_h_u_d.html#a767dc4fec0e06a06a56cd55af8887e42" title=" " alt="" coords="5,72,176,115"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="209,96,176,96,176,91,209,91"/>
+</map>

@@ -1,0 +1,57 @@
+\chapter{Project-\/1}
+\hypertarget{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e}{}\label{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e}\index{Project-\/1@{Project-\/1}}
+\label{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md0}%
+{\bfseries{DNS \doxylink{class_game}{Game} Development Project}}\hypertarget{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item {\bfseries{SFML}}\+: Ensure you have the latest version of SFML installed on your computer. If not, download it from the official site \href{https://www.sfml-dev.org/download.php}{\texttt{ here}}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Setting Up SFML\+\_\+\+PATH Environment Variable}{Setting Up SFML\+\_\+\+PATH Environment Variable}}\label{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md2}
+To streamline the setup process, we will be setting an environment variable named {\ttfamily SFML\+\_\+\+PATH}. This variable will point to the root directory of your SFML installation.
+
+
+\begin{DoxyEnumerate}
+\item Open windows search and search for "{}\+Edit the System Environment Variables"{}.
+\item Click on the {\ttfamily Advanced} tab on the top panel.
+\item Click on the {\ttfamily Environment Variables} button in the bottom right corner.
+\item Under the {\ttfamily System Variables} section, click the {\ttfamily New} button.
+\item For the variable name, enter {\ttfamily SFML\+\_\+\+PATH}.
+\item For the variable value, enter the path to the root of your SFML directory (e.\+g., {\ttfamily C\+:\textbackslash{}SFML-\/2.\+5.\+1}).
+\item Click {\ttfamily OK} on all dialog boxes to save and exit.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Visual Studio Configuration}{Visual Studio Configuration}}\label{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\bfseries{Include Directories}}\+:
+\begin{DoxyEnumerate}
+\item Go to {\ttfamily Project -\/\texorpdfstring{$>$}{>} Properties -\/\texorpdfstring{$>$}{>} C++ -\/\texorpdfstring{$>$}{>} General -\/\texorpdfstring{$>$}{>} Additional Include Directories}.
+\item Verify {\ttfamily \$(SFML\+\_\+\+PATH)\textbackslash{}include} is present and that it points to you directory. You can verify by selecting the dropdown arrow and clicking \textquotesingle{}Edit\textquotesingle{} to see the full path.
+\end{DoxyEnumerate}
+\item {\bfseries{Lib Directories}}\+:
+\begin{DoxyEnumerate}
+\item Go to {\ttfamily Project -\/\texorpdfstring{$>$}{>} Properties -\/\texorpdfstring{$>$}{>} Linker -\/\texorpdfstring{$>$}{>} General -\/\texorpdfstring{$>$}{>} Additional Library Directories}.
+\item Add {\ttfamily \$(SFML\+\_\+\+PATH)\textbackslash{}lib} if it is not already present.
+\end{DoxyEnumerate}
+\item {\bfseries{Linking Libraries}}\+:
+\begin{DoxyEnumerate}
+\item Go to {\ttfamily Project -\/\texorpdfstring{$>$}{>} Properties -\/\texorpdfstring{$>$}{>} Linker -\/\texorpdfstring{$>$}{>} Input -\/\texorpdfstring{$>$}{>} Additional Dependencies}.
+\item Make sure the names of the required SFML {\ttfamily .lib} files, like {\ttfamily sfml-\/graphics-\/s.\+lib}, {\ttfamily sfml-\/window.\+lib-\/s}, etc are in there.
+\end{DoxyEnumerate}
+\end{DoxyItemize}
+
+Make sure you run the program in "{}\+Release"{} configuration. It will not run in "{}\+Debug"{} configuration. Make sure that the "{}\+Platform"{} is set to "{}x64"{} and not "{}\+Win32"{}. If a .dll is missing, add it manually in the file explorer from the SFML bin folder.\hypertarget{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md4}{}\doxysection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{md__c_1_2_users_2_dhiren_2source_2repos_2_dhiren_the_headlights_2_project-1_2_r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Environment Variable}}\+: Ensure the {\ttfamily SFML\+\_\+\+PATH} environment variable is correctly set.
+\item {\bfseries{Directory Paths}}\+: Verify the paths in Visual Studio settings are correct.
+\item {\bfseries{SFML Version}}\+: Ensure you\textquotesingle{}re using the correct version.
+\item {\bfseries{Missing DLLs}}\+: If using dynamic linking, ensure the necessary {\ttfamily .dll} files are copied to your output directory.
+\item {\bfseries{Platform \doxylink{class_target}{Target} Mismatch}}\+: Ensure your project\textquotesingle{}s target platform matches the SFML binaries.
+\item {\bfseries{Statically Linking Libraries}}\+:
+\begin{DoxyItemize}
+\item Since we are linking SFML libraries statically, ensure {\ttfamily SFML\+\_\+\+STATIC} is defined in {\ttfamily Project -\/\texorpdfstring{$>$}{>} Properties -\/\texorpdfstring{$>$}{>} C/\+C++ -\/\texorpdfstring{$>$}{>} Preprocessor -\/\texorpdfstring{$>$}{>} Preprocessor Definitions}.
+\item Ensure you\textquotesingle{}re linking against the static runtime by going to {\ttfamily Project -\/\texorpdfstring{$>$}{>} Properties -\/\texorpdfstring{$>$}{>} C/\+C++ -\/\texorpdfstring{$>$}{>} Code Generation} and set {\ttfamily Runtime Library} to {\ttfamily /\+MT} (or {\ttfamily /\+MTd} for debug).
+\end{DoxyItemize}
+\item {\bfseries{Rebuild}}\+: Clean and rebuild the project.
+\item {\bfseries{Library Linking}}\+: Check that you\textquotesingle{}ve linked all the required libraries, especially if getting linker errors. Make sure you\textquotesingle{}re not mixing debug and release libraries.
+\item {\bfseries{Official Resources}}\+: Check the \href{https://en.sfml-dev.org/forums/}{\texttt{ official SFML forums}}. 
+\end{DoxyEnumerate}

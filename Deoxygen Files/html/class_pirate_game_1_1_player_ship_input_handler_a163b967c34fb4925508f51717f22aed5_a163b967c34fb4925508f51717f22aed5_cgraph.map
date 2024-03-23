@@ -1,0 +1,15 @@
+<map id="PirateGame::PlayerShipInputHandler::handleCannonAim" name="PirateGame::PlayerShipInputHandler::handleCannonAim">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,172,195,215"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_global_input_handler_a4cdb8e4159d465ef1c3a037ef35efe20.html#a4cdb8e4159d465ef1c3a037ef35efe20" title=" " alt="" coords="248,5,455,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,170,169,114,203,84,241,58,251,52,254,57,244,62,207,88,172,118,121,174"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_input_handler_a100bbd72a4f97fd1b521a0be611897f0.html#a100bbd72a4f97fd1b521a0be611897f0" title=" " alt="" coords="248,72,455,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,169,242,124,259,118,261,123,244,129,144,174"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_global_input_handler_a12964ec22bbc9889803a767b1108b6de.html#a12964ec22bbc9889803a767b1108b6de" title=" " alt="" coords="248,139,455,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="195,178,232,173,232,178,195,183"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_ship_cannon_handler_aa22816e3fef1adc186731ccc2442bff4.html#aa22816e3fef1adc186731ccc2442bff4" title=" " alt="" coords="245,205,458,248"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="195,203,230,208,229,213,195,209"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_ship_cannon_handler_a1bf73c7fa4cd94e56444d46b423f680a.html#a1bf73c7fa4cd94e56444d46b423f680a" title=" " alt="" coords="245,272,458,315"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="144,213,244,258,261,264,259,269,242,262,142,217"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_ship_movement_handler_a546c025610a211cbfe65e7b237676cba.html#a546c025610a211cbfe65e7b237676cba" title=" " alt="" coords="243,339,460,381"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="121,213,172,269,207,299,244,324,254,330,251,334,241,329,203,303,169,272,117,217"/>
+</map>

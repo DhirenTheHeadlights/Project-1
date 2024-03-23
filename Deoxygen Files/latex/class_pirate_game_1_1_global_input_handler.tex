@@ -1,0 +1,276 @@
+\doxysection{Pirate\+Game\+::Global\+Input\+Handler Class Reference}
+\hypertarget{class_pirate_game_1_1_global_input_handler}{}\label{class_pirate_game_1_1_global_input_handler}\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+
+
+{\ttfamily \#include $<$Global\+Input\+Handler\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a2c187b8f572593a4a0b645710f361344_a2c187b8f572593a4a0b645710f361344}{update}} ()
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_afe154268811c9b15aa45356997f89836_afe154268811c9b15aa45356997f89836}{is\+Key\+Pressed\+Once}} (sf\+::\+Keyboard\+::\+Key key)
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a12964ec22bbc9889803a767b1108b6de_a12964ec22bbc9889803a767b1108b6de}{is\+Mouse\+Button\+Pressed\+Once}} (sf\+::\+Mouse\+::\+Button button)
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a100bbd72a4f97fd1b521a0be611897f0_a100bbd72a4f97fd1b521a0be611897f0}{is\+Key\+Toggled}} (sf\+::\+Keyboard\+::\+Key key)
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a0421b64bdd28b0b8f26526f8f3acc412_a0421b64bdd28b0b8f26526f8f3acc412}{is\+Mouse\+Button\+Toggled}} (sf\+::\+Mouse\+::\+Button button)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a4cdb8e4159d465ef1c3a037ef35efe20_a4cdb8e4159d465ef1c3a037ef35efe20}{get\+Instance}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_aa38f51194b9d471d9285a95ecb94af64_aa38f51194b9d471d9285a95ecb94af64}{Global\+Input\+Handler}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_afdadbcdf6f804a68ddf17865e8349755_afdadbcdf6f804a68ddf17865e8349755}{Global\+Input\+Handler}} (\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} const \&)=delete
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} \& \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_aad668a1f41086c70da4c7c79837b8af2_aad668a1f41086c70da4c7c79837b8af2}{operator=}} (\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} const \&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ sf\+::\+Keyboard\+::\+Key, bool $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a1ea2e453600cf0de35e4ce77d44f3243_a1ea2e453600cf0de35e4ce77d44f3243}{last\+Key\+State}}
+\item 
+std\+::unordered\+\_\+map$<$ sf\+::\+Keyboard\+::\+Key, bool $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_ae49c9ffbb5ef030479fd172b39d0127b_ae49c9ffbb5ef030479fd172b39d0127b}{current\+Key\+State}}
+\item 
+std\+::unordered\+\_\+map$<$ sf\+::\+Mouse\+::\+Button, bool $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a8bd4b707344fb76d923e9c210f7bd1b7_a8bd4b707344fb76d923e9c210f7bd1b7}{last\+Button\+State}}
+\item 
+std\+::unordered\+\_\+map$<$ sf\+::\+Mouse\+::\+Button, bool $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a1713cda25abbff3fdc58c38de37edf03_a1713cda25abbff3fdc58c38de37edf03}{current\+Button\+State}}
+\item 
+std\+::unordered\+\_\+map$<$ sf\+::\+Keyboard\+::\+Key, bool $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a5e66e13824e341ea7f18dab933a8a74d_a5e66e13824e341ea7f18dab933a8a74d}{toggled\+Key\+State}}
+\item 
+std\+::unordered\+\_\+map$<$ sf\+::\+Mouse\+::\+Button, bool $>$ \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a5b0fba70f73ab78959d4fbecc4e6ff12_a5b0fba70f73ab78959d4fbecc4e6ff12}{toggled\+Button\+State}}
+\item 
+sf\+::\+Clock \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a7ce1705299981ca7ffe5063ce86b50b4_a7ce1705299981ca7ffe5063ce86b50b4}{cooldown}}
+\item 
+sf\+::\+Time \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler_a3dcd2b205c98bc3c3b2a451196c7bdda_a3dcd2b205c98bc3c3b2a451196c7bdda}{cooldown\+Time}} = sf\+::milliseconds(100)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00012}{12}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_aa38f51194b9d471d9285a95ecb94af64_aa38f51194b9d471d9285a95ecb94af64}\label{class_pirate_game_1_1_global_input_handler_aa38f51194b9d471d9285a95ecb94af64_aa38f51194b9d471d9285a95ecb94af64} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!GlobalInputHandler@{GlobalInputHandler}}
+\index{GlobalInputHandler@{GlobalInputHandler}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{GlobalInputHandler()}{GlobalInputHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Input\+Handler\+::\+Global\+Input\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_afdadbcdf6f804a68ddf17865e8349755_afdadbcdf6f804a68ddf17865e8349755}\label{class_pirate_game_1_1_global_input_handler_afdadbcdf6f804a68ddf17865e8349755_afdadbcdf6f804a68ddf17865e8349755} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!GlobalInputHandler@{GlobalInputHandler}}
+\index{GlobalInputHandler@{GlobalInputHandler}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{GlobalInputHandler()}{GlobalInputHandler()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Global\+Input\+Handler\+::\+Global\+Input\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a4cdb8e4159d465ef1c3a037ef35efe20_a4cdb8e4159d465ef1c3a037ef35efe20}\label{class_pirate_game_1_1_global_input_handler_a4cdb8e4159d465ef1c3a037ef35efe20_a4cdb8e4159d465ef1c3a037ef35efe20} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} \& Pirate\+Game\+::\+Global\+Input\+Handler\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00015}{15}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_input_handler_a4cdb8e4159d465ef1c3a037ef35efe20_a4cdb8e4159d465ef1c3a037ef35efe20_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_afe154268811c9b15aa45356997f89836_afe154268811c9b15aa45356997f89836}\label{class_pirate_game_1_1_global_input_handler_afe154268811c9b15aa45356997f89836_afe154268811c9b15aa45356997f89836} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!isKeyPressedOnce@{isKeyPressedOnce}}
+\index{isKeyPressedOnce@{isKeyPressedOnce}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{isKeyPressedOnce()}{isKeyPressedOnce()}}
+{\footnotesize\ttfamily bool Global\+Input\+Handler\+::is\+Key\+Pressed\+Once (\begin{DoxyParamCaption}\item[{sf\+::\+Keyboard\+::\+Key}]{key }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source}{Global\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_input_handler_afe154268811c9b15aa45356997f89836_afe154268811c9b15aa45356997f89836_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a100bbd72a4f97fd1b521a0be611897f0_a100bbd72a4f97fd1b521a0be611897f0}\label{class_pirate_game_1_1_global_input_handler_a100bbd72a4f97fd1b521a0be611897f0_a100bbd72a4f97fd1b521a0be611897f0} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!isKeyToggled@{isKeyToggled}}
+\index{isKeyToggled@{isKeyToggled}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{isKeyToggled()}{isKeyToggled()}}
+{\footnotesize\ttfamily bool Global\+Input\+Handler\+::is\+Key\+Toggled (\begin{DoxyParamCaption}\item[{sf\+::\+Keyboard\+::\+Key}]{key }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source}{Global\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_input_handler_a100bbd72a4f97fd1b521a0be611897f0_a100bbd72a4f97fd1b521a0be611897f0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a12964ec22bbc9889803a767b1108b6de_a12964ec22bbc9889803a767b1108b6de}\label{class_pirate_game_1_1_global_input_handler_a12964ec22bbc9889803a767b1108b6de_a12964ec22bbc9889803a767b1108b6de} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!isMouseButtonPressedOnce@{isMouseButtonPressedOnce}}
+\index{isMouseButtonPressedOnce@{isMouseButtonPressedOnce}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{isMouseButtonPressedOnce()}{isMouseButtonPressedOnce()}}
+{\footnotesize\ttfamily bool Global\+Input\+Handler\+::is\+Mouse\+Button\+Pressed\+Once (\begin{DoxyParamCaption}\item[{sf\+::\+Mouse\+::\+Button}]{button }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source}{Global\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_input_handler_a12964ec22bbc9889803a767b1108b6de_a12964ec22bbc9889803a767b1108b6de_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a0421b64bdd28b0b8f26526f8f3acc412_a0421b64bdd28b0b8f26526f8f3acc412}\label{class_pirate_game_1_1_global_input_handler_a0421b64bdd28b0b8f26526f8f3acc412_a0421b64bdd28b0b8f26526f8f3acc412} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!isMouseButtonToggled@{isMouseButtonToggled}}
+\index{isMouseButtonToggled@{isMouseButtonToggled}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{isMouseButtonToggled()}{isMouseButtonToggled()}}
+{\footnotesize\ttfamily bool Global\+Input\+Handler\+::is\+Mouse\+Button\+Toggled (\begin{DoxyParamCaption}\item[{sf\+::\+Mouse\+::\+Button}]{button }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source}{Global\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_aad668a1f41086c70da4c7c79837b8af2_aad668a1f41086c70da4c7c79837b8af2}\label{class_pirate_game_1_1_global_input_handler_aad668a1f41086c70da4c7c79837b8af2_aad668a1f41086c70da4c7c79837b8af2} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!operator=@{operator=}}
+\index{operator=@{operator=}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} \& Pirate\+Game\+::\+Global\+Input\+Handler\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_global_input_handler}{Global\+Input\+Handler}} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a2c187b8f572593a4a0b645710f361344_a2c187b8f572593a4a0b645710f361344}\label{class_pirate_game_1_1_global_input_handler_a2c187b8f572593a4a0b645710f361344_a2c187b8f572593a4a0b645710f361344} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!update@{update}}
+\index{update@{update}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Global\+Input\+Handler\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_global_input_handler___p_g_8cpp_source}{Global\+Input\+Handler\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_global_input_handler_a2c187b8f572593a4a0b645710f361344_a2c187b8f572593a4a0b645710f361344_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a7ce1705299981ca7ffe5063ce86b50b4_a7ce1705299981ca7ffe5063ce86b50b4}\label{class_pirate_game_1_1_global_input_handler_a7ce1705299981ca7ffe5063ce86b50b4_a7ce1705299981ca7ffe5063ce86b50b4} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!cooldown@{cooldown}}
+\index{cooldown@{cooldown}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{cooldown}{cooldown}}
+{\footnotesize\ttfamily sf\+::\+Clock Pirate\+Game\+::\+Global\+Input\+Handler\+::cooldown\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00045}{45}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a3dcd2b205c98bc3c3b2a451196c7bdda_a3dcd2b205c98bc3c3b2a451196c7bdda}\label{class_pirate_game_1_1_global_input_handler_a3dcd2b205c98bc3c3b2a451196c7bdda_a3dcd2b205c98bc3c3b2a451196c7bdda} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!cooldownTime@{cooldownTime}}
+\index{cooldownTime@{cooldownTime}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{cooldownTime}{cooldownTime}}
+{\footnotesize\ttfamily sf\+::\+Time Pirate\+Game\+::\+Global\+Input\+Handler\+::cooldown\+Time = sf\+::milliseconds(100)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a1713cda25abbff3fdc58c38de37edf03_a1713cda25abbff3fdc58c38de37edf03}\label{class_pirate_game_1_1_global_input_handler_a1713cda25abbff3fdc58c38de37edf03_a1713cda25abbff3fdc58c38de37edf03} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!currentButtonState@{currentButtonState}}
+\index{currentButtonState@{currentButtonState}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{currentButtonState}{currentButtonState}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$sf\+::\+Mouse\+::\+Button, bool$>$ Pirate\+Game\+::\+Global\+Input\+Handler\+::current\+Button\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00040}{40}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_ae49c9ffbb5ef030479fd172b39d0127b_ae49c9ffbb5ef030479fd172b39d0127b}\label{class_pirate_game_1_1_global_input_handler_ae49c9ffbb5ef030479fd172b39d0127b_ae49c9ffbb5ef030479fd172b39d0127b} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!currentKeyState@{currentKeyState}}
+\index{currentKeyState@{currentKeyState}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{currentKeyState}{currentKeyState}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$sf\+::\+Keyboard\+::\+Key, bool$>$ Pirate\+Game\+::\+Global\+Input\+Handler\+::current\+Key\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00038}{38}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a8bd4b707344fb76d923e9c210f7bd1b7_a8bd4b707344fb76d923e9c210f7bd1b7}\label{class_pirate_game_1_1_global_input_handler_a8bd4b707344fb76d923e9c210f7bd1b7_a8bd4b707344fb76d923e9c210f7bd1b7} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!lastButtonState@{lastButtonState}}
+\index{lastButtonState@{lastButtonState}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{lastButtonState}{lastButtonState}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$sf\+::\+Mouse\+::\+Button, bool$>$ Pirate\+Game\+::\+Global\+Input\+Handler\+::last\+Button\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00039}{39}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a1ea2e453600cf0de35e4ce77d44f3243_a1ea2e453600cf0de35e4ce77d44f3243}\label{class_pirate_game_1_1_global_input_handler_a1ea2e453600cf0de35e4ce77d44f3243_a1ea2e453600cf0de35e4ce77d44f3243} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!lastKeyState@{lastKeyState}}
+\index{lastKeyState@{lastKeyState}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{lastKeyState}{lastKeyState}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$sf\+::\+Keyboard\+::\+Key, bool$>$ Pirate\+Game\+::\+Global\+Input\+Handler\+::last\+Key\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00037}{37}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a5b0fba70f73ab78959d4fbecc4e6ff12_a5b0fba70f73ab78959d4fbecc4e6ff12}\label{class_pirate_game_1_1_global_input_handler_a5b0fba70f73ab78959d4fbecc4e6ff12_a5b0fba70f73ab78959d4fbecc4e6ff12} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!toggledButtonState@{toggledButtonState}}
+\index{toggledButtonState@{toggledButtonState}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{toggledButtonState}{toggledButtonState}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$sf\+::\+Mouse\+::\+Button, bool$>$ Pirate\+Game\+::\+Global\+Input\+Handler\+::toggled\+Button\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_global_input_handler_a5e66e13824e341ea7f18dab933a8a74d_a5e66e13824e341ea7f18dab933a8a74d}\label{class_pirate_game_1_1_global_input_handler_a5e66e13824e341ea7f18dab933a8a74d_a5e66e13824e341ea7f18dab933a8a74d} 
+\index{PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}!toggledKeyState@{toggledKeyState}}
+\index{toggledKeyState@{toggledKeyState}!PirateGame::GlobalInputHandler@{PirateGame::GlobalInputHandler}}
+\doxysubsubsection{\texorpdfstring{toggledKeyState}{toggledKeyState}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$sf\+::\+Keyboard\+::\+Key, bool$>$ Pirate\+Game\+::\+Global\+Input\+Handler\+::toggled\+Key\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_global_input_handler___p_g_8h_source_l00042}{42}} of file \mbox{\hyperlink{_global_input_handler___p_g_8h_source}{Global\+Input\+Handler\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_global_input_handler___p_g_8h}{Global\+Input\+Handler\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_global_input_handler___p_g_8cpp}{Global\+Input\+Handler\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

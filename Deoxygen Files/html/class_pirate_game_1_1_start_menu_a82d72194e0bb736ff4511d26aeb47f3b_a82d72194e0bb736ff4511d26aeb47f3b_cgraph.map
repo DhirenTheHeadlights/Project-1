@@ -1,0 +1,17 @@
+<map id="PirateGame::StartMenu::setUpMenu" name="PirateGame::StartMenu::setUpMenu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,105,164,148"/>
+<area shape="rect" id="Node000002" href="$class_pirate_game_1_1_start_menu_a2b25ce3e2d927005e7cc49fe256c2af5.html#a2b25ce3e2d927005e7cc49fe256c2af5" title=" " alt="" coords="212,72,382,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,112,196,107,196,112,164,117"/>
+<area shape="rect" id="Node000008" href="$class_pirate_game_1_1_start_menu_a884f665d10966573cea6ecb4c283defe.html#a884f665d10966573cea6ecb4c283defe" title=" " alt="" coords="213,139,381,181"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="164,136,197,142,197,147,163,142"/>
+<area shape="rect" id="Node000003" href="$class_pirate_game_1_1_global_game_state_manager_ab98af48b54e99b0dbdb231c42b5c994b.html#ab98af48b54e99b0dbdb231c42b5c994b" title=" " alt="" coords="430,5,631,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="373,69,438,50,439,55,375,74"/>
+<area shape="rect" id="Node000004" href="$class_pirate_game_1_1_global_game_state_manager_ad62c617d29c72bf2e81113a3b53aa1ab.html#ad62c617d29c72bf2e81113a3b53aa1ab" title=" " alt="" coords="430,72,631,115"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="382,91,414,91,414,96,382,96"/>
+<area shape="rect" id="Node000005" href="$class_pirate_game_1_1_start_menu_a0ccc8aedcda85d72c13abcb4721e0886.html#a0ccc8aedcda85d72c13abcb4721e0886" title=" " alt="" coords="452,139,610,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="375,113,439,131,438,136,373,118"/>
+<area shape="rect" id="Node000006" href="$class_pirate_game_1_1_menu_a256554b4d372def295062a76351230e9.html#a256554b4d372def295062a76351230e9" title=" " alt="" coords="679,105,906,148"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="610,147,664,140,665,146,611,153"/>
+<area shape="rect" id="Node000007" href="$class_pirate_game_1_1_global_texture_handler_abd67dde4db181d4afcdf8c3b1dbcef02.html#abd67dde4db181d4afcdf8c3b1dbcef02" title=" " alt="" coords="703,172,882,215"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="611,167,688,177,688,183,610,173"/>
+</map>

@@ -1,0 +1,356 @@
+\doxysection{Interactable Class Reference}
+\hypertarget{class_interactable}{}\label{class_interactable}\index{Interactable@{Interactable}}
+
+
+{\ttfamily \#include $<$Interactables\+\_\+\+AT.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Type}} \{ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da87b7760f14fbff78d8819291f36ab9a0}{Button}}
+, \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da2d9b9a764fb0be4be10e1b2fce63f561}{Slider}}
+, \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645daa5d801da80d3993000f7a44023bae9f2}{Info\+Box}}
+, \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da3a78dff074444aa19ec999411e3f6b5c}{Input\+Box}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_interactable_a6048f4ba568ca2ed8e244794840d3c37}{Interactable}} (\mbox{\hyperlink{_interactables___a_t_8h_a6d4e54d9d1f735841aa6aef72e59d6b5}{Interactable\+Function}} func, \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Type}} type)
+\item 
+void \mbox{\hyperlink{class_interactable_ac959d281b79eef952cf04e87db1fd536}{create\+Interactable}} (std\+::string name, float length, float width, float text\+Size)
+\item 
+void \mbox{\hyperlink{class_interactable_aa73f6179b6f711ac7b8b82293798f56b}{set\+Pos}} (sf\+::\+Vector2f position)
+\item 
+void \mbox{\hyperlink{class_interactable_a4aeac4394dd08090ce1b94aa37a6639a}{interact}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, sf\+::\+Clock \&cooldown)
+\item 
+void \mbox{\hyperlink{class_interactable_a5cc2598e827b8cbab9f0e367222d7a48}{draw}} (sf\+::\+Render\+Window \&\mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}}, sf\+::\+Event event)
+\item 
+void \mbox{\hyperlink{class_interactable_a73b5165998bf593353c2c6999eebeee0}{set\+Text\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_interactable_a1d10b297153cd7df0925d4bd9dfd7f34}{set\+Button\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_interactable_aa671be6614836d16a3517fa9282b9b19}{set\+Slider\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_interactable_ae7d13b56b43d421b3637dd43ebec1ea2}{set\+Slider\+Complement\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_interactable_a80c4ef688f3b3f3c031f7cb5cc98a52b}{set\+Hover\+Color}} (sf\+::\+Color color)
+\item 
+void \mbox{\hyperlink{class_interactable_aa4b2dc1f48f71cf34f6df7823b21e85a}{set\+Interactable\+Size}} (sf\+::\+Vector2f size)
+\item 
+void \mbox{\hyperlink{class_interactable_a130f73c9fd5b33b2596bbc4771c149e8}{set\+Interactable\+Text\+Size}} (float size)
+\item 
+\mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable\+::\+Type}} \mbox{\hyperlink{class_interactable_a3c53bff62d60808c69dba48f73e4e1df}{get\+Interactable\+Type}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_interactable_ae7a0db1c8075f6cb10eda70e27f0451c}{get\+Size}} () const
+\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_interactable_a0790f6e8def62b7c7b70f78cd188ebb6}{get\+Pos}} () const
+\item 
+\mbox{\hyperlink{class_player_input_box}{Player\+Input\+Box}} \& \mbox{\hyperlink{class_interactable_a4544d4f0ef3162fa1f3726f06c941e30}{get\+Slider\+Input\+Box}} ()
+\item 
+\mbox{\hyperlink{class_player_input_box}{Player\+Input\+Box}} \& \mbox{\hyperlink{class_interactable_a0a32375a2b30035f7e7e7239cd224ef7}{get\+Input\+Box}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_interactable_ada0c08a7453737b59cc33c00f2fcb12e}{get\+Input\+String}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8h_source_l00024}{24}} of file \mbox{\hyperlink{_interactables___a_t_8h_source}{Interactables\+\_\+\+AT.\+h}}.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}\label{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d} 
+\index{Interactable@{Interactable}!Type@{Type}}
+\index{Type@{Type}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable\+::\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Button@{Button}!Interactable@{Interactable}}\index{Interactable@{Interactable}!Button@{Button}}}\Hypertarget{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da87b7760f14fbff78d8819291f36ab9a0}\label{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da87b7760f14fbff78d8819291f36ab9a0} 
+Button&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Slider@{Slider}!Interactable@{Interactable}}\index{Interactable@{Interactable}!Slider@{Slider}}}\Hypertarget{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da2d9b9a764fb0be4be10e1b2fce63f561}\label{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da2d9b9a764fb0be4be10e1b2fce63f561} 
+Slider&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{InfoBox@{InfoBox}!Interactable@{Interactable}}\index{Interactable@{Interactable}!InfoBox@{InfoBox}}}\Hypertarget{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645daa5d801da80d3993000f7a44023bae9f2}\label{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645daa5d801da80d3993000f7a44023bae9f2} 
+Info\+Box&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{InputBox@{InputBox}!Interactable@{Interactable}}\index{Interactable@{Interactable}!InputBox@{InputBox}}}\Hypertarget{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da3a78dff074444aa19ec999411e3f6b5c}\label{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da3a78dff074444aa19ec999411e3f6b5c} 
+Input\+Box&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8h_source_l00027}{27}} of file \mbox{\hyperlink{_interactables___a_t_8h_source}{Interactables\+\_\+\+AT.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_interactable_a6048f4ba568ca2ed8e244794840d3c37}\label{class_interactable_a6048f4ba568ca2ed8e244794840d3c37} 
+\index{Interactable@{Interactable}!Interactable@{Interactable}}
+\index{Interactable@{Interactable}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{Interactable()}{Interactable()}}
+{\footnotesize\ttfamily Interactable\+::\+Interactable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_interactables___a_t_8h_a6d4e54d9d1f735841aa6aef72e59d6b5}{Interactable\+Function}}}]{func,  }\item[{\mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_interactable_ac959d281b79eef952cf04e87db1fd536}\label{class_interactable_ac959d281b79eef952cf04e87db1fd536} 
+\index{Interactable@{Interactable}!createInteractable@{createInteractable}}
+\index{createInteractable@{createInteractable}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{createInteractable()}{createInteractable()}}
+{\footnotesize\ttfamily void Interactable\+::create\+Interactable (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{float}]{length,  }\item[{float}]{width,  }\item[{float}]{text\+Size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_ac959d281b79eef952cf04e87db1fd536_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_ac959d281b79eef952cf04e87db1fd536_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_a5cc2598e827b8cbab9f0e367222d7a48}\label{class_interactable_a5cc2598e827b8cbab9f0e367222d7a48} 
+\index{Interactable@{Interactable}!draw@{draw}}
+\index{draw@{draw}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Interactable\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Event}]{event }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00275}{275}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_a5cc2598e827b8cbab9f0e367222d7a48_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_a0a32375a2b30035f7e7e7239cd224ef7}\label{class_interactable_a0a32375a2b30035f7e7e7239cd224ef7} 
+\index{Interactable@{Interactable}!getInputBox@{getInputBox}}
+\index{getInputBox@{getInputBox}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{getInputBox()}{getInputBox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_input_box}{Player\+Input\+Box}} \& Interactable\+::get\+Input\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00335}{335}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_ada0c08a7453737b59cc33c00f2fcb12e}\label{class_interactable_ada0c08a7453737b59cc33c00f2fcb12e} 
+\index{Interactable@{Interactable}!getInputString@{getInputString}}
+\index{getInputString@{getInputString}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{getInputString()}{getInputString()}}
+{\footnotesize\ttfamily std\+::string Interactable\+::get\+Input\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00339}{339}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_ada0c08a7453737b59cc33c00f2fcb12e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_a3c53bff62d60808c69dba48f73e4e1df}\label{class_interactable_a3c53bff62d60808c69dba48f73e4e1df} 
+\index{Interactable@{Interactable}!getInteractableType@{getInteractableType}}
+\index{getInteractableType@{getInteractableType}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{getInteractableType()}{getInteractableType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable\+::\+Type}} Interactable\+::get\+Interactable\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00323}{323}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_a0790f6e8def62b7c7b70f78cd188ebb6}\label{class_interactable_a0790f6e8def62b7c7b70f78cd188ebb6} 
+\index{Interactable@{Interactable}!getPos@{getPos}}
+\index{getPos@{getPos}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{getPos()}{getPos()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Interactable\+::get\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00327}{327}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_ae7a0db1c8075f6cb10eda70e27f0451c}\label{class_interactable_ae7a0db1c8075f6cb10eda70e27f0451c} 
+\index{Interactable@{Interactable}!getSize@{getSize}}
+\index{getSize@{getSize}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Interactable\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00319}{319}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_a4544d4f0ef3162fa1f3726f06c941e30}\label{class_interactable_a4544d4f0ef3162fa1f3726f06c941e30} 
+\index{Interactable@{Interactable}!getSliderInputBox@{getSliderInputBox}}
+\index{getSliderInputBox@{getSliderInputBox}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{getSliderInputBox()}{getSliderInputBox()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_player_input_box}{Player\+Input\+Box}} \& Interactable\+::get\+Slider\+Input\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00331}{331}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_a4aeac4394dd08090ce1b94aa37a6639a}\label{class_interactable_a4aeac4394dd08090ce1b94aa37a6639a} 
+\index{Interactable@{Interactable}!interact@{interact}}
+\index{interact@{interact}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{interact()}{interact()}}
+{\footnotesize\ttfamily void Interactable\+::interact (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Clock \&}]{cooldown }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_a4aeac4394dd08090ce1b94aa37a6639a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_a1d10b297153cd7df0925d4bd9dfd7f34}\label{class_interactable_a1d10b297153cd7df0925d4bd9dfd7f34} 
+\index{Interactable@{Interactable}!setButtonColor@{setButtonColor}}
+\index{setButtonColor@{setButtonColor}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setButtonColor()}{setButtonColor()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Button\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00298}{298}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_a1d10b297153cd7df0925d4bd9dfd7f34_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_a80c4ef688f3b3f3c031f7cb5cc98a52b}\label{class_interactable_a80c4ef688f3b3f3c031f7cb5cc98a52b} 
+\index{Interactable@{Interactable}!setHoverColor@{setHoverColor}}
+\index{setHoverColor@{setHoverColor}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setHoverColor()}{setHoverColor()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Hover\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00313}{313}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_aa4b2dc1f48f71cf34f6df7823b21e85a}\label{class_interactable_aa4b2dc1f48f71cf34f6df7823b21e85a} 
+\index{Interactable@{Interactable}!setInteractableSize@{setInteractableSize}}
+\index{setInteractableSize@{setInteractableSize}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setInteractableSize()}{setInteractableSize()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Interactable\+Size (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_aa4b2dc1f48f71cf34f6df7823b21e85a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_a130f73c9fd5b33b2596bbc4771c149e8}\label{class_interactable_a130f73c9fd5b33b2596bbc4771c149e8} 
+\index{Interactable@{Interactable}!setInteractableTextSize@{setInteractableTextSize}}
+\index{setInteractableTextSize@{setInteractableTextSize}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setInteractableTextSize()}{setInteractableTextSize()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Interactable\+Text\+Size (\begin{DoxyParamCaption}\item[{float}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00355}{355}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interactable_a130f73c9fd5b33b2596bbc4771c149e8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_aa73f6179b6f711ac7b8b82293798f56b}\label{class_interactable_aa73f6179b6f711ac7b8b82293798f56b} 
+\index{Interactable@{Interactable}!setPos@{setPos}}
+\index{setPos@{setPos}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setPos()}{setPos()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Pos (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{class_interactable_aa73f6179b6f711ac7b8b82293798f56b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_interactable_aa671be6614836d16a3517fa9282b9b19}\label{class_interactable_aa671be6614836d16a3517fa9282b9b19} 
+\index{Interactable@{Interactable}!setSliderColor@{setSliderColor}}
+\index{setSliderColor@{setSliderColor}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setSliderColor()}{setSliderColor()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Slider\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00303}{303}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_ae7d13b56b43d421b3637dd43ebec1ea2}\label{class_interactable_ae7d13b56b43d421b3637dd43ebec1ea2} 
+\index{Interactable@{Interactable}!setSliderComplementColor@{setSliderComplementColor}}
+\index{setSliderComplementColor@{setSliderComplementColor}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setSliderComplementColor()}{setSliderComplementColor()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Slider\+Complement\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00308}{308}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+\Hypertarget{class_interactable_a73b5165998bf593353c2c6999eebeee0}\label{class_interactable_a73b5165998bf593353c2c6999eebeee0} 
+\index{Interactable@{Interactable}!setTextColor@{setTextColor}}
+\index{setTextColor@{setTextColor}!Interactable@{Interactable}}
+\doxysubsubsection{\texorpdfstring{setTextColor()}{setTextColor()}}
+{\footnotesize\ttfamily void Interactable\+::set\+Text\+Color (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_interactables___a_t_8cpp_source_l00293}{293}} of file \mbox{\hyperlink{_interactables___a_t_8cpp_source}{Interactables\+\_\+\+AT.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Header/\mbox{\hyperlink{_interactables___a_t_8h}{Interactables\+\_\+\+AT.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Aim\+Trainer/\+Resource/\mbox{\hyperlink{_interactables___a_t_8cpp}{Interactables\+\_\+\+AT.\+cpp}}\end{DoxyCompactItemize}

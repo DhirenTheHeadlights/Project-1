@@ -1,0 +1,102 @@
+\doxysection{Interactables\+\_\+\+AT.\+h}
+\hypertarget{_interactables___a_t_8h_source}{}\label{_interactables___a_t_8h_source}\index{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/Interactables\_AT.h@{C:/Users/Dhiren/source/repos/DhirenTheHeadlights/Project-\/1/AimTrainer/Header/Interactables\_AT.h}}
+\mbox{\hyperlink{_interactables___a_t_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_player_input_box___a_t_8h}{PlayerInputBox\_AT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00018}00018\ \textcolor{comment}{//\ Function\ type\ for\ interactable\ actions:\ either\ takes\ a\ float\ argument\ or\ no\ arguments}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00019}\mbox{\hyperlink{_interactables___a_t_8h_aedda716dd27f5d6d7942075defce4942}{00019}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_interactables___a_t_8h_aedda716dd27f5d6d7942075defce4942}{InteractableFunctionVariant}}\ =\ std::variant<std::function<void(\textcolor{keywordtype}{float}\ value)>,\ std::function<void()>>;}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00021}00021\ \textcolor{comment}{//\ Optional\ function\ type\ for\ interactables,\ can\ be\ empty}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00022}\mbox{\hyperlink{_interactables___a_t_8h_a6d4e54d9d1f735841aa6aef72e59d6b5}{00022}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_interactables___a_t_8h_a6d4e54d9d1f735841aa6aef72e59d6b5}{InteractableFunction}}\ =\ std::optional<InteractableFunctionVariant>;}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00024}\mbox{\hyperlink{class_interactable}{00024}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_interactable}{Interactable}}\ \{}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00025}00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Enum\ representing\ the\ different\ types\ of\ interactables}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00027}\mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{00027}}\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Type}}\ \{}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da87b7760f14fbff78d8819291f36ab9a0}{Button}},}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da2d9b9a764fb0be4be10e1b2fce63f561}{Slider}},}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645daa5d801da80d3993000f7a44023bae9f2}{InfoBox}},}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645da3a78dff074444aa19ec999411e3f6b5c}{InputBox}}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00032}00032\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Constructor}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00035}00035\ \ \ \ \ \mbox{\hyperlink{class_interactable_a6048f4ba568ca2ed8e244794840d3c37}{Interactable}}(\mbox{\hyperlink{_interactables___a_t_8h_a6d4e54d9d1f735841aa6aef72e59d6b5}{InteractableFunction}}\ func,\ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Type}}\ type);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Methods\ for\ setting\ up\ and\ interacting\ with\ the\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_ac959d281b79eef952cf04e87db1fd536}{createInteractable}}(std::string\ name,\ \textcolor{keywordtype}{float}\ length,\ \textcolor{keywordtype}{float}\ width,\ \textcolor{keywordtype}{float}\ textSize);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_aa73f6179b6f711ac7b8b82293798f56b}{setPos}}(sf::Vector2f\ position);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_a4aeac4394dd08090ce1b94aa37a6639a}{interact}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Clock\&\ cooldown);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_a5cc2598e827b8cbab9f0e367222d7a48}{draw}}(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Event\ event);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Color\ setting\ functions}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_a73b5165998bf593353c2c6999eebeee0}{setTextColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_a1d10b297153cd7df0925d4bd9dfd7f34}{setButtonColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_aa671be6614836d16a3517fa9282b9b19}{setSliderColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00047}00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_ae7d13b56b43d421b3637dd43ebec1ea2}{setSliderComplementColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_a80c4ef688f3b3f3c031f7cb5cc98a52b}{setHoverColor}}(sf::Color\ color);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Setters\ for\ interactable\ properties}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_aa4b2dc1f48f71cf34f6df7823b21e85a}{setInteractableSize}}(sf::Vector2f\ size);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interactable_a130f73c9fd5b33b2596bbc4771c149e8}{setInteractableTextSize}}(\textcolor{keywordtype}{float}\ size);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Getters\ for\ interactable\ properties}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00055}00055\ \ \ \ \ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Interactable::Type}}\ \mbox{\hyperlink{class_interactable_a3c53bff62d60808c69dba48f73e4e1df}{getInteractableType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00056}00056\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_interactable_ae7a0db1c8075f6cb10eda70e27f0451c}{getSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00057}00057\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_interactable_a0790f6e8def62b7c7b70f78cd188ebb6}{getPos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00058}00058\ \ \ \ \ \mbox{\hyperlink{class_player_input_box}{PlayerInputBox}}\&\ \mbox{\hyperlink{class_interactable_a4544d4f0ef3162fa1f3726f06c941e30}{getSliderInputBox}}();}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{class_player_input_box}{PlayerInputBox}}\&\ \mbox{\hyperlink{class_interactable_a0a32375a2b30035f7e7e7239cd224ef7}{getInputBox}}();}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00060}00060\ \ \ \ \ std::string\ \mbox{\hyperlink{class_interactable_ada0c08a7453737b59cc33c00f2fcb12e}{getInputString}}();}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00062}00062\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ SFML\ shapes\ for\ representing\ the\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00064}00064\ \ \ \ \ sf::RectangleShape\ rectHorizontal;\ \textcolor{comment}{//\ Main\ rectangle\ shape\ for\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00065}00065\ \ \ \ \ sf::RectangleShape\ rectVertical;\ \ \ \textcolor{comment}{//\ Vertical\ part\ of\ the\ slider}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00066}00066\ \ \ \ \ sf::RectangleShape\ backgroundRect;\ \textcolor{comment}{//\ Background\ rectangle}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00067}00067\ \ \ \ \ \mbox{\hyperlink{class_player_input_box}{PlayerInputBox}}\ inputBox;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Input\ box\ for\ the\ input\ box\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ SFML\ font\ and\ text\ for\ interactable\ label}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00070}00070\ \ \ \ \ sf::Font\ font;}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00071}00071\ \ \ \ \ sf::Text\ text;}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Positioning\ and\ dimensions}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00074}00074\ \ \ \ \ sf::Vector2f\ defaultPos;\ \ \ \ \ \ \textcolor{comment}{//\ Default\ position\ of\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00075}00075\ \ \ \ \ sf::Vector2f\ rectPosVertical;\ \textcolor{comment}{//\ Position\ of\ the\ vertical\ rectangle\ (slider)}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Interactable\ properties\ and\ actions}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00078}00078\ \ \ \ \ \mbox{\hyperlink{_interactables___a_t_8h_a6d4e54d9d1f735841aa6aef72e59d6b5}{InteractableFunction}}\ interactableFunc;\ \ \textcolor{comment}{//\ Function\ to\ call\ on\ interaction}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00079}00079\ \ \ \ \ \mbox{\hyperlink{class_interactable_ae6d36a89b3fe1a7205c2092d80e7645d}{Type}}\ interactableType;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Type\ of\ the\ interactable\ (Button,\ Slider,\ InfoBox)}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{class_player_input_box}{PlayerInputBox}}\ sliderInputBox;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Input\ box\ for\ the\ sliders\ only.\ This\ is\ used\ to\ be\ more\ precise\ with\ the\ slider\ movement.}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Dimensions\ and\ offset}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00083}00083\ \ \ \ \ \textcolor{keywordtype}{float}\ length\ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Length\ of\ the\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{float}\ width\ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Width\ of\ the\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{float}\ textSize\ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Text\ size\ for\ interactable\ label}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{float}\ offset\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Offset\ used\ for\ slider\ movement}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{float}\ inputBoxOffset\ =\ 10.0f;\ \textcolor{comment}{//\ Offset\ used\ for\ the\ input\ box}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Colors\ for\ the\ interactable}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00090}00090\ \ \ \ \ sf::Color\ textColor;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Color\ of\ the\ text}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00091}00091\ \ \ \ \ sf::Color\ buttonColor;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Color\ of\ the\ button}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00092}00092\ \ \ \ \ sf::Color\ sliderColor;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Color\ of\ the\ slider}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00093}00093\ \ \ \ \ sf::Color\ sliderColorComplement;\ \textcolor{comment}{//\ Complementary\ color\ of\ the\ slider}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00094}00094\ \ \ \ \ sf::Color\ hoverColor;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Color\ of\ the\ interactable\ when\ hovered\ over}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Private\ methods\ for\ handling\ interactions}}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{void}\ buttonPress(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}},\ sf::Clock\&\ cooldown);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ isMouseOverButton(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{void}\ callButtonAction()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{void}\ sliderDrag(sf::RenderWindow\&\ \mbox{\hyperlink{_globals_8h_ae90e155ced28d8d3e69df6bad6b6d893}{window}});}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{void}\ updateSliderPositionVariable(\textcolor{keyword}{const}\ sf::Vector2f\&\ mousePos);}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{void}\ callSliderAction();}
+\DoxyCodeLine{\Hypertarget{_interactables___a_t_8h_source_l00103}00103\ \};}
+
+\end{DoxyCode}

@@ -62,8 +62,7 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
         if (angleDifference > 180) angleDifference -= 360;
         else if (angleDifference < -180) angleDifference += 360;
 
-        firingDirectionAngle = angleDifference; // This value is grabbed by the enemy ship input handler
-
+        firingDirectionAngle = angleDifference; // This value is grabbed by the enemy ship input handler 
         // Cap the angleDifference within the maxAngle
         angleDifference = std::max(std::min(angleDifference, maxFiringAngle), -maxFiringAngle);
 

@@ -1,0 +1,179 @@
+\doxysection{Pirate\+Game\+::Land\+Mass\+Hashmap Class Reference}
+\hypertarget{class_pirate_game_1_1_land_mass_hashmap}{}\label{class_pirate_game_1_1_land_mass_hashmap}\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+
+
+{\ttfamily \#include $<$Landmass\+Hashmap\+\_\+\+PG.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash}{pair\+\_\+hash}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_ac52452fd2acfa7049076d2fa80b89f1c_ac52452fd2acfa7049076d2fa80b89f1c}{Land\+Mass\+Hashmap}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{void}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd_a049cb1ec837632d96978faa06298abbd}{add\+Land\+Mass}} (\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{landmass}})
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{void}} \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a5a88895b22d17763294909f3a8f2931a_a5a88895b22d17763294909f3a8f2931a}{remove\+Land\+Mass}} (\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{landmass}})
+\item 
+std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_aa8788390e2eaee8928ae2571e83723fe_aa8788390e2eaee8928ae2571e83723fe}{generate\+Key}} (sf\+::\+Vector2f position)
+\item 
+std\+::set$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a713febaf170f865080532c74bc1472b2_a713febaf170f865080532c74bc1472b2}{find\+Land\+Mass\+Near\+Ship}} (\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}ship, \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{bool}} debug=\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{false}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+map$<$ std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}} $>$, \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash}{pair\+\_\+hash}} $>$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_afb1e03f3875e14da0d7237ab667cf3fa_afb1e03f3875e14da0d7237ab667cf3fa}{hashmap}}
+\item 
+Map \& \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{map}} = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{Global\+Map\+::get\+Instance}}().get\+Map()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source}{Landmass\+Hashmap\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_ac52452fd2acfa7049076d2fa80b89f1c_ac52452fd2acfa7049076d2fa80b89f1c}\label{class_pirate_game_1_1_land_mass_hashmap_ac52452fd2acfa7049076d2fa80b89f1c_ac52452fd2acfa7049076d2fa80b89f1c} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!LandMassHashmap@{LandMassHashmap}}
+\index{LandMassHashmap@{LandMassHashmap}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{LandMassHashmap()}{LandMassHashmap()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Land\+Mass\+Hashmap\+::\+Land\+Mass\+Hashmap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source}{Landmass\+Hashmap\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd_a049cb1ec837632d96978faa06298abbd}\label{class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd_a049cb1ec837632d96978faa06298abbd} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!addLandMass@{addLandMass}}
+\index{addLandMass@{addLandMass}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{addLandMass()}{addLandMass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{void}} Land\+Mass\+Hashmap\+::add\+Land\+Mass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*}}]{landmass }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source}{Landmass\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd_a049cb1ec837632d96978faa06298abbd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_a049cb1ec837632d96978faa06298abbd_a049cb1ec837632d96978faa06298abbd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_a713febaf170f865080532c74bc1472b2_a713febaf170f865080532c74bc1472b2}\label{class_pirate_game_1_1_land_mass_hashmap_a713febaf170f865080532c74bc1472b2_a713febaf170f865080532c74bc1472b2} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!findLandMassNearShip@{findLandMassNearShip}}
+\index{findLandMassNearShip@{findLandMassNearShip}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{findLandMassNearShip()}{findLandMassNearShip()}}
+{\footnotesize\ttfamily std\+::set$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*} $>$ Land\+Mass\+Hashmap\+::find\+Land\+Mass\+Near\+Ship (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}}]{ship,  }\item[{\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{bool}}}]{debug = {\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{false}}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source}{Landmass\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_a713febaf170f865080532c74bc1472b2_a713febaf170f865080532c74bc1472b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_a713febaf170f865080532c74bc1472b2_a713febaf170f865080532c74bc1472b2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_aa8788390e2eaee8928ae2571e83723fe_aa8788390e2eaee8928ae2571e83723fe}\label{class_pirate_game_1_1_land_mass_hashmap_aa8788390e2eaee8928ae2571e83723fe_aa8788390e2eaee8928ae2571e83723fe} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!generateKey@{generateKey}}
+\index{generateKey@{generateKey}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{generateKey()}{generateKey()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}} $>$ Land\+Mass\+Hashmap\+::generate\+Key (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source}{Landmass\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_aa8788390e2eaee8928ae2571e83723fe_aa8788390e2eaee8928ae2571e83723fe_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_a5a88895b22d17763294909f3a8f2931a_a5a88895b22d17763294909f3a8f2931a}\label{class_pirate_game_1_1_land_mass_hashmap_a5a88895b22d17763294909f3a8f2931a_a5a88895b22d17763294909f3a8f2931a} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!removeLandMass@{removeLandMass}}
+\index{removeLandMass@{removeLandMass}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{removeLandMass()}{removeLandMass()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{void}} Land\+Mass\+Hashmap\+::remove\+Land\+Mass (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} \texorpdfstring{$\ast$}{*}}]{landmass }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8cpp_source}{Landmass\+Hashmap\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_a5a88895b22d17763294909f3a8f2931a_a5a88895b22d17763294909f3a8f2931a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_land_mass_hashmap_a5a88895b22d17763294909f3a8f2931a_a5a88895b22d17763294909f3a8f2931a_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_afb1e03f3875e14da0d7237ab667cf3fa_afb1e03f3875e14da0d7237ab667cf3fa}\label{class_pirate_game_1_1_land_mass_hashmap_afb1e03f3875e14da0d7237ab667cf3fa_afb1e03f3875e14da0d7237ab667cf3fa} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!hashmap@{hashmap}}
+\index{hashmap@{hashmap}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{hashmap}{hashmap}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::pair$<$\mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}}, \mbox{\hyperlink{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}{int}}$>$, \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}}\texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{struct_pirate_game_1_1_land_mass_hashmap_1_1pair__hash}{pair\+\_\+hash}}$>$ Pirate\+Game\+::\+Land\+Mass\+Hashmap\+::hashmap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source_l00043}{43}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source}{Landmass\+Hashmap\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971}\label{class_pirate_game_1_1_land_mass_hashmap_a926ba521e60195ba19f47ee45c8be971_a926ba521e60195ba19f47ee45c8be971} 
+\index{PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}!map@{map}}
+\index{map@{map}!PirateGame::LandMassHashmap@{PirateGame::LandMassHashmap}}
+\doxysubsubsection{\texorpdfstring{map}{map}}
+{\footnotesize\ttfamily Map\& Pirate\+Game\+::\+Land\+Mass\+Hashmap\+::map = \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_global_map_a1ffb02317c3441081d1bda96b69a27bd_a1ffb02317c3441081d1bda96b69a27bd}{Global\+Map\+::get\+Instance}}().get\+Map()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source_l00046}{46}} of file \mbox{\hyperlink{_landmass_hashmap___p_g_8h_source}{Landmass\+Hashmap\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_landmass_hashmap___p_g_8h}{Landmass\+Hashmap\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_landmass_hashmap___p_g_8cpp}{Landmass\+Hashmap\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}

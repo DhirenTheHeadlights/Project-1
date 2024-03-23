@@ -1,0 +1,231 @@
+\doxysection{Pirate\+Game\+::Collision\+Manager Class Reference}
+\hypertarget{class_pirate_game_1_1_collision_manager}{}\label{class_pirate_game_1_1_collision_manager}\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+
+
+{\ttfamily \#include $<$Collision\+Manager\+\_\+\+PG.\+h$>$}
+
+
+
+Collaboration diagram for Pirate\+Game\+::Collision\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_pirate_game_1_1_collision_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_collision_manager_aca6ed069f2782d9999a6170b787d0168_aca6ed069f2782d9999a6170b787d0168}{Collision\+Manager}} ()
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a34780d2316201d5c94a82570c6887db3_a34780d2316201d5c94a82570c6887db3}{\texorpdfstring{$\sim$}{\string~}\+Collision\+Manager}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a7bf91ab70e6366e491e2cb664cc0c723_a7bf91ab70e6366e491e2cb664cc0c723}{handle\+Collisions}} ()
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a60e940c4ece062547e3221b62a6f2d6c_a60e940c4ece062547e3221b62a6f2d6c}{set\+Land\+Masses}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \&\mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a2eca42935c558c8b33b47c0b5d4f1b23_a2eca42935c558c8b33b47c0b5d4f1b23}{land\+Masses}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a5b16e76d36a21f2f54c9d887c8c6a30d_a5b16e76d36a21f2f54c9d887c8c6a30d}{set\+Enemy\+Ships}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} $>$ $>$ \&\mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a0ba799eea520a393cb36766724ba77c5_a0ba799eea520a393cb36766724ba77c5}{enemy\+Ships}})
+\item 
+void \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a30b0fa3e876ec42edde269fa5bd4b555_a30b0fa3e876ec42edde269fa5bd4b555}{set\+Player\+Ships}} (\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_pirate_game_1_1_collision_manager_aea0d642ccb70a9be0b9f6f26f51e94a7_aea0d642ccb70a9be0b9f6f26f51e94a7}{player\+Ship}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_aecb71deec55fd0fbd138811a89a4465f_aecb71deec55fd0fbd138811a89a4465f}{pixel\+Perfect\+Test}} (const sf\+::\+Sprite \&object1, const sf\+::\+Sprite \&object2, unsigned alpha\+Limit=5)
+\item 
+bool \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a70138dfeb497edfcf9600bfe6c43deaf_a70138dfeb497edfcf9600bfe6c43deaf}{ship\+Collision\+Test}} (\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}ship1, \mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}ship2)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a2eca42935c558c8b33b47c0b5d4f1b23_a2eca42935c558c8b33b47c0b5d4f1b23}{land\+Masses}}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} $>$ $>$ \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a0ba799eea520a393cb36766724ba77c5_a0ba799eea520a393cb36766724ba77c5}{enemy\+Ships}}
+\item 
+\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_aea0d642ccb70a9be0b9f6f26f51e94a7_aea0d642ccb70a9be0b9f6f26f51e94a7}{player\+Ship}} = nullptr
+\item 
+float \mbox{\hyperlink{class_pirate_game_1_1_collision_manager_a9c01e2efc10c3c9d12d7d2555df62e8b_a9c01e2efc10c3c9d12d7d2555df62e8b}{collision\+Damage\+Per\+Second}} = 4.f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00016}{16}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pirate_game_1_1_collision_manager_aca6ed069f2782d9999a6170b787d0168_aca6ed069f2782d9999a6170b787d0168}\label{class_pirate_game_1_1_collision_manager_aca6ed069f2782d9999a6170b787d0168_aca6ed069f2782d9999a6170b787d0168} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!CollisionManager@{CollisionManager}}
+\index{CollisionManager@{CollisionManager}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CollisionManager()}{CollisionManager()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Collision\+Manager\+::\+Collision\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00018}{18}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_a34780d2316201d5c94a82570c6887db3_a34780d2316201d5c94a82570c6887db3}\label{class_pirate_game_1_1_collision_manager_a34780d2316201d5c94a82570c6887db3_a34780d2316201d5c94a82570c6887db3} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!````~CollisionManager@{\texorpdfstring{$\sim$}{\string~}CollisionManager}}
+\index{````~CollisionManager@{\texorpdfstring{$\sim$}{\string~}CollisionManager}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CollisionManager()}{\string~CollisionManager()}}
+{\footnotesize\ttfamily Pirate\+Game\+::\+Collision\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Collision\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00019}{19}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pirate_game_1_1_collision_manager_a7bf91ab70e6366e491e2cb664cc0c723_a7bf91ab70e6366e491e2cb664cc0c723}\label{class_pirate_game_1_1_collision_manager_a7bf91ab70e6366e491e2cb664cc0c723_a7bf91ab70e6366e491e2cb664cc0c723} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!handleCollisions@{handleCollisions}}
+\index{handleCollisions@{handleCollisions}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{handleCollisions()}{handleCollisions()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::handle\+Collisions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_collision_manager___p_g_8cpp_source}{Collision\+Manager\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_collision_manager_a7bf91ab70e6366e491e2cb664cc0c723_a7bf91ab70e6366e491e2cb664cc0c723_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_collision_manager_aecb71deec55fd0fbd138811a89a4465f_aecb71deec55fd0fbd138811a89a4465f}\label{class_pirate_game_1_1_collision_manager_aecb71deec55fd0fbd138811a89a4465f_aecb71deec55fd0fbd138811a89a4465f} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!pixelPerfectTest@{pixelPerfectTest}}
+\index{pixelPerfectTest@{pixelPerfectTest}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{pixelPerfectTest()}{pixelPerfectTest()}}
+{\footnotesize\ttfamily bool Collision\+Manager\+::pixel\+Perfect\+Test (\begin{DoxyParamCaption}\item[{const sf\+::\+Sprite \&}]{object1,  }\item[{const sf\+::\+Sprite \&}]{object2,  }\item[{unsigned}]{alpha\+Limit = {\ttfamily 5} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{_collision_manager___p_g_8cpp_source}{Collision\+Manager\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_collision_manager_aecb71deec55fd0fbd138811a89a4465f_aecb71deec55fd0fbd138811a89a4465f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_collision_manager_aecb71deec55fd0fbd138811a89a4465f_aecb71deec55fd0fbd138811a89a4465f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pirate_game_1_1_collision_manager_a5b16e76d36a21f2f54c9d887c8c6a30d_a5b16e76d36a21f2f54c9d887c8c6a30d}\label{class_pirate_game_1_1_collision_manager_a5b16e76d36a21f2f54c9d887c8c6a30d_a5b16e76d36a21f2f54c9d887c8c6a30d} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!setEnemyShips@{setEnemyShips}}
+\index{setEnemyShips@{setEnemyShips}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{setEnemyShips()}{setEnemyShips()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Collision\+Manager\+::set\+Enemy\+Ships (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}} $>$ $>$ \&}]{enemy\+Ships }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00025}{25}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_a60e940c4ece062547e3221b62a6f2d6c_a60e940c4ece062547e3221b62a6f2d6c}\label{class_pirate_game_1_1_collision_manager_a60e940c4ece062547e3221b62a6f2d6c_a60e940c4ece062547e3221b62a6f2d6c} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!setLandMasses@{setLandMasses}}
+\index{setLandMasses@{setLandMasses}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{setLandMasses()}{setLandMasses()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Collision\+Manager\+::set\+Land\+Masses (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}} $>$ $>$ \&}]{land\+Masses }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00024}{24}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_a30b0fa3e876ec42edde269fa5bd4b555_a30b0fa3e876ec42edde269fa5bd4b555}\label{class_pirate_game_1_1_collision_manager_a30b0fa3e876ec42edde269fa5bd4b555_a30b0fa3e876ec42edde269fa5bd4b555} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!setPlayerShips@{setPlayerShips}}
+\index{setPlayerShips@{setPlayerShips}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{setPlayerShips()}{setPlayerShips()}}
+{\footnotesize\ttfamily void Pirate\+Game\+::\+Collision\+Manager\+::set\+Player\+Ships (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}} \texorpdfstring{$\ast$}{*}}]{player\+Ship }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00026}{26}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_a70138dfeb497edfcf9600bfe6c43deaf_a70138dfeb497edfcf9600bfe6c43deaf}\label{class_pirate_game_1_1_collision_manager_a70138dfeb497edfcf9600bfe6c43deaf_a70138dfeb497edfcf9600bfe6c43deaf} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!shipCollisionTest@{shipCollisionTest}}
+\index{shipCollisionTest@{shipCollisionTest}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{shipCollisionTest()}{shipCollisionTest()}}
+{\footnotesize\ttfamily bool Collision\+Manager\+::ship\+Collision\+Test (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}}]{ship1,  }\item[{\mbox{\hyperlink{class_pirate_game_1_1_ship}{Ship}} \texorpdfstring{$\ast$}{*}}]{ship2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{_collision_manager___p_g_8cpp_source}{Collision\+Manager\+\_\+\+PG.\+cpp}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_collision_manager_a70138dfeb497edfcf9600bfe6c43deaf_a70138dfeb497edfcf9600bfe6c43deaf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_pirate_game_1_1_collision_manager_a70138dfeb497edfcf9600bfe6c43deaf_a70138dfeb497edfcf9600bfe6c43deaf_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pirate_game_1_1_collision_manager_a9c01e2efc10c3c9d12d7d2555df62e8b_a9c01e2efc10c3c9d12d7d2555df62e8b}\label{class_pirate_game_1_1_collision_manager_a9c01e2efc10c3c9d12d7d2555df62e8b_a9c01e2efc10c3c9d12d7d2555df62e8b} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!collisionDamagePerSecond@{collisionDamagePerSecond}}
+\index{collisionDamagePerSecond@{collisionDamagePerSecond}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{collisionDamagePerSecond}{collisionDamagePerSecond}}
+{\footnotesize\ttfamily float Pirate\+Game\+::\+Collision\+Manager\+::collision\+Damage\+Per\+Second = 4.f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00034}{34}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_a0ba799eea520a393cb36766724ba77c5_a0ba799eea520a393cb36766724ba77c5}\label{class_pirate_game_1_1_collision_manager_a0ba799eea520a393cb36766724ba77c5_a0ba799eea520a393cb36766724ba77c5} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!enemyShips@{enemyShips}}
+\index{enemyShips@{enemyShips}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{enemyShips}{enemyShips}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_enemy_ship}{Enemy\+Ship}}$>$ $>$ Pirate\+Game\+::\+Collision\+Manager\+::enemy\+Ships\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00030}{30}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_a2eca42935c558c8b33b47c0b5d4f1b23_a2eca42935c558c8b33b47c0b5d4f1b23}\label{class_pirate_game_1_1_collision_manager_a2eca42935c558c8b33b47c0b5d4f1b23_a2eca42935c558c8b33b47c0b5d4f1b23} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!landMasses@{landMasses}}
+\index{landMasses@{landMasses}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{landMasses}{landMasses}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_pirate_game_1_1_land_mass}{Land\+Mass}}$>$ $>$ Pirate\+Game\+::\+Collision\+Manager\+::land\+Masses\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00029}{29}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+\Hypertarget{class_pirate_game_1_1_collision_manager_aea0d642ccb70a9be0b9f6f26f51e94a7_aea0d642ccb70a9be0b9f6f26f51e94a7}\label{class_pirate_game_1_1_collision_manager_aea0d642ccb70a9be0b9f6f26f51e94a7_aea0d642ccb70a9be0b9f6f26f51e94a7} 
+\index{PirateGame::CollisionManager@{PirateGame::CollisionManager}!playerShip@{playerShip}}
+\index{playerShip@{playerShip}!PirateGame::CollisionManager@{PirateGame::CollisionManager}}
+\doxysubsubsection{\texorpdfstring{playerShip}{playerShip}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pirate_game_1_1_player_ship}{Player\+Ship}}\texorpdfstring{$\ast$}{*} Pirate\+Game\+::\+Collision\+Manager\+::player\+Ship = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_collision_manager___p_g_8h_source_l00031}{31}} of file \mbox{\hyperlink{_collision_manager___p_g_8h_source}{Collision\+Manager\+\_\+\+PG.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Header/\mbox{\hyperlink{_collision_manager___p_g_8h}{Collision\+Manager\+\_\+\+PG.\+h}}\item 
+C\+:/\+Users/\+Dhiren/source/repos/\+Dhiren\+The\+Headlights/\+Project-\/1/\+Pirate\+Game/\+Resource/\mbox{\hyperlink{_collision_manager___p_g_8cpp}{Collision\+Manager\+\_\+\+PG.\+cpp}}\end{DoxyCompactItemize}
