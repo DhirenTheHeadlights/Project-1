@@ -4,8 +4,6 @@
 using namespace PirateGame;
 
 void EnemyShipMovementHandler::move(float baseSpeed) {
-
-	sf::Vector2f map = GlobalMap::getInstance().getWorldMap();
 	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
 	setInitialPosition();
@@ -18,7 +16,6 @@ void EnemyShipMovementHandler::move(float baseSpeed) {
 
 	updateVelocity(direction, elapsed, baseSpeed);
 	setSpriteRotation();
-	applyBoundaryConstraints(position, map);
 
 	// Set the new position
 	getSprite().setPosition(position);

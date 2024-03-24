@@ -11,9 +11,6 @@ void EnemyShip::customShipSetUp() {
 	SIH->setBaseSpeed(getShipProperties().baseSpeed);
 	SIH->setCannonHandler(&getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
-
-	// Set a random pos
-	getSprite().setPosition(GlobalMap::getInstance().getMap()->getRandomPosition());
 }
 
 void EnemyShip::customShipUpdate() {
@@ -28,3 +25,4 @@ void EnemyShip::customShipDraw() {
 
 	SIH->draw();
 }
+

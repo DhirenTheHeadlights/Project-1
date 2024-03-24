@@ -2,18 +2,40 @@
 
 using namespace PirateGame;
 
-void EnemyShipHandler::addEnemyShips(int numShips) {
-	// Add the ships
-	for (int i = 0; i < numShips; i++) {
-		std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>();
-		enemyShips.push_back(std::move(ship));
-		enemyShips[i]->setUpShip();
-		enemyShips[i]->getCannonHandler().setCooldown(enemyCannonCooldown);
-		enemyShips[i]->getMovementHandler().setTurningSpeed(turningSpeed);
-		enemyShips[i]->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
-		enemyShips[i]->getInputHandler().setFiringDistance(firingDistance);
-		enemyShips[i]->getMovementHandler().setAnchorDrop(true);
+void EnemyShipHandler::addEnemyShips(int numShipsPerChunk) {
+	// Grab all chunks
+	std::vector<Map*> maps = GlobalMap::getInstance().getAllChunks();
+
+	std::cout << "Number of Chunks: " << maps.size() << std::endl;
+
+	for (auto& map : maps) {
+		addEnemyShipsToChunk(*map, numShipsPerChunk);
 	}
+}
+
+void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
+	// Grab positions for the ships
+	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenShips, numShipsPerChunk);
+
+	// Add the ships
+	for (int i = 0; i < points.size(); i++) {
+		// Create a new ship
+		std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>();
+
+		// Set up the ship
+		ship->setUpShip();
+		ship->getCannonHandler().setCooldown(enemyCannonCooldown);
+		ship->getMovementHandler().setTurningSpeed(turningSpeed);
+		ship->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
+		ship->getInputHandler().setFiringDistance(firingDistance);
+		ship->getMovementHandler().setAnchorDrop(true);
+		ship->getSprite().setPosition(points[i]);
+
+		// Add the ship to the vector, important to use std::move and
+		// do after setting up the ship, otherwise the ship will be empty
+		enemyShips.push_back(std::move(ship));
+	}
+
 	// Add the ships to the hashmap
 	for (auto& ship : enemyShips) {
 		GlobalHashmapHandler::getInstance().getShipHashmap()->addEnemyShip(ship.get());

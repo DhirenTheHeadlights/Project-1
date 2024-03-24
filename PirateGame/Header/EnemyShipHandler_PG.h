@@ -37,6 +37,9 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
 
 	private:
+		// helper functions
+		void addEnemyShipsToChunk(Map& map, int numShips);
+
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		PlayerShip* playerShip = nullptr;
 
@@ -46,5 +49,6 @@ namespace PirateGame {
 		float firingDistance = 1000.f;
 		float turningSpeed = 0.1f;
 		float enemySpeedMultiplier = 0.5f;
+		float minDistBetweenShips = 1000.f;
 	};
 }

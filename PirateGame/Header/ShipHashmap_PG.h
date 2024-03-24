@@ -65,7 +65,5 @@ namespace PirateGame {
 		// Hashmap
 		std::unordered_map<std::pair<int, int>, EnemyShip*, pair_hash> hashmap;
 		std::unordered_map<EnemyShip*, std::set<std::pair<int, int>>> reverseHashmap;
-
-		Map& map = *GlobalMap::getInstance().getMap();
 	};
 }

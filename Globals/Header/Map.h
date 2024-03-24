@@ -7,28 +7,32 @@
 class Map {
 public:
     // This is the initial constructor for the map
-    void grid(int boardLength, int boardHeight, int cellSize);
-
-    // Setters
-    void setCellSize(int cellSize);
+    void grid(int boardLength, int boardHeight, int cellSize, sf::Vector2f position = sf::Vector2f(0.f, 0.f));
 
     // Draw the grid
     void drawGrid(sf::RenderWindow& window) const;
 
+    // Setters
+    void setCellSize(int cellSize) { this->cellSize = cellSize; }
+    void setPosition(sf::Vector2f pos) { position = pos; }
+
     // Getters
-    std::pair<int, int> getGridCoordinates(float x, float y) const;
-    int getCellSize() const;
-    int getLength() const;
+    std::pair<int, int> getGridCoordinates(float x, float y) const {
+		return { static_cast<int>(x + position.x) / cellSize, static_cast<int>(y + position.y) / cellSize };
+	}
+    int getCellSize() const { return cellSize; }
+    int getLength() const { return len; }
     std::vector<sf::Vector2f> const getRandomPositions(float minDistance = 500.f, int numPoints = 1);
-    sf::Vector2f getRandomPosition() {
+    sf::Vector2f getRandomPosition() const {
         // Generate a random position
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_real_distribution<float> dis(0.0f, 1.0f); // Ensure the distribution uses float
         // Explicitly cast len and height to float to avoid conversion warnings
-        return sf::Vector2f(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
+        return position + sf::Vector2f(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
     }
 private:
     int rows = 1, cols = 1, cellSize = 1;
     int len = 1, height = 1;
+    sf::Vector2f position;
 };

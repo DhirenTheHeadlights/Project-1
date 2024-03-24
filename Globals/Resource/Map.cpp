@@ -1,7 +1,7 @@
 #include "Map.h"
 
 // Constructor
-void Map::grid(int boardLength, int boardHeight, int cellSize) {
+void Map::grid(int boardLength, int boardHeight, int cellSize, sf::Vector2f position) {
     rows = boardHeight / cellSize;
     cols = boardLength / cellSize;
 
@@ -9,25 +9,9 @@ void Map::grid(int boardLength, int boardHeight, int cellSize) {
     this->cellSize = cellSize;
     this->len = boardLength;
     this->height = boardHeight;
-}
 
-// Setters
-void Map::setCellSize(int cellSize) {
-	this->cellSize = cellSize;
-}
-
-
-// Getters
-int Map::getCellSize() const {
-    return cellSize;
-}
-
-int Map::getLength() const {
-    return rows * cellSize;
-}
-
-std::pair<int, int> Map::getGridCoordinates(float x, float y) const {
-    return { static_cast<int>(x / cellSize), static_cast<int>(y / cellSize) };
+    // Set the position of the map
+    this->position = position;
 }
 
 // This function uses a poisson disc sampling algorithm to generate a set of points
@@ -45,6 +29,7 @@ std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int n
 
     // Initialize with the first point
     sf::Vector2f initialPoint(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
+    initialPoint += position; // Adjust for the position of the map
     activeList.push_back(initialPoint);
     samplePoints.push_back(initialPoint);
 
@@ -57,10 +42,13 @@ std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int n
         for (int i = 0; i < k && samplePoints.size() < static_cast<size_t>(numPoints); ++i) {
             float angle = dis(gen) * 2 * pi;
             float radius = minDistance * (1 + dis(gen));
+            // Generate a new point, this doesnt need to be adjusted for the map position
+            // because the point is generated relative to the current point, which is already adjusted
             sf::Vector2f newPoint(point.x + radius * cos(angle), point.y + radius * sin(angle));
 
             // Check bounds and minimum distance
-            if (newPoint.x >= 0 && newPoint.x <= len && newPoint.y >= 0 && newPoint.y <= height) {
+            sf::Vector2f bounds = position + sf::Vector2f(static_cast<float>(len), static_cast<float>(height));
+            if (newPoint.x >= position.x && newPoint.x < bounds.x && newPoint.y >= position.y && newPoint.y < bounds.y) {
                 bool tooClose = false;
                 for (const sf::Vector2f& existingPoint : samplePoints) {
                     float distance = std::hypot(newPoint.x - existingPoint.x, newPoint.y - existingPoint.y);
@@ -91,15 +79,15 @@ std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int n
 
 // Draw the grid
 void Map::drawGrid(sf::RenderWindow& window) const {
-    sf::RectangleShape line(sf::Vector2f(static_cast<float>(getLength()), 1.f)); // Horizontal line
+    sf::RectangleShape line(sf::Vector2f(static_cast<float>(len), 1.f)); // Horizontal line, length adjusted if needed
     line.setFillColor(sf::Color::Red);
     for (int i = 0; i <= rows; i++) {
-        line.setPosition(0, static_cast<float>(i * cellSize));
+        line.setPosition(position.x, position.y + static_cast<float>(i * cellSize));
         window.draw(line);
     }
-    line.setSize(sf::Vector2f(1.f, static_cast<float>(getLength()))); // Vertical line
+    line.setSize(sf::Vector2f(1.f, static_cast<float>(height))); // Adjust line size for vertical lines, if necessary
     for (int i = 0; i <= cols; i++) {
-        line.setPosition(static_cast<float>(i * cellSize), 0);
+        line.setPosition(position.x + static_cast<float>(i * cellSize), position.y);
         window.draw(line);
     }
 }

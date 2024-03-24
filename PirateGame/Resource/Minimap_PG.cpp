@@ -21,8 +21,7 @@ void Minimap::draw() {
     window->draw(shipIconSprite);
 }
 
-void Minimap::update(float shipRotation) {
-    sf::Vector2f mapSize = GlobalMap::getInstance().getWorldMap();
+void Minimap::update() {
     sf::Vector2f shipPos = ship->getSprite().getPosition();
     sf::Vector2f minimapCenter = sf::Vector2f(minimapSprite.getPosition().x + minimapSprite.getGlobalBounds().width / 2, minimapSprite.getPosition().y + minimapSprite.getGlobalBounds().height / 2);
 
@@ -33,7 +32,7 @@ void Minimap::update(float shipRotation) {
 
     shipIconSprite.setPosition(minimapCenter);
     shipIconSprite.setOrigin(shipIconSprite.getLocalBounds().width / 2, shipIconSprite.getLocalBounds().height / 2);
-    shipIconSprite.setRotation(shipRotation);
+    shipIconSprite.setRotation(ship->getSprite().getRotation());
 
     // Clear the previous visible landmasses
     visibleLandmassRects.clear();

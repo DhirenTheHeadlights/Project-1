@@ -7,10 +7,10 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 	GlobalValues::getInstance().setWindow(window_in);
 	window = GlobalValues::getInstance().getWindow();
 	view.setUpView();
-	
-	// Set up the world
-	GlobalMap::getInstance().setUpMap();
 
+	// Set up the map
+	GlobalMap::getInstance().initializeMap();
+	
 	// Set up the pointers
 	playerShip = std::make_unique<PlayerShip>();
 	LMHandler = std::make_unique<LandMassHandler>();
@@ -24,10 +24,8 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 		distanceBetweenLandMasses = distanceBetweenLandMassesDebug;
 		numEnemyShips = numEnemyShipsDebug;
 		distanceBetweenEnemyShips = distanceBetweenEnemyShipsDebug;
-		GlobalMap::getInstance().setMapSize(sf::Vector2f(mapSizeDebug));
 	}
 	else {
-		GlobalMap::getInstance().setMapSize(sf::Vector2f(mapSize));
 	}
 
 	// Set up the world
@@ -135,8 +133,9 @@ void World::createWorld(sf::Event event) {
 }
 
 void World::gameLoop() {
-	// Temporary code to draw a grid
-	GlobalMap::getInstance().getMap()->drawGrid(*window);
+	// Update the map
+	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
+	GlobalMap::getInstance().getMapAtCurrentChunk(playerShip->getSprite().getPosition())->drawGrid(*window);
 
 	GlobalWindController::getInstance().update();
 

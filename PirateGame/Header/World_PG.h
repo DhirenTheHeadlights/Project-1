@@ -61,18 +61,16 @@ namespace PirateGame {
 		bool debug = true;
 
 		// Object numbers [not debug]
-		int numLandMasses = 1000;
-		float distanceBetweenLandMasses = 1000.f;
-		int numEnemyShips = 1000;
+		int numLandMasses = 5;
+		float distanceBetweenLandMasses = 2000.f;
+		int numEnemyShips = 5;
 		float distanceBetweenEnemyShips = 1000.f;
-		sf::Vector2f mapSize = sf::Vector2f(100000.f, 100000.f);
 
 		// Object numbers [debug]
 		int numLandMassesDebug = 0;
-		float distanceBetweenLandMassesDebug = 1000.f;
+		float distanceBetweenLandMassesDebug = 100.f;
 		int numEnemyShipsDebug = 1;
-		float distanceBetweenEnemyShipsDebug = 1000.f;
-		sf::Vector2f mapSizeDebug = sf::Vector2f(5000.f, 5000.f);
+		float distanceBetweenEnemyShipsDebug = 100.f;
 	};
 }
 

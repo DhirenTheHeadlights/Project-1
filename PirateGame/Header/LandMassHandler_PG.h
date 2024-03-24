@@ -30,6 +30,7 @@ namespace PirateGame {
         std::vector<std::shared_ptr<LandMass>>& getLandMasses() { return landmasses; }
     private:
         // Helper functions
+        void addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses);
         void createLandmass(LandMassType type, sf::Vector2f position);
 
         sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
@@ -38,9 +39,5 @@ namespace PirateGame {
 
         // Values
         float interactionDistance = 600.f; // Distance for interaction with landmasses
-
-        // Map to store the land masses
-        Map& map = *GlobalMap::getInstance().getMap();
-
     };
 }

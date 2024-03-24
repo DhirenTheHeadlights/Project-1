@@ -9,10 +9,13 @@ std::pair<int, int> ShipHashmap::generateKey(sf::Vector2f pos) {
 
 // Add a new object to the hashmap
 void ShipHashmap::addEnemyShip(EnemyShip* ship) {
+    // Grab map at chunk
+    Map* map = GlobalMap::getInstance().getMapAtCurrentChunk(ship->getSprite().getPosition());
+
     // Use the bounding box of the sprite for grid calculations
     sf::FloatRect bounds = ship->getSprite().getGlobalBounds();
-    auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
-    auto bottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
+    auto topLeft = map->getGridCoordinates(bounds.left, bounds.top);
+    auto bottomRight = map->getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
     std::set<std::pair<int, int>> occupiedPositions;
 
@@ -46,8 +49,9 @@ void ShipHashmap::removeEnemyShip(EnemyShip* ship) {
 
 // Find ship near to a player, debug is used to visualize the grid cells being checked
 std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDistance, bool debug) {
-    // Grab window
+    // Grab window and chunk
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+    Map* map = GlobalMap::getInstance().getMapAtCurrentChunk(ship->getSprite().getPosition());
 
     maxDistance /= 2; // Divide by 2 to get the radius
 
@@ -61,8 +65,8 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDi
     float bottom = shipPosition.y + maxDistance;
 
     // Get the top left and bottom right cells of the bounding box
-    auto topLeft = map.getGridCoordinates(left, top);
-    auto bottomRight = map.getGridCoordinates(right, bottom);
+    auto topLeft = map->getGridCoordinates(left, top);
+    auto bottomRight = map->getGridCoordinates(right, bottom);
 
     std::set<EnemyShip*> nearbyShips;
 
@@ -82,9 +86,9 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDi
 
             // Optionally, visualize the grid cells being checked (for debugging)
             sf::RectangleShape rect;
-            rect.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
+            rect.setSize(sf::Vector2f(static_cast<float>(map->getCellSize()), static_cast<float>(map->getCellSize())));
             rect.setFillColor(sf::Color::Magenta);  // Color for visualization
-            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize())));
+            rect.setPosition(sf::Vector2f(i * static_cast<float>(map->getCellSize()), j * static_cast<float>(map->getCellSize())));
             window->draw(rect);
         }
     }
@@ -94,10 +98,13 @@ std::set<EnemyShip*> ShipHashmap::findEnemyShipsNearShip(Ship* ship, float maxDi
 
 // Update the ship's position in the hashmap
 void ShipHashmap::updateEnemyShipPosition(EnemyShip* ship) {
+    // Grab map at chunk
+    Map* map = GlobalMap::getInstance().getMapAtCurrentChunk(ship->getSprite().getPosition());
+
     // Get the ship's new position from its sprite and calculate new grid cells it occupies
     sf::FloatRect bounds = ship->getSprite().getGlobalBounds();
-    auto newTopLeft = map.getGridCoordinates(bounds.left, bounds.top);
-    auto newBottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
+    auto newTopLeft = map->getGridCoordinates(bounds.left, bounds.top);
+    auto newBottomRight = map->getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
     std::set<std::pair<int, int>> newPositions;
     for (int i = newTopLeft.first; i <= newBottomRight.first; ++i) {

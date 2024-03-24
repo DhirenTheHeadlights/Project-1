@@ -96,7 +96,7 @@ void InGameHUD::updateShipPropertiesString() {
 void InGameHUD::setInteractablePositions() {
 	// Get the view position
 	sf::View HUDView = window->getView();
-	HUDView.setRotation(0);
+	HUDView.setRotation(0.f);
 
 	healthFraction = 100 * ship->getHealth() / ship->getShipProperties().maxHealth;
 
@@ -149,7 +149,7 @@ void InGameHUD::draw() {
 	window->draw(healthText);
 
 	minimap.draw();
-	minimap.update(ship->getSprite().getRotation());
+	minimap.update();
 
 	// Add and draw the ship properties
 	updateShipPropertiesString();

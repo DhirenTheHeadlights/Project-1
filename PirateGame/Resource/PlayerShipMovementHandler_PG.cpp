@@ -4,8 +4,6 @@ using namespace PirateGame;
 
 // Move the ship
 void PlayerShipMovementHandler::move(float baseSpeed) {
-	// Initialize the map
-	sf::Vector2f map = GlobalMap::getInstance().getWorldMap();
 	setBaseSpeed(baseSpeed);
 
 	setInitialPosition();
@@ -18,7 +16,6 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 
 	updateVelocity(direction, elapsed, baseSpeed);
 	setSpriteRotation();
-	applyBoundaryConstraints(position, map);
 
 	// Set the new position
 	getSprite().setPosition(position);

@@ -9,10 +9,12 @@ std::pair<int, int> LandMassHashmap::generateKey(sf::Vector2f pos) {
 
 // Add a new object to the hashmap
 void LandMassHashmap::addLandMass(LandMass* landmass) {
+    // Grab map at chunk
+    Map* map = GlobalMap::getInstance().getMapAtCurrentChunk(landmass->getSprite().getPosition());
     // Use the bounding box of the sprite for grid calculations
     sf::FloatRect bounds = landmass->getSprite().getGlobalBounds();
-    auto topLeft = map.getGridCoordinates(bounds.left, bounds.top);
-    auto bottomRight = map.getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
+    auto topLeft = map->getGridCoordinates(bounds.left, bounds.top);
+    auto bottomRight = map->getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
     for (int i = topLeft.first; i <= bottomRight.first; ++i) {
         for (int j = topLeft.second; j <= bottomRight.second; ++j) {
@@ -24,9 +26,11 @@ void LandMassHashmap::addLandMass(LandMass* landmass) {
 
 // Remove an object from the hashmap
 void LandMassHashmap::removeLandMass(LandMass* landmass) {
+    // Grab map at chunk
+    Map* map = GlobalMap::getInstance().getMapAtCurrentChunk(landmass->getSprite().getPosition());
 	// Similar to addLandMass, you need to remove the landmass from all the cells it occupies
-	auto topLeft = map.getGridCoordinates(landmass->getSprite().getPosition().x, landmass->getSprite().getPosition().y);
-	auto bottomRight = map.getGridCoordinates(landmass->getSprite().getPosition().x + landmass->getSprite().getGlobalBounds().width,
+	auto topLeft = map->getGridCoordinates(landmass->getSprite().getPosition().x, landmass->getSprite().getPosition().y);
+	auto bottomRight = map->getGridCoordinates(landmass->getSprite().getPosition().x + landmass->getSprite().getGlobalBounds().width,
 		landmass->getSprite().getPosition().y + landmass->getSprite().getGlobalBounds().height);
 
 	for (int i = topLeft.first; i <= bottomRight.first; ++i) {
@@ -39,8 +43,9 @@ void LandMassHashmap::removeLandMass(LandMass* landmass) {
 
 // Find landmass near to a player, debug is used to visualize the grid cells being checked
 std::set<LandMass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug) { 
-    // Grab window
+    // Grab window and chunk
     sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+    Map* map = GlobalMap::getInstance().getMapAtCurrentChunk(ship->getSprite().getPosition());
 
     // Get the global bounds of the player ship's sprite
     sf::FloatRect shipBounds = ship->getSprite().getGlobalBounds();
@@ -52,8 +57,8 @@ std::set<LandMass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug
     float bottom = shipBounds.top + 2 * shipBounds.height;
 
     // Get the top left and bottom right cells of the bounding box
-    auto topLeft = map.getGridCoordinates(left, top);
-    auto bottomRight = map.getGridCoordinates(right, bottom);
+    auto topLeft = map->getGridCoordinates(left, top);
+    auto bottomRight = map->getGridCoordinates(right, bottom);
 
     std::set<LandMass*> landmasses;
 
@@ -73,9 +78,9 @@ std::set<LandMass*> LandMassHashmap::findLandMassNearShip(Ship* ship, bool debug
 
             // Optionally, visualize the grid cells being checked (for debugging)
             sf::RectangleShape rect;
-            rect.setSize(sf::Vector2f(static_cast<float>(map.getCellSize()), static_cast<float>(map.getCellSize())));
+            rect.setSize(sf::Vector2f(static_cast<float>(map->getCellSize()), static_cast<float>(map->getCellSize())));
             rect.setFillColor(sf::Color::Magenta);  // Color for visualization
-            rect.setPosition(sf::Vector2f(i * static_cast<float>(map.getCellSize()), j * static_cast<float>(map.getCellSize())));  // Adjust position based on your grid sizing
+            rect.setPosition(sf::Vector2f(i * static_cast<float>(map->getCellSize()), j * static_cast<float>(map->getCellSize())));  // Adjust position based on your grid sizing
             window->draw(rect);
         }
     }

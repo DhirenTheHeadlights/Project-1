@@ -9,10 +9,18 @@ LandMassHandler::~LandMassHandler() {
 }
 
 // Add all the land masses to the vector
-void LandMassHandler::addLandMasses(int numLandMasses, float minDistBetweenLandmasses) {
+void LandMassHandler::addLandMasses(int numLandMassesPerChunk, float minDistBetweenLandmasses) {
+	// Grab all chunks
+	std::vector<Map*> maps = GlobalMap::getInstance().getAllChunks();
+
+	for (auto& map : maps) {
+		addLandMassesToChunk(*map, numLandMassesPerChunk, minDistBetweenLandmasses);
+	}
+}
+
+void LandMassHandler::addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses) {
 	// Grab a numLandMasses number of points from the map
 	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
-	std::cout << "Number of land masses: " << numLandMasses << std::endl;
 
 	for (int i = 0; i < points.size(); i++) {
 		// Generate a random number between 0 and 2

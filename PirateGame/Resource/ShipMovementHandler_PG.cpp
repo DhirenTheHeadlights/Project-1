@@ -15,15 +15,6 @@ sf::Vector2f ShipMovementHandler::normalize(sf::Vector2f vector) {
 	return vector / length;
 }
 
-void ShipMovementHandler::applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize) {
-	float sizeX = sprite.getGlobalBounds().width;
-	float sizeY = sprite.getGlobalBounds().height;
-
-	// If the ship is out of bounds, set the position to the boundary
-	position.x = std::max(0.f, std::min(position.x, mapSize.x - sizeX));
-	position.y = std::max(0.f, std::min(position.y, mapSize.y - sizeY));
-}
-
 void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {

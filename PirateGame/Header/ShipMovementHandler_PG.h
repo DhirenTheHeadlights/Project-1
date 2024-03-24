@@ -26,7 +26,6 @@ namespace PirateGame {
 
 		// These functions stay constant
 		sf::Vector2f normalize(sf::Vector2f vector);
-		void applyBoundaryConstraints(sf::Vector2f& position, const sf::Vector2f& mapSize);
 		float dot(const sf::Vector2f& v1, const sf::Vector2f& v2);
 		void ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
 		void setInitialPosition();

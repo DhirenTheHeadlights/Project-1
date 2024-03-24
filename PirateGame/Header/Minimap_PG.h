@@ -24,7 +24,7 @@ namespace PirateGame {
 		~Minimap() {};
 
 		void draw();
-		void update(float shipRotation);
+		void update();
 
 		// Setters
 		void setMinimapRadius(float size) { this->size = size; }

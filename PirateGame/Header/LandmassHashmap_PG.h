@@ -41,9 +41,6 @@ namespace PirateGame {
 	private:
 		// Hashmap
 		std::unordered_map<std::pair<int, int>, LandMass*, pair_hash> hashmap;
-
-		// Map
-		Map& map = *GlobalMap::getInstance().getMap();
 	};
 }
 
