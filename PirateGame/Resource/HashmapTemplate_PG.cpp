@@ -1,0 +1,1 @@
+/// All implementations of the template class HashmapTemplate are in the .h file.

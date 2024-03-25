@@ -4,12 +4,13 @@ using namespace PirateGame;
 
 void CollisionManager::handleCollisions() {
 	// Grab global hashmaps
-	ShipHashmap* shipHashmap = GlobalHashmapHandler::getInstance().getShipHashmap();
-	LandMassHashmap* landMassHashmap = GlobalHashmapHandler::getInstance().getLandMassHashmap();
+	Hashmap<EnemyShip>* shipHashmap = GlobalHashmapHandler::getInstance().getShipHashmap();
+	Hashmap<LandMass>* landMassHashmap = GlobalHashmapHandler::getInstance().getLandMassHashmap();
 
-	// Grab the nearby landmasses and ships for the player ship
-	std::set<LandMass*> nearbyLandMasses = landMassHashmap->findLandMassNearShip(playerShip);
-	std::set<EnemyShip*> nearbyShips = shipHashmap->findEnemyShipsNearShip(playerShip);
+	// Grab the nearby objects for the player ship
+	std::set<LandMass*> nearbyLandMasses = landMassHashmap->findObjectsNearObject(playerShip);
+	std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(playerShip);
+	std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(playerShip);
 
 	// Vector to store colliding land masses
 	std::vector<LandMass*> collidingLandMasses;
@@ -31,12 +32,22 @@ void CollisionManager::handleCollisions() {
 		}
 	}
 
+	// Check if the player is colliding with any of the nearby ships
+	for (auto& i : nearbyCannonballs) {
+		if (i->getSprite().getGlobalBounds().intersects(playerShip->getSprite().getGlobalBounds())) {
+			playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
+			i->setInactive();
+
+			GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
+		}
+	}
+
 	// Grab the nearby landmasses and ships for each active ship
 	for (auto& enemyShip : nearbyShips) {
 		if (!enemyShip->isActive()) continue;
 
-		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findLandMassNearShip(enemyShip);
-		std::set<EnemyShip*> nearbyShips = shipHashmap->findEnemyShipsNearShip(enemyShip);
+		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findObjectsNearObject(enemyShip);
+		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(enemyShip);
 
 		std::vector<LandMass*> collidingLandMasses;
 		collidingLandMasses.clear();
@@ -83,6 +94,16 @@ void CollisionManager::handleCollisions() {
 			}
 			else {
 				playerShip->getMovementHandler().setIsColliding(false);
+			}
+		}
+
+		// Check if the enemy ship is colliding with any of the nearby cannonballs
+		for (auto& i : nearbyCannonballs) {
+			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
+				enemyShip->damageShip(collisionDamagePerSecond);
+				i->setInactive();
+
+				GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
 			}
 		}
 	}

@@ -38,13 +38,13 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 
 	// Add the ships to the hashmap
 	for (auto& ship : enemyShips) {
-		GlobalHashmapHandler::getInstance().getShipHashmap()->addEnemyShip(ship.get());
+		GlobalHashmapHandler::getInstance().getShipHashmap()->addObject(ship.get());
 	}
 }
 
 void EnemyShipHandler::update() {
 	// Grab nearby ships for the player ship
-	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findEnemyShipsNearShip(playerShip, maxDetectionDistance);
+	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
 
 	// Update all the enemy ships nearby the player
 	for (auto& ship : nearbyShips) {
@@ -55,7 +55,7 @@ void EnemyShipHandler::update() {
 
 	// Update all the enemy ships
 	for (auto& ship : enemyShips) {
-		GlobalHashmapHandler::getInstance().getShipHashmap()->updateEnemyShipPosition(ship.get());
+		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
 		ship->update();
 	}
 }

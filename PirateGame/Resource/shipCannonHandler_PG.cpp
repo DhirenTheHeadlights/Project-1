@@ -19,6 +19,11 @@ void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos)
         float padding = 10.f;
         cannonball->setPos(shipSprite.getPosition() + sf::Vector2f(static_cast<float>(i * padding), static_cast<float>(i * padding)));
         cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
+
+        // Add the cannonball to the hashmap
+        //GlobalHashmapHandler::getInstance().getCannonballHashmap()->addObject(cannonball);
+
+        // Add the cannonball to the vector
         cannonballs.push_back(cannonball);
     }
 
@@ -62,7 +67,8 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
         if (angleDifference > 180) angleDifference -= 360;
         else if (angleDifference < -180) angleDifference += 360;
 
-        firingDirectionAngle = angleDifference; // This value is grabbed by the enemy ship input handler 
+        firingDirectionAngle = angleDifference; // This value is grabbed by the enemy ship input handler
+ 
         // Cap the angleDifference within the maxAngle
         angleDifference = std::max(std::min(angleDifference, maxFiringAngle), -maxFiringAngle);
 
@@ -84,13 +90,20 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
 void ShipCannonHandler::updateCannonballs() {
     float elapsed = deltaTime.restart().asSeconds();
 	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
+        // Update the cannonball in the hashmap
+        //GlobalHashmapHandler::getInstance().getCannonballHashmap()->updateObjectPosition(*it);
+
 		// Update the position and velocity (1% Decay) of the cannonball
 		sf::Vector2f velocity = (*it)->getVelocity() * pow(0.97f, elapsed);
 		(*it)->setVelocity(velocity);
 		(*it)->setPos((*it)->getPos() + velocity * elapsed);
 
 		// If more than 2 seconds have passed, delete the cannonball
-		if ((*it)->getClock().getElapsedTime().asSeconds() > 2) {
+		if ((*it)->getClock().getElapsedTime().asSeconds() > 2 || (*it)->getActive() == false) {
+            // Remove the cannonball from the hashmap
+            //GlobalHashmapHandler::getInstance().getCannonballHashmap()->removeObject(*it);
+
+            // Delete the cannonball and erase it from the vector
 			delete* it; // delete the object
 			it = cannonballs.erase(it);
 		}

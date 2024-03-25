@@ -10,7 +10,8 @@ namespace PirateGame {
     enum class SoundId {
         Bonk,
         Select,
-        CannonShot
+        CannonShot,
+        CannonImpact,
         // Add more identifiers as needed
     };
 
@@ -35,6 +36,7 @@ namespace PirateGame {
             setSoundFilePath(SoundId::Bonk, "Sounds/bonk.wav");
             setSoundFilePath(SoundId::Select, "Sounds/select.wav");
             setSoundFilePath(SoundId::CannonShot, "Sounds/cannon_shot.wav");
+            setSoundFilePath(SoundId::CannonImpact, "Sounds/cannon_impact.wav");
 
             // Load the sound buffers
             for (auto& sound : soundFilePaths) {

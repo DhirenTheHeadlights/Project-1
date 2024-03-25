@@ -13,6 +13,7 @@
 #include "LightAndShadow/Header/WorldLS.h"
 #include "PirateGame/Header/World_PG.h"
 #include "Platformer Game/Header/World_Plat.h"
+#include "DoodleJump/World_DJ.h"
 
 #include "Credits.h"
 
@@ -198,6 +199,24 @@ void credits() {
     }
 }
 
+void doodleJump() {
+	initializeGlobals("Doodle Jump Window");
+
+	DoodleJump::World world(window);
+
+    while (window.isOpen()) {
+		sf::Event event;
+        while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
+            	window.close();
+            }
+		}
+		window.clear();
+		world.run();
+		window.display();
+	}
+}
+
 void exitTheLauncher() {
     exitLauncher = true;
 	window.close();
@@ -217,6 +236,7 @@ int main() {
         Game("Pirate Game (Debug)", pirateGameDebug),
 
         Game("Platformer", Platformer),
+        Game("Doodle Jump", doodleJump),
         // Add more games here...
 
         Game("Credits", credits),

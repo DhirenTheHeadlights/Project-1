@@ -19,6 +19,7 @@ namespace PirateGame {
 		void setVelocity(sf::Vector2f vel) { velocity = vel; }
 		void arrrMatey() { std::cout << "Avast, ye scallywags!" << std::endl; }
 		void setSpeed(float speed) { this->speed = speed; }
+		void setInactive() { isActive = false; }
 
 		// Getters
 		sf::Clock getClock() const { return clock; }
@@ -26,6 +27,7 @@ namespace PirateGame {
 		sf::Vector2f getVelocity() const { return velocity; }
 		sf::Sprite& getSprite() { return sprite; }
 		float getSpeed() const { return speed; }
+		bool getActive() const { return isActive; }
 
 		bool operator==(const Cannonball& other) const {
 			return velocity == other.velocity && clock.getElapsedTime() == other.clock.getElapsedTime();
@@ -37,5 +39,7 @@ namespace PirateGame {
 		sf::Sprite sprite;
 
 		float speed = 10.f;
+
+		bool isActive = true;
 	};
 };

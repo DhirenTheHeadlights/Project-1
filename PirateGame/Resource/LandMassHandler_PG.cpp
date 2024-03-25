@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 LandMassHandler::~LandMassHandler() {
 	for (auto& landMass : landmasses) {
-		GlobalHashmapHandler::getInstance().getLandMassHashmap()->removeLandMass(landMass.get());
+		GlobalHashmapHandler::getInstance().getLandMassHashmap()->removeObject(landMass.get());
 	}
 }
 
@@ -39,7 +39,7 @@ void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
 	landMass->setPosition(position);
 
 
-	GlobalHashmapHandler::getInstance().getLandMassHashmap()->addLandMass(landMass.get());
+	GlobalHashmapHandler::getInstance().getLandMassHashmap()->addObject(landMass.get());
 	landmasses.push_back(std::move(landMass));
 }
 
@@ -52,7 +52,7 @@ void LandMassHandler::drawLandMasses() {
 }
 
 void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
-    std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findLandMassNearShip(ship);
+    std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(ship);
     
     for (auto& landMass : nearbyLandMasses) {
         sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite

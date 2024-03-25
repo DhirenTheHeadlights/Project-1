@@ -9,6 +9,7 @@
 #include "Cannonball_PG.h"
 #include "GlobalSoundManager_PG.h"
 #include "GlobalTextureHandler_PG.h"
+//#include "GlobalHashmapHandler.h"
 
 namespace PirateGame {
 

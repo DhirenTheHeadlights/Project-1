@@ -2,8 +2,10 @@
 
 /// This class will be a singleton that will contain all of the hashmaps for the game.
 
-#include "LandmassHashmap_PG.h"
-#include "ShipHashmap_PG.h"
+#include "HashmapTemplate_PG.h"
+#include "Landmass_PG.h"
+#include "EnemyShip_PG.h"
+#include "Cannonball_PG.h"
 
 namespace PirateGame {
 	class GlobalHashmapHandler {
@@ -15,8 +17,9 @@ namespace PirateGame {
 		}
 
 		// Getters
-		LandMassHashmap* getLandMassHashmap() { return landmassHashmap.get(); }
-		ShipHashmap* getShipHashmap() { return shipHashmap.get(); }
+		Hashmap<LandMass>* getLandMassHashmap() { return landmassHashmap.get(); }
+		Hashmap<EnemyShip>* getShipHashmap() { return shipHashmap.get(); }
+		Hashmap<Cannonball>* getCannonballHashmap() { return cannonballHashmap.get(); }
 	private:
 		// Private Constructor
 		GlobalHashmapHandler() {};
@@ -26,7 +29,8 @@ namespace PirateGame {
 		GlobalHashmapHandler operator=(GlobalHashmapHandler const&) = delete;
 
 		// Hashmaps
-		std::unique_ptr<LandMassHashmap> landmassHashmap = std::make_unique<LandMassHashmap>();
-		std::unique_ptr<ShipHashmap> shipHashmap = std::make_unique<ShipHashmap>();
+		std::unique_ptr<Hashmap<LandMass>> landmassHashmap = std::make_unique<Hashmap<LandMass>>();
+		std::unique_ptr<Hashmap<EnemyShip>> shipHashmap = std::make_unique<Hashmap<EnemyShip>>();
+		std::unique_ptr<Hashmap<Cannonball>> cannonballHashmap = std::make_unique<Hashmap<Cannonball>>();
 	};
 }

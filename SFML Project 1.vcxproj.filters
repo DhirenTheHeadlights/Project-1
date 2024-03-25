@@ -203,6 +203,9 @@
     <Filter Include="Source Files\PirateGame\Header\Menus\General">
       <UniqueIdentifier>{b3bf2cb5-658f-4a36-b785-245f9fd14249}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DoodleJump">
+      <UniqueIdentifier>{8c6a8633-1434-40b1-99f4-cececf63d54e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -294,9 +297,6 @@
     </ClCompile>
     <ClCompile Include="Globals\Resource\GameTemplate.cpp">
       <Filter>Source Files\Globals\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\LandmassHashmap_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\View_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World</Filter>
@@ -418,14 +418,14 @@
     <ClCompile Include="PirateGame\Resource\EnemyShipHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Ship\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\ShipHashmap_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\GlobalSoundManager.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Global</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\GlobalInputHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -518,9 +518,6 @@
     </ClInclude>
     <ClInclude Include="Globals\Header\GameTemplate.h">
       <Filter>Source Files\Globals\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandmassHashmap_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\View_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World</Filter>
@@ -648,9 +645,6 @@
     <ClInclude Include="PirateGame\Header\CollisionManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\ShipHashmap_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\EnemyShipHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Ship\Enemy</Filter>
     </ClInclude>
@@ -687,6 +681,12 @@
     <ClInclude Include="PirateGame\Header\GlobalInputHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\HashmapTemplate_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World</Filter>
+    </ClInclude>
+    <ClInclude Include="DoodleJump\World_DJ.h">
+      <Filter>Source Files\DoodleJump</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -716,6 +716,9 @@
       <Filter>Source Files\Sounds</Filter>
     </Media>
     <Media Include="Sounds\select.wav">
+      <Filter>Source Files\Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\cannon_impact.wav">
       <Filter>Source Files\Sounds</Filter>
     </Media>
   </ItemGroup>

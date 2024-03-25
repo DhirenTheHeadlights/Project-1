@@ -19,7 +19,7 @@ namespace PirateGame {
 			// Remove all enemy ships
 			enemyShips.clear();
 			for (auto& ship : enemyShips) {
-				GlobalHashmapHandler::getInstance().getShipHashmap()->removeEnemyShip(ship.get());
+				GlobalHashmapHandler::getInstance().getShipHashmap()->removeObject(ship.get());
 			}
 		};
 
