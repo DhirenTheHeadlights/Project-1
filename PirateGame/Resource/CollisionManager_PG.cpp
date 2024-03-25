@@ -38,7 +38,7 @@ void CollisionManager::handleCollisions() {
 			playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
 			i->setInactive();
 
-			GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
+			GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
 		}
 	}
 
@@ -48,6 +48,7 @@ void CollisionManager::handleCollisions() {
 
 		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findObjectsNearObject(enemyShip);
 		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(enemyShip);
+		std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(enemyShip);
 
 		std::vector<LandMass*> collidingLandMasses;
 		collidingLandMasses.clear();
@@ -110,7 +111,6 @@ void CollisionManager::handleCollisions() {
 
 }
 
-// This pixel perfect test is specifically for ships and land masses
 // This pixel perfect test is specifically for ships and land masses
 bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {
 	sf::RenderWindow& window = *GlobalValues::getInstance().getWindow();

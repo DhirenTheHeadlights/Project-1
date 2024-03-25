@@ -11,6 +11,7 @@
 #include "Ship_PG.h"
 #include "EnemyShipInputHandler_PG.h"
 #include "EnemyShipMovementHandler_PG.h"
+#include "HashmapTemplate_PG.h"
 
 namespace PirateGame {
 	class EnemyShip : public Ship {
@@ -30,7 +31,7 @@ namespace PirateGame {
 
 		// Setters
 		void setActive(bool active) { this->active = active; }
-		void setPlayerPosition(sf::Vector2f playerPos) { 
+		void setPlayerPosition(sf::Vector2f playerPos) {
 			this->playerPosition = playerPos;
 			SIH->setPlayerPos(playerPos);
 			SMH->setPlayerPosition(playerPos);

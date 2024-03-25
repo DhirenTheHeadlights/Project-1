@@ -21,7 +21,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos)
         cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
 
         // Add the cannonball to the hashmap
-        //GlobalHashmapHandler::getInstance().getCannonballHashmap()->addObject(cannonball);
+        cannonballHashmap->addObject(cannonball);
 
         // Add the cannonball to the vector
         cannonballs.push_back(cannonball);
@@ -91,7 +91,7 @@ void ShipCannonHandler::updateCannonballs() {
     float elapsed = deltaTime.restart().asSeconds();
 	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
         // Update the cannonball in the hashmap
-        //GlobalHashmapHandler::getInstance().getCannonballHashmap()->updateObjectPosition(*it);
+        cannonballHashmap->updateObjectPosition(*it);
 
 		// Update the position and velocity (1% Decay) of the cannonball
 		sf::Vector2f velocity = (*it)->getVelocity() * pow(0.97f, elapsed);
@@ -101,7 +101,7 @@ void ShipCannonHandler::updateCannonballs() {
 		// If more than 2 seconds have passed, delete the cannonball
 		if ((*it)->getClock().getElapsedTime().asSeconds() > 2 || (*it)->getActive() == false) {
             // Remove the cannonball from the hashmap
-            //GlobalHashmapHandler::getInstance().getCannonballHashmap()->removeObject(*it);
+            cannonballHashmap->removeObject(*it);
 
             // Delete the cannonball and erase it from the vector
 			delete* it; // delete the object

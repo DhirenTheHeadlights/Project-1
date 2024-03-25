@@ -6,8 +6,6 @@ void EnemyShipHandler::addEnemyShips(int numShipsPerChunk) {
 	// Grab all chunks
 	std::vector<Map*> maps = GlobalMap::getInstance().getAllChunks();
 
-	std::cout << "Number of Chunks: " << maps.size() << std::endl;
-
 	for (auto& map : maps) {
 		addEnemyShipsToChunk(*map, numShipsPerChunk);
 	}
@@ -30,6 +28,11 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 		ship->getInputHandler().setFiringDistance(firingDistance);
 		ship->getMovementHandler().setAnchorDrop(true);
 		ship->getSprite().setPosition(points[i]);
+
+		// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
+		// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
+		// hashmap is global, but it is necessary because to avoid circular dependencies, the
+		ship->getCannonHandler().setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
 		// Add the ship to the vector, important to use std::move and
 		// do after setting up the ship, otherwise the ship will be empty

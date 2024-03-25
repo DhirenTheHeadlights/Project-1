@@ -687,6 +687,9 @@
     <ClInclude Include="DoodleJump\World_DJ.h">
       <Filter>Source Files\DoodleJump</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\CannonballHandler.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship\General</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

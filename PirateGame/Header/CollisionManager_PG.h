@@ -31,7 +31,7 @@ namespace PirateGame {
 		PlayerShip* playerShip = nullptr;
 
 		// Values
-		float collisionDamagePerSecond = 4.f;
+		float collisionDamagePerSecond = 40.f;
 
 		// Helper functions
 		bool pixelPerfectTest(const sf::Sprite& object1, const sf::Sprite& object2, unsigned alphaLimit = 5);

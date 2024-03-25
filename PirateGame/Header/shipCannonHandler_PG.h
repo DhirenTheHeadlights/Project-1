@@ -9,7 +9,7 @@
 #include "Cannonball_PG.h"
 #include "GlobalSoundManager_PG.h"
 #include "GlobalTextureHandler_PG.h"
-//#include "GlobalHashmapHandler.h"
+#include "HashmapTemplate_PG.h"
 
 namespace PirateGame {
 
@@ -28,6 +28,7 @@ namespace PirateGame {
 		void setFiringSide(FiringSide side) { this->side = side; };
 		void setCooldown(float cooldown) { this->cooldown = cooldown; };
 		void setFreeAim(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
+		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; };
 
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };
@@ -52,5 +53,7 @@ namespace PirateGame {
 		FiringSide side = FiringSide::Port;
 
 		sf::Vector2f cannonDirection(sf::Vector2f targetPos);
+
+		Hashmap<Cannonball>* cannonballHashmap = nullptr;
 	};
 };

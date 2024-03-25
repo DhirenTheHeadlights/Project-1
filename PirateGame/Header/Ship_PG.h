@@ -50,7 +50,9 @@ namespace PirateGame {
 
 		// Setters
 		void damageShip(float damagePerSecond) {
-			health -= damagePerSecond * deltaTime.restart().asSeconds();
+			float damage = damagePerSecond * deltaTime.restart().asSeconds();
+			std::cout << "damage: " << damage << ", health: " << health << std::endl;
+			health -= damage;
 			if (health < 0) health = 0;
 		}
 		void changeShipClass(ShipClass shipClass) {
