@@ -253,6 +253,7 @@
     <ClInclude Include="PirateGame\Header\GlobalGameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalFontHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalHashmapHandler.h" />
+    <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalMap_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />

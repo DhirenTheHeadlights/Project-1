@@ -10,6 +10,7 @@
 #include "GlobalValues_PG.h"
 #include "GlobalTextureHandler_PG.h"
 #include "GlobalMap_PG.h"
+#include "GlobalIDManager_PG.h"
 
 #include "ShipCannonHandler_PG.h"
 
@@ -49,10 +50,10 @@ namespace PirateGame {
 		virtual void customShipDraw() = 0; // Virtual method to allow for custom ship draw
 
 		// Setters
-		void damageShip(float damagePerSecond) {
-			float damage = damagePerSecond * deltaTime.restart().asSeconds();
-			std::cout << "damage: " << damage << ", health: " << health << std::endl;
-			health -= damage;
+		void damageShip(float damagePerFrame) {
+			std::cout << "Damage: " << damagePerFrame << std::endl;
+			health -= damagePerFrame;
+			std::cout << "Health: " << health << std::endl;
 			if (health < 0) health = 0;
 		}
 		void changeShipClass(ShipClass shipClass) {
@@ -113,6 +114,10 @@ namespace PirateGame {
 
 		// Handlers
 		std::unique_ptr<ShipCannonHandler> SCH;
+
+		// Unique ID
+		int ID = -1;
+
 	protected:
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;

@@ -110,7 +110,7 @@ void InGameHUD::setInteractablePositions() {
 	float healthTextX = healthBarRedSprite.getPosition().x + healthBarRedSprite.getLocalBounds().getSize().x / 2 - healthText.getGlobalBounds().getSize().x / 2;
 	float healthTextY = healthBarRedSprite.getPosition().y + healthBarRedSprite.getLocalBounds().getSize().y / 2 - healthText.getGlobalBounds().getSize().y / 2;
 	healthText.setPosition(healthTextX, healthTextY);
-	healthText.setString("Health: " + std::to_string(static_cast<int>(healthFraction)));
+	healthText.setString("Health: " + std::to_string(ship->getHealth()));
 
 	// Set the settings button to be in the top left corner
 	interactables[0]->setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreenSprite.getPosition().y));

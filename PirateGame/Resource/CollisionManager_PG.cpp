@@ -19,11 +19,10 @@ void CollisionManager::handleCollisions() {
 	// Check if the player is colliding with any of the nearby land masses
 	for (auto& i : nearbyLandMasses) {
 		if (pixelPerfectTest(playerShip->getSprite(), i->getSprite())) {
+			collidingLandMasses.push_back(i);
 
 			playerShip->getMovementHandler().collisionMovement(i->getSprite());
-			playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
-
-			collidingLandMasses.push_back(i);
+			playerShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
 
 			GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
 		}
@@ -35,7 +34,7 @@ void CollisionManager::handleCollisions() {
 	// Check if the player is colliding with any of the nearby ships
 	for (auto& i : nearbyCannonballs) {
 		if (i->getSprite().getGlobalBounds().intersects(playerShip->getSprite().getGlobalBounds())) {
-			playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
+			playerShip->damageShip(collisionDamagePerFrame);
 			i->setInactive();
 
 			GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
@@ -59,10 +58,10 @@ void CollisionManager::handleCollisions() {
 		// Check if the enemy ship is colliding with any of the nearby land masses
 		for (auto& i : nearbyLandmasses) {
 			if (pixelPerfectTest(enemyShip->getSprite(), i->getSprite())) {
-				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
-				enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
-
 				collidingLandMasses.push_back(i);
+
+				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
+				enemyShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
 			}
 			else {
 				enemyShip->getMovementHandler().setIsColliding(false);
@@ -72,13 +71,13 @@ void CollisionManager::handleCollisions() {
 		// Check if the enemy ship is colliding with any of the nearby ships
 		for (auto& i : nearbyShips) {
 			if (shipCollisionTest(enemyShip, i)) {
+				collidingShips.push_back(i);
+
 				// Ignore the collision if the ships are the same
 				if (enemyShip == i) continue;
 
 				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
-				enemyShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
-
-				collidingShips.push_back(i);
+				enemyShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
 			}
 			else {
 				enemyShip->getMovementHandler().setIsColliding(false);
@@ -88,10 +87,10 @@ void CollisionManager::handleCollisions() {
 		// Check if the player ship is colliding with any of the nearby enemy ships
 		for (auto& i : nearbyShips) {
 			if (shipCollisionTest(playerShip, i)) {
-				playerShip->getMovementHandler().collisionMovement(i->getSprite());
-				playerShip->damageShip(collisionDamagePerSecond * collidingLandMasses.size());
-
 				collidingShips.push_back(i);
+
+				playerShip->getMovementHandler().collisionMovement(i->getSprite());
+				playerShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
 			}
 			else {
 				playerShip->getMovementHandler().setIsColliding(false);
@@ -101,7 +100,7 @@ void CollisionManager::handleCollisions() {
 		// Check if the enemy ship is colliding with any of the nearby cannonballs
 		for (auto& i : nearbyCannonballs) {
 			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
-				enemyShip->damageShip(collisionDamagePerSecond);
+				enemyShip->damageShip(collisionDamagePerFrame);
 				i->setInactive();
 
 				GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);

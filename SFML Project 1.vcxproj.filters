@@ -690,6 +690,9 @@
     <ClInclude Include="PirateGame\Header\CannonballHandler.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Ship\General</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

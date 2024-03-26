@@ -12,6 +12,9 @@ std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
 
 // Create the ship
 void Ship::setUpShip(ShipClass level) {
+	// Set the unique ID of the ship
+	ID = GlobalIDManager::getInstance().getUniqueID();
+
 	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
 		// Generate a random number between 1 and 5
