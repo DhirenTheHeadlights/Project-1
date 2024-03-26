@@ -51,6 +51,13 @@ void EnemyShipHandler::update() {
 
 	// Update all the enemy ships nearby the player
 	for (auto& ship : nearbyShips) {
+		if (ship->getHealth() < 0.01f) { // Temporary, will be replaced with a more robust system
+			// Delete the ship from the hashmap
+			GlobalHashmapHandler::getInstance().getShipHashmap()->removeObject(ship);
+
+			// Delete the ship from the vector
+			enemyShips.erase(std::remove_if(enemyShips.begin(), enemyShips.end(), [ship](std::shared_ptr<EnemyShip>& s) { return s.get() == ship; }), enemyShips.end());
+		}
 		ship->setActive(true);
 		ship->getMovementHandler().setAnchorDrop(false);
 		ship->setPlayerPosition(playerShip->getSprite().getPosition());

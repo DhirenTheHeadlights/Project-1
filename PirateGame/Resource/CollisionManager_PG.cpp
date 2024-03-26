@@ -34,6 +34,7 @@ void CollisionManager::handleCollisions() {
 	// Check if the player is colliding with any of the nearby ships
 	for (auto& i : nearbyCannonballs) {
 		if (i->getSprite().getGlobalBounds().intersects(playerShip->getSprite().getGlobalBounds())) {
+			if (i->getID() == playerShip->getID()) continue; // Ignore self-collisions
 			playerShip->damageShip(collisionDamagePerFrame);
 			i->setInactive();
 
@@ -100,6 +101,7 @@ void CollisionManager::handleCollisions() {
 		// Check if the enemy ship is colliding with any of the nearby cannonballs
 		for (auto& i : nearbyCannonballs) {
 			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
+				if (i->getID() == enemyShip->getID()) continue; // Ignore self-collisions
 				enemyShip->damageShip(collisionDamagePerFrame);
 				i->setInactive();
 

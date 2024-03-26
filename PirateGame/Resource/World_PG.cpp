@@ -33,7 +33,9 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 }
 
 void World::setUpWorld() {
+	// Set up the player ship
 	playerShip->setUpShip(ShipClass::Frigate);
+	playerShip->getCannonHandler().setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
 	// Set up the land masses
 	LMHandler->addLandMasses(numLandMasses, distanceBetweenLandMasses);

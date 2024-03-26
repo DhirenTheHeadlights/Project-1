@@ -38,10 +38,6 @@ namespace PirateGame {
 		}
 
 	private:
-		// Health bars
-		sf::RectangleShape healthBarRed;
-		sf::RectangleShape healthBarGreen;
-
 		// Active flag
 		bool active = false;
 

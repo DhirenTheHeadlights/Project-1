@@ -29,6 +29,7 @@ namespace PirateGame {
 		void setCooldown(float cooldown) { this->cooldown = cooldown; };
 		void setFreeAim(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; };
+		void setID(int ID) { this->ID = ID; };
 
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };
@@ -53,6 +54,8 @@ namespace PirateGame {
 		FiringSide side = FiringSide::Port;
 
 		sf::Vector2f cannonDirection(sf::Vector2f targetPos);
+
+		int ID = -1;
 
 		Hashmap<Cannonball>* cannonballHashmap = nullptr;
 	};

@@ -51,9 +51,7 @@ namespace PirateGame {
 
 		// Setters
 		void damageShip(float damagePerFrame) {
-			std::cout << "Damage: " << damagePerFrame << std::endl;
 			health -= damagePerFrame;
-			std::cout << "Health: " << health << std::endl;
 			if (health < 0) health = 0;
 		}
 		void changeShipClass(ShipClass shipClass) {
@@ -64,6 +62,7 @@ namespace PirateGame {
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
+		int getID() const { return ID; }
 
 		ShipProperties& getShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
@@ -104,6 +103,7 @@ namespace PirateGame {
 		float scalingFactor = 4;
 
 		sf::Vector2f constSpriteBounds;
+		sf::Vector2f healthBarSize = { 100.f, 10.f };
 
 		ShipClass shipClass = ShipClass::Sloop;
 		ShipProperties shipProperties;
