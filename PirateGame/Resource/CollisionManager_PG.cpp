@@ -44,7 +44,7 @@ void CollisionManager::handleCollisions() {
 
 	// Grab the nearby landmasses and ships for each active ship
 	for (auto& enemyShip : nearbyShips) {
-		if (!enemyShip->isActive()) continue;
+		if (!enemyShip->getMovementHandler().getIsActiveTowardsPlayer()) continue;
 
 		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findObjectsNearObject(enemyShip);
 		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(enemyShip);

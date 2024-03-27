@@ -27,25 +27,33 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	// Grab window
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
-	// Calculate the direction to the player
-	sf::Vector2f directionToPlayer = playerPos - getSprite().getPosition();
-	float distance = std::sqrt(directionToPlayer.x * directionToPlayer.x + directionToPlayer.y * directionToPlayer.y);
-	
-	if (distance < static_cast<float>(4000)) {
-		directionToPlayer = directionToPlayer + sf::Vector2f(playerVelocity.x * 0.33f, playerVelocity.y * 0.33f);
+	// Calculate the direction to the player. Use playerPos if active towards player, else use destination.
+	sf::Vector2f travelDirection = isActiveTowardsPlayer ? playerPos : destination - getSprite().getPosition();
+	float distance = std::sqrt(travelDirection.x * travelDirection.x + travelDirection.y * travelDirection.y);
+
+	if (isActiveTowardsPlayer) {
+		if (distance < static_cast<float>(4000)) {
+			travelDirection = travelDirection + sf::Vector2f(playerVelocity.x * 0.33f, playerVelocity.y * 0.33f);
+		}
+		else if (distance < static_cast<float>(2000)) {
+			travelDirection = normalize(sf::Vector2f(travelDirection.y, -travelDirection.x));
+		}
+		else {
+			travelDirection = normalize(travelDirection);
+		}
 	}
-	if (distance < static_cast<float>(2000)) {
-		directionToPlayer = normalize(sf::Vector2f(directionToPlayer.y, -directionToPlayer.x));
-	}
+
+	// If not active towards player, head directly towards destination
 	else
 	{
-		directionToPlayer = normalize(directionToPlayer);
+		travelDirection = normalize(travelDirection);
 	}
-	
-	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), directionToPlayer * 100.f, sf::Color::Red));
+
+
+	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), travelDirection * 100.f, sf::Color::Red));
 
 	// Rotate the sprite using conversion from vector to angle with atan2
-	float targetAngle = std::atan2(directionToPlayer.y, directionToPlayer.x) * 180.f / pi + 90.f;
+	float targetAngle = std::atan2(travelDirection.y, travelDirection.x) * 180.f / pi + 90.f;
 
 	// Normalize the target angle to the range [0, 360]
 	if (targetAngle < 0) targetAngle += 360;

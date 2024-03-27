@@ -25,12 +25,10 @@ namespace PirateGame {
 		void customShipDraw() override;
 
 		// Getters
-		bool isActive() const { return active; }
 		EnemyShipMovementHandler& getMovementHandler() { return *SMH; }
 		EnemyShipInputHandler& getInputHandler() { return *SIH; }
 
 		// Setters
-		void setActive(bool active) { this->active = active; }
 		void setPlayerPosition(sf::Vector2f playerPos) {
 			this->playerPosition = playerPos;
 			SIH->setPlayerPos(playerPos);
@@ -38,8 +36,6 @@ namespace PirateGame {
 		}
 
 	private:
-		// Active flag
-		bool active = false;
 
 		// Handlers
 		std::unique_ptr<EnemyShipInputHandler> SIH;

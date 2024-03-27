@@ -26,8 +26,8 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 		ship->getMovementHandler().setTurningSpeed(turningSpeed);
 		ship->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
 		ship->getInputHandler().setFiringDistance(firingDistance);
-		ship->getMovementHandler().setAnchorDrop(true);
 		ship->getSprite().setPosition(points[i]);
+		setShipDestination(ship.get());
 
 		// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
 		// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
@@ -45,6 +45,18 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 	}
 }
 
+void EnemyShipHandler::setShipDestination(EnemyShip* ship) {
+	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition();
+	ship->getMovementHandler().setDestination(position);
+}
+
+bool EnemyShipHandler::isDestinationReached(EnemyShip* ship) {
+	sf::Vector2f difference = ship->getSprite().getPosition() - ship->getMovementHandler().getDestination();
+	float distance = std::sqrt((difference.x * difference.x) + (difference.y * difference.y));
+	if (distance < destinationReachedDistance) return true;
+	return false;
+}
+
 void EnemyShipHandler::update() {
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
@@ -58,7 +70,7 @@ void EnemyShipHandler::update() {
 			// Delete the ship from the vector
 			enemyShips.erase(std::remove_if(enemyShips.begin(), enemyShips.end(), [ship](std::shared_ptr<EnemyShip>& s) { return s.get() == ship; }), enemyShips.end());
 		}
-		ship->setActive(true);
+		ship->getMovementHandler().setIsActiveTowardsPlayer(true);
 		ship->getMovementHandler().setAnchorDrop(false);
 		ship->setPlayerPosition(playerShip->getSprite().getPosition());
 	}
@@ -66,9 +78,18 @@ void EnemyShipHandler::update() {
 	// Update all the enemy ships
 	for (auto& ship : enemyShips) {
 		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
+		if (isDestinationReached(ship.get())) { setShipDestination(ship.get()); }
+
+		//If player has moved far enough away, disengage ship from player
+		sf::Vector2f difference = ship->getSprite().getPosition() - playerShip->getSprite().getPosition();
+		float distance = std::sqrt((difference.x * difference.x) + (difference.y * difference.y));
+		if (distance > maxDetectionDistance) ship->getMovementHandler().setIsActiveTowardsPlayer(false);
+
 		ship->update();
 	}
 }
+
+
 
 void EnemyShipHandler::draw() {
 	// Draw all the enemy ships

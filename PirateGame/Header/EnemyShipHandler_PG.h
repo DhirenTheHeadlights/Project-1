@@ -32,6 +32,8 @@ namespace PirateGame {
 
 		// Setters
 		void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
+		void setLandmasses(std::vector<std::shared_ptr<LandMass>> landmasses) { this->landmasses = landmasses; }
+
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
@@ -39,8 +41,11 @@ namespace PirateGame {
 	private:
 		// helper functions
 		void addEnemyShipsToChunk(Map& map, int numShips);
+		void setShipDestination(EnemyShip* ship);
+		bool isDestinationReached(EnemyShip* ship);
 
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
+		std::vector<std::shared_ptr<LandMass>> landmasses;
 		PlayerShip* playerShip = nullptr;
 
 		// Values
@@ -50,5 +55,7 @@ namespace PirateGame {
 		float turningSpeed = 0.1f;
 		float enemySpeedMultiplier = 0.5f;
 		float minDistBetweenShips = 1000.f;
+		// destinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
+		float destinationReachedDistance = 500.f;
 	};
 }

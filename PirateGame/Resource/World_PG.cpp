@@ -41,6 +41,7 @@ void World::setUpWorld() {
 	LMHandler->addLandMasses(numLandMasses, distanceBetweenLandMasses);
 
 	// Set up the enemy ships
+	ESH->setLandmasses(LMHandler->getLandMasses());
 	ESH->addEnemyShips(numEnemyShips);
 	ESH->setPlayerShip(playerShip.get());
 
@@ -151,7 +152,7 @@ void World::gameLoop() {
 
 	playerShip->update();
 
-	view.setCenter(playerShip->getSprite().getPosition());
+	view.setCenter(ESH->getEnemyShips()[0]->getSprite().getPosition());
 }
 
 void World::drawGameLoop() {
