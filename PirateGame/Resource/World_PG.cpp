@@ -152,7 +152,7 @@ void World::gameLoop() {
 
 	playerShip->update();
 
-	view.setCenter(ESH->getEnemyShips()[0]->getSprite().getPosition());
+	view.setCenter(playerShip->getSprite().getPosition());
 }
 
 void World::drawGameLoop() {
