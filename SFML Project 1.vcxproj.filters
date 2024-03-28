@@ -427,6 +427,9 @@
     <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipGroup_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -692,6 +695,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipGroup_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship\General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

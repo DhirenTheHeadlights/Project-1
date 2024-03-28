@@ -20,6 +20,20 @@ namespace PirateGame {
 
 		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color);
 
+		sf::Vector2f normalizeVector(const sf::Vector2f& vector) {
+			float length = sqrt(vector.x * vector.x + vector.y * vector.y);
+			if (length != 0) {
+				return sf::Vector2f(vector.x / length, vector.y / length);
+			}
+			else {
+				return sf::Vector2f(0, 0);
+			}
+		}
+
+		float distanceBetweenPoints(const sf::Vector2f& point1, const sf::Vector2f& point2) {
+			return sqrt(pow(point1.x - point2.x, 2) + pow(point1.y - point2.y, 2));
+		}
+
 		// Setter
 		void setWindow(sf::RenderWindow* window) {
 			if (window == nullptr) {

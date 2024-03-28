@@ -189,6 +189,7 @@
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipInputHandler_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\ShipGroup_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipInventoryHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShip_PG.cpp" />
@@ -277,6 +278,7 @@
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipGroup_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipInventoryHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShip_PG.h" />

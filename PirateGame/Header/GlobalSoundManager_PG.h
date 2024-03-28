@@ -59,7 +59,7 @@ namespace PirateGame {
         std::vector<sf::Sound> sounds;
 
         // Values
-        float soundVolume = 100;
+        float soundVolume = 50;
     };
 
 }
