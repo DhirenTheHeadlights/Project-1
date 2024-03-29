@@ -9,16 +9,24 @@ void ShipGroup::updateGroup() {
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
 		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
 		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
-		ship->getMovementHandler().setTravelDirection(resultantVector);
+
+		// Set the travel direction of the ship
+		heading = destination + resultantVector;
+		ship->getMovementHandler().setTravelDirection(heading);
 
 		// If the ship is in combat, set the target position
 		if (inCombat) {
 			if (target == sf::Vector2f(0, 0)) {
-				std::cout << "Error: Target position not set for ship group: " << ID << std::endl;
+				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target position set!" << std::endl;
 			}
 			else {
 				ship->setTargetPosition(target);
 			}
+		}
+
+		// If the health of the ship is almost 0, remove the ship from the group
+		if (ship->getHealth() < 0.001f) {
+			removeShip(ship);
 		}
 	}
 }
@@ -97,7 +105,7 @@ sf::Vector2f ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
 sf::Vector2f ShipGroup::calculateGoalVector(std::shared_ptr<EnemyShip> ship) {
 	// Calculate the goal vector from the average position of all the ships
 	// and the position of the heading
-	sf::Vector2f goalVector = heading - ship->getSprite().getPosition();
+	sf::Vector2f goalVector = destination - ship->getSprite().getPosition();
 	goalVector = GlobalValues::getInstance().normalizeVector(goalVector);
 	goalVector *= goalWeight;
 

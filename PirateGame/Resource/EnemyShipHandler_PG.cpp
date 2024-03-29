@@ -27,18 +27,20 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 		ship->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
 		ship->getInputHandler().setFiringDistance(firingDistance);
 		ship->getSprite().setPosition(points[i]);
-		setShipDestination(ship.get());
-
+		
 		// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
 		// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
 		// hashmap is global, but it is necessary because to avoid circular dependencies, the
 		ship->getCannonHandler().setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
-		// Add the ship to a new ship group, important to use std::move and
+		// Add the ship to a new ship group and vector, std::move is not needed
 		// do after setting up the ship, otherwise the ship will be empty
 		std::shared_ptr<ShipGroup> group = std::make_shared<ShipGroup>();
 		ship->setGroupID(group->getID());	
 		group->addShip(ship);
+		setShipGroupDestination(group);
+		enemyShips.push_back(std::move(ship));
+		shipGroups.push_back(std::move(group));
 	}
 
 	// Add the ships to the hashmap
@@ -47,17 +49,18 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 	}
 }
 
-void EnemyShipHandler::setShipDestination(EnemyShip* ship) {
+void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) {
 	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition();
-	ship->getMovementHandler().setTravelDirection(position);
+	std::cout << "Setting destination to: " << position.x << ", " << position.y << std::endl;
+	group->setHeading(position);
 }
 
-bool EnemyShipHandler::isDestinationReached(ShipGroup* shipGroup) {
+bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) {
 	// Get the average position of the ships in the group
 	sf::Vector2f averagePosition = shipGroup->getAveragePosition();
 
 	// Calculate the distance between the average position and the target
-	float distance = GlobalValues::getInstance().distanceBetweenPoints(averagePosition, shipGroup->getEnemyShips()[0]->getSprite().getPosition());
+	float distance = GlobalValues::getInstance().distanceBetweenPoints(averagePosition, shipGroup->getHeading());
 
 	// If the distance is less than the destination reached distance, return true
 	if (distance < destinationReachedDistance) return true;
@@ -70,23 +73,23 @@ void EnemyShipHandler::update() {
 
 	// Update all the enemy ships groups near the player ship
 	for (auto& ship : nearbyShips) {
-		if (ship->getHealth() < 0.01f) { // Temporary, will be replaced with a more robust system
-			// Delete the ship from the hashmap
-			GlobalHashmapHandler::getInstance().getShipHashmap()->removeObject(ship);
+		// Grab the ship group ID
+		int groupID = ship->getGroupID();
 
-			// Delete the ship from the vector
-			enemyShips.erase(std::remove_if(enemyShips.begin(), enemyShips.end(), [ship](std::shared_ptr<EnemyShip>& s) { return s.get() == ship; }), enemyShips.end());
-		}
-		ship->getMovementHandler().setIsActiveTowardsTarget(true);
-		ship->setTargetPosition(playerShip->getSprite().getPosition());
+		// Look for the ship group
+		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
+
+		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
+		(*it)->setTarget(playerShip->getSprite().getPosition());
+		(*it)->setInCombat(true);
 	}
 
 	// Update all the enemy ships
 	for (auto& enemyShipGroup : shipGroups) {
 		// Check if the destination is reached
-		if (isDestinationReached(enemyShipGroup.get())) {
+		if (isDestinationReached(enemyShipGroup)) {
 			// Set a new destination
-			setShipDestination(enemyShipGroup->getEnemyShips()[0].get());
+			setShipGroupDestination(enemyShipGroup);
 		}
 		enemyShipGroup->updateGroup();
 	}
@@ -99,38 +102,36 @@ void EnemyShipHandler::update() {
 		// Grab nearby ships, for now from just the first ship in the group
 		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(enemyShipGroup->getEnemyShips()[0].get(), minDistBetweenShips);
 
-		for (auto& ship : enemyShipGroup->getEnemyShips()) { // For each ship in the group
+		for (auto& otherShip : nearbyShips) { // For each nearby ship
 
-			for (auto& otherShip : nearbyShips) { // For each nearby ship
+			// Skip ships that are in the same group
+			if (otherShip->getGroupID() == enemyShipGroup->getID()) continue;
 
-				// Skip ships in the same group
-				if (nearbyShips.find(ship.get()) != nearbyShips.end()) continue;
+			// Otherwise, roll a coin to see if the ship should be added to the group
+			std::uniform_int_distribution<int> dist(0, 1);
 
-				// Otherwise, roll a coin to see if the ship should be added to the group
-				std::uniform_int_distribution<int> dist(0, 1);
-
-				if (dist(GlobalValues::getInstance().getRandomEngine()) == 1) {
-					// Add the ship to the group
-					enemyShipGroup->addShip(ship);
-					ship->setGroupID(enemyShipGroup->getID());
-					continue;
-				}
-
-				// Otherwise, fight the ship
-				ship->getMovementHandler().setIsActiveTowardsTarget(true);
-				ship->setTargetPosition(ship->getSprite().getPosition());
-
-				// Set the target for the ship group
-				enemyShipGroup->setTarget(ship->getSprite().getPosition());
-				enemyShipGroup->setInCombat(true);
+			if (dist(GlobalValues::getInstance().getRandomEngine()) == 1) {
+				// Find the other ship in the vector, this is a workaround since the getNearbyObjects function returns a raw pointer
+				auto it = std::find_if(enemyShips.begin(), enemyShips.end(), [otherShip](std::shared_ptr<EnemyShip> ship) { return ship.get() == otherShip; });
+				enemyShipGroup->addShip(*it); // Add the ship to the group
+				(*it)->setGroupID(enemyShipGroup->getID()); // Set the group ID for the ship
+				continue;
 			}
+
+			// Otherwise, fight the ship
+			otherShip->getMovementHandler().setIsActiveTowardsTarget(true);
+			otherShip->setTargetPosition(enemyShipGroup->getAveragePosition());
+
+			// Set the target for the ship group
+			enemyShipGroup->setTarget(otherShip->getSprite().getPosition());
+			enemyShipGroup->setInCombat(true);
 		}
 	}
 }
 
 void EnemyShipHandler::draw() {
-	// Draw all the enemy ships
-	for (auto& ship : enemyShips) {
-		ship->draw();
+	// Draw all the enemy ship groups
+	for (auto& enemyShipGroup : shipGroups) {
+		enemyShipGroup->drawGroup();
 	}
 }

@@ -28,6 +28,7 @@ namespace PirateGame {
 		// Getters
 		EnemyShipMovementHandler& getMovementHandler() { return *SMH; }
 		EnemyShipInputHandler& getInputHandler() { return *SIH; }
+		int getGroupID() { return groupID; }
 
 		// Setters
 		void setTargetPosition(sf::Vector2f playerPos) {

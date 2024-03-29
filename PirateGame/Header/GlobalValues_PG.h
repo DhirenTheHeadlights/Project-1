@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <random>
 
 namespace PirateGame {
 	class GlobalValues {
@@ -41,6 +42,14 @@ namespace PirateGame {
 			}
 			else {
 				return vector;
+			}
+		}
+
+		void printOnlyOnce(const std::string& message) {
+			static bool printed = false;
+			if (!printed) {
+				std::cout << message << std::endl;
+				printed = true;
 			}
 		}
 
