@@ -12,6 +12,7 @@
 #include "EnemyShipInputHandler_PG.h"
 #include "EnemyShipMovementHandler_PG.h"
 #include "HashmapTemplate_PG.h"
+#include "GlobalIDManager_PG.h"
 
 namespace PirateGame {
 	class EnemyShip : public Ship {
@@ -29,11 +30,12 @@ namespace PirateGame {
 		EnemyShipInputHandler& getInputHandler() { return *SIH; }
 
 		// Setters
-		void setPlayerPosition(sf::Vector2f playerPos) {
+		void setTargetPosition(sf::Vector2f playerPos) {
 			this->playerPosition = playerPos;
 			SIH->setPlayerPos(playerPos);
 			SMH->setTargetPosition(playerPos);
 		}
+		void setGroupID(int groupID) { this->groupID = groupID; }
 
 	private:
 
@@ -43,6 +45,7 @@ namespace PirateGame {
 
 		// Variables
 		sf::Vector2f playerPosition;
+		int groupID = -1;
 	};
 }
 

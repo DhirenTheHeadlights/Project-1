@@ -58,6 +58,7 @@ namespace PirateGame {
 		bool getShowHUD() const { return this->showHUD; }
 		sf::RenderWindow* getWindow() { return this->globalWindow; }
 		sf::Clock getClock() const { return this->globalClock; }
+		std::default_random_engine& getRandomEngine() { return randomEngine; }
 
 	private:
 		// Private Constructor
@@ -69,6 +70,9 @@ namespace PirateGame {
 
 		// Variables to store the world's values
 		bool showHUD = true;
+
+		// Random engine
+		std::default_random_engine randomEngine;
 
 		// SFML objects
 		sf::RenderWindow* globalWindow = nullptr;

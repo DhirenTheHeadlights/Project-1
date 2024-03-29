@@ -10,6 +10,16 @@ void ShipGroup::updateGroup() {
 		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
 		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
 		ship->getMovementHandler().setTravelDirection(resultantVector);
+
+		// If the ship is in combat, set the target position
+		if (inCombat) {
+			if (target == sf::Vector2f(0, 0)) {
+				std::cout << "Error: Target position not set for ship group: " << ID << std::endl;
+			}
+			else {
+				ship->setTargetPosition(target);
+			}
+		}
 	}
 }
 

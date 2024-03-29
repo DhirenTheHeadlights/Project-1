@@ -32,9 +32,20 @@ namespace PirateGame {
 
 		// Setters
 		void setHeading(sf::Vector2f heading) { this->heading = heading; }
+		void setTarget(sf::Vector2f target) { this->target = target; }
+		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
+		int getID() { return ID; }
+		sf::Vector2f getAveragePosition() {
+			sf::Vector2f averagePosition = sf::Vector2f(0, 0);
+			for (auto& ship : enemyShips) {
+				averagePosition += ship->getSprite().getPosition();
+			}
+			averagePosition /= static_cast<float>(enemyShips.size());
+			return averagePosition;
+		}
 	private:
 		// Functions
 		
@@ -46,7 +57,10 @@ namespace PirateGame {
 
 		float minDistance = 100.f;
 
+		bool inCombat = false;
+
 		sf::Vector2f heading; // The direction the group is moving
+		sf::Vector2f target; // For combat purposes
 
 		// Game objects
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
