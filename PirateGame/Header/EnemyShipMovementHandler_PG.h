@@ -14,16 +14,16 @@ namespace PirateGame {
 		void move(float baseSpeed) override;
 
 		// Setters
-		void setPlayerPosition(sf::Vector2f playerPos) { this->playerPos = playerPos; }
+		void setTargetPosition(sf::Vector2f playerPos) { this->playerPos = playerPos; }
 		void setPlayerVelocity(sf::Vector2f playerVelocity) { this->playerVelocity = playerVelocity; }
 		void setEnemySpeedMultiplier(float enemySpeedMultiplier) { this->enemySpeedMultiplier = enemySpeedMultiplier; }
 		void setTurningSpeed(float turningSpeed) { this->turningSpeed = turningSpeed; }
-		void setIsActiveTowardsPlayer(bool active) { this->isActiveTowardsPlayer = active; }
-		void setDestination(sf::Vector2f destination) { this->destination = destination; }
+		void setIsActiveTowardsTarget(bool active) { this->isActiveTowardsPlayer = active; }
+		void setTravelDirection(sf::Vector2f destination) { this->travelDirection = destination; }
 
 		// Getters
 		bool getIsActiveTowardsPlayer() { return isActiveTowardsPlayer; }
-		sf::Vector2f getDestination() { return destination; }
+		sf::Vector2f getDestination() { return travelDirection; }
 
 	private:
 		// Helper functions
@@ -31,7 +31,7 @@ namespace PirateGame {
 
 		// Values
 		sf::Vector2f playerPos;
-		sf::Vector2f destination;
+		sf::Vector2f travelDirection;
 		sf::Vector2f playerVelocity;
 		float turningSpeed = 0.f;
 		float enemySpeedMultiplier = 0.f;

@@ -6,23 +6,21 @@ void ShipGroup::updateGroup() {
 	for (auto& ship : enemyShips) {
 		ship->update();
 
-		// Calculate the alignment, cohesion, and separation vectors
-		calculateAlignment(ship);
-		calculateCohesion(ship);
-		calculateSeparation(ship);
-		calculateGoalVector(ship);
+		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
+		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
+		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
+		ship->getMovementHandler().setTravelDirection(resultantVector);
 	}
 }
 
-void ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
 	sf::Vector2f alignment = sf::Vector2f(0, 0);
 	int count = 0;
 
 	for (auto& otherShip : enemyShips) {
 		if (ship != otherShip) {
-			float distance = sqrt(pow(otherShip->getSprite().getPosition().x - ship->getSprite().getPosition().x, 2) 
-				+ pow(otherShip->getSprite().getPosition().y - ship->getSprite().getPosition().y, 2));
-			if (distance < 100) {
+			float distance = GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), otherShip->getSprite().getPosition());
+			if (distance < minDistance) {
 				alignment += otherShip->getMovementHandler().getVelocity();
 				count++;
 			}
@@ -35,18 +33,17 @@ void ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
 		alignment *= alignmentWeight;
 	}
 
-	ship->getMovementHandler().setDestination(alignment);
+	return alignment;
 }
 
-void ShipGroup::calculateCohesion(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateCohesion(std::shared_ptr<EnemyShip> ship) {
 	sf::Vector2f cohesion = sf::Vector2f(0, 0);
 	int count = 0;
 
 	for (auto& otherShip : enemyShips) {
 		if (ship != otherShip) {
-			float distance = sqrt(pow(otherShip->getSprite().getPosition().x - ship->getSprite().getPosition().x, 2)
-							+ pow(otherShip->getSprite().getPosition().y - ship->getSprite().getPosition().y, 2));
-			if (distance < 100) {
+			float distance = GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), otherShip->getSprite().getPosition());
+			if (distance < minDistance) {
 				cohesion += otherShip->getSprite().getPosition();
 				count++;
 			}
@@ -60,10 +57,10 @@ void ShipGroup::calculateCohesion(std::shared_ptr<EnemyShip> ship) {
 		cohesion *= cohesionWeight;
 	}
 
-	ship->getMovementHandler().setDestination(cohesion);
+	return cohesion;
 }
 
-void ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
 	sf::Vector2f separation = sf::Vector2f(0, 0);
 	int count = 0;
 
@@ -84,13 +81,15 @@ void ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
 		separation *= separationWeight;
 	}
 
-	ship->getMovementHandler().setDestination(separation);
+	return separation;
 }
 
-void ShipGroup::calculateGoalVector(std::shared_ptr<EnemyShip> ship) {
-	sf::Vector2f goal = sf::Vector2f(0, 0);
-	goal = GlobalValues::getInstance().normalizeVector(sf::Vector2f(100, 100));
-	goal *= 1.f;
+sf::Vector2f ShipGroup::calculateGoalVector(std::shared_ptr<EnemyShip> ship) {
+	// Calculate the goal vector from the average position of all the ships
+	// and the position of the heading
+	sf::Vector2f goalVector = heading - ship->getSprite().getPosition();
+	goalVector = GlobalValues::getInstance().normalizeVector(goalVector);
+	goalVector *= goalWeight;
 
-	ship->getMovementHandler().setDestination(goal);
+	return goalVector;
 }

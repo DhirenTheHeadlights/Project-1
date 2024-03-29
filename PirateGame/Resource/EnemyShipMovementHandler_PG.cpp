@@ -28,7 +28,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	// Calculate the direction to the player. Use playerPos if active towards player, else use destination.
-	sf::Vector2f travelDirection = isActiveTowardsPlayer ? playerPos : destination - getSprite().getPosition();
+	sf::Vector2f travelDirection = isActiveTowardsPlayer ? playerPos : travelDirection - getSprite().getPosition();
 	float distance = std::sqrt(travelDirection.x * travelDirection.x + travelDirection.y * travelDirection.y);
 
 	if (isActiveTowardsPlayer) {

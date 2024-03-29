@@ -34,6 +34,16 @@ namespace PirateGame {
 			return sqrt(pow(point1.x - point2.x, 2) + pow(point1.y - point2.y, 2));
 		}
 
+		sf::Vector2f limitVector(const sf::Vector2f& vector, float max) {
+			float length = sqrt(vector.x * vector.x + vector.y * vector.y);
+			if (length > max) {
+				return normalizeVector(vector) * max;
+			}
+			else {
+				return vector;
+			}
+		}
+
 		// Setter
 		void setWindow(sf::RenderWindow* window) {
 			if (window == nullptr) {

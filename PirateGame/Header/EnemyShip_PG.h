@@ -32,7 +32,7 @@ namespace PirateGame {
 		void setPlayerPosition(sf::Vector2f playerPos) {
 			this->playerPosition = playerPos;
 			SIH->setPlayerPos(playerPos);
-			SMH->setPlayerPosition(playerPos);
+			SMH->setTargetPosition(playerPos);
 		}
 
 	private:

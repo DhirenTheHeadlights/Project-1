@@ -6,10 +6,12 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <random>
+
 
 #include "GlobalValues_PG.h"
 #include "GlobalHashmapHandler.h"
-#include "EnemyShip_PG.h"
+#include "ShipGroup_PG.h"
 
 namespace PirateGame {
 	class EnemyShipHandler {
@@ -42,9 +44,10 @@ namespace PirateGame {
 		// helper functions
 		void addEnemyShipsToChunk(Map& map, int numShips);
 		void setShipDestination(EnemyShip* ship);
-		bool isDestinationReached(EnemyShip* ship);
+		bool isDestinationReached(ShipGroup* shipGroup);
 
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
+		std::vector<std::shared_ptr<ShipGroup>> shipGroups;
 		std::vector<std::shared_ptr<LandMass>> landmasses;
 		PlayerShip* playerShip = nullptr;
 
@@ -55,7 +58,8 @@ namespace PirateGame {
 		float turningSpeed = 0.1f;
 		float enemySpeedMultiplier = 0.5f;
 		float minDistBetweenShips = 1000.f;
-		// destinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
+
+		// DestinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
 		float destinationReachedDistance = 500.f;
 	};
 }
