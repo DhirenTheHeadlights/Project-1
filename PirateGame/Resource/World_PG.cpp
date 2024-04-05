@@ -153,6 +153,9 @@ void World::gameLoop() {
 	playerShip->update();
 
 	view.setCenter(playerShip->getSprite().getPosition());
+
+	// For debugging purposes, this line sets the view to an enemy ship
+	//view.setCenter(ESH->getEnemyShips()[0]->getSprite().getPosition());
 }
 
 void World::drawGameLoop() {

@@ -37,7 +37,15 @@ namespace PirateGame {
 		void setRenderDistance(int distance) { renderDistance = distance; }
 
 		// Getters
-		Map* getMapAtCurrentChunk(sf::Vector2f position) { return chunks.at(std::make_pair(position.x / chunkSize.x, position.y / chunkSize.y)).get(); }
+		Map* getMapAtCurrentChunk(sf::Vector2f position) { 
+			if (chunks.find(calculateCurrentChunk(position)) != chunks.end()) {
+				return chunks[calculateCurrentChunk(position)].get();
+			}
+			else {
+				std::cout << "Chunk not found at position: " << position.x << ", " << position.y << std::endl;
+				return nullptr;
+			}
+		}
 		std::vector<Map*> getAllChunks() {
 			std::vector<Map*> allChunks;
 			for (auto& chunk : chunks) {

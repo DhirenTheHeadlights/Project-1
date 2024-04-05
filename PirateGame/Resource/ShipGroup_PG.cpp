@@ -28,6 +28,13 @@ void ShipGroup::updateGroup() {
 		if (ship->getHealth() < 0.001f) {
 			removeShip(ship);
 		}
+
+		// For debugging purposes
+		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
+		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(enemyShips.size()), pos + sf::Vector2f(0, 10), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 20), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("targetpos: " + std::to_string(target.x) + ", " + std::to_string(target.y), pos + sf::Vector2f(0, 30), sf::Color::White, 10);
 	}
 }
 

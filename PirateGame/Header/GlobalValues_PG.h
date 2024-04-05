@@ -7,6 +7,8 @@
 #include <iostream>
 #include <random>
 
+#include "GlobalFontHandler_PG.h"
+
 namespace PirateGame {
 	class GlobalValues {
 	public:
@@ -53,7 +55,17 @@ namespace PirateGame {
 			}
 		}
 
-		// Setter
+		void displayText(const std::string& text, const sf::Vector2f& position, const sf::Color& color, int size = 30) {
+			sf::Text displayText;
+			displayText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
+			displayText.setString(text);
+			displayText.setCharacterSize(size);
+			displayText.setFillColor(color);
+			displayText.setPosition(position);
+			globalWindow->draw(displayText);
+		}
+
+		// Setters 
 		void setWindow(sf::RenderWindow* window) {
 			if (window == nullptr) {
 				std::cerr << "Attempted to set a nullptr window in GlobalValues\n";

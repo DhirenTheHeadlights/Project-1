@@ -51,7 +51,6 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 
 void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) {
 	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition();
-	std::cout << "Setting destination to: " << position.x << ", " << position.y << std::endl;
 	group->setHeading(position);
 }
 
@@ -71,18 +70,18 @@ void EnemyShipHandler::update() {
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
 
-	// Update all the enemy ships groups near the player ship
-	for (auto& ship : nearbyShips) {
-		// Grab the ship group ID
-		int groupID = ship->getGroupID();
+	//// Update all the enemy ships groups near the player ship
+	//for (auto& ship : nearbyShips) {
+	//	// Grab the ship group ID
+	//	int groupID = ship->getGroupID();
 
-		// Look for the ship group
-		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
+	//	// Look for the ship group
+	//	auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
 
-		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
-		(*it)->setTarget(playerShip->getSprite().getPosition());
-		(*it)->setInCombat(true);
-	}
+	//	// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
+	//	(*it)->setTarget(playerShip->getSprite().getPosition());
+	//	(*it)->setInCombat(true);
+	//}
 
 	// Update all the enemy ships
 	for (auto& enemyShipGroup : shipGroups) {
@@ -99,6 +98,9 @@ void EnemyShipHandler::update() {
 	// and will be destroyed when they are far away from each other. By default, there is 1 ship in each group.
 	// The ship groups will be used to calculate the flocking behavior of the enemy ships.
 	for (auto& enemyShipGroup : shipGroups) {
+		if (enemyShipGroup == nullptr) std::cout << "Error: Ship group is nullptr!" << std::endl; continue;
+		if (enemyShipGroup->getEnemyShips().size() == 0) continue; // Tempfix for empty ship groups, not sure if any are actually empty, but this should stop any crashes
+
 		// Grab nearby ships, for now from just the first ship in the group
 		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(enemyShipGroup->getEnemyShips()[0].get(), minDistBetweenShips);
 
@@ -115,6 +117,11 @@ void EnemyShipHandler::update() {
 				auto it = std::find_if(enemyShips.begin(), enemyShips.end(), [otherShip](std::shared_ptr<EnemyShip> ship) { return ship.get() == otherShip; });
 				enemyShipGroup->addShip(*it); // Add the ship to the group
 				(*it)->setGroupID(enemyShipGroup->getID()); // Set the group ID for the ship
+
+				// Delete the shipgroup of the other ship
+				auto it2 = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
+				shipGroups.erase(it2);
+
 				continue;
 			}
 
