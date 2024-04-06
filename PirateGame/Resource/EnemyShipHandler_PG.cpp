@@ -98,7 +98,7 @@ void EnemyShipHandler::update() {
 	// and will be destroyed when they are far away from each other. By default, there is 1 ship in each group.
 	// The ship groups will be used to calculate the flocking behavior of the enemy ships.
 	for (auto& enemyShipGroup : shipGroups) {
-		if (enemyShipGroup == nullptr) std::cout << "Error: Ship group is nullptr!" << std::endl; continue;
+		if (enemyShipGroup == nullptr) continue;
 		if (enemyShipGroup->getEnemyShips().size() == 0) continue; // Tempfix for empty ship groups, not sure if any are actually empty, but this should stop any crashes
 
 		// Grab nearby ships, for now from just the first ship in the group

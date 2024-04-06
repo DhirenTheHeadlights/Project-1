@@ -37,7 +37,7 @@ namespace PirateGame {
 		void setRenderDistance(int distance) { renderDistance = distance; }
 
 		// Getters
-		Map* getMapAtCurrentChunk(sf::Vector2f position) { 
+		Map* getMapAtCurrentChunk(sf::Vector2f position) {
 			if (chunks.find(calculateCurrentChunk(position)) != chunks.end()) {
 				return chunks[calculateCurrentChunk(position)].get();
 			}
