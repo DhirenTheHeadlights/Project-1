@@ -14,27 +14,27 @@ namespace PirateGame {
 		void move(float baseSpeed) override;
 
 		// Setters
-		void setTargetPosition(sf::Vector2f playerPos) { this->playerPos = playerPos; }
+		void setTargetPosition(sf::Vector2f targetPos) { this->targetPos = targetPos; }
 		void setPlayerVelocity(sf::Vector2f playerVelocity) { this->playerVelocity = playerVelocity; }
 		void setEnemySpeedMultiplier(float enemySpeedMultiplier) { this->enemySpeedMultiplier = enemySpeedMultiplier; }
 		void setTurningSpeed(float turningSpeed) { this->turningSpeed = turningSpeed; }
-		void setIsActiveTowardsTarget(bool active) { this->isActiveTowardsPlayer = active; }
-		void setTravelDirection(sf::Vector2f destination) { this->travelDirection = destination; }
+		void setIsActiveTowardsTarget(bool active) { this->isActiveTowardsTarget = active; }
+		void setDestination(sf::Vector2f destination) { this->destination = destination; }
 
 		// Getters
-		bool getIsActiveTowardsPlayer() { return isActiveTowardsPlayer; }
-		sf::Vector2f getDestination() { return travelDirection; }
+		bool getIsActiveTowardsPlayer() { return isActiveTowardsTarget; }
+		sf::Vector2f getDestination() { return destination; }
 
 	private:
 		// Helper functions
 		void setSpriteRotation() override;
 
 		// Values
-		sf::Vector2f playerPos;
-		sf::Vector2f travelDirection;
+		sf::Vector2f targetPos;
+		sf::Vector2f destination;
 		sf::Vector2f playerVelocity;
 		float turningSpeed = 0.f;
 		float enemySpeedMultiplier = 0.f;
-		bool isActiveTowardsPlayer = false;
+		bool isActiveTowardsTarget = false;
 	};
 }

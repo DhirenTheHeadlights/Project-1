@@ -12,7 +12,7 @@ void ShipGroup::updateGroup() {
 
 		// Set the travel direction of the ship
 		heading = destination + resultantVector;
-		ship->getMovementHandler().setTravelDirection(heading);
+		ship->getMovementHandler().setDestination(heading);
 
 		// If the ship is in combat, set the target position
 		if (inCombat) {
@@ -35,6 +35,7 @@ void ShipGroup::updateGroup() {
 		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(enemyShips.size()), pos + sf::Vector2f(0, 10), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 20), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("targetpos: " + std::to_string(target.x) + ", " + std::to_string(target.y), pos + sf::Vector2f(0, 30), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("inCombat: " + std::to_string(inCombat), pos + sf::Vector2f(0, 40), sf::Color::White, 10);
 	}
 }
 

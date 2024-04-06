@@ -31,10 +31,10 @@ namespace PirateGame {
 		int getGroupID() { return groupID; }
 
 		// Setters
-		void setTargetPosition(sf::Vector2f playerPos) {
-			this->playerPosition = playerPos;
-			SIH->setPlayerPos(playerPos);
-			SMH->setTargetPosition(playerPos);
+		void setTargetPosition(sf::Vector2f targetPos) {
+			this->targetPosition = targetPos;
+			SIH->setTargetPos(targetPos);
+			SMH->setTargetPosition(targetPos);
 		}
 		void setGroupID(int groupID) { this->groupID = groupID; }
 
@@ -45,7 +45,7 @@ namespace PirateGame {
 		std::unique_ptr<EnemyShipMovementHandler> SMH;
 
 		// Variables
-		sf::Vector2f playerPosition;
+		sf::Vector2f targetPosition;
 		int groupID = -1;
 	};
 }
