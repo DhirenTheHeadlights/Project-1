@@ -99,7 +99,14 @@ void EnemyShipHandler::update() {
 	// The ship groups will be used to calculate the flocking behavior of the enemy ships.
 	for (auto& enemyShipGroup : shipGroups) {
 		if (enemyShipGroup == nullptr) continue;
-		if (enemyShipGroup->getEnemyShips().size() == 0) continue; // Tempfix for empty ship groups, not sure if any are actually empty, but this should stop any crashes
+
+		// If the group is size 0, remove it
+		if (enemyShipGroup->getEnemyShips().size() == 0) {
+			// Remove the ship group from the vector
+			shipGroups.erase(std::remove(shipGroups.begin(), shipGroups.end(), enemyShipGroup), shipGroups.end());
+			std::cout << "Ship group removed. Group size: " << shipGroups.size() << std::endl;
+			continue;
+		}
 
 		// Grab nearby ships, for now from just the first ship in the group
 		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(enemyShipGroup->getEnemyShips()[0].get(), minDistBetweenShips);
@@ -116,11 +123,15 @@ void EnemyShipHandler::update() {
 				// Find the other ship in the vector, this is a workaround since the getNearbyObjects function returns a raw pointer
 				auto it = std::find_if(enemyShips.begin(), enemyShips.end(), [otherShip](std::shared_ptr<EnemyShip> ship) { return ship.get() == otherShip; });
 				enemyShipGroup->addShip(*it); // Add the ship to the group
-				(*it)->setGroupID(enemyShipGroup->getID()); // Set the group ID for the ship
 
-				// Delete the shipgroup of the other ship
-				auto it2 = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
-				shipGroups.erase(it2);
+				// Remove the ship from its old group
+				for (auto& group : shipGroups) {
+					if (group->getID() == otherShip->getGroupID()) {
+						group->removeShip(*it);
+					}
+				}
+
+				(*it)->setGroupID(enemyShipGroup->getID()); // Set the group ID for the ship
 
 				continue;
 			}

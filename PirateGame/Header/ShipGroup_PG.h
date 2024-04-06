@@ -24,6 +24,7 @@ namespace PirateGame {
 
 		void addShip(std::shared_ptr<EnemyShip> ship) {
 			enemyShips.push_back(ship);
+			std::cout << "Ship added to group. Group size: " << enemyShips.size() << std::endl;
 		}
 
 		void removeShip(std::shared_ptr<EnemyShip> ship) {
