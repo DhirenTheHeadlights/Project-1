@@ -5,7 +5,7 @@ using namespace PirateGame;
 void ShipGroup::updateGroup() {
 	for (auto& ship : enemyShips) {
 		ship->update();
-
+		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
 		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
 		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);

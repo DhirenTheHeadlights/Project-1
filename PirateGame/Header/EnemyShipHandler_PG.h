@@ -58,6 +58,8 @@ namespace PirateGame {
 		float turningSpeed = 0.1f;
 		float enemySpeedMultiplier = 0.5f;
 		float minDistBetweenShips = 1000.f;
+		//Interaction chance is the 1/n chance of a specific interaction; For value x, chance of grouping, attacking, etc. is 1/x
+		int interactionChance = 5;
 
 		// DestinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
 		float destinationReachedDistance = 500.f;

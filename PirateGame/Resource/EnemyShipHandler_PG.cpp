@@ -109,17 +109,20 @@ void EnemyShipHandler::update() {
 		}
 
 		// Grab nearby ships, for now from just the first ship in the group
-		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(enemyShipGroup->getEnemyShips()[0].get(), minDistBetweenShips);
+		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(enemyShipGroup->getEnemyShips()[0].get(), maxDetectionDistance);
 
 		for (auto& otherShip : nearbyShips) { // For each nearby ship
-
 			// Skip ships that are in the same group
 			if (otherShip->getGroupID() == enemyShipGroup->getID()) continue;
 
-			// Otherwise, roll a coin to see if the ship should be added to the group
-			std::uniform_int_distribution<int> dist(0, 1);
+			// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
+			std::uniform_int_distribution<int> dist(0, interactionChance);
+			int interaction = dist(GlobalValues::getInstance().getRandomEngine());
 
-			if (dist(GlobalValues::getInstance().getRandomEngine()) == 1) {
+			//Shows if there is interaction. Possible framework for future attack indicator!
+			GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
+			
+			if (interaction == 1) {
 				// Find the other ship in the vector, this is a workaround since the getNearbyObjects function returns a raw pointer
 				auto it = std::find_if(enemyShips.begin(), enemyShips.end(), [otherShip](std::shared_ptr<EnemyShip> ship) { return ship.get() == otherShip; });
 				enemyShipGroup->addShip(*it); // Add the ship to the group
@@ -135,14 +138,16 @@ void EnemyShipHandler::update() {
 
 				continue;
 			}
+			else if (interaction == 2) {
+				// Otherwise, fight the ship
+				otherShip->getMovementHandler().setIsActiveTowardsTarget(true);
+				otherShip->setTargetPosition(enemyShipGroup->getAveragePosition());
 
-			// Otherwise, fight the ship
-			otherShip->getMovementHandler().setIsActiveTowardsTarget(true);
-			otherShip->setTargetPosition(enemyShipGroup->getAveragePosition());
 
-			// Set the target for the ship group
-			enemyShipGroup->setTarget(otherShip->getSprite().getPosition());
-			enemyShipGroup->setInCombat(true);
+				// Set the target for the ship group
+				enemyShipGroup->setTarget(otherShip->getSprite().getPosition());
+				enemyShipGroup->setInCombat(true);
+			}
 		}
 	}
 }
