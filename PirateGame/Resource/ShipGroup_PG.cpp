@@ -21,6 +21,7 @@ void ShipGroup::updateGroup() {
 			}
 			else {
 				ship->setTargetPosition(target);
+				ship->getMovementHandler().setIsActiveTowardsTarget(true);
 			}
 		}
 

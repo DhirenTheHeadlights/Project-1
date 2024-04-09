@@ -115,13 +115,16 @@ void EnemyShipHandler::update() {
 			// Skip ships that are in the same group
 			if (otherShip->getGroupID() == enemyShipGroup->getID()) continue;
 
+			// Check if the ship has already been interacted with
+			if (enemyShipGroup->isGroupIDInteractedWith(otherShip->getGroupID())) continue;
+
 			// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
 			std::uniform_int_distribution<int> dist(0, interactionChance);
 			int interaction = dist(GlobalValues::getInstance().getRandomEngine());
 
-			//Shows if there is interaction. Possible framework for future attack indicator!
+			// Shows if there is interaction. Possible framework for future attack indicator!
 			GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
-			
+
 			if (interaction == 1) {
 				// Find the other ship in the vector, this is a workaround since the getNearbyObjects function returns a raw pointer
 				auto it = std::find_if(enemyShips.begin(), enemyShips.end(), [otherShip](std::shared_ptr<EnemyShip> ship) { return ship.get() == otherShip; });
@@ -135,18 +138,23 @@ void EnemyShipHandler::update() {
 				}
 
 				(*it)->setGroupID(enemyShipGroup->getID()); // Set the group ID for the ship
+				enemyShipGroup->addGroupIDInteractedWith(otherShip->getGroupID()); // Add the group ID to the list of groups interacted with
 
 				continue;
 			}
-			else if (interaction == 2) {
-				// Otherwise, fight the ship
-				otherShip->getMovementHandler().setIsActiveTowardsTarget(true);
-				otherShip->setTargetPosition(enemyShipGroup->getAveragePosition());
 
+			else if (interaction == 2) {
+				// Otherwise, fight the other ship group
+				auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
+				it->get()->setTarget(enemyShipGroup->getAveragePosition());
+				it->get()->setInCombat(true);
 
 				// Set the target for the ship group
 				enemyShipGroup->setTarget(otherShip->getSprite().getPosition());
 				enemyShipGroup->setInCombat(true);
+
+				// Add the ship to the list of ships interacted with
+				enemyShipGroup->addGroupIDInteractedWith(otherShip->getGroupID());
 			}
 		}
 	}

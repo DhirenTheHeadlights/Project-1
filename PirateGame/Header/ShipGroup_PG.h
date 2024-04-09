@@ -39,11 +39,19 @@ namespace PirateGame {
 		void setHeading(sf::Vector2f heading) { this->destination = heading; }
 		void setTarget(sf::Vector2f target) { this->target = target; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
+		void addGroupIDInteractedWith(int groupID) { groupIDsInteractedWith.push_back(groupID); }
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
 
 		int getID() { return ID; }
+		bool getInCombat() { return inCombat; }
+		bool isGroupIDInteractedWith(int groupID) {
+			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) != groupIDsInteractedWith.end()) {
+				return true;
+			}
+			return false;
+		}
 
 		sf::Vector2f getAveragePosition() {
 			sf::Vector2f averagePosition = sf::Vector2f(0, 0);
@@ -78,6 +86,7 @@ namespace PirateGame {
 
 		// Game objects
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
+		std::vector<int> groupIDsInteractedWith;
 
 		// Unique ID
 		int ID = -1;

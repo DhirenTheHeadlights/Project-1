@@ -36,7 +36,6 @@ namespace PirateGame {
 		void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
 		void setLandmasses(std::vector<std::shared_ptr<LandMass>> landmasses) { this->landmasses = landmasses; }
 
-
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
 
