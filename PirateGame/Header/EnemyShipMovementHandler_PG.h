@@ -33,8 +33,10 @@ namespace PirateGame {
 		sf::Vector2f targetPos;
 		sf::Vector2f destination;
 		sf::Vector2f playerVelocity;
+
 		float turningSpeed = 0.f;
 		float enemySpeedMultiplier = 0.f;
+
 		bool isActiveTowardsTarget = false;
 	};
 }

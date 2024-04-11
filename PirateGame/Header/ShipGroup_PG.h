@@ -23,6 +23,14 @@ namespace PirateGame {
 		}
 
 		void addShip(std::shared_ptr<EnemyShip> ship) {
+			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
+			if (enemyShips.size() == 0 || ship->getMovementHandler().getBaseSpeed() < groupSpeed) {
+				groupSpeed = ship->getShipProperties().baseSpeed;
+				std::cout << "Group speed set to: " << groupSpeed << std::endl;
+			}
+
+			ship->setBaseSpeed(groupSpeed);
+
 			enemyShips.push_back(ship);
 			std::cout << "Ship added to group. Group size: " << enemyShips.size() << std::endl;
 		}
@@ -77,6 +85,7 @@ namespace PirateGame {
 		float goalWeight = 1.f;
 
 		float minDistance = 100.f;
+		float groupSpeed = 0.f;
 
 		bool inCombat = false;
 

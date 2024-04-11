@@ -58,6 +58,9 @@ namespace PirateGame {
 			this->shipClass = shipClass;
 			setUpShip(shipClass);
 		}
+		void setBaseSpeed(float speed) { shipProperties.baseSpeed = speed; }
+		void setMaxHealth(float health) { shipProperties.maxHealth = health; }
+		void setRegenRate(float rate) { shipProperties.regenRate = rate; }
 
 		// Getters
 		float getHealth() const { return health; }
