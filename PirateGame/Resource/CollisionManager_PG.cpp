@@ -42,13 +42,12 @@ void CollisionManager::handleCollisions() {
 		}
 	}
 
-	// Grab the nearby landmasses and ships for each active ship
-	for (auto& enemyShip : nearbyShips) {
-		if (!enemyShip->getMovementHandler().getIsActiveTowardsPlayer()) continue;
+	// Grab the nearby landmasses and ships for each ship
+	for (auto& enemyShip : enemyShips) {
 
-		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findObjectsNearObject(enemyShip);
-		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(enemyShip);
-		std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(enemyShip);
+		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findObjectsNearObject(enemyShip.get());
+		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(enemyShip.get());
+		std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(enemyShip.get());
 
 		std::vector<LandMass*> collidingLandMasses;
 		collidingLandMasses.clear();
@@ -71,11 +70,11 @@ void CollisionManager::handleCollisions() {
 
 		// Check if the enemy ship is colliding with any of the nearby ships
 		for (auto& i : nearbyShips) {
-			if (shipCollisionTest(enemyShip, i)) {
+			if (shipCollisionTest(enemyShip.get(), i)) {
 				collidingShips.push_back(i);
 
 				// Ignore the collision if the ships are the same
-				if (enemyShip == i) continue;
+				if (enemyShip.get() == i) continue;
 
 				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
 				enemyShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
@@ -98,14 +97,14 @@ void CollisionManager::handleCollisions() {
 			}
 		}
 
-		// Check if the enemy ship is colliding with any of the nearby cannonballs
+		// Check if the enemy ship is colliding with any of the nearby cannonballs 
 		for (auto& i : nearbyCannonballs) {
 			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
 				if (i->getID() == enemyShip->getID()) continue; // Ignore self-collisions
 				enemyShip->damageShip(collisionDamagePerFrame);
 				i->setInactive();
 
-				GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
+				//GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
 			}
 		}
 	}

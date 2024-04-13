@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "GlobalValues_PG.h"
+#include "GlobalInputHandler_PG.h"
 
 namespace PirateGame {
 	class View {
@@ -16,11 +17,16 @@ namespace PirateGame {
 
 		void setUpView();
 		void setCenter(sf::Vector2f position);
+		void updateDebugView(sf::Event event);
 
 		sf::View& getView() { return view;  }
 	private:
 		sf::View view;
 		sf::RenderWindow* window = nullptr;
+
+		int scale = 2;
+
+		bool sizeNotSet = false;
 	};
 }
 

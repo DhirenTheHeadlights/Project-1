@@ -59,10 +59,15 @@ namespace PirateGame {
 			sf::Text displayText;
 			displayText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
 			displayText.setString(text);
-			displayText.setCharacterSize(size);
+			textSize = globalWindow->getView().getSize().y / textScalingFactor;
+			displayText.setCharacterSize(textSize);
 			displayText.setFillColor(color);
 			displayText.setPosition(position);
-			globalWindow->draw(displayText);
+
+			// Only draw the text if the scale of the view is smaller than 5
+			if (globalWindow->getView().getSize().x / globalWindow->getSize().x < 5) {
+				globalWindow->draw(displayText);
+			}
 		}
 
 		// Setters 
@@ -80,6 +85,7 @@ namespace PirateGame {
 		sf::RenderWindow* getWindow() { return this->globalWindow; }
 		sf::Clock getClock() const { return this->globalClock; }
 		std::default_random_engine& getRandomEngine() { return randomEngine; }
+		int getTextSize() const { return textSize; }
 
 	private:
 		// Private Constructor
@@ -91,6 +97,10 @@ namespace PirateGame {
 
 		// Variables to store the world's values
 		bool showHUD = true;
+
+		// Text size
+		int textSize = 30;
+		const int textScalingFactor = 50; // The larger the number, the smaller the text compared to the window size
 
 		// Random engine
 		std::default_random_engine randomEngine;

@@ -33,10 +33,12 @@ void ShipGroup::updateGroup() {
 		// For debugging purposes
 		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
 		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(enemyShips.size()), pos + sf::Vector2f(0, 10), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 20), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("targetpos: " + std::to_string(target.x) + ", " + std::to_string(target.y), pos + sf::Vector2f(0, 30), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("inCombat: " + std::to_string(inCombat), pos + sf::Vector2f(0, 40), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(enemyShips.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("targetpos: " + std::to_string(target.x) + ", " + std::to_string(target.y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("inCombat: " + std::to_string(inCombat), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Group speed: " + std::to_string(groupSpeed), pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 	}
 }
 

@@ -37,7 +37,6 @@ namespace PirateGame {
 		void setInitialPositionVariable(sf::Vector2f initialPosition) { this->initialPosition = initialPosition; }
 		void setStopShipRotationFlag(bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
 		void setAnchorDrop(bool anchorDrop) { this->dropAnchor = anchorDrop; }
-		void setSpeed(float speed) { this->speed = speed; }
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
 		void setWindSpeedApplied(bool windSpeedApplied) { this->windSpeedApplied = windSpeedApplied; }
 		void setInitialPositionSet(bool initialPositionSet) { this->initialPositionSet = initialPositionSet; }

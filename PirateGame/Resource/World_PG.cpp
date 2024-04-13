@@ -102,8 +102,8 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		drawGameLoop();
-		gameLoop();
-		if (GlobalValues::getInstance().getShowHUD()) MH->openMenu(MenuType::HUD);
+		gameLoop(event);
+		if (GlobalValues::getInstance().getShowHUD() && !debug) MH->openMenu(MenuType::HUD);
 		break;
 	}
 
@@ -135,14 +135,15 @@ void World::createWorld(sf::Event event) {
 	window->display();
 }
 
-void World::gameLoop() {
+void World::gameLoop(sf::Event event) {
 	// Update the map
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 	GlobalMap::getInstance().getMapAtCurrentChunk(playerShip->getSprite().getPosition())->drawGrid(*window);
 
 	GlobalWindController::getInstance().update();
 
-	background.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y - window->getSize().y / 2.f);
+	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
+	if (debug) background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
 
 	LMHandler->interactWithLandmasses(playerShip.get());
 
@@ -152,10 +153,8 @@ void World::gameLoop() {
 
 	playerShip->update();
 
-	view.setCenter(playerShip->getSprite().getPosition());
-
-	// For debugging purposes, this line sets the view to an enemy ship
-	//view.setCenter(ESH->getEnemyShips()[0]->getSprite().getPosition());
+	if (!debug) view.setCenter(playerShip->getSprite().getPosition());
+	else view.updateDebugView(event);
 }
 
 void World::drawGameLoop() {
