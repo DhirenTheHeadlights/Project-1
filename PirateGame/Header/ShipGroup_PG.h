@@ -17,22 +17,22 @@ namespace PirateGame {
 
 		void updateGroup();
 		void drawGroup() {
-			for (auto& ship : enemyShips) {
+			for (auto& ship : ships) {
 				ship->draw();
 			}
 		}
 
 		void addShip(std::shared_ptr<EnemyShip> ship) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
-			if (enemyShips.size() == 0 || ship->getMovementHandler().getBaseSpeed() < groupSpeed) {
+			if (ships.size() == 0 || ship->getMovementHandler().getBaseSpeed() < groupSpeed) {
 				groupSpeed = ship->getShipProperties().baseSpeed;
 				std::cout << "Group speed set to: " << groupSpeed << std::endl;
 			}
 
 			ship->setBaseSpeed(groupSpeed);
 
-			enemyShips.push_back(ship);
-			std::cout << "Ship added to group. Group size: " << enemyShips.size() << std::endl;
+			ships.push_back(ship);
+			std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
 		}
 
 		void removeShip(std::shared_ptr<EnemyShip> ship) {
@@ -40,17 +40,18 @@ namespace PirateGame {
 			GlobalHashmapHandler::getInstance().getShipHashmap()->removeObject(ship.get());
 
 			// Remove the ship from the vector
-			enemyShips.erase(std::remove(enemyShips.begin(), enemyShips.end(), ship), enemyShips.end());
+			ships.erase(std::remove(ships.begin(), ships.end(), ship), ships.end());
 		}
 
 		// Setters
 		void setHeading(sf::Vector2f heading) { this->destination = heading; }
 		void setTarget(sf::Vector2f target) { this->target = target; }
+		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
 		void addGroupIDInteractedWith(int groupID) { groupIDsInteractedWith.push_back(groupID); }
 
 		// Getters
-		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
+		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return ships; }
 
 		int getID() { return ID; }
 		bool getInCombat() { return inCombat; }
@@ -63,10 +64,10 @@ namespace PirateGame {
 
 		sf::Vector2f getAveragePosition() {
 			sf::Vector2f averagePosition = sf::Vector2f(0, 0);
-			for (auto& ship : enemyShips) {
+			for (auto& ship : ships) {
 				averagePosition += ship->getSprite().getPosition();
 			}
-			averagePosition /= static_cast<float>(enemyShips.size());
+			averagePosition /= static_cast<float>(ships.size());
 			return averagePosition;
 		}
 		sf::Vector2f getHeading() { return destination; }
@@ -92,9 +93,10 @@ namespace PirateGame {
 		sf::Vector2f destination; // The destination of the ship group
 		sf::Vector2f heading; // The heading of the ship group
 		sf::Vector2f target; // For combat purposes
+		sf::Vector2f targetVelocity; // For combat purposes
 
 		// Game objects
-		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
+		std::vector<std::shared_ptr<EnemyShip>> ships;
 		std::vector<int> groupIDsInteractedWith;
 
 		// Unique ID

@@ -3,9 +3,10 @@
 using namespace PirateGame;
 
 void ShipGroup::updateGroup() {
-	for (auto& ship : enemyShips) {
+	for (auto& ship : ships) {
 		ship->update();
 		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
+
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
 		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
 		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
@@ -21,6 +22,7 @@ void ShipGroup::updateGroup() {
 			}
 			else {
 				ship->setTargetPosition(target);
+				ship->getMovementHandler().setTargetVelocity(targetVelocity);
 				ship->getMovementHandler().setIsActiveTowardsTarget(true);
 			}
 		}
@@ -33,7 +35,7 @@ void ShipGroup::updateGroup() {
 		// For debugging purposes
 		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
 		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(enemyShips.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("targetpos: " + std::to_string(target.x) + ", " + std::to_string(target.y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("inCombat: " + std::to_string(inCombat), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
@@ -46,7 +48,7 @@ sf::Vector2f ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
 	sf::Vector2f alignment = sf::Vector2f(0, 0);
 	int count = 0;
 
-	for (auto& otherShip : enemyShips) {
+	for (auto& otherShip : ships) {
 		if (ship != otherShip) {
 			float distance = GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), otherShip->getSprite().getPosition());
 			if (distance < minDistance) {
@@ -69,7 +71,7 @@ sf::Vector2f ShipGroup::calculateCohesion(std::shared_ptr<EnemyShip> ship) {
 	sf::Vector2f cohesion = sf::Vector2f(0, 0);
 	int count = 0;
 
-	for (auto& otherShip : enemyShips) {
+	for (auto& otherShip : ships) {
 		if (ship != otherShip) {
 			float distance = GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), otherShip->getSprite().getPosition());
 			if (distance < minDistance) {
@@ -93,7 +95,7 @@ sf::Vector2f ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
 	sf::Vector2f separation = sf::Vector2f(0, 0);
 	int count = 0;
 
-	for (auto& otherShip : enemyShips) {
+	for (auto& otherShip : ships) {
 		if (ship != otherShip) {
 			float distance = sqrt(pow(otherShip->getSprite().getPosition().x - ship->getSprite().getPosition().x, 2)
 										+ pow(otherShip->getSprite().getPosition().y - ship->getSprite().getPosition().y, 2));

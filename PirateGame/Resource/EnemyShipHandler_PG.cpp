@@ -151,6 +151,7 @@ void EnemyShipHandler::update() {
 
 				// Set the target for the ship group
 				enemyShipGroup->setTarget(otherShip->getSprite().getPosition());
+				enemyShipGroup->setTargetVelocity(otherShip->getMovementHandler().getVelocity());
 				enemyShipGroup->setInCombat(true);
 
 				// Add the ship to the list of ships interacted with

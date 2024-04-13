@@ -15,7 +15,7 @@ namespace PirateGame {
 
 		// Setters
 		void setTargetPosition(sf::Vector2f targetPos) { this->targetPos = targetPos; }
-		void setPlayerVelocity(sf::Vector2f playerVelocity) { this->playerVelocity = playerVelocity; }
+		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setEnemySpeedMultiplier(float enemySpeedMultiplier) { this->enemySpeedMultiplier = enemySpeedMultiplier; }
 		void setTurningSpeed(float turningSpeed) { this->turningSpeed = turningSpeed; }
 		void setIsActiveTowardsTarget(bool active) { this->isActiveTowardsTarget = active; }
@@ -32,7 +32,7 @@ namespace PirateGame {
 		// Values
 		sf::Vector2f targetPos;
 		sf::Vector2f destination;
-		sf::Vector2f playerVelocity;
+		sf::Vector2f targetVelocity;
 
 		float turningSpeed = 0.f;
 		float enemySpeedMultiplier = 0.f;
