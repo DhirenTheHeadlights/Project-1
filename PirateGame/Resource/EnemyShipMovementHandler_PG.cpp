@@ -28,15 +28,15 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	// Calculate the direction to the target. Use playerPos if active towards target, else use destination.
-	sf::Vector2f travelDirection = isActiveTowardsTarget ? targetPos : destination - getSprite().getPosition();
+	sf::Vector2f travelDirection = (isActiveTowardsTarget ? targetPos : destination) - position;
 	float distance = std::sqrt(travelDirection.x * travelDirection.x + travelDirection.y * travelDirection.y);
 
 	if (isActiveTowardsTarget) {
-		if (distance < static_cast<float>(400)) {
+		if (distance < static_cast<float>(800)) {
 			travelDirection = normalize(sf::Vector2f(travelDirection.y, -travelDirection.x));
 		}
 		else if (distance < static_cast<float>(800)) {
-			travelDirection = travelDirection + sf::Vector2f(targetVelocity.x * 0.33f, targetVelocity.y * 0.33f);
+			travelDirection = normalize(travelDirection);
 		}
 		else {
 			travelDirection = normalize(travelDirection);
@@ -49,8 +49,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 		travelDirection = normalize(travelDirection);
 	}
 
-
-	window->draw(GlobalValues::getInstance().createVector(getSprite().getPosition(), travelDirection * 100.f, sf::Color::Red));
+	window->draw(GlobalValues::getInstance().createVector(position, travelDirection * 100.f, sf::Color::Red));
 
 	// Rotate the sprite using conversion from vector to angle with atan2
 	float targetAngle = std::atan2(travelDirection.y, travelDirection.x) * 180.f / pi + 90.f;
@@ -71,9 +70,10 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	// Calculate the extra rotational acceleration based on the angle difference
 	// Also, the accel is based on the speed of the ship
 	float accel = abs(10 * angleDifference / 180.f * getSpeed() / getBaseSpeed());
+	float turningMultiplier = isActiveTowardsTarget ? 1.5f : 1.f;
 
 	// Limit the turning speed
-	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);
+	angleDifference = std::clamp(angleDifference, -turningMultiplier * turningSpeed, turningMultiplier * turningSpeed);
 
 	// Set the new rotation
 	getSprite().setRotation(currentAngle + (accel * angleDifference));

@@ -3,7 +3,7 @@
 /// Derived enemy movement handler class
 
 #include "ShipMovementHandler_PG.h"
-
+#include "EnemyShip_PG.h"
 namespace PirateGame {
 	class EnemyShipMovementHandler : public ShipMovementHandler {
 	public:

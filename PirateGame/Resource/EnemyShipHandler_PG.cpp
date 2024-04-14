@@ -142,20 +142,34 @@ void EnemyShipHandler::update() {
 
 				continue;
 			}
-
-			else if (interaction == 2) {
+			else if (1 == 1) {
 				// Otherwise, fight the other ship group
-				auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
-				it->get()->setTarget(enemyShipGroup->getAveragePosition());
-				it->get()->setInCombat(true);
+				auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
+				otherShipGroup->get()->addTarget(enemyShipGroup->getEnemyShips()[std::rand() % static_cast<int>(enemyShipGroup->getEnemyShips().size())].get());
+				otherShipGroup->get()->setInCombat(true);
 
 				// Set the target for the ship group
-				enemyShipGroup->setTarget(otherShip->getSprite().getPosition());
+				enemyShipGroup->addTarget(otherShip);
 				enemyShipGroup->setTargetVelocity(otherShip->getMovementHandler().getVelocity());
 				enemyShipGroup->setInCombat(true);
 
 				// Add the ship to the list of ships interacted with
 				enemyShipGroup->addGroupIDInteractedWith(otherShip->getGroupID());
+			}
+
+			// Check each ship in combat to see if it is still in nearbyShips. If not, remove it from ShipIDsCombatting
+			int shipIDindex = 0;
+			for (auto& i : enemyShipGroup->getShipIDsCombatting()) {
+				auto shipStillInCombat = std::find_if(nearbyShips.begin(), nearbyShips.end(), [i](EnemyShip* ship) { return ship->getID() == i; });
+				if (shipStillInCombat == nearbyShips.end()) {
+					enemyShipGroup->getShipIDsCombatting().erase(enemyShipGroup->getShipIDsCombatting().begin() + shipIDindex);
+				}
+				shipIDindex++;
+			}
+
+			// If there are no more ships in combat, set inCombat to false
+			if (enemyShipGroup->getShipIDsCombatting().size() == 0) {
+				enemyShipGroup->setInCombat(false);
 			}
 		}
 	}
