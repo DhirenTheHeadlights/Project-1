@@ -85,6 +85,12 @@ void EnemyShipHandler::update() {
 
 	// Update all the enemy ships
 	for (auto& enemyShipGroup : shipGroups) {
+		// Check if nullptr
+		if (enemyShipGroup == nullptr) {
+			std::cout << "Error: Ship group: " << enemyShipGroup->getID() << " is nullptr!" << std::endl;
+			continue;
+		}
+
 		// Check if the destination is reached
 		if (isDestinationReached(enemyShipGroup)) {
 			// Set a new destination
@@ -157,18 +163,24 @@ void EnemyShipHandler::update() {
 				enemyShipGroup->addGroupIDInteractedWith(otherShip->getGroupID());
 			}
 
-			// Check each ship in combat to see if it is still in nearbyShips. If not, remove it from ShipIDsCombatting
-			int shipIDindex = 0;
-			for (auto& i : enemyShipGroup->getShipIDsCombatting()) {
-				auto shipStillInCombat = std::find_if(nearbyShips.begin(), nearbyShips.end(), [i](EnemyShip* ship) { return ship->getID() == i; });
-				if (shipStillInCombat == nearbyShips.end()) {
-					enemyShipGroup->getShipIDsCombatting().erase(enemyShipGroup->getShipIDsCombatting().begin() + shipIDindex);
-				}
-				shipIDindex++;
-			}
+			// Grab the ship group IDs combatting
+			auto shipIDsCombatting = enemyShipGroup->getShipIDsCombatting();
 
-			// If there are no more ships in combat, set inCombat to false
-			if (enemyShipGroup->getShipIDsCombatting().size() == 0) {
+			// Remove the ship from the list of ships combatting if it is not nearby
+			auto removeCondition = [&](const auto& i) {
+				return std::find_if(nearbyShips.begin(), nearbyShips.end(), [&](EnemyShip* ship) {
+					return ship->getID() == i;
+					}) == nearbyShips.end();
+				};
+
+			shipIDsCombatting.erase(
+				std::remove_if(shipIDsCombatting.begin(), shipIDsCombatting.end(), removeCondition),
+				shipIDsCombatting.end()
+			);
+
+			// If there are no ships in combat, set the group to not in combat
+			bool noShipsInCombat = shipIDsCombatting.empty();
+			if (noShipsInCombat) {
 				enemyShipGroup->setInCombat(false);
 			}
 		}

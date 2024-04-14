@@ -22,8 +22,9 @@ namespace PirateGame {
 		void setDestination(sf::Vector2f destination) { this->destination = destination; }
 
 		// Getters
-		bool getIsActiveTowardsPlayer() { return isActiveTowardsTarget; }
-		sf::Vector2f getDestination() { return destination; }
+		bool getIsActiveTowardsPlayer() const { return isActiveTowardsTarget; }
+		sf::Vector2f getDestination() const { return destination; }
+		float getEnemySpeedMultiplier() const { return enemySpeedMultiplier; }
 
 	private:
 		// Helper functions
