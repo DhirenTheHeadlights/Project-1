@@ -45,7 +45,7 @@ namespace PirateGame {
 
 		// Setters
 		void setHeading(sf::Vector2f heading) { this->destination = heading; }
-		void setTarget(sf::Vector2f target) { this->target = target; }
+		void addTarget(EnemyShip* ship) { this->targetShip = ship; shipIDsCombatting.push_back(ship->getID()); }
 		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
 		void addGroupIDInteractedWith(int groupID) { groupIDsInteractedWith.push_back(groupID); }
@@ -71,6 +71,9 @@ namespace PirateGame {
 			return averagePosition;
 		}
 		sf::Vector2f getHeading() { return destination; }
+		std::vector<int> getGroupIDsInteractedWith() { return groupIDsInteractedWith; }
+		std::vector<int> getShipIDsCombatting() { return shipIDsCombatting; }
+
 	private:
 		/// Functions
 		// 3 main methods for flocking behavior
@@ -92,12 +95,13 @@ namespace PirateGame {
 
 		sf::Vector2f destination; // The destination of the ship group
 		sf::Vector2f heading; // The heading of the ship group
-		sf::Vector2f target; // For combat purposes
 		sf::Vector2f targetVelocity; // For combat purposes
+		EnemyShip* targetShip = nullptr; // For combat purposes
 
 		// Game objects
 		std::vector<std::shared_ptr<EnemyShip>> ships;
 		std::vector<int> groupIDsInteractedWith;
+		std::vector<int> shipIDsCombatting;
 
 		// Unique ID
 		int ID = -1;

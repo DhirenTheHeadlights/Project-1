@@ -17,11 +17,11 @@ void ShipGroup::updateGroup() {
 
 		// If the ship is in combat, set the target position
 		if (inCombat) {
-			if (target == sf::Vector2f(0, 0)) {
+			if (targetShip->getSprite().getPosition() == sf::Vector2f(0, 0)) {
 				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target position set!" << std::endl;
 			}
 			else {
-				ship->setTargetPosition(target);
+				ship->setTargetPosition(targetShip->getSprite().getPosition());
 				ship->getMovementHandler().setTargetVelocity(targetVelocity);
 				ship->getMovementHandler().setIsActiveTowardsTarget(true);
 			}
@@ -37,7 +37,7 @@ void ShipGroup::updateGroup() {
 		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("targetpos: " + std::to_string(target.x) + ", " + std::to_string(target.y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		if (inCombat) GlobalValues::getInstance().displayText("targetpos: " + std::to_string(targetShip->getSprite().getPosition().x) + ", " + std::to_string(targetShip->getSprite().getPosition().y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("inCombat: " + std::to_string(inCombat), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Group speed: " + std::to_string(groupSpeed), pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
