@@ -167,7 +167,7 @@ void EnemyShipHandler::update() {
 			auto shipIDsCombatting = enemyShipGroup->getShipIDsCombatting();
 
 			// Remove the ship from the list of ships combatting if it is not nearby
-			auto removeCondition = [&](const auto& i) {
+			bool removeCondition = [&](const auto& i) {
 				return std::find_if(nearbyShips.begin(), nearbyShips.end(), [&](EnemyShip* ship) {
 					return ship->getID() == i;
 					}) == nearbyShips.end();
@@ -177,6 +177,18 @@ void EnemyShipHandler::update() {
 				std::remove_if(shipIDsCombatting.begin(), shipIDsCombatting.end(), removeCondition),
 				shipIDsCombatting.end()
 			);
+
+			// If a ship is removed, check nearby ships for another ship still in combat. If there is one, change it to the target
+			if (removeCondition) {
+				for (EnemyShip* ship : nearbyShips) {
+					for (int id : shipIDsCombatting) {
+						if (ship->getID() == id) {
+							enemyShipGroup->addTarget(ship);
+							enemyShipGroup->setTargetVelocity(ship->getMovementHandler().getVelocity());
+						}
+					}
+				}
+			};
 
 			// If there are no ships in combat, set the group to not in combat
 			bool noShipsInCombat = shipIDsCombatting.empty();
