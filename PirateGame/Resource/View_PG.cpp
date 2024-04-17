@@ -31,6 +31,14 @@ void View::updateDebugView(sf::Event event) {
 		}
 	}
 
+	// or, zoom in and out with the up and down arrow keys
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		view.zoom(0.99f);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		view.zoom(1.01f);
+	}
+
 	// Move the view with WASD
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		view.move(0.f, -5.f);

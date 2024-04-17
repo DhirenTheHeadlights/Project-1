@@ -114,8 +114,21 @@ void EnemyShipHandler::update() {
 			continue;
 		}
 
-		// Grab nearby ships, for now from just the first ship in the group
-		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(enemyShipGroup->getEnemyShips()[0].get(), maxDetectionDistance);
+		// Grab nearby ships, of all of the ships in the group
+		std::set<EnemyShip*> nearbyShipsTotal;
+		for (auto& ship : enemyShipGroup->getEnemyShips()) {
+			std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(ship.get(), interactionDistance);
+			nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
+			std::cout << "Nearby ships: " << nearbyShips.size() << std::endl;
+		}
+
+		// Remove ships NOT nearby from the recently interacted with list
+		auto& totalShips = enemyShips;
+		for (auto& ship : totalShips) {
+			if (nearbyShipsTotal.find(ship.get()) == nearbyShipsTotal.end()) {
+				enemyShipGroup->removeGroupIDInteractedWith(ship->getGroupID());
+			}
+		}
 
 		for (auto& otherShip : nearbyShips) { // For each nearby ship
 			// Skip ships that are in the same group
@@ -128,73 +141,59 @@ void EnemyShipHandler::update() {
 			std::uniform_int_distribution<int> dist(0, interactionChance);
 			int interaction = dist(GlobalValues::getInstance().getRandomEngine());
 
+			std::cout << "rolling coin! " << interaction << std::endl;
+
 			// Shows if there is interaction. Possible framework for future attack indicator!
 			GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
 
-			if (interaction == 1) {
-				// Find the other ship in the vector, this is a workaround since the getNearbyObjects function returns a raw pointer
-				auto it = std::find_if(enemyShips.begin(), enemyShips.end(), [otherShip](std::shared_ptr<EnemyShip> ship) { return ship.get() == otherShip; });
-				enemyShipGroup->addShip(*it); // Add the ship to the group
+			auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
 
-				// Remove the ship from its old group
-				for (auto& group : shipGroups) {
-					if (group->getID() == otherShip->getGroupID()) {
-						group->removeShip(*it);
-					}
+			if (interaction == 1) {
+				// Add all of the ships in the other group to the current group
+				for (auto& ship : otherShipGroup->get()->getEnemyShips()) {
+					enemyShipGroup->addShip(ship);
 				}
 
-				(*it)->setGroupID(enemyShipGroup->getID()); // Set the group ID for the ship
-				enemyShipGroup->addGroupIDInteractedWith(otherShip->getGroupID()); // Add the group ID to the list of groups interacted with
-
-				continue;
+				// Remove all of the ships from the other group
+				// By clearing the ships vector, it will be deleted as
+				// ship groups of size 0 are removed (earlier in the function)
+				otherShipGroup->get()->getEnemyShips().clear();
 			}
-			else if (1 == 1) {
+			else if (interaction == 2) {
 				// Otherwise, fight the other ship group
-				auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
-				otherShipGroup->get()->addTarget(enemyShipGroup->getEnemyShips()[std::rand() % static_cast<int>(enemyShipGroup->getEnemyShips().size())].get());
+				for (auto& ship : otherShipGroup->get()->getEnemyShips()) {
+					enemyShipGroup->addTarget(ship.get());
+				}
 				otherShipGroup->get()->setInCombat(true);
 
 				// Set the target for the ship group
-				enemyShipGroup->addTarget(otherShip);
+				enemyShipGroup->addTarget(otherShip); 
 				enemyShipGroup->setTargetVelocity(otherShip->getMovementHandler().getVelocity());
 				enemyShipGroup->setInCombat(true);
-
-				// Add the ship to the list of ships interacted with
-				enemyShipGroup->addGroupIDInteractedWith(otherShip->getGroupID());
 			}
 
-			// Grab the ship group IDs combatting
-			auto shipIDsCombatting = enemyShipGroup->getShipIDsCombatting();
+			// Add the group ID to the list of interacted with groups
+			enemyShipGroup->addGroupIDInteractedWithRecently(otherShip->getGroupID());
+		}
 
-			// Remove the ship from the list of ships combatting if it is not nearby
-			bool removeCondition = [&](const auto& i) {
-				return std::find_if(nearbyShips.begin(), nearbyShips.end(), [&](EnemyShip* ship) {
-					return ship->getID() == i;
-					}) == nearbyShips.end();
-				};
+		// Grab the vector of ships combatting
+		auto shipsCombatting = enemyShipGroup->getTargetShips();
 
-			shipIDsCombatting.erase(
-				std::remove_if(shipIDsCombatting.begin(), shipIDsCombatting.end(), removeCondition),
-				shipIDsCombatting.end()
-			);
-
-			// If a ship is removed, check nearby ships for another ship still in combat. If there is one, change it to the target
-			if (removeCondition) {
-				for (EnemyShip* ship : nearbyShips) {
-					for (int id : shipIDsCombatting) {
-						if (ship->getID() == id) {
-							enemyShipGroup->addTarget(ship);
-							enemyShipGroup->setTargetVelocity(ship->getMovementHandler().getVelocity());
-						}
-					}
-				}
+		// Remove the ship from the list of ships combatting if it is not nearby
+		auto removeCondition = [&](const auto& i) {
+			return std::find_if(nearbyShips.begin(), nearbyShips.end(), [&](EnemyShip* ship) {
+				return ship->getID() == i->getID();
+				}) == nearbyShips.end();
 			};
 
-			// If there are no ships in combat, set the group to not in combat
-			bool noShipsInCombat = shipIDsCombatting.empty();
-			if (noShipsInCombat) {
-				enemyShipGroup->setInCombat(false);
-			}
+		shipsCombatting.erase(
+			std::remove_if(shipsCombatting.begin(), shipsCombatting.end(), removeCondition),
+			shipsCombatting.end()
+		);
+
+		// If the ship group is not in combat, set the group to not in combat
+		if (shipsCombatting.size() == 0) {
+			enemyShipGroup->setInCombat(false);
 		}
 	}
 }

@@ -3,7 +3,8 @@
 using namespace PirateGame;
 
 void ShipGroup::updateGroup() {
-	for (auto& ship : ships) {
+	for (size_t i = 0; i < ships.size(); i++) {
+		std::shared_ptr<EnemyShip> ship = ships[i];
 		ship->update();
 		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
 
@@ -15,10 +16,15 @@ void ShipGroup::updateGroup() {
 		heading = destination + resultantVector;
 		ship->getMovementHandler().setDestination(heading);
 
-		// If the ship is in combat, set the target position
+		// If the ship is in combat, set the target position to be the i target ship in the vector of ships combatting
+		// Here, there are 2 scenarios: 1. The targetShipGroup vector is smaller than the shipGroup vector and 2. The targetShipGroup vector is larger than the shipGroup vector
+		// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
+		// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
+		EnemyShip* targetShip = getClosestEnemyShip(ship);
 		if (inCombat) {
-			if (targetShip->getSprite().getPosition() == sf::Vector2f(0, 0)) {
-				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target position set!" << std::endl;
+			if (targetShips.size() == 0) {
+				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target ships set! Setting inCombat to false." << std::endl;
+				inCombat = false; // If there are no target ships, set inCombat to false
 			}
 			else {
 				ship->setTargetPosition(targetShip->getSprite().getPosition());
@@ -38,10 +44,25 @@ void ShipGroup::updateGroup() {
 		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		if (inCombat) GlobalValues::getInstance().displayText("targetpos: " + std::to_string(targetShip->getSprite().getPosition().x) + ", " + std::to_string(targetShip->getSprite().getPosition().y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("inCombat: " + std::to_string(inCombat), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		if (inCombat) GlobalValues::getInstance().displayText("In combat with ship ID: " + std::to_string(targetShip->getID()), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Group speed: " + std::to_string(groupSpeed), pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 	}
+}
+
+EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
+	EnemyShip* closestShip = nullptr;
+	float closestDistance = 999999.f; // Set to a high value
+
+	for (auto& ship : targetShips) {
+		float distance = GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), ship->getSprite().getPosition());
+		if (distance < closestDistance) {
+			closestDistance = distance; // Update the closest distance
+			closestShip = ship;
+		}
+	}
+
+	return closestShip;
 }
 
 sf::Vector2f ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
