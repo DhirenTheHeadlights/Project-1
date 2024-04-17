@@ -69,7 +69,7 @@ namespace PirateGame {
 		// Object numbers [debug]
 		int numLandMassesDebug = 0;
 		float distanceBetweenLandMassesDebug = 100.f;
-		int numEnemyShipsDebug = 2;
+		int numEnemyShipsDebug = 5;
 		float distanceBetweenEnemyShipsDebug = 100.f;
 	};
 }

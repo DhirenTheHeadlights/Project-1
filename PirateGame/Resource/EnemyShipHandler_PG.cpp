@@ -119,7 +119,6 @@ void EnemyShipHandler::update() {
 		for (auto& ship : enemyShipGroup->getEnemyShips()) {
 			std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(ship.get(), interactionDistance);
 			nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
-			std::cout << "Nearby ships: " << nearbyShips.size() << std::endl;
 		}
 
 		// Remove ships NOT nearby from the recently interacted with list
@@ -130,7 +129,7 @@ void EnemyShipHandler::update() {
 			}
 		}
 
-		for (auto& otherShip : nearbyShips) { // For each nearby ship
+		for (auto& otherShip : nearbyShipsTotal) { // For each nearby ship
 			// Skip ships that are in the same group
 			if (otherShip->getGroupID() == enemyShipGroup->getID()) continue;
 
@@ -140,8 +139,6 @@ void EnemyShipHandler::update() {
 			// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
 			std::uniform_int_distribution<int> dist(0, interactionChance);
 			int interaction = dist(GlobalValues::getInstance().getRandomEngine());
-
-			std::cout << "rolling coin! " << interaction << std::endl;
 
 			// Shows if there is interaction. Possible framework for future attack indicator!
 			GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
@@ -167,8 +164,9 @@ void EnemyShipHandler::update() {
 				otherShipGroup->get()->setInCombat(true);
 
 				// Set the target for the ship group
-				enemyShipGroup->addTarget(otherShip); 
-				enemyShipGroup->setTargetVelocity(otherShip->getMovementHandler().getVelocity());
+				for (auto& ship : enemyShipGroup->getEnemyShips()) {
+					enemyShipGroup->addTarget(ship.get());
+				}
 				enemyShipGroup->setInCombat(true);
 			}
 
