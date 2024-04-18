@@ -1,66 +1,79 @@
 #pragma once
 
-/// Inherited class for land mass textures.
-
 #include "TextureHandler_PG.h"
+#include <vector>
+#include <unordered_map>
 
 namespace PirateGame {
 	class LandmassTextureHandler : public TextureHandler {
 	public:
 		LandmassTextureHandler() {
-			// Load all island textures
-			sf::Texture island1, island2;
-			island1.loadFromFile("PirateGameSprites/pg_island_1.png");
-			island2.loadFromFile("PirateGameSprites/pg_island_2.png");
-			for (auto& i : { island1, island2 }) {
-				islandTextures.push_back(i);
-			}
+			// Load island textures
+			loadTexture(islandTextures, "PirateGameSprites/pg_island_1.png");
+			loadTexture(islandTextures, "PirateGameSprites/pg_island_2.png");
 
-			// Load all rock textures
-			sf::Texture rock1, rock2, rock3, rock4, rock5, rock6, rock7, rock8, rock9;
-			rock1.loadFromFile("PirateGameSprites/pg_rock_1.png");
-			rock2.loadFromFile("PirateGameSprites/pg_rock_2.png");
-			rock3.loadFromFile("PirateGameSprites/pg_rock_3.png");
-			rock4.loadFromFile("PirateGameSprites/pg_rock_4.png");
-			rock5.loadFromFile("PirateGameSprites/pg_rock_5.png");
-			rock6.loadFromFile("PirateGameSprites/pg_rock_6.png");
-			rock7.loadFromFile("PirateGameSprites/pg_rock_7.png");
-			rock8.loadFromFile("PirateGameSprites/pg_rock_8.png");
-			rock9.loadFromFile("PirateGameSprites/pg_rock_9.png");
-			for (auto& i : { rock1, rock2, rock3, rock4, rock5, rock6, rock7, rock8, rock9 }) {
-				rockTextures.push_back(i);
-			}
+			// Load rock textures
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_1.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_2.png");
+			// Add additional rock textures as needed
 
 			// Load cannonball texture
 			cannonballTexture.loadFromFile("PirateGameSprites/pg_misc_cannonball.png");
-		}
-		~LandmassTextureHandler() {};
 
-		// These two functions return a random island or rock texture unless a specific one is specified
+			// Prepare image maps from textures
+			prepareImageMaps();
+		}
+		~LandmassTextureHandler() {}
+
 		sf::Texture& grabIslandTexture(int index = -1) {
-			if (index == -1) {
-				return islandTextures[rand() % islandTextures.size()];
-			}
-			else {
-				return islandTextures[index];
-			}
-		}
-		sf::Texture& grabRockTexture(int index = -1) {
-			if (index == -1) {
-				return rockTextures[rand() % rockTextures.size()];
-			}
-			else {
-				return rockTextures[index];
-			}
+			return genericGrabTexture(islandTextures, index);
 		}
 
-		// Getters
-		sf::Texture& getCannonballTexture() { return cannonballTexture; }
+		sf::Texture& grabRockTexture(int index = -1) {
+			return genericGrabTexture(rockTextures, index);
+		}
+
+		sf::Image getIslandImage(const sf::Texture* texture) const {
+			return islandImages.at(texture);
+		}
+
+		sf::Image getRockImage(const sf::Texture* texture) const {
+			return rockImages.at(texture);
+		}
+
+		sf::Texture& getCannonballTexture() {
+			return cannonballTexture;
+		}
 
 	private:
-		std::vector<sf::Texture> islandTextures{};
-		std::vector<sf::Texture> rockTextures{};
-
+		std::vector<sf::Texture> islandTextures;
+		std::vector<sf::Texture> rockTextures;
 		sf::Texture cannonballTexture;
+
+		std::unordered_map<const sf::Texture*, sf::Image> islandImages;
+		std::unordered_map<const sf::Texture*, sf::Image> rockImages;
+
+		void loadTexture(std::vector<sf::Texture>& textures, const std::string& filename) {
+			textures.emplace_back();
+			textures.back().loadFromFile(filename);
+		}
+
+		void prepareImageMaps() {
+			for (auto& texture : islandTextures) {
+				islandImages[&texture] = texture.copyToImage();
+			}
+			for (auto& texture : rockTextures) {
+				rockImages[&texture] = texture.copyToImage();
+			}
+		}
+
+		sf::Texture& genericGrabTexture(std::vector<sf::Texture>& textures, int index) {
+			if (index == -1) {
+				return textures[rand() % textures.size()];
+			}
+			else {
+				return textures[index];
+			}
+		}
 	};
 }

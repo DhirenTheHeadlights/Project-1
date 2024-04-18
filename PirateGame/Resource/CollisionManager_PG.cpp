@@ -111,8 +111,8 @@ void CollisionManager::handleCollisions() {
 
 }
 
-// This pixel perfect test is specifically for ships and land masses
-bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Sprite& sprite2, unsigned alphaLimit) {
+// This pixel perfect test is specifically for ships and land masses. Sprite1 is the ship, sprite2 is the land mass
+bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, sf::Sprite& sprite2, unsigned alphaLimit) {
 	sf::RenderWindow& window = *GlobalValues::getInstance().getWindow();
 	sf::FloatRect intersection;
 	if (!sprite1.getGlobalBounds().intersects(sprite2.getGlobalBounds(), intersection)) return false;
@@ -122,7 +122,7 @@ bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, const sf::Spr
 	if (!texture1 || !texture2) return false;
 
 	sf::Image image1 = texture1->copyToImage(); // Costly operation, but works because there are only
-	sf::Image image2 = texture2->copyToImage(); // A few collisions per frame at most
+	sf::Image image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getIslandImage(texture2);
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();
 

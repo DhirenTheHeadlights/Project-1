@@ -104,15 +104,6 @@ void EnemyShipHandler::update() {
 	// and will be destroyed when they are far away from each other. By default, there is 1 ship in each group.
 	// The ship groups will be used to calculate the flocking behavior of the enemy ships.
 	for (auto& enemyShipGroup : shipGroups) {
-		if (enemyShipGroup == nullptr) continue;
-
-		// If the group is size 0, remove it
-		if (enemyShipGroup->getEnemyShips().size() == 0) {
-			// Remove the ship group from the vector
-			shipGroups.erase(std::remove(shipGroups.begin(), shipGroups.end(), enemyShipGroup), shipGroups.end());
-			std::cout << "Ship group removed. Group size: " << shipGroups.size() << std::endl;
-			continue;
-		}
 
 		// Grab nearby ships, of all of the ships in the group
 		std::set<EnemyShip*> nearbyShipsTotal;
@@ -194,6 +185,14 @@ void EnemyShipHandler::update() {
 			enemyShipGroup->setInCombat(false);
 		}
 	}
+
+	// If the group size is 0, remove the group
+	shipGroups.erase(
+		std::remove_if(shipGroups.begin(), shipGroups.end(), [](std::shared_ptr<ShipGroup> group) {
+			return group->getEnemyShips().size() == 0;
+		}),
+		shipGroups.end()
+	);
 }
 
 void EnemyShipHandler::draw() {
