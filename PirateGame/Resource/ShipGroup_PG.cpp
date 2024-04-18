@@ -38,7 +38,11 @@ void ShipGroup::updateGroup() {
 			removeShip(ship);
 		}
 
-		// For debugging purposes
+		/// For debugging purposes
+
+		// Check if the shipgroup is near the view, if so, display the shipgroup information
+		if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter())) < 500.f) continue;
+
 		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
 		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
