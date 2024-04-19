@@ -58,7 +58,7 @@ namespace PirateGame {
 		const float numFramesToAverage = 40.f;
 
 		// Debug
-		bool debug = true;
+		bool debug = false;
 
 		// Object numbers [not debug]
 		int numLandMasses = 5;

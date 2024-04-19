@@ -83,7 +83,6 @@ void Map::drawGrid(sf::RenderWindow& window) const {
     line.setFillColor(sf::Color::Red);
     for (int i = 0; i <= rows; i++) {
         line.setPosition(position.x, position.y + static_cast<float>(i * cellSize));
-        std::cout << "Pos: " << position.x << ", " << position.y << std::endl;
         window.draw(line);
     }
     line.setSize(sf::Vector2f(1.f, static_cast<float>(height))); // Adjust line size for vertical lines, if necessary

@@ -25,8 +25,6 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 		numEnemyShips = numEnemyShipsDebug;
 		distanceBetweenEnemyShips = distanceBetweenEnemyShipsDebug;
 	}
-	else {
-	}
 
 	// Set up the world
 	setUpWorld();
@@ -138,7 +136,6 @@ void World::createWorld(sf::Event event) {
 void World::gameLoop(sf::Event event) {
 	// Update the map
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
-	GlobalMap::getInstance().getMapAtCurrentChunk(playerShip->getSprite().getPosition())->drawGrid(*window);
 
 	GlobalWindController::getInstance().update();
 

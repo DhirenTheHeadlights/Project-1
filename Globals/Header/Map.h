@@ -14,8 +14,6 @@ public:
 
     // Setters
     void setCellSize(int cellSize) { this->cellSize = cellSize; }
-    void setPosition(sf::Vector2f pos) { position = pos; }
-
     // Getters
     std::pair<int, int> getGridCoordinates(float x, float y) const {
 		return { static_cast<int>(x + position.x) / cellSize, static_cast<int>(y + position.y) / cellSize };

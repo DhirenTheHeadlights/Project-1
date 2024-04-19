@@ -26,7 +26,6 @@ namespace PirateGame {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
 			if (ships.size() == 0 || ship->getMovementHandler().getBaseSpeed() < groupSpeed) {
 				groupSpeed = ship->getShipProperties().baseSpeed * ship->getMovementHandler().getEnemySpeedMultiplier();
-				std::cout << "Group speed set to: " << groupSpeed << std::endl;
 			}
 
 			ship->setBaseSpeed(groupSpeed);

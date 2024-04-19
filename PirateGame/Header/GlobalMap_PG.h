@@ -14,7 +14,7 @@ namespace PirateGame {
 		static GlobalMap& getInstance() {
 			static GlobalMap instance;
 			return instance;
-		} 
+		}
 
 		void initializeMap() {
 			// Generate the initial chunks
@@ -30,6 +30,11 @@ namespace PirateGame {
 				deleteChunksOutOfRange(currentChunk);
 			}
 			lastChunk = currentChunk;
+
+			// Draw the grid for all chunks
+			for (auto& chunk : chunks) {
+				//chunk.second->drawGrid(*GlobalValues::getInstance().getWindow());
+			}
 		}
 
 
@@ -99,13 +104,11 @@ namespace PirateGame {
 			if (chunks.find(chunkCoord) == chunks.end()) {
 				// Generate the chunk
 				auto newChunk = std::make_unique<Map>();
-				newChunk->grid(chunkSize.x, chunkSize.y, cellSize);
-				newChunk->drawGrid(*GlobalValues::getInstance().getWindow());
-				newChunk->setPosition(sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
+				newChunk->grid(chunkSize.x, chunkSize.y, cellSize, sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
 				chunks[chunkCoord] = std::move(newChunk);
 			}
 		}
-
+		
 		void deleteChunksOutOfRange(const std::pair<int, int>& currentChunk) {
 			std::vector<std::pair<int, int>> chunksToDelete;
 			for (auto& chunk : chunks) {

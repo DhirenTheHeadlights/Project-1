@@ -34,7 +34,7 @@ namespace PirateGame {
 		}
 
 		float distanceBetweenPoints(const sf::Vector2f& point1, const sf::Vector2f& point2) {
-			return sqrt(pow(point1.x - point2.x, 2) + pow(point1.y - point2.y, 2));
+			return static_cast<float>(sqrt(pow(point1.x - point2.x, 2) + pow(point1.y - point2.y, 2)));
 		}
 
 		sf::Vector2f limitVector(const sf::Vector2f& vector, float max) {
