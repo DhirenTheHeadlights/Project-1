@@ -24,7 +24,7 @@ void ShipGroup::updateGroup() {
 		if (inCombat) {
 			if (targetShips.size() == 0) {
 				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target ships set! Setting inCombat to false." << std::endl;
-				inCombat = false; // If there are no target ships, set inCombat to false
+				inCombat = false; // Set inCombat to false
 			}
 			else {
 				ship->setTargetPosition(targetShip->getSprite().getPosition());
@@ -41,7 +41,7 @@ void ShipGroup::updateGroup() {
 		/// For debugging purposes
 
 		// Check if the shipgroup is near the view, if so, display the shipgroup information
-		if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter())) < 500.f) continue;
+		if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;
 
 		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
 		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
@@ -51,7 +51,11 @@ void ShipGroup::updateGroup() {
 		if (inCombat) GlobalValues::getInstance().displayText("In combat with ship ID: " + std::to_string(targetShip->getID()), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Group speed: " + std::to_string(groupSpeed), pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 7 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 	}
+
+	// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
+	targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](EnemyShip* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
 }
 
 EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {

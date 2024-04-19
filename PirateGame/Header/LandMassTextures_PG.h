@@ -15,7 +15,13 @@ namespace PirateGame {
 			// Load rock textures
 			loadTexture(rockTextures, "PirateGameSprites/pg_rock_1.png");
 			loadTexture(rockTextures, "PirateGameSprites/pg_rock_2.png");
-			// Add additional rock textures as needed
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_3.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_4.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_5.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_6.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_7.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_8.png");
+			loadTexture(rockTextures, "PirateGameSprites/pg_rock_9.png");
 
 			// Load cannonball texture
 			cannonballTexture.loadFromFile("PirateGameSprites/pg_misc_cannonball.png");
@@ -33,12 +39,8 @@ namespace PirateGame {
 			return genericGrabTexture(rockTextures, index);
 		}
 
-		sf::Image getIslandImage(const sf::Texture* texture) const {
-			return islandImages.at(texture);
-		}
-
-		sf::Image getRockImage(const sf::Texture* texture) const {
-			return rockImages.at(texture);
+		sf::Image getLandMassImage(const sf::Texture* texture) {
+			return landmassImages[texture];
 		}
 
 		sf::Texture& getCannonballTexture() {
@@ -50,20 +52,19 @@ namespace PirateGame {
 		std::vector<sf::Texture> rockTextures;
 		sf::Texture cannonballTexture;
 
-		std::unordered_map<const sf::Texture*, sf::Image> islandImages;
-		std::unordered_map<const sf::Texture*, sf::Image> rockImages;
+		std::unordered_map<const sf::Texture*, sf::Image> landmassImages;
 
-		void loadTexture(std::vector<sf::Texture>& textures, const std::string& filename) {
+	    void loadTexture(std::vector<sf::Texture>& textures, const std::string& filename) {
 			textures.emplace_back();
 			textures.back().loadFromFile(filename);
 		}
 
 		void prepareImageMaps() {
 			for (auto& texture : islandTextures) {
-				islandImages[&texture] = texture.copyToImage();
+				landmassImages[&texture] = texture.copyToImage();
 			}
 			for (auto& texture : rockTextures) {
-				rockImages[&texture] = texture.copyToImage();
+				landmassImages[&texture] = texture.copyToImage();
 			}
 		}
 

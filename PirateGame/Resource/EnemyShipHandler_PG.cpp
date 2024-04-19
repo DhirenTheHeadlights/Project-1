@@ -128,7 +128,7 @@ void EnemyShipHandler::update() {
 			if (enemyShipGroup->isGroupIDInteractedWith(otherShip->getGroupID())) continue;
 
 			// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
-			std::uniform_int_distribution<int> dist(0, interactionChance);
+			std::uniform_int_distribution<int> dist(0, interactionChance + enemyShipGroup->getEnemyShips().size()); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
 			int interaction = dist(GlobalValues::getInstance().getRandomEngine());
 
 			// Shows if there is interaction. Possible framework for future attack indicator!
@@ -170,7 +170,7 @@ void EnemyShipHandler::update() {
 
 		// Remove the ship from the list of ships combatting if it is not nearby
 		auto removeCondition = [&](const auto& i) {
-			return std::find_if(nearbyShips.begin(), nearbyShips.end(), [&](EnemyShip* ship) {
+			return std::find_if(nearbyShipsTotal.begin(), nearbyShipsTotal.end(), [&](EnemyShip* ship) {
 				return ship->getID() == i->getID();
 				}) == nearbyShips.end();
 			};
