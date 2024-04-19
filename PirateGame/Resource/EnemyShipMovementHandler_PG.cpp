@@ -44,8 +44,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	}
 
 	// If not active towards player, head directly towards destination
-	else
-	{
+	else {
 		travelDirection = normalize(travelDirection);
 	}
 

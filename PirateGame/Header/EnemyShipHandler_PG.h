@@ -44,6 +44,8 @@ namespace PirateGame {
 		void addEnemyShipsToChunk(Map& map, int numShips);
 		void setShipGroupDestination(std::shared_ptr<ShipGroup> group);
 		bool isDestinationReached(std::shared_ptr<ShipGroup> shipGroup);
+		void updateGroupDestination(std::shared_ptr<ShipGroup> group);
+		void updateGroupsNearPlayer();
 
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		std::vector<std::shared_ptr<ShipGroup>> shipGroups;

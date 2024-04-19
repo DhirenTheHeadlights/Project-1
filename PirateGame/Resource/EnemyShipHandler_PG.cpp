@@ -30,7 +30,8 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 		
 		// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
 		// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
-		// hashmap is global, but it is necessary because to avoid circular dependencies, the
+		// hashmap is global, but it is necessary because to avoid circular dependencies because
+		// the global hashmap handler includes enemy ship which included the SCH.
 		ship->getCannonHandler().setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
 		// Add the ship to a new ship group and vector, std::move is not needed
@@ -66,39 +67,46 @@ bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup
 	return false; // Otherwise, return false
 }
 
-void EnemyShipHandler::update() {
+void EnemyShipHandler::updateGroupDestination(std::shared_ptr<ShipGroup> group) {
+	// Check if nullptr
+	if (group == nullptr) {
+		std::cout << "Error: Ship group: " << group->getID() << " is nullptr when updating destination" << std::endl;
+		return;
+	}
+
+	// Check if the destination is reached
+	if (isDestinationReached(group)) {
+		// Set a new destination
+		setShipGroupDestination(group);
+	}
+}
+
+void EnemyShipHandler::updateGroupsNearPlayer() {
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
 
-	//// Update all the enemy ships groups near the player ship
-	//for (auto& ship : nearbyShips) {
-	//	// Grab the ship group ID
-	//	int groupID = ship->getGroupID();
+	// Update all the enemy ships groups near the player ship
+	for (auto& ship : nearbyShips) {
+		// Grab the ship group ID
+		int groupID = ship->getGroupID();
 
-	//	// Look for the ship group
-	//	auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
+		// Look for the ship group
+		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
 
-	//	// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
-	//	(*it)->setTarget(playerShip->getSprite().getPosition());
-	//	(*it)->setInCombat(true);
-	//}
+		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
+		//(*it)->setTarget(playerShip->getSprite().getPosition());
+		(*it)->setInCombat(true);
+	}
+}
+
+void EnemyShipHandler::update() {
+	updateGroupsNearPlayer();
 
 	// Update all the enemy ships
 	for (auto& enemyShipGroup : shipGroups) {
-		// Check if nullptr
-		if (enemyShipGroup == nullptr) {
-			std::cout << "Error: Ship group: " << enemyShipGroup->getID() << " is nullptr!" << std::endl;
-			continue;
-		}
-
-		// Check if the destination is reached
-		if (isDestinationReached(enemyShipGroup)) {
-			// Set a new destination
-			setShipGroupDestination(enemyShipGroup);
-		}
+		updateGroupDestination(enemyShipGroup);
 		enemyShipGroup->updateGroup();
 	}
-
 
 	// Ship groups edited by random chance when 2 enemy ship groups are close to each other
 	// and will be destroyed when they are far away from each other. By default, there is 1 ship in each group.
@@ -152,13 +160,13 @@ void EnemyShipHandler::update() {
 				for (auto& ship : otherShipGroup->get()->getEnemyShips()) {
 					enemyShipGroup->addTarget(ship.get());
 				}
-				otherShipGroup->get()->setInCombat(true);
+				enemyShipGroup->setInCombat(true);
 
 				// Set the target for the ship group
 				for (auto& ship : enemyShipGroup->getEnemyShips()) {
-					enemyShipGroup->addTarget(ship.get());
+					otherShipGroup->get()->addTarget(ship.get());
 				}
-				enemyShipGroup->setInCombat(true);
+				otherShipGroup->get()->setInCombat(true);
 			}
 
 			// Add the group ID to the list of interacted with groups
@@ -172,7 +180,7 @@ void EnemyShipHandler::update() {
 		auto removeCondition = [&](const auto& i) {
 			return std::find_if(nearbyShipsTotal.begin(), nearbyShipsTotal.end(), [&](EnemyShip* ship) {
 				return ship->getID() == i->getID();
-				}) == nearbyShips.end();
+				}) == nearbyShipsTotal.end();
 			};
 
 		shipsCombatting.erase(

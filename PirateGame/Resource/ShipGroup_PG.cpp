@@ -25,10 +25,10 @@ void ShipGroup::updateGroup() {
 			if (targetShips.size() == 0) {
 				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target ships set! Setting inCombat to false." << std::endl;
 				inCombat = false; // Set inCombat to false
+				ship->getMovementHandler().setIsActiveTowardsTarget(false);
 			}
 			else {
 				ship->setTargetPosition(targetShip->getSprite().getPosition());
-				ship->getMovementHandler().setTargetVelocity(targetVelocity);
 				ship->getMovementHandler().setIsActiveTowardsTarget(true);
 			}
 		}
