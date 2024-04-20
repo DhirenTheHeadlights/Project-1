@@ -67,8 +67,8 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return ships; }
 		std::vector<EnemyShip*> getTargetShips() { return targetShips; }
 
-		int getID() { return ID; }
-		bool getInCombat() { return inCombat; }
+		int getID() const { return ID; }
+		bool getInCombat() const { return inCombat; }
 		bool isGroupIDInteractedWith(int groupID) {
 			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) != groupIDsInteractedWith.end()) {
 				return true;
@@ -84,7 +84,7 @@ namespace PirateGame {
 			averagePosition /= static_cast<float>(ships.size());
 			return averagePosition;
 		}
-		sf::Vector2f getHeading() { return destination; }
+		sf::Vector2f getHeading() const { return destination; }
 		std::vector<int> getGroupIDsInteractedWith() { return groupIDsInteractedWith; }
 
 	private:

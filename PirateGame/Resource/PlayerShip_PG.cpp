@@ -17,6 +17,13 @@ void PlayerShip::customShipSetUp() {
 
 void PlayerShip::customShipUpdate() {
 	SIH->update();
+
+	// If the experience is greater than the experience to level up
+	// Level up the ship and also up the amount of exp to level up
+	if (experience > experienceToLevelUp) {
+		experience = 0.f;
+		experienceToLevelUp *= 2;
+	}
 }
 
 void PlayerShip::customShipDraw() {

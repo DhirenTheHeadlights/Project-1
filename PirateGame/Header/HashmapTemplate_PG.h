@@ -41,7 +41,7 @@ namespace PirateGame {
 			auto topLeft = map->getGridCoordinates(bounds.left, bounds.top);
 			auto bottomRight = map->getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
-			std::set<std::pair<int, int>> occupiedPositions;
+			std::unordered_set<std::pair<int, int>, pair_hash> occupiedPositions;
 
 			for (int i = topLeft.first; i <= bottomRight.first; ++i) {
 				for (int j = topLeft.second; j <= bottomRight.second; ++j) {
@@ -58,7 +58,7 @@ namespace PirateGame {
 		void removeObject(T* object) {
 			// Fetch the objects's current positions from the reverse mapping
 			if (this->reverseHashmap.find(object) != this->reverseHashmap.end()) {
-				const std::set<std::pair<int, int>>& occupiedPositions = this->reverseHashmap[object];
+				const std::unordered_set<std::pair<int, int>, pair_hash>& occupiedPositions = this->reverseHashmap[object];
 
 				for (const auto& pos : occupiedPositions) {
 					this->hashmap.erase(pos); // Remove the object from these positions in the primary hashmap
@@ -145,7 +145,7 @@ namespace PirateGame {
 			auto newTopLeft = map->getGridCoordinates(bounds.left, bounds.top);
 			auto newBottomRight = map->getGridCoordinates(bounds.left + bounds.width, bounds.top + bounds.height);
 
-			std::set<std::pair<int, int>> newPositions;
+			std::unordered_set<std::pair<int, int>, pair_hash> newPositions;
 			for (int i = newTopLeft.first; i <= newBottomRight.first; ++i) {
 				for (int j = newTopLeft.second; j <= newBottomRight.second; ++j) {
 					newPositions.insert({ i, j });
@@ -155,8 +155,8 @@ namespace PirateGame {
 			// Retrieve the object's current positions from the reverse hashmap
 			const auto& currentPositions = reverseHashmap[object];
 
-			std::set<std::pair<int, int>> positionsToAdd;
-			std::set<std::pair<int, int>> positionsToRemove;
+			std::unordered_set<std::pair<int, int>, pair_hash> positionsToAdd;
+			std::unordered_set<std::pair<int, int>, pair_hash> positionsToRemove;
 
 			// Determine which new positions need to be added (those not already in currentPositions)
 			for (const auto& newPos : newPositions) {
@@ -198,6 +198,6 @@ namespace PirateGame {
 
 		// Hashmap
 		std::unordered_map<std::pair<int, int>, T*, pair_hash> hashmap;
-		std::unordered_map<T*, std::set<std::pair<int, int>>> reverseHashmap;
+		std::unordered_map<T*, std::unordered_set<std::pair<int, int>, pair_hash>> reverseHashmap;
 	};
 }

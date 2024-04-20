@@ -55,7 +55,7 @@ void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group)
 	group->setHeading(position);
 }
 
-bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) {
+bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) const {
 	// Get the average position of the ships in the group
 	sf::Vector2f averagePosition = shipGroup->getAveragePosition();
 

@@ -2,7 +2,9 @@
 
 using namespace PirateGame;
 
-World::World(sf::RenderWindow* window_in, bool debug) {
+World::World(sf::RenderWindow* window_in, bool debug) { 
+	this->debug = debug; // Set the debug value
+
 	// Set the window
 	GlobalValues::getInstance().setWindow(window_in);
 	window = GlobalValues::getInstance().getWindow();
@@ -65,8 +67,13 @@ void World::setUpWorld() {
 
 	// Set up the frame rate text
 	frameRateText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
-	frameRateText.setCharacterSize(24);
+	frameRateText.setCharacterSize(24u);
 	frameRateText.setFillColor(sf::Color::White);
+
+	// Set up the experience text
+	experience.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
+	experience.setCharacterSize(24u);
+	experience.setFillColor(sf::Color::White);
 
 	// Set up the background
 	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
@@ -121,14 +128,13 @@ void World::createWorld(sf::Event event) {
 		frameRateUpdateTime = sf::Time::Zero;
 		frameCount = 0;
 	}
-
+	 
 	// Set the position of the frame rate text to be in the bottom left corner
 	frameRateText.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y + window->getSize().y / 2.f - 2 * frameRateText.getGlobalBounds().height);
 
-	// Temporary code to close the window
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		window->close();
-	}
+	// Experience text is right by it
+	//experience.setString("Exp: " + std::to_string(playerShip->getExp()) + "/" + std::to_string(playerShip->getExpToLevelUp()));
+	experience.setPosition(frameRateText.getPosition().x + frameRateText.getLocalBounds().getSize().x + 10.f, frameRateText.getPosition().y);
 
 	window->display();
 }
@@ -151,7 +157,9 @@ void World::gameLoop(sf::Event event) {
 	playerShip->update();
 
 	if (!debug) view.setCenter(playerShip->getSprite().getPosition());
-	else view.updateDebugView(event);
+	else {
+		view.updateDebugView(event);
+	}
 }
 
 void World::drawGameLoop() {

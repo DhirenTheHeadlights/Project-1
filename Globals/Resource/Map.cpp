@@ -17,7 +17,7 @@ void Map::grid(int boardLength, int boardHeight, int cellSize, sf::Vector2f posi
 // This function uses a poisson disc sampling algorithm to generate a set of points
 // that are at least a certain distance apart from each other. This function should be
 // called once to generate the points.
-std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int numPoints) {
+std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int numPoints) const {
     const int k = 30; // attempts before giving up on finding a new point
     const float pi = 3.14159265358979323846f;
     std::random_device rd;

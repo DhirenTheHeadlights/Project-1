@@ -57,8 +57,11 @@ namespace PirateGame {
 		int frameCount = 0;
 		const float numFramesToAverage = 40.f;
 
+		// Experience variables [temporary, should be a sprite eventually]
+		sf::Text experience;
+
 		// Debug
-		bool debug = false;
+		bool debug;
 
 		// Object numbers [not debug]
 		int numLandMasses = 5;

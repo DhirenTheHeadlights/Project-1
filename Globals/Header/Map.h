@@ -20,7 +20,7 @@ public:
 	}
     int getCellSize() const { return cellSize; }
     int getLength() const { return len; }
-    std::vector<sf::Vector2f> const getRandomPositions(float minDistance = 500.f, int numPoints = 1);
+    std::vector<sf::Vector2f> const getRandomPositions(float minDistance = 500.f, int numPoints = 1) const;
     sf::Vector2f getRandomPosition() const {
         // Generate a random position
         std::random_device rd;

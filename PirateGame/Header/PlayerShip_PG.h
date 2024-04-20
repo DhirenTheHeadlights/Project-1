@@ -20,6 +20,10 @@ namespace PirateGame {
 
 		~PlayerShip() {};
 
+		void addExperience(float experience) {
+			this->experience = experience;
+		}
+
 		// Create the ship and set its values
 		virtual void customShipSetUp() override;
 		virtual void customShipUpdate() override;
@@ -35,5 +39,9 @@ namespace PirateGame {
 		std::unique_ptr<PlayerShipInputHandler> SIH;
 		std::unique_ptr<ShipInventoryHandler> SIvH;
 		std::unique_ptr<PlayerShipMovementHandler> SMH;
+
+		// Experience
+		float experience = 0;
+		float experienceToLevelUp = 1;
 	};
 }
