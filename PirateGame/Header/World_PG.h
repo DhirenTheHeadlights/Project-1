@@ -61,6 +61,9 @@ namespace PirateGame {
 		sf::Time timeLastGameLoop;
 		sf::Time gameLoopWaitTime = sf::milliseconds(10);
 
+		// Exp text temp
+		sf::Text experience;
+
 		// Debug
 		bool debug;
 
