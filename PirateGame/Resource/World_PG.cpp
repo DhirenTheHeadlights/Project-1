@@ -100,7 +100,10 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		drawGameLoop();
-		gameLoop(event);
+		if (timeLastGameLoop >= gameLoopWaitTime) {
+			gameLoop(event);
+			timeLastGameLoop = sf::milliseconds(0);
+		}
 		if (GlobalValues::getInstance().getShowHUD() && !debug) MH->openMenu(MenuType::HUD);
 		break;
 	}
@@ -112,6 +115,7 @@ void World::createWorld(sf::Event event) {
 
 	// Frame rate calculation
 	sf::Time deltaTime = frameRateClock.restart();
+	timeLastGameLoop += deltaTime;
 	frameRateUpdateTime += deltaTime;
 	++frameCount;
 

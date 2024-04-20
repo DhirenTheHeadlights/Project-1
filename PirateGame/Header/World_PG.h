@@ -57,6 +57,10 @@ namespace PirateGame {
 		int frameCount = 0;
 		const float numFramesToAverage = 40.f;
 
+		// Game loop clock variables
+		sf::Time timeLastGameLoop;
+		sf::Time gameLoopWaitTime = sf::milliseconds(10);
+
 		// Debug
 		bool debug = false;
 

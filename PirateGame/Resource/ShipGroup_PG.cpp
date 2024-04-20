@@ -5,25 +5,27 @@ using namespace PirateGame;
 void ShipGroup::updateGroup() {
 	for (size_t i = 0; i < ships.size(); i++) {
 		std::shared_ptr<EnemyShip> ship = ships[i];
-		ship->update();
-		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
+		if (functionIncrement == 0) {
+			ship->update();
+			GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
 
-		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
-		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
-		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
+			// Calculate the alignment, cohesion, and separation vectors and add them to the destination
+			sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
+			resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
 
-		// Set the travel direction of the ship
-		heading = destination + resultantVector;
-		ship->getMovementHandler().setDestination(heading);
+			// Set the travel direction of the ship
+			heading = destination + resultantVector;
+			ship->getMovementHandler().setDestination(heading);
 
-		// If the ship is in combat, set the target position to be the i target ship in the vector of ships combatting
-		// Here, there are 2 scenarios: 1. The targetShipGroup vector is smaller than the shipGroup vector and 2. The targetShipGroup vector is larger than the shipGroup vector
-		// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
-		// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
+			// If the ship is in combat, set the target position to be the i target ship in the vector of ships combatting
+			// Here, there are 2 scenarios: 1. The targetShipGroup vector is smaller than the shipGroup vector and 2. The targetShipGroup vector is larger than the shipGroup vector
+			// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
+			// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
+		}
 		EnemyShip* targetShip = getClosestEnemyShip(ship);
 		if (inCombat) {
 			if (targetShips.size() == 0) {
-				std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target ships set! Setting inCombat to false." << std::endl;
+				//std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target ships set! Setting inCombat to false." << std::endl;
 				inCombat = false; // Set inCombat to false
 				ship->getMovementHandler().setIsActiveTowardsTarget(false);
 			}
@@ -37,6 +39,7 @@ void ShipGroup::updateGroup() {
 		if (ship->getHealth() < 0.001f) {
 			removeShip(ship);
 		}
+
 
 		/// For debugging purposes
 
@@ -52,10 +55,11 @@ void ShipGroup::updateGroup() {
 		GlobalValues::getInstance().displayText("Group speed: " + std::to_string(groupSpeed), pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 7 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-	}
 
+	}
 	// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
 	targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](EnemyShip* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
+	functionIncrement = (functionIncrement == maxIncrement) ? 0 : (functionIncrement + 1);
 }
 
 EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {

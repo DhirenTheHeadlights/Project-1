@@ -32,7 +32,7 @@ namespace PirateGame {
 
 			ship->setGroupID(ID);
 			ships.push_back(ship);
-			std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
+			//std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
 		}
 
 		void removeShip(std::shared_ptr<EnemyShip> ship) {
@@ -120,5 +120,8 @@ namespace PirateGame {
 
 		// Unique ID
 		int ID = -1;
+
+		int functionIncrement = 0;
+		int maxIncrement = 1;
 	};
 }
