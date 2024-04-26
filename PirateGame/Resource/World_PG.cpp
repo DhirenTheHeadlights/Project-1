@@ -107,9 +107,9 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		drawGameLoop();
-		if (timeLastGameLoop >= gameLoopWaitTime) {
-			gameLoop(event);
-			timeLastGameLoop = sf::milliseconds(0);
+		if (gameLoopClock.getElapsedTime() >= gameLoopWaitTime) {
+			updateGameLoop(event);
+			gameLoopClock.restart();
 		}
 		if (GlobalValues::getInstance().getShowHUD() && !debug) MH->openMenu(MenuType::HUD);
 		break;
@@ -122,7 +122,6 @@ void World::createWorld(sf::Event event) {
 
 	// Frame rate calculation
 	sf::Time deltaTime = frameRateClock.restart();
-	timeLastGameLoop += deltaTime;
 	frameRateUpdateTime += deltaTime;
 	++frameCount;
 
@@ -137,13 +136,13 @@ void World::createWorld(sf::Event event) {
 	frameRateText.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y + window->getSize().y / 2.f - 2 * frameRateText.getGlobalBounds().height);
 
 	// Experience text is right by it
-	//experience.setString("Exp: " + std::to_string(playerShip->getExp()) + "/" + std::to_string(playerShip->getExpToLevelUp()));
+	experience.setString("Exp: " + std::to_string(playerShip->getExp()) + "/" + std::to_string(playerShip->getExpToLevelUp()));
 	experience.setPosition(frameRateText.getPosition().x + frameRateText.getLocalBounds().getSize().x + 10.f, frameRateText.getPosition().y);
 
 	window->display();
 }
 
-void World::gameLoop(sf::Event event) {
+void World::updateGameLoop(sf::Event event) {
 	// Update the map
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 

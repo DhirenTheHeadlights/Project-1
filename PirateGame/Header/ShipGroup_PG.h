@@ -19,6 +19,7 @@ namespace PirateGame {
 		void drawGroup() {
 			for (auto& ship : ships) {
 				ship->draw();
+
 			}
 		}
 
@@ -120,8 +121,5 @@ namespace PirateGame {
 
 		// Unique ID
 		int ID = -1;
-
-		int functionIncrement = 0;
-		int maxIncrement = 1;
 	};
 }

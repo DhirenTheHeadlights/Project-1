@@ -5,23 +5,22 @@ using namespace PirateGame;
 void ShipGroup::updateGroup() {
 	for (size_t i = 0; i < ships.size(); i++) {
 		std::shared_ptr<EnemyShip> ship = ships[i];
-		if (functionIncrement == 0) {
-			ship->update();
-			GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
+		ship->update();
+		GlobalHashmapHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
 
-			// Calculate the alignment, cohesion, and separation vectors and add them to the destination
-			sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
-			resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
+		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
+		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
+		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
 
-			// Set the travel direction of the ship
-			heading = destination + resultantVector;
-			ship->getMovementHandler().setDestination(heading);
+		// Set the travel direction of the ship
+		heading = destination + resultantVector;
+		ship->getMovementHandler().setDestination(heading);
 
-			// If the ship is in combat, set the target position to be the i target ship in the vector of ships combatting
-			// Here, there are 2 scenarios: 1. The targetShipGroup vector is smaller than the shipGroup vector and 2. The targetShipGroup vector is larger than the shipGroup vector
-			// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
-			// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
-		}
+		// If the ship is in combat, set the target position to be the i target ship in the vector of ships combatting
+		// Here, there are 2 scenarios: 1. The targetShipGroup vector is smaller than the shipGroup vector and 2. The targetShipGroup vector is larger than the shipGroup vector
+		// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
+		// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
+
 		EnemyShip* targetShip = getClosestEnemyShip(ship);
 		if (inCombat) {
 			if (targetShips.size() == 0) {
@@ -40,14 +39,13 @@ void ShipGroup::updateGroup() {
 			removeShip(ship);
 		}
 
-
 		/// For debugging purposes
 
 		// Check if the shipgroup is near the view, if so, display the shipgroup information
 		if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;
 
 		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
-		GlobalValues::getInstance().displayText("ID: " + std::to_string(ID), pos, sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("GID: " + std::to_string(ID) + " SID: " + std::to_string(ship->getID()), pos, sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		if (inCombat) GlobalValues::getInstance().displayText("targetpos: " + std::to_string(targetShip->getSprite().getPosition().x) + ", " + std::to_string(targetShip->getSprite().getPosition().y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
@@ -56,10 +54,9 @@ void ShipGroup::updateGroup() {
 		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 		GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 7 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 
+		// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
+		targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](EnemyShip* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
 	}
-	// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
-	targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](EnemyShip* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
-	functionIncrement = (functionIncrement == maxIncrement) ? 0 : (functionIncrement + 1);
 }
 
 EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
@@ -71,6 +68,12 @@ EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
 		if (distance < closestDistance) {
 			closestDistance = distance; // Update the closest distance
 			closestShip = ship;
+		}
+		// Check if any of the group ships are erroniously in the target ships vector. Compare the IDs
+		// as there is a shared pointer in the group ships vector and a raw pointer in the target ships vector
+		if (std::find_if(ships.begin(), ships.end(), [ship](std::shared_ptr<EnemyShip> groupShip) { return groupShip->getID() == ship->getID(); }) != ships.end()) {
+			std::cout << "Error: Ship [" << ship->getID() << "] is in the target ships vector but is also in the group ships vector! Removing from target ships vector. Wtf are you doing, change the code you idiot." << std::endl;
+			targetShips.erase(std::remove(targetShips.begin(), targetShips.end(), ship), targetShips.end());
 		}
 	}
 

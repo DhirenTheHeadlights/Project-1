@@ -20,9 +20,12 @@ namespace PirateGame {
 
 		~PlayerShip() {};
 
+		// Experience
 		void addExperience(float experience) {
 			this->experience = experience;
 		}
+		float getExp() const { return experience; }
+		float getExpToLevelUp() const { return experienceToLevelUp; }
 
 		// Create the ship and set its values
 		virtual void customShipSetUp() override;
@@ -33,7 +36,6 @@ namespace PirateGame {
 		PlayerShipInputHandler& getInputHandler() { return *SIH; }
 		ShipInventoryHandler& getInventoryHandler() { return *SIvH; }
 		PlayerShipMovementHandler& getMovementHandler() { return *SMH; }
-
 	private:
 		// Handlers
 		std::unique_ptr<PlayerShipInputHandler> SIH;

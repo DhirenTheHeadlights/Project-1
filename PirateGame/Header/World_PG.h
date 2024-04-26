@@ -31,7 +31,7 @@ namespace PirateGame {
 	private:
 		// Functions
 		void setUpWorld();
-		void gameLoop(sf::Event event);
+		void updateGameLoop(sf::Event event);
 		void drawGameLoop();
 
 		// Game objects
@@ -58,7 +58,7 @@ namespace PirateGame {
 		const float numFramesToAverage = 40.f;
 
 		// Game loop clock variables
-		sf::Time timeLastGameLoop;
+		sf::Clock gameLoopClock;
 		sf::Time gameLoopWaitTime = sf::milliseconds(10);
 
 		// Exp text temp
