@@ -54,6 +54,7 @@ namespace PirateGame {
 
 		std::unordered_map<const sf::Texture*, sf::Image> landmassImages;
 
+
 	    void loadTexture(std::vector<sf::Texture>& textures, const std::string& filename) {
 			textures.emplace_back();
 			textures.back().loadFromFile(filename);

@@ -130,7 +130,7 @@ bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, sf::Sprite& s
 	const sf::Texture* texture2 = sprite2.getTexture();
 	if (!texture1 || !texture2) return false;
 
-	sf::Image image1 = texture1->copyToImage(); // Costly operation, but works because there are only
+	sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getShipImage(texture1); 
 	sf::Image image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getLandMassImage(texture2);
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();

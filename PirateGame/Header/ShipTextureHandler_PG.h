@@ -9,27 +9,41 @@ namespace PirateGame {
 	public:
 		ShipTextureHandler() {
 			// Load the textures
-			sloop.loadFromFile("PirateGameSprites/pg_ship_sloop.png");
-			brig.loadFromFile("PirateGameSprites/pg_ship_brigantine.png");
-			frigate.loadFromFile("PirateGameSprites/pg_ship_frigate.png");
-			galleon.loadFromFile("PirateGameSprites/pg_ship_galleon.png");
-			manowar.loadFromFile("PirateGameSprites/pg_ship_manowar.png");
+			loadTexture(shipTextures, "PirateGameSprites/pg_ship_sloop.png");
+			loadTexture(shipTextures, "PirateGameSprites/pg_ship_brigantine.png");
+			loadTexture(shipTextures, "PirateGameSprites/pg_ship_frigate.png");
+			loadTexture(shipTextures, "PirateGameSprites/pg_ship_galleon.png");
+			loadTexture(shipTextures, "PirateGameSprites/pg_ship_manowar.png");
+
+			prepareImageMaps();
 		};
 		~ShipTextureHandler() {};
 
 		// Getters
-		sf::Texture& getSloop() { return sloop; }
-		sf::Texture& getBrig() { return brig; }
-		sf::Texture& getFrigate() { return frigate; }
-		sf::Texture& getGalleon() { return galleon; }
-		sf::Texture& getManowar() { return manowar; }
+		sf::Texture& getSloop() { return shipTextures[0]; }
+		sf::Texture& getBrig() { return shipTextures[1]; }
+		sf::Texture& getFrigate() { return shipTextures[2]; }
+		sf::Texture& getGalleon() { return shipTextures[3]; }
+		sf::Texture& getManowar() { return shipTextures[4]; }
+		sf::Image getShipImage(const sf::Texture* texture) {
+			return shipImages[texture];
+		}
 		
 	private:
 		// Textures
-		sf::Texture sloop;
-		sf::Texture brig;
-		sf::Texture frigate;
-		sf::Texture galleon;
-		sf::Texture manowar;
+		std::vector<sf::Texture> shipTextures;
+
+		std::unordered_map<const sf::Texture*, sf::Image> shipImages;
+
+		void loadTexture(std::vector<sf::Texture>& textures, const std::string& filename) {
+			textures.emplace_back();
+			textures.back().loadFromFile(filename);
+		}
+
+		void prepareImageMaps() {
+			for (auto& texture : shipTextures) {
+				shipImages[&texture] = texture.copyToImage();
+			}
+		}
 	};
 }
