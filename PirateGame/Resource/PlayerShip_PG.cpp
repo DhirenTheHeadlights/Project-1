@@ -12,6 +12,7 @@ void PlayerShip::customShipSetUp() {
 	SIH->setNumCannons(getShipProperties().numCannons);
 	SIH->setBaseSpeed(getShipProperties().baseSpeed);
 	SIH->setCannonHandler(&getCannonHandler());
+	SIH->getCannonHandler()->setInAudioRange(true);
 	SIH->setMovementHandler(SMH.get());
 }
 

@@ -84,9 +84,9 @@ void EnemyShipHandler::updateGroupDestination(std::shared_ptr<ShipGroup> group) 
 void EnemyShipHandler::updateGroupsNearPlayer() {
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
-
 	// Update all the enemy ships groups near the player ship
 	for (auto& ship : nearbyShips) {
+
 		// Grab the ship group ID
 		int groupID = ship->getGroupID();
 
@@ -96,6 +96,21 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
 		//(*it)->setTarget(playerShip->getSprite().getPosition());
 		(*it)->setInCombat(true);
+
+	}
+
+	std::set<EnemyShip*> nearbyShipsAudio = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, audioRange);
+
+	// Set all the ships in nearby audio range to play cannon sounds
+	for (auto& ship : nearbyShipsAudio) {
+		ship->getCannonHandler().setInAudioRange(true);
+	}
+
+	// Set all the ships in nearby audio range to not play cannon sounds
+	for (auto& ship : enemyShips) {
+		if (nearbyShipsAudio.find(ship.get()) == nearbyShipsAudio.end()) {
+			ship->getCannonHandler().setInAudioRange(false);
+		}
 	}
 }
 

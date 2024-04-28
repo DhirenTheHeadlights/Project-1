@@ -28,7 +28,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos)
     }
 
     // Play sound once per volley if numCannons > 0
-    if (numCannons > 0) GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
+    if (numCannons > 0 && inAudioRange) GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
 
     // Reset the cooldown clock
     cannonCooldownClock.restart();

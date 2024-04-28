@@ -52,18 +52,19 @@ namespace PirateGame {
 		PlayerShip* playerShip = nullptr;
 
 		// Values
-		float enemyCannonCooldown = 2.f;
-		float maxDetectionDistance = 1000.f;
-		float firingDistance = 1000.f;
-		float turningSpeed = 0.1f;
-		float enemySpeedMultiplier = 0.5f;
-		float minDistBetweenShips = 1000.f;
-		float interactionDistance = 1000.f;
+		const float enemyCannonCooldown = 2.f;
+		const float maxDetectionDistance = 1000.f;
+		const float audioRange = 5000.f;
+		const float firingDistance = 1000.f;
+		const float turningSpeed = 0.1f;
+		const float enemySpeedMultiplier = 0.5f;
+		const float minDistBetweenShips = 1000.f;
+		const float interactionDistance = 1000.f;
 
 		// Interaction chance is the 1/n chance of a specific interaction; For value x, chance of grouping, attacking, etc. is 1/x
-		int interactionChance = 10;
+		const int interactionChance = 10;
 
 		// DestinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
-		float destinationReachedDistance = 500.f;
+		const float destinationReachedDistance = 500.f;
 	};
 }
