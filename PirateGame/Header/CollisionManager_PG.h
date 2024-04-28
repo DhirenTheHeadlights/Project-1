@@ -32,6 +32,7 @@ namespace PirateGame {
 
 		// Values
 		float collisionDamagePerFrame = 10.f;
+		float killExp = 10.f;
 
 		// Helper functions
 		bool pixelPerfectTest(const sf::Sprite& object1, sf::Sprite& object2, unsigned alphaLimit = 5);

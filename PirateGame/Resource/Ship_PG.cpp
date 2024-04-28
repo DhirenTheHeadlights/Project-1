@@ -22,6 +22,7 @@ void Ship::setUpShip(ShipClass level) {
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<int> dis(1, 5);
 		level = static_cast<ShipClass>(dis(gen));
+
 		// Access ship properties from the configuration map using the generated random number
 		shipProperties = ShipConfig[level];
 	}

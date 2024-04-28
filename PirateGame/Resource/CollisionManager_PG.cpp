@@ -34,7 +34,7 @@ void CollisionManager::handleCollisions() {
 	// Check if the player is colliding with any of the nearby ships
 	for (auto& i : nearbyCannonballs) {
 		if (i->getSprite().getGlobalBounds().intersects(playerShip->getSprite().getGlobalBounds())) {
-			if (i->getID() == playerShip->getID()) continue; // Ignore self-collisions
+			if (i->getShipID() == playerShip->getID()) continue; // Ignore self-collisions
 			playerShip->damageShip(collisionDamagePerFrame);
 			i->setInactive();
 
@@ -100,11 +100,20 @@ void CollisionManager::handleCollisions() {
 		// Check if the enemy ship is colliding with any of the nearby cannonballs 
 		for (auto& i : nearbyCannonballs) {
 			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
-				if (i->getID() == enemyShip->getID()) continue; // Ignore self-collisions
+				if (i->getShipID() == enemyShip->getID()) continue; // Ignore self-collisions
+
+				
+
 				enemyShip->damageShip(collisionDamagePerFrame);
 				i->setInactive();
 
-				//GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
+				// Check if the cannonball is from the player ship and the ship dies from it
+				if (i->getShipID() == playerShip->getID() && enemyShip->getHealth() <= 0.001) {
+					playerShip->addExperience(killExp);
+					std::cout << "Player ship killed enemy ship, added 10 exp" << std::endl;
+				}
+
+				// GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
 			}
 		}
 	}

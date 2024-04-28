@@ -169,6 +169,7 @@ void World::drawGameLoop() {
 	window->draw(background);
 	LMHandler->drawLandMasses();
 	window->draw(frameRateText);
+	window->draw(experience);
 	playerShip->draw();
 	ESH->draw();
 }

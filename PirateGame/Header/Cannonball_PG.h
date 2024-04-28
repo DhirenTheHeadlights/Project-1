@@ -27,7 +27,7 @@ namespace PirateGame {
 		sf::Sprite& getSprite() { return sprite; }
 		float getSpeed() const { return speed; }
 		bool getActive() const { return isActive; }
-		int getID() const { return ID; }
+		int getShipID() const { return ID; }
 
 		bool operator==(const Cannonball& other) const {
 			return velocity == other.velocity && clock.getElapsedTime() == other.clock.getElapsedTime();

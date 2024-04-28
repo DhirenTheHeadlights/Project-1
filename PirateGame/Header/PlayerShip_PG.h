@@ -21,8 +21,8 @@ namespace PirateGame {
 		~PlayerShip() {};
 
 		// Experience
-		void addExperience(float experience) {
-			this->experience = experience;
+		void addExperience(float exp) {
+			experience += exp;
 		}
 		float getExp() const { return experience; }
 		float getExpToLevelUp() const { return experienceToLevelUp; }
