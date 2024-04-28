@@ -30,6 +30,7 @@ namespace PirateGame {
 		void setFreeAim(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; };
 		void setID(int ID) { this->ID = ID; };
+		void setInAudioRange(bool inAudioRange) { this->inAudioRange = inAudioRange; };
 
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };
@@ -49,6 +50,7 @@ namespace PirateGame {
 		float cooldown = 0.1f;
 		float cannonballSpeed = 300;
 		float firingDirectionAngle = 0;
+		bool inAudioRange = false;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;
