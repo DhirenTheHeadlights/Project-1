@@ -267,6 +267,8 @@
     <ClInclude Include="PirateGame\Header\IslandMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMassTextures_PG.h" />
+    <ClInclude Include="PirateGame\Header\LandMassTypeGenerator_PG.h" />
+    <ClInclude Include="PirateGame\Header\LandMassType_PG.h" />
     <ClInclude Include="PirateGame\Header\LandMass_PG.h" />
     <ClInclude Include="PirateGame\Header\MarketTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\MenuHandler_PG.h" />
@@ -278,6 +280,7 @@
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipClass_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipGroup_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipInventoryHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />
@@ -292,6 +295,7 @@
     <ClInclude Include="PirateGame\Header\TextDisplayBox_PG.h" />
     <ClInclude Include="PirateGame\Header\TextInpuBox_PG.h" />
     <ClInclude Include="PirateGame\Header\TextureHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\TextureResourceManager_PG.h" />
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalWindController_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />

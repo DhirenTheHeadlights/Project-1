@@ -9,6 +9,8 @@
 #include <vector>
 #include <stdlib.h>
 
+#include "TextureResourceManager_PG.h"
+
 namespace PirateGame {
 	class TextureHandler {
 	public:

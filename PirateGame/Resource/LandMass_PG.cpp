@@ -3,29 +3,34 @@
 using namespace PirateGame;
 
 void LandMass::createLandMass(LandMassType type) {
-	// Set the type of landmass
 	this->type = type;
 
-	// Case switch for the type of landmass
 	switch (type) {
-		case LandMassType::Island:
-			sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().grabIslandTexture());
-			sprite.setScale(1.f * scaling, 1.f * scaling);
+	case LandMassType::Island: {
+		LandMassTypeGenerator<IslandType> typeGen;
+		specificType = typeGen.getType();
+		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getIslandTextures().getTexture(std::get<IslandType>(specificType)));
+		sprite.setScale(1.f * scaling, 1.f * scaling);
 
-			// Create the market for the island
-			createMarket();
-			islandMenu = std::make_unique<IslandMenu>(market);
-			islandMenu->setUpMenu();
-			break;
-		case LandMassType::Rock:
-			sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().grabRockTexture());
-			sprite.setScale(0.125f * scaling, 0.125f * scaling);
-			break;
-		case LandMassType::Shipwreck:
-			break;
+		createMarket();
+		islandMenu = std::make_unique<IslandMenu>(market);
+		islandMenu->setUpMenu();
+
+		break;
 	}
-	//setRandomRotation();
+	case LandMassType::Rock: {
+		LandMassTypeGenerator<RockType> typeGen;
+		specificType = typeGen.getType();
+		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getRockTextures().getTexture(std::get<RockType>(specificType)));
+		sprite.setScale(0.125f * scaling, 0.125f * scaling);
+		break;
+	}
+	case LandMassType::Shipwreck:
+		// Handle shipwrecks
+		break;
+	}
 }
+
 
 ShopItem& LandMass::getMarketItem(std::string itemName) {
 	for (auto& it : market) {

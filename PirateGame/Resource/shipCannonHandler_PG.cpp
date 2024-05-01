@@ -11,7 +11,7 @@ void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos)
     // Fire the cannonballs with the adjusted direction
     for (int i = 0; i < numCannons; i++) {
         Cannonball* cannonball = new Cannonball(ID);
-        cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getCannonballTexture());
+        cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball));
         cannonball->getSprite().setScale(cannonballScale);
         cannonball->setSpeed(cannonballSpeed);
 

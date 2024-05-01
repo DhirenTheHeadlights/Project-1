@@ -206,6 +206,9 @@
     <Filter Include="Source Files\DoodleJump">
       <UniqueIdentifier>{8c6a8633-1434-40b1-99f4-cececf63d54e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game Objects\LandMass">
+      <UniqueIdentifier>{b845fd1a-a3d2-4610-a93b-061fbaeef99f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -588,9 +591,6 @@
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\Ship</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game Objects\General</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\ShopItem_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\General</Filter>
     </ClInclude>
@@ -698,6 +698,21 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\ShipGroup_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Ship\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\TextureResourceManager_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipClass_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMassType_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMassTypeGenerator_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

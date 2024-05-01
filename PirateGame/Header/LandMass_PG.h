@@ -7,15 +7,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <variant>
 
 #include "GlobalTextureHandler_PG.h"
 #include "ShopItem_PG.h"
 #include "IslandMenu_PG.h"
+#include "LandMassTypeGenerator_PG.h"
 
 namespace PirateGame {
-	// This enum will be used to determine the land mass type
-	enum class LandMassType { Island, Rock, Shipwreck };
-
 	class LandMass {
 	public:
 		void createLandMass(LandMassType type);
@@ -30,6 +29,7 @@ namespace PirateGame {
 		std::vector<ShopItem>& getMarket() { return market; }
 		ShopItem& getMarketItem(std::string itemName);
 		IslandMenu* getIslandMenu() { return islandMenu.get(); }
+		std::variant<IslandType, RockType> getSpecificType() const { return specificType; }
 
 		// Draw the land mass
 		void draw(sf::RenderWindow& window) const { window.draw(sprite); }
@@ -38,11 +38,17 @@ namespace PirateGame {
 		// Sprite to represent the land mass
 		sf::Sprite sprite;
 		float scaling = 1;
+
+		// Types
 		LandMassType type = LandMassType::Island;
+		std::variant<IslandType, RockType> specificType;
 
 		// Market
 		std::vector<ShopItem> market;
 		std::unique_ptr<IslandMenu> islandMenu;
+
+		// Type generator
+		LandMassTypeGenerator<LandMassType> typeGenerator;
 
 		void createMarket();
 

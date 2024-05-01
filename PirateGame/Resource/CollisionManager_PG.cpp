@@ -18,7 +18,7 @@ void CollisionManager::handleCollisions() {
 
 	// Check if the player is colliding with any of the nearby land masses
 	for (auto& i : nearbyLandMasses) {
-		if (pixelPerfectTest(playerShip->getSprite(), i->getSprite())) {
+		if (pixelPerfectTest(playerShip, i)) {
 			collidingLandMasses.push_back(i);
 
 			playerShip->getMovementHandler().collisionMovement(i->getSprite());
@@ -57,7 +57,7 @@ void CollisionManager::handleCollisions() {
 
 		// Check if the enemy ship is colliding with any of the nearby land masses
 		for (auto& i : nearbyLandmasses) {
-			if (pixelPerfectTest(enemyShip->getSprite(), i->getSprite())) {
+			if (pixelPerfectTest(enemyShip.get(), i)) {
 				collidingLandMasses.push_back(i);
 
 				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
@@ -102,8 +102,6 @@ void CollisionManager::handleCollisions() {
 			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
 				if (i->getShipID() == enemyShip->getID()) continue; // Ignore self-collisions
 
-				
-
 				enemyShip->damageShip(collisionDamagePerFrame);
 				i->setInactive();
 
@@ -121,7 +119,10 @@ void CollisionManager::handleCollisions() {
 }
 
 // This pixel perfect test is specifically for ships and land masses. Sprite1 is the ship, sprite2 is the land mass
-bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, sf::Sprite& sprite2, unsigned alphaLimit) {
+bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit) {
+	const sf::Sprite& sprite1 = ship->getSprite();
+	const sf::Sprite& sprite2 = landmass->getSprite();
+
 	sf::RenderWindow& window = *GlobalValues::getInstance().getWindow();
 	sf::FloatRect intersection;
 	if (!sprite1.getGlobalBounds().intersects(sprite2.getGlobalBounds(), intersection)) return false;
@@ -130,8 +131,18 @@ bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, sf::Sprite& s
 	const sf::Texture* texture2 = sprite2.getTexture();
 	if (!texture1 || !texture2) return false;
 
-	sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getShipImage(texture1); 
-	sf::Image image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getLandMassImage(texture2);
+	sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getImage(ship->getShipClass());
+	sf::Image image2;
+	
+	switch (landmass->getType()) { // Get the correct land mass texture, and then the correct image
+		case LandMassType::Island:
+			image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getIslandTextures().getImage(std::get<IslandType>(landmass->getSpecificType()));
+			break;
+		case LandMassType::Rock:
+			image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getRockTextures().getImage(std::get<RockType>(landmass->getSpecificType()));
+			break;
+	}
+
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();
 
@@ -159,6 +170,11 @@ bool CollisionManager::pixelPerfectTest(const sf::Sprite& sprite1, sf::Sprite& s
 				// Convert global coordinates to sprite2's local space
 				sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 				int idx2 = ((int)localPos2.y * rect2.width + (int)localPos2.x) * 4;
+
+				if (idx1 < 0 || idx1 >= rect1.width * rect1.height * 4 || idx2 < 0 || idx2 >= rect2.width * rect2.height * 4) {
+					// Skip this pixel as it's out of the valid range
+					continue;
+				}
 
 				if (idx1 >= 0 && idx1 < rect1.width * rect1.height * 4 && idx2 >= 0 && idx2 < rect2.width * rect2.height * 4) {
 					if (pixels1[idx1 + 3] > alphaLimit && pixels2[idx2 + 3] > alphaLimit) {

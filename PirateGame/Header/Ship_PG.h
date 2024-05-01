@@ -13,18 +13,9 @@
 #include "GlobalIDManager_PG.h"
 
 #include "ShipCannonHandler_PG.h"
+#include "ShipClass_PG.h"
 
 namespace PirateGame {
-	// This enum will be used to determine the ship class
-	enum class ShipClass {
-		Random,
-		Sloop,
-		Brigantine,
-		Frigate,
-		ManOWar,
-		Galleon
-	};
-
 	// Struct to hold ship properties
 	struct ShipProperties {
 		float baseSpeed = 1.f;

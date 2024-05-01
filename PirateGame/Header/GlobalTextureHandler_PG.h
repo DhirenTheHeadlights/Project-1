@@ -30,7 +30,12 @@ namespace PirateGame {
 
 	private:
 		GlobalTextureHandler() {
-			// Nothing to do here
+			interactableTextures = std::make_unique<InteractableTextureHandler>();
+			landMassTextures = std::make_unique<LandmassTextureHandler>();
+			HUDTextures = std::make_unique<HUDTextureHandler>();
+			optionsMenuTextures = std::make_unique<OptionsMenuTextureHandler>();
+			marketTextures = std::make_unique<MarketTextureHandler>();
+			shipTextures = std::make_unique<ShipTextureHandler>();
 		}
 
 		// Delete copy constructor and assignment operator
@@ -38,12 +43,12 @@ namespace PirateGame {
 		GlobalTextureHandler& operator=(GlobalTextureHandler const&) = delete;
 
 		// Managers
-		std::unique_ptr<InteractableTextureHandler> interactableTextures = std::make_unique<InteractableTextureHandler>();
-		std::unique_ptr<LandmassTextureHandler> landMassTextures = std::make_unique<LandmassTextureHandler>();
-		std::unique_ptr<HUDTextureHandler> HUDTextures = std::make_unique<HUDTextureHandler>();
-		std::unique_ptr<OptionsMenuTextureHandler> optionsMenuTextures = std::make_unique<OptionsMenuTextureHandler>();
-		std::unique_ptr<MarketTextureHandler> marketTextures = std::make_unique<MarketTextureHandler>();
-		std::unique_ptr<ShipTextureHandler> shipTextures = std::make_unique<ShipTextureHandler>();
+		std::unique_ptr<InteractableTextureHandler> interactableTextures;
+		std::unique_ptr<LandmassTextureHandler> landMassTextures;
+		std::unique_ptr<HUDTextureHandler> HUDTextures;
+		std::unique_ptr<OptionsMenuTextureHandler> optionsMenuTextures;
+		std::unique_ptr<MarketTextureHandler> marketTextures;
+		std::unique_ptr<ShipTextureHandler> shipTextures;
 	};
 
 }
