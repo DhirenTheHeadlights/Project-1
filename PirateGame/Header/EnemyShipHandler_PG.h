@@ -11,6 +11,7 @@
 #include "GlobalValues_PG.h"
 #include "GlobalHashmapHandler.h"
 #include "ShipGroup_PG.h"
+#include "BattleManager_PG.h"
 
 namespace PirateGame {
 	class EnemyShipHandler {
@@ -45,6 +46,10 @@ namespace PirateGame {
 		bool isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) const;
 		void updateGroupDestination(std::shared_ptr<ShipGroup> group);
 		void updateGroupsNearPlayer();
+		void updateShipsAsNotNearbyGroup(std::shared_ptr<ShipGroup> group);
+		void joinGroups(std::shared_ptr<ShipGroup> group1, ShipGroup* group2);
+		void updateGroupCombat(std::shared_ptr<ShipGroup> group, std::set<EnemyShip*> nearbyShipsTotal);
+		void interactWithNearbyShips(std::shared_ptr<ShipGroup> group, EnemyShip* otherShip);
 
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		std::vector<std::shared_ptr<ShipGroup>> shipGroups;
@@ -60,11 +65,15 @@ namespace PirateGame {
 		const float enemySpeedMultiplier = 0.5f;
 		const float minDistBetweenShips = 1000.f;
 		const float interactionDistance = 1000.f;
+		const float notNearbyAnymoreDistance = 3000.f;
 
 		// Interaction chance is the 1/n chance of a specific interaction; For value x, chance of grouping, attacking, etc. is 1/x
 		const int interactionChance = 10;
 
 		// DestinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
 		const float destinationReachedDistance = 500.f;
+
+		// BattleManager
+		BattleManager battleManager;
 	};
 }

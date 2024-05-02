@@ -433,6 +433,9 @@
     <ClCompile Include="PirateGame\Resource\ShipGroup_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Ship\General</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\BattleManager_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -713,6 +716,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\LandMassTypeGenerator_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\BattleManager_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

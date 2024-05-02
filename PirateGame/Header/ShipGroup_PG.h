@@ -20,6 +20,20 @@ namespace PirateGame {
 			for (auto& ship : ships) {
 				ship->draw();
 
+				/// For debugging purposes
+
+				// Check if the shipgroup is near the view, if so, display the shipgroup information
+				if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;
+
+				sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
+				GlobalValues::getInstance().displayText("GID: " + std::to_string(ID) + " SID: " + std::to_string(ship->getID()), pos, sf::Color::White, 10);
+				GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+				GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+				GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+
+				for (auto& targetShip : targetShips) {
+					GlobalValues::getInstance().displayText("Target ship ID: " + std::to_string(targetShip->getID()), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+				}
 			}
 		}
 
@@ -62,7 +76,14 @@ namespace PirateGame {
 		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
 		void addGroupIDInteractedWithRecently(int groupID) { groupIDsInteractedWith.push_back(groupID); }
-		void removeGroupIDInteractedWith(int groupID) { groupIDsInteractedWith.erase(std::remove(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID), groupIDsInteractedWith.end()); }
+		void removeGroupIDInteractedWith(int groupID) {
+			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) == groupIDsInteractedWith.end()) {
+				//std::cout << "Error: Group ID [" << groupID << "] not found in groupIDsInteractedWith vector!" << std::endl;
+				return;
+			}
+			groupIDsInteractedWith.erase(std::remove(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID), groupIDsInteractedWith.end());
+			std::cout << "Group ID [" << groupID << "] removed from groupIDsInteractedWith vector of group ID [" << ID << "]" << std::endl;
+		}
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return ships; }
@@ -70,7 +91,7 @@ namespace PirateGame {
 
 		int getID() const { return ID; }
 		bool getInCombat() const { return inCombat; }
-		bool isGroupIDInteractedWith(int groupID) {
+		bool isGroupIDInteractedWithRecently(int groupID) {
 			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) != groupIDsInteractedWith.end()) {
 				return true;
 			}

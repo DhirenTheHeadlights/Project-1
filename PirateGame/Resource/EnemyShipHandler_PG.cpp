@@ -115,6 +115,9 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 }
 
 void EnemyShipHandler::update() {
+	// Update battle manager
+	battleManager.updateBattles();
+
 	updateGroupsNearPlayer();
 
 	// Update all the enemy ships
@@ -135,79 +138,15 @@ void EnemyShipHandler::update() {
 			nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
 		}
 
-		// Remove ships NOT nearby from the recently interacted with list
-		auto& totalShips = enemyShips;
-		for (auto& ship : totalShips) {
-			if (nearbyShipsTotal.find(ship.get()) == nearbyShipsTotal.end()) {
-				enemyShipGroup->removeGroupIDInteractedWith(ship->getGroupID());
-			}
-		}
+		updateShipsAsNotNearbyGroup(enemyShipGroup);
 
 		for (auto& otherShip : nearbyShipsTotal) { // For each nearby ship
-			// Skip ships that are in the same group
-			if (otherShip->getGroupID() == enemyShipGroup->getID()) continue;
-
-			// Check if the ship has already been interacted with
-			if (enemyShipGroup->isGroupIDInteractedWith(otherShip->getGroupID())) continue;
-
-			// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
-			std::uniform_int_distribution<int> dist(0, interactionChance + enemyShipGroup->getEnemyShips().size()); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
-			int interaction = dist(GlobalValues::getInstance().getRandomEngine());
-
-			// Shows if there is interaction. Possible framework for future attack indicator!
-			GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
-
-			auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
-
-			if (interaction == 1) {
-				// Add all of the ships in the other group to the current group
-				for (auto& ship : otherShipGroup->get()->getEnemyShips()) {
-					enemyShipGroup->addShip(ship);
-				}
-
-				// Remove all of the ships from the other group
-				// By clearing the ships vector, it will be deleted as
-				// ship groups of size 0 are removed (earlier in the function)
-				otherShipGroup->get()->getEnemyShips().clear();
-			}
-			else if (interaction == 2) {
-				// Otherwise, fight the other ship group
-				for (auto& ship : otherShipGroup->get()->getEnemyShips()) {
-					enemyShipGroup->addTarget(ship.get());
-				}
-				enemyShipGroup->setInCombat(true);
-
-				// Set the target for the ship group
-				for (auto& ship : enemyShipGroup->getEnemyShips()) {
-					otherShipGroup->get()->addTarget(ship.get());
-				}
-				otherShipGroup->get()->setInCombat(true);
-			}
-
-			// Add the group ID to the list of interacted with groups
-			enemyShipGroup->addGroupIDInteractedWithRecently(otherShip->getGroupID());
+			interactWithNearbyShips(enemyShipGroup, otherShip);
 		}
 
-		// Grab the vector of ships combatting
-		auto shipsCombatting = enemyShipGroup->getTargetShips();
-
-		// Remove the ship from the list of ships combatting if it is not nearby
-		auto removeCondition = [&](const auto& i) {
-			return std::find_if(nearbyShipsTotal.begin(), nearbyShipsTotal.end(), [&](EnemyShip* ship) {
-				return ship->getID() == i->getID();
-				}) == nearbyShipsTotal.end();
-			};
-
-		shipsCombatting.erase(
-			std::remove_if(shipsCombatting.begin(), shipsCombatting.end(), removeCondition),
-			shipsCombatting.end()
-		);
-
-		// If the ship group is not in combat, set the group to not in combat
-		if (shipsCombatting.size() == 0) {
-			enemyShipGroup->setInCombat(false);
-		}
+		updateGroupCombat(enemyShipGroup, nearbyShipsTotal);
 	}
+
 	// If the group size is 0, remove the group
 	shipGroups.erase(
 		std::remove_if(shipGroups.begin(), shipGroups.end(), [](std::shared_ptr<ShipGroup> group) {
@@ -215,6 +154,88 @@ void EnemyShipHandler::update() {
 		}),
 		shipGroups.end()
 	);
+}
+
+void EnemyShipHandler::updateShipsAsNotNearbyGroup(std::shared_ptr<ShipGroup> enemyShipGroup) {
+	// Remove ships NOT nearby from the recently interacted with list
+	auto& totalShips = enemyShips;
+	std::set<EnemyShip*> nearbyShipsTotal;
+
+	// Grab all nearby ships from each ship in the group
+	for (auto& ship : enemyShipGroup->getEnemyShips()) {
+		std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(ship.get(), notNearbyAnymoreDistance);
+		nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
+	}
+
+	// Remove all ships that are not nearby from the group
+	for (auto& ship : totalShips) {
+		// Skip ships that are in the same group
+		if (ship->getGroupID() == enemyShipGroup->getID()) continue;
+		if (nearbyShipsTotal.find(ship.get()) == nearbyShipsTotal.end()) {
+			enemyShipGroup->removeGroupIDInteractedWith(ship->getGroupID());
+		}
+	}
+}
+
+void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyShipGroup, EnemyShip* otherShip) {
+	// Skip ships that are in the same group
+	if (otherShip->getGroupID() == enemyShipGroup->getID()) return;
+
+	// Check if the ship has already been interacted with
+	if (enemyShipGroup->isGroupIDInteractedWithRecently(otherShip->getGroupID())) return;
+
+	// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
+	std::uniform_int_distribution<int> dist(0, interactionChance + enemyShipGroup->getEnemyShips().size()); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
+	int interaction = dist(GlobalValues::getInstance().getRandomEngine());
+
+	// Shows if there is interaction. Possible framework for future attack indicator!
+	GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
+
+	auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
+
+	if (interaction == 1) {
+		joinGroups(enemyShipGroup, otherShipGroup->get());
+	}
+	else if (interaction == 2) {
+		battleManager.startBattle(enemyShipGroup, otherShipGroup->get());
+	}
+
+	// Add the group ID to the list of interacted with groups
+	enemyShipGroup->addGroupIDInteractedWithRecently(otherShip->getGroupID());
+}
+
+void EnemyShipHandler::joinGroups(std::shared_ptr<ShipGroup> group1, ShipGroup* group2) {
+	// Add all of the ships in the other group to the current group
+	for (auto& ship : group2->getEnemyShips()) {
+		group1->addShip(ship);
+	}
+
+	// Remove all of the ships from the other group
+	// By clearing the ships vector, it will be deleted as
+	// ship groups of size 0 are removed (earlier in the function)
+	group2->getEnemyShips().clear();
+}
+
+void EnemyShipHandler::updateGroupCombat(std::shared_ptr<ShipGroup> enemyShipGroup, std::set<EnemyShip*> nearbyShipsTotal) {
+	// Grab the vector of ships combatting
+	auto shipsCombatting = enemyShipGroup->getTargetShips();
+
+	// Remove the ship from the list of ships combatting if it is not nearby
+	auto removeCondition = [&](const auto& i) {
+		return std::find_if(nearbyShipsTotal.begin(), nearbyShipsTotal.end(), [&](EnemyShip* ship) {
+			return ship->getID() == i->getID();
+			}) == nearbyShipsTotal.end();
+		};
+
+	shipsCombatting.erase(
+		std::remove_if(shipsCombatting.begin(), shipsCombatting.end(), removeCondition),
+		shipsCombatting.end()
+	);
+
+	// If the ship group is not in combat, set the group to not in combat
+	if (shipsCombatting.size() == 0) {
+		enemyShipGroup->setInCombat(false);
+	}
 }
 
 void EnemyShipHandler::draw() {

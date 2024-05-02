@@ -22,37 +22,18 @@ void ShipGroup::updateGroup() {
 		// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
 
 		EnemyShip* targetShip = getClosestEnemyShip(ship);
-		if (inCombat) {
-			if (targetShips.size() == 0) {
-				//std::cout << "Error: ShipGroup [" << ID << "] is in combat but has no target ships set! Setting inCombat to false." << std::endl;
-				inCombat = false; // Set inCombat to false
-				ship->getMovementHandler().setIsActiveTowardsTarget(false);
-			}
-			else {
-				ship->setTargetPosition(targetShip->getSprite().getPosition());
-				ship->getMovementHandler().setIsActiveTowardsTarget(true);
-			}
+		if (inCombat && targetShip != nullptr) {
+			ship->setTargetPosition(targetShip->getSprite().getPosition());
+			ship->getMovementHandler().setIsActiveTowardsTarget(true);
+		}
+		else {
+			ship->getMovementHandler().setIsActiveTowardsTarget(false);
 		}
 
 		// If the health of the ship is almost 0, remove the ship from the group
 		if (ship->getHealth() < 0.001f) {
 			removeShip(ship);
 		}
-
-		/// For debugging purposes
-
-		// Check if the shipgroup is near the view, if so, display the shipgroup information
-		if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;
-
-		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
-		GlobalValues::getInstance().displayText("GID: " + std::to_string(ID) + " SID: " + std::to_string(ship->getID()), pos, sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		if (inCombat) GlobalValues::getInstance().displayText("targetpos: " + std::to_string(targetShip->getSprite().getPosition().x) + ", " + std::to_string(targetShip->getSprite().getPosition().y), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		if (inCombat) GlobalValues::getInstance().displayText("In combat with ship ID: " + std::to_string(targetShip->getID()), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Group speed: " + std::to_string(groupSpeed), pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Ship speed: " + std::to_string(ship->getMovementHandler().getBaseSpeed()), pos + sf::Vector2f(0, 6 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-		GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 7 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 
 		// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
 		targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](EnemyShip* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
