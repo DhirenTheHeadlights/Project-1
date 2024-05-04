@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "Ship_PG.h"
 #include "EnemyShip_PG.h"
 #include "GlobalIDManager_PG.h"
 #include "GlobalHashmapHandler.h"
@@ -72,7 +73,7 @@ namespace PirateGame {
 
 		// Setters
 		void setHeading(sf::Vector2f heading) { this->destination = heading; }
-		void addTarget(EnemyShip* ship) { targetShips.push_back(ship); }
+		void addTarget(Ship* ship) { targetShips.push_back(ship); }
 		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
 		void addGroupIDInteractedWithRecently(int groupID) { groupIDsInteractedWith.push_back(groupID); }
@@ -87,7 +88,7 @@ namespace PirateGame {
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return ships; }
-		std::vector<EnemyShip*> getTargetShips() { return targetShips; }
+		std::vector<Ship*> getTargetShips() { return targetShips; }
 
 		int getID() const { return ID; }
 		bool getInCombat() const { return inCombat; }
@@ -118,7 +119,7 @@ namespace PirateGame {
 		sf::Vector2f calculateGoalVector(std::shared_ptr<EnemyShip> ship);
 
 		// Combat methods
-		EnemyShip* getClosestEnemyShip(std::shared_ptr<EnemyShip> ship);
+		Ship* getClosestEnemyShip(std::shared_ptr<EnemyShip> ship);
 
 		// Variables
 		float alignmentWeight = 1.f;
@@ -134,7 +135,7 @@ namespace PirateGame {
 		sf::Vector2f destination; // The destination of the ship group
 		sf::Vector2f heading; // The heading of the ship group
 		sf::Vector2f targetVelocity; // For combat purposes
-		std::vector<EnemyShip*> targetShips; // For combat purposes
+		std::vector<Ship*> targetShips; // For combat purposes
 
 		// Game objects
 		std::vector<std::shared_ptr<EnemyShip>> ships;

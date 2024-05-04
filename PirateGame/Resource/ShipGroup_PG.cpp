@@ -21,7 +21,7 @@ void ShipGroup::updateGroup() {
 		// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
 		// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
 
-		EnemyShip* targetShip = getClosestEnemyShip(ship);
+		Ship* targetShip = getClosestEnemyShip(ship);
 		if (inCombat && targetShip != nullptr) {
 			ship->setTargetPosition(targetShip->getSprite().getPosition());
 			ship->getMovementHandler().setIsActiveTowardsTarget(true);
@@ -36,12 +36,12 @@ void ShipGroup::updateGroup() {
 		}
 
 		// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
-		targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](EnemyShip* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
+		targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](Ship* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
 	}
 }
 
-EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
-	EnemyShip* closestShip = nullptr;
+Ship* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
+	Ship* closestShip = nullptr;
 	float closestDistance = 999999.f; // Set to a high value
 
 	for (auto& ship : targetShips) {
@@ -52,12 +52,11 @@ EnemyShip* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
 		}
 		// Check if any of the group ships are erroniously in the target ships vector. Compare the IDs
 		// as there is a shared pointer in the group ships vector and a raw pointer in the target ships vector
-		if (std::find_if(ships.begin(), ships.end(), [ship](std::shared_ptr<EnemyShip> groupShip) { return groupShip->getID() == ship->getID(); }) != ships.end()) {
+		if (std::find_if(ships.begin(), ships.end(), [ship](std::shared_ptr<Ship> groupShip) { return groupShip->getID() == ship->getID(); }) != ships.end()) {
 			std::cout << "Error: Ship [" << ship->getID() << "] is in the target ships vector but is also in the group ships vector! Removing from target ships vector. Wtf are you doing, change the code you idiot." << std::endl;
 			targetShips.erase(std::remove(targetShips.begin(), targetShips.end(), ship), targetShips.end());
 		}
 	}
-
 	return closestShip;
 }
 

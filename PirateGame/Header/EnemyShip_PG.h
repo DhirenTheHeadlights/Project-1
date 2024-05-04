@@ -26,9 +26,8 @@ namespace PirateGame {
 		void customShipDraw() override;
 
 		// Getters
-		EnemyShipMovementHandler& getMovementHandler() { return *SMH; }
-		EnemyShipInputHandler& getInputHandler() { return *SIH; }
-		int getGroupID() const { return groupID; }
+		EnemyShipMovementHandler& getMovementHandler() override { return *SMH; }
+		EnemyShipInputHandler& getInputHandler() override { return *SIH; }
 
 		// Setters
 		void setTargetPosition(sf::Vector2f targetPos) {
@@ -36,17 +35,14 @@ namespace PirateGame {
 			SIH->setTargetPos(targetPos);
 			SMH->setTargetPosition(targetPos);
 		}
-		void setGroupID(int groupID) { this->groupID = groupID; }
 
 	private:
-
 		// Handlers
 		std::unique_ptr<EnemyShipInputHandler> SIH;
 		std::unique_ptr<EnemyShipMovementHandler> SMH;
 
 		// Variables
 		sf::Vector2f targetPosition;
-		int groupID = -1;
 	};
 }
 

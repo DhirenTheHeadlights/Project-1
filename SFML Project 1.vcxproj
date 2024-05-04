@@ -245,7 +245,6 @@
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
-    <ClInclude Include="PirateGame\Header\CannonballHandler.h" />
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
     <ClInclude Include="PirateGame\Header\CollisionManager_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />

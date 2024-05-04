@@ -33,9 +33,9 @@ namespace PirateGame {
 		virtual void customShipDraw() override;
 
 		// Get movement handler
-		PlayerShipInputHandler& getInputHandler() { return *SIH; }
+		PlayerShipInputHandler& getInputHandler() override { return *SIH; }
 		ShipInventoryHandler& getInventoryHandler() { return *SIvH; }
-		PlayerShipMovementHandler& getMovementHandler() { return *SMH; }
+		PlayerShipMovementHandler& getMovementHandler() override { return *SMH; }
 	private:
 		// Handlers
 		std::unique_ptr<PlayerShipInputHandler> SIH;
