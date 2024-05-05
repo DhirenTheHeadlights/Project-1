@@ -13,6 +13,8 @@
 #include "GlobalIDManager_PG.h"
 
 #include "ShipCannonHandler_PG.h"
+#include "ShipMovementHandler_PG.h"
+#include "ShipInputHandler_PG.h"
 #include "ShipClass_PG.h"
 
 namespace PirateGame {
@@ -53,15 +55,20 @@ namespace PirateGame {
 		void setMaxHealth(float health) { shipProperties.maxHealth = health; }
 		void setRegenRate(float rate) { shipProperties.regenRate = rate; }
 
+		void setGroupID(int groupID) { this->groupID = groupID; }
+
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 		int getID() const { return ID; }
+		int getGroupID() const { return groupID; }
 
 		ShipProperties& getShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
 
 		virtual ShipCannonHandler& getCannonHandler() { return *SCH; };
+		virtual ShipMovementHandler& getMovementHandler() = 0;
+		virtual ShipInputHandler& getInputHandler() = 0;
 
 		std::string getShipClassString() {
 			switch (shipClass) {
@@ -109,9 +116,9 @@ namespace PirateGame {
 		// Handlers
 		std::unique_ptr<ShipCannonHandler> SCH;
 
-		// Unique ID
+		// Unique ID and group ID
 		int ID = -1;
-
+		int groupID = -1;
 	protected:
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
