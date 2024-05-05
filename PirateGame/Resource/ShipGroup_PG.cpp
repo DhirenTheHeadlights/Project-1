@@ -17,7 +17,7 @@ void ShipGroup::updateGroup() {
 		ship->getMovementHandler().setDestination(heading);
 
 		// If the ship is in combat, set the target position to be the closest enemy ship
-		EnemyShip* targetShip = getClosestEnemyShip(ship);
+		Ship* targetShip = getClosestEnemyShip(ship);
 		if (inCombat && targetShip != nullptr) {
 			ship->setTargetPosition(targetShip->getSprite().getPosition());
 			ship->getMovementHandler().setIsActiveTowardsTarget(true);
