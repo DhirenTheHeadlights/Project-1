@@ -94,7 +94,7 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
 
 		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
-		//(*it)->setTarget(playerShip->getSprite().getPosition());
+		(*it)->addTarget(playerShip);
 		(*it)->setInCombat(true);
 
 	}
