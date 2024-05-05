@@ -16,11 +16,7 @@ void ShipGroup::updateGroup() {
 		heading = destination + resultantVector;
 		ship->getMovementHandler().setDestination(heading);
 
-		// If the ship is in combat, set the target position to be the i target ship in the vector of ships combatting
-		// Here, there are 2 scenarios: 1. The targetShipGroup vector is smaller than the shipGroup vector and 2. The targetShipGroup vector is larger than the shipGroup vector
-		// For 1, some ships in the group will not have a target ship to attack, so they will attack the first ship in the targetShipGroup vector
-		// For 2, nothing really needs to be done, as the ships in the group will attack the ships in the targetShipGroup vector in order
-
+		// If the ship is in combat, set the target position to be the closest enemy ship
 		EnemyShip* targetShip = getClosestEnemyShip(ship);
 		if (inCombat && targetShip != nullptr) {
 			ship->setTargetPosition(targetShip->getSprite().getPosition());
