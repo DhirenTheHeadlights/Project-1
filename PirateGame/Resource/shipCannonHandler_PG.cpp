@@ -99,7 +99,7 @@ void ShipCannonHandler::updateCannonballs() {
 		(*it)->setPos((*it)->getPos() + velocity * elapsed);
 
 		// If more than 2 seconds have passed, delete the cannonball
-		if ((*it)->getClock().getElapsedTime().asSeconds() > 2 || (*it)->getActive() == false) {
+		if ((*it)->getClock().getElapsedTime().asSeconds() > cannonballFlightTime || (*it)->getActive() == false) {
             // Remove the cannonball from the hashmap
             cannonballHashmap->removeObject(*it);
 

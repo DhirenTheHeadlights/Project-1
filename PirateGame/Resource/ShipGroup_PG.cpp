@@ -13,7 +13,7 @@ void ShipGroup::updateGroup() {
 		resultantVector = GlobalValues::getInstance().normalizeVector(resultantVector);
 
 		// Set the travel direction of the ship
-		heading = destination + resultantVector;
+		heading = destination; //+ resultantVector;
 		ship->getMovementHandler().setDestination(heading);
 
 		// If the ship is in combat, set the target position to be the closest enemy ship
@@ -21,9 +21,11 @@ void ShipGroup::updateGroup() {
 		if (inCombat && targetShip != nullptr) {
 			ship->setTargetPosition(targetShip->getSprite().getPosition());
 			ship->getMovementHandler().setIsActiveTowardsTarget(true);
+			ship->getMovementHandler().setBaseSpeed(combatSpeedMultiplier * groupSpeed);
 		}
 		else {
 			ship->getMovementHandler().setIsActiveTowardsTarget(false);
+			ship->getMovementHandler().setBaseSpeed(groupSpeed);
 		}
 
 		// If the health of the ship is almost 0, remove the ship from the group

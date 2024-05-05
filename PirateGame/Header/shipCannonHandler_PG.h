@@ -49,6 +49,7 @@ namespace PirateGame {
 		const float maxFiringAngle = 45.f;
 		float cooldown = 0.1f;
 		float cannonballSpeed = 300;
+		float cannonballFlightTime = 4.f;
 		float firingDirectionAngle = 0;
 		bool inAudioRange = false;
 

@@ -85,19 +85,20 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 	// Grab nearby ships for the player ship
 	std::set<EnemyShip*> nearbyShips = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
 	// Update all the enemy ships groups near the player ship
-	for (auto& ship : nearbyShips) {
 
-		// Grab the ship group ID
-		int groupID = ship->getGroupID();
+	//for (auto& ship : nearbyShips) {
 
-		// Look for the ship group
-		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
+	//	// Grab the ship group ID
+	//	int groupID = ship->getGroupID();
 
-		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
-		(*it)->addTarget(playerShip);
-		(*it)->setInCombat(true);
+	//	// Look for the ship group
+	//	auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
 
-	}
+	//	// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
+	//	//(*it)->setTarget(playerShip->getSprite().getPosition());
+	//	(*it)->setInCombat(true);
+
+	//}
 
 	std::set<EnemyShip*> nearbyShipsAudio = GlobalHashmapHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, audioRange);
 
@@ -183,6 +184,7 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 
 	// Check if the ship has already been interacted with
 	if (enemyShipGroup->isGroupIDInteractedWithRecently(otherShip->getGroupID())) return;
+	if (enemyShipGroup->getIsInteracting()) return;
 
 	// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
 	std::uniform_int_distribution<int> dist(0, interactionChance + enemyShipGroup->getEnemyShips().size()); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
@@ -205,15 +207,13 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 }
 
 void EnemyShipHandler::joinGroups(std::shared_ptr<ShipGroup> group1, ShipGroup* group2) {
+
 	// Add all of the ships in the other group to the current group
 	for (auto& ship : group2->getEnemyShips()) {
 		group1->addShip(ship);
 	}
-
-	// Remove all of the ships from the other group
-	// By clearing the ships vector, it will be deleted as
-	// ship groups of size 0 are removed (earlier in the function)
-	group2->getEnemyShips().clear();
+	group2->clearEnemyShips();
+	//group2->getEnemyShips().clear();
 }
 
 void EnemyShipHandler::updateGroupCombat(std::shared_ptr<ShipGroup> enemyShipGroup, std::set<EnemyShip*> nearbyShipsTotal) {
