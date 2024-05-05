@@ -6,6 +6,8 @@ void BattleManager::startBattle(std::shared_ptr<ShipGroup> group1, ShipGroup* gr
 	// Set the groups to be in combat
 	group1->setInCombat(true);
 	group2->setInCombat(true);
+	group1->setIsInteracting(true);
+	group2->setIsInteracting(true);
 
 	// Add each group's ships to the other group's target ships vector
 	for (auto& ship : group1->getEnemyShips()) {
@@ -29,11 +31,19 @@ void BattleManager::updateBattles() {
 
 		// If either group is null, set the other group to not be in combat
 		// Or, if either group has no ships, set the other group to not be in combat
-		if (group1 == nullptr || group1->getEnemyShips().size() == 0) {
+		if (group1 == nullptr || group1->getEnemyShips().size() == 0
+			|| group2 == nullptr || group2->getEnemyShips().size() == 0) {
 			group2->setInCombat(false);
-		}
-		if (group2 == nullptr || group2->getEnemyShips().size() == 0) {
+			group2->setIsInteracting(false);
 			group1->setInCombat(false);
+			group1->setIsInteracting(false);
+		}
+		else {
+			//Re-set both group's in combat and is interacting to true
+			group1->setInCombat(true);
+			group1->setIsInteracting(true);
+			group2->setInCombat(true);
+			group2->setIsInteracting(true);
 		}
 	}
 }

@@ -31,10 +31,17 @@ namespace PirateGame {
 				GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 				GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 				GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-
+				std::string targetShipIDs = "Target ship IDs: ";
 				for (auto& targetShip : targetShips) {
-					GlobalValues::getInstance().displayText("Target ship ID: " + std::to_string(targetShip->getID()), pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+					targetShipIDs += std::to_string(targetShip->getID()) + ", ";
 				}
+				GlobalValues::getInstance().displayText(targetShipIDs, pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+				std::string groupIDsInteractedWithStr = "Group IDs interacted with: ";
+				for (auto& groupID : groupIDsInteractedWith) {
+					groupIDsInteractedWithStr += std::to_string(groupID) + ", ";
+				}
+				GlobalValues::getInstance().displayText(groupIDsInteractedWithStr, pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+
 			}
 		}
 
@@ -73,9 +80,16 @@ namespace PirateGame {
 
 		// Setters
 		void setHeading(sf::Vector2f heading) { this->destination = heading; }
-		void addTarget(Ship* ship) { targetShips.push_back(ship); }
+		void addTarget(Ship* ship) { 
+			if (std::find(targetShips.begin(), targetShips.end(), ship) != targetShips.end()) {
+				return;
+			}
+			targetShips.push_back(ship); 
+		}
+		void clearEnemyShips() { ships.clear(); }
 		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
+		void setIsInteracting(bool isInteracting) { this->isInteracting = isInteracting; }
 		void addGroupIDInteractedWithRecently(int groupID) { groupIDsInteractedWith.push_back(groupID); }
 		void removeGroupIDInteractedWith(int groupID) {
 			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) == groupIDsInteractedWith.end()) {
@@ -92,6 +106,7 @@ namespace PirateGame {
 
 		int getID() const { return ID; }
 		bool getInCombat() const { return inCombat; }
+		bool getIsInteracting() const { return isInteracting; }
 		bool isGroupIDInteractedWithRecently(int groupID) {
 			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) != groupIDsInteractedWith.end()) {
 				return true;
@@ -129,8 +144,10 @@ namespace PirateGame {
 
 		float minDistance = 100.f;
 		float groupSpeed = 0.f;
+		float combatSpeedMultiplier = 0.75f;
 
 		bool inCombat = false;
+		bool isInteracting = false;
 
 		sf::Vector2f destination; // The destination of the ship group
 		sf::Vector2f heading; // The heading of the ship group
