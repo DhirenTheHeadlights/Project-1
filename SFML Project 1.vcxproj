@@ -190,6 +190,7 @@
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipInputHandler_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\ShipCannon_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipGroup_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipInventoryHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipMovementHandler_PG.cpp" />
@@ -281,6 +282,7 @@
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipCannon_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipClass_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipGroup_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipInventoryHandler_PG.h" />
@@ -355,10 +357,15 @@
     <Image Include="PirateGameSprites\pg_rock_8.png" />
     <Image Include="PirateGameSprites\pg_rock_9.png" />
     <Image Include="PirateGameSprites\pg_ship_brigantine.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_frigate.png" />
+    <Image Include="PirateGameSprites\pg_ship_frigate_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_galleon.png" />
+    <Image Include="PirateGameSprites\pg_ship_galleon_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_manowar.png" />
+    <Image Include="PirateGameSprites\pg_ship_manowar_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop.png" />
+    <Image Include="PirateGameSprites\pg_ship_sloop_cannon.png" />
     <Image Include="PirateGameSprites\settings_button.png" />
     <Image Include="PirateGameSprites\slider_thumb.png" />
     <Image Include="PirateGameSprites\slider_track.png" />

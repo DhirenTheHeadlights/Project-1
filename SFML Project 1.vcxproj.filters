@@ -436,6 +436,9 @@
     <ClCompile Include="PirateGame\Resource\BattleManager_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Ship\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ShipCannon_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\Ship\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -693,9 +696,6 @@
     <ClInclude Include="DoodleJump\World_DJ.h">
       <Filter>Source Files\DoodleJump</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\CannonballHandler.h">
-      <Filter>Source Files\PirateGame\Header\Handlers\Ship\General</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
@@ -719,6 +719,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Ship\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ShipCannon_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Ship\General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -801,21 +804,6 @@
     <Image Include="PirateGameSprites\pg_misc_cannonball.png">
       <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
     </Image>
-    <Image Include="PirateGameSprites\pg_ship_brigantine.png">
-      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_frigate.png">
-      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_galleon.png">
-      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_sloop.png">
-      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_manowar.png">
-      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
-    </Image>
     <Image Include="PirateGameSprites\health_bar_green.png">
       <Filter>Source Files\PirateGame\Sprites\HUD</Filter>
     </Image>
@@ -884,6 +872,36 @@
     </Image>
     <Image Include="PirateGameSprites\market_bottom_middle.png">
       <Filter>Source Files\PirateGame\Sprites\Market</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_brigantine.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_brigantine_cannon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate_cannon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_galleon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_galleon_cannon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar_cannon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_sloop.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_sloop_cannon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

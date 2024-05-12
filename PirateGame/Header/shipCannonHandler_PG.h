@@ -6,7 +6,6 @@
 #include <string>
 
 #include "GlobalValues_PG.h"
-#include "Cannonball_PG.h"
 #include "GlobalSoundManager_PG.h"
 #include "GlobalTextureHandler_PG.h"
 #include "HashmapTemplate_PG.h"
