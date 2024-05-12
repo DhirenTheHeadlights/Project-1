@@ -20,15 +20,18 @@ namespace PirateGame {
 		~ShipCannonHandler() {};
 
 		void initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale);
-
 		void shootCannonballs(sf::Vector2f targetPos);
 		void updateCannons();
 		void drawCannons();
 
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };
-		void setCooldown(float cooldown) { this->cooldown = cooldown; };
-		void setFreeAim(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
+		void setCooldown(float cooldown) { this->cooldown = sf::seconds(cooldown); };
+		void setFreeAim(bool aimTowardsMouse) {
+			for (auto& cannon : cannons) {
+				cannon.setAimTowardsMouse(aimTowardsMouse);
+			}
+		};
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) {
 			for (auto& cannon : cannons) {
 				cannon.setCannonballHashmap(cannonballHashmap);
@@ -39,23 +42,30 @@ namespace PirateGame {
 		// Getters
 		bool getAimTowardsMouse() const { return aimTowardsMouse; };
 		FiringSide getFiringSide() const { return side; };
-		float getFiringDirectionAngle() const { return firingDirectionAngle; };
+		float getFiringDirectionAngle() const {
+			// Average the firing angles of all the cannons on the firing side
+			float firingAngle = 0.f;
+			for (auto& cannon : cannons) {
+				if (cannon.getFiringSide() == side) {
+					firingAngle += cannon.getFiringDirectionAngle();
+				}
+			}
+			return firingAngle / cannons.size() / 2.f; // Divide by 2 for only one side
+		}
 		float getMaxFiringAngle() const { return maxFiringAngle; };
 	private:
 		sf::Clock cannonCooldownClock;
+		sf::Time cooldown = sf::seconds(0.5f);
 
 		sf::Vector2f cannonballDirection;
 		std::vector<ShipCannon> cannons;
 		
-		bool aimTowardsMouse = false;
 		const float maxFiringAngle = 45.f;
-		float cooldown = 0.1f;
-		float firingDirectionAngle = 0;
+
 		bool inAudioRange = false;
+		bool aimTowardsMouse = false;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;
-
-		sf::Vector2f cannonDirection(sf::Vector2f targetPos);
 	};
 };

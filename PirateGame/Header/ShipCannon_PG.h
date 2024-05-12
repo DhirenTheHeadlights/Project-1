@@ -12,7 +12,7 @@
 namespace PirateGame {
 	class ShipCannon {
 	public:
-		ShipCannon(ShipClass type, int id, FiringSide FS, sf::Vector2f scale) : id(id) {
+		ShipCannon(ShipClass type, int id, FiringSide FS, sf::Vector2f scale) : id(id), side(FS) {
 			cannonSprite.setTexture(GlobalTextureHandler::getInstance().getShipTextures().getCannonTextureManager().getTexture(type));
 			cannonSprite.setScale(scale);
 
@@ -30,29 +30,51 @@ namespace PirateGame {
 		};
 		~ShipCannon() {};
 
-		void fireCannon(sf::Vector2f cannonDirection);
-		void drawCannonballs();
-		void updateCannon(sf::Sprite& shipSprite);
-		void drawCannon() const { GlobalValues::getInstance().getWindow()->draw(cannonSprite); }
+		void fireCannon(FiringSide FS, sf::Sprite& shipSprite, sf::Vector2f targetPos);
+		void drawCannonNBalls();
+		void updateCannon(sf::Sprite& shipSprite, FiringSide FS);
 
 		// Setters
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
-
+		void setAimTowardsMouse(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; }
+	
 		// Getters
 		sf::Sprite& getSprite() { return cannonSprite; }
 		sf::Vector2f getOffset() const { return offset; }
+		float getFiringDirectionAngle() const { return firingDirectionAngle; }
+		FiringSide getFiringSide() const { return side; }
 	private:
+		// Helpers
+		sf::Vector2f calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos);
+		float normalizeAngle(float angle);
+		void rotateTowards(float angle, float step);
+		void updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS);
+		void updateCannonballs(float elapsed);
+
+		sf::Clock resetRotationClock;
+		sf::Time resetRotationTime = sf::seconds(2.f);
 		sf::Clock deltaTime;
 
 		sf::Sprite cannonSprite;
 		std::vector<Cannonball*> cannonballs;
-		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
+		sf::Vector2f cannonballScale = { 0.4f, 0.4f };
 		sf::Vector2f offset = { 0.f, 0.f };
 
+		const float approxCannonOffsetToEdgeRatio = 0.85f;
+		const float pi = 3.14159265f;
 		float cannonballSpeed = 300;
 		float cannonballFlightTime = 4.f;
 		float defaultRotation = 0.f;
+		float maxFiringAngle = 45.f;
+		float firingDirectionAngle = 0.f;
+		float aimRotation = 0.f;
+		float rotationSpeed = 0.5f;
+		float minDifferenceBetweenTargetAndCannon = 0.01f;
+
+		bool aimTowardsMouse = false;
+
+		FiringSide side;
 
 		Hashmap<Cannonball>* cannonballHashmap = nullptr;
 

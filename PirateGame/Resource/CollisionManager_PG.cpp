@@ -56,8 +56,6 @@ void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, s
 
 		// Play the collision sound
 		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
-
-		std::cout << "Ship ID: " << ship->getID() << " collided with a land mass!" << std::endl;
 	}
 	else {
 		ship->getMovementHandler().setIsColliding(false);
@@ -81,8 +79,6 @@ void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector
 
 		// Play the collision sound
 		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
-
-		std::cout << "Ship collision detected!" << std::endl;
 	}
 	else {
 		ship1->getMovementHandler().setIsColliding(false);

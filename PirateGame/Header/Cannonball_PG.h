@@ -13,8 +13,7 @@ namespace PirateGame {
 		Cannonball(int ID) : ID(ID) {};
 		~Cannonball() {};
 
-		// Setters
-		void setPos(sf::Vector2f pos) { sprite.setPosition(pos); }
+		// Setters }
 		void setVelocity(sf::Vector2f vel) { velocity = vel; }
 		void arrrMatey() { std::cout << "Avast, ye scallywags!" << std::endl; }
 		void setSpeed(float speed) { this->speed = speed; }
@@ -22,7 +21,6 @@ namespace PirateGame {
 
 		// Getters
 		sf::Clock getClock() const { return clock; }
-		sf::Vector2f getPos() const { return sprite.getPosition(); }
 		sf::Vector2f getVelocity() const { return velocity; }
 		sf::Sprite& getSprite() { return sprite; }
 		float getSpeed() const { return speed; }
