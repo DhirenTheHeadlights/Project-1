@@ -22,7 +22,7 @@ void EnemyShipInputHandler::handleCannonFire() {
     }
     
 	// Fire the cannons
-	if (targetPos != sf::Vector2f(0,0)) SCH->shootCannonballs(numCannons, targetPos);
+	if (targetPos != sf::Vector2f(0,0)) SCH->shootCannonballs(targetPos);
 }
 
 void EnemyShipInputHandler::handleCannonAim() {

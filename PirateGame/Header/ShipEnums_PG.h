@@ -1,6 +1,6 @@
 #pragma once
 
-/// This class just holds the ship class enum
+/// This class just holds the ship enums
 
 namespace PirateGame {
 	enum class ShipClass {
@@ -11,4 +11,7 @@ namespace PirateGame {
 		ManOWar,
 		Galleon
 	};
+
+	enum class FiringSide { Port, Starboard };
 }
+

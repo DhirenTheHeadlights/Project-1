@@ -705,7 +705,7 @@
     <ClInclude Include="PirateGame\Header\TextureResourceManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\ShipClass_PG.h">
+    <ClInclude Include="PirateGame\Header\ShipEnums_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\Ship</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\LandMass_PG.h">

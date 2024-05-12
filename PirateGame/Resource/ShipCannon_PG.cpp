@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void ShipCannon::fireCannon() {
+void ShipCannon::fireCannon(sf::Vector2f cannonDirection) {
     Cannonball* cannonball = new Cannonball(id);
     cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball));
     cannonball->getSprite().setScale(cannonballScale);
@@ -10,7 +10,7 @@ void ShipCannon::fireCannon() {
 
     // Considering a more accurate position calculation here based on cannon placement
     cannonball->setPos(cannonSprite.getPosition());
-    cannonball->setVelocity(cannonball->getSpeed() * sf::Vector2f(1,1) /** cannonDirection*/);
+    cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
 
     // Add the cannonball to the hashmap
     cannonballHashmap->addObject(cannonball);
@@ -25,7 +25,20 @@ void ShipCannon::drawCannonballs() {
 	}
 }
 
-void ShipCannon::updateCannonballs() {
+void ShipCannon::updateCannon(sf::Sprite& shipSprite) {
+    // Calculate the cannon's position based on the ship's rotation
+    float rotation = shipSprite.getRotation();
+    float angleRad = rotation * 3.1415926f / 180.0f;
+    sf::Transform rotationTransform;
+    rotationTransform.rotate(rotation, shipSprite.getPosition());
+
+    sf::Vector2f rotationPoint(shipSprite.getPosition() + offset);
+    sf::Vector2f cannonPosition = rotationTransform.transformPoint(rotationPoint);
+
+    // Set the position and rotation of the cannon
+    cannonSprite.setPosition(cannonPosition);
+    cannonSprite.setRotation(rotation + defaultRotation);
+
     float elapsed = deltaTime.restart().asSeconds();
     for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
         // Update the cannonball in the hashmap

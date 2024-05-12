@@ -2,33 +2,66 @@
 
 using namespace PirateGame;
 
-void ShipCannonHandler::shootCannonballs(int numCannons, sf::Vector2f targetPos) {
+void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale) {
+    for (int i = 0; i < numCannons; i++) {
+        if (i < numCannons / 2) {
+			cannons.push_back(ShipCannon(type, ID, FiringSide::Port, scale));
+		}
+        else {
+			cannons.push_back(ShipCannon(type, ID, FiringSide::Starboard, scale));
+		}
+	}
+
+    // Set the position of the cannons based on the ship sprite. In the ship sprite,
+    // There is a 1 pixel red dot where the cannon should be placed.
+    const sf::Texture* shipTexture = shipSprite.getTexture();
+    sf::Image shipImage = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getImage(type);
+    const sf::Uint8* pixels = shipImage.getPixelsPtr();
+
+    // Store the positions of the red dots in the ship sprite
+    // This should be relative to the ship sprite, so that it moves with the ship
+    std::vector<sf::Vector2f> cannonPositions;
+
+    // Find the center of the texture to make positions relative to it
+    sf::Vector2f textureCenter = sf::Vector2f(static_cast<float>(shipTexture->getSize().x) / 2.0f,
+        static_cast<float>(shipTexture->getSize().y) / 2.0f);
+
+    // Iterate through the pixels to find the red dots and store their positions relative to the texture center
+    for (int x = 0; x < shipImage.getSize().x; x++) {
+        for (int y = 0; y < shipImage.getSize().y; y++) {
+            sf::Color pixelColor = shipImage.getPixel(x, y);
+            if (pixelColor.r == 255 && pixelColor.g == 0 && pixelColor.b == 0) {
+                // Calculate position relative to the center of the texture and apply scaling
+                sf::Vector2f relativeToCenter(x - textureCenter.x, y - textureCenter.y);
+                cannonPositions.push_back(sf::Vector2f(relativeToCenter.x * scale.x, relativeToCenter.y * scale.y));
+            }
+        }
+    }
+
+    if (cannonPositions.size() != numCannons) {
+        std::cout << "Error: Number of cannons does not match the number of red dots in the ship sprite." << std::endl;
+    }
+
+    // Set each cannon's offset based on the calculated and scaled positions
+    for (int i = 0; i < numCannons; i++) {
+        cannons[i].setOffset(cannonPositions[i]);
+        std::cout << "Cannon " << i << " offset: " << cannonPositions[i].x << ", " << cannonPositions[i].y << std::endl;
+    }
+}
+
+void ShipCannonHandler::shootCannonballs(sf::Vector2f targetPos) {
     if (cannonCooldownClock.getElapsedTime().asSeconds() < cooldown) return;
 
     // Grab the cannon direction
     sf::Vector2f cannonDirection = this->cannonDirection(targetPos);
 
     // Fire the cannonballs with the adjusted direction
-    for (int i = 0; i < numCannons; i++) {
-        Cannonball* cannonball = new Cannonball(ID);
-        cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball));
-        cannonball->getSprite().setScale(cannonballScale);
-        cannonball->setSpeed(cannonballSpeed);
-
-        // Considering a more accurate position calculation here based on cannon placement
-        float padding = 10.f;
-        cannonball->setPos(shipSprite.getPosition() + sf::Vector2f(static_cast<float>(i * padding), static_cast<float>(i * padding)));
-        cannonball->setVelocity(cannonball->getSpeed() * cannonDirection);
-
-        // Add the cannonball to the hashmap
-        cannonballHashmap->addObject(cannonball);
-
-        // Add the cannonball to the vector
-        cannonballs.push_back(cannonball);
-    }
+    for (auto& cannon : cannons) {
+		cannon.fireCannon(cannonDirection);
+	}
 
     // Play sound once per volley if numCannons > 0
-    if (numCannons > 0 && inAudioRange) GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
+    if (inAudioRange) GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
 
     // Reset the cooldown clock
     cannonCooldownClock.restart();
@@ -87,35 +120,14 @@ sf::Vector2f ShipCannonHandler::cannonDirection(sf::Vector2f targetPos) {
     }
 }
 
-void ShipCannonHandler::updateCannonballs() {
-    float elapsed = deltaTime.restart().asSeconds();
-	for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
-        // Update the cannonball in the hashmap
-        cannonballHashmap->updateObjectPosition(*it);
-
-		// Update the position and velocity (1% Decay) of the cannonball
-		sf::Vector2f velocity = (*it)->getVelocity() * pow(0.97f, elapsed);
-		(*it)->setVelocity(velocity);
-		(*it)->setPos((*it)->getPos() + velocity * elapsed);
-
-		// If more than 2 seconds have passed, delete the cannonball
-		if ((*it)->getClock().getElapsedTime().asSeconds() > cannonballFlightTime || (*it)->getActive() == false) {
-            // Remove the cannonball from the hashmap
-            cannonballHashmap->removeObject(*it);
-
-            // Delete the cannonball and erase it from the vector
-			delete* it; // delete the object
-			it = cannonballs.erase(it);
-		}
-		else {
-			++it;
-		}
-	}
+void ShipCannonHandler::updateCannons() {
+    for (size_t i = 0; i < cannons.size(); i++) {
+        cannons[i].updateCannon(shipSprite);
+    }
 }
 
-void ShipCannonHandler::drawCannonballs() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-    for (auto it = cannonballs.begin(); it != cannonballs.end(); ++it) {
-		window->draw((*it)->getSprite());
+void ShipCannonHandler::drawCannons() {
+    for (auto& cannon : cannons) {
+        cannon.drawCannon();
 	}
 }

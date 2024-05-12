@@ -3,11 +3,11 @@
 using namespace PirateGame;
 
 std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
-{ ShipClass::Sloop,		 {100.f, 100.f, 1,	   GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getTexture(ShipClass::Sloop),   .1f,  .1f,  1}},
-{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getTexture(ShipClass::Brigantine),    .12f, .12f, 2}},
-{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getTexture(ShipClass::Frigate), .15f, .15f, 3}},
-{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getTexture(ShipClass::ManOWar), .18f, .18f, 4}},
-{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getTexture(ShipClass::Galleon), .23f, .23f, 5}}
+{ ShipClass::Sloop,		 {100.f, 100.f, 1,	   GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Sloop),   .1f,  .1f,  2}},
+{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Brigantine),    .12f, .12f, 4}},
+{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Frigate), .15f, .15f, 6}},
+{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::ManOWar), .18f, .18f, 8}},
+{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Galleon), .23f, .23f, 10}}
 };
 
 // Create the ship
@@ -45,7 +45,7 @@ void Ship::setUpShip(ShipClass level) {
 
 	// Load the cannon handler
 	SCH = std::make_unique<ShipCannonHandler>(sprite);
-	SCH->setID(ID);
+	SCH->initializeCannons(level, shipProperties.numCannons, ID, scaling);
 
 	// Set type and class
 	shipClass = level;

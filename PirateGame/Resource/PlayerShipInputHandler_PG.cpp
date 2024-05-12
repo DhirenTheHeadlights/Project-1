@@ -9,7 +9,7 @@ void PlayerShipInputHandler::handleCannonFire() {
 
 	// Fire the cannons
 	if (inputHandler.isKeyPressedOnce(fireKey)) {
-		SCH->shootCannonballs(baseNumCannons, window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+		SCH->shootCannonballs(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 	}
 }
 

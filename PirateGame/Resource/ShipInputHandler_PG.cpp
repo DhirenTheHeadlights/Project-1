@@ -1,4 +1,4 @@
-#include "PlayerShipInputHandler_PG.h"
+#include "ShipInputHandler_PG.h"
 
 using namespace PirateGame;
 
@@ -9,9 +9,9 @@ void ShipInputHandler::update() {
 
 	// Update the handlers
 	SMH->move(baseSpeed);
-	SCH->updateCannonballs();
+	SCH->updateCannons();
 }
 
 void ShipInputHandler::draw() {
-	SCH->drawCannonballs();
+	SCH->drawCannons();
 }

@@ -3,7 +3,7 @@
 /// This class will handle the textures for the ships in the game.
 
 #include "TextureHandler_PG.h"
-#include "ShipClass_PG.h"
+#include "ShipEnums_PG.h"
 
 namespace PirateGame {
 	class ShipTextureHandler : public TextureHandler {
@@ -13,7 +13,7 @@ namespace PirateGame {
 		};
 		~ShipTextureHandler() {};
 
-		TextureResourceManager<ShipClass>& getTextureManager() { return textureManager; }
+		TextureResourceManager<ShipClass>& getShipTextureManager() { return textureManager; }
 		TextureResourceManager<ShipClass>& getCannonTextureManager() { return cannonTextureManager; }
 	private:
 		// Helper functions

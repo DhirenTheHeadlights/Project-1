@@ -10,25 +10,30 @@
 #include "GlobalTextureHandler_PG.h"
 #include "HashmapTemplate_PG.h"
 
+#include "ShipCannon_PG.h"
+#include "Cannonball_PG.h"
+
 namespace PirateGame {
-
-	enum class FiringSide { Port, Starboard };
-
 	class ShipCannonHandler {
 	public:
 		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
 		~ShipCannonHandler() {};
 
-		void shootCannonballs(int numCannons, sf::Vector2f targetPos);
-		void updateCannonballs();
-		void drawCannonballs();
+		void initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale);
+
+		void shootCannonballs(sf::Vector2f targetPos);
+		void updateCannons();
+		void drawCannons();
 
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };
 		void setCooldown(float cooldown) { this->cooldown = cooldown; };
 		void setFreeAim(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; };
-		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; };
-		void setID(int ID) { this->ID = ID; };
+		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) {
+			for (auto& cannon : cannons) {
+				cannon.setCannonballHashmap(cannonballHashmap);
+			}
+		};
 		void setInAudioRange(bool inAudioRange) { this->inAudioRange = inAudioRange; };
 
 		// Getters
@@ -37,18 +42,14 @@ namespace PirateGame {
 		float getFiringDirectionAngle() const { return firingDirectionAngle; };
 		float getMaxFiringAngle() const { return maxFiringAngle; };
 	private:
-		std::vector<Cannonball*> cannonballs{};
 		sf::Clock cannonCooldownClock;
-		sf::Clock deltaTime;
 
 		sf::Vector2f cannonballDirection;
-		sf::Vector2f cannonballScale = { 0.5f, 0.5f };
+		std::vector<ShipCannon> cannons;
 		
 		bool aimTowardsMouse = false;
 		const float maxFiringAngle = 45.f;
 		float cooldown = 0.1f;
-		float cannonballSpeed = 300;
-		float cannonballFlightTime = 4.f;
 		float firingDirectionAngle = 0;
 		bool inAudioRange = false;
 
@@ -56,9 +57,5 @@ namespace PirateGame {
 		FiringSide side = FiringSide::Port;
 
 		sf::Vector2f cannonDirection(sf::Vector2f targetPos);
-
-		int ID = -1;
-
-		Hashmap<Cannonball>* cannonballHashmap = nullptr;
 	};
 };

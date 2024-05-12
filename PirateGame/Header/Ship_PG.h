@@ -15,7 +15,7 @@
 #include "ShipCannonHandler_PG.h"
 #include "ShipMovementHandler_PG.h"
 #include "ShipInputHandler_PG.h"
-#include "ShipClass_PG.h"
+#include "ShipEnums_PG.h"
 
 namespace PirateGame {
 	// Struct to hold ship properties

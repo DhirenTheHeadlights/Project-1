@@ -283,7 +283,7 @@
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannon_PG.h" />
-    <ClInclude Include="PirateGame\Header\ShipClass_PG.h" />
+    <ClInclude Include="PirateGame\Header\ShipEnums_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipGroup_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipInventoryHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipMovementHandler_PG.h" />

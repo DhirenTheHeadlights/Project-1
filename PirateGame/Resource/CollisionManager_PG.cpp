@@ -120,7 +120,7 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 	const sf::Texture* texture2 = sprite2.getTexture();
 	if (!texture1 || !texture2) return false;
 
-		sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getTextureManager().getImage(ship->getShipClass());
+	sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getImage(ship->getShipClass());
 	sf::Image image2;
 	
 	switch (landmass->getType()) { // Get the correct land mass texture, and then the correct image
