@@ -41,16 +41,16 @@ void View::updateDebugView(sf::Event event) {
 
 	// Move the view with WASD
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		view.move(0.f, -5.f);
+		view.move(0.f, -5.f * window->getView().getSize().y / window->getSize().y);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		view.move(-5.f, 0.f);
+		view.move(-5.f * window->getView().getSize().x / window->getSize().x, 0.f);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		view.move(0.f, 5.f);
+		view.move(0.f, 5.f * window->getView().getSize().y / window->getSize().y);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		view.move(5.f, 0.f);
+		view.move(5.f * window->getView().getSize().x / window->getSize().x, 0.f);
 	}
 
 	window->setView(view);

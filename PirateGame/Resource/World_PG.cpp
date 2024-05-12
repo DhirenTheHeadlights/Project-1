@@ -46,7 +46,7 @@ void World::setUpWorld() {
 	ESH->setPlayerShip(playerShip.get());
 
 	// Set up the collision manager
-	CM->setPlayerShips(playerShip.get());
+	CM->setPlayerShip(playerShip.get());
 	CM->setEnemyShips(ESH->getEnemyShips());
 	CM->setLandMasses(LMHandler->getLandMasses());
 
@@ -107,10 +107,7 @@ void World::createWorld(sf::Event event) {
 	case GameState::GameLoop:
 		// Run the game loop
 		drawGameLoop();
-		if (gameLoopClock.getElapsedTime() >= gameLoopWaitTime) {
-			updateGameLoop(event);
-			gameLoopClock.restart();
-		}
+		updateGameLoop(event);
 		if (GlobalValues::getInstance().getShowHUD() && !debug) MH->openMenu(MenuType::HUD);
 		break;
 	}
@@ -153,16 +150,17 @@ void World::updateGameLoop(sf::Event event) {
 
 	LMHandler->interactWithLandmasses(playerShip.get());
 
-	ESH->update();
+	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) { 
+		ESH->update();
+		gameLoopClock.restart();
+	}
 
 	CM->handleCollisions();
 
 	playerShip->update();
 
 	if (!debug) view.setCenter(playerShip->getSprite().getPosition());
-	else {
-		view.updateDebugView(event);
-	}
+	else view.updateDebugView(event);
 }
 
 void World::drawGameLoop() {

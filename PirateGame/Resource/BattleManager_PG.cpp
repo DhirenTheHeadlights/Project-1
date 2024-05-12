@@ -39,7 +39,7 @@ void BattleManager::updateBattles() {
 			group1->setIsInteracting(false);
 		}
 		else {
-			//Re-set both group's in combat and is interacting to true
+			// Reset both group's in combat and is interacting to true
 			group1->setInCombat(true);
 			group1->setIsInteracting(true);
 			group2->setInCombat(true);

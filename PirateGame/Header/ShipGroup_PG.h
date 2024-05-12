@@ -17,33 +17,7 @@ namespace PirateGame {
 		~ShipGroup() {};
 
 		void updateGroup();
-		void drawGroup() {
-			for (auto& ship : ships) {
-				ship->draw();
-
-				/// For debugging purposes
-
-				// Check if the shipgroup is near the view, if so, display the shipgroup information
-				if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;
-
-				sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
-				GlobalValues::getInstance().displayText("GID: " + std::to_string(ID) + " SID: " + std::to_string(ship->getID()), pos, sf::Color::White, 10);
-				GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-				GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-				GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-				std::string targetShipIDs = "Target ship IDs: ";
-				for (auto& targetShip : targetShips) {
-					targetShipIDs += std::to_string(targetShip->getID()) + ", ";
-				}
-				GlobalValues::getInstance().displayText(targetShipIDs, pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-				std::string groupIDsInteractedWithStr = "Group IDs interacted with: ";
-				for (auto& groupID : groupIDsInteractedWith) {
-					groupIDsInteractedWithStr += std::to_string(groupID) + ", ";
-				}
-				GlobalValues::getInstance().displayText(groupIDsInteractedWithStr, pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
-
-			}
-		}
+		void drawGroup();
 
 		void addShip(std::shared_ptr<EnemyShip> ship) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
@@ -97,7 +71,6 @@ namespace PirateGame {
 				return;
 			}
 			groupIDsInteractedWith.erase(std::remove(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID), groupIDsInteractedWith.end());
-			std::cout << "Group ID [" << groupID << "] removed from groupIDsInteractedWith vector of group ID [" << ID << "]" << std::endl;
 		}
 
 		// Getters

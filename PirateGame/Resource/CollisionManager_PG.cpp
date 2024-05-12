@@ -3,119 +3,108 @@
 using namespace PirateGame;
 
 void CollisionManager::handleCollisions() {
+	// Delete ships that are dead
+	for (auto& ship : ships) {
+		if (ship->getIsDead()) ships.erase(std::remove(ships.begin(), ships.end(), ship), ships.end());
+	}
+
 	// Grab global hashmaps
 	Hashmap<EnemyShip>* shipHashmap = GlobalHashmapHandler::getInstance().getShipHashmap();
 	Hashmap<LandMass>* landMassHashmap = GlobalHashmapHandler::getInstance().getLandMassHashmap();
 
-	// Grab the nearby objects for the player ship
-	std::set<LandMass*> nearbyLandMasses = landMassHashmap->findObjectsNearObject(playerShip);
-	std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(playerShip);
-	std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(playerShip);
-
-	// Vector to store colliding land masses
-	std::vector<LandMass*> collidingLandMasses;
-	collidingLandMasses.clear();
-
-	// Check if the player is colliding with any of the nearby land masses
-	for (auto& i : nearbyLandMasses) {
-		if (pixelPerfectTest(playerShip, i)) {
-			collidingLandMasses.push_back(i);
-
-			playerShip->getMovementHandler().collisionMovement(i->getSprite());
-			playerShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
-
-			GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
-		}
-		else {
-			playerShip->getMovementHandler().setIsColliding(false);
-		}
-	}
-
-	// Check if the player is colliding with any of the nearby ships
-	for (auto& i : nearbyCannonballs) {
-		if (i->getSprite().getGlobalBounds().intersects(playerShip->getSprite().getGlobalBounds())) {
-			if (i->getShipID() == playerShip->getID()) continue; // Ignore self-collisions
-			playerShip->damageShip(collisionDamagePerFrame);
-			i->setInactive();
-
-			GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
-		}
-	}
-
 	// Grab the nearby landmasses and ships for each ship
-	for (auto& enemyShip : enemyShips) {
+	for (auto& ship : ships) {
+		std::set<LandMass*> nearbyLandMasses = landMassHashmap->findObjectsNearObject(ship, nearbyDistanceLandmass);
+		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(ship, nearbyDistanceShip);
+		std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(ship,	nearbyDistanceCannonball);
 
-		std::set<LandMass*> nearbyLandmasses = landMassHashmap->findObjectsNearObject(enemyShip.get());
-		std::set<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(enemyShip.get());
-		std::set<Cannonball*> nearbyCannonballs = GlobalHashmapHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(enemyShip.get());
+		// Vectors to hold the colliding objects
+		std::vector<LandMass*> collidingLandMasses = {};
+		std::vector<Ship*> collidingShips = {};
+		std::vector<Cannonball*> collidingCannonballs = {};
 
-		std::vector<LandMass*> collidingLandMasses;
-		collidingLandMasses.clear();
-
-		std::vector<EnemyShip*> collidingShips;
-		collidingShips.clear();
-
-		// Check if the enemy ship is colliding with any of the nearby land masses
-		for (auto& i : nearbyLandmasses) {
-			if (pixelPerfectTest(enemyShip.get(), i)) {
-				collidingLandMasses.push_back(i);
-
-				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
-				enemyShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
-			}
-			else {
-				enemyShip->getMovementHandler().setIsColliding(false);
-			}
+		// Check if the ship is colliding with any of the nearby land masses
+		for (auto& i : nearbyLandMasses) {
+			handleLandMassCollision(ship, i, collidingLandMasses);
 		}
 
-		// Check if the enemy ship is colliding with any of the nearby ships
+		// Check if the ship is colliding with any of the nearby ships
 		for (auto& i : nearbyShips) {
-			if (shipCollisionTest(enemyShip.get(), i)) {
-				collidingShips.push_back(i);
-
-				// Ignore the collision if the ships are the same
-				if (enemyShip.get() == i) continue;
-
-				enemyShip->getMovementHandler().collisionMovement(i->getSprite());
-				enemyShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
-			}
-			else {
-				enemyShip->getMovementHandler().setIsColliding(false);
-			}
+			// Skip if the ship is the same ship
+			if (i->getID() == ship->getID()) continue;
+			handleShipCollision(ship, i, collidingShips);
 		}
 
-		// Check if the player ship is colliding with any of the nearby enemy ships
-		for (auto& i : nearbyShips) {
-			if (shipCollisionTest(playerShip, i)) {
-				collidingShips.push_back(i);
-
-				playerShip->getMovementHandler().collisionMovement(i->getSprite());
-				playerShip->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
-			}
-			else {
-				playerShip->getMovementHandler().setIsColliding(false);
-			}
-		}
-
-		// Check if the enemy ship is colliding with any of the nearby cannonballs 
+		// Check if the ship is colliding with any of the nearby cannonballs 
 		for (auto& i : nearbyCannonballs) {
-			if (i->getSprite().getGlobalBounds().intersects(enemyShip->getSprite().getGlobalBounds())) {
-				if (i->getShipID() == enemyShip->getID()) continue; // Ignore self-collisions
-
-				enemyShip->damageShip(collisionDamagePerFrame);
-				i->setInactive();
-
-				// Check if the cannonball is from the player ship and the ship dies from it
-				if (i->getShipID() == playerShip->getID() && enemyShip->getHealth() <= 0.001) {
-					playerShip->addExperience(killExp);
-					std::cout << "Player ship killed enemy ship, added 10 exp" << std::endl;
-				}
-
-				// GlobalSoundManager::getInstance().playSound(SoundId::CannonImpact);
-			}
+			// Skip if the cannonball is from the same ship
+			if (i->getShipID() == ship->getID()) continue;
+			handleCannonballCollision(ship, i, collidingCannonballs);
 		}
 	}
+}
 
+void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, std::vector<LandMass*>& collidingLandMasses) {
+	// Check if the ship is colliding with the land mass
+	if (pixelPerfectTest(ship, landmass)) {
+		// Move the ship away from the land mass
+		ship->getMovementHandler().collisionMovement(landmass->getSprite());
+		collidingLandMasses.push_back(landmass);
+
+		// Damage the ship based on the multiplier
+		ship->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
+
+		// Play the collision sound
+		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
+
+		std::cout << "Ship ID: " << ship->getID() << " collided with a land mass!" << std::endl;
+	}
+	else {
+		ship->getMovementHandler().setIsColliding(false);
+	}
+}
+
+void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector<Ship*>& collidingShips) {
+	// Check if the ships are colliding
+	if (shipCollisionTest(ship1, ship2)) {
+		// Add the ship to the colliding ships vector
+		collidingShips.push_back(ship1);
+		collidingShips.push_back(ship2);
+
+		// Move the ships away from each other
+		ship1->getMovementHandler().collisionMovement(ship2->getSprite());
+		ship2->getMovementHandler().collisionMovement(ship1->getSprite());
+
+		// Damage the ships based on the multiplier
+		ship1->damageShip(collisionDamagePerFrame * collidingShips.size());
+		ship2->damageShip(collisionDamagePerFrame * collidingShips.size());
+
+		// Play the collision sound
+		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
+
+		std::cout << "Ship collision detected!" << std::endl;
+	}
+	else {
+		ship1->getMovementHandler().setIsColliding(false);
+		ship2->getMovementHandler().setIsColliding(false);
+	}
+}
+
+void CollisionManager::handleCannonballCollision(Ship* ship, Cannonball* cannonball, std::vector<Cannonball*>& collidingCannonballs) {
+	// Check if the ship is colliding with the cannonball
+	if (cannonball->getSprite().getGlobalBounds().intersects(ship->getSprite().getGlobalBounds())) {
+		// Damage the ship based on the multiplier
+		collidingCannonballs.push_back(cannonball);
+		ship->damageShip(collisionDamagePerFrame * collidingCannonballs.size());
+		cannonball->setInactive();
+
+		// Check if the cannonball is from the player ship and the ship dies from it
+		addedExp = false;
+		if (cannonball->getShipID() == playerShip->getID() && ship->getHealth() <= 0.001 && !addedExp) {
+			playerShip->addExperience(killExp);
+			addedExp = true;
+		}
+	}
 }
 
 // This pixel perfect test is specifically for ships and land masses. Sprite1 is the ship, sprite2 is the land mass

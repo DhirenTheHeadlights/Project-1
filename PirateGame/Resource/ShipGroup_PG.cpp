@@ -30,11 +30,39 @@ void ShipGroup::updateGroup() {
 
 		// If the health of the ship is almost 0, remove the ship from the group
 		if (ship->getHealth() < 0.001f) {
+			ship->setDead(true);
 			removeShip(ship);
 		}
 
 		// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
 		targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](Ship* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
+	}
+}
+
+void ShipGroup::drawGroup() {
+	for (auto& ship : ships) {
+		ship->draw();
+
+		/// For debugging purposes
+
+		// Check if the shipgroup is near the view, if so, display the shipgroup information
+		if (!(GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;
+
+		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
+		GlobalValues::getInstance().displayText("GID: " + std::to_string(ID) + " SID: " + std::to_string(ship->getID()), pos, sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		GlobalValues::getInstance().displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 3 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		std::string targetShipIDs = "Target ship IDs: ";
+		for (auto& targetShip : targetShips) {
+			targetShipIDs += std::to_string(targetShip->getID()) + ", ";
+		}
+		GlobalValues::getInstance().displayText(targetShipIDs, pos + sf::Vector2f(0, 4 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
+		std::string groupIDsInteractedWithStr = "Group IDs interacted with: ";
+		for (auto& groupID : groupIDsInteractedWith) {
+			groupIDsInteractedWithStr += std::to_string(groupID) + ", ";
+		}
+		GlobalValues::getInstance().displayText(groupIDsInteractedWithStr, pos + sf::Vector2f(0, 5 * GlobalValues::getInstance().getTextSize()), sf::Color::White, 10);
 	}
 }
 

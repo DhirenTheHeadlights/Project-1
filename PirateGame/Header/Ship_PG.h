@@ -57,11 +57,14 @@ namespace PirateGame {
 
 		void setGroupID(int groupID) { this->groupID = groupID; }
 
+		void setDead(bool isDead) { this->isDead = isDead; }
+
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
 		int getID() const { return ID; }
 		int getGroupID() const { return groupID; }
+		bool getIsDead() const { return isDead; }
 
 		ShipProperties& getShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
@@ -102,6 +105,7 @@ namespace PirateGame {
 		// Variables to store the ship's values
 		float health = 0;
 		float scalingFactor = 4;
+		bool isDead = false;
 
 		sf::Vector2f constSpriteBounds;
 		sf::Vector2f healthBarSize = { 100.f, 10.f };
