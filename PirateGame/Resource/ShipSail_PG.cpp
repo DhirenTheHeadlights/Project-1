@@ -13,16 +13,22 @@ void Sail::updateSail(sf::Sprite& shipSprite) {
 	sailSprite.setPosition(sailPosition);
 
 	// Rotate the sail based on the ship's rotation and the sail's rotation offset, but cap it to the max rotation offset
-	sailSprite.setRotation(rotation + ((std::fabs(rotationOffset) > maxRotationOffset) ? maxRotationOffset : rotationOffset));
+	if (rotationOffset > maxRotationOffset) {
+		rotationOffset = maxRotationOffset;
+	}
+	else if (rotationOffset < -maxRotationOffset) {
+		rotationOffset = -maxRotationOffset;
+	}
+	sailSprite.setRotation(rotation + rotationOffset);
 }
 
 void Sail::updateSailLeftRight(sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey) {
 	// If the key is pressed, update the sail rotation offset
 	if (GlobalInputHandler::getInstance().isKeyHeld(leftKey)) {
-		rotationOffset += 0.1f;
+		rotationOffset -= 0.1f;
 	}
 	else if (GlobalInputHandler::getInstance().isKeyHeld(rightKey)) {
-		rotationOffset -= 0.1f;
+		rotationOffset += 0.1f;
 	}
 }
 
