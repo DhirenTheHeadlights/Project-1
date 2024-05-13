@@ -48,7 +48,7 @@ void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, s
 	// Check if the ship is colliding with the land mass
 	if (pixelPerfectTest(ship, landmass)) {
 		// Move the ship away from the land mass
-		ship->getMovementHandler().collisionMovement(landmass->getSprite());
+		ship->getMovementHandler()->collisionMovement(landmass->getSprite());
 		collidingLandMasses.push_back(landmass);
 
 		// Damage the ship based on the multiplier
@@ -58,7 +58,7 @@ void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, s
 		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
 	}
 	else {
-		ship->getMovementHandler().setIsColliding(false);
+		ship->getMovementHandler()->setIsColliding(false);
 	}
 }
 
@@ -70,8 +70,8 @@ void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector
 		collidingShips.push_back(ship2);
 
 		// Move the ships away from each other
-		ship1->getMovementHandler().collisionMovement(ship2->getSprite());
-		ship2->getMovementHandler().collisionMovement(ship1->getSprite());
+		ship1->getMovementHandler()->collisionMovement(ship2->getSprite());
+		ship2->getMovementHandler()->collisionMovement(ship1->getSprite());
 
 		// Damage the ships based on the multiplier
 		ship1->damageShip(collisionDamagePerFrame * collidingShips.size());
@@ -81,8 +81,8 @@ void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector
 		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
 	}
 	else {
-		ship1->getMovementHandler().setIsColliding(false);
-		ship2->getMovementHandler().setIsColliding(false);
+		ship1->getMovementHandler()->setIsColliding(false);
+		ship2->getMovementHandler()->setIsColliding(false);
 	}
 }
 

@@ -25,22 +25,22 @@ namespace PirateGame {
 		void customShipUpdate() override;
 		void customShipDraw() override;
 
-		// Getters
-		EnemyShipMovementHandler& getMovementHandler() override { return *SMH; }
-		EnemyShipInputHandler& getInputHandler() override { return *SIH; }
-
 		// Setters
 		void setTargetPosition(sf::Vector2f targetPos) {
+			// Perform a dynamic cast to check if SIH and SMH are enemy types
+			if (EnemyShipInputHandler* SIHEnemy = dynamic_cast<EnemyShipInputHandler*>(SIH.get())) {
+				SIHEnemy->setTargetPos(targetPos);
+			}
+			if (EnemyShipMovementHandler* SMHEnemy = dynamic_cast<EnemyShipMovementHandler*>(SMH.get())) {
+				SMHEnemy->setTargetPosition(targetPos);
+			}
 			this->targetPosition = targetPos;
-			SIH->setTargetPos(targetPos);
-			SMH->setTargetPosition(targetPos);
 		}
 
+		// Overridden getters
+		EnemyShipInputHandler* getInputHandler() override { return dynamic_cast<EnemyShipInputHandler*>(SIH.get()); };
+		EnemyShipMovementHandler* getMovementHandler() override { return dynamic_cast<EnemyShipMovementHandler*>(SMH.get()); };
 	private:
-		// Handlers
-		std::unique_ptr<EnemyShipInputHandler> SIH;
-		std::unique_ptr<EnemyShipMovementHandler> SMH;
-
 		// Variables
 		sf::Vector2f targetPosition;
 	};

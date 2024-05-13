@@ -32,16 +32,10 @@ namespace PirateGame {
 		virtual void customShipUpdate() override;
 		virtual void customShipDraw() override;
 
-		// Get movement handler
-		PlayerShipInputHandler& getInputHandler() override { return *SIH; }
-		ShipInventoryHandler& getInventoryHandler() { return *SIvH; }
-		PlayerShipMovementHandler& getMovementHandler() override { return *SMH; }
+		// Overridden getters
+		PlayerShipInputHandler* getInputHandler() override { return dynamic_cast<PlayerShipInputHandler*>(SIH.get()); }
+		PlayerShipMovementHandler* getMovementHandler() override { return dynamic_cast<PlayerShipMovementHandler*>(SMH.get()); }
 	private:
-		// Handlers
-		std::unique_ptr<PlayerShipInputHandler> SIH;
-		std::unique_ptr<ShipInventoryHandler> SIvH;
-		std::unique_ptr<PlayerShipMovementHandler> SMH;
-
 		// Experience
 		float experience = 0;
 		float experienceToLevelUp = 1;

@@ -21,7 +21,7 @@ namespace PirateGame {
 		void handleSailChange() override;
 
 		// Setters
-		void setTargetPos(sf::Vector2f playerPos) { this->targetPos = playerPos; }
+		void setTargetPos(sf::Vector2f targetPos) { this->targetPos = targetPos; }
 		void setFiringDistance(float firingDistance) { this->firingDistance = firingDistance; }
 	private:
 		sf::Vector2f targetPos;

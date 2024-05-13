@@ -60,20 +60,20 @@ void InGameHUD::updateShipPropertiesString() {
 
 	// Update the manual aim indicator
 	std::string manualAim = "Manual Aim: " + std::string(ship->getCannonHandler()->getAimTowardsMouse() ? "On" : "Off");
-	shipPropertiesLeftSide[1]->getText().setString(manualAim + " [" + ship->getInputHandler().getManualAimKeyString() + "]");
+	shipPropertiesLeftSide[1]->getText().setString(manualAim + " [" + ship->getInputHandler()->getManualAimKeyString() + "]");
 
 	// Update the ship type indicator
 	std::string shipClass = "Ship Class: ";
 	shipPropertiesLeftSide[2]->getText().setString(shipClass + ship->getShipClassString());
 
 	// Update the anchor drop indicator
-	std::string anchorDrop = "Anchor: " + std::string(ship->getMovementHandler().getDroppedAnchor() ? "Down" : "Up");
-	shipPropertiesLeftSide[3]->getText().setString(anchorDrop + " [" + ship->getInputHandler().getAnchorDropKeyString() + "]");
+	std::string anchorDrop = "Anchor: " + std::string(ship->getMovementHandler()->getDroppedAnchor() ? "Down" : "Up");
+	shipPropertiesLeftSide[3]->getText().setString(anchorDrop + " [" + ship->getInputHandler()->getAnchorDropKeyString() + "]");
 
 	/// Right side of the HUD
 
 	// Update the gold display
-	std::string gold = "Gold: " + std::to_string(static_cast<int>(ship->getInventoryHandler().getGold()));
+	std::string gold = "Gold: " + std::to_string(static_cast<int>(ship->getInventoryHandler()->getGold()));
 	shipPropertiesRightSide[0]->getText().setString(gold);
 
 	// Update the ship coordinates display
@@ -81,11 +81,11 @@ void InGameHUD::updateShipPropertiesString() {
 	shipPropertiesRightSide[1]->getText().setString(coords);
 
 	// Update the ship velocity display
-	std::string velocity = "Velocity: " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().x)) + ", " + std::to_string(static_cast<int>(ship->getMovementHandler().getVelocity().y));
+	std::string velocity = "Velocity: " + std::to_string(static_cast<int>(ship->getMovementHandler()->getVelocity().x)) + ", " + std::to_string(static_cast<int>(ship->getMovementHandler()->getVelocity().y));
 	shipPropertiesRightSide[2]->getText().setString(velocity);
 
 	// Update the ship speed display
-	std::string speed = "Speed: " + std::to_string(static_cast<int>(ship->getMovementHandler().getSpeed()));
+	std::string speed = "Speed: " + std::to_string(static_cast<int>(ship->getMovementHandler()->getSpeed()));
 	shipPropertiesRightSide[3]->getText().setString(speed);
 
 	// Update the wind direction display

@@ -51,7 +51,7 @@ void IslandMenu::addInteractablesToMenu() {
 	// Initial buttons to enter the island
 	std::function<void()> enterIsland = [this]() { 
 		enteredIsland = true;
-		ship->getMovementHandler().setAnchorDrop(true);
+		ship->getMovementHandler()->setAnchorDrop(true);
 	};
 	std::unique_ptr<Button> enterIslandButton = std::make_unique<Button>(enterIsland);
 	sf::Text enterButtonText = sf::Text("Enter Island", font, interactableTextSizeSmall);
@@ -61,7 +61,7 @@ void IslandMenu::addInteractablesToMenu() {
 
 	std::function<void()> leaveIsland = [this]() { 
 		hasPlayerSaidNo = true; // Set the flag to true so the menu does not show
-		ship->getMovementHandler().setAnchorDrop(false);
+		ship->getMovementHandler()->setAnchorDrop(false);
 		// Enable the HUD
 		GlobalValues::getInstance().setShowHUD(true);
 	};
@@ -81,12 +81,12 @@ void IslandMenu::addMarketInteractables() {
 	for (auto& item : market) {
 		// Create the buy button
 		std::function<void()> buyItem = [this, &item]() {
-			if (ship->getInventoryHandler().getGold() >= item.price && item.amount > 0) {
+			if (ship->getInventoryHandler()->getGold() >= item.price && item.amount > 0) {
 				// Value that determines how many are bought each second when the button is held down
 				int buyRate = 1;
 
 				// Attempt to find the item in the ship's inventory
-				auto& inventory = ship->getInventoryHandler().getInventory();
+				auto& inventory = ship->getInventoryHandler()->getInventory();
 				auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
 					return inventoryItem.name == item.name;
 					});
@@ -103,7 +103,7 @@ void IslandMenu::addMarketInteractables() {
 				}
 
 				// Update gold
-				ship->getInventoryHandler().removeGold(item.price);
+				ship->getInventoryHandler()->removeGold(item.price);
 
 				// Update merchant's gold and item quantity if applicable
 				item.amount -= buyRate;
@@ -118,7 +118,7 @@ void IslandMenu::addMarketInteractables() {
 
 		// Create the sell button
 		std::function<void()> sellItem = [this, &item]() {
-			auto& inventory = ship->getInventoryHandler().getInventory();
+			auto& inventory = ship->getInventoryHandler()->getInventory();
 			auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
 				return inventoryItem.name == item.name;
 				});
@@ -133,7 +133,7 @@ void IslandMenu::addMarketInteractables() {
 				}
 
 				// Update gold
-				ship->getInventoryHandler().addGold(item.price);
+				ship->getInventoryHandler()->addGold(item.price);
 
 				// Update merchant's gold and item quantity if applicable
 				item.amount += 1;
@@ -196,13 +196,13 @@ void IslandMenu::addMarketInteractables() {
 void IslandMenu::addShipInventoryInteractables() {
 	// Add every item from the ship's inventory to the menu
 	for (auto& marketItem : market) {
-		auto it = std::find_if(ship->getInventoryHandler().getInventory().begin(), ship->getInventoryHandler().getInventory().end(), [&marketItem](const ShopItem& shipItem) {
+		auto it = std::find_if(ship->getInventoryHandler()->getInventory().begin(), ship->getInventoryHandler()->getInventory().end(), [&marketItem](const ShopItem& shipItem) {
 			return shipItem.name == marketItem.name;
 		});
 
 		std::unique_ptr<TextDisplayBox> itemDisplay = std::make_unique<TextDisplayBox>();
 
-		if (it != ship->getInventoryHandler().getInventory().end()) {
+		if (it != ship->getInventoryHandler()->getInventory().end()) {
 			// Item exists in ship's inventory, display with details
 			sf::Text itemText = sf::Text(std::to_string(it->amount), font, interactableTextSizeSmall);
 			itemDisplay->createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), itemText);
@@ -214,7 +214,7 @@ void IslandMenu::addShipInventoryInteractables() {
 		}
 		shipInventoryInteractable.push_back(std::move(itemDisplay));
 	}
-	this->shipInventory = ship->getInventoryHandler().getInventory();
+	this->shipInventory = ship->getInventoryHandler()->getInventory();
 }
 
 void IslandMenu::setInteractablePositions() {
@@ -239,8 +239,8 @@ void IslandMenu::setInteractablePositions() {
 							  banner.getPosition().y + banner.getGlobalBounds().height / 2 - titleText.getLocalBounds().height / 2);
 
 		// Set the ship stop flag to true when prompting the player to enter the island
-		ship->getMovementHandler().setAnchorDrop(true);
-		ship->getMovementHandler().setStopShipRotationFlag(true);
+		ship->getMovementHandler()->setAnchorDrop(true);
+		ship->getMovementHandler()->setStopShipRotationFlag(true);
 
 		// Disable the HUD
 		GlobalValues::getInstance().setShowHUD(false);
@@ -278,7 +278,7 @@ void IslandMenu::setInteractablePositions() {
 
 void IslandMenu::updateMarket() {
 	// Synchronize the local ship inventory for display purposes
-	auto& currentInventory = ship->getInventoryHandler().getInventory();
+	auto& currentInventory = ship->getInventoryHandler()->getInventory();
 
 	// Update or add new boxes based on the current ship inventory
 	for (size_t i = 0; i < market.size(); ++i) {
@@ -322,7 +322,7 @@ void IslandMenu::updateMarket() {
 	}
 
 	// Update gold
-	shipGoldDisplay->getText().setString("Gold: " + floatToString(ship->getInventoryHandler().getGold()));
+	shipGoldDisplay->getText().setString("Gold: " + floatToString(ship->getInventoryHandler()->getGold()));
 	islandGoldDisplay->getText().setString("Gold: " + floatToString(gold));
 }
 

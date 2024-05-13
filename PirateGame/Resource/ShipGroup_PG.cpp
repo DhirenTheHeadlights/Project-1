@@ -14,18 +14,18 @@ void ShipGroup::updateGroup() {
 
 		// Set the travel direction of the ship
 		heading = destination; //+ resultantVector;
-		ship->getMovementHandler().setDestination(heading);
+		ship->getMovementHandler()->setDestination(heading);
 
 		// If the ship is in combat, set the target position to be the closest enemy ship
 		Ship* targetShip = getClosestEnemyShip(ship);
 		if (inCombat && targetShip != nullptr) {
 			ship->setTargetPosition(targetShip->getSprite().getPosition());
-			ship->getMovementHandler().setIsActiveTowardsTarget(true);
-			ship->getMovementHandler().setBaseSpeed(combatSpeedMultiplier * groupSpeed);
+			ship->getMovementHandler()->setIsActiveTowardsTarget(true);
+			ship->getMovementHandler()->setBaseSpeed(combatSpeedMultiplier * groupSpeed);
 		}
 		else {
-			ship->getMovementHandler().setIsActiveTowardsTarget(false);
-			ship->getMovementHandler().setBaseSpeed(groupSpeed);
+			ship->getMovementHandler()->setIsActiveTowardsTarget(false);
+			ship->getMovementHandler()->setBaseSpeed(groupSpeed);
 		}
 
 		// If the health of the ship is almost 0, remove the ship from the group
@@ -94,7 +94,7 @@ sf::Vector2f ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
 		if (ship != otherShip) {
 			float distance = GlobalValues::getInstance().distanceBetweenPoints(ship->getSprite().getPosition(), otherShip->getSprite().getPosition());
 			if (distance < minDistance) {
-				alignment += otherShip->getMovementHandler().getVelocity();
+				alignment += otherShip->getMovementHandler()->getVelocity();
 				count++;
 			}
 		}

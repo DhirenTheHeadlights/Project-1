@@ -23,9 +23,9 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 		// Set up the ship
 		ship->setUpShip();
 		ship->getCannonHandler()->setCooldown(enemyCannonCooldown);
-		ship->getMovementHandler().setTurningSpeed(turningSpeed);
-		ship->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
-		ship->getInputHandler().setFiringDistance(firingDistance);
+		ship->getMovementHandler()->setTurningSpeed(turningSpeed);
+		ship->getMovementHandler()->setEnemySpeedMultiplier(enemySpeedMultiplier);
+		ship->getInputHandler()->setFiringDistance(firingDistance);
 		ship->getSprite().setPosition(points[i]);
 		
 		// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken

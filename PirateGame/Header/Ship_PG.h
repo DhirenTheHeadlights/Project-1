@@ -16,6 +16,7 @@
 #include "ShipMovementHandler_PG.h"
 #include "ShipInputHandler_PG.h"
 #include "ShipSailHandler_PG.h"
+#include "ShipInventoryHandler_PG.h"
 #include "ShipEnums_PG.h"
 
 namespace PirateGame {
@@ -72,8 +73,9 @@ namespace PirateGame {
 
 		virtual ShipCannonHandler* getCannonHandler() { return SCH.get(); };
 		virtual ShipSailHandler* getSailHandler() { return SSH.get(); };
-		virtual ShipMovementHandler& getMovementHandler() = 0;
-		virtual ShipInputHandler& getInputHandler() = 0;
+		virtual ShipMovementHandler* getMovementHandler() { return SMH.get();}
+		virtual ShipInputHandler* getInputHandler() { return SIH.get(); }
+		virtual ShipInventoryHandler* getInventoryHandler() { return SIvH.get(); }
 
 		std::string getShipClassString() {
 			switch (shipClass) {
@@ -119,10 +121,6 @@ namespace PirateGame {
 		sf::Clock healthRegenClock;
 		sf::Time regenTime = sf::seconds(2.f);
 
-		// Handlers
-		std::unique_ptr<ShipCannonHandler> SCH;
-		std::unique_ptr<ShipSailHandler> SSH;
-
 		// Unique ID and group ID
 		int ID = -1;
 		int groupID = -1;
@@ -130,5 +128,12 @@ namespace PirateGame {
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;
+
+		// Handlers
+		std::unique_ptr<ShipCannonHandler> SCH;
+		std::unique_ptr<ShipSailHandler> SSH;
+		std::unique_ptr<ShipInputHandler> SIH;
+		std::unique_ptr<ShipInventoryHandler> SIvH;
+		std::unique_ptr<ShipMovementHandler> SMH;
 	};
 }
