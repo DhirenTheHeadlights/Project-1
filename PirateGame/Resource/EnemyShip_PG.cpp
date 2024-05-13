@@ -9,12 +9,14 @@ void EnemyShip::customShipSetUp() {
 
 	SIH->setNumCannons(getShipProperties().numCannons);
 	SIH->setBaseSpeed(getShipProperties().baseSpeed);
-	SIH->setCannonHandler(&getCannonHandler());
+	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
 }
 
 void EnemyShip::customShipUpdate() {
 	SIH->update();
+	SMH->move(getShipProperties().baseSpeed);
+	getSailHandler()->update(getSprite());
 }
 
 void EnemyShip::customShipDraw() {
@@ -23,6 +25,7 @@ void EnemyShip::customShipDraw() {
 	window->draw(healthBarRed);
 	window->draw(healthBarGreen);
 
-	SIH->draw();
+	getCannonHandler()->drawCannons();
+	getSailHandler()->draw();
 }
 

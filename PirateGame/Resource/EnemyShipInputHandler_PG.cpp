@@ -27,7 +27,7 @@ void EnemyShipInputHandler::handleCannonFire() {
 
 void EnemyShipInputHandler::handleCannonAim() {
     // Set the manual aim flag to true
-    SCH->setFreeAim(true);
+    SCH->setAimTowardsTarget(true);
 
     // Calculate vector from enemy ship to player ship
     sf::Vector2f directionVector = targetPos - sprite.getPosition();
@@ -58,5 +58,9 @@ void EnemyShipInputHandler::handleCannonAim() {
 
 
 void EnemyShipInputHandler::handleAnchorDrop() {
+	//...
+}
+
+void EnemyShipInputHandler::handleSailChange() {
 	//...
 }

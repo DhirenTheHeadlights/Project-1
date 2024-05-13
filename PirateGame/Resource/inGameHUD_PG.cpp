@@ -55,11 +55,11 @@ void InGameHUD::updateShipPropertiesString() {
 	/// Left side of the HUD
 
 	// Update the firing side indicator
-	std::string firingSide = "Firing Side: " + std::string(ship->getCannonHandler().getFiringSide() == FiringSide::Port ? "Port" : "Starboard");
+	std::string firingSide = "Firing Side: " + std::string(ship->getCannonHandler()->getFiringSide() == FiringSide::Port ? "Port" : "Starboard");
 	shipPropertiesLeftSide[0]->getText().setString(firingSide);
 
 	// Update the manual aim indicator
-	std::string manualAim = "Manual Aim: " + std::string(ship->getCannonHandler().getAimTowardsMouse() ? "On" : "Off");
+	std::string manualAim = "Manual Aim: " + std::string(ship->getCannonHandler()->getAimTowardsMouse() ? "On" : "Off");
 	shipPropertiesLeftSide[1]->getText().setString(manualAim + " [" + ship->getInputHandler().getManualAimKeyString() + "]");
 
 	// Update the ship type indicator

@@ -32,9 +32,32 @@ namespace PirateGame {
             return true;
         }
 
+        bool loadTextures(EnumType type, std::vector<std::string> filenames) {
+			std::vector<sf::Texture> textureGroup;
+            for (const auto& filename : filenames) {
+				sf::Texture texture;
+                if (!texture.loadFromFile(filename)) {
+					std::cerr << "Error loading texture: " << filename << std::endl;
+					return false;
+				}
+				textureGroup.push_back(texture);
+			}
+
+			textureGroups[type] = std::move(textureGroup);
+			std::cout << "Loaded and stored texture group for type " << static_cast<int>(type) << std::endl;
+			return true;
+		}
+
         const sf::Texture& getTexture(EnumType type) const {
+            std::cout << "Getting texture for type " << static_cast<int>(type) << std::endl;
             return textures.at(type);
         }
+
+        const std::vector<sf::Texture>& getTextureGroup(EnumType type) const {
+            std::cout << "Getting texture group for type " << static_cast<int>(type) << std::endl;
+            std::cout << "Size of texture group: " << textureGroups.at(type).size() << std::endl;
+			return textureGroups.at(type);
+		}
 
         const sf::Texture& getRandomTexture() const {
             std::random_device rd;
@@ -51,5 +74,8 @@ namespace PirateGame {
     private:
         std::unordered_map<EnumType, sf::Texture, EnumHash> textures;
         std::unordered_map<EnumType, sf::Image, EnumHash> images;
+
+        std::unordered_map<EnumType, std::vector<sf::Texture>, EnumHash> textureGroups;
+        std::unordered_map<EnumType, std::vector<sf::Image>, EnumHash> imageGroups;
     };
 }

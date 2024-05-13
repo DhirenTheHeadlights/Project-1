@@ -26,7 +26,7 @@ void PlayerShipInputHandler::handleCannonAim() {
 	}
 
 	// Rotate the cannons based on the mouse position if cannon mode is set to manual
-	SCH->setFreeAim(inputHandler.isKeyToggled(manualAimKey));
+	SCH->setAimTowardsTarget(inputHandler.isKeyToggled(manualAimKey));
 	SMH->setStopShipRotationFlag(inputHandler.isKeyToggled(manualAimKey));
 }
 
@@ -34,4 +34,9 @@ void PlayerShipInputHandler::handleAnchorDrop() {
 	if (GlobalInputHandler::getInstance().isKeyPressedOnce(anchorDropKey)) {
 		SMH->setAnchorDrop(!SMH->getDroppedAnchor());
 	}
+}
+
+void PlayerShipInputHandler::handleSailChange() {
+	SSH->moveSailLeftRight(sailLeftKey, sailRightKey);
+	SSH->moveSailsUpAndDown(sailUpKey, sailDownKey);
 }

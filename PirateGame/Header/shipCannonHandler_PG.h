@@ -27,9 +27,9 @@ namespace PirateGame {
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };
 		void setCooldown(float cooldown) { this->cooldown = sf::seconds(cooldown); };
-		void setFreeAim(bool aimTowardsMouse) {
+		void setAimTowardsTarget(bool aimTowardsTarget) {
 			for (auto& cannon : cannons) {
-				cannon.setAimTowardsMouse(aimTowardsMouse);
+				cannon.setAimTowardsTarget(aimTowardsTarget);
 			}
 		};
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) {

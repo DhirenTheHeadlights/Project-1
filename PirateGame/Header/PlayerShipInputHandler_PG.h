@@ -16,6 +16,7 @@ namespace PirateGame {
 		void handleCannonFire() override;
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
+		void handleSailChange() override;
 
 		std::string  getFireKeyString() const { return GlobalValues::getInstance().keyToString(fireKey); }
 		std::string  getManualAimKeyString() const { return GlobalValues::getInstance().keyToString(manualAimKey); }
@@ -30,6 +31,11 @@ namespace PirateGame {
 		sf::Mouse::Button portMouseButton = sf::Mouse::Left;
 		sf::Mouse::Button starboardMouseButton = sf::Mouse::Right;
 
-		sf::Keyboard::Key anchorDropKey = sf::Keyboard::Tab;	
+		sf::Keyboard::Key anchorDropKey = sf::Keyboard::Tab;
+
+		sf::Keyboard::Key sailUpKey = sf::Keyboard::I;
+		sf::Keyboard::Key sailDownKey = sf::Keyboard::K;
+		sf::Keyboard::Key sailLeftKey = sf::Keyboard::J;
+		sf::Keyboard::Key sailRightKey = sf::Keyboard::L;
 	};
 }

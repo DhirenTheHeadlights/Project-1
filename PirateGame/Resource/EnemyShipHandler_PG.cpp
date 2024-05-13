@@ -22,7 +22,7 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 
 		// Set up the ship
 		ship->setUpShip();
-		ship->getCannonHandler().setCooldown(enemyCannonCooldown);
+		ship->getCannonHandler()->setCooldown(enemyCannonCooldown);
 		ship->getMovementHandler().setTurningSpeed(turningSpeed);
 		ship->getMovementHandler().setEnemySpeedMultiplier(enemySpeedMultiplier);
 		ship->getInputHandler().setFiringDistance(firingDistance);
@@ -32,7 +32,7 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 		// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
 		// hashmap is global, but it is necessary because to avoid circular dependencies because
 		// the global hashmap handler includes enemy ship which included the SCH.
-		ship->getCannonHandler().setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
+		ship->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
 		// Add the ship to a new ship group and vector, std::move is not needed
 		// do after setting up the ship, otherwise the ship will be empty
@@ -104,13 +104,13 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 
 	// Set all the ships in nearby audio range to play cannon sounds
 	for (auto& ship : nearbyShipsAudio) {
-		ship->getCannonHandler().setInAudioRange(true);
+		ship->getCannonHandler()->setInAudioRange(true);
 	}
 
 	// Set all the ships in nearby audio range to not play cannon sounds
 	for (auto& ship : enemyShips) {
 		if (nearbyShipsAudio.find(ship.get()) == nearbyShipsAudio.end()) {
-			ship->getCannonHandler().setInAudioRange(false);
+			ship->getCannonHandler()->setInAudioRange(false);
 		}
 	}
 }

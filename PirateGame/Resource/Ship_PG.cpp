@@ -22,6 +22,7 @@ void Ship::setUpShip(ShipClass level) {
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<int> dis(1, 5);
 		level = static_cast<ShipClass>(dis(gen));
+		level = ShipClass::Frigate;
 
 		// Access ship properties from the configuration map using the generated random number
 		shipProperties = ShipConfig[level];
@@ -47,6 +48,10 @@ void Ship::setUpShip(ShipClass level) {
 	SCH = std::make_unique<ShipCannonHandler>(sprite);
 	SCH->initializeCannons(level, shipProperties.numCannons, ID, scaling);
 
+	// Load the sail handler
+	SSH = std::make_unique<ShipSailHandler>(sprite);
+	SSH->loadSailPositions(level, scaling);
+
 	// Set type and class
 	shipClass = level;
 
@@ -59,6 +64,10 @@ void Ship::update() {
 	setHealthBarPosition();
 	regenerateHealth();
 
+	// Update handlers
+	SCH->updateCannons();
+	SSH->update(sprite);
+
 	// Execute custom ship update
 	customShipUpdate();
 }
@@ -67,6 +76,9 @@ void Ship::draw() {
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 
 	window->draw(sprite);
+
+	// Draw sails
+	SSH->draw();
 
 	// Custom ship draw
 	customShipDraw();

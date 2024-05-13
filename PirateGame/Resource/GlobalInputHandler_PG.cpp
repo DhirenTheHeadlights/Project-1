@@ -43,6 +43,20 @@ bool GlobalInputHandler::isKeyToggled(sf::Keyboard::Key key) {
     return toggledKeyState[key];
 }
 
+bool GlobalInputHandler::isKeyHeld(sf::Keyboard::Key key) {
+	// Check if the key is currently pressed
+	bool isPressedNow = sf::Keyboard::isKeyPressed(key);
+
+	// Update the current state for the next frame
+	currentKeyState[key] = isPressedNow;
+
+	// Return true only if the key is pressed now and the cooldown has passed
+    if (isPressedNow && cooldown.getElapsedTime() > cooldownTime) {
+		return true;
+	}
+	return false;
+}
+
 bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
     // Check if the button is currently pressed and was not pressed in the last frame
     bool isPressedNow = sf::Mouse::isButtonPressed(button);
@@ -74,4 +88,18 @@ bool GlobalInputHandler::isMouseButtonToggled(sf::Mouse::Button button) {
 
     // Return the toggled state
     return toggledButtonState[button];
+}
+
+bool GlobalInputHandler::isMouseButtonHeld(sf::Mouse::Button button) {
+	// Check if the button is currently pressed
+	bool isPressedNow = sf::Mouse::isButtonPressed(button);
+
+	// Update the current state for the next frame
+	currentButtonState[button] = isPressedNow;
+
+	// Return true only if the button is pressed now and the cooldown has passed
+    if (isPressedNow && cooldown.getElapsedTime() > cooldownTime) {
+		return true;
+	}
+	return false;
 }

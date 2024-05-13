@@ -12,8 +12,7 @@
 namespace PirateGame {
 	class ShipCannon {
 	public:
-		ShipCannon(ShipClass type, int id, FiringSide FS, sf::Vector2f scale) : id(id), side(FS) {
-			cannonSprite.setTexture(GlobalTextureHandler::getInstance().getShipTextures().getCannonTextureManager().getTexture(type));
+		ShipCannon(const sf::Texture& texture, int id, FiringSide FS, sf::Vector2f scale) : cannonSprite(texture), id(id), side(FS) {
 			cannonSprite.setScale(scale);
 
 			if (FS == FiringSide::Port) {
@@ -37,7 +36,7 @@ namespace PirateGame {
 		// Setters
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
-		void setAimTowardsMouse(bool aimTowardsMouse) { this->aimTowardsMouse = aimTowardsMouse; }
+		void setAimTowardsTarget(bool aimTowardsTarget) { this->aimTowardsMouse = aimTowardsTarget; }
 	
 		// Getters
 		sf::Sprite& getSprite() { return cannonSprite; }
@@ -47,6 +46,7 @@ namespace PirateGame {
 	private:
 		// Helpers
 		sf::Vector2f calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos);
+		sf::Vector2f calculatePerpendicularDirection(float rotation);
 		float normalizeAngle(float angle);
 		void rotateTowards(float angle, float step);
 		void updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS);

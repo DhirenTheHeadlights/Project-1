@@ -25,6 +25,9 @@ namespace PirateGame {
         bool isKeyToggled(sf::Keyboard::Key key);
         bool isMouseButtonToggled(sf::Mouse::Button button);
 
+        bool isKeyHeld(sf::Keyboard::Key key);
+        bool isMouseButtonHeld(sf::Mouse::Button button);
+
     private:
         // Private Constructor
         GlobalInputHandler() {};
@@ -44,5 +47,8 @@ namespace PirateGame {
 
         sf::Clock cooldown;
         sf::Time cooldownTime = sf::milliseconds(100);
+
+        sf::Clock holdClock;
+        sf::Time holdUpdate = sf::milliseconds(100); // Update every 100ms
     };
 }

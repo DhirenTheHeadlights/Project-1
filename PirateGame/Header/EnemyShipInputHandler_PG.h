@@ -18,6 +18,7 @@ namespace PirateGame {
 		void handleCannonFire() override;
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
+		void handleSailChange() override;
 
 		// Setters
 		void setTargetPos(sf::Vector2f playerPos) { this->targetPos = playerPos; }

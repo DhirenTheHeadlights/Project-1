@@ -3,12 +3,13 @@
 using namespace PirateGame;
 
 void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale) {
+    const sf::Texture& cannonTexture = GlobalTextureHandler::getInstance().getShipTextures().getCannonTextureManager().getTexture(type);
     for (int i = 0; i < numCannons; i++) {
         if (i < numCannons / 2) {
-			cannons.push_back(ShipCannon(type, ID, FiringSide::Port, scale));
+			cannons.push_back(ShipCannon(cannonTexture, ID, FiringSide::Port, scale));
 		}
         else {
-			cannons.push_back(ShipCannon(type, ID, FiringSide::Starboard, scale));
+			cannons.push_back(ShipCannon(cannonTexture, ID, FiringSide::Starboard, scale));
 		}
 	}
 

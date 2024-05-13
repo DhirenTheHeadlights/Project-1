@@ -2,10 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "GlobalValues_PG.h"
-#include "TextureHandler_PG.h"
-#include "ShipMovementHandler_PG.h"
-
 namespace PirateGame {
 
 	class Cannonball {

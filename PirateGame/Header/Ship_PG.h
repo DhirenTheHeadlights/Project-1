@@ -15,6 +15,7 @@
 #include "ShipCannonHandler_PG.h"
 #include "ShipMovementHandler_PG.h"
 #include "ShipInputHandler_PG.h"
+#include "ShipSailHandler_PG.h"
 #include "ShipEnums_PG.h"
 
 namespace PirateGame {
@@ -69,7 +70,8 @@ namespace PirateGame {
 		ShipProperties& getShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
 
-		virtual ShipCannonHandler& getCannonHandler() { return *SCH; };
+		virtual ShipCannonHandler* getCannonHandler() { return SCH.get(); };
+		virtual ShipSailHandler* getSailHandler() { return SSH.get(); };
 		virtual ShipMovementHandler& getMovementHandler() = 0;
 		virtual ShipInputHandler& getInputHandler() = 0;
 
@@ -119,6 +121,7 @@ namespace PirateGame {
 
 		// Handlers
 		std::unique_ptr<ShipCannonHandler> SCH;
+		std::unique_ptr<ShipSailHandler> SSH;
 
 		// Unique ID and group ID
 		int ID = -1;

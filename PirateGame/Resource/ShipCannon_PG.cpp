@@ -6,7 +6,7 @@ void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite, sf::Vector2f 
     if (FS != side) return;
 
     // Compute the direction to fire based on the cannon's current orientation
-    sf::Vector2f fireDirection = calculateDirectionToTarget(shipSprite, targetPos);
+    sf::Vector2f fireDirection = aimTowardsMouse ? calculateDirectionToTarget(shipSprite, targetPos) : calculatePerpendicularDirection(shipSprite.getRotation());
 
     Cannonball* cannonball = new Cannonball(id);
     cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball));
@@ -36,6 +36,19 @@ void ShipCannon::drawCannonNBalls() {
 		window->draw(i->getSprite());
 	}
     window->draw(cannonSprite);
+}
+
+sf::Vector2f ShipCannon::calculatePerpendicularDirection(float rotation) {
+    float rotationInRadians = (rotation - 180.f) * pi / 180.f;
+
+    // Calculate the direction of the cannon and normalize it
+    sf::Vector2f cannonDirection(cos(rotationInRadians), sin(rotationInRadians));
+    float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
+    cannonDirection /= magnitude;
+
+    cannonDirection *= (side == FiringSide::Starboard) ? -1.f : 1.f;
+
+    return cannonDirection;
 }
 
 sf::Vector2f ShipCannon::calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos) {
