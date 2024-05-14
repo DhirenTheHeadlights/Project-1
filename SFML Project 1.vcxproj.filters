@@ -753,6 +753,9 @@
     <ClInclude Include="PirateGame\Header\ShipSail_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\Ship</Filter>
     </ClInclude>
+    <ClInclude Include="Globals\Header\VectorMath.h">
+      <Filter>Source Files\Globals\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

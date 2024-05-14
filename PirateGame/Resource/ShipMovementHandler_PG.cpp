@@ -9,19 +9,26 @@ void ShipMovementHandler::setInitialPosition() {
 	}
 }
 
-sf::Vector2f ShipMovementHandler::normalize(sf::Vector2f vector) {
-	float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
-	if (length == 0.f) return sf::Vector2f(0.f, 0.f);
-	return vector / length;
-}
-
-void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed) {
+void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection) {
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {
 		// Calculate wind effect
 		GlobalWindController& windController = GlobalWindController::getInstance();
-		sf::Vector2f windDirection = normalize(windController.getWindDirection()); // Ensure wind direction is normalized
-		float windEffect = dot(windDirection, direction) * windController.getWindSpeed();
+		sf::Vector2f windDirection = vm::normalize(windController.getWindDirection()); // Ensure wind direction is normalized
+		float windEffect = vm::dot(windDirection, direction) * windController.getWindSpeed();
+
+		// Normalize sail direction
+		sailDirection = vm::normalize(sailDirection);
+
+		// Use the sail rotation to determine potency of wind effect.
+		float sailRotationEffect = 1 - std::fabs(vm::dot(sailDirection, windDirection)); // The closer to 1, the more effective the wind is
+
+		// Calculate the final wind effect
+		windEffect *= sailRotationEffect;
+
+		GlobalValues::getInstance().displayText("Wind Direction: " + std::to_string(windDirection.x) + ", " + std::to_string(windDirection.y), sf::Vector2f(position.x + 10.f, position.y + 10.f), sf::Color::White);
+		GlobalValues::getInstance().displayText("Sail Direction: " + std::to_string(sailDirection.x) + ", " + std::to_string(sailDirection.y), sf::Vector2f(position.x + 10.f, position.y + 30.f), sf::Color::White);
+		GlobalValues::getInstance().displayText("Dot Product: " + std::to_string(windEffect), sf::Vector2f(position.x + 10.f, position.y + 50.f), sf::Color::White);
 
 		// Gradually increase the speed to the base speed, multiplied by the wind effect
 		const float acceleration = std::max(1.f, 1.f * windEffect); // The acceleration factor
@@ -75,10 +82,10 @@ void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 		sprite.getPosition().y + sprite.getGlobalBounds().height / 2 -
 		(collidingSprite.getPosition().y + collidingSprite.getGlobalBounds().height / 2)
 	);
-	normal = normalize(normal);
+	normal = vm::normalize(normal);
 
 	// Apply a damping factor to the velocity to simulate friction and prevent oscillations
-	sf::Vector2f dampedVelocity = velocity - normal * dot(velocity, normal) * dampingFactor;
+	sf::Vector2f dampedVelocity = velocity - normal * vm::dot(velocity, normal) * dampingFactor;
 
 	// Ensure the ship is moved slightly away from the colliding object to prevent sticking
 	position += normal * separationDistance;
@@ -96,7 +103,7 @@ void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vec
 
 	// Check the direction of approach and adjust the pushOutVector accordingly
 	sf::Vector2f approachVector = position - collidingSprite.getPosition();
-	if (dot(approachVector, normal) < 0) {
+	if (vm::dot(approachVector, normal) < 0) {
 		pushOutVector = -pushOutVector; // Invert the push-out direction for opposite approach
 	}
 
@@ -107,9 +114,4 @@ void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vec
 void ShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
 	// Apply the recoil to the ship's position
 	position += direction * recoil;
-}
-
-// Helper function to calculate dot product
-float ShipMovementHandler::dot(const sf::Vector2f& a, const sf::Vector2f& b) {
-	return a.x * b.x + a.y * b.y;
 }

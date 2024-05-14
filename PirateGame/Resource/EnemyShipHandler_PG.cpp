@@ -60,7 +60,7 @@ bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup
 	sf::Vector2f averagePosition = shipGroup->getAveragePosition();
 
 	// Calculate the distance between the average position and the target
-	float distance = GlobalValues::getInstance().distanceBetweenPoints(averagePosition, shipGroup->getHeading());
+	float distance = vm::distance(averagePosition, shipGroup->getHeading());
 
 	// If the distance is less than the destination reached distance, return true
 	if (distance < destinationReachedDistance) return true;

@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 // Move the ship
-void PlayerShipMovementHandler::move(float baseSpeed) {
+void PlayerShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection) {
 	setBaseSpeed(baseSpeed);
 
 	setInitialPosition();
@@ -14,7 +14,7 @@ void PlayerShipMovementHandler::move(float baseSpeed) {
 	float rotationInRadians = (getSprite().getRotation() - 90.f) * pi / 180.f; // Subtract 90 degrees to align with SFML's rotation
 	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
-	updateVelocity(direction, elapsed, baseSpeed);
+	updateVelocity(direction, elapsed, baseSpeed, sailDirection);
 	setSpriteRotation();
 
 	// Set the new position
@@ -30,7 +30,7 @@ void PlayerShipMovementHandler::setSpriteRotation() {
 
 	// Calculate the direction to the mouse
 	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-	sf::Vector2f directionToMouse = normalize(mousePosition - getSprite().getPosition());
+	sf::Vector2f directionToMouse = vm::normalize(mousePosition - getSprite().getPosition());
 
 	// Rotate the sprite using conversion from vector to angle with atan2
 	float targetAngle = std::atan2(directionToMouse.y, directionToMouse.x) * 180.f / pi + 90.f;

@@ -49,13 +49,10 @@ namespace PirateGame {
 		}
 
         const sf::Texture& getTexture(EnumType type) const {
-            std::cout << "Getting texture for type " << static_cast<int>(type) << std::endl;
             return textures.at(type);
         }
 
         const std::vector<sf::Texture>& getTextureGroup(EnumType type) const {
-            std::cout << "Getting texture group for type " << static_cast<int>(type) << std::endl;
-            std::cout << "Size of texture group: " << textureGroups.at(type).size() << std::endl;
 			return textureGroups.at(type);
 		}
 

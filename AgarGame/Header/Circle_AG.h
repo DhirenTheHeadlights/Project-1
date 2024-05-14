@@ -8,7 +8,7 @@ class Circle {
 public:
     Circle(float radius);
     void move(double moveSpeed, sf::Vector2f dir, Map& map, sf::RenderWindow& window);
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
     void setCircleSize(float newSize);
     void setPosition(float x, float y);
     float getCircleSize() const;

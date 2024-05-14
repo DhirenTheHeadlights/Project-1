@@ -22,7 +22,7 @@ void PlayerShip::customShipSetUp() {
 
 void PlayerShip::customShipUpdate() {
 	SIH->update();
-	SMH->move(getShipProperties().baseSpeed);
+	SMH->move(getShipProperties().baseSpeed, SSH->getSailDirectionVector());
 	getSailHandler()->update(getSprite());
 
 	// If the experience is greater than the experience to level up

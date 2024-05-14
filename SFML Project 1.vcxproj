@@ -244,6 +244,7 @@
     <ClInclude Include="Globals\Header\Globals.h" />
     <ClInclude Include="Globals\Header\Map.h" />
     <ClInclude Include="Globals\Header\Quadtree.h" />
+    <ClInclude Include="Globals\Header\VectorMath.h" />
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h" />

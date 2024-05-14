@@ -26,7 +26,7 @@ void Circle::direction(float dx, float dy, float elapsed, Map& map) {
     shape.setPosition(x - circlesize, y - circlesize);
 }
 
-void Circle::draw(sf::RenderWindow& window) {
+void Circle::draw(sf::RenderWindow& window) const {
     window.draw(shape); // Draw the shape
     //std::cout << "Drawing circle at: " << x << ", " << y << std::endl;
 }

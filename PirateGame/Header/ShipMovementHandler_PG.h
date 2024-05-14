@@ -6,6 +6,8 @@
 #include <iostream>
 #include <optional>
 
+#include "VectorMath.h"
+
 #include "GlobalValues_PG.h"
 #include "GlobalMap_PG.h"
 #include "GlobalWindController_PG.h"
@@ -17,16 +19,14 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions 
-		virtual void move(float baseSpeed) = 0;
+		virtual void move(float baseSpeed, sf::Vector2f sailDirection) = 0;
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
-		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed);
+		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection = sf::Vector2f(0, 0));
 		virtual void setSpriteRotation() = 0;
 
 		// These functions stay constant
-		sf::Vector2f normalize(sf::Vector2f vector);
-		float dot(const sf::Vector2f& v1, const sf::Vector2f& v2);
 		void ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
 		void setInitialPosition();
 

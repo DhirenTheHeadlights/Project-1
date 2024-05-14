@@ -195,7 +195,7 @@ bool CollisionManager::shipCollisionTest(Ship* ship1, Ship* ship2) {
 	float b2 = sprite2.getGlobalBounds().height / 2.0f;
 
 	// Calculate the distance between the centers of the two ships
-	float distance = sqrt((center2.x - center1.x) * (center2.x - center1.x) + (center2.y - center1.y) * (center2.y - center1.y));
+	float distance = vm::distance(center1, center2);
 
 	// Use an adjusted sum of semi-major axes as a simple overlap check
 	// This factor can be tuned based on ship shapes/collision "sensitivity"

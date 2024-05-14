@@ -28,8 +28,8 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
         static_cast<float>(shipTexture->getSize().y) / 2.0f);
 
     // Iterate through the pixels to find the red dots and store their positions relative to the texture center
-    for (int x = 0; x < shipImage.getSize().x; x++) {
-        for (int y = 0; y < shipImage.getSize().y; y++) {
+    for (unsigned int x = 0; x < shipImage.getSize().x; x++) {
+        for (unsigned int y = 0; y < shipImage.getSize().y; y++) {
             sf::Color pixelColor = shipImage.getPixel(x, y);
             if (pixelColor.r == 255 && pixelColor.g == 0 && pixelColor.b == 0) {
                 // Calculate position relative to the center of the texture and apply scaling

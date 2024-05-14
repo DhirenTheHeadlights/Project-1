@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
 
+#include "VectorMath.h"
+
 namespace PirateGame {
     class GlobalWindController {
     public:
@@ -28,14 +30,14 @@ namespace PirateGame {
                 }
 
                 // Gradually adjust direction
-                sf::Vector2f directionChange = normalize(targetWindDirection - windDirection) * windDirectionChange * deltaTime;
+                sf::Vector2f directionChange = vm::normalize(targetWindDirection - windDirection) * windDirectionChange * deltaTime;
                 windDirection += directionChange;
-                windDirection = normalize(windDirection); // Ensure it stays normalized
+                windDirection = vm::normalize(windDirection); // Ensure it stays normalized
             }
         }
 
         // Setters
-        void setWindDirection(sf::Vector2f windDirection) { this->windDirection = normalize(windDirection); }
+        void setWindDirection(sf::Vector2f windDirection) { this->windDirection = vm::normalize(windDirection); }
         void setWindSpeed(float windSpeed) { this->windSpeed = std::min(windSpeed, windSpeedMax); }
 
         // Getters
@@ -102,14 +104,11 @@ namespace PirateGame {
         sf::Clock deltaTime;
 
         void randomizeWind() {
-            targetWindDirection = sf::Vector2f(static_cast<float>(rand() % 3 - 1), static_cast<float>(rand() % 3 - 1));
-            targetWindSpeed = static_cast<float>(rand() % static_cast<int>(windSpeedMax) + 1);
-        }
+            //targetWindDirection = sf::Vector2f(static_cast<float>(rand() % 3 - 1), static_cast<float>(rand() % 3 - 1));
+            //targetWindSpeed = static_cast<float>(rand() % static_cast<int>(windSpeedMax) + 1);
 
-        sf::Vector2f normalize(sf::Vector2f vector) {
-            float length = std::sqrt(vector.x * vector.x + vector.y * vector.y);
-            if (length == 0.f) return sf::Vector2f(0.f, 0.f);
-            return vector / length;
+            targetWindSpeed = 10.f; // For testing
+            targetWindDirection = sf::Vector2f(1.f, 0.f); // For testing
         }
     };
 }

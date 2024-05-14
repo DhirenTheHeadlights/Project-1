@@ -100,7 +100,6 @@ namespace PirateGame {
 		// Helper methods
 		void setHealthBarPosition();
 		void regenerateHealth();
-		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color = sf::Color::Red);
 
 		// SFML Objects
 		sf::Clock deltaTime;

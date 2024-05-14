@@ -126,14 +126,3 @@ void Ship::setHealthBarPosition() {
 	healthBarGreen.setRotation(rotation);
 	healthBarRed.setRotation(rotation);
 }
-
-sf::VertexArray Ship::createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color) {
-	// Create a VertexArray with two points
-	sf::VertexArray line(sf::Lines, 2);
-	line[0].position = start;
-	line[1].position = start + vector;
-	line[0].color = color;
-	line[1].color = color;
-	return line;
-}
-

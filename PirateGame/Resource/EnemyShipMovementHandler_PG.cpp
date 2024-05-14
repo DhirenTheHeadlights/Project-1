@@ -3,7 +3,7 @@
 
 using namespace PirateGame;
 
-void EnemyShipMovementHandler::move(float baseSpeed) {
+void EnemyShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection) {
 	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
 	setInitialPosition();
@@ -14,7 +14,7 @@ void EnemyShipMovementHandler::move(float baseSpeed) {
 	float rotationInRadians = (getSprite().getRotation() - 90.f) * pi / 180.f; // Subtract 90 degrees to align with SFML's rotation
 	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
-	updateVelocity(direction, elapsed, baseSpeed);
+	updateVelocity(direction, elapsed, baseSpeed, sailDirection);
 	setSpriteRotation();
 
 	// Set the new position
@@ -29,26 +29,26 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 
 	// Calculate the direction to the target. Use playerPos if active towards target, else use destination.
 	sf::Vector2f travelDirection = (isActiveTowardsTarget ? targetPos : destination) - position;
-	float distance = std::sqrt(travelDirection.x * travelDirection.x + travelDirection.y * travelDirection.y);
+	float distance = vm::length(travelDirection);
 
 	if (isActiveTowardsTarget) {
 		if (distance < static_cast<float>(800)) {
-			travelDirection = normalize(sf::Vector2f(travelDirection.y, -travelDirection.x));
+			travelDirection = vm::normalize(sf::Vector2f(travelDirection.y, -travelDirection.x));
 		}
 		else if (distance < static_cast<float>(800)) {
-			travelDirection = normalize(travelDirection);
+			travelDirection = vm::normalize(travelDirection);
 		}
 		else {
-			travelDirection = normalize(travelDirection);
+			travelDirection = vm::normalize(travelDirection);
 		}
 	}
 
 	// If not active towards player, head directly towards destination
 	else {
-		travelDirection = normalize(travelDirection);
+		travelDirection = vm::normalize(travelDirection);
 	}
 
-	window->draw(GlobalValues::getInstance().createVector(position, travelDirection * 100.f, sf::Color::Red));
+	window->draw(vm::createVector(position, travelDirection * 100.f, sf::Color::Red));
 
 	// Rotate the sprite using conversion from vector to angle with atan2
 	float targetAngle = std::atan2(travelDirection.y, travelDirection.x) * 180.f / pi + 90.f;

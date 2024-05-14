@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+#include "VectorMath.h"
+
 #include "GlobalTextureHandler_PG.h"
 #include "GlobalValues_PG.h"
 #include "HashmapTemplate_PG.h"
@@ -47,7 +49,6 @@ namespace PirateGame {
 		// Helpers
 		sf::Vector2f calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos);
 		sf::Vector2f calculatePerpendicularDirection(float rotation);
-		float normalizeAngle(float angle);
 		void rotateTowards(float angle, float step);
 		void updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS);
 		void updateCannonballs(float elapsed);

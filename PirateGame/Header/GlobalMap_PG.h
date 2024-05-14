@@ -104,7 +104,7 @@ namespace PirateGame {
 			if (chunks.find(chunkCoord) == chunks.end()) {
 				// Generate the chunk
 				auto newChunk = std::make_unique<Map>();
-				newChunk->grid(chunkSize.x, chunkSize.y, cellSize, sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
+				newChunk->grid(static_cast<int>(chunkSize.x), static_cast<int>(chunkSize.y), cellSize, sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
 				chunks[chunkCoord] = std::move(newChunk);
 			}
 		}

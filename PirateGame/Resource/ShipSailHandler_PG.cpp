@@ -25,8 +25,6 @@ void ShipSailHandler::loadSailPositions(ShipClass shipClass, sf::Vector2f scalin
 	sf::Vector2f textureCenter = sf::Vector2f(static_cast<float>(shipTexture.getSize().x) / 2.0f,
 				static_cast<float>(shipTexture.getSize().y) / 2.0f);
 
-	std::cout << "Texture center: " << textureCenter.x << ", " << textureCenter.y << std::endl;
-
 	// Iterate through the pixels to find the green dots and store their positions relative to the texture center
 	for (int x = 0; x < shipImage.getSize().x; x++) {
 		for (int y = 0; y < shipImage.getSize().y; y++) {
@@ -44,6 +42,7 @@ void ShipSailHandler::loadSailPositions(ShipClass shipClass, sf::Vector2f scalin
 	}
 
 	// Set each sail's position based on the calculated positions
+	// 0 starts at the back sail, with the sails going forward in order
 	for (int i = 0; i < sailTextures.size(); i++) {
 		sails[i].setOffset(sailPositions[i]);
 	}

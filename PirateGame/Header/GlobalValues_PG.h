@@ -21,32 +21,6 @@ namespace PirateGame {
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);
 
-		sf::VertexArray createVector(const sf::Vector2f& start, const sf::Vector2f& vector, sf::Color color);
-
-		sf::Vector2f normalizeVector(const sf::Vector2f& vector) {
-			float length = sqrt(vector.x * vector.x + vector.y * vector.y);
-			if (length != 0) {
-				return sf::Vector2f(vector.x / length, vector.y / length);
-			}
-			else {
-				return sf::Vector2f(0, 0);
-			}
-		}
-
-		float distanceBetweenPoints(const sf::Vector2f& point1, const sf::Vector2f& point2) {
-			return static_cast<float>(sqrt(pow(point1.x - point2.x, 2) + pow(point1.y - point2.y, 2)));
-		}
-
-		sf::Vector2f limitVector(const sf::Vector2f& vector, float max) {
-			float length = sqrt(vector.x * vector.x + vector.y * vector.y);
-			if (length > max) {
-				return normalizeVector(vector) * max;
-			}
-			else {
-				return vector;
-			}
-		}
-
 		void printOnlyOnce(const std::string& message) {
 			static bool printed = false;
 			if (!printed) {
@@ -59,7 +33,7 @@ namespace PirateGame {
 			sf::Text displayText;
 			displayText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
 			displayText.setString(text);
-			textSize = globalWindow->getView().getSize().y / textScalingFactor;
+			textSize = static_cast<int>(globalWindow->getView().getSize().y) / textScalingFactor;
 			displayText.setCharacterSize(textSize);
 			displayText.setFillColor(color);
 			displayText.setPosition(position);

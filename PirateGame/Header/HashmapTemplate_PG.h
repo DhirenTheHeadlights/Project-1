@@ -10,6 +10,8 @@
 #include <unordered_set>
 #include <set>
 
+#include "VectorMath.h"
+
 #include "GlobalValues_PG.h"
 #include "GlobalMap_PG.h"
 
@@ -99,18 +101,18 @@ namespace PirateGame {
 					if (this->hashmap.find(key) != this->hashmap.end()) {
 
 						// Grab the object from the hashmap
-						T* obj = this->hashmap[key];
+						T* otherObj = this->hashmap[key];
 										 
 						// Get the position of the object
-						sf::Vector2f objPosition = obj->getSprite().getPosition();
+						sf::Vector2f otherObjPos = otherObj->getSprite().getPosition();
 										 
 						// Calculate the distance between the two objects
-						float distance = sqrt(pow(objectPosition.x - objPosition.x, 2.f) + pow(objectPosition.y - objPosition.y, 2.f));
+						float distance = vm::distance(objectPosition, otherObjPos);
 										 
 						// Check if the distance is less than the max distance
 						if (distance <= maxDistance) {
 							// Add the object to the set
-							nearbyObjects.insert(obj);
+							nearbyObjects.insert(otherObj);
 						}
 					}
 				}
@@ -121,8 +123,8 @@ namespace PirateGame {
 				// Draw the grid cells being checked
 				for (int i = topLeft.first; i <= bottomRight.first; ++i) {
 					for (int j = topLeft.second; j <= bottomRight.second; ++j) {
-						sf::RectangleShape rect(sf::Vector2f(map->getCellSize(), map->getCellSize()));
-						rect.setPosition(i * static_cast<float>(map->getCellSize()), j * static_cast<float>(map->getCellSize()));
+						sf::RectangleShape rect(sf::Vector2f(static_cast<float>(map->getCellSize()), static_cast<float>(map->getCellSize())));
+						rect.setPosition(static_cast<float>(i) * static_cast<float>(map->getCellSize()), static_cast<float>(j) * static_cast<float>(map->getCellSize()));
 						rect.setFillColor(sf::Color::Transparent);
 						rect.setOutlineColor(sf::Color::Red);
 						rect.setOutlineThickness(1.f);
