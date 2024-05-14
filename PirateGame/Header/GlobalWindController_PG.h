@@ -104,11 +104,8 @@ namespace PirateGame {
         sf::Clock deltaTime;
 
         void randomizeWind() {
-            //targetWindDirection = sf::Vector2f(static_cast<float>(rand() % 3 - 1), static_cast<float>(rand() % 3 - 1));
-            //targetWindSpeed = static_cast<float>(rand() % static_cast<int>(windSpeedMax) + 1);
-
-            targetWindSpeed = 10.f; // For testing
-            targetWindDirection = sf::Vector2f(1.f, 0.f); // For testing
+            targetWindDirection = sf::Vector2f(static_cast<float>(rand() % 3 - 1), static_cast<float>(rand() % 3 - 1));
+            targetWindSpeed = static_cast<float>(rand() % static_cast<int>(windSpeedMax) + 1);
         }
     };
 }

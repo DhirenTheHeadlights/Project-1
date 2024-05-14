@@ -26,9 +26,7 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 		// Calculate the final wind effect
 		windEffect *= sailRotationEffect;
 
-		GlobalValues::getInstance().displayText("Wind Direction: " + std::to_string(windDirection.x) + ", " + std::to_string(windDirection.y), sf::Vector2f(position.x + 10.f, position.y + 10.f), sf::Color::White);
-		GlobalValues::getInstance().displayText("Sail Direction: " + std::to_string(sailDirection.x) + ", " + std::to_string(sailDirection.y), sf::Vector2f(position.x + 10.f, position.y + 30.f), sf::Color::White);
-		GlobalValues::getInstance().displayText("Dot Product: " + std::to_string(windEffect), sf::Vector2f(position.x + 10.f, position.y + 50.f), sf::Color::White);
+		GlobalValues::getInstance().displayText("Sail Rotation Effect: " + std::to_string(sailRotationEffect), sf::Vector2f(position.x + 10.f, position.y + 70.f), sf::Color::White);
 
 		// Gradually increase the speed to the base speed, multiplied by the wind effect
 		const float acceleration = std::max(1.f, 1.f * windEffect); // The acceleration factor
