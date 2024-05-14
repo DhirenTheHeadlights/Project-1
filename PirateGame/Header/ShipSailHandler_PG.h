@@ -41,7 +41,7 @@ namespace PirateGame {
 			float rotationRad = avgRotation * PI / 180.f;
 
 			// Determine the direction vector based on the average rotation
-			sf::Vector2f sailDirection(std::cos(rotationRad), std::sin(rotationRad));
+			sf::Vector2f sailDirection(std::sin(rotationRad), std::cos(rotationRad));
 
 			return sailDirection;
 		}

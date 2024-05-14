@@ -34,15 +34,6 @@ namespace PirateGame {
 		// Draw the land mass
 		void draw(sf::RenderWindow& window) const { 
 			window.draw(sprite); 
-
-			// Debug draw the bounding box
-			sf::FloatRect bounds = sprite.getGlobalBounds();
-			sf::RectangleShape rect(sf::Vector2f(bounds.width, bounds.height));
-			rect.setPosition(bounds.left, bounds.top);
-			rect.setFillColor(sf::Color::Transparent);
-			rect.setOutlineColor(sf::Color::Red);
-			rect.setOutlineThickness(1);
-			window.draw(rect);
 		}
 
 	private:

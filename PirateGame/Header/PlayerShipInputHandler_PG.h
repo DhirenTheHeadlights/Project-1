@@ -35,7 +35,7 @@ namespace PirateGame {
 
 		sf::Keyboard::Key sailUpKey = sf::Keyboard::I;
 		sf::Keyboard::Key sailDownKey = sf::Keyboard::K;
-		sf::Keyboard::Key sailLeftKey = sf::Keyboard::J;
-		sf::Keyboard::Key sailRightKey = sf::Keyboard::L;
+		sf::Keyboard::Key sailLeftKey = sf::Keyboard::A;
+		sf::Keyboard::Key sailRightKey = sf::Keyboard::D;
 	};
 }

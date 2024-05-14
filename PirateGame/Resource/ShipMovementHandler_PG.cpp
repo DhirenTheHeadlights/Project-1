@@ -15,23 +15,20 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 		// Calculate wind effect
 		GlobalWindController& windController = GlobalWindController::getInstance();
 		sf::Vector2f windDirection = vm::normalize(windController.getWindDirection()); // Ensure wind direction is normalized
-		float windEffect = vm::dot(windDirection, direction) * windController.getWindSpeed();
 
 		// Normalize sail direction
 		sailDirection = vm::normalize(sailDirection);
 
 		// Use the sail rotation to determine potency of wind effect.
-		float sailRotationEffect = 1 - std::fabs(vm::dot(sailDirection, windDirection)); // The closer to 1, the more effective the wind is
+		float sailRotationEffect = std::max(0.f, vm::dot(sailDirection, windDirection)); // The closer to 1, the more effective the wind is
 
 		// Calculate the final wind effect
-		windEffect *= sailRotationEffect;
-
-		GlobalValues::getInstance().displayText("Sail Rotation Effect: " + std::to_string(sailRotationEffect), sf::Vector2f(position.x + 10.f, position.y + 70.f), sf::Color::White);
+		sailRotationEffect *= windController.getWindSpeed(); // The wind speed will determine the final wind effect
 
 		// Gradually increase the speed to the base speed, multiplied by the wind effect
-		const float acceleration = std::max(1.f, 1.f * windEffect); // The acceleration factor
-		if (speed < (baseSpeed + windEffect)) speed += acceleration * elapsedTime;
-		else if (speed > (baseSpeed + windEffect)) speed -= acceleration * elapsedTime;
+		const float acceleration = std::max(1.f, sailRotationEffect); // The acceleration factor
+		if (speed < (baseSpeed + sailRotationEffect)) speed += acceleration * elapsedTime;
+		else if (speed > (baseSpeed + sailRotationEffect)) speed -= acceleration * elapsedTime;
 
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 
