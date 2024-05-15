@@ -40,7 +40,7 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
     }
 
     if (cannonPositions.size() != numCannons) {
-        std::cout << "Error: Number of cannons does not match the number of red dots in the ship sprite." << std::endl;
+        std::cout << "Error: Number of cannons does not match the number of red dots in the ship sprite: " << numCannons << " cannons, " << cannonPositions.size() << " red dots." << std::endl;
     }
 
     // Set each cannon's offset based on the calculated and scaled positions

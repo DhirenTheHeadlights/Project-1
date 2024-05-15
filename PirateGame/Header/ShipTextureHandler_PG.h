@@ -31,12 +31,18 @@ namespace PirateGame {
 			cannonTextureManager.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_cannon.png");
 			cannonTextureManager.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_cannon.png");
 
-			//// Sloop
-			//sailTextureManager.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop_sail.png");
+			// Sloop
+			std::vector<std::string> sloopSailTextures = {
+				"PirateGameSprites/pg_ship_sloop_sail.png"
+			};
+			sailTextureManager.loadTextures(ShipClass::Sloop, sloopSailTextures);
 
-			//// Brigantine
-			//sailTextureManager.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_sail_front.png");
-			//sailTextureManager.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_sail_back.png");
+			// Brigantine
+			std::vector<std::string> brigantineSailTextures = {
+				"PirateGameSprites/pg_ship_brigantine_sail_front.png",
+				"PirateGameSprites/pg_ship_brigantine_sail_back.png"
+			};
+			sailTextureManager.loadTextures(ShipClass::Brigantine, brigantineSailTextures);
 
 			// Frigate
 			std::vector<std::string> frigateSailTextures = {
@@ -46,16 +52,22 @@ namespace PirateGame {
 			};
 			sailTextureManager.loadTextures(ShipClass::Frigate, frigateSailTextures);
 
-			//// Galleon
-			//sailTextureManager.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_sail_front.png");
-			//sailTextureManager.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_sail_middle.png");
-			//sailTextureManager.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_sail_back.png");
+			// Galleon
+			std::vector<std::string> galleonSailTextures = {
+				"PirateGameSprites/pg_ship_galleon_sail_front.png",
+				"PirateGameSprites/pg_ship_galleon_sail_middle.png",
+				"PirateGameSprites/pg_ship_galleon_sail_back.png"
+			};
+			sailTextureManager.loadTextures(ShipClass::Galleon, galleonSailTextures);
 
-			//// ManOWar
-			//sailTextureManager.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_sail_front.png");
-			//sailTextureManager.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_sail_front_middle.png");
-			//sailTextureManager.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_sail_back_middle.png");
-			//sailTextureManager.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_sail_back.png");
+			// ManOWar
+			std::vector<std::string> manOWarSailTextures = {
+				"PirateGameSprites/pg_ship_manowar_sail_front.png",
+				"PirateGameSprites/pg_ship_manowar_sail_front_middle.png",
+				"PirateGameSprites/pg_ship_manowar_sail_back_middle.png",
+				"PirateGameSprites/pg_ship_manowar_sail_back.png"
+			};
+			sailTextureManager.loadTextures(ShipClass::ManOWar, manOWarSailTextures);
 		}
 
 		// Texture manager

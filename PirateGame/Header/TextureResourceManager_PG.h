@@ -44,7 +44,11 @@ namespace PirateGame {
 			}
 
 			textureGroups[type] = std::move(textureGroup);
-			std::cout << "Loaded and stored texture group for type " << static_cast<int>(type) << std::endl;
+			
+            for (const auto& texture : textureGroups[type]) {
+                std::cout << "Loaded and stored texture " << filenames[&texture - &textureGroups[type][0]] << " for type " << static_cast<int>(type) << std::endl;
+            }
+
 			return true;
 		}
 

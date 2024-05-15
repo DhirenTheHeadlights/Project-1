@@ -945,6 +945,36 @@
     <Image Include="PirateGameSprites\pg_ship_sloop_cannon.png">
       <Filter>Source Files\PirateGame\Sprites\Ship\Sloop</Filter>
     </Image>
+    <Image Include="PirateGameSprites\pg_ship_brigantine_sail_back.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Brigantine</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_brigantine_sail_front.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Brigantine</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_galleon_sail_back.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Galleon</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_galleon_sail_front.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Galleon</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_galleon_sail_middle.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Galleon</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_front.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Manowar</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_back.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Manowar</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_back_middle.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Manowar</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_front_middle.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Manowar</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_sloop_sail.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Sloop</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt">

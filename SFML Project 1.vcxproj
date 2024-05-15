@@ -363,6 +363,8 @@
     <Image Include="PirateGameSprites\pg_rock_9.png" />
     <Image Include="PirateGameSprites\pg_ship_brigantine.png" />
     <Image Include="PirateGameSprites\pg_ship_brigantine_cannon.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_sail_front.png" />
     <Image Include="PirateGameSprites\pg_ship_frigate.png" />
     <Image Include="PirateGameSprites\pg_ship_frigate_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_frigate_sail_back.png" />
@@ -370,10 +372,18 @@
     <Image Include="PirateGameSprites\pg_ship_frigate_sail_middle.png" />
     <Image Include="PirateGameSprites\pg_ship_galleon.png" />
     <Image Include="PirateGameSprites\pg_ship_galleon_cannon.png" />
+    <Image Include="PirateGameSprites\pg_ship_galleon_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_galleon_sail_front.png" />
+    <Image Include="PirateGameSprites\pg_ship_galleon_sail_middle.png" />
     <Image Include="PirateGameSprites\pg_ship_manowar.png" />
     <Image Include="PirateGameSprites\pg_ship_manowar_cannon.png" />
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_front.png" />
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_back_middle.png" />
+    <Image Include="PirateGameSprites\pg_ship_manowar_sail_front_middle.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop_cannon.png" />
+    <Image Include="PirateGameSprites\pg_ship_sloop_sail.png" />
     <Image Include="PirateGameSprites\settings_button.png" />
     <Image Include="PirateGameSprites\slider_thumb.png" />
     <Image Include="PirateGameSprites\slider_track.png" />
