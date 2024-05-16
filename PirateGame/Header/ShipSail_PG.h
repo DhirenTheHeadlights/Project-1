@@ -4,7 +4,10 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "VectorMath.h"
+
 #include "GlobalInputHandler_PG.h"
+#include "GlobalValues_PG.h"
 
 namespace PirateGame {
 	class Sail {
@@ -18,22 +21,30 @@ namespace PirateGame {
 		};
 		~Sail() {};
 
-		void updateSail(sf::Sprite& shipSprite);
-		void updateSailLeftRight(sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey);
-		void updateSailUpDown(sf::Keyboard::Key upKey, sf::Keyboard::Key downKey);
+		void updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection);
+		void updateSailLeftRight(const sf::Keyboard::Key leftKey, const sf::Keyboard::Key rightKey);
+		void updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection);
+		void updateSailUpDown(const sf::Keyboard::Key upKey, const sf::Keyboard::Key downKey);
 
 		sf::Sprite& getSprite() { return sailSprite; }
 		sf::Vector2f getOffset() const { return offset; }
+		sf::Vector2f getDirectionVector() const {
+			const float pi = 3.14159265f;
+			float rotationRad = sailSprite.getRotation() * pi / 180.f;
+			return sf::Vector2f(std::sin(rotationRad), -std::cos(rotationRad));
+		}
 		float getRotationOffset() const { return rotationOffset; }
 
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
-		void setRotationOffset(float rotationOffset) { this->rotationOffset = rotationOffset; }
 	private:
+		float calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) const;
+
 		sf::Sprite sailSprite;
 
 		sf::Vector2f offset;
 		float rotationOffset = 0.f;
 
-		const int maxRotationOffset = 45;
+		const float maxRotationOffset = 45.f;
+		const float rotationSpeed = 0.1f;
 	};
 }

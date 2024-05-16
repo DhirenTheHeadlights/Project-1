@@ -62,5 +62,7 @@ void EnemyShipInputHandler::handleAnchorDrop() {
 }
 
 void EnemyShipInputHandler::handleSailChange() {
-	//...
+    sf::Vector2f windDireciton = GlobalWindController::getInstance().getWindDirection();
+    float windSpeed = GlobalWindController::getInstance().getWindSpeed();
+    SSH->moveSailLeftRightAutomatically(windDireciton, SMH->getVelocity());
 }

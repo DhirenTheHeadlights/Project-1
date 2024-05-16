@@ -64,7 +64,7 @@ sf::Vector2f ShipCannon::calculateDirectionToTarget(sf::Sprite& shipSprite, sf::
 
     // Adjust angle based on ship orientation and capped angle
     float shipRotation = (shipSprite.getRotation() - 180);
-    float angleDifference = vm::normalizeAnlge((angleToMouse - shipRotation), -180.f, 180.f);
+    float angleDifference = vm::normalizeAngle((angleToMouse - shipRotation), -180.f, 180.f);
 
     // Cap the angleDifference within the maxAngle
     angleDifference = std::max(std::min(angleDifference, maxFiringAngle), -maxFiringAngle);
@@ -86,7 +86,7 @@ sf::Vector2f ShipCannon::calculateDirectionToTarget(sf::Sprite& shipSprite, sf::
 // Rotate the cannon towards a target angle smoothly
 void ShipCannon::rotateTowards(float targetAngle, float step) {
     float currentAngle = cannonSprite.getRotation();
-    float angleDifference = vm::normalizeAnlge((targetAngle - currentAngle), -180.f, 180.f);
+    float angleDifference = vm::normalizeAngle((targetAngle - currentAngle), -180.f, 180.f);
 
     if (std::fabs(angleDifference) < step) {
         cannonSprite.setRotation(targetAngle);

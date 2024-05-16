@@ -2,8 +2,8 @@
 
 using namespace PirateGame;
 
-void Sail::updateSail(sf::Sprite& shipSprite) {
-	//Calculate the sail's position based on the ship's rotation
+void Sail::updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection) {
+	// Calculate the sail's position based on the ship's rotation
 	float rotation = shipSprite.getRotation();
 	sf::Transform rotationTransform;
 	rotationTransform.rotate(rotation, shipSprite.getPosition());
@@ -12,26 +12,74 @@ void Sail::updateSail(sf::Sprite& shipSprite) {
 	sf::Vector2f sailPosition = rotationTransform.transformPoint(rotationPoint);
 	sailSprite.setPosition(sailPosition);
 
-	// Rotate the sail based on the ship's rotation and the sail's rotation offset, but cap it to the max rotation offset
-	if (rotationOffset > maxRotationOffset) {
+	// Find the rotation of the sail with respect to the ship
+	float currRotationOffset = calculateAngleRelativeToShip(shipDirection);
+	currRotationOffset = vm::normalizeAngle(currRotationOffset, -180.f, 180.f); // Ensure angle is within -180 to 180 range
+
+	// Dynamically adjust rotationOffset to approach currRotationOffset within max limits
+	if (currRotationOffset > maxRotationOffset) {
 		rotationOffset = maxRotationOffset;
 	}
-	else if (rotationOffset < -maxRotationOffset) {
+	else if (currRotationOffset < -maxRotationOffset) {
 		rotationOffset = -maxRotationOffset;
 	}
+
+	// Apply new rotation
 	sailSprite.setRotation(rotation + rotationOffset);
 }
 
-void Sail::updateSailLeftRight(sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey) {
+void Sail::updateSailLeftRight(const sf::Keyboard::Key leftKey, const sf::Keyboard::Key rightKey) {
 	// If the key is pressed, update the sail rotation offset
 	if (GlobalInputHandler::getInstance().isKeyHeld(leftKey)) {
-		rotationOffset -= 0.1f;
+		rotationOffset -= rotationSpeed;
 	}
 	else if (GlobalInputHandler::getInstance().isKeyHeld(rightKey)) {
-		rotationOffset += 0.1f;
+		rotationOffset += rotationSpeed;
 	}
 }
 
-void Sail::updateSailUpDown(sf::Keyboard::Key upKey, sf::Keyboard::Key downKey) {
+float Sail::calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) const {
+	// Normalize the ship direction
+	sf::Vector2f normShipDirection = vm::normalize(shipDirection);
+	sf::Vector2f normSailDirection = vm::normalize(getDirectionVector());
+
+	float ShipAngle = vm::vectorToAngle(normShipDirection);
+	float SailAngle = vm::vectorToAngle(normSailDirection);
+	return SailAngle - ShipAngle; // Sail angle relative to the ship
+}
+
+void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection) {
+    // Normalize the ship and wind directions
+    sf::Vector2f normShipDirection = vm::normalize(shipDirection);
+    sf::Vector2f normWindDirection = vm::normalize(windDirection);
+
+    // Convert directions to angles with respect to the global coordinate system
+    float shipAngle = vm::normalizeAngle(vm::vectorToAngle(normShipDirection));
+    float windAngle = vm::normalizeAngle(vm::vectorToAngle(normWindDirection));
+
+    // Calculate wind angle relative to the ship
+    float relativeWindAngle = windAngle - shipAngle;
+
+    // Current sail angle relative to the ship
+    float currentSailAngle = calculateAngleRelativeToShip(shipDirection);
+    currentSailAngle = vm::normalizeAngle(currentSailAngle);
+
+    // Calculate angle difference and normalize
+    float angleDiff = vm::normalizeAngle(relativeWindAngle - currentSailAngle);
+	if (angleDiff > 180.f) { // If the angle difference is greater than 180, subtract 360
+		angleDiff -= 360.f;  // This is to ensure the sail rotates in the fastest direction
+	}
+
+    // Find the fastest direction to rotate the sail
+	if (angleDiff > 0) {
+		rotationOffset += rotationSpeed;
+	}
+	else if (angleDiff < 0) {
+		rotationOffset -= rotationSpeed;
+	}
+}
+
+
+void Sail::updateSailUpDown(const sf::Keyboard::Key upKey, const sf::Keyboard::Key downKey) {
 	// TO DO: Implement the up and down movement of the sails
 }

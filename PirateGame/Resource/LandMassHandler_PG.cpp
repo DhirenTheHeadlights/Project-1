@@ -57,7 +57,7 @@ void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
     for (auto& landMass : nearbyLandMasses) {
         sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
         sf::Vector2f landMassPosition = landMass->getSprite().getPosition() + landMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
-		float distance = vm::length(shipPosition - landMassPosition);
+		float distance = vm::magnitude(shipPosition - landMassPosition);
 
         if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
 			// Set up the market

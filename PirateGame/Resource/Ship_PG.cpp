@@ -65,7 +65,8 @@ void Ship::update() {
 
 	// Update handlers
 	SCH->updateCannons();
-	SSH->update(sprite);
+	sf::Vector2f shipDirection = SMH->getVelocity();
+	SSH->update(sprite, shipDirection);
 
 	// Execute custom ship update
 	customShipUpdate();

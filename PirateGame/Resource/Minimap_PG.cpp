@@ -44,7 +44,7 @@ void Minimap::update() {
             sf::Vector2f(landmasses[i]->getSprite().getGlobalBounds().width / 2, landmasses[i]->getSprite().getGlobalBounds().height / 2);
 
         // Calculate distance from the ship to the landmass
-        float distance = vm::length(shipPos - landmassPos);
+        float distance = vm::magnitude(shipPos - landmassPos);
 
         if (distance <= visibilityRadius) {
             sf::RectangleShape landmassRect;
@@ -80,7 +80,7 @@ void Minimap::update() {
 
     for (size_t i = 0; i < ships.size(); ++i) {
 		sf::Vector2f shipPos = ships[i]->getSprite().getPosition();
-        float distance = vm::length(shipPos - ship->getSprite().getPosition());
+        float distance = vm::magnitude(shipPos - ship->getSprite().getPosition());
 
         if (distance <= visibilityRadius) {
 			sf::RectangleShape shipRect;

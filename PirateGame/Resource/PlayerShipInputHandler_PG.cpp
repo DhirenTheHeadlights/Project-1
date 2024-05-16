@@ -37,6 +37,8 @@ void PlayerShipInputHandler::handleAnchorDrop() {
 }
 
 void PlayerShipInputHandler::handleSailChange() {
-	SSH->moveSailLeftRight(sailLeftKey, sailRightKey);
+	SSH->moveSailLeftRightManually(sailLeftKey, sailRightKey);
 	SSH->moveSailsUpAndDown(sailUpKey, sailDownKey);
+
+	SSH->moveSailLeftRightAutomatically(GlobalWindController::getInstance().getWindDirection(), SMH->getVelocity());
 }

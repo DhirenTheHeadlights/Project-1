@@ -34,7 +34,7 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 
 void World::setUpWorld() {
 	// Set up the player ship
-	playerShip->setUpShip(ShipClass::Frigate);
+	playerShip->setUpShip(ShipClass::Sloop);
 	playerShip->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
 	// Set up the land masses
@@ -150,10 +150,10 @@ void World::updateGameLoop(sf::Event event) {
 
 	LMHandler->interactWithLandmasses(playerShip.get());
 
-	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) { 
+	//if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
 		ESH->update();
 		gameLoopClock.restart();
-	}
+	//}
 
 	CM->handleCollisions();
 

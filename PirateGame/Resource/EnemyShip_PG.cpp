@@ -11,12 +11,12 @@ void EnemyShip::customShipSetUp() {
 	SIH->setBaseSpeed(getShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
+	SIH->setSailHandler(getSailHandler());
 }
 
 void EnemyShip::customShipUpdate() {
 	SIH->update();
-	SMH->move(getShipProperties().baseSpeed, SSH->getSailDirectionVector());
-	getSailHandler()->update(getSprite());
+	SMH->move(getShipProperties().baseSpeed, SSH->getAverageSailDirection());
 }
 
 void EnemyShip::customShipDraw() {

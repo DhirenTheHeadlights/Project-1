@@ -29,7 +29,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 
 	// Calculate the direction to the target. Use playerPos if active towards target, else use destination.
 	sf::Vector2f travelDirection = (isActiveTowardsTarget ? targetPos : destination) - position;
-	float distance = vm::length(travelDirection);
+	float distance = vm::magnitude(travelDirection);
 
 	if (isActiveTowardsTarget) {
 		if (distance < static_cast<float>(800)) {

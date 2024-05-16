@@ -48,9 +48,15 @@ void ShipSailHandler::loadSailPositions(ShipClass shipClass, sf::Vector2f scalin
 	}
 }
 
-void ShipSailHandler::moveSailLeftRight(sf::Keyboard::Key sailLeftKey, sf::Keyboard::Key sailRightKey) {
+void ShipSailHandler::moveSailLeftRightManually(sf::Keyboard::Key sailLeftKey, sf::Keyboard::Key sailRightKey) {
 	for (auto& sail : sails) {
 		sail.updateSailLeftRight(sailLeftKey, sailRightKey);
+	}
+}
+
+void ShipSailHandler::moveSailLeftRightAutomatically(sf::Vector2f windDirection, sf::Vector2f shipDirection) {
+	for (auto& sail : sails) {
+		sail.updateSailLeftRightAutomatically(windDirection, shipDirection);
 	}
 }
 
@@ -60,9 +66,9 @@ void ShipSailHandler::moveSailsUpAndDown(sf::Keyboard::Key sailUpKey, sf::Keyboa
 	}
 }
 
-void ShipSailHandler::update(sf::Sprite& shipSprite) {
+void ShipSailHandler::update(sf::Sprite& shipSprite, sf::Vector2f& shipDirection) {
 	for (auto& sail : sails) {
-		sail.updateSail(shipSprite);
+		sail.updateSail(shipSprite, shipDirection);
 	}
 }
 

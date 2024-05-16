@@ -22,12 +22,13 @@ namespace PirateGame {
 
 		void loadSailPositions(ShipClass shipClass, sf::Vector2f scaleing);
 
-		void update(sf::Sprite& shipSprite);
+		void update(sf::Sprite& shipSprite, sf::Vector2f& shipDirection);
 		void moveSailsUpAndDown(sf::Keyboard::Key upKey, sf::Keyboard::Key downKey);
-		void moveSailLeftRight(sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey);
+		void moveSailLeftRightManually(sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey);
+		void moveSailLeftRightAutomatically(sf::Vector2f windDirection, sf::Vector2f shipDirection);
 		void draw();
 
-		sf::Vector2f getSailDirectionVector() {
+		sf::Vector2f getAverageSailDirection() {
 			float avgRotation = 0.f;
 
 			// Calculate the average rotation of all sails
@@ -37,8 +38,7 @@ namespace PirateGame {
 			avgRotation /= sails.size();
 
 			// Convert average rotation to radians
-			const float PI = 3.14159265f;
-			float rotationRad = avgRotation * PI / 180.f;
+			float rotationRad = vm::degreesToRadians(avgRotation);
 
 			// Determine the direction vector based on the average rotation
 			sf::Vector2f sailDirection(std::sin(rotationRad), -std::cos(rotationRad));
