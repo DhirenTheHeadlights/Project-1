@@ -22,7 +22,7 @@ namespace PirateGame {
 		void addShip(std::shared_ptr<EnemyShip> ship) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
 			if (ships.size() == 0 || ship->getMovementHandler()->getBaseSpeed() < groupSpeed) {
-				groupSpeed = ship->getShipProperties().baseSpeed * ship->getMovementHandler()->getEnemySpeedMultiplier();
+				groupSpeed = ship->getSpecificShipProperties().baseSpeed * ship->getMovementHandler()->getEnemySpeedMultiplier();
 			}
 
 			ship->setBaseSpeed(groupSpeed);

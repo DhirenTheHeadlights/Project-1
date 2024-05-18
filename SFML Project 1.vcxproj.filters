@@ -227,6 +227,18 @@
     <Filter Include="Source Files\PirateGame\Sprites\Ship\Misc">
       <UniqueIdentifier>{9a79c1df-08f5-45f0-8720-f4754665f57f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Market\Item Shop">
+      <UniqueIdentifier>{2045a3a0-22b9-4eef-a851-c098dd207b22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Market\General">
+      <UniqueIdentifier>{2e925542-189c-4a7a-9bca-4c1674348cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Market\Ship Shop">
+      <UniqueIdentifier>{bd79eecb-26ba-49f3-83fe-eb6e2a60d307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Market\Initial">
+      <UniqueIdentifier>{ef03266c-8b3f-4d74-af7d-2d96f5cc2201}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -846,24 +858,6 @@
     <Image Include="PirateGameSprites\settings_button.png">
       <Filter>Source Files\PirateGame\Sprites\HUD</Filter>
     </Image>
-    <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_menu.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_left_right_navigation.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_interactable_far_left_right_dark_gray.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_buy_sell_dark_gray.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_bottom_right_left.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
     <Image Include="PirateGameSprites\slider_track.png">
       <Filter>Source Files\PirateGame\Sprites\Interactables</Filter>
     </Image>
@@ -887,21 +881,6 @@
     </Image>
     <Image Include="PirateGameSprites\HUD_info_icon.png">
       <Filter>Source Files\PirateGame\Sprites\HUD</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\enter_island_menu_button.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\enter_island_menu_initial.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\island_banner.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_top_middle_dark_gray.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\market_bottom_middle.png">
-      <Filter>Source Files\PirateGame\Sprites\Market</Filter>
     </Image>
     <Image Include="PirateGameSprites\pg_misc_cannonball.png">
       <Filter>Source Files\PirateGame\Sprites\Ship\Misc</Filter>
@@ -974,6 +953,54 @@
     </Image>
     <Image Include="PirateGameSprites\pg_ship_sloop_sail.png">
       <Filter>Source Files\PirateGame\Sprites\Ship\Sloop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\enter_island_menu_button.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Initial</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\enter_island_menu_initial.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Initial</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\island_banner.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Initial</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_buy_sell_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Item Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_interactable_far_left_right_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Item Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_menu.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Item Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Item Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_top_middle_dark_gray.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Item Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_bottom_right_left.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\General</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_bottom_middle.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\General</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_left_right_navigation.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\General</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_buy_ship_middle_left.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_buy_ship_middle_right.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_buy_ship_top_left.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_buy_ship_top_right.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\market_menu_buy_ship.png">
+      <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

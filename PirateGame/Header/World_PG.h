@@ -40,10 +40,10 @@ namespace PirateGame {
 		View view;
 
 		// Handlers
-		std::unique_ptr<LandMassHandler> LMHandler;
-		std::unique_ptr<MenuHandler> MH;
-		std::unique_ptr<CollisionManager> CM;
-		std::unique_ptr<EnemyShipHandler> ESH;
+		LandMassHandler LMHandler;
+		MenuHandler MH;
+		CollisionManager CM;
+		EnemyShipHandler ESH;
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;

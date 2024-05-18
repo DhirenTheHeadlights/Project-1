@@ -21,6 +21,13 @@ namespace PirateGame {
 			islandBanner.loadFromFile("PirateGameSprites/island_banner.png");
 			marketTopMiddle.loadFromFile("PirateGameSprites/market_top_middle_dark_gray.png");
 			marketBottomMiddle.loadFromFile("PirateGameSprites/market_bottom_middle.png");
+			marketLeftRightNavigation.loadFromFile("PirateGameSprites/market_left_right_navigation.png");
+
+			shipBuyMenu.loadFromFile("PirateGameSprites/market_menu_buy_ship.png");
+			shipBuyMenuTopLeft.loadFromFile("PirateGameSprites/market_buy_ship_top_left.png");
+			shipBuyMenuTopRight.loadFromFile("PirateGameSprites/market_buy_ship_top_right.png");
+			shipBuyMenuMiddleLeft.loadFromFile("PirateGameSprites/market_buy_ship_middle_left.png");
+			shipBuyMenuMiddleRight.loadFromFile("PirateGameSprites/market_buy_ship_middle_right.png");
 		}
 		~MarketTextureHandler() {};
 
@@ -37,6 +44,13 @@ namespace PirateGame {
 		sf::Texture& getIslandBanner() { return islandBanner; }
 		sf::Texture& getMarketTopMiddle() { return marketTopMiddle; }
 		sf::Texture& getMarketBottomMiddle() { return marketBottomMiddle; }
+		sf::Texture& getMarketLeftRightNavigation() { return leftRightNavigation; }
+
+		sf::Texture& getShipBuyMenu() { return shipBuyMenu; }
+		sf::Texture& getShipBuyMenuTopLeft() { return shipBuyMenuTopLeft; }
+		sf::Texture& getShipBuyMenuTopRight() { return shipBuyMenuTopRight; }
+		sf::Texture& getShipBuyMenuMiddleLeft() { return shipBuyMenuMiddleLeft; }
+		sf::Texture& getShipBuyMenuMiddleRight() { return shipBuyMenuMiddleRight; }
 	private:
 		// Sprites
 		sf::Texture bottomRightLeft;
@@ -51,5 +65,12 @@ namespace PirateGame {
 		sf::Texture initialMenu;
 		sf::Texture initialMenuButton;
 		sf::Texture islandBanner;
+		sf::Texture marketLeftRightNavigation;
+
+		sf::Texture shipBuyMenu;
+		sf::Texture shipBuyMenuTopLeft;
+		sf::Texture shipBuyMenuTopRight;
+		sf::Texture shipBuyMenuMiddleLeft;
+		sf::Texture shipBuyMenuMiddleRight;
 	};
 }

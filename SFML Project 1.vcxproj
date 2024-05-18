@@ -337,9 +337,14 @@
     <Image Include="PirateGameSprites\market_bottom_middle.png" />
     <Image Include="PirateGameSprites\market_bottom_right_left.png" />
     <Image Include="PirateGameSprites\market_buy_sell_dark_gray.png" />
+    <Image Include="PirateGameSprites\market_buy_ship_middle_left.png" />
+    <Image Include="PirateGameSprites\market_buy_ship_middle_right.png" />
+    <Image Include="PirateGameSprites\market_buy_ship_top_left.png" />
+    <Image Include="PirateGameSprites\market_buy_ship_top_right.png" />
     <Image Include="PirateGameSprites\market_interactable_far_left_right_dark_gray.png" />
     <Image Include="PirateGameSprites\market_left_right_navigation.png" />
     <Image Include="PirateGameSprites\market_menu.png" />
+    <Image Include="PirateGameSprites\market_menu_buy_ship.png" />
     <Image Include="PirateGameSprites\market_top_left_right_dark_gray.png" />
     <Image Include="PirateGameSprites\market_top_middle_dark_gray.png" />
     <Image Include="PirateGameSprites\minimap_ship_icon.png" />

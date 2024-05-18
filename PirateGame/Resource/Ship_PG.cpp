@@ -2,14 +2,6 @@
 
 using namespace PirateGame;
 
-std::unordered_map<ShipClass, ShipProperties> Ship::ShipConfig = {
-{ ShipClass::Sloop,		 {100.f, 100.f, 1,	   GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Sloop),   .1f,  .1f,  2}},
-{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Brigantine),    .12f, .12f, 4}},
-{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Frigate), .15f, .15f, 6}},
-{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::ManOWar), .18f, .18f, 8}},
-{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(ShipClass::Galleon), .23f, .23f, 10}}
-};
-
 // Create the ship
 void Ship::setUpShip(ShipClass level) {
 	// Set the unique ID of the ship
@@ -24,11 +16,11 @@ void Ship::setUpShip(ShipClass level) {
 		level = static_cast<ShipClass>(dis(gen));
 
 		// Access ship properties from the configuration map using the generated random number
-		shipProperties = ShipConfig[level];
+		shipProperties = getShipProperties(level);
 	}
 	else {
 		// Access ship properties from the configuration map using the provided ship class
-		shipProperties = ShipConfig[level];
+		shipProperties = getShipProperties(level);
 	}
 
 	health = shipProperties.maxHealth;
@@ -36,7 +28,7 @@ void Ship::setUpShip(ShipClass level) {
 	// Load the texture
 	sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
 
-	sprite.setTexture(shipProperties.texture);
+	sprite.setTexture(GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(level));
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	sprite.setScale(scaling);
 

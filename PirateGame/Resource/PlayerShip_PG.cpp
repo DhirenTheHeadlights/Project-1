@@ -11,8 +11,8 @@ void PlayerShip::customShipSetUp() {
 	SIvH = std::make_unique<ShipInventoryHandler>();
 	SIvH->addGold(1000);
 	
-	SIH->setNumCannons(getShipProperties().numCannons);
-	SIH->setBaseSpeed(getShipProperties().baseSpeed);
+	SIH->setNumCannons(getSpecificShipProperties().numCannons);
+	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
 	SIH->setSailHandler(getSailHandler());
@@ -22,7 +22,7 @@ void PlayerShip::customShipSetUp() {
 
 void PlayerShip::customShipUpdate() {
 	SIH->update();
-	SMH->move(getShipProperties().baseSpeed, SSH->getAverageSailDirection());
+	SMH->move(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection());
 
 	// If the experience is greater than the experience to level up
 	// Level up the ship and also up the amount of exp to level up

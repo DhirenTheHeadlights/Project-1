@@ -34,6 +34,7 @@ namespace PirateGame {
 
 		virtual void setUpMenu() = 0;
 		virtual void draw();
+		virtual void update() {};
 		virtual void addInteractableToMenu(std::unique_ptr<Interactable> interactable);
 		virtual void addInteractablesToMenu() = 0;
 		virtual void setInteractablePositions() = 0;
@@ -47,7 +48,6 @@ namespace PirateGame {
 		bool isMenuOpen = false;
 		bool redraw = false;
 		bool positionUpdated = false;
-		bool wasButtonPressedLastFrame = false;
 		sf::Time totalPauseDuration;
 
 	protected:

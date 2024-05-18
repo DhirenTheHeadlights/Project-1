@@ -20,16 +20,6 @@
 #include "ShipEnums_PG.h"
 
 namespace PirateGame {
-	// Struct to hold ship properties
-	struct ShipProperties {
-		float baseSpeed = 1.f;
-		float maxHealth = 100.f;
-		float regenRate = 0.5f;
-		sf::Texture texture = sf::Texture();
-		float scaleX = 1.f, scaleY = 1.f;
-		int numCannons = 1;
-	};
-
 	class Ship {
 	public:
 		Ship() {};
@@ -68,7 +58,7 @@ namespace PirateGame {
 		int getGroupID() const { return groupID; }
 		bool getIsDead() const { return isDead; }
 
-		ShipProperties& getShipProperties() { return shipProperties; }
+		ShipProperties& getSpecificShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
 
 		virtual ShipCannonHandler* getCannonHandler() { return SCH.get(); };

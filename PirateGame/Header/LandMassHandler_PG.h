@@ -33,11 +33,10 @@ namespace PirateGame {
         void addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses);
         void createLandmass(LandMassType type, sf::Vector2f position);
 
-        sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
         std::vector<std::shared_ptr<LandMass>> landmasses;
+        LandMass* nearestLandMass = nullptr;
 
         // Values
-        float interactionDistance = 600.f; // Distance for interaction with landmasses
+        float interactionDistance = 1000.f; // Distance for interaction with landmasses
     };
 }

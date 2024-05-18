@@ -7,7 +7,7 @@
 #include "ShopItem_PG.h"
 
 namespace PirateGame {
-	enum class page {
+	enum class Page {
 		marketPage1,
 		marketPage2,
 		marketPage3,
@@ -21,10 +21,11 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
-		void addMarketInteractables();
 		void addShipInventoryInteractables();
 		void updateMarket();
 		void draw() override;
+		void update() override;
+		void interactWithMenuItems() override;
 
 		// Setters
 		void setShip(PlayerShip& ship) { this->ship = &ship; };
@@ -36,18 +37,34 @@ namespace PirateGame {
 		bool getEnteredIsland() const { return enteredIsland; }
 		bool getPlayerPromptedOnce() const { return hasPlayerSaidNo; }
 	private:
+		// Helpers
+		void addMarketInteractables();
+		void addGeneralInteractables();
+		void addShipBuyInteractables();
+
+		void drawMarket();
+		void drawShipBuy();
+
+		void interactWithMarket();
+		void interactWithShipBuy();
+
 		// Menu items
 		float padding = 10.f;
 		float gold = 1000.f;
 		int textSize = 40;
 		int interactableTextSizeSmall = 30;
 		int interactableTextSizeBig = 60;
+		const int numShipsForSale = 5;
 
 		bool enteredIsland = false;
 		bool addedInteractables = false;
 		bool hasPlayerSaidNo = false;
 
 		PlayerShip* ship = nullptr;
+
+		Page currentPage = Page::marketPage1;
+
+		std::vector<Page> pages = { Page::marketPage1, Page::shipUpgrades };
 
 		sf::Sprite banner;
 		sf::Sprite initialMenu;
@@ -58,6 +75,9 @@ namespace PirateGame {
 		std::vector<std::unique_ptr<TextDisplayBox>> shipInventoryInteractable;
 		std::vector<std::unique_ptr<TextDisplayBox>> marketInventory;
 		std::vector<std::unique_ptr<Button>> uiButtons;
+		std::vector<std::unique_ptr<Button>> leftRightNavButtons;
+		std::vector<std::unique_ptr<TextDisplayBox>> shipBuyTabs;
+		std::vector<std::pair<ShipClass, std::vector<std::unique_ptr<TextDisplayBox>>>> shipStats;
 
 		sf::Vector2f bannerScale = sf::Vector2f(1.5f, 1.5f);
 
@@ -95,5 +115,13 @@ namespace PirateGame {
 		const sf::Vector2f marketNavigationRight = sf::Vector2f(1204.f, 883.f);
 		const sf::Vector2f marketBottomRight = sf::Vector2f(1300.f, 883.f);
 		const sf::Vector2f marketBottomMiddle = sf::Vector2f(400.f, 883.f);
+
+		const sf::Vector2f marketLeftNav = sf::Vector2f(304.f, 883.f);
+		const sf::Vector2f marketRightNav = sf::Vector2f(1204.f, 883.f);
+
+		const sf::Vector2f shipBuyTopLeft = sf::Vector2f(20.f, 22.f);
+		const sf::Vector2f shipBuyTopRightStart = sf::Vector2f(404.f, 22.f);
+		const sf::Vector2f shipBuyMiddleLeftStart = sf::Vector2f(20.f, 121.f);
+		const sf::Vector2f shipBuyMiddleRightStart = sf::Vector2f(404.f, 121.f);
 	};
 }

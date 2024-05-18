@@ -26,15 +26,14 @@ void Button::interactOnce() {
 }
 
 void Button::interactHold() {
-	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
-	sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
+	if (GlobalInputHandler::getInstance().isMouseButtonHeld(sf::Mouse::Left)) {
+		sf::Vector2i mousePosition = sf::Vector2i(sf::Mouse::getPosition(*window));
+		sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 
-	if (sprite.getGlobalBounds().contains(worldPosition) &&  // If the mouse is over the button
-		cooldown.getElapsedTime().asSeconds() > cooldownTime.asSeconds() && // If the cooldown has passed
-		sf::Mouse::isButtonPressed(sf::Mouse::Left) // If the left mouse button is pressed
-		) {
-		GlobalSoundManager::getInstance().playSound(SoundId::Select);
-		func();
-		cooldown.restart();
+		// If the mouse is over the button, call the button's callback function
+		if (sprite.getGlobalBounds().contains(worldPosition)) {
+			GlobalSoundManager::getInstance().playSound(SoundId::Select);
+			func();
+		}
 	}
 }

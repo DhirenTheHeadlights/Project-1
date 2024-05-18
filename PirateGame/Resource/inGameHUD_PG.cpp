@@ -98,7 +98,7 @@ void InGameHUD::setInteractablePositions() {
 	sf::View HUDView = window->getView();
 	HUDView.setRotation(0.f);
 
-	healthFraction = 100 * ship->getHealth() / ship->getShipProperties().maxHealth;
+	healthFraction = 100 * ship->getHealth() / ship->getSpecificShipProperties().maxHealth;
 
 	// Set the health bar green to be proportional to ship health
 	healthBarGreenSprite.setScale(healthBarScale.x * healthFraction / 100, healthBarScale.y);

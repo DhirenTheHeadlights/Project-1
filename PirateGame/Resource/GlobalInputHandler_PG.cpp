@@ -19,9 +19,9 @@ bool GlobalInputHandler::isKeyPressedOnce(sf::Keyboard::Key key) {
 
     // Return true only if the key is pressed now and was not pressed last frame and the cooldown has passed
     if (isPressedNow && !wasPressedLastFrame && cooldown.getElapsedTime() > cooldownTime) {
+        cooldown.restart();
         return true;
-		cooldown.restart();
-	}
+    }
     return false;
 }
 
@@ -44,17 +44,18 @@ bool GlobalInputHandler::isKeyToggled(sf::Keyboard::Key key) {
 }
 
 bool GlobalInputHandler::isKeyHeld(sf::Keyboard::Key key) {
-	// Check if the key is currently pressed
-	bool isPressedNow = sf::Keyboard::isKeyPressed(key);
+    // Check if the key is currently pressed
+    bool isPressedNow = sf::Keyboard::isKeyPressed(key);
 
-	// Update the current state for the next frame
-	currentKeyState[key] = isPressedNow;
+    // Update the current state for the next frame
+    currentKeyState[key] = isPressedNow;
 
-	// Return true only if the key is pressed now and the cooldown has passed
+    // Return true only if the key is pressed now and the cooldown has passed
     if (isPressedNow && cooldown.getElapsedTime() > cooldownTime) {
-		return true;
-	}
-	return false;
+        cooldown.restart();
+        return true;
+    }
+    return false;
 }
 
 bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
@@ -67,7 +68,9 @@ bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
 
     // Return true only if the button is pressed now and was not pressed last frame and the cooldown has passed
     if (isPressedNow && !wasPressedLastFrame && cooldown.getElapsedTime() > cooldownTime) {
-		return true;
+        std::cout << "Mouse button pressed" << std::endl;
+        cooldown.restart();
+        return true;
     }
     return false;
 }
@@ -91,15 +94,16 @@ bool GlobalInputHandler::isMouseButtonToggled(sf::Mouse::Button button) {
 }
 
 bool GlobalInputHandler::isMouseButtonHeld(sf::Mouse::Button button) {
-	// Check if the button is currently pressed
-	bool isPressedNow = sf::Mouse::isButtonPressed(button);
+    // Check if the button is currently pressed
+    bool isPressedNow = sf::Mouse::isButtonPressed(button);
 
-	// Update the current state for the next frame
-	currentButtonState[button] = isPressedNow;
+    // Update the current state for the next frame
+    currentButtonState[button] = isPressedNow;
 
-	// Return true only if the button is pressed now and the cooldown has passed
+    // Return true only if the button is pressed now and the cooldown has passed
     if (isPressedNow && cooldown.getElapsedTime() > cooldownTime) {
-		return true;
-	}
-	return false;
+        cooldown.restart();
+        return true;
+    }
+    return false;
 }

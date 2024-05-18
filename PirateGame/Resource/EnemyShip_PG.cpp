@@ -7,8 +7,8 @@ void EnemyShip::customShipSetUp() {
 	SIH = std::make_unique<EnemyShipInputHandler>(getSprite());
 	SMH = std::make_unique<EnemyShipMovementHandler>(getSprite());
 
-	SIH->setNumCannons(getShipProperties().numCannons);
-	SIH->setBaseSpeed(getShipProperties().baseSpeed);
+	SIH->setNumCannons(getSpecificShipProperties().numCannons);
+	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
 	SIH->setSailHandler(getSailHandler());
@@ -16,7 +16,7 @@ void EnemyShip::customShipSetUp() {
 
 void EnemyShip::customShipUpdate() {
 	SIH->update();
-	SMH->move(getShipProperties().baseSpeed, SSH->getAverageSailDirection());
+	SMH->move(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection());
 }
 
 void EnemyShip::customShipDraw() {

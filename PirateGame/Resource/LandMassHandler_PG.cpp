@@ -46,35 +46,51 @@ void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
 // Draw all the land masses
 void LandMassHandler::drawLandMasses() {
 	// Draw all the land masses and add them to the hashmap
+	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	for (auto& i : landmasses) {
 		i->draw(*window);
 	}
 }
 
 void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
-    std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(ship);
-    
-    for (auto& landMass : nearbyLandMasses) {
-        sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
-        sf::Vector2f landMassPosition = landMass->getSprite().getPosition() + landMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
+	if (nearestLandMass == nullptr) {
+		std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(ship, interactionDistance);
+
+		for (auto& landMass : nearbyLandMasses) {
+			sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
+			sf::Vector2f landMassPosition = landMass->getSprite().getPosition() + landMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
+			float distance = vm::magnitude(shipPosition - landMassPosition);
+
+			if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
+				// Set this as the nearest land mass
+				nearestLandMass = landMass;
+				break; // Stop checking for other islands
+			}
+		}
+
+		// Reset the 'player said no' and enteredIsland flag for all islands not nearby
+		for (auto& landMass : landmasses) {
+			if (landMass->getType() == LandMassType::Island && nearbyLandMasses.find(landMass.get()) == nearbyLandMasses.end()) {
+				landMass->getIslandMenu()->setEnteredIsland(false);
+				landMass->getIslandMenu()->setHasPlayerSaidNo(false);
+			}
+		}
+	}
+	// Draw the island menu for the nearest land mass
+	else {
+		nearestLandMass->getIslandMenu()->setShip(*ship);
+		nearestLandMass->getIslandMenu()->draw();
+		nearestLandMass->getIslandMenu()->update();
+	}
+
+	// Set the nearest land mass to null if the player is no longer near it
+	if (nearestLandMass != nullptr) {
+		sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
+		sf::Vector2f landMassPosition = nearestLandMass->getSprite().getPosition() + nearestLandMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
 		float distance = vm::magnitude(shipPosition - landMassPosition);
 
-        if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
-			// Set up the market
-			landMass->getIslandMenu()->setShip(*ship);
-
-            // Prompt the player to open the market here
-            landMass->getIslandMenu()->draw();
-
-            break; // Stop checking for other islands
-        }
-    }
-
-    // Reset the 'player said no' and enteredIsland flag for all islands not nearby
-    for (auto& landMass : landmasses) {
-        if (landMass->getType() == LandMassType::Island && nearbyLandMasses.find(landMass.get()) == nearbyLandMasses.end()) {
-            landMass->getIslandMenu()->setEnteredIsland(false);
-			landMass->getIslandMenu()->setHasPlayerSaidNo(false);
-        }
-    }
+		if (distance > interactionDistance) {
+			nearestLandMass = nullptr;
+		}
+	}
 }

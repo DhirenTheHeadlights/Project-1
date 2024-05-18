@@ -38,13 +38,19 @@ namespace PirateGame {
 
             // Update the position and size of the text
             displayText.setPosition(position);
-            displayText.setCharacterSize(size * static_cast<int>(globalWindow->getView().getSize().y) / textScalingFactor);
+            textSize = size * static_cast<int>(globalWindow->getView().getSize().y) / textScalingFactor;
+            displayText.setCharacterSize(textSize);
 
             // Only draw the text if the view scale is small enough
             if (globalWindow->getView().getSize().x / globalWindow->getSize().x < 5) {
                 globalWindow->draw(displayText);
             }
         }
+
+        void printTimeSinceLastCall() {
+			std::cout << "Time since last call: " << timeSinceLastCall.getElapsedTime().asSeconds() << " seconds\n";  
+			timeSinceLastCall.restart();
+		}
 
         void setWindow(sf::RenderWindow* window) {
             if (window == nullptr) {
@@ -68,12 +74,15 @@ namespace PirateGame {
 
         bool showHUD = true;
         int textSize = 30;
-        const int textScalingFactor = 1000;
+        const int textScalingFactor = 750;
         std::default_random_engine randomEngine;
         sf::RenderWindow* globalWindow = nullptr;
         sf::Clock globalClock;
 
         // Cache for storing text objects
         std::unordered_map<std::string, sf::Text> textCache;
+
+        // Time since last call
+        sf::Clock timeSinceLastCall;
     };
 }

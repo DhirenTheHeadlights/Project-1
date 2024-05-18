@@ -13,9 +13,9 @@ namespace PirateGame {
     public:
         // Public method to access the instance
         static GlobalInputHandler& getInstance() {
-			static GlobalInputHandler instance;
-			return instance;
-		}
+            static GlobalInputHandler instance;
+            return instance;
+        }
 
         void update();
 
@@ -39,6 +39,7 @@ namespace PirateGame {
         // Variables
         std::unordered_map<sf::Keyboard::Key, bool> lastKeyState;
         std::unordered_map<sf::Keyboard::Key, bool> currentKeyState;
+
         std::unordered_map<sf::Mouse::Button, bool> lastButtonState;
         std::unordered_map<sf::Mouse::Button, bool> currentButtonState;
 

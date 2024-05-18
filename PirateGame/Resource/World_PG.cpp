@@ -12,13 +12,9 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 
 	// Set up the map
 	GlobalMap::getInstance().initializeMap();
-	
-	// Set up the pointers
+
+	// Set up the player ship
 	playerShip = std::make_unique<PlayerShip>();
-	LMHandler = std::make_unique<LandMassHandler>();
-	MH = std::make_unique<MenuHandler>();
-	CM = std::make_unique<CollisionManager>();
-	ESH = std::make_unique<EnemyShipHandler>();
 
 	// Set up the values
 	if (debug) {
@@ -34,36 +30,36 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 
 void World::setUpWorld() {
 	// Set up the player ship
-	playerShip->setUpShip(ShipClass::Sloop);
+	playerShip->setUpShip(ShipClass::ManOWar);
 	playerShip->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
 
 	// Set up the land masses
-	LMHandler->addLandMasses(numLandMasses, distanceBetweenLandMasses);
+	LMHandler.addLandMasses(numLandMasses, distanceBetweenLandMasses);
 
 	// Set up the enemy ships
-	ESH->setLandmasses(LMHandler->getLandMasses());
-	ESH->addEnemyShips(numEnemyShips);
-	ESH->setPlayerShip(playerShip.get());
+	ESH.setLandmasses(LMHandler.getLandMasses());
+	ESH.addEnemyShips(numEnemyShips);
+	ESH.setPlayerShip(playerShip.get());
 
 	// Set up the collision manager
-	CM->setPlayerShip(playerShip.get());
-	CM->setEnemyShips(ESH->getEnemyShips());
-	CM->setLandMasses(LMHandler->getLandMasses());
+	CM.setPlayerShip(playerShip.get());
+	CM.setEnemyShips(ESH.getEnemyShips());
+	CM.setLandMasses(LMHandler.getLandMasses());
 
 	// Set the game state to start
 	GlobalGameStateManager::getInstance().changeGameState(GameState::Start);
 
 	// Set up the menus
-	MH->createMenus();
-	MH->setUpMenus();
+	MH.createMenus();
+	MH.setUpMenus();
 
 	// Set up the view
 	view.setUpView();
 
 	// Set up the hud minimap
-	MH->getHUD()->getMinimap().setLandmasses(LMHandler->getLandMasses());
-	MH->getHUD()->getMinimap().setEnemyShips(ESH->getEnemyShips());
-	MH->getHUD()->setPlayerShip(*playerShip.get());
+	MH.getHUD()->getMinimap().setLandmasses(LMHandler.getLandMasses());
+	MH.getHUD()->getMinimap().setEnemyShips(ESH.getEnemyShips());
+	MH.getHUD()->setPlayerShip(*playerShip.get());
 
 	// Set up the frame rate text
 	frameRateText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
@@ -91,14 +87,11 @@ void World::createWorld(sf::Event event) {
 	switch (GSM->getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
-		MH->openMenu(MenuType::StartMenu);
+		MH.openMenu(MenuType::StartMenu);
 		break;
 	case GameState::OptionsMenu:
 		// Draw the options menu
-		MH->openMenu(MenuType::OptionsMenu);
-		break;
-	case GameState::LandMassInteraction:
-		// Interact with the land masses
+		MH.openMenu(MenuType::OptionsMenu);
 		break;
 	case GameState::End:
 		// End the game and close the window
@@ -108,7 +101,7 @@ void World::createWorld(sf::Event event) {
 		// Run the game loop
 		drawGameLoop();
 		updateGameLoop(event);
-		if (GlobalValues::getInstance().getShowHUD() && !debug) MH->openMenu(MenuType::HUD);
+		if (GlobalValues::getInstance().getShowHUD() && !debug) MH.openMenu(MenuType::HUD);
 		break;
 	}
 
@@ -148,14 +141,14 @@ void World::updateGameLoop(sf::Event event) {
 	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 	if (debug) background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
 
-	LMHandler->interactWithLandmasses(playerShip.get());
+	LMHandler.interactWithLandmasses(playerShip.get());
 
 	//if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
-		ESH->update();
+		ESH.update();
 		gameLoopClock.restart();
 	//}
 
-	CM->handleCollisions();
+	CM.handleCollisions();
 
 	playerShip->update();
 
@@ -165,10 +158,10 @@ void World::updateGameLoop(sf::Event event) {
 
 void World::drawGameLoop() {
 	window->draw(background);
-	LMHandler->drawLandMasses();
+	LMHandler.drawLandMasses();
 	window->draw(frameRateText);
 	window->draw(experience);
 	playerShip->draw();
-	ESH->draw();
+	ESH.draw();
 }
 
