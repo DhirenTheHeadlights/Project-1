@@ -69,26 +69,27 @@ namespace PirateGame {
 		sf::Sprite banner;
 		sf::Sprite initialMenu;
 
-		std::vector<std::unique_ptr<Button>> buyButtons;
-		std::vector<std::unique_ptr<Button>> sellButtons;
-		std::vector<std::unique_ptr<TextDisplayBox>> merchandise;
-		std::vector<std::unique_ptr<TextDisplayBox>> shipInventoryInteractable;
-		std::vector<std::unique_ptr<TextDisplayBox>> marketInventory;
-		std::vector<std::unique_ptr<Button>> uiButtons;
-		std::vector<std::unique_ptr<Button>> leftRightNavButtons;
-		std::vector<std::unique_ptr<TextDisplayBox>> shipBuyTabs;
-		std::vector<std::pair<ShipClass, std::vector<std::unique_ptr<TextDisplayBox>>>> shipStats;
+		std::vector<Button> initialButtons;
+		std::vector<Button> buyButtons;
+		std::vector<Button> sellButtons;
+		std::vector<TextDisplayBox> merchandise;
+		std::vector<TextDisplayBox> shipInventoryInteractables;
+		std::vector<TextDisplayBox> marketInventory;
+		std::vector<Button> uiButtons;
+		std::vector<Button> leftRightNavButtons;
+		std::vector<TextDisplayBox> shipBuyTabs;
+		std::vector<std::pair<ShipClass, std::vector<TextDisplayBox>>> shipStats;
 
 		sf::Vector2f bannerScale = sf::Vector2f(1.5f, 1.5f);
 
 		// Gold text display box
-		std::unique_ptr<TextDisplayBox> shipGoldDisplay;
-		std::unique_ptr<TextDisplayBox> islandGoldDisplay;
+		TextDisplayBox shipGoldDisplay;
+		TextDisplayBox islandGoldDisplay;
 
 		// Names
-		std::unique_ptr<TextDisplayBox> islandNameDisplay;
-		std::unique_ptr<TextDisplayBox> shipNameDisplay;
-		std::unique_ptr<TextDisplayBox> marketNameDisplay;
+		TextDisplayBox islandNameDisplay;
+		TextDisplayBox shipNameDisplay;
+		TextDisplayBox marketNameDisplay;
 
 		std::vector<ShopItem>& market;
 		std::vector<ShopItem> shipInventory;

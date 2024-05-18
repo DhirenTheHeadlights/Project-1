@@ -143,10 +143,10 @@ void World::updateGameLoop(sf::Event event) {
 
 	LMHandler.interactWithLandmasses(playerShip.get());
 
-	//if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
+	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
 		ESH.update();
 		gameLoopClock.restart();
-	//}
+	}
 
 	CM.handleCollisions();
 

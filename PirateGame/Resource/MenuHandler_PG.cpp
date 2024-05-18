@@ -16,7 +16,6 @@ void MenuHandler::openMenu(MenuType menuType) {
 	}
 	switch (menuType) {
 	case MenuType::StartMenu:
-		GlobalValues::getInstance().printTimeSinceLastCall();
 		startMenu->draw();
 		break;
 	case MenuType::OptionsMenu:

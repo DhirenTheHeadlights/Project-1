@@ -37,7 +37,7 @@ void StartMenu::addInteractablesToMenu() {
 	setUpInteractable(startFunc, sf::Text("Start", font, textSize), interactableScale);
 
 	// Create the settings button
-	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
+	std::function<void()> settingsFunc = [this]() { std::cout << "opt" << std::endl; GSM->changeGameState(GameState::OptionsMenu); };
 	setUpInteractable(settingsFunc, sf::Text("Settings", font, textSize), interactableScale);
 
 	// Create the quit button

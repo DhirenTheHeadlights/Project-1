@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 #include <iomanip>
 #include <sstream>
 #include <string>
@@ -71,7 +72,7 @@ namespace PirateGame {
 		sf::Vector2f menuScale = { 1, 1 };
 
 		sf::Color textColor = sf::Color(0, 0, 0, 200); // Black
-		
+
 		unsigned textSize = 20u;
 		unsigned interactableTextSize = 10u;
 		float padding = 10.0f;
@@ -84,6 +85,20 @@ namespace PirateGame {
 			std::stringstream stream;
 			stream << std::fixed << std::setprecision(decimalPlaces) << number;
 			return stream.str();
+		}
+
+		// General function to add a button to the menu
+		void addButton(sf::Text text, sf::Texture& texture, std::vector<Button>& destination, std::function<void()> function) {
+			Button button(function);
+			button.createInteractable(texture, text);
+			destination.push_back(button);
+		}
+
+		// General function to add a text display box to the menu
+		void addTextDisplayBox(sf::Text text, sf::Texture& texture, std::vector<TextDisplayBox>& destination) {
+			TextDisplayBox textDisplayBox;
+			textDisplayBox.createInteractable(texture, text);
+			destination.push_back(textDisplayBox);
 		}
 	};
 }
