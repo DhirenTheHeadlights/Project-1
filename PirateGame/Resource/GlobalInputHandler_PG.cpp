@@ -1,12 +1,13 @@
 #include "GlobalInputHandler_PG.h"
 
 using namespace PirateGame;
-
+  
 void GlobalInputHandler::update() {
-    // Update key states
-    lastKeyState = currentKeyState;
+    currentKeyState = lastKeyState; // Update the current key state
 
-    // Handle mouse button states and detect clicks
+    sf::Time currentTime = keyCooldownClock.getElapsedTime();
+
+    // Handle mouse input states and clicks
     bool anyButtonClicked = false;
     for (int button = sf::Mouse::Left; button <= sf::Mouse::XButton2; ++button) {
         sf::Mouse::Button btn = static_cast<sf::Mouse::Button>(button);
@@ -14,59 +15,56 @@ void GlobalInputHandler::update() {
         bool wasPressedLast = lastButtonState[btn];
         lastButtonState[btn] = isPressedNow;
 
-        // Check for transition from not pressed to pressed and handle cooldown
         if (isPressedNow && !wasPressedLast) {
-            if (cooldown.getElapsedTime() > cooldownTime) {
+            if (mouseSingleClickCooldown.getElapsedTime() > cooldownTime) {
                 clickedButton = btn;
                 mouseClickedThisFrame = true;
-                cooldown.restart();
+                mouseSingleClickCooldown.restart();
                 anyButtonClicked = true;
                 break; // Register the first valid click within the cooldown period
             }
         }
     }
 
-    // If no button clicked, update mouseClickedThisFrame status
     if (!anyButtonClicked) {
         mouseClickedThisFrame = false;
     }
-}
 
-bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) {
-    return mouseClickedThisFrame && clickedButton == button;
-}
+    // Update key states
+    for (int key = sf::Keyboard::A; key < sf::Keyboard::KeyCount; ++key) {
+        sf::Keyboard::Key k = static_cast<sf::Keyboard::Key>(key);
+        bool isPressedNow = sf::Keyboard::isKeyPressed(k);
+        bool wasPressedLast = lastKeyState[k];
 
-bool GlobalInputHandler::isMouseButtonHeld(sf::Mouse::Button button) {
-    if (sf::Mouse::isButtonPressed(button) && holdCooldown.getElapsedTime() > cooldownTime) {
-        holdCooldown.restart();
-        return true;
+        if (isPressedNow && !wasPressedLast && currentTime - keyToggleTimes[k] > cooldownTime) {
+            toggledKeyState[k] = !toggledKeyState[k];
+            keyToggleTimes[k] = currentTime; // Update the last toggle time
+        }
+
+        lastKeyState[k] = isPressedNow;
     }
-    return false;
 }
 
 bool GlobalInputHandler::isKeyPressedOnce(sf::Keyboard::Key key) {
-    bool isPressedNow = sf::Keyboard::isKeyPressed(key);
-    bool wasPressedLastFrame = lastKeyState[key];
-    currentKeyState[key] = isPressedNow;
-    if (isPressedNow && !wasPressedLastFrame) {
-        lastKeyState[key] = true;
-        return true;
-    }
-    lastKeyState[key] = isPressedNow;
-    return false;
+    return currentKeyState[key] && !lastKeyState[key];
 }
 
 bool GlobalInputHandler::isKeyToggled(sf::Keyboard::Key key) {
-    bool isPressedNow = sf::Keyboard::isKeyPressed(key);
-    if (isPressedNow && !lastKeyState[key]) {
-        toggledKeyState[key] = !toggledKeyState[key];
-        lastKeyState[key] = true;
-        return toggledKeyState[key];
-    }
-    lastKeyState[key] = isPressedNow;
     return toggledKeyState[key];
 }
 
 bool GlobalInputHandler::isKeyHeld(sf::Keyboard::Key key) {
     return sf::Keyboard::isKeyPressed(key);
+}
+
+bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) const {
+    return mouseClickedThisFrame && clickedButton == button;
+}
+
+bool GlobalInputHandler::isMouseButtonHeld(sf::Mouse::Button button) {
+    if (sf::Mouse::isButtonPressed(button) && mouseHoldCooldown.getElapsedTime() > cooldownTime) {
+        mouseHoldCooldown.restart();
+        return true;
+    }
+    return false;
 }
