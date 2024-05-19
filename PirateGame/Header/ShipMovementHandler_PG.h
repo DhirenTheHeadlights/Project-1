@@ -40,6 +40,8 @@ namespace PirateGame {
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }
 		void setWindSpeedApplied(bool windSpeedApplied) { this->windSpeedApplied = windSpeedApplied; }
 		void setInitialPositionSet(bool initialPositionSet) { this->initialPositionSet = initialPositionSet; }
+		void setNearbyLandmasses(std::vector<sf::Sprite>& localLandmasses) { this->nearbyLandmasses = localLandmasses; }
+		void setNearbyShips(std::vector<sf::Sprite>& localShips) { this->nearbyShips = localShips; }
 
 		// Getters
 		float getSpeed() const { return speed; }
@@ -50,6 +52,8 @@ namespace PirateGame {
 
 		sf::Vector2f getVelocity() const { return velocity; }
 		sf::Vector2f getInitialPosition() const { return initialPosition; }
+		std::vector<sf::Sprite>& getNearbyLandmasses() { return nearbyLandmasses; }
+		std::vector<sf::Sprite>& getNearbyShips() { return nearbyShips; }
 
 		bool getStopShipRotationFlag() const { return stopShipRotationFlag; }
 		bool getDroppedAnchor() const { return dropAnchor; }
@@ -65,6 +69,8 @@ namespace PirateGame {
 
 		sf::Vector2f velocity;
 		sf::Vector2f initialPosition;
+		std::vector<sf::Sprite> nearbyLandmasses;
+		std::vector<sf::Sprite> nearbyShips;
 
 		bool isColliding = false;
 		bool stopShipRotationFlag = false;

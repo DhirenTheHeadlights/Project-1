@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include <optional>
 
 namespace vm {
 	const float PI = 3.14159265f;
@@ -86,4 +87,22 @@ namespace vm {
 	inline float angleBetweenVectorsRadians(const sf::Vector2f& v1, const sf::Vector2f& v2) {
 		return angleBetweenVectorsDegrees(v1, v2) * PI / 180.f;
 	}
+
+	inline std::optional<sf::Vector2f> getIntersection(
+		const sf::Vector2f& p1, const sf::Vector2f& p2,
+		const sf::Vector2f& p3, const sf::Vector2f& p4) {
+
+		float denominator = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
+
+		if (denominator == 0) {
+			// Lines are parallel or coincident
+			return std::nullopt;
+		}
+
+		float x = ((p1.x * p2.y - p1.y * p2.x) * (p3.x - p4.x) - (p1.x - p2.x) * (p3.x * p4.y - p3.y * p4.x)) / denominator;
+		float y = ((p1.x * p2.y - p1.y * p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x * p4.y - p3.y * p4.x)) / denominator;
+
+		return sf::Vector2f(x, y);
+	}
+
 }

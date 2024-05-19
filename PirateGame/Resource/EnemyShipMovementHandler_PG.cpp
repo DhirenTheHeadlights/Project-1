@@ -22,7 +22,7 @@ void EnemyShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection)
 }
 
 void EnemyShipMovementHandler::setSpriteRotation() {
-	if (/*getIsColliding() ||*/ getStopShipRotationFlag()) return;
+	if (getStopShipRotationFlag()) return;
 
 	// Grab window
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
@@ -32,11 +32,8 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	float distance = vm::magnitude(travelDirection);
 
 	if (isActiveTowardsTarget) {
-		if (distance < static_cast<float>(800)) {
+		if (distance < broadsideDistance) {
 			travelDirection = vm::normalize(sf::Vector2f(travelDirection.y, -travelDirection.x));
-		}
-		else if (distance < static_cast<float>(800)) {
-			travelDirection = vm::normalize(travelDirection);
 		}
 		else {
 			travelDirection = vm::normalize(travelDirection);
@@ -48,7 +45,9 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 		travelDirection = vm::normalize(travelDirection);
 	}
 
-	window->draw(vm::createVector(position, travelDirection * 100.f, sf::Color::Red));
+	//Check for landmass collision
+	travelDirection = deflectTravelDirection(getNearbyLandmasses(), deflectionDistanceLandmass, travelDirection);
+	travelDirection = deflectTravelDirection(getNearbyShips(), deflectionDistanceShip, travelDirection);
 
 	// Rotate the sprite using conversion from vector to angle with atan2
 	float targetAngle = std::atan2(travelDirection.y, travelDirection.x) * 180.f / pi + 90.f;
@@ -78,3 +77,44 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 	getSprite().setRotation(currentAngle + (accel * angleDifference));
 }
 
+sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(std::vector<sf::Sprite>& sprites, float deflectionDistance, sf::Vector2f travelDirection) {
+	for (auto& sprite : sprites) {
+		// Sprite X is within vector X
+		sf::Vector2f containVector = (position + sf::Vector2f(travelDirection.x * deflectionDistance, travelDirection.y * deflectionDistance));
+		if (abs(containVector.x) - abs(sprite.getPosition().x) > 0.f && sprite.getPosition() != destination) {
+			// Sprite Y is within vector Y, indicating it is within the vector
+			if (abs(containVector.y) - abs(sprite.getPosition().y) > 0.f) {
+				sf::FloatRect rect = sprite.getGlobalBounds();
+				// Calculate new width and heightt
+				float newWidth = rect.width * islandDeflectionPaddingScale;
+				float newHeight = rect.height * islandDeflectionPaddingScale;
+
+				// Calculate new position to keep the rectangle centered
+				float newLeft = rect.left - (newWidth - rect.width) / 2;
+				float newTop = rect.top - (newHeight - rect.height) / 2;
+
+				sf::FloatRect deflectionBounds = sf::FloatRect(newLeft, newTop, newWidth, newHeight);
+
+				std::vector<sf::Vector2f> corners{
+					sf::Vector2f(deflectionBounds.left, deflectionBounds.top),
+					sf::Vector2f(deflectionBounds.left + deflectionBounds.width, deflectionBounds.top),
+					sf::Vector2f(deflectionBounds.left, deflectionBounds.top + deflectionBounds.height),
+					sf::Vector2f(deflectionBounds.left + deflectionBounds.width, deflectionBounds.top + deflectionBounds.height)
+				};
+
+				float cornerToShip = 10000;
+				sf::Vector2f closestCorner;
+				for (auto& corner : corners) {
+					float nextCornerToShip = vm::distance(position, corner);
+					if (nextCornerToShip < cornerToShip) {
+						cornerToShip = nextCornerToShip;
+						closestCorner = corner;
+					}
+				}
+
+				travelDirection = closestCorner;
+			}
+		}
+	}
+	return travelDirection;
+}

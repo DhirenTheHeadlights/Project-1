@@ -28,6 +28,7 @@ namespace PirateGame {
 	private:
 		// Helper functions
 		void setSpriteRotation() override;
+		sf::Vector2f deflectTravelDirection(std::vector<sf::Sprite>& sprites, float deflectionDistance, sf::Vector2f travelDirection);
 
 		// Values
 		sf::Vector2f targetPos;
@@ -35,6 +36,18 @@ namespace PirateGame {
 
 		float turningSpeed = 0.f;
 		float enemySpeedMultiplier = 0.f;
+		float broadsideDistance = 600.f;
+
+
+		float islandDeflectionPaddingScale = 1.2;
+		float deflectionDistanceLandmass = 2000.f;
+		float deflectionDistanceShip = 500.f;
+		float deflectionVectorGrowth = 2.f;
+		sf::Clock deflectionTimer;
+		sf::Time growingRate = sf::seconds(0.1f);
+
+		
+
 
 		bool isActiveTowardsTarget = false;
 	};
