@@ -39,11 +39,12 @@ void ShipGroup::updateGroup() {
 	}
 }
 
-void ShipGroup::drawGroup() {
+void ShipGroup::drawGroup(bool debug) {
 	for (auto& ship : ships) {
 		ship->draw();
 
 		/// For debugging purposes
+		if (!debug) continue;
 
 		// Check if the shipgroup is near the view, if so, display the shipgroup information
 		if (!(vm::distance(ship->getSprite().getPosition(), GlobalValues::getInstance().getWindow()->getView().getCenter()) < 2000.f)) continue;

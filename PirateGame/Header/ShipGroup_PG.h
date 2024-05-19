@@ -17,7 +17,7 @@ namespace PirateGame {
 		~ShipGroup() {};
 
 		void updateGroup();
-		void drawGroup();
+		void drawGroup(bool debug = false);
 
 		void addShip(std::shared_ptr<EnemyShip> ship) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
