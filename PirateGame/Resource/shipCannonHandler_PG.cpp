@@ -49,12 +49,12 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
     }
 }
 
-void ShipCannonHandler::shootCannonballs(sf::Vector2f targetPos) {
+void ShipCannonHandler::shootCannonballs() {
     if (cannonCooldownClock.getElapsedTime() < cooldown) return;
 
     // Fire the cannonballs with the adjusted direction
     for (auto& cannon : cannons) {
-		cannon.fireCannon(side, shipSprite, targetPos);
+        cannon.fireCannon(side, shipSprite);
 	}
 
     // Play sound once per volley if numCannons > 0

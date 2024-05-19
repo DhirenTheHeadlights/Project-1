@@ -22,12 +22,12 @@ void EnemyShipInputHandler::handleCannonFire() {
     }
     
 	// Fire the cannons
-	if (targetPos != sf::Vector2f(0,0)) SCH->shootCannonballs(targetPos);
+	if (targetPos != sf::Vector2f(0,0)) SCH->shootCannonballs();
 }
 
 void EnemyShipInputHandler::handleCannonAim() {
     // Set the manual aim flag to true
-    SCH->setAimTowardsTarget(true);
+    SCH->setFiringState(FiringState::TowardsTarget);
 
     // Calculate vector from enemy ship to player ship
     sf::Vector2f directionVector = targetPos - sprite.getPosition();

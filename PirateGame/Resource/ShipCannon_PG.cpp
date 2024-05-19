@@ -2,11 +2,8 @@
 
 using namespace PirateGame;
 
-void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite, sf::Vector2f targetPos) {
+void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite) {
     if (FS != side) return;
-
-    // Compute the direction to fire based on the cannon's current orientation
-    sf::Vector2f fireDirection = aimTowardsMouse ? calculateDirectionToTarget(shipSprite, targetPos) : calculatePerpendicularDirection(shipSprite.getRotation());
 
     Cannonball* cannonball = new Cannonball(id);
     cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball));
@@ -15,15 +12,15 @@ void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite, sf::Vector2f 
 
     // Set the cannonball to come out of the cannon's muzzle
     sf::Vector2f muzzleOffset;
-    muzzleOffset.x = cannonSprite.getGlobalBounds().width * approxCannonOffsetToEdgeRatio * fireDirection.x;
-    muzzleOffset.y = 0.f * fireDirection.y;  // This will always be zero since second component is zero
+    sf::Vector2f currentFireDirection = vm::angleToVector(cannonSprite.getRotation());
+    muzzleOffset.x = cannonSprite.getGlobalBounds().width * approxCannonOffsetToEdgeRatio * currentFireDirection.x;
+    muzzleOffset.y = 0.f * currentFireDirection.y;  // This will always be zero since second component is zero
 
     // Adjust the muzzleOffset to also consider the size of the cannonball sprite
-    muzzleOffset -= sf::Vector2f(cannonball->getSprite().getGlobalBounds().width / 2.f, cannonball->getSprite().getGlobalBounds().height / 2.f);
+    muzzleOffset -= (sf::Vector2f(0.f, cannonball->getSprite().getGlobalBounds().height / 2.f * (FS == FiringSide::Starboard ? -1.f : 1.f)));
     
     cannonball->getSprite().setPosition(cannonSprite.getPosition() + muzzleOffset);
-
-    cannonball->setVelocity(fireDirection * cannonballSpeed);
+    cannonball->setVelocity(currentFireDirection * cannonballSpeed);
 
     // Add the cannonball to the management systems
     cannonballHashmap->addObject(cannonball);
@@ -106,25 +103,36 @@ void ShipCannon::updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS) {
     sf::Vector2f cannonPosition = rotationTransform.transformPoint(rotationPoint);
     cannonSprite.setPosition(cannonPosition);
 
-    if (aimTowardsMouse && FS == side) {
-        sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
-        sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
-        sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
-        float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
+    switch (state) {
+        case FiringState::TowardsTarget:
+            if (FS == side) {
+				sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, targetPos);
+				float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
+				rotateTowards(targetRotation, rotationSpeed);
+			}
+			break;
+        case FiringState::TowardsMouse:
+            if (FS == side) {
+		        sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+		        sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
+		        sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
+		        sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
+		        float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
 
-        rotateTowards(targetRotation, rotationSpeed);
+		        rotateTowards(targetRotation, rotationSpeed);
 
-        resetRotationClock.restart();
-    }
-    else {
-        float targetRotation = rotation + defaultRotation;
-        // For a little while after aimtowardsmouse is toggled off, slowly rotate towards the default rotation
-        if (resetRotationClock.getElapsedTime() < resetRotationTime) {
-			rotateTowards(rotation + defaultRotation, rotationSpeed);
-		}
-        // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
-		else cannonSprite.setRotation(targetRotation);
+		        resetRotationClock.restart();
+		    }
+            break;
+        case FiringState::Untargeted:
+            float targetRotation = rotation + defaultRotation;
+			// If firing state is untargeted, slowly rotate towards the default rotation
+            if (resetRotationClock.getElapsedTime() < resetRotationTime) {
+                rotateTowards(rotation + defaultRotation, rotationSpeed);
+            }
+            // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
+			else cannonSprite.setRotation(targetRotation);
+            break;
     }
 }
 

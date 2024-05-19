@@ -14,6 +14,10 @@ namespace vm {
 		return std::atan2(v.y, v.x) * 180.f / PI;
 	}
 
+	inline sf::Vector2f angleToVector(float angle) {
+		return sf::Vector2f(std::cos(angle * PI / 180.f), std::sin(angle * PI / 180.f));
+	}
+
 	inline float degreesToRadians(float degrees) {
 		return degrees * PI / 180.f;
 	}

@@ -12,6 +12,13 @@
 
 
 namespace PirateGame {
+	// Enum for firing state
+	enum class FiringState {
+		TowardsTarget,
+		TowardsMouse,
+		Untargeted
+	};
+
 	class ShipCannon {
 	public:
 		ShipCannon(const sf::Texture& texture, int id, FiringSide FS, sf::Vector2f scale) : cannonSprite(texture), id(id), side(FS) {
@@ -31,14 +38,15 @@ namespace PirateGame {
 		};
 		~ShipCannon() {};
 
-		void fireCannon(FiringSide FS, sf::Sprite& shipSprite, sf::Vector2f targetPos);
+		void fireCannon(FiringSide FS, sf::Sprite& shipSprite);
 		void drawCannonNBalls();
 		void updateCannon(sf::Sprite& shipSprite, FiringSide FS);
 
 		// Setters
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
-		void setAimTowardsTarget(bool aimTowardsTarget) { this->aimTowardsMouse = aimTowardsTarget; }
+		void setFiringState(FiringState FS) { this->state = FS; }
+		void setTargetPos(sf::Vector2f targetPos) { this->targetPos = targetPos; }
 	
 		// Getters
 		sf::Sprite& getSprite() { return cannonSprite; }
@@ -61,6 +69,8 @@ namespace PirateGame {
 		std::vector<Cannonball*> cannonballs;
 		sf::Vector2f cannonballScale = { 0.4f, 0.4f };
 		sf::Vector2f offset = { 0.f, 0.f };
+		sf::Vector2f targetPos = { 0.f, 0.f };
+		sf::Vector2f fireDirection = { 0.f, 0.f };
 
 		const float approxCannonOffsetToEdgeRatio = 0.85f;
 		const float pi = 3.14159265f;
@@ -73,9 +83,8 @@ namespace PirateGame {
 		float rotationSpeed = 0.5f;
 		float minDifferenceBetweenTargetAndCannon = 0.01f;
 
-		bool aimTowardsMouse = false;
-
 		FiringSide side;
+		FiringState state = FiringState::Untargeted;
 
 		Hashmap<Cannonball>* cannonballHashmap = nullptr;
 

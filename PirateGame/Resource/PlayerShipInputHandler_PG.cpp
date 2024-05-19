@@ -9,7 +9,7 @@ void PlayerShipInputHandler::handleCannonFire() {
 
 	// Fire the cannons
 	if (inputHandler.isKeyPressedOnce(fireKey)) {
-		SCH->shootCannonballs(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+		SCH->shootCannonballs();
 	}
 }
 
@@ -26,8 +26,14 @@ void PlayerShipInputHandler::handleCannonAim() {
 	}
 
 	// Rotate the cannons based on the mouse position if cannon mode is set to manual
-	SCH->setAimTowardsTarget(inputHandler.isKeyToggled(manualAimKey));
-	SMH->setStopShipRotationFlag(inputHandler.isKeyToggled(manualAimKey));
+	if (inputHandler.isKeyToggled(manualAimKey)) {
+		SCH->setFiringState(FiringState::TowardsMouse);
+		SMH->setStopShipRotationFlag(true);
+	}
+	else {
+		SCH->setFiringState(FiringState::Untargeted);
+		SMH->setStopShipRotationFlag(false);
+	}
 }
 
 void PlayerShipInputHandler::handleAnchorDrop() {

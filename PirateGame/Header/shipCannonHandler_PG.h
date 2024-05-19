@@ -20,16 +20,16 @@ namespace PirateGame {
 		~ShipCannonHandler() {};
 
 		void initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale);
-		void shootCannonballs(sf::Vector2f targetPos);
+		void shootCannonballs();
 		void updateCannons();
 		void drawCannons();
 
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };
 		void setCooldown(float cooldown) { this->cooldown = sf::seconds(cooldown); };
-		void setAimTowardsTarget(bool aimTowardsTarget) {
+		void setFiringState(FiringState FS) {
 			for (auto& cannon : cannons) {
-				cannon.setAimTowardsTarget(aimTowardsTarget);
+				cannon.setFiringState(FS);
 			}
 		};
 		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) {
@@ -38,9 +38,14 @@ namespace PirateGame {
 			}
 		};
 		void setInAudioRange(bool inAudioRange) { this->inAudioRange = inAudioRange; };
+		void setTargetPos(sf::Vector2f targetPos) {
+			for (auto& cannon : cannons) {
+				cannon.setTargetPos(targetPos);
+			}
+		};
 
 		// Getters
-		bool getAimTowardsMouse() const { return aimTowardsMouse; };
+		bool getAimTowardsMouse() const { return aimTowardsTarget; };
 		FiringSide getFiringSide() const { return side; };
 		float getFiringDirectionAngle() const {
 			// Average the firing angles of all the cannons on the firing side
@@ -63,7 +68,7 @@ namespace PirateGame {
 		const float maxFiringAngle = 45.f;
 
 		bool inAudioRange = false;
-		bool aimTowardsMouse = false;
+		bool aimTowardsTarget = false;
 
 		sf::Sprite& shipSprite;
 		FiringSide side = FiringSide::Port;
