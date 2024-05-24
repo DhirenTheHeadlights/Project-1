@@ -2,14 +2,7 @@
 
 using namespace PirateGame;
 
-void ShipMovementHandler::setInitialPosition() {
-	if (!getInitialPositionSet()) {
-		position = sprite.getPosition();
-		initialPositionSet = true;
-	}
-}
-
-void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection) {
+sf::Vector2f ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection) {
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {
 		// Calculate wind effect
@@ -64,7 +57,7 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float el
 		velocity = sf::Vector2f(direction.x * speed, direction.y * speed);
 	}
 
-	position += velocity * elapsedTime;
+	return (velocity * elapsedTime);
 }
 
 void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
@@ -83,30 +76,30 @@ void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {
 	sf::Vector2f dampedVelocity = velocity - normal * vm::dot(velocity, normal) * dampingFactor;
 
 	// Ensure the ship is moved slightly away from the colliding object to prevent sticking
-	position += normal * separationDistance;
+	sprite.setPosition(sprite.getPosition() + normal * separationDistance);
 
 	// Update the ship's velocity
 	velocity = dampedVelocity;
 
 	// Additional: Ensure separation based on direction of approach
-	ensureSeparation(position, normal, collidingSprite);
+	ensureSeparation(normal, collidingSprite);
 }
 
-void ShipMovementHandler::ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
+void ShipMovementHandler::ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
 	// Calculate a push-out vector based on normal and ship's approach direction
 	sf::Vector2f pushOutVector = normal * pushOutDistance;
 
 	// Check the direction of approach and adjust the pushOutVector accordingly
-	sf::Vector2f approachVector = position - collidingSprite.getPosition();
+	sf::Vector2f approachVector = sprite.getPosition() - collidingSprite.getPosition();
 	if (vm::dot(approachVector, normal) < 0) {
 		pushOutVector = -pushOutVector; // Invert the push-out direction for opposite approach
 	}
 
 	// Apply the push-out vector to position to ensure separation
-	position += pushOutVector;
+	sprite.setPosition(sprite.getPosition() + pushOutVector);
 }
 
 void ShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
 	// Apply the recoil to the ship's position
-	position += direction * recoil;
+	sprite.setPosition(sprite.getPosition() + direction * recoil);
 }

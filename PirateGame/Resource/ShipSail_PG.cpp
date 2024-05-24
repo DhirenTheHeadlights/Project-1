@@ -43,8 +43,8 @@ float Sail::calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) cons
 	sf::Vector2f normShipDirection = vm::normalize(shipDirection);
 	sf::Vector2f normSailDirection = vm::normalize(getDirectionVector());
 
-	float ShipAngle = vm::vectorToAngle(normShipDirection);
-	float SailAngle = vm::vectorToAngle(normSailDirection);
+	float ShipAngle = vm::vectorToAngleDegrees(normShipDirection);
+	float SailAngle = vm::vectorToAngleDegrees(normSailDirection);
 	return SailAngle - ShipAngle; // Sail angle relative to the ship
 }
 
@@ -54,8 +54,8 @@ void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, c
     sf::Vector2f normWindDirection = vm::normalize(windDirection);
 
     // Convert directions to angles with respect to the global coordinate system
-    float shipAngle = vm::normalizeAngle(vm::vectorToAngle(normShipDirection));
-    float windAngle = vm::normalizeAngle(vm::vectorToAngle(normWindDirection));
+    float shipAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(normShipDirection));
+    float windAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(normWindDirection));
 
     // Calculate wind angle relative to the ship
     float relativeWindAngle = windAngle - shipAngle;

@@ -23,12 +23,11 @@ namespace PirateGame {
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
-		virtual void updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection = sf::Vector2f(0, 0));
+		virtual sf::Vector2f updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection = sf::Vector2f(0, 0));
 		virtual void setSpriteRotation() = 0;
 
 		// These functions stay constant
-		void ensureSeparation(sf::Vector2f& position, const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
-		void setInitialPosition();
+		void ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
 
 		// Setters
 		void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
@@ -60,7 +59,6 @@ namespace PirateGame {
 		bool getIsColliding() const { return isColliding; }
 		bool getWindSpeedApplied() const { return windSpeedApplied; }
 		bool getInitialPositionSet() const { return initialPositionSet; }
-
 	private:
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;
@@ -87,10 +85,6 @@ namespace PirateGame {
 		float dampingFactor = 0.5f;		  // For collisionMovement
 		float separationDistance = 5.0f;  // For collisionMovement
 		float pushOutDistance = 1.0f;	  // For ensureSeparation
-		
-	protected:
-		const float pi = 3.14159265359f;
-		sf::Vector2f position;
 	};
 }
 

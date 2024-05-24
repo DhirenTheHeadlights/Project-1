@@ -11,12 +11,20 @@ namespace vm {
 		return std::sqrt(v.x * v.x + v.y * v.y);
 	}
 
-	inline float vectorToAngle(const sf::Vector2f& v) {
+	inline float vectorToAngleDegrees(const sf::Vector2f& v) {
 		return std::atan2(v.y, v.x) * 180.f / PI;
 	}
 
-	inline sf::Vector2f angleToVector(float angle) {
+	inline float vectorToAngleRadians(const sf::Vector2f& v) {
+		return std::atan2(v.y, v.x);
+	}
+
+	inline sf::Vector2f angleDegreesToVector(float angle) {
 		return sf::Vector2f(std::cos(angle * PI / 180.f), std::sin(angle * PI / 180.f));
+	}
+
+	inline sf::Vector2f angleRadiansToVector(float angle) {
+		return sf::Vector2f(std::cos(angle), std::sin(angle));
 	}
 
 	inline float degreesToRadians(float degrees) {
@@ -105,4 +113,9 @@ namespace vm {
 		return sf::Vector2f(x, y);
 	}
 
+	inline bool isInFront(const sf::Vector2f& position, const sf::Vector2f& relativeTo) {
+		sf::Vector2f diff = relativeTo - position;
+		float product = dot(position, diff);
+		return (product <= 0) ? false : true;
+	}
 }

@@ -6,47 +6,30 @@ using namespace PirateGame;
 void PlayerShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection) {
 	setBaseSpeed(baseSpeed);
 
-	setInitialPosition();
-
 	float elapsed = getDeltaTime().restart().asSeconds();
 
 	// Calculate the direction based on the ship's current rotation
-	float rotationInRadians = (getSprite().getRotation() - 90.f) * pi / 180.f; // Subtract 90 degrees to align with SFML's rotation
+	float rotationInRadians = vm::degreesToRadians(getSprite().getRotation() - 90.f); // Subtract 90 degrees to align with SFML's rotation
 	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
-	updateVelocity(direction, elapsed, baseSpeed, sailDirection);
+	// Update the velocity based on the direction
+	getSprite().setPosition(getSprite().getPosition() + updateVelocity(direction, elapsed, baseSpeed, sailDirection));
 	setSpriteRotation();
-
-	// Set the new position
-	getSprite().setPosition(position);
 }
 
 
 void PlayerShipMovementHandler::setSpriteRotation() {
 	if (getIsColliding() || getStopShipRotationFlag()) return;
 
-	// Grab window
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
 	// Calculate the direction to the mouse
-	sf::Vector2f mousePosition = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+	sf::Vector2f mousePosition = GlobalValues::getInstance().getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*GlobalValues::getInstance().getWindow()));
 	sf::Vector2f directionToMouse = vm::normalize(mousePosition - getSprite().getPosition());
 
-	// Rotate the sprite using conversion from vector to angle with atan2
-	float targetAngle = std::atan2(directionToMouse.y, directionToMouse.x) * 180.f / pi + 90.f;
-
-	// Normalize the target angle to the range [0, 360]
-	if (targetAngle < 0) targetAngle += 360;
-
-	// Get the current angle
-	float currentAngle = getSprite().getRotation();
+	// Rotate the sprite using conversion from vector to angle with atan2 and normalize the angle
+	float targetAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(directionToMouse) + 90.f);
 
 	// Calculate the difference between the target and current angle
-	float angleDifference = targetAngle - currentAngle;
-
-	// Normalize the angle difference to the range [-180, 180]
-	while (angleDifference < -180) angleDifference += 360;
-	while (angleDifference > 180) angleDifference -= 360;
+	float angleDifference = vm::normalizeAngle(targetAngle - getSprite().getRotation(), -180.f, 180.f);
 
 	// Calculate the extra rotational acceleration based on the angle difference
 	// Also, the accel is based on the speed of the ship
@@ -56,5 +39,5 @@ void PlayerShipMovementHandler::setSpriteRotation() {
 	angleDifference = std::clamp(angleDifference, -turningSpeed, turningSpeed);
 
 	// Set the new rotation
-	getSprite().setRotation(currentAngle + (accel * angleDifference));
+	getSprite().rotate(accel * angleDifference);
 }

@@ -12,7 +12,7 @@ void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite) {
 
     // Set the cannonball to come out of the cannon's muzzle
     sf::Vector2f muzzleOffset;
-    sf::Vector2f currentFireDirection = vm::angleToVector(cannonSprite.getRotation());
+    sf::Vector2f currentFireDirection = vm::angleDegreesToVector(cannonSprite.getRotation());
     muzzleOffset.x = cannonSprite.getGlobalBounds().width * approxCannonOffsetToEdgeRatio * currentFireDirection.x;
     muzzleOffset.y = 0.f * currentFireDirection.y;  // This will always be zero since second component is zero
 

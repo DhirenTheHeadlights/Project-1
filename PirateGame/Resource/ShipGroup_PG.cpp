@@ -20,11 +20,11 @@ void ShipGroup::updateGroup() {
 		Ship* targetShip = getClosestEnemyShip(ship);
 		if (inCombat && targetShip != nullptr) {
 			ship->setTargetPosition(targetShip->getSprite().getPosition());
-			ship->getMovementHandler()->setIsActiveTowardsTarget(true);
+			ship->getMovementHandler()->setActiveTowardsTarget(true);
 			ship->getMovementHandler()->setBaseSpeed(combatSpeedMultiplier * groupSpeed);
 		}
 		else {
-			ship->getMovementHandler()->setIsActiveTowardsTarget(false);
+			ship->getMovementHandler()->setActiveTowardsTarget(false);
 			ship->getMovementHandler()->setBaseSpeed(groupSpeed);
 		}
 
