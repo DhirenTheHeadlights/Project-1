@@ -44,6 +44,7 @@ void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 
 	GlobalWindController::getInstance().update();
 
+	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
 
 	LMHandler.interactWithLandmasses(playerShip.get());
