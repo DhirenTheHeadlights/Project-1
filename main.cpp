@@ -11,7 +11,7 @@
 #include "AgarGame/Header/World_AG.h"
 #include "AimTrainer/Header/World_AT.h"
 #include "LightAndShadow/Header/WorldLS.h"
-#include "PirateGame/Header/World_PG.h"
+#include "PirateGame/Header/WorldFactory_PG.h"
 #include "Platformer Game/Header/World_Plat.h"
 #include "DoodleJump/World_DJ.h"
 
@@ -111,34 +111,23 @@ void aimTrainer() { // Aim Trainer
 void pirateGame() { // Pirate Game
     initializeGlobals("Pirate Game Window");
 	
-    PirateGame::World world(&window);
-
+    PirateGame::WorldFactory worldFactory;
+    PirateGame::World* world = nullptr;
+    
     while (window.isOpen()) {
-		sf::Event event;
+        sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-				window.close();
-			}
+                window.close();
+            }
         }
-        world.createWorld(event);
+        if (!worldFactory.getHasSelectedWorld()) {
+            world = worldFactory.selectWorld(&window);
+        }
+        else {
+            world->createWorld(event);
+        }
     }
-}
-
-void pirateGameDebug() { // Pirate Game with debug mode
-	initializeGlobals("Pirate Game Window");
-
-	PirateGame::World world(&window, true);
-
-    while (window.isOpen()) {
-		sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-				window.close();
-			}
-		}
-		world.createWorld(event);
-	}
-
 }
 
 void lightAndShadow() {
@@ -233,8 +222,6 @@ int main() {
         Game("Aim Trainer", aimTrainer),
         Game("Light and Shadows", lightAndShadow),
         Game("Pirate Game", pirateGame),
-        Game("Pirate Game (Debug)", pirateGameDebug),
-
         Game("Platformer", Platformer),
         Game("Doodle Jump", doodleJump),
         // Add more games here...

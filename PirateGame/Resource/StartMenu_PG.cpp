@@ -9,7 +9,7 @@ void StartMenu::setUpMenu() {
 
 	// Set the title of the menu
 	titleText = sf::Text("DNS PIRATE GAME ADVENTURE", font, static_cast<unsigned int>(100.f));
-	titleText.setPosition(window->getSize().x / 2 - titleText.getGlobalBounds().getSize().x / 2, window->getSize().x / 8);
+	titleText.setPosition(static_cast<float>(window->getSize().x / 2) - titleText.getGlobalBounds().getSize().x / 2, static_cast<float>(window->getSize().x / 8u));
 
 	// Add the interactables to the menu and set their positions
 	addInteractablesToMenu();

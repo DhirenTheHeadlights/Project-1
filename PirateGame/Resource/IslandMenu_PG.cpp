@@ -88,13 +88,13 @@ void IslandMenu::addGeneralInteractables() {
 	// Left and right buttons to navigate each menu 
 	addButton(sf::Text("", font, interactableTextSizeBig), GlobalTextureHandler::getInstance().getMarketTextures().getMarketLeftRightNavigation(), leftRightNavButtons, [this]() {
 		if (currentPage != pages.front()) {
-			currentPage = pages[static_cast<int>(currentPage) - 1];
+			currentPage = pages[static_cast<std::vector<PirateGame::Page, std::allocator<PirateGame::Page>>::size_type>(static_cast<int>(currentPage)) - 1];
 		}
 	});
 	leftRightNavButtons[0].getSprite().setScale(-1.f, 1.f); // Flip the sprite to face left
 	addButton(sf::Text("", font, interactableTextSizeBig), GlobalTextureHandler::getInstance().getMarketTextures().getMarketLeftRightNavigation(), leftRightNavButtons, [this]() {
 		if (currentPage != pages.back()) {
-			currentPage = pages[static_cast<int>(currentPage) + 1];
+			currentPage = pages[static_cast<std::vector<PirateGame::Page, std::allocator<PirateGame::Page>>::size_type>(static_cast<int>(currentPage)) + 1];
 		}
 	});
 }
@@ -208,7 +208,7 @@ void IslandMenu::addShipBuyInteractables() {
 		// Create display boxes for the ship's stats. The stats displayed are the ship's health, speed, num cannons, regen rate, and cannon range
 		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).maxHealth), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
 		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).baseSpeed), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
-		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).numCannons, 0), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
+		addTextDisplayBox(sf::Text(std::to_string(getShipProperties(shipClass).numCannons), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
 		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).regenRate), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
 
 		shipStats.push_back(std::make_pair(shipClass, std::move(shipStatsVec)));

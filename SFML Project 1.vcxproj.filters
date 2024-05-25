@@ -239,6 +239,18 @@
     <Filter Include="Source Files\PirateGame\Sprites\Market\Initial">
       <UniqueIdentifier>{ef03266c-8b3f-4d74-af7d-2d96f5cc2201}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game World\General">
+      <UniqueIdentifier>{6441de6a-463c-40b0-9ef3-65725235d209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game World\Worlds">
+      <UniqueIdentifier>{e8fdbc7a-08a7-4fef-9e3d-7b9bf56af72c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Game World\General">
+      <UniqueIdentifier>{ab7066e6-ec6c-4725-92aa-35a988c6f749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Game World\Worlds">
+      <UniqueIdentifier>{5e39b227-35bc-48eb-8467-0ad7c7096c2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -330,12 +342,6 @@
     </ClCompile>
     <ClCompile Include="Globals\Resource\GameTemplate.cpp">
       <Filter>Source Files\Globals\Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\View_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
-    </ClCompile>
-    <ClCompile Include="PirateGame\Resource\World_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\Specific Interactables</Filter>
@@ -457,9 +463,6 @@
     <ClCompile Include="PirateGame\Resource\GlobalInputHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Global</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\ShipGroup_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\Ship\General</Filter>
     </ClCompile>
@@ -474,6 +477,21 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\ShipSail_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\General</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\View_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\General</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\World_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\WorldDebug_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\WorldDefault_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -566,12 +584,6 @@
     </ClInclude>
     <ClInclude Include="Globals\Header\GameTemplate.h">
       <Filter>Source Files\Globals\Header</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\View_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\World_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\Button_PG.h">
       <Filter>Source Files\PirateGame\Header\Menus\Interactables</Filter>
@@ -726,9 +738,6 @@
     <ClInclude Include="PirateGame\Header\GlobalInputHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\HashmapTemplate_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game World</Filter>
-    </ClInclude>
     <ClInclude Include="DoodleJump\World_DJ.h">
       <Filter>Source Files\DoodleJump</Filter>
     </ClInclude>
@@ -767,6 +776,30 @@
     </ClInclude>
     <ClInclude Include="Globals\Header\VectorMath.h">
       <Filter>Source Files\Globals\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\HashmapTemplate_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\View_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\World_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WorldFactory_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Resource\WorldLMAvoid_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WorldDefault_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WorldLMAvoid_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WorldDebug_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

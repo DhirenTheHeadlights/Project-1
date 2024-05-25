@@ -59,6 +59,8 @@ namespace PirateGame {
 			return "Manowar";
 		case ShipClass::Galleon:
 			return "Galleon";
+		default:
+			return "Unkown";
 		}
 	}
 }

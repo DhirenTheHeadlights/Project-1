@@ -2,12 +2,9 @@
 
 using namespace PirateGame;
 
-World::World(sf::RenderWindow* window_in, bool debug) { 
-	this->debug = debug; // Set the debug value
-
+void World::setUpWorld() {
 	// Set the window
-	GlobalValues::getInstance().setWindow(window_in);
-	window = GlobalValues::getInstance().getWindow();
+	GlobalValues::getInstance().setWindow(window);
 	view.setUpView();
 
 	// Set up the map
@@ -16,19 +13,6 @@ World::World(sf::RenderWindow* window_in, bool debug) {
 	// Set up the player ship
 	playerShip = std::make_unique<PlayerShip>();
 
-	// Set up the values
-	if (debug) {
-		numLandMasses = numLandMassesDebug;
-		distanceBetweenLandMasses = distanceBetweenLandMassesDebug;
-		numEnemyShips = numEnemyShipsDebug;
-		distanceBetweenEnemyShips = distanceBetweenEnemyShipsDebug;
-	}
-
-	// Set up the world
-	setUpWorld();
-}
-
-void World::setUpWorld() {
 	// Set up the player ship
 	playerShip->setUpShip(ShipClass::ManOWar);
 	playerShip->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
@@ -74,86 +58,6 @@ void World::setUpWorld() {
 	// Set up the background
 	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
 	background.setFillColor(backgroundColor);
-}
-
-void World::createWorld(sf::Event event) {
-	window->clear();
-
-	GlobalInputHandler::getInstance().update();
-
-	GlobalGameStateManager* GSM = &GlobalGameStateManager::getInstance();
-
-	// Handle the different game states
-	switch (GSM->getCurrentGameState()) {
-	case GameState::Start:
-		// Draw the main menu
-		MH.openMenu(MenuType::StartMenu);
-		break;
-	case GameState::OptionsMenu:
-		// Draw the options menu
-		MH.openMenu(MenuType::OptionsMenu);
-		break;
-	case GameState::End:
-		// End the game and close the window
-		window->close();
-		break;
-	case GameState::GameLoop:
-		// Run the game loop
-		drawGameLoop();
-		updateGameLoop(event);
-		if (GlobalValues::getInstance().getShowHUD() && !debug) MH.openMenu(MenuType::HUD);
-		break;
-	}
-
-	// Close if the escape key is pressed
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		window->close();
-	}
-
-	// Frame rate calculation
-	sf::Time deltaTime = frameRateClock.restart();
-	frameRateUpdateTime += deltaTime;
-	++frameCount;
-
-	if (frameCount >= numFramesToAverage) {
-		float frameRate = frameCount / frameRateUpdateTime.asSeconds();
-		frameRateText.setString("FPS: " + std::to_string(static_cast<int>(frameRate)));
-		frameRateUpdateTime = sf::Time::Zero;
-		frameCount = 0;
-	}
-	 
-	// Set the position of the frame rate text to be in the bottom left corner
-	frameRateText.setPosition(view.getView().getCenter().x - window->getSize().x / 2.f, view.getView().getCenter().y + window->getSize().y / 2.f - 2 * frameRateText.getGlobalBounds().height);
-
-	// Experience text is right by it
-	experience.setString("Exp: " + std::to_string(playerShip->getExp()) + "/" + std::to_string(playerShip->getExpToLevelUp()));
-	experience.setPosition(frameRateText.getPosition().x + frameRateText.getLocalBounds().getSize().x + 10.f, frameRateText.getPosition().y);
-
-	window->display();
-}
-
-void World::updateGameLoop(sf::Event event) {
-	// Update the map
-	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
-
-	GlobalWindController::getInstance().update();
-
-	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
-	if (debug) background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
-
-	LMHandler.interactWithLandmasses(playerShip.get());
-
-	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
-		ESH.update();
-		gameLoopClock.restart();
-	}
-
-	CM.handleCollisions();
-
-	playerShip->update();
-
-	if (!debug) view.setCenter(playerShip->getSprite().getPosition());
-	else view.updateDebugView(event);
 }
 
 void World::drawGameLoop() {

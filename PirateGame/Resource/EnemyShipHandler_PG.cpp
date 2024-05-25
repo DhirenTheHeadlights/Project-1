@@ -187,7 +187,7 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 	if (enemyShipGroup->getIsInteracting()) return;
 
 	// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
-	std::uniform_int_distribution<int> dist(0, interactionChance + enemyShipGroup->getEnemyShips().size()); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
+	std::uniform_int_distribution<int> dist(0, interactionChance + static_cast<int>(enemyShipGroup->getEnemyShips().size())); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
 	int interaction = dist(GlobalValues::getInstance().getRandomEngine());
 
 	// Shows if there is interaction. Possible framework for future attack indicator!

@@ -23,16 +23,17 @@
 namespace PirateGame {
 	class World {
 	public:
-		World(sf::RenderWindow* window, bool debug = false);
+		World(sf::RenderWindow* window) : window(window) {
+			setUpWorld();
+		};
 		~World() {};
 
-		void createWorld(sf::Event event);
-
-	private:
+		virtual void createWorld(sf::Event event) = 0;
+	protected:
 		// Functions
-		void setUpWorld();
-		void updateGameLoop(sf::Event event);
-		void drawGameLoop();
+		virtual void setUpWorld();
+		virtual void updateGameLoop(sf::Event event) = 0;
+		virtual void drawGameLoop();
 
 		// Game objects
 		Player player;
@@ -64,20 +65,11 @@ namespace PirateGame {
 		// Exp text temp
 		sf::Text experience;
 
-		// Debug
-		bool debug;
-
-		// Object numbers [not debug]
-		int numLandMasses = 5;
-		float distanceBetweenLandMasses = 2000.f;
-		int numEnemyShips = 5;
-		float distanceBetweenEnemyShips = 1000.f;
-
-		// Object numbers [debug]
-		int numLandMassesDebug = 0;
-		float distanceBetweenLandMassesDebug = 100.f;
-		int numEnemyShipsDebug = 5;
-		float distanceBetweenEnemyShipsDebug = 100.f;
+		// Object numbers
+		int numLandMasses = 0;
+		float distanceBetweenLandMasses = 0.f;
+		int numEnemyShips = 0;
+		float distanceBetweenEnemyShips = 0.f;
 	};
 }
 

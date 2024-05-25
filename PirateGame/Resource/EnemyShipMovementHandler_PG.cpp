@@ -53,9 +53,9 @@ sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(const std::vector<
                 calculateDeflectionVector(sprite, travelDirection, deflectionDistance);
             }
         }
-        hasDeflectionTarget = false;
-        return travelDirection;
     }
+    hasDeflectionTarget = false;
+    return travelDirection;
 }
 
 sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::Sprite& deflectionSprite, const sf::Vector2f travelDirection, const float deflectionDistance) {

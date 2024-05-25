@@ -49,6 +49,6 @@ namespace PirateGame {
         sf::Time cooldownTime = sf::milliseconds(100);
 
         bool mouseClickedThisFrame = false;
-        sf::Mouse::Button clickedButton;
+        sf::Mouse::Button clickedButton = sf::Mouse::Button::ButtonCount;
     };
 }
