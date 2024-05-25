@@ -493,6 +493,9 @@
     <ClCompile Include="PirateGame\Resource\WorldDefault_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\WorldLMAvoid_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -788,9 +791,6 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\WorldFactory_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Resource\WorldLMAvoid_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\WorldDefault_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>

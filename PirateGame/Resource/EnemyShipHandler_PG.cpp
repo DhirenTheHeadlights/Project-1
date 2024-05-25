@@ -17,42 +17,41 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 
 	// Add the ships
 	for (int i = 0; i < points.size(); i++) {
-		// Create a new ship
-		std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>();
-
-		// Set up the ship
-		ship->setUpShip();
-		ship->getCannonHandler()->setCooldown(enemyCannonCooldown);
-		ship->getMovementHandler()->setTurningSpeed(turningSpeed);
-		ship->getMovementHandler()->setEnemySpeedMultiplier(enemySpeedMultiplier);
-		ship->getInputHandler()->setFiringDistance(firingDistance);
-		ship->getSprite().setPosition(points[i]);
-		
-		// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
-		// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
-		// hashmap is global, but it is necessary because to avoid circular dependencies because
-		// the global hashmap handler includes enemy ship which included the SCH.
-		ship->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
-
-		// Add the ship to a new ship group and vector, std::move is not needed
-		// do after setting up the ship, otherwise the ship will be empty
-		std::shared_ptr<ShipGroup> group = std::make_shared<ShipGroup>();
-		ship->setGroupID(group->getID());	
-		group->addShip(ship);
-		setShipGroupDestination(group);
-		enemyShips.push_back(std::move(ship));
-		shipGroups.push_back(std::move(group));
+		addEnemyShip(points[i]);
 	}
+}
 
-	// Add the ships to the hashmap
-	for (auto& ship : enemyShips) {
-		GlobalHashmapHandler::getInstance().getShipHashmap()->addObject(ship.get());
-	}
+void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
+	// Create a new ship
+	std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>();
+
+	// Set up the ship
+	ship->setUpShip(type);
+	ship->getCannonHandler()->setCooldown(enemyCannonCooldown);
+	ship->getMovementHandler()->setTurningSpeed(turningSpeed);
+	ship->getMovementHandler()->setEnemySpeedMultiplier(enemySpeedMultiplier);
+	ship->getInputHandler()->setFiringDistance(firingDistance);
+	ship->getSprite().setPosition(position);
+
+	// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
+	// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
+	// hashmap is global, but it is necessary because to avoid circular dependencies because
+	// the global hashmap handler includes enemy ship which included the SCH.
+	ship->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
+
+	// Add the ship to a new ship group and vector, std::move is not needed
+	// do after setting up the ship, otherwise the ship will be empty
+	std::shared_ptr<ShipGroup> group = std::make_shared<ShipGroup>();
+	ship->setGroupID(group->getID());
+	group->addShip(ship);
+	setShipGroupDestination(group);
+	enemyShips.push_back(std::move(ship));
+	shipGroups.push_back(std::move(group));
 }
 
 void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) {
 	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition();
-	group->setHeading(position);
+	group->setDestination(position);
 }
 
 bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) const {

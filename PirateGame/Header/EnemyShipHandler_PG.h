@@ -25,8 +25,8 @@ namespace PirateGame {
 			}
 		};
 
-		// Add and remove enemy ships
 		void addEnemyShips(int numShips);
+		void addEnemyShip(sf::Vector2f position, ShipClass type = ShipClass::Random);
 
 		// Update and draw
 		void update();
@@ -38,6 +38,7 @@ namespace PirateGame {
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
+		std::vector<std::shared_ptr<ShipGroup>>& getShipGroups() { return shipGroups; }
 
 	private:
 		// helper functions

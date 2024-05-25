@@ -28,6 +28,10 @@ namespace PirateGame {
 			ship->setBaseSpeed(groupSpeed);
 
 			ship->setGroupID(ID);
+
+			// Add the ship to the hashmap
+			GlobalHashmapHandler::getInstance().getShipHashmap()->addObject(ship.get());
+
 			ships.push_back(ship);
 			//std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
 		}
@@ -53,7 +57,7 @@ namespace PirateGame {
 		}
 
 		// Setters
-		void setHeading(sf::Vector2f heading) { this->destination = heading; }
+		void setDestination(sf::Vector2f heading) { this->destination = heading; }
 		void addTarget(Ship* ship) { 
 			if (std::find(targetShips.begin(), targetShips.end(), ship) != targetShips.end()) {
 				return;

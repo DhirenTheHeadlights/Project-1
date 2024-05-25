@@ -52,12 +52,12 @@ void LandMassHandler::drawLandMasses() {
 	}
 }
 
-void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
+void LandMassHandler::interactWithLandmasses() {
 	if (nearestLandMass == nullptr) {
-		std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(ship, interactionDistance);
+		std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(playerShip, interactionDistance);
 
 		for (auto& landMass : nearbyLandMasses) {
-			sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
+			sf::Vector2f shipPosition = playerShip->getSprite().getPosition(); // Ship position is already the center of the sprite
 			sf::Vector2f landMassPosition = landMass->getSprite().getPosition() + landMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
 			float distance = vm::magnitude(shipPosition - landMassPosition);
 
@@ -78,14 +78,14 @@ void LandMassHandler::interactWithLandmasses(PlayerShip* ship) {
 	}
 	// Draw the island menu for the nearest land mass
 	else {
-		nearestLandMass->getIslandMenu()->setShip(*ship);
+		nearestLandMass->getIslandMenu()->setShip(*playerShip);
 		nearestLandMass->getIslandMenu()->draw();
 		nearestLandMass->getIslandMenu()->update();
 	}
 
 	// Set the nearest land mass to null if the player is no longer near it
 	if (nearestLandMass != nullptr) {
-		sf::Vector2f shipPosition = ship->getSprite().getPosition(); // Ship position is already the center of the sprite
+		sf::Vector2f shipPosition = playerShip->getSprite().getPosition(); // Ship position is already the center of the sprite
 		sf::Vector2f landMassPosition = nearestLandMass->getSprite().getPosition() + nearestLandMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
 		float distance = vm::magnitude(shipPosition - landMassPosition);
 

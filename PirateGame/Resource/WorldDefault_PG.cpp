@@ -62,7 +62,7 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 
 	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 
-	LMHandler.interactWithLandmasses(playerShip.get());
+	LMH.interactWithLandmasses();
 
 	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
 		ESH.update();

@@ -23,18 +23,22 @@ namespace PirateGame {
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
+        void createLandmass(LandMassType type, sf::Vector2f position);
         void drawLandMasses();
-        void interactWithLandmasses(PlayerShip* ship);
+        void interactWithLandmasses();
 
         // Getters
         std::vector<std::shared_ptr<LandMass>>& getLandMasses() { return landmasses; }
+
+        // Setters
+        void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
     private:
         // Helper functions
         void addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses);
-        void createLandmass(LandMassType type, sf::Vector2f position);
 
         std::vector<std::shared_ptr<LandMass>> landmasses;
         LandMass* nearestLandMass = nullptr;
+        PlayerShip* playerShip = nullptr;
 
         // Values
         float interactionDistance = 1000.f; // Distance for interaction with landmasses

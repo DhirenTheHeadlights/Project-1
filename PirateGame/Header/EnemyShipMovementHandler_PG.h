@@ -35,6 +35,8 @@ namespace PirateGame {
 		sf::Vector2f destination;
 		sf::Vector2f deflectionTarget;
 
+		sf::Sprite deflectionSprite;
+
 		float enemySpeedMultiplier = 0.f;
 		float broadsideDistance = 600.f;
 

@@ -4,6 +4,7 @@
 
 #include "WorldDebug_PG.h"
 #include "WorldDefault_PG.h"
+#include "WorldLMAvoid_PG.h"
 
 namespace PirateGame {
 	enum class WorldType {
@@ -47,6 +48,7 @@ namespace PirateGame {
 			// Add buttons for each world type
 			worldTypes.push_back(SelectionButton(WorldType::Default, worldTypeToString(WorldType::Default)));
 			worldTypes.push_back(SelectionButton(WorldType::DefaultDebug, worldTypeToString(WorldType::DefaultDebug)));
+			worldTypes.push_back(SelectionButton(WorldType::LandmassAvoidanceTest, worldTypeToString(WorldType::LandmassAvoidanceTest)));
 
 			// Set the position of the buttons
 			for (auto& button : worldTypes) {
@@ -84,6 +86,8 @@ namespace PirateGame {
 				return "Default";
 			case WorldType::DefaultDebug:
 				return "Default Debug";
+			case WorldType::LandmassAvoidanceTest:
+				return "Landmass Avoidance Test";
 			default:
 				return "Unknown";
 			}
@@ -93,14 +97,22 @@ namespace PirateGame {
 
 	private:
 		static World* createWorld(WorldType worldType, sf::RenderWindow* window) {
+			World* world = nullptr;
 			switch (worldType) {
 			case WorldType::Default:
-				return new DefaultWorld(window);
+				world = new DefaultWorld(window);
+				break;
 			case WorldType::DefaultDebug:
-				return new DefaultDebugWorld(window);
+				world = new DefaultDebugWorld(window);
+				break;
+			case WorldType::LandmassAvoidanceTest:
+				world = new LMAvoidWorld(window);
+				break;
 			default:
 				return nullptr;
 			}
+			world->setUpWorld();
+			return world;
 		}
 
 		std::vector<SelectionButton> worldTypes;

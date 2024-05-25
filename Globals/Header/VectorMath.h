@@ -113,8 +113,8 @@ namespace vm {
 		return sf::Vector2f(x, y);
 	}
 
-	inline bool isInFront(const sf::Vector2f& position, const sf::Vector2f& relativeTo, const sf::Vector2f& direction) {
-		sf::Vector2f diff = relativeTo - position;
+	inline bool isInFront(const sf::Vector2f& mainPosition, const sf::Vector2f& otherPosition, const sf::Vector2f& direction) {
+		sf::Vector2f diff = otherPosition - mainPosition;
 		float product = dot(direction, diff);
 		return product > 0;
 	}

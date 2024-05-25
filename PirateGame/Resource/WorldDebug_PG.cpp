@@ -7,10 +7,8 @@ void DefaultDebugWorld::createWorld(sf::Event event) {
 
 	GlobalInputHandler::getInstance().update();
 
-	GlobalGameStateManager* GSM = &GlobalGameStateManager::getInstance();
-
 	// Handle the different game states
-	switch (GSM->getCurrentGameState()) {
+	switch (GlobalGameStateManager::getInstance().getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
 		MH.openMenu(MenuType::StartMenu);
@@ -47,7 +45,7 @@ void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
 
-	LMHandler.interactWithLandmasses(playerShip.get());
+	LMH.interactWithLandmasses();
 
 	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
 		ESH.update();

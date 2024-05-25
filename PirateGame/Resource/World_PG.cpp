@@ -3,48 +3,60 @@
 using namespace PirateGame;
 
 void World::setUpWorld() {
-	// Set the window
+	setUpWorldElements();
+	setUpPlayerShip();
+	setUpLandMasses();
+	setUpEnemyShips();
+	setUpCollisionManager();
+	setUpMenus();
+	setUpUI();
+}
+
+void World::setUpWorldElements() {
+	// Set up the window and map/view
 	GlobalValues::getInstance().setWindow(window);
+	GlobalMap::getInstance().initializeMap();
 	view.setUpView();
 
-	// Set up the map
-	GlobalMap::getInstance().initializeMap();
+	// Set up the background
+	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
+	background.setFillColor(backgroundColor);
+}
 
-	// Set up the player ship
+void World::setUpPlayerShip() {
 	playerShip = std::make_unique<PlayerShip>();
-
-	// Set up the player ship
 	playerShip->setUpShip(ShipClass::ManOWar);
 	playerShip->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
+}
 
-	// Set up the land masses
-	LMHandler.addLandMasses(numLandMasses, distanceBetweenLandMasses);
+void World::setUpLandMasses() {
+	LMH.setPlayerShip(playerShip.get());
+	LMH.addLandMasses(numLandMasses, distanceBetweenLandMasses);
+}
 
-	// Set up the enemy ships
-	ESH.setLandmasses(LMHandler.getLandMasses());
+void World::setUpEnemyShips() {
+	ESH.setLandmasses(LMH.getLandMasses());
 	ESH.addEnemyShips(numEnemyShips);
 	ESH.setPlayerShip(playerShip.get());
+}
 
-	// Set up the collision manager
+void World::setUpCollisionManager() {
 	CM.setPlayerShip(playerShip.get());
 	CM.setEnemyShips(ESH.getEnemyShips());
-	CM.setLandMasses(LMHandler.getLandMasses());
+	CM.setLandMasses(LMH.getLandMasses());
+}
 
-	// Set the game state to start
-	GlobalGameStateManager::getInstance().changeGameState(GameState::Start);
-
-	// Set up the menus
+void World::setUpMenus() {
 	MH.createMenus();
 	MH.setUpMenus();
-
-	// Set up the view
-	view.setUpView();
-
-	// Set up the hud minimap
-	MH.getHUD()->getMinimap().setLandmasses(LMHandler.getLandMasses());
+	
+	// Set up the hud
+	MH.getHUD()->getMinimap().setLandmasses(LMH.getLandMasses());
 	MH.getHUD()->getMinimap().setEnemyShips(ESH.getEnemyShips());
 	MH.getHUD()->setPlayerShip(*playerShip.get());
+}
 
+void World::setUpUI() {
 	// Set up the frame rate text
 	frameRateText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
 	frameRateText.setCharacterSize(24u);
@@ -54,15 +66,11 @@ void World::setUpWorld() {
 	experience.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
 	experience.setCharacterSize(24u);
 	experience.setFillColor(sf::Color::White);
-
-	// Set up the background
-	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
-	background.setFillColor(backgroundColor);
 }
 
 void World::drawGameLoop() {
 	window->draw(background);
-	LMHandler.drawLandMasses();
+	LMH.drawLandMasses();
 	window->draw(frameRateText);
 	window->draw(experience);
 	playerShip->draw();

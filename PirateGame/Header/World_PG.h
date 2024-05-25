@@ -23,15 +23,22 @@
 namespace PirateGame {
 	class World {
 	public:
-		World(sf::RenderWindow* window) : window(window) {
-			setUpWorld();
-		};
+		World(sf::RenderWindow* window) : window(window) {};
 		~World() {};
+
+		virtual void setUpWorld();
 
 		virtual void createWorld(sf::Event event) = 0;
 	protected:
 		// Functions
-		virtual void setUpWorld();
+		virtual void setUpWorldElements();
+		virtual void setUpPlayerShip();
+		virtual void setUpLandMasses();
+		virtual void setUpEnemyShips();
+		virtual void setUpCollisionManager();
+		virtual void setUpMenus();
+		virtual void setUpUI();
+
 		virtual void updateGameLoop(sf::Event event) = 0;
 		virtual void drawGameLoop();
 
@@ -41,7 +48,7 @@ namespace PirateGame {
 		View view;
 
 		// Handlers
-		LandMassHandler LMHandler;
+		LandMassHandler LMH;
 		MenuHandler MH;
 		CollisionManager CM;
 		EnemyShipHandler ESH;
