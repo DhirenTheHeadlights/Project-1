@@ -19,7 +19,9 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions 
-		virtual void move(float baseSpeed, sf::Vector2f sailDirection) = 0;
+		virtual void update(float baseSpeed, sf::Vector2f sailDirection) = 0;
+		void move(float baseSpeed, sf::Vector2f sailDirection);
+		void rotateTowards(float targetAngle);
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
@@ -31,6 +33,8 @@ namespace PirateGame {
 
 		// Setters
 		void setVelocity(sf::Vector2f velocity) { this->velocity = velocity; }
+		void setTurningSpeed(float turningSpeed) { this->turningSpeed = turningSpeed; }
+		void setTurningMultiplier(float turningMultiplier) { this->turningMultiplier = turningMultiplier; }
 		void setIsColliding(bool isColliding) { this->isColliding = isColliding; }
 		void setPosition(sf::Vector2f position) { sprite.setPosition(position); }
 		void setInitialPositionVariable(sf::Vector2f initialPosition) { this->initialPosition = initialPosition; }
@@ -78,6 +82,8 @@ namespace PirateGame {
 		bool initialPositionSet = false;
 
 		float rotation = 0;
+		float turningSpeed = 0.1f;
+		float turningMultiplier = 1.f;
 		float speed = 0;
 		float speedBeforeAnchorDrop = 0;
 		float baseSpeed = 0;

@@ -11,13 +11,10 @@ namespace PirateGame {
 		~PlayerShipMovementHandler() {};
 
 		// Movement functions
-		void move(float baseSpeed, sf::Vector2f sailDirection) override;
+		void update(float baseSpeed, sf::Vector2f sailDirection) override;
 
 	private:
 		void setSpriteRotation() override;
-
-
-		float turningSpeed = 0.1f;
 	};
 }
 

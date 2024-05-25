@@ -2,6 +2,18 @@
 
 using namespace PirateGame;
 
+void ShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection) {
+	float elapsed = deltaTime.restart().asSeconds();
+
+	// Calculate the direction based on the ship's current rotation
+	float rotationInRadians = vm::degreesToRadians(sprite.getRotation() - 90.f); // Subtract 90 degrees to align with SFML's rotation
+	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
+
+	// Update the position based on the direction and speed
+	sprite.setPosition(sprite.getPosition() + updateVelocity(direction, elapsed, baseSpeed, sailDirection));
+	setSpriteRotation();
+}
+
 sf::Vector2f ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection) {
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {
@@ -47,7 +59,6 @@ sf::Vector2f ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, 
 		const float reacceleration = 0.2f * speedBeforeAnchorDrop;
 
 		if (speed > 0) speed -= deceleration * elapsedTime; // Gradually decrease the speed to 0
-
 		else if (speed < 0.01f && !anchorPushBack && speed > speedMin) { // Start pull back when the speed is close to 0
 			speed -= deceleration;
 			if (speed < speedMin) anchorPushBack = true;
@@ -58,6 +69,21 @@ sf::Vector2f ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, 
 	}
 
 	return (velocity * elapsedTime);
+}
+
+void ShipMovementHandler::rotateTowards(float targetAngle) {
+	// Calculate the difference between the target and current angle
+	float angleDifference = vm::normalizeAngle(targetAngle - sprite.getRotation(), -180.f, 180.f);
+
+	// Calculate the extra rotational acceleration based on the angle difference
+	// Also, the accel is based on the speed of the ship
+	float accel = abs(10 * angleDifference / 180.f * speed / baseSpeed);
+
+	// Limit the turning speed
+	angleDifference = std::clamp(angleDifference, -turningSpeed * turningMultiplier, turningSpeed * turningMultiplier);
+
+	// Set the new rotation
+	sprite.rotate(accel * angleDifference);
 }
 
 void ShipMovementHandler::collisionMovement(sf::Sprite& collidingSprite) {

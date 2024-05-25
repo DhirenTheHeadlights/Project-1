@@ -3,18 +3,10 @@
 
 using namespace PirateGame;
 
-void EnemyShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection) {
+void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirection) {
 	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
-	float elapsed = getDeltaTime().restart().asSeconds();
-
-	// Calculate the direction based on the ship's current rotation
-	float rotationInRadians = vm::degreesToRadians(getSprite().getRotation() - 90.f); // Subtract 90 degrees to align with SFML's rotation
-	sf::Vector2f direction = vm::angleRadiansToVector(rotationInRadians);
-
-	// Update the position based on the direction and speed
-	getSprite().setPosition(getSprite().getPosition() + updateVelocity(direction, elapsed, baseSpeed, sailDirection));
-	setSpriteRotation();
+	move(baseSpeed, sailDirection);
 }
 
 void EnemyShipMovementHandler::setSpriteRotation() {
@@ -38,27 +30,15 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 		}
 	}
 
-	/*GlobalValues::getInstance().getWindow()->draw(vm::createVector(getSprite().getPosition(), directionToDestination * deflectionDistanceLandmass, sf::Color::Red));
+	GlobalValues::getInstance().getWindow()->draw(vm::createVector(getSprite().getPosition(), directionToDestination * deflectionDistanceLandmass, sf::Color::Red));
 	GlobalValues::getInstance().displayText(getAimTowardsTarget() ? "True" : "False", getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 	GlobalValues::getInstance().displayText("Destination: " + std::to_string(destination.x) + ", " + std::to_string(destination.y), getSprite().getPosition() + sf::Vector2f(0, 100), sf::Color::White);
-	GlobalValues::getInstance().displayText("Position: " + std::to_string(getSprite().getPosition().x) + ", " + std::to_string(getSprite().getPosition().y), getSprite().getPosition() + sf::Vector2f(0, 150), sf::Color::White);*/
+	GlobalValues::getInstance().displayText("Position: " + std::to_string(getSprite().getPosition().x) + ", " + std::to_string(getSprite().getPosition().y), getSprite().getPosition() + sf::Vector2f(0, 150), sf::Color::White);
 
-	// Rotate the sprite using conversion from vector to angle with atan2
-	float targetAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(directionToDestination) + 90.f); // Add 90 degrees to align with SFML's rotation
+    setTurningMultiplier(activeTowardsTarget ? 1.5f : 1.f);
 
-	// Calculate the difference between the target and current angle
-	float angleDifference = vm::normalizeAngle(targetAngle - getSprite().getRotation(), -180.f, 180.f);
-
-	// Calculate the extra rotational acceleration based on the angle difference
-	// Also, the accel is based on the speed of the ship
-	float accel = abs(10 * angleDifference / 180.f * getSpeed() / getBaseSpeed());
-	float turningMultiplier = activeTowardsTarget ? 1.5f : 1.f;
-
-	// Limit the turning speed
-	angleDifference = std::clamp(angleDifference, -turningMultiplier * turningSpeed, turningMultiplier * turningSpeed);
-
-	// Set the new rotation
-	getSprite().rotate(accel * angleDifference);
+	float targetAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(directionToDestination) + 90.f); // +90 to account for sprite rotation
+    rotateTowards(targetAngle);
 }
 
 sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(const std::vector<sf::Sprite>& sprites, sf::Vector2f travelDirection, float deflectionDistance) {
@@ -70,18 +50,15 @@ sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(const std::vector<
             sf::FloatRect spriteBounds = sprite.getGlobalBounds();
             // Check if the point is within the sprite's bounds
             if (spriteBounds.contains(checkPosition)) {
-                deflectionSprite = sprite;
-                break;
+                calculateDeflectionVector(sprite, travelDirection, deflectionDistance);
             }
         }
-    }
-
-    // If no collision was found, clear the deflection target and return the original travel direction
-    if (deflectionSprite.getTexture() == nullptr) {
         hasDeflectionTarget = false;
         return travelDirection;
     }
+}
 
+sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::Sprite& deflectionSprite, const sf::Vector2f travelDirection, const float deflectionDistance) {
     // Calculate the padded bounding box for deflection
     sf::FloatRect spriteBounds = deflectionSprite.getGlobalBounds();
     float newWidth = spriteBounds.width * islandDeflectionPaddingScale;
@@ -91,9 +68,10 @@ sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(const std::vector<
     sf::FloatRect deflectionBounds(newLeft, newTop, newWidth, newHeight);
 
     // If there's no current deflection target or the ship is clear of the corner, find a new corner.
-    if (vm::isInFront(getSprite().getPosition(), deflectionTarget)) hasDeflectionTarget = false;
+    sf::Vector2f spriteCenter = sf::Vector2f(deflectionBounds.left + deflectionBounds.width / 2.f, deflectionBounds.top + deflectionBounds.height / 2.f);
+    if (vm::isInFront(getSprite().getPosition(), spriteCenter, deflectionTarget)) hasDeflectionTarget = false;
 
-    GlobalValues::getInstance().displayText(std::to_string(vm::isInFront(getSprite().getPosition(), deflectionTarget)), getSprite().getPosition() + sf::Vector2f(20.f, 50.f), sf::Color::White);
+    GlobalValues::getInstance().displayText(std::to_string(vm::isInFront(getSprite().getPosition(), spriteCenter, deflectionTarget)), getSprite().getPosition() + sf::Vector2f(20.f, 50.f), sf::Color::White);
     if (!hasDeflectionTarget) {
         std::vector<sf::Vector2f> corners{
             sf::Vector2f(deflectionBounds.left, deflectionBounds.top),

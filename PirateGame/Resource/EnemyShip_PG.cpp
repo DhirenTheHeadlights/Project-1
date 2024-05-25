@@ -16,7 +16,7 @@ void EnemyShip::customShipSetUp() {
 
 void EnemyShip::customShipUpdate() {
 	SIH->update();
-	SMH->move(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection());
+	SMH->update(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection());
 }
 
 void EnemyShip::customShipDraw() {
