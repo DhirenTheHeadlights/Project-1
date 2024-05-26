@@ -35,6 +35,7 @@ namespace PirateGame {
 		// Setters
 		void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
 		void setLandmasses(std::vector<std::shared_ptr<LandMass>> landmasses) { this->landmasses = landmasses; }
+		void setInteractionChance(int interactionChance) { this->interactionChance = interactionChance; }
 
 		// Getters
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return enemyShips; }
@@ -69,7 +70,7 @@ namespace PirateGame {
 		const float notNearbyAnymoreDistance = 3000.f;
 
 		// Interaction chance is the 1/n chance of a specific interaction; For value x, chance of grouping, attacking, etc. is 1/x
-		const int interactionChance = 10;
+		int interactionChance = 10;
 
 		// DestinationReachedDistance is arbitrary; ship will choose a new destination at this distance from island. Does not account for diff sizes.
 		const float destinationReachedDistance = 500.f;

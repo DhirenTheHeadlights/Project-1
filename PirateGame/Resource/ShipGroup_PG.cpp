@@ -69,7 +69,7 @@ void ShipGroup::drawGroup(bool debug) {
 
 Ship* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
 	Ship* closestShip = nullptr;
-	float closestDistance = 999999.f; // Set to a high value
+	float closestDistance = std::numeric_limits<float>::max();
 
 	for (auto& ship : targetShips) {
 		float distance = vm::distance(ship->getSprite().getPosition(), ship->getSprite().getPosition());

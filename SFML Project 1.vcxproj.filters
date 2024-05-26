@@ -251,6 +251,9 @@
     <Filter Include="Source Files\PirateGame\Resource\Game World\Worlds">
       <UniqueIdentifier>{5e39b227-35bc-48eb-8467-0ad7c7096c2a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\JSON">
+      <UniqueIdentifier>{77601f0c-99f9-42b6-b2e6-488fed899b11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -494,6 +497,9 @@
       <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\WorldLMAvoid_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\WorldESAvoid_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClCompile>
   </ItemGroup>
@@ -799,6 +805,9 @@
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\WorldDebug_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WorldESAvoid_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
     </ClInclude>
   </ItemGroup>

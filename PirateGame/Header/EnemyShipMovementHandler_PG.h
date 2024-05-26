@@ -27,8 +27,8 @@ namespace PirateGame {
 	private:
 		// Helper functions
 		void setSpriteRotation() override;
-		sf::Vector2f deflectTravelDirection(const std::vector<sf::Sprite>& sprites, const sf::Vector2f travelDirection, const float deflectionDistance);
-		sf::Vector2f calculateDeflectionVector(const sf::Sprite& deflectionSprite, const sf::Vector2f travelDirection, const float deflectionDistance);
+		sf::Vector2f deflectTravelDirection(const std::vector<sf::Sprite>& sprites, const sf::Vector2f travelDirection, const float deflectionDistance, const float deflectionPaddingScale = 1.f);
+		sf::Vector2f calculateDeflectionVector(const sf::FloatRect& deflectionBounds, const sf::Vector2f travelDirection, const float deflectionDistance);
 
 		// Values
 		sf::Vector2f targetPos;
@@ -40,14 +40,17 @@ namespace PirateGame {
 		float enemySpeedMultiplier = 0.f;
 		float broadsideDistance = 600.f;
 
-		float islandDeflectionPaddingScale = 1.5f;
+		float islandDeflectionPaddingScaleMax = 2.f;  // To give some variation
+		float islandDeflectionPaddingScaleMin = 1.2f; // To give some variation
+		float shipDeflectionPaddingScale = 2.f;
 		float deflectionDistanceLandmass = 2000.f;
-		float deflectionDistanceShip = 500.f;
+		float deflectionDistanceShip = 1000.f;
 		float deflectionVectorGrowth = 2.f;
 		float dotProductThreshold = 0.1f;
+		float closestCornerWeight = 0.8f;
 		int deflectionVectorCheckInterval = 100;
 
 		bool activeTowardsTarget = false;
-		bool hasDeflectionTarget = false;
+		bool hasPickedFirstCorner = false;
 	};
 }

@@ -5,12 +5,14 @@
 #include "WorldDebug_PG.h"
 #include "WorldDefault_PG.h"
 #include "WorldLMAvoid_PG.h"
+#include "WorldESAvoid_PG.h"
 
 namespace PirateGame {
 	enum class WorldType {
 		Default,
 		DefaultDebug,
 		LandmassAvoidanceTest,
+		EnemyShipAvoidanceTest,
 		ShipCombatTest,
 	};
 
@@ -49,6 +51,7 @@ namespace PirateGame {
 			worldTypes.push_back(SelectionButton(WorldType::Default, worldTypeToString(WorldType::Default)));
 			worldTypes.push_back(SelectionButton(WorldType::DefaultDebug, worldTypeToString(WorldType::DefaultDebug)));
 			worldTypes.push_back(SelectionButton(WorldType::LandmassAvoidanceTest, worldTypeToString(WorldType::LandmassAvoidanceTest)));
+			worldTypes.push_back(SelectionButton(WorldType::EnemyShipAvoidanceTest, worldTypeToString(WorldType::EnemyShipAvoidanceTest)));
 
 			// Set the position of the buttons
 			for (auto& button : worldTypes) {
@@ -88,6 +91,8 @@ namespace PirateGame {
 				return "Default Debug";
 			case WorldType::LandmassAvoidanceTest:
 				return "Landmass Avoidance Test";
+			case WorldType::EnemyShipAvoidanceTest:
+				return "Enemy Ship Avoidance Test";
 			default:
 				return "Unknown";
 			}
@@ -107,6 +112,9 @@ namespace PirateGame {
 				break;
 			case WorldType::LandmassAvoidanceTest:
 				world = new LMAvoidWorld(window);
+				break;
+			case WorldType::EnemyShipAvoidanceTest:
+				world = new ESAvoidWorld(window);
 				break;
 			default:
 				return nullptr;

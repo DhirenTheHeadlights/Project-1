@@ -209,6 +209,7 @@
     <ClCompile Include="PirateGame\Resource\WindController_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\WorldDebug_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\WorldDefault_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\WorldESAvoid_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\WorldLMAvoid_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\World_PG.cpp" />
     <ClCompile Include="Platformer Game\Resource\Platforms_Plat.cpp" />
@@ -310,6 +311,7 @@
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalWindController_PG.h" />
     <ClInclude Include="PirateGame\Header\WorldDefault_PG.h" />
+    <ClInclude Include="PirateGame\Header\WorldESAvoid_PG.h" />
     <ClInclude Include="PirateGame\Header\WorldFactory_PG.h" />
     <ClInclude Include="PirateGame\Header\WorldLMAvoid_PG.h" />
     <ClInclude Include="PirateGame\Header\World_PG.h" />

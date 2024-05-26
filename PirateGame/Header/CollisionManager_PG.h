@@ -41,7 +41,7 @@ namespace PirateGame {
 		bool addedExp = false;
 
 		float nearbyDistanceLandmass = 5000.f;
-		float nearbyDistanceShip = 500.f;
+		float nearbyDistanceShip = 2000.f;
 		float nearbyDistanceCannonball = 500.f;
 
 		// Helper functions

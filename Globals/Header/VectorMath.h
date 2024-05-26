@@ -113,10 +113,18 @@ namespace vm {
 		return sf::Vector2f(x, y);
 	}
 
-	inline bool isInFront(const sf::Vector2f& mainPosition, const sf::Vector2f& otherPosition, const sf::Vector2f& direction) {
-		sf::Vector2f diff = otherPosition - mainPosition;
-		float product = dot(direction, diff);
-		return product > 0;
+	inline bool isInFront(const sf::Vector2f& movingPos, const sf::Vector2f& stationaryPos, const sf::Vector2f& travelDirection) {
+		sf::Vector2f vectorToObject = stationaryPos - movingPos;
+		float angleToObject = atan2(vectorToObject.y, vectorToObject.x);
+		float travelAngle = atan2(travelDirection.y, travelDirection.x);
+		float angleDifference = atan2(sin(travelAngle - angleToObject), cos(travelAngle - angleToObject));
+		return fabs(angleDifference) > PI / 2;
 	}
 
+	inline float randomFloat(float min, float max) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_real_distribution<float> dis(min, max);
+		return dis(gen);
+	}
 }
