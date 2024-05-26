@@ -17,8 +17,6 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 
 	// Check for possible collisions
     sf::Vector2f direction; // Here, islands are the first priority and ships are the second
-    GlobalValues::getInstance().getWindow()->draw(vm::createVector(getSprite().getPosition(), direction * deflectionDistanceLandmass, sf::Color::Red));
-    GlobalValues::getInstance().getWindow()->draw(vm::createVector(getSprite().getPosition(), directionToDestination * deflectionDistanceLandmass, sf::Color::Green));
     direction = deflectTravelDirection(getNearbyLandmasses(), directionToDestination, deflectionDistanceLandmass, vm::randomFloat(islandDeflectionPaddingScaleMin, islandDeflectionPaddingScaleMax));
     if (direction == directionToDestination) direction = deflectTravelDirection(getNearbyShips(), directionToDestination, deflectionDistanceShip, shipDeflectionPaddingScale);
 
@@ -33,14 +31,6 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 		}
 	}
 
-    std::string aimTowardsTargetString = activeTowardsTarget ? "True" : "False";
-	GlobalValues::getInstance().displayText("AimTowardsTarget: " + aimTowardsTargetString, getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
-	GlobalValues::getInstance().displayText("Direction: " + std::to_string(direction.x) + ", " + std::to_string(direction.y), getSprite().getPosition() + sf::Vector2f(0, 100), sf::Color::White);
-	GlobalValues::getInstance().displayText("Position: " + std::to_string(getSprite().getPosition().x) + ", " + std::to_string(getSprite().getPosition().y), getSprite().getPosition() + sf::Vector2f(0, 150), sf::Color::White);
-    std::string hasPickedFirstCornerString = hasPickedFirstCorner ? "True" : "False";
-    GlobalValues::getInstance().displayText("Has Deflection Target: " + hasPickedFirstCornerString, getSprite().getPosition() + sf::Vector2f(0, 200), sf::Color::White);
-    GlobalValues::getInstance().displayText("destination: " + std::to_string(destination.x) + ", " + std::to_string(destination.y), getSprite().getPosition() + sf::Vector2f(0, 250), sf::Color::White);
-
     setTurningMultiplier(activeTowardsTarget ? 1.5f : 1.f);
 
 	float targetAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(direction) + 90.f); // +90 to account for sprite rotation
@@ -49,39 +39,30 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 
 sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(const std::vector<sf::Sprite>& sprites, const sf::Vector2f travelDirection, const float deflectionDistance, const float deflectionPaddingScale) {
     // Grab all points in regular intervals along the travel direction
-    std::vector<sf::Vector2f> points;
     for (float i = 0; i < vm::magnitude(travelDirection * deflectionDistance); i += deflectionVectorCheckInterval) {
-		points.push_back(getSprite().getPosition() + travelDirection * i);
-	}
+        // Now, we will check if the point is within the bounds of any of the sprites
+        sf::Vector2f point = getSprite().getPosition() + vm::normalize(travelDirection) * i;
+        for (const auto& sprite : sprites) {
+            // Get the sprite's bounds and create a padded bounding box for deflection
+            sf::FloatRect spriteBounds = sprite.getGlobalBounds();
+            float paddingWidth = spriteBounds.width * (deflectionPaddingScale - 1.f) / 2.f;
+            float paddingHeight = spriteBounds.height * (deflectionPaddingScale - 1.f) / 2.f;
 
-    // Now, for all points, check if they are within the bounds of any of the sprites
-    for (const auto& point : points) {
-		for (const auto& sprite : sprites) {
-			// Get the sprite's bounds and create a padded bounding box for deflection
-			sf::FloatRect spriteBounds = sprite.getGlobalBounds();
-			float newWidth = spriteBounds.width * deflectionPaddingScale;
-			float newHeight = spriteBounds.height * deflectionPaddingScale;
-			float newLeft = spriteBounds.left - (newWidth - spriteBounds.width) / 2.f;
-			float newTop = spriteBounds.top - (newHeight - spriteBounds.height) / 2.f;
-			sf::FloatRect deflectionBounds(newLeft, newTop, newWidth, newHeight);
+            sf::FloatRect deflectionBounds(
+                spriteBounds.left - paddingWidth,
+                spriteBounds.top - paddingHeight,
+                spriteBounds.width + 2 * paddingWidth,
+                spriteBounds.height + 2 * paddingHeight);
 
-			// Check if the point is within the sprite's bounds
-			if (deflectionBounds.contains(point)) {
-                // Draw the deflection bounds
-                sf::RectangleShape deflectionRect(sf::Vector2f(deflectionBounds.width, deflectionBounds.height));
-                deflectionRect.setPosition(deflectionBounds.left, deflectionBounds.top);
-                deflectionRect.setFillColor(sf::Color::Transparent);
-                deflectionRect.setOutlineColor(sf::Color::Red);
-                deflectionRect.setOutlineThickness(2.f);
-                GlobalValues::getInstance().getWindow()->draw(deflectionRect);
-
+            // Check if the point is within the sprite's bounds
+            if (deflectionBounds.contains(point)) {
                 if (deflectionSprite.getGlobalBounds() != spriteBounds) {
                     deflectionSprite = sprite;
                     hasPickedFirstCorner = false;
                 }
-				return calculateDeflectionVector(deflectionBounds, travelDirection, deflectionDistance);
-			}
-		}
+                return calculateDeflectionVector(deflectionBounds, travelDirection, deflectionDistance);
+            }
+        }
 	}
 
     // Otherwise, return the travel direction
@@ -137,13 +118,6 @@ sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::Float
 			}
 		}
     }
-
-    // Draw a small circle at the deflection target
-    sf::CircleShape circle(5.f);
-    circle.setFillColor(sf::Color::Red);
-    circle.setPosition(deflectionTarget);
-    GlobalValues::getInstance().getWindow()->draw(circle);
-    GlobalValues::getInstance().displayText("Deflection Target: " + std::to_string(deflectionTarget.x) + ", " + std::to_string(deflectionTarget.y), deflectionTarget + sf::Vector2f(0, 20.f), sf::Color::White);
 
     // Update travel direction to steer towards the deflection target
     return vm::normalize(deflectionTarget - getSprite().getPosition());

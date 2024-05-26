@@ -48,7 +48,7 @@ namespace PirateGame {
 		float deflectionVectorGrowth = 2.f;
 		float dotProductThreshold = 0.1f;
 		float closestCornerWeight = 0.8f;
-		int deflectionVectorCheckInterval = 100;
+		int deflectionVectorCheckInterval = 500;
 
 		bool activeTowardsTarget = false;
 		bool hasPickedFirstCorner = false;

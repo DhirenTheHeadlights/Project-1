@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include <optional>
+#include <random>
 
 namespace vm {
 	const float PI = 3.14159265f;
