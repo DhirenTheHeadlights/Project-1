@@ -14,6 +14,7 @@ public:
 
     // Setters
     void setCellSize(int cellSize) { this->cellSize = cellSize; }
+
     // Getters
     std::pair<int, int> getGridCoordinates(float x, float y) const {
 		return { static_cast<int>(x + position.x) / cellSize, static_cast<int>(y + position.y) / cellSize };
@@ -29,6 +30,7 @@ public:
         // Explicitly cast len and height to float to avoid conversion warnings
         return position + sf::Vector2f(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
     }
+    sf::FloatRect getBounds() const { return sf::FloatRect(position, sf::Vector2f(static_cast<float>(len), static_cast<float>(height))); }
 private:
     int rows = 1, cols = 1, cellSize = 1;
     int len = 1, height = 1;

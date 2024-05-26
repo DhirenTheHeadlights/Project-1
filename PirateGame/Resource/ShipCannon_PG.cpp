@@ -35,7 +35,7 @@ void ShipCannon::drawCannonNBalls() {
     window->draw(cannonSprite);
 }
 
-sf::Vector2f ShipCannon::calculatePerpendicularDirection(float rotation) {
+sf::Vector2f ShipCannon::calculatePerpendicularDirection(float rotation) const {
     float rotationInRadians = (rotation - 180.f) * pi / 180.f;
 
     // Calculate the direction of the cannon and normalize it

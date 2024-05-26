@@ -5,7 +5,7 @@
 
 #include "GlobalTextureHandler_PG.h"
 #include "GlobalValues_PG.h"
-#include "HashmapTemplate_PG.h"
+#include "QuadtreeTemplate_PG.h"
 
 #include "Cannonball_PG.h"
 #include "ShipEnums_PG.h"
@@ -43,7 +43,7 @@ namespace PirateGame {
 		void updateCannon(sf::Sprite& shipSprite, FiringSide FS);
 
 		// Setters
-		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
+		void setCannonballHashmap(Quadtree<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
 		void setFiringState(FiringState FS) { this->state = FS; }
 		void setTargetPos(sf::Vector2f targetPos) { this->targetPos = targetPos; }
@@ -56,7 +56,7 @@ namespace PirateGame {
 	private:
 		// Helpers
 		sf::Vector2f calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos);
-		sf::Vector2f calculatePerpendicularDirection(float rotation);
+		sf::Vector2f calculatePerpendicularDirection(float rotation) const;
 		void rotateTowards(float angle, float step);
 		void updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS);
 		void updateCannonballs(float elapsed);
@@ -86,7 +86,7 @@ namespace PirateGame {
 		FiringSide side;
 		FiringState state = FiringState::Untargeted;
 
-		Hashmap<Cannonball>* cannonballHashmap = nullptr;
+		Quadtree<Cannonball>* cannonballHashmap = nullptr;
 
 		int id;
 	};

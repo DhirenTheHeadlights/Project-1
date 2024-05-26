@@ -723,7 +723,7 @@
     <ClInclude Include="PirateGame\Header\GlobalSoundManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\GlobalHashmapHandler.h">
+    <ClInclude Include="PirateGame\Header\GlobalQuadtreeHandler.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalMap_PG.h">
@@ -786,7 +786,7 @@
     <ClInclude Include="Globals\Header\VectorMath.h">
       <Filter>Source Files\Globals\Header</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\HashmapTemplate_PG.h">
+    <ClInclude Include="PirateGame\Header\QuadtreeTemplate_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\View_PG.h">

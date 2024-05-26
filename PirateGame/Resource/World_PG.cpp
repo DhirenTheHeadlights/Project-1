@@ -26,7 +26,7 @@ void World::setUpWorldElements() {
 void World::setUpPlayerShip() {
 	playerShip = std::make_unique<PlayerShip>();
 	playerShip->setUpShip(ShipClass::ManOWar);
-	playerShip->getCannonHandler()->setCannonballHashmap(GlobalHashmapHandler::getInstance().getCannonballHashmap());
+	playerShip->getCannonHandler()->setCannonballHashmap(GlobalQuadtreeHandler::getInstance().getCannonballHashmap());
 }
 
 void World::setUpLandMasses() {

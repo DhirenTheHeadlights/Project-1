@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "GlobalValues_PG.h"
-#include "GlobalHashmapHandler.h"
+#include "GlobalQuadtreeHandler.h"
 #include "GlobalSoundManager_PG.h"
 #include "GlobalMap_PG.h"
 

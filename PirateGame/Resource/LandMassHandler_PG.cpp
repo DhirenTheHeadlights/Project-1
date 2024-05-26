@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 LandMassHandler::~LandMassHandler() {
 	for (auto& landMass : landmasses) {
-		GlobalHashmapHandler::getInstance().getLandMassHashmap()->removeObject(landMass.get());
+		GlobalQuadtreeHandler::getInstance().getLandMassHashmap()->removeObject(landMass.get());
 	}
 }
 
@@ -39,7 +39,7 @@ void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
 	landMass->setPosition(position);
 
 
-	GlobalHashmapHandler::getInstance().getLandMassHashmap()->addObject(landMass.get());
+	GlobalQuadtreeHandler::getInstance().getLandMassHashmap()->addObject(landMass.get());
 	landmasses.push_back(std::move(landMass));
 }
 
@@ -54,7 +54,7 @@ void LandMassHandler::drawLandMasses() {
 
 void LandMassHandler::interactWithLandmasses() {
 	if (nearestLandMass == nullptr) {
-		std::set<LandMass*> nearbyLandMasses = GlobalHashmapHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(playerShip, interactionDistance);
+		std::vector<LandMass*> nearbyLandMasses = GlobalQuadtreeHandler::getInstance().getLandMassHashmap()->findObjectsNearObject(playerShip, interactionDistance);
 
 		for (auto& landMass : nearbyLandMasses) {
 			sf::Vector2f shipPosition = playerShip->getSprite().getPosition(); // Ship position is already the center of the sprite
@@ -70,7 +70,7 @@ void LandMassHandler::interactWithLandmasses() {
 
 		// Reset the 'player said no' and enteredIsland flag for all islands not nearby
 		for (auto& landMass : landmasses) {
-			if (landMass->getType() == LandMassType::Island && nearbyLandMasses.find(landMass.get()) == nearbyLandMasses.end()) {
+			if (landMass->getType() == LandMassType::Island && std::find(nearbyLandMasses.begin(), nearbyLandMasses.end(), landMass.get()) == nearbyLandMasses.end()) {
 				landMass->getIslandMenu()->setEnteredIsland(false);
 				landMass->getIslandMenu()->setHasPlayerSaidNo(false);
 			}

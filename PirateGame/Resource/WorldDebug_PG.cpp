@@ -37,8 +37,9 @@ void DefaultDebugWorld::createWorld(sf::Event event) {
 }
 
 void DefaultDebugWorld::updateGameLoop(sf::Event event) {
-	// Update the map
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
+
+	GlobalQuadtreeHandler::getInstance().getShipHashmap()->draw(window);
 
 	GlobalWindController::getInstance().update();
 
@@ -47,10 +48,8 @@ void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 
 	LMH.interactWithLandmasses();
 
-	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
-		ESH.update();
-		gameLoopClock.restart();
-	}
+	ESH.update();
+	gameLoopClock.restart();
 
 	CM.handleCollisions();
 

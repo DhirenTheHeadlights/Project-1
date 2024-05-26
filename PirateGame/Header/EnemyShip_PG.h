@@ -11,7 +11,7 @@
 #include "Ship_PG.h"
 #include "EnemyShipInputHandler_PG.h"
 #include "EnemyShipMovementHandler_PG.h"
-#include "HashmapTemplate_PG.h"
+#include "QuadtreeTemplate_PG.h"
 #include "GlobalIDManager_PG.h"
 
 namespace PirateGame {

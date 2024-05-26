@@ -9,7 +9,7 @@
 #include <random>
 
 #include "GlobalValues_PG.h"
-#include "GlobalHashmapHandler.h"
+#include "GlobalQuadtreeHandler.h"
 #include "ShipGroup_PG.h"
 #include "BattleManager_PG.h"
 
@@ -21,7 +21,7 @@ namespace PirateGame {
 			// Remove all enemy ships
 			enemyShips.clear();
 			for (auto& ship : enemyShips) {
-				GlobalHashmapHandler::getInstance().getShipHashmap()->removeObject(ship.get());
+				GlobalQuadtreeHandler::getInstance().getShipHashmap()->removeObject(ship.get());
 			}
 		};
 

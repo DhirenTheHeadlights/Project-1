@@ -8,7 +8,7 @@
 #include "GlobalValues_PG.h"
 #include "GlobalSoundManager_PG.h"
 #include "GlobalTextureHandler_PG.h"
-#include "HashmapTemplate_PG.h"
+#include "QuadtreeTemplate_PG.h"
 
 #include "ShipCannon_PG.h"
 #include "Cannonball_PG.h"
@@ -32,7 +32,7 @@ namespace PirateGame {
 				cannon.setFiringState(FS);
 			}
 		};
-		void setCannonballHashmap(Hashmap<Cannonball>* cannonballHashmap) {
+		void setCannonballHashmap(Quadtree<Cannonball>* cannonballHashmap) {
 			for (auto& cannon : cannons) {
 				cannon.setCannonballHashmap(cannonballHashmap);
 			}

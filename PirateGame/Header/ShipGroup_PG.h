@@ -8,7 +8,7 @@
 #include "Ship_PG.h"
 #include "EnemyShip_PG.h"
 #include "GlobalIDManager_PG.h"
-#include "GlobalHashmapHandler.h"
+#include "GlobalQuadtreeHandler.h"
 
 namespace PirateGame {
 	class ShipGroup {
@@ -30,7 +30,7 @@ namespace PirateGame {
 			ship->setGroupID(ID);
 
 			// Add the ship to the hashmap
-			GlobalHashmapHandler::getInstance().getShipHashmap()->addObject(ship.get());
+			GlobalQuadtreeHandler::getInstance().getShipHashmap()->addObject(ship.get());
 
 			ships.push_back(ship);
 			//std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
@@ -38,7 +38,7 @@ namespace PirateGame {
 
 		void removeShip(std::shared_ptr<EnemyShip> ship) {
 			// Remove the ship from the hashmap
-			GlobalHashmapHandler::getInstance().getShipHashmap()->removeObject(ship.get());
+			GlobalQuadtreeHandler::getInstance().getShipHashmap()->removeObject(ship.get());
 
 			// Check if the ship was the slowest ship in the group
 			if (ship->getMovementHandler()->getBaseSpeed() == groupSpeed) {
