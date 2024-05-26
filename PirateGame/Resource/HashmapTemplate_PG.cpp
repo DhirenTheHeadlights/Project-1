@@ -1,1 +1,3 @@
-/// All implementations of the template class HashmapTemplate are in the .h file.
+#include "HashmapTemplate_PG.h"
+
+using namespace PirateGame;

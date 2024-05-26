@@ -202,4 +202,87 @@ namespace PirateGame {
 		std::unordered_map<std::pair<int, int>, T*, pair_hash> hashmap;
 		std::unordered_map<T*, std::unordered_set<std::pair<int, int>, pair_hash>> reverseHashmap;
 	};
+
+
+
+
+
+
+	/// This is a template quadtree class that will store pointers to objects.
+	template <class T>
+	class QuadTree {
+	public:
+		// Initial boundary must be large enough to encompass initial expectations or dynamically adjusted.
+		explicit QuadTree(const sf::FloatRect& initialBoundary)
+			: boundary(initialBoundary), divided(false) {}
+
+		bool insert(T* object) {
+			if (!boundary.intersects(object->getSprite().getGlobalBounds())) {
+				expandBounds(object->getSprite().getGlobalBounds());
+			}
+
+			if (objects.size() < 4 && !divided) {
+				objects.push_back(object);
+				return true;
+			}
+
+			if (!divided) subdivide();
+
+			for (auto& child : children) {
+				if (child->insert(object)) return true;
+			}
+
+			return false;
+		}
+
+		std::vector<T*> query(const sf::FloatRect& range) {
+			std::vector<T*> found;
+			if (!boundary.intersects(range)) return found;
+
+			for (auto object : objects) {
+				if (range.intersects(object->getSprite().getGlobalBounds())) {
+					found.push_back(object);
+				}
+			}
+
+			if (divided) {
+				for (auto& child : children) {
+					auto childFound = child->query(range);
+					found.insert(found.end(), childFound.begin(), childFound.end());
+				}
+			}
+
+			return found;
+		}
+
+	private:
+		sf::FloatRect boundary;
+		bool divided;
+		std::vector<T*> objects;
+		std::unique_ptr<QuadTree> children[4];
+
+		void subdivide() {
+			float x = boundary.left;
+			float y = boundary.top;
+			float width = boundary.width / 2;
+			float height = boundary.height / 2;
+
+			children[0] = std::make_unique<QuadTree>(sf::FloatRect(x, y, width, height));
+			children[1] = std::make_unique<QuadTree>(sf::FloatRect(x + width, y, width, height));
+			children[2] = std::make_unique<QuadTree>(sf::FloatRect(x, y + height, width, height));
+			children[3] = std::make_unique<QuadTree>(sf::FloatRect(x + width, y + height, width, height));
+
+			divided = true;
+		}
+
+		void expandBounds(const sf::FloatRect& objBounds) {
+			// Expand the boundary to include the new object bounds; this is a simplistic way to handle expansions.
+			float newLeft = std::min(boundary.left, objBounds.left);
+			float newTop = std::min(boundary.top, objBounds.top);
+			float newRight = std::max(boundary.left + boundary.width, objBounds.left + objBounds.width);
+			float newBottom = std::max(boundary.top + boundary.height, objBounds.top + objBounds.height);
+
+			boundary = sf::FloatRect(newLeft, newTop, newRight - newLeft, newBottom - newTop);
+		}
+	};
 }
