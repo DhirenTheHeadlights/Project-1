@@ -39,7 +39,7 @@ void DefaultDebugWorld::createWorld(sf::Event event) {
 void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 
-	GlobalQuadtreeHandler::getInstance().getShipHashmap()->draw(window);
+	GlobalQuadtreeHandler::getInstance().updateHashmaps();
 
 	GlobalWindController::getInstance().update();
 
@@ -56,4 +56,6 @@ void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 	playerShip->update();
 
 	view.updateDebugView(event);
+
+	GlobalQuadtreeHandler::getInstance().getShipQuadtree()->draw(window);
 }

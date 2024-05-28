@@ -9,14 +9,14 @@ void CollisionManager::handleCollisions() {
 	}
 
 	// Grab global hashmaps
-	Quadtree<EnemyShip>* shipHashmap = GlobalQuadtreeHandler::getInstance().getShipHashmap();
-	Quadtree<LandMass>* landMassHashmap = GlobalQuadtreeHandler::getInstance().getLandMassHashmap();
+	Quadtree<EnemyShip>* shipHashmap = GlobalQuadtreeHandler::getInstance().getShipQuadtree();
+	Quadtree<LandMass>* landMassHashmap = GlobalQuadtreeHandler::getInstance().getLandMassQuadtree();
 
 	// Grab the nearby landmasses and ships for each ship
 	for (auto& ship : ships) {
 		std::vector<LandMass*> nearbyLandMasses = landMassHashmap->findObjectsNearObject(ship, nearbyDistanceLandmass);
 		std::vector<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(ship, nearbyDistanceShip);
-		std::vector<Cannonball*> nearbyCannonballs = GlobalQuadtreeHandler::getInstance().getCannonballHashmap()->findObjectsNearObject(ship,	nearbyDistanceCannonball);
+		std::vector<Cannonball*> nearbyCannonballs = GlobalQuadtreeHandler::getInstance().getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
 
 		// Vectors to hold the colliding objects
 		std::vector<LandMass*> collidingLandMasses = {};

@@ -30,7 +30,7 @@ namespace PirateGame {
 			ship->setGroupID(ID);
 
 			// Add the ship to the hashmap
-			GlobalQuadtreeHandler::getInstance().getShipHashmap()->addObject(ship.get());
+			GlobalQuadtreeHandler::getInstance().getShipQuadtree()->addObject(ship.get());
 
 			ships.push_back(ship);
 			//std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
@@ -38,7 +38,7 @@ namespace PirateGame {
 
 		void removeShip(std::shared_ptr<EnemyShip> ship) {
 			// Remove the ship from the hashmap
-			GlobalQuadtreeHandler::getInstance().getShipHashmap()->removeObject(ship.get());
+			GlobalQuadtreeHandler::getInstance().getShipQuadtree()->removeObject(ship.get());
 
 			// Check if the ship was the slowest ship in the group
 			if (ship->getMovementHandler()->getBaseSpeed() == groupSpeed) {
@@ -108,7 +108,7 @@ namespace PirateGame {
 		sf::Vector2f calculateAlignment(std::shared_ptr<EnemyShip> ship);
 		sf::Vector2f calculateCohesion(std::shared_ptr<EnemyShip> ship);
 		sf::Vector2f calculateSeparation(std::shared_ptr<EnemyShip> ship);
-		sf::Vector2f calculateGoalVector(std::shared_ptr<EnemyShip> ship);
+		sf::Vector2f calculateGoalVector(std::shared_ptr<EnemyShip> ship) const;
 
 		// Combat methods
 		Ship* getClosestEnemyShip(std::shared_ptr<EnemyShip> ship);

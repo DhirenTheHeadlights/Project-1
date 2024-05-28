@@ -54,7 +54,7 @@ void LMAvoidWorld::setUpLandMasses() {
 void LMAvoidWorld::setUpEnemyShips() {
 	ESH.setLandmasses(LMH.getLandMasses());
 	ESH.setPlayerShip(playerShip.get());
-	ESH.addEnemyShip(sf::Vector2f(1000.f, 50.f));
+	ESH.addEnemyShip(sf::Vector2f(500.f, 50.f));
 	ESH.getShipGroups().at(0)->setDestination(sf::Vector2f(6000.f, 10000.f));
 }
 
@@ -96,13 +96,25 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 
 	GlobalWindController::getInstance().update();
+	GlobalQuadtreeHandler::getInstance().updateHashmaps();
 
 	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
+
+	//playerShip->update();
 
 	ESH.update();
 
 	CM.handleCollisions();
 
 	view.updateDebugView(event);
+
+	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->draw(window);
+
+
+	// Click to change ship destination
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && GlobalValues::getInstance().getWindow()->hasFocus()) {
+		sf::Vector2f mousePos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+		ESH.getShipGroups().at(0)->setDestination(mousePos);
+	}
 }

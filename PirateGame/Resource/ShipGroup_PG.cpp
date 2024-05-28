@@ -6,7 +6,7 @@ void ShipGroup::updateGroup() {
 	for (size_t i = 0; i < ships.size(); i++) {
 		std::shared_ptr<EnemyShip> ship = ships[i];
 		ship->update();
-		GlobalQuadtreeHandler::getInstance().getShipHashmap()->updateObjectPosition(ship.get());
+		GlobalQuadtreeHandler::getInstance().getShipQuadtree()->updateObjectPosition(ship.get());
 
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
 		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
@@ -157,7 +157,7 @@ sf::Vector2f ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
 	return separation;
 }
 
-sf::Vector2f ShipGroup::calculateGoalVector(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateGoalVector(std::shared_ptr<EnemyShip> ship) const {
 	// Calculate the goal vector from the average position of all the ships
 	// and the position of the heading
 	sf::Vector2f goalVector = destination - ship->getSprite().getPosition();

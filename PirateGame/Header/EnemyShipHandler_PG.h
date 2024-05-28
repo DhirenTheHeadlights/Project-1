@@ -21,7 +21,7 @@ namespace PirateGame {
 			// Remove all enemy ships
 			enemyShips.clear();
 			for (auto& ship : enemyShips) {
-				GlobalQuadtreeHandler::getInstance().getShipHashmap()->removeObject(ship.get());
+				GlobalQuadtreeHandler::getInstance().getShipQuadtree()->removeObject(ship.get());
 			}
 		};
 

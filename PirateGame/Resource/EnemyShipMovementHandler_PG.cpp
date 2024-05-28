@@ -17,7 +17,9 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 
 	// Check for possible collisions
     sf::Vector2f direction; // Here, islands are the first priority and ships are the second
-    direction = deflectTravelDirection(getNearbyLandmasses(), directionToDestination, deflectionDistanceLandmass, vm::randomFloat(islandDeflectionPaddingScaleMin, islandDeflectionPaddingScaleMax));
+    GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), directionToDestination * 100.f, sf::Color::Green));
+    GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), direction * 100.f, sf::Color::Red));
+    GlobalValues::getInstance().displayText("Num nearby landmass: " + std::to_string(getNearbyLandmasses().size()), getSprite().getPosition() + sf::Vector2f(0.f, 50.f), sf::Color::White);
     if (direction == directionToDestination) direction = deflectTravelDirection(getNearbyShips(), directionToDestination, deflectionDistanceShip, shipDeflectionPaddingScale);
 
 	// Check if the ship is active towards the target
@@ -38,36 +40,50 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 }
 
 sf::Vector2f EnemyShipMovementHandler::deflectTravelDirection(const std::vector<sf::Sprite>& sprites, const sf::Vector2f travelDirection, const float deflectionDistance, const float deflectionPaddingScale) {
-    // Grab all points in regular intervals along the travel direction
-    for (float i = 0; i < vm::magnitude(travelDirection * deflectionDistance); i += deflectionVectorCheckInterval) {
-        // Now, we will check if the point is within the bounds of any of the sprites
-        sf::Vector2f point = getSprite().getPosition() + vm::normalize(travelDirection) * i;
-        for (const auto& sprite : sprites) {
-            // Get the sprite's bounds and create a padded bounding box for deflection
-            sf::FloatRect spriteBounds = sprite.getGlobalBounds();
-            float paddingWidth = spriteBounds.width * (deflectionPaddingScale - 1.f) / 2.f;
-            float paddingHeight = spriteBounds.height * (deflectionPaddingScale - 1.f) / 2.f;
+    for (const auto& sprite : sprites) {
+        // Get the sprite's bounds and create a padded bounding box for deflection
+        sf::FloatRect spriteBounds = sprite.getGlobalBounds();
+        float newWidth = spriteBounds.width * deflectionPaddingScale;
+        float newHeight = spriteBounds.height * deflectionPaddingScale;
+        float newLeft = spriteBounds.left - (newWidth - spriteBounds.width) / 2.f;
+        float newTop = spriteBounds.top - (newHeight - spriteBounds.height) / 2.f;
+        sf::FloatRect deflectionBounds(newLeft, newTop, newWidth, newHeight);
 
-            sf::FloatRect deflectionBounds(
-                spriteBounds.left - paddingWidth,
-                spriteBounds.top - paddingHeight,
-                spriteBounds.width + 2 * paddingWidth,
-                spriteBounds.height + 2 * paddingHeight);
+        // Check if the point is within the sprite's bounds
+        if (checkForCollision(deflectionBounds, travelDirection, deflectionDistance)) {
+            // Draw the deflection bounds
+            sf::RectangleShape deflectionRect(sf::Vector2f(deflectionBounds.width, deflectionBounds.height));
+            deflectionRect.setPosition(deflectionBounds.left, deflectionBounds.top);
+            deflectionRect.setFillColor(sf::Color::Transparent);
+            deflectionRect.setOutlineColor(sf::Color::Red);
+            deflectionRect.setOutlineThickness(1.f);
+            GlobalValues::getInstance().getWindow()->draw(deflectionRect);
 
-            // Check if the point is within the sprite's bounds
-            if (deflectionBounds.contains(point)) {
-                if (deflectionSprite.getGlobalBounds() != spriteBounds) {
-                    deflectionSprite = sprite;
-                    hasPickedFirstCorner = false;
-                }
-                return calculateDeflectionVector(deflectionBounds, travelDirection, deflectionDistance);
+            if (deflectionSprite.getGlobalBounds() != spriteBounds) {
+                deflectionSprite = sprite;
+                hasPickedFirstCorner = false;
             }
+            return calculateDeflectionVector(deflectionBounds, travelDirection, deflectionDistance);
         }
-	}
+    }
 
     // Otherwise, return the travel direction
     hasPickedFirstCorner = false;
     return travelDirection;
+}
+
+bool EnemyShipMovementHandler::checkForCollision(const sf::FloatRect& deflectionBounds, const sf::Vector2f travelDirection, const float deflectionDistance) {
+    // Grab all points in regular intervals along the travel direction
+    for (float i = 0; i < vm::magnitude(travelDirection * deflectionDistance); i += deflectionVectorCheckInterval) {
+        // Now, we will check if the point is within the bounds of any of the sprites
+        sf::Vector2f point = getSprite().getPosition() + vm::normalize(travelDirection) * i;
+
+        // Check if the point is within the sprite's bounds
+        if (deflectionBounds.contains(point)) {
+            return true;
+        }
+    }
+    return false;
 }
 
 sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::FloatRect& deflectionBounds, const sf::Vector2f travelDirection, const float deflectionDistance) {
@@ -79,9 +95,31 @@ sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::Float
         sf::Vector2f(deflectionBounds.left + deflectionBounds.width, deflectionBounds.top + deflectionBounds.height)
     };
 
-    // Remove a corner if the ship is clear of it. If it is the first corner, set hasPickedFirstCorner to true
+    // Create a vector of all edges of the deflection bounds
+    std::vector<std::pair<sf::Vector2f, sf::Vector2f>> edges {
+		{corners[0], corners[1]},
+		{corners[0], corners[2]},
+		{corners[1], corners[3]},
+		{corners[2], corners[3]}
+	};
+
+    // Find the first corner and move towards it
+    float closestDistance = std::numeric_limits<float>::max();
+    if (!hasPickedFirstCorner) {
+        for (const auto& corner : corners) {
+            float distanceToCorner = vm::distance(getSprite().getPosition(), corner);
+            if (distanceToCorner < closestDistance) {
+                closestDistance = distanceToCorner;
+                deflectionTarget = corner;
+            }
+        }
+    }
+
+    // Remove a corner if the ship is clear of it and the bounds are not in the way. If it is the first corner, set hasPickedFirstCorner to true.
     corners.erase(std::remove_if(corners.begin(), corners.end(), [&](const sf::Vector2f& corner) {
-        if (vm::isInFront(getSprite().getPosition(), corner, vm::normalize(destination - getSprite().getPosition()))) {
+        bool isInFront = vm::isInFront(getSprite().getPosition(), corner, vm::normalize(destination - getSprite().getPosition()));
+        bool inCollisionPath = checkForCollision(deflectionBounds, vm::normalize(corner - getSprite().getPosition()), deflectionDistance);
+        if (isInFront && !inCollisionPath) {
             if (!hasPickedFirstCorner) {
                 hasPickedFirstCorner = true;
             }
@@ -89,8 +127,6 @@ sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::Float
         }
         return false;  // Keep corner otherwise
     }), corners.end());
-
-    float closestDistance = std::numeric_limits<float>::max();
 
     // Find the farthest corner
     sf::Vector2f farthestCorner;
@@ -103,21 +139,51 @@ sf::Vector2f EnemyShipMovementHandler::calculateDeflectionVector(const sf::Float
         }
     }
 
-    for (const auto& corner : corners) {
-        float distanceToCorner = vm::distance(getSprite().getPosition(), corner);
-        if (distanceToCorner < closestDistance && !hasPickedFirstCorner) {
-            closestDistance = distanceToCorner;
-            deflectionTarget = corner;
-        }
+    // draw it
+    sf::CircleShape farthestCircle(5.f);
+    farthestCircle.setFillColor(sf::Color::Green);
+    farthestCircle.setPosition(farthestCorner);
+    farthestCircle.setOrigin(farthestCircle.getRadius(), farthestCircle.getRadius());
+    GlobalValues::getInstance().getWindow()->draw(farthestCircle);
 
-        // Otherwise, randomly select one of the remaining corners, but not the farthest one
-        if (hasPickedFirstCorner) {
-			if (vm::distance(destination, corner) < closestDistance && corner != farthestCorner) {
-				closestDistance = distanceToCorner;
-				deflectionTarget = corner;
+    bool onEdge = false;
+
+    // See if the ship is on an edge
+    for (const auto& edge : edges) {
+		if (vm::distanceToLine(getSprite().getPosition(), edge.first, edge.second) < onEdgeThreshold) {
+			onEdge = true;
+			break;
+		}
+	}
+
+    // Find the closest corner to the destination if the first corner has been picked
+    if (hasPickedFirstCorner && onEdge) {
+        // Find the closest corner to the destination
+        for (const auto& corner : corners) {
+            float distanceToCorner = vm::distance(destination, corner);
+            if (distanceToCorner < closestDistance && corner != farthestCorner) {
+                closestDistance = distanceToCorner;
+                deflectionTarget = corner;
+            }
+        }
+    }
+    else if (hasPickedFirstCorner && !onEdge) {
+        // Go towards the nearest edge
+        for (const auto& edge : edges) {
+			float distanceToEdge = vm::distanceToLine(edge.first, edge.second, getSprite().getPosition());
+			if (distanceToEdge < closestDistance) {
+				closestDistance = distanceToEdge;
+				deflectionTarget = vm::closestPointOnLine(edge.first, edge.second, getSprite().getPosition());
 			}
 		}
-    }
+	}
+
+    // Draw the deflection target
+    sf::CircleShape deflectionCircle(5.f);
+    deflectionCircle.setFillColor(sf::Color::Red);
+    deflectionCircle.setPosition(deflectionTarget);
+    deflectionCircle.setOrigin(deflectionCircle.getRadius(), deflectionCircle.getRadius());
+    GlobalValues::getInstance().getWindow()->draw(deflectionCircle);
 
     // Update travel direction to steer towards the deflection target
     return vm::normalize(deflectionTarget - getSprite().getPosition());

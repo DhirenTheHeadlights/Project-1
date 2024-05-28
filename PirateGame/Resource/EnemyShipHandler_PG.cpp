@@ -37,7 +37,7 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
 	// hashmap is global, but it is necessary because to avoid circular dependencies because
 	// the global hashmap handler includes enemy ship which included the SCH.
-	ship->getCannonHandler()->setCannonballHashmap(GlobalQuadtreeHandler::getInstance().getCannonballHashmap());
+	ship->getCannonHandler()->setCannonballHashmap(GlobalQuadtreeHandler::getInstance().getCannonballQuadtree());
 
 	// Add the ship to a new ship group and vector, std::move is not needed
 	// do after setting up the ship, otherwise the ship will be empty
@@ -82,7 +82,7 @@ void EnemyShipHandler::updateGroupDestination(std::shared_ptr<ShipGroup> group) 
 
 void EnemyShipHandler::updateGroupsNearPlayer() {
 	// Grab nearby ships for the player ship
-	std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, maxDetectionDistance);
+	std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
 	// Update all the enemy ships groups near the player ship
 
 	//for (auto& ship : nearbyShips) {
@@ -99,7 +99,7 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 
 	//}
 
-	std::vector<EnemyShip*> nearbyShipsAudio = GlobalQuadtreeHandler::getInstance().getShipHashmap()->findObjectsNearObject(playerShip, audioRange);
+	std::vector<EnemyShip*> nearbyShipsAudio = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(playerShip, audioRange);
 
 	// Set all the ships in nearby audio range to play cannon sounds
 	for (auto& ship : nearbyShipsAudio) {
@@ -134,7 +134,7 @@ void EnemyShipHandler::update() {
 		// Grab nearby ships, of all of the ships in the group
 		std::set<EnemyShip*> nearbyShipsTotal;
 		for (auto& ship : enemyShipGroup->getEnemyShips()) {
-			std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipHashmap()->findObjectsNearObject(ship.get(), interactionDistance);
+			std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(ship.get(), interactionDistance);
 			nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
 		}
 
@@ -163,7 +163,7 @@ void EnemyShipHandler::updateShipsAsNotNearbyGroup(std::shared_ptr<ShipGroup> en
 
 	// Grab all nearby ships from each ship in the group
 	for (auto& ship : enemyShipGroup->getEnemyShips()) {
-		std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipHashmap()->findObjectsNearObject(ship.get(), notNearbyAnymoreDistance);
+		std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(ship.get(), interactionDistance);
 		nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
 	}
 
@@ -193,6 +193,11 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 	GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
 
 	auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
+
+	if (otherShipGroup == shipGroups.end()) {
+		std::cout << "Error: Ship group not found when interacting with nearby ships" << std::endl;
+		return;
+	}
 
 	if (interaction == 1) {
 		joinGroups(enemyShipGroup, otherShipGroup->get());

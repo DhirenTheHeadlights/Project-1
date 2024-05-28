@@ -63,7 +63,7 @@ namespace vm {
 		return v;
 	}
 
-	inline sf::VertexArray createVector(const sf::Vector2f& position, const sf::Vector2f& direction, const sf::Color& color) {
+	inline sf::VertexArray createVectorLine(const sf::Vector2f& position, const sf::Vector2f& direction, const sf::Color& color) {
 		sf::VertexArray vector(sf::Lines, 2);
 		vector[0].position = position;
 		vector[0].color = color;
@@ -127,5 +127,20 @@ namespace vm {
 		std::mt19937 gen(rd());
 		std::uniform_real_distribution<float> dis(min, max);
 		return dis(gen);
+	}
+
+	inline float distanceToLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) {
+		sf::Vector2f line = lineEnd - lineStart;
+		sf::Vector2f pointToLineStart = point - lineStart;
+		float projection = dot(pointToLineStart, normalize(line));
+		sf::Vector2f closestPoint = lineStart + normalize(line) * projection;
+		return distance(point, closestPoint);
+	}
+
+	inline sf::Vector2f closestPointOnLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) {
+		sf::Vector2f line = lineEnd - lineStart;
+		sf::Vector2f pointToLineStart = point - lineStart;
+		float projection = dot(pointToLineStart, normalize(line));
+		return lineStart + normalize(line) * projection;
 	}
 }

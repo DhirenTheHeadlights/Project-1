@@ -16,10 +16,16 @@ namespace PirateGame {
 			return instance;
 		}
 
+		void updateHashmaps() {
+			landmassHashmap->update();
+			shipHashmap->update();
+			cannonballHashmap->update();
+		}
+
 		// Getters
-		Quadtree<LandMass>* getLandMassHashmap() { return landmassHashmap.get(); }
-		Quadtree<EnemyShip>* getShipHashmap() { return shipHashmap.get(); }
-		Quadtree<Cannonball>* getCannonballHashmap() { return cannonballHashmap.get(); }
+		Quadtree<LandMass>* getLandMassQuadtree() { return landmassHashmap.get(); }
+		Quadtree<EnemyShip>* getShipQuadtree() { return shipHashmap.get(); }
+		Quadtree<Cannonball>* getCannonballQuadtree() { return cannonballHashmap.get(); }
 	private:
 		// Private Constructor
 		GlobalQuadtreeHandler() {};

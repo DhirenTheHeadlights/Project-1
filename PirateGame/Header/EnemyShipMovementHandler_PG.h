@@ -27,6 +27,7 @@ namespace PirateGame {
 	private:
 		// Helper functions
 		void setSpriteRotation() override;
+		bool checkForCollision(const sf::FloatRect& deflectionBounds, const sf::Vector2f travelDirection, const float deflectionDistance);
 		sf::Vector2f deflectTravelDirection(const std::vector<sf::Sprite>& sprites, const sf::Vector2f travelDirection, const float deflectionDistance, const float deflectionPaddingScale = 1.f);
 		sf::Vector2f calculateDeflectionVector(const sf::FloatRect& deflectionBounds, const sf::Vector2f travelDirection, const float deflectionDistance);
 
@@ -48,7 +49,8 @@ namespace PirateGame {
 		float deflectionVectorGrowth = 2.f;
 		float dotProductThreshold = 0.1f;
 		float closestCornerWeight = 0.8f;
-		int deflectionVectorCheckInterval = 500;
+		float onEdgeThreshold = 10.f;
+		int deflectionVectorCheckInterval = 100;
 
 		bool activeTowardsTarget = false;
 		bool hasPickedFirstCorner = false;
