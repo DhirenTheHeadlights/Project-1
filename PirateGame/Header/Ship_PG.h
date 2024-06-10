@@ -46,9 +46,7 @@ namespace PirateGame {
 		void setBaseSpeed(float speed) { shipProperties.baseSpeed = speed; }
 		void setMaxHealth(float health) { shipProperties.maxHealth = health; }
 		void setRegenRate(float rate) { shipProperties.regenRate = rate; }
-
 		void setGroupID(int groupID) { this->groupID = groupID; }
-
 		void setDead(bool isDead) { this->isDead = isDead; }
 
 		// Getters

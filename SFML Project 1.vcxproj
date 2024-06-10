@@ -164,6 +164,7 @@
     <ClCompile Include="LightAndShadow\Resource\Obsticles_LS.cpp" />
     <ClCompile Include="LightAndShadow\Resource\WorldLS.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PirateGame\Resource\AstarAlgorithm_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\BattleManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Button_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Cannonball_PG.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="Globals\Header\VectorMath.h" />
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
+    <ClInclude Include="PirateGame\Header\AstarAlgorithm_PG.h" />
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />

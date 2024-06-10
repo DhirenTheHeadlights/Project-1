@@ -43,8 +43,8 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	// do after setting up the ship, otherwise the ship will be empty
 	std::shared_ptr<ShipGroup> group = std::make_shared<ShipGroup>();
 	ship->setGroupID(group->getID());
-	group->addShip(ship);
 	setShipGroupDestination(group);
+	group->addShip(ship);
 	enemyShips.push_back(std::move(ship));
 	shipGroups.push_back(std::move(group));
 }
@@ -211,13 +211,11 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 }
 
 void EnemyShipHandler::joinGroups(std::shared_ptr<ShipGroup> group1, ShipGroup* group2) {
-
 	// Add all of the ships in the other group to the current group
 	for (auto& ship : group2->getEnemyShips()) {
 		group1->addShip(ship);
 	}
 	group2->clearEnemyShips();
-	//group2->getEnemyShips().clear();
 }
 
 void EnemyShipHandler::updateGroupCombat(std::shared_ptr<ShipGroup> enemyShipGroup, std::set<EnemyShip*> nearbyShipsTotal) {

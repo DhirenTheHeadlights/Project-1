@@ -9,12 +9,7 @@ void ShipGroup::updateGroup() {
 		GlobalQuadtreeHandler::getInstance().getShipQuadtree()->updateObjectPosition(ship.get());
 
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
-		sf::Vector2f resultantVector = calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship);
-		resultantVector = vm::normalize(resultantVector);
-
-		// Set the travel direction of the ship
-		heading = destination; //+ resultantVector;
-		ship->getMovementHandler()->setDestination(heading);
+		sf::Vector2f resultantVector = vm::normalize(calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship));
 
 		// If the ship is in combat, set the target position to be the closest enemy ship
 		Ship* targetShip = getClosestEnemyShip(ship);

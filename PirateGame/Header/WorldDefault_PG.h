@@ -9,9 +9,9 @@ namespace PirateGame {
 	public:
 		DefaultWorld(sf::RenderWindow* window) : World(window) {
 			numLandMasses = 5;
-			distanceBetweenLandMasses = 100.f;
+			distanceBetweenLandMasses = 1000.f;
 			numEnemyShips = 5;
-			distanceBetweenEnemyShips = 100.f;
+			distanceBetweenEnemyShips = 1000.f;
 		}
 		~DefaultWorld() {};
 

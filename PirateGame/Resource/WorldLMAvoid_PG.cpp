@@ -55,7 +55,7 @@ void LMAvoidWorld::setUpEnemyShips() {
 	ESH.setLandmasses(LMH.getLandMasses());
 	ESH.setPlayerShip(playerShip.get());
 	ESH.addEnemyShip(sf::Vector2f(500.f, 50.f));
-	ESH.getShipGroups().at(0)->setDestination(sf::Vector2f(6000.f, 10000.f));
+	ESH.getShipGroups().at(0)->setDestination(sf::Vector2f(10000.f, 10000.f));
 }
 
 void LMAvoidWorld::createWorld(sf::Event event) {
@@ -96,7 +96,7 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 
 	GlobalWindController::getInstance().update();
-	GlobalQuadtreeHandler::getInstance().updateHashmaps();
+	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
 
 	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);

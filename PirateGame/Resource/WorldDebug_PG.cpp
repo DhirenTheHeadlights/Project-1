@@ -39,7 +39,7 @@ void DefaultDebugWorld::createWorld(sf::Event event) {
 void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 
-	GlobalQuadtreeHandler::getInstance().updateHashmaps();
+	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
 
 	GlobalWindController::getInstance().update();
 

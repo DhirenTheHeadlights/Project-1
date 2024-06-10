@@ -62,7 +62,7 @@ void ESAvoidWorld::updateGameLoop(sf::Event event) {
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 
 	GlobalWindController::getInstance().update();
-	GlobalQuadtreeHandler::getInstance().updateHashmaps();
+	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
 
 	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
 	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);

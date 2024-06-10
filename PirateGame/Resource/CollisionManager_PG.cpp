@@ -24,12 +24,11 @@ void CollisionManager::handleCollisions() {
 		std::vector<Cannonball*> collidingCannonballs = {};
 
 		// Check if the ship is colliding with any of the nearby land masses and send to movement handler
-		std::vector<sf::Sprite> nearbyLandmassSprites;
+		std::vector<sf::Sprite> nearbySprites;
 		for (auto& i : nearbyLandMasses) {
 			handleLandMassCollision(ship, i, collidingLandMasses);
-			nearbyLandmassSprites.push_back(i->getSprite());
+			nearbySprites.push_back(i->getSprite());
 		}
-		ship->getMovementHandler()->setNearbyLandmasses(nearbyLandmassSprites);
 
 		// Check if the ship is colliding with any of the nearby ships
 		std::vector<sf::Sprite> nearbyShipSprites;
@@ -39,7 +38,8 @@ void CollisionManager::handleCollisions() {
 			handleShipCollision(ship, i, collidingShips);
 			nearbyShipSprites.push_back(i->getSprite());
 		}
-		ship->getMovementHandler()->setNearbyShips(nearbyShipSprites);
+
+		ship->getMovementHandler()->setNearbySprites(nearbySprites);
 
 		// Check if the ship is colliding with any of the nearby cannonballs 
 		for (auto& i : nearbyCannonballs) {

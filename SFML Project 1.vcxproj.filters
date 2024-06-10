@@ -502,6 +502,9 @@
     <ClCompile Include="PirateGame\Resource\WorldESAvoid_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\AstarAlgorithm_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -809,6 +812,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\WorldESAvoid_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\AstarAlgorithm_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
