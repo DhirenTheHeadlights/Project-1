@@ -7,6 +7,7 @@ void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirectio
 	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
     getAStar().update(getSprite().getPosition());
+    getAStar().drawDebug(GlobalValues::getInstance().getWindow());
 
 	move(baseSpeed, sailDirection);
 }
@@ -15,7 +16,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
     if (getStopShipRotationFlag()) return;
 
     // Use A* to find the next node towards the checkpoint
-    direction = getAStar().getNextPoint(getSprite().getPosition()) - getSprite().getPosition();\
+    direction = getAStar().getNextPoint(getSprite().getPosition()) - getSprite().getPosition();
 
     GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 100.f, sf::Color::Green));
     GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 100.f, sf::Color::Red));

@@ -3,14 +3,14 @@
 using namespace PirateGame;
 
 void AStar::setStartAndEndPoints(const sf::Vector2f& startPos, const sf::Vector2f& endPos) {
-    start = vectorToGrid(startPos);
+    start = vectorToGrid(startPos + sf::Vector2f(tileSize, tileSize)); // Make sure the ship is not in the start node
     end = vectorToGrid(endPos);
     cachedPath = findPath();
 }
 
 void AStar::update(const sf::Vector2f& currentPosition) {
-    // Re-calculate path every 2000 pixels away from the start
-    if (vm::distance(currentPosition, gridToVector(start)) > 2000.f) {
+    // Re-calculate path every 2000 pixels away from the start or if there is no path
+    if (vm::distance(currentPosition, gridToVector(start)) > maxIterations || cachedPath.empty()) {
         start = vectorToGrid(currentPosition);
         cachedPath = findPath();
     }
@@ -166,7 +166,9 @@ void AStar::drawDebug(sf::RenderWindow* window) {
     for (const auto& pos : cachedPath) {
         sf::RectangleShape rectangle(sf::Vector2f(tileSize, tileSize));
         rectangle.setPosition(gridToVector(pos));
-        rectangle.setFillColor(sf::Color::Green);
+        rectangle.setFillColor(sf::Color::Transparent);
+        rectangle.setOutlineColor(sf::Color::Green);
+        rectangle.setOutlineThickness(5.f);
         window->draw(rectangle);
     }
 
@@ -179,20 +181,9 @@ void AStar::drawDebug(sf::RenderWindow* window) {
             for (int y = topLeft.y; y <= bottomRight.y; ++y) {
                 sf::RectangleShape rectangle(sf::Vector2f(tileSize, tileSize));
                 rectangle.setPosition(gridToVector(sf::Vector2i(x, y)));
-                rectangle.setFillColor(sf::Color::Red);
-                window->draw(rectangle);
-            }
-        }
-    }
-
-    for (int x = 0; x < window->getSize().x / tileSize; ++x) {
-        for (int y = 0; y < window->getSize().y / tileSize; ++y) {
-            sf::Vector2i pos(x, y);
-            if (std::find(cachedPath.begin(), cachedPath.end(), pos) == cachedPath.end() &&
-                !isObstacle(pos)) {
-                sf::RectangleShape rectangle(sf::Vector2f(tileSize, tileSize));
-                rectangle.setPosition(gridToVector(pos));
-                rectangle.setFillColor(sf::Color::Yellow);
+                rectangle.setFillColor(sf::Color::Transparent);
+                rectangle.setOutlineColor(sf::Color::Red);
+                rectangle.setOutlineThickness(5.f);
                 window->draw(rectangle);
             }
         }

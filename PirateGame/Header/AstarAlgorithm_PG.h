@@ -76,7 +76,8 @@ namespace PirateGame {
         sf::Vector2i end;
 
         std::size_t lastSpritesHash = 0;
-        int maxIterations = 1000;
+        const int maxIterations = 1000;
+        const float reCalculatePathInterval = 2000.f;
 
         std::vector<sf::Sprite> nearbySprites;
 
