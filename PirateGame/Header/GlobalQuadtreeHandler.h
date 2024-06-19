@@ -16,16 +16,21 @@ namespace PirateGame {
 			return instance;
 		}
 
-		void updateHashmaps() {
-			landmassHashmap->update();
-			shipHashmap->update();
-			cannonballHashmap->update();
+		void updateQuadtrees() {
+			landmassQuadtree->update();
+			shipQuadtree->update();
+			cannonballQuadtree->update();
 		}
 
 		// Getters
-		Quadtree<LandMass>* getLandMassQuadtree() { return landmassHashmap.get(); }
-		Quadtree<EnemyShip>* getShipQuadtree() { return shipHashmap.get(); }
-		Quadtree<Cannonball>* getCannonballQuadtree() { return cannonballHashmap.get(); }
+		Quadtree<LandMass>* getLandMassQuadtree() { return landmassQuadtree.get(); }
+		Quadtree<EnemyShip>* getShipQuadtree() { return shipQuadtree.get(); }
+		Quadtree<Cannonball>* getCannonballQuadtree() { return cannonballQuadtree.get(); }
+
+		// Setters
+		void setLandmasses(std::vector<std::shared_ptr<LandMass>> landmasses) { this->landmasses = landmasses; }
+		void setShips(std::vector<std::shared_ptr<EnemyShip>> ships) { this->ships = ships; }
+
 	private:
 		// Private Constructor
 		GlobalQuadtreeHandler() {};
@@ -35,8 +40,12 @@ namespace PirateGame {
 		GlobalQuadtreeHandler operator=(GlobalQuadtreeHandler const&) = delete;
 
 		// Hashmaps
-		std::unique_ptr<Quadtree<LandMass>> landmassHashmap = std::make_unique<Quadtree<LandMass>>();
-		std::unique_ptr<Quadtree<EnemyShip>> shipHashmap = std::make_unique<Quadtree<EnemyShip>>();
-		std::unique_ptr<Quadtree<Cannonball>> cannonballHashmap = std::make_unique<Quadtree<Cannonball>>();
+		std::unique_ptr<Quadtree<LandMass>> landmassQuadtree = std::make_unique<Quadtree<LandMass>>();
+		std::unique_ptr<Quadtree<EnemyShip>> shipQuadtree = std::make_unique<Quadtree<EnemyShip>>();
+		std::unique_ptr<Quadtree<Cannonball>> cannonballQuadtree = std::make_unique<Quadtree<Cannonball>>();
+
+		// Objects
+		std::vector<std::shared_ptr<LandMass>> landmasses;
+		std::vector<std::shared_ptr<EnemyShip>> ships;
 	};
 }

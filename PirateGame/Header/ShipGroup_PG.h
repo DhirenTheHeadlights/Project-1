@@ -26,8 +26,8 @@ namespace PirateGame {
 			}
 
 			ship->setBaseSpeed(groupSpeed);
-
 			ship->setGroupID(ID);
+			ship->getMovementHandler()->setDestination(destination);
 
 			// Add the ship to the hashmap
 			GlobalQuadtreeHandler::getInstance().getShipQuadtree()->addObject(ship.get());
@@ -57,7 +57,12 @@ namespace PirateGame {
 		}
 
 		// Setters
-		void setDestination(sf::Vector2f heading) { this->destination = heading; }
+		void setDestination(sf::Vector2f heading) { 
+			destination = heading; 
+			for (auto& ship : ships) {
+				ship->getMovementHandler()->setDestination(heading);
+			}
+		}
 		void addTarget(Ship* ship) { 
 			if (std::find(targetShips.begin(), targetShips.end(), ship) != targetShips.end()) {
 				return;

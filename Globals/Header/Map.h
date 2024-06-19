@@ -26,8 +26,7 @@ public:
         // Generate a random position
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<float> dis(0.0f, 1.0f); // Ensure the distribution uses float
-        // Explicitly cast len and height to float to avoid conversion warnings
+        std::uniform_real_distribution<float> dis(0.0f, 1.0f); 
         return position + sf::Vector2f(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
     }
     sf::FloatRect getBounds() const { return sf::FloatRect(position, sf::Vector2f(static_cast<float>(len), static_cast<float>(height))); }
