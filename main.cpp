@@ -14,6 +14,7 @@
 #include "PirateGame/Header/WorldFactory_PG.h"
 #include "Platformer Game/Header/World_Plat.h"
 #include "DoodleJump/World_DJ.h"
+#include "DhruvGame/Header/World_DG.h"
 
 #include "Credits.h"
 
@@ -206,6 +207,25 @@ void doodleJump() {
 	}
 }
 
+void dhruvGame() {
+    initializeGlobals("Dhruv Game Window");
+
+    DhruvGame::World world(&window);
+    world.createWorld();
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) { // Close the window if the user clicks the X button
+                window.close();
+            }
+        }
+        window.clear();
+        world.gameLoop();
+        window.display();
+    }
+}
+
 void exitTheLauncher() {
     exitLauncher = true;
 	window.close();
@@ -224,6 +244,7 @@ int main() {
         Game("Pirate Game", pirateGame),
         Game("Platformer", Platformer),
         Game("Doodle Jump", doodleJump),
+        Game("Dhruv Game", dhruvGame),
         // Add more games here...
 
         Game("Credits", credits),

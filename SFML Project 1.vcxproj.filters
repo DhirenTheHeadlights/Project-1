@@ -254,6 +254,15 @@
     <Filter Include="Source Files\PirateGame\JSON">
       <UniqueIdentifier>{77601f0c-99f9-42b6-b2e6-488fed899b11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\DhruvGame">
+      <UniqueIdentifier>{d4b4ac4e-d2b8-42e0-bec0-be0c9cb94c65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DhruvGame\Header">
+      <UniqueIdentifier>{f29ad777-aca9-4606-be84-25b5f31c6ba8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DhruvGame\Resource">
+      <UniqueIdentifier>{85a18615-33f8-4aa4-9114-ec37576e6bd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -501,6 +510,9 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\WorldESAvoid_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClCompile>
+    <ClCompile Include="DhruvGame\Resource\World_DG.cpp">
+      <Filter>Source Files\DhruvGame\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -809,6 +821,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\WorldESAvoid_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
+    </ClInclude>
+    <ClInclude Include="DhruvGame\Header\World_DG.h">
+      <Filter>Source Files\DhruvGame\Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
