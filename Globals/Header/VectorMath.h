@@ -129,6 +129,13 @@ namespace vm {
 		return dis(gen);
 	}
 
+	inline int randomInt(int min, int max) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<int> dis(min, max);
+		return dis(gen);
+	}
+
 	inline float distanceToLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) {
 		sf::Vector2f line = lineEnd - lineStart;
 		sf::Vector2f pointToLineStart = point - lineStart;

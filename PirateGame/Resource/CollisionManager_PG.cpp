@@ -31,12 +31,11 @@ void CollisionManager::handleCollisions() {
 		}
 
 		// Check if the ship is colliding with any of the nearby ships
-		std::vector<sf::Sprite> nearbyShipSprites;
 		for (auto& i : nearbyShips) {
 			// Skip if the ship is the same ship
 			if (i->getID() == ship->getID()) continue;
 			handleShipCollision(ship, i, collidingShips);
-			nearbyShipSprites.push_back(i->getSprite());
+			nearbySprites.push_back(i->getSprite());
 		}
 
 		ship->getMovementHandler()->setNearbySprites(nearbySprites);

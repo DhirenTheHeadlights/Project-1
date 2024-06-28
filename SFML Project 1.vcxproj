@@ -252,6 +252,7 @@
     <ClInclude Include="Globals\Header\VectorMath.h" />
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
+    <ClInclude Include="PirateGame\Header\AnimationHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\AstarAlgorithm_PG.h" />
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
@@ -312,6 +313,7 @@
     <ClInclude Include="PirateGame\Header\TextureResourceManager_PG.h" />
     <ClInclude Include="PirateGame\Header\View_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalWindController_PG.h" />
+    <ClInclude Include="PirateGame\Header\WaterTiler_PG.h" />
     <ClInclude Include="PirateGame\Header\WorldDefault_PG.h" />
     <ClInclude Include="PirateGame\Header\WorldESAvoid_PG.h" />
     <ClInclude Include="PirateGame\Header\WorldFactory_PG.h" />
@@ -403,6 +405,7 @@
     <Image Include="PirateGameSprites\settings_button.png" />
     <Image Include="PirateGameSprites\slider_thumb.png" />
     <Image Include="PirateGameSprites\slider_track.png" />
+    <Image Include="PirateGameSprites\water_tiles-Sheet.png" />
     <Image Include="PlatformerGameSprites\stupidnicktankdog.png" />
   </ItemGroup>
   <ItemGroup>

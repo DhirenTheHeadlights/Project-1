@@ -10,7 +10,7 @@ namespace PirateGame {
 		DefaultDebugWorld(sf::RenderWindow* window) : World(window) {
 			numLandMasses = 0;
 			distanceBetweenLandMasses = 100.f;
-			numEnemyShips = 5;
+			numEnemyShips = 2;
 			distanceBetweenEnemyShips = 100.f;
 		}
 		~DefaultDebugWorld() {};

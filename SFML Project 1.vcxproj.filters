@@ -254,6 +254,9 @@
     <Filter Include="Source Files\PirateGame\JSON">
       <UniqueIdentifier>{77601f0c-99f9-42b6-b2e6-488fed899b11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\World">
+      <UniqueIdentifier>{1c90cba4-6c4a-4a25-a67c-84ab9085b1fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -816,6 +819,12 @@
     <ClInclude Include="PirateGame\Header\AstarAlgorithm_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\WaterTiler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\AnimationHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -1049,6 +1058,9 @@
     </Image>
     <Image Include="PirateGameSprites\market_menu_buy_ship.png">
       <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\water_tiles-Sheet.png">
+      <Filter>Source Files\PirateGame\Sprites\World</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

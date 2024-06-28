@@ -48,7 +48,7 @@ namespace PirateGame {
 
         float fCost() const { return gCost + hCost; }
         bool operator==(const AstarNode& other) const { return position == other.position; }
-        sf::FloatRect getRect() const { return sf::FloatRect(position.x * tileSize, position.y * tileSize, tileSize, tileSize); }
+        sf::FloatRect getRect() const { return sf::FloatRect(position.x * static_cast<float>(tileSize), position.y * static_cast<float>(tileSize), static_cast<float>(tileSize), static_cast<float>(tileSize)); }
     };
 
     struct NodeComparator {
@@ -71,13 +71,18 @@ namespace PirateGame {
 
         void drawDebug(sf::RenderWindow* window);
 
+        void recalculatePath() { cachedPath = findPath(); }
+
     private:
         sf::Vector2i start;
         sf::Vector2i end;
 
         std::size_t lastSpritesHash = 0;
-        const int maxIterations = 1000;
+        const int maxIterations = 10000;
         const float reCalculatePathInterval = 2000.f;
+
+        sf::Clock pathRecalculationClock;
+        sf::Time pathRecalculationCooldown = sf::seconds(2.f);
 
         std::vector<sf::Sprite> nearbySprites;
 
@@ -100,8 +105,6 @@ namespace PirateGame {
         sf::Vector2f gridToVector(const sf::Vector2i& grid) const;
 
         bool isObstacle(const sf::Vector2i& node) const;
-
-        std::size_t calculateSpriteHash(const std::vector<sf::Sprite>& sprites) const;
 
         std::priority_queue<std::shared_ptr<AstarNode>, std::vector<std::shared_ptr<AstarNode>>, NodeComparator> openSet;
     };

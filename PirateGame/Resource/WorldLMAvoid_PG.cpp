@@ -48,6 +48,8 @@ void LMAvoidWorld::setUpLandMasses() {
 			LMH.createLandmass(LandMassType::Rock, sf::Vector2f(rockX, rockY));
 		}
 	}
+
+	LMH.createLandmass(LandMassType::Island, sf::Vector2f(10373.633789f, -3614.429199f));
 }
 
 
@@ -56,6 +58,8 @@ void LMAvoidWorld::setUpEnemyShips() {
 	ESH.setPlayerShip(playerShip.get());
 	ESH.addEnemyShip(sf::Vector2f(500.f, 50.f));
 	ESH.getShipGroups().at(0)->setDestination(sf::Vector2f(10000.f, 10000.f));
+	ESH.addEnemyShip(sf::Vector2f(-8149, 7904));
+	ESH.getShipGroups().at(1)->setDestination(sf::Vector2f(10373.633789f, -3614.429199f));
 }
 
 void LMAvoidWorld::createWorld(sf::Event event) {
@@ -93,15 +97,7 @@ void LMAvoidWorld::createWorld(sf::Event event) {
 }
 
 void LMAvoidWorld::updateGameLoop(sf::Event event) {
-	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
-
-	GlobalWindController::getInstance().update();
-	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
-
-	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
-	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
-
-	//playerShip->update();
+	updateCoreElements();
 
 	ESH.update();
 
@@ -109,12 +105,12 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 
 	view.updateDebugView(event);
 
-	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->draw(window);
-
-
-	// Click to change ship destination
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && GlobalValues::getInstance().getWindow()->hasFocus()) {
+	// Set the position of the first ship to wherever the mouse clicks
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		sf::Vector2f mousePos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
-		ESH.getShipGroups().at(0)->setDestination(mousePos);
+		ESH.getEnemyShips().at(0)->getSprite().setPosition(mousePos);
+		ESH.getEnemyShips().at(0)->getMovementHandler()->getAStar().recalculatePath();
 	}
+
+	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->draw(window);
 }

@@ -10,9 +10,14 @@ void AStar::setStartAndEndPoints(const sf::Vector2f& startPos, const sf::Vector2
 
 void AStar::update(const sf::Vector2f& currentPosition) {
     // Re-calculate path every 2000 pixels away from the start or if there is no path
-    if (vm::distance(currentPosition, gridToVector(start)) > maxIterations || cachedPath.empty()) {
+    if (vm::distance(currentPosition, gridToVector(start)) > reCalculatePathInterval || cachedPath.empty()) {
+        if (pathRecalculationClock.getElapsedTime() < pathRecalculationCooldown) {
+			return;
+		}
+
         start = vectorToGrid(currentPosition);
         cachedPath = findPath();
+        pathRecalculationClock.restart();
     }
 
     if (cachedPath.empty()) {
@@ -83,8 +88,7 @@ std::vector<sf::Vector2i> AStar::findPath() {
     openSet.emplace(startNode);
     allNodes[start] = startNode;
 
-    int iterations = 0;
-    const int maxIterations = 10000; // Set an appropriate limit for debugging
+    int iterations = 0; 
 
     while (!openSet.empty() && iterations < maxIterations) {
         auto current = openSet.top();
@@ -115,6 +119,8 @@ std::vector<sf::Vector2i> AStar::findPath() {
 
         ++iterations;
     }
+
+    std::cout << "A* algorithm reached max iterations and did not find a path\n";
 
     return {};
 }

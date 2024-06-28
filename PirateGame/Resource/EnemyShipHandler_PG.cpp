@@ -50,7 +50,7 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 }
 
 void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) {
-	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition();
+	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition() - sf::Vector2f(100.f, 100.f); // Offset so the pathfinding works
 	group->setDestination(position);
 }
 
@@ -83,21 +83,20 @@ void EnemyShipHandler::updateGroupDestination(std::shared_ptr<ShipGroup> group) 
 void EnemyShipHandler::updateGroupsNearPlayer() {
 	// Grab nearby ships for the player ship
 	std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	
 	// Update all the enemy ships groups near the player ship
+	for (auto& ship : nearbyShips) {
 
-	//for (auto& ship : nearbyShips) {
+		// Grab the ship group ID
+		int groupID = ship->getGroupID();
 
-	//	// Grab the ship group ID
-	//	int groupID = ship->getGroupID();
+		// Look for the ship group
+		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
 
-	//	// Look for the ship group
-	//	auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
-
-	//	// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
-	//	//(*it)->setTarget(playerShip->getSprite().getPosition());
-	//	(*it)->setInCombat(true);
-
-	//}
+		// Set the target for the ship group. We dont need to check if there is a group, since the ship should always have a group
+		(*it)->addTarget(playerShip);
+		(*it)->setInCombat(true);
+	}
 
 	std::vector<EnemyShip*> nearbyShipsAudio = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(playerShip, audioRange);
 
@@ -186,7 +185,7 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 	if (enemyShipGroup->getIsInteracting()) return;
 
 	// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
-	std::uniform_int_distribution<int> dist(0, interactionChance * static_cast<int>(enemyShipGroup->getEnemyShips().size())); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
+	std::uniform_int_distribution<int> dist(0, interactionChance + static_cast<int>(enemyShipGroup->getEnemyShips().size())); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
 	int interaction = dist(GlobalValues::getInstance().getRandomEngine());
 
 	// Shows if there is interaction. Possible framework for future attack indicator!

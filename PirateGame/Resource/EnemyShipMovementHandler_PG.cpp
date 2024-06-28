@@ -7,7 +7,7 @@ void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirectio
 	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
     getAStar().update(getSprite().getPosition());
-    getAStar().drawDebug(GlobalValues::getInstance().getWindow());
+    //getAStar().drawDebug(GlobalValues::getInstance().getWindow());
 
 	move(baseSpeed, sailDirection);
 }
@@ -15,19 +15,20 @@ void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirectio
 void EnemyShipMovementHandler::setSpriteRotation() {
     if (getStopShipRotationFlag()) return;
 
-    // Use A* to find the next node towards the checkpoint
-    direction = getAStar().getNextPoint(getSprite().getPosition()) - getSprite().getPosition();
-
-    GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 100.f, sf::Color::Green));
-    GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 100.f, sf::Color::Red));
-    GlobalValues::getInstance().displayText("num nearby sprites: " + std::to_string(getNearbySprites().size()), getSprite().getPosition() + sf::Vector2f(0, -50.f), sf::Color::White);
+    //GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 200.f, sf::Color::Green));
+    //GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 200.f, sf::Color::Red));
 
     // Check if the ship is active towards the target
     if (activeTowardsTarget) {
-        float distance = vm::magnitude(targetPos - getSprite().getPosition());
+        sf::Vector2f directionToTarget = targetPos - getSprite().getPosition();
+        float distance = vm::magnitude(directionToTarget);
         if (distance < broadsideDistance) { // Go perpendicular
-            direction = sf::Vector2f(targetPos.y, -targetPos.x) - getSprite().getPosition();
+            direction = sf::Vector2f(directionToTarget.y, -directionToTarget.x);
         }
+    }
+    else {
+        // Get the next point from the A* algorithm
+        direction = getAStar().getNextPoint(getSprite().getPosition()) - getSprite().getPosition();
     }
 
     setTurningMultiplier(activeTowardsTarget ? 1.5f : 1.f);

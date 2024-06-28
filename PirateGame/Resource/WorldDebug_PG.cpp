@@ -37,19 +37,11 @@ void DefaultDebugWorld::createWorld(sf::Event event) {
 }
 
 void DefaultDebugWorld::updateGameLoop(sf::Event event) {
-	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
-
-	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
-
-	GlobalWindController::getInstance().update();
-
-	background.setPosition(view.getView().getCenter().x - window->getView().getSize().x / 2.f, view.getView().getCenter().y - window->getView().getSize().y / 2.f);
-	background.setScale(window->getView().getSize().x / background.getSize().x, window->getView().getSize().y / background.getSize().y);
+	updateCoreElements();
 
 	LMH.interactWithLandmasses();
 
 	ESH.update();
-	gameLoopClock.restart();
 
 	CM.handleCollisions();
 

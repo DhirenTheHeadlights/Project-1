@@ -19,6 +19,7 @@
 #include "LandMassHandler_PG.h"
 #include "CollisionManager_PG.h"
 #include "MenuHandler_PG.h"
+#include "WaterTiler_PG.h"
 
 namespace PirateGame {
 	class World {
@@ -41,6 +42,7 @@ namespace PirateGame {
 
 		virtual void updateGameLoop(sf::Event event) = 0;
 		virtual void drawGameLoop();
+		virtual void updateCoreElements();
 
 		// Game objects
 		Player player;
@@ -55,8 +57,9 @@ namespace PirateGame {
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;
-		sf::RectangleShape background;
-		sf::Color backgroundColor = sf::Color(0, 158, 163, 255);
+
+		// Background
+		WaterTiler waterTiler;
 
 		// Frame rate variables
 		sf::Clock frameRateClock;

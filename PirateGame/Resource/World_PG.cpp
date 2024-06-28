@@ -19,8 +19,7 @@ void World::setUpWorldElements() {
 	view.setUpView();
 
 	// Set up the background
-	background.setSize(sf::Vector2f(static_cast<float>(window->getSize().x), static_cast<float>(window->getSize().y)));
-	background.setFillColor(backgroundColor);
+	waterTiler.initialize();
 }
 
 void World::setUpPlayerShip() {
@@ -69,11 +68,18 @@ void World::setUpUI() {
 }
 
 void World::drawGameLoop() {
-	window->draw(background);
+	waterTiler.draw(window);
 	LMH.drawLandMasses();
 	window->draw(frameRateText);
 	window->draw(experience);
 	playerShip->draw();
 	ESH.draw();
+}
+
+void World::updateCoreElements() {
+	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
+	GlobalWindController::getInstance().update();
+	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
+	waterTiler.update();
 }
 
