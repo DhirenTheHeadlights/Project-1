@@ -8,6 +8,7 @@
 #include "StartMenu_PG.h"
 #include "OptionsMenu_PG.h"
 #include "InGameHUD_PG.h"
+#include "InventoryMenu_PG.h"
 
 namespace PirateGame {
 	// Enum for the different types of menus
@@ -15,6 +16,7 @@ namespace PirateGame {
 		StartMenu,
 		OptionsMenu,
 		HUD,
+		InventoryMenu
 	};
 
 	class MenuHandler {
@@ -29,12 +31,14 @@ namespace PirateGame {
 		StartMenu* getStartMenu() { return startMenu.get(); }
 		OptionsMenu* getOptionsMenu() { return optionsMenu.get(); }
 		InGameHUD* getHUD() { return HUD.get(); }
+		InventoryMenu* getInventoryMenu() { return inventoryMenu.get(); }
 		
 	private:
 		// Pointers to the different menus
 		std::unique_ptr<StartMenu> startMenu;
 		std::unique_ptr<OptionsMenu> optionsMenu;
 		std::unique_ptr<InGameHUD> HUD;
+		std::unique_ptr<InventoryMenu> inventoryMenu;
 		//...
 	};
 }

@@ -29,6 +29,7 @@ void PlayerShip::customShipUpdate() {
 	if (experience > experienceToLevelUp) {
 		experience = 0.f;
 		experienceToLevelUp *= 2;
+		playerLevel += 1;
 	}
 }
 

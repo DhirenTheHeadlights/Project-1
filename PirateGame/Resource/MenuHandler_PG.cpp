@@ -7,6 +7,7 @@ void MenuHandler::createMenus() {
 	startMenu = std::make_unique<StartMenu>();
 	optionsMenu = std::make_unique<OptionsMenu>();
 	HUD = std::make_unique<InGameHUD>();
+	inventoryMenu = std::make_unique<InventoryMenu>();
 }
 
 void MenuHandler::openMenu(MenuType menuType) {
@@ -24,6 +25,9 @@ void MenuHandler::openMenu(MenuType menuType) {
 	case MenuType::HUD:
 		HUD->draw();
 		break;
+	case MenuType::InventoryMenu:
+		inventoryMenu->draw();
+		break;
 	}
 }
 
@@ -32,4 +36,5 @@ void MenuHandler::setUpMenus() {
 	startMenu->setUpMenu();
 	optionsMenu->setUpMenu();
 	HUD->setUpMenu();
+	inventoryMenu->setUpMenu();
 }

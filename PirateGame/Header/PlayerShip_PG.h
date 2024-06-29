@@ -26,6 +26,7 @@ namespace PirateGame {
 		}
 		float getExp() const { return experience; }
 		float getExpToLevelUp() const { return experienceToLevelUp; }
+		int getplayerLevel() const { return playerLevel; }
 
 		// Create the ship and set its values
 		virtual void customShipSetUp() override;
@@ -39,5 +40,6 @@ namespace PirateGame {
 		// Experience
 		float experience = 0;
 		float experienceToLevelUp = 1;
+		int playerLevel = 0;
 	};
 }
