@@ -17,12 +17,15 @@ void MenuHandler::openMenu(MenuType menuType) {
 	switch (menuType) {
 	case MenuType::StartMenu:
 		startMenu->draw();
+		startMenu->update();
 		break;
 	case MenuType::OptionsMenu:
 		optionsMenu->draw();
+		optionsMenu->update();
 		break;
 	case MenuType::HUD:
 		HUD->draw();
+		HUD->update();
 		break;
 	}
 }

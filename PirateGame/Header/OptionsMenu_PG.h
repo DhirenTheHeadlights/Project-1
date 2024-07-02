@@ -21,16 +21,19 @@ namespace PirateGame {
 
 		void setUpMenu() override;
 		void draw() override;
+		void update() override;
+
 	private:
 		// Menu variables
 		Tab currentTab = Tab::General;
+
 		std::vector<std::unique_ptr<Interactable>> generalTabInteractables;
 		std::vector<std::unique_ptr<Interactable>> graphicsTabInteractables;
 		std::vector<std::unique_ptr<Interactable>> audioTabInteractables;
 		std::vector<std::unique_ptr<Interactable>> controlsTabInteractables;
 
 		// Menu tabs
-		std::vector<std::unique_ptr<Button>> tabButtons;
+		std::vector<Button> tabButtons;
 
 		// Helper functions
 		void setInteractablePositions() override;
@@ -39,10 +42,14 @@ namespace PirateGame {
 		void drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
 		void interactWithMenuItems() override;
 
-		void addTabInteractable(std::function<void()> function, std::string name);
-		void addDropDownInteractable(std::vector<std::pair<std::function<void()>, std::string>> options, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables);
-		void addSliderInteractable(std::function<void(float value)> function, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables);
-		void addButtonInteractable(std::function<void()> function, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+		// Overriden function to 
+		void addDropDown(sf::Text text, sf::Texture& texture, std::vector<std::unique_ptr<Interactable>>& destination, std::vector<std::pair<std::function<void()>, std::string>> options, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) override {
+			std::unique_ptr<DropDown> dropDown = std::make_unique<DropDown>(options);
+			dropDown->createInteractable(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), text);
+			dropDown->setOptionsBoxSprite(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable());
+			dropDown->setOptionTextColor(sf::Color::Black);
+			destination.push_back(std::move(dropDown));
+		}
 
 		// Add interactables to the tabs
 		void addGeneralTabInteractables();

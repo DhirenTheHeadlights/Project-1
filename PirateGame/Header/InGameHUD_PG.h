@@ -25,9 +25,10 @@ namespace PirateGame {
 		void setUpMenu() override;
 		void setInteractablePositions() override;
 		void addInteractablesToMenu() override;
-		void addInfoBox(std::string text, std::vector<std::unique_ptr<TextDisplayBox>>& destination) const;
-		void updateShipPropertiesString();
+		void updateShipPropertiesStrings();
 		void draw() override;
+		void update() override;
+		void interactWithMenuItems() override;
 
 		// Setters
 		void setPlayerShip(PlayerShip& ship) { this->ship = &ship; minimap.setShip(&ship); };
@@ -52,8 +53,10 @@ namespace PirateGame {
 		sf::CircleShape windCircle;
 		sf::Text windText;
 
-		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesLeftSide;
-		std::vector<std::unique_ptr<TextDisplayBox>> shipPropertiesRightSide;
+		std::vector<TextDisplayBox> shipPropertiesLeftSide;
+		std::vector<TextDisplayBox> shipPropertiesRightSide;
+
+		Button settingsButton;
 
 		Minimap minimap;
 

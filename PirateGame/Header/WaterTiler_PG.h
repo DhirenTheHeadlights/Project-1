@@ -55,7 +55,7 @@ namespace PirateGame {
 
             for (int x = startX; x <= endX; ++x) {
                 for (int y = startY; y <= endY; ++y) {
-                    waterTileSprite.setPosition(x * scaledFrameWidth, y * scaledFrameHeight);
+                    waterTileSprite.setPosition(static_cast<float>(x * scaledFrameWidth), static_cast<float>(y * scaledFrameHeight));
                     window->draw(waterTileSprite);
                 }
             }

@@ -16,7 +16,7 @@ namespace PirateGame {
 
 	class Button : public Interactable {
 	public:
-		Button(ButtonFunction func) : func(func) {};
+		Button(ButtonFunction func = []() {}) : func(func) {};
 		~Button() {};
 
 		void interact() override; // Overridden function to handle the interaction of the button

@@ -26,8 +26,8 @@ void OptionsMenu::setInteractablePositions() {
 	// Set the positions of the tabs
 	sf::Vector2f tabPosition = sf::Vector2f(menu.getPosition() + tabButtonPosition);
 	for (auto& tab : tabButtons) {
-		tab->setPosition(tabPosition);
-		tabPosition.x += tab->getSprite().getGlobalBounds().getSize().x;
+		tab.setPosition(tabPosition);
+		tabPosition.x += tab.getSprite().getGlobalBounds().getSize().x;
 	}
 
 	setTabInteractablePositions(generalTabInteractables);
@@ -56,10 +56,10 @@ void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Intera
 
 void OptionsMenu::addInteractablesToMenu() {
 	// Add the tabs to the menu
-	addTabInteractable([this]() { currentTab = Tab::General; }, "General");
-	addTabInteractable([this]() { currentTab = Tab::Graphics; }, "Graphics");
-	addTabInteractable([this]() { currentTab = Tab::Audio; }, "Audio");
-	addTabInteractable([this]() { currentTab = Tab::Controls; }, "Controls");
+	addButton(sf::Text("General", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getTab(), tabButtons, std::function<void()>([this]() { currentTab = Tab::General; }));
+	addButton(sf::Text("Graphics", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getTab(), tabButtons, std::function<void()>([this]() { currentTab = Tab::Graphics; }));
+	addButton(sf::Text("Audio", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getTab(), tabButtons, std::function<void()>([this]() { currentTab = Tab::Audio; }));
+	addButton(sf::Text("Controls", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getTab(), tabButtons, std::function<void()>([this]() { currentTab = Tab::Controls; }));
 
 	// Create the back button
 	std::function<void()> backFunc = [this]() {
@@ -73,20 +73,12 @@ void OptionsMenu::addInteractablesToMenu() {
 			GSM->changeGameState(GameState::Start);
 		}
 		};
-	addTabInteractable(backFunc, "Exit");
-
+	addButton(sf::Text("Exit", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getTab(), tabButtons, backFunc);
 
 	addGeneralTabInteractables();
 	addGraphicsTabInteractables();
 	addAudioTabInteractables();
 	addControlsTabInteractables();
-}
-
-void OptionsMenu::addTabInteractable(std::function<void()> func, std::string name) {
-	std::unique_ptr<Button> tabButton = std::make_unique<Button>(func);
-	sf::Text text = sf::Text(name, font, interactableTextSize);
-	tabButton->createInteractable(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getTab(), text);
-	tabButtons.push_back(std::move(tabButton));
 }
 
 /// Set up the interactables for the tabs
@@ -105,7 +97,7 @@ void OptionsMenu::addGeneralTabInteractables() {
 		GlobalValues::getInstance().getWindow()->create(sf::VideoMode(1920, 1080), "Pirate Game", sf::Style::Default);
 		}), "Windowed"));
 
-	addDropDownInteractable(screenPair, "Screen", generalTabInteractables);
+	addDropDown(sf::Text("Screen", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), generalTabInteractables, screenPair);
 
 	std::vector<std::pair<std::function<void()>, std::string>> resolutionPair;
 
@@ -122,74 +114,53 @@ void OptionsMenu::addGeneralTabInteractables() {
 		GlobalValues::getInstance().getWindow()->setSize(sf::Vector2u(640, 480));
 		}), "640x480"));
 
-	addDropDownInteractable(resolutionPair, "Resolution", generalTabInteractables);
+	addDropDown(sf::Text("Resolution", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), generalTabInteractables, resolutionPair);
 }
 
 void OptionsMenu::addGraphicsTabInteractables() {
 	// Add the interactables to the graphics tab
-	std::function<void(float value)> brightnessSliderFunc = [this](float value) { /*Implement later*/ };
-	addSliderInteractable(brightnessSliderFunc, "Brightness", graphicsTabInteractables);
+	addSlider(sf::Text("Brightness", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), graphicsTabInteractables,
+		std::function<void(float value)>([this](float value) { /*Implement later*/ }));
 
-	std::function<void(float value)> contrastSliderFunc = [this](float value) { /*Implement later*/ };
-	addSliderInteractable(contrastSliderFunc, "Contrast", graphicsTabInteractables);
+	addSlider(sf::Text("Gamma", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), graphicsTabInteractables,
+		std::function<void(float value)>([this](float value) { /*Implement later*/ }));
 
 	std::vector<std::pair<std::function<void()>, std::string>> qualityPair;
+
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Low"));
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "Medium"));
 	qualityPair.push_back(std::make_pair(std::function<void()>([]() {}), "High"));
-	addDropDownInteractable(qualityPair, "Quality", graphicsTabInteractables);
+
+	addDropDown(sf::Text("Quality", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), graphicsTabInteractables, qualityPair);
 
 	std::vector<std::pair<std::function<void()>, std::string>> vsyncToggle;
+
 	vsyncToggle.push_back(std::make_pair(std::function<void()>([]() {
 		GlobalValues::getInstance().getWindow()->setVerticalSyncEnabled(true);
 		}), "On"));
 	vsyncToggle.push_back(std::make_pair(std::function<void()>([]() {
 		GlobalValues::getInstance().getWindow()->setVerticalSyncEnabled(false);
 		}), "Off"));
-	addDropDownInteractable(vsyncToggle, "VSync", graphicsTabInteractables);
+
+	addDropDown(sf::Text("VSync", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), graphicsTabInteractables, vsyncToggle);
 }
 
 void OptionsMenu::addAudioTabInteractables() {
 	// Add the interactables to the audio tab
-	std::function<void(float value)> musicSliderFunc = [this](float value) { /*Implement later*/ };
-	addSliderInteractable(musicSliderFunc, "Music Volume", audioTabInteractables);
+	addSlider(sf::Text("Master Volume", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), audioTabInteractables,
+		std::function<void(float value)>([this](float value) { /*Implement later*/ }));
 
-	std::function<void(float value)> sfxSliderFunc = [this](float value) { GlobalSoundManager::getInstance().setSoundVolume(value); };
-	addSliderInteractable(sfxSliderFunc, "SFX Volume", audioTabInteractables);
+	addSlider(sf::Text("Music Volume", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), audioTabInteractables,
+		std::function<void(float value)>([this](float value) { /*Implement later*/ }));
 
-	std::function<void(float value)> voiceSliderFunc = [this](float value) { /*Implement later*/ };
-	addSliderInteractable(voiceSliderFunc, "Voice Volume", audioTabInteractables);
+	addSlider(sf::Text("SFX Volume", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), audioTabInteractables,
+		std::function<void(float value)>([this](float value) { GlobalSoundManager::getInstance().setSoundVolume(value); }));
 }
 
 void OptionsMenu::addControlsTabInteractables() {
 	// Add the interactables to the controls tab
-	std::function<void()> rebindFunc = [this]() { /*Implement later*/ };
-	addButtonInteractable(rebindFunc, "Rebind", controlsTabInteractables);
-}
-
-/// Helpers
-
-void OptionsMenu::addDropDownInteractable(std::vector<std::pair<std::function<void()>, std::string>> options, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables) {
-	std::unique_ptr<DropDown> dropDown = std::make_unique<DropDown>(options);
-	sf::Text text = sf::Text(name, font, interactableTextSize);
-	dropDown->createInteractable(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), text);
-	dropDown->setOptionsBoxSprite(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable());
-	dropDown->setOptionTextColor(sf::Color::Black);
-	tabInteractables.push_back(std::move(dropDown));
-}
-
-void OptionsMenu::addSliderInteractable(std::function<void(float value)> func, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables) {
-	std::unique_ptr<Slider> slider = std::make_unique<Slider>(func);
-	sf::Text text = sf::Text(name, font, interactableTextSize);
-	slider->createInteractable(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), text);
-	tabInteractables.push_back(std::move(slider));
-}
-
-void OptionsMenu::addButtonInteractable(std::function<void()> func, std::string name, std::vector<std::unique_ptr<Interactable>>& tabInteractables) {
-	std::unique_ptr<Button> button = std::make_unique<Button>(func);
-	sf::Text text = sf::Text(name, font, interactableTextSize);
-	button->createInteractable(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), text);
-	tabInteractables.push_back(std::move(button));
+	addButton(sf::Text("Rebind", font, interactableTextSize), GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable(), controlsTabInteractables,
+		std::function<void()>([this]() { /*Implement later*/ }));
 }
 
 /// Draw/Interact with the menu
@@ -197,7 +168,7 @@ void OptionsMenu::addButtonInteractable(std::function<void()> func, std::string 
 void OptionsMenu::interactWithMenuItems() {
 	// Interact with the tabs
 	for (auto& tab : tabButtons) {
-		tab->interact();
+		tab.interact();
 	}
 
 	// Interact with the interactables for the current tab
@@ -225,22 +196,20 @@ void OptionsMenu::interactWithMenuItems() {
 	}
 }
 
+void OptionsMenu::update() {
+	interactWithMenuItems();
+}
+
 // Draw the menu
 void OptionsMenu::draw() {
 	// Draw the menu background
 	window->draw(menu);
 	window->draw(titleText);
 
-	// Draw the interactables
-	for (auto& interactable : interactables) {
-		interactable->getText().setFillColor(sf::Color::Black);
-		interactable->draw();
-	}
-
 	// Draw the tabs
 	for (auto& tab : tabButtons) {
-		tab->getText().setFillColor(sf::Color::White);
-		tab->draw();
+		tab.getText().setFillColor(sf::Color::White);
+		tab.draw();
 	}
 
 	// Draw the interactables for the current tab
@@ -258,9 +227,6 @@ void OptionsMenu::draw() {
 		drawTabInteractables(controlsTabInteractables);
 		break;
 	}
-
-	// Interact with the menu items
-	interactWithMenuItems();
 }
 
 // General function to draw the tab interactables

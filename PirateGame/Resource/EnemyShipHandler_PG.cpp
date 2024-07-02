@@ -50,7 +50,7 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 }
 
 void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) {
-	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition() - sf::Vector2f(100.f, 100.f); // Offset so the pathfinding works
+	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition() - sf::Vector2f(500.f, 500.f); // Offset so the pathfinding works
 	group->setDestination(position);
 }
 
