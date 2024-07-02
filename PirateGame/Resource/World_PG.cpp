@@ -47,12 +47,16 @@ void World::setUpCollisionManager() {
 
 void World::setUpMenus() {
 	MH.createMenus();
-	MH.setUpMenus();
+
 	
 	// Set up the hud
 	MH.getHUD()->getMinimap().setLandmasses(LMH.getLandMasses());
 	MH.getHUD()->getMinimap().setEnemyShips(ESH.getEnemyShips());
 	MH.getHUD()->setPlayerShip(*playerShip.get());
+
+	// Set up the inventory
+	MH.getInventoryMenu()->setPlayerShip(playerShip.get());
+	MH.setUpMenus();
 }
 
 void World::setUpUI() {

@@ -30,7 +30,7 @@ namespace std {
 
 namespace PirateGame {
     const int tileSize = 256;
-    const float boundPadding = 1.5f;
+    const float boundPadding = 1.f;
 
     enum class NodeType {
         Path,

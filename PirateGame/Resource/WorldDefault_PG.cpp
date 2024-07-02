@@ -26,6 +26,7 @@ void DefaultWorld::createWorld(sf::Event event) {
 		drawGameLoop();
 		updateGameLoop(event);
 		if (GlobalValues::getInstance().getShowHUD()) MH.openMenu(MenuType::HUD);
+		if (GlobalValues::getInstance().getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
 		break;
 	}
 
@@ -71,4 +72,7 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 	playerShip->update();
 
 	view.setCenter(playerShip->getSprite().getPosition());
+
+	GlobalValues::getInstance().setShowInventory(GlobalInputHandler::getInstance().isKeyToggled(sf::Keyboard::I));
+
 }

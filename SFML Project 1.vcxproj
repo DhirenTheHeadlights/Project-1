@@ -180,6 +180,7 @@
     <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\InventoryMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\IslandMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp" />
@@ -271,6 +272,7 @@
     <ClInclude Include="PirateGame\Header\GlobalMap_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
+    <ClInclude Include="PirateGame\Header\InventoryMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\QuadtreeTemplate_PG.h" />
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
@@ -405,7 +407,7 @@
     <Image Include="PirateGameSprites\settings_button.png" />
     <Image Include="PirateGameSprites\slider_thumb.png" />
     <Image Include="PirateGameSprites\slider_track.png" />
-    <Image Include="PirateGameSprites\water_tiles-Sheet.png" />
+    <Image Include="PirateGameSprites\water_tiles_sheet.png" />
     <Image Include="PlatformerGameSprites\stupidnicktankdog.png" />
   </ItemGroup>
   <ItemGroup>

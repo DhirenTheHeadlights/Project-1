@@ -60,8 +60,10 @@ namespace PirateGame {
         }
         void setClock(sf::Clock clock) { this->globalClock = clock; }
         void setShowHUD(bool showHUD) { this->showHUD = showHUD; }
+        void setShowInventory(bool showInventory) { this->showInventory = showInventory; }
 
         bool getShowHUD() const { return this->showHUD; }
+        bool getShowInventory() const { return this->showInventory; }
         sf::RenderWindow* getWindow() { return this->globalWindow; }
         sf::Clock getClock() const { return this->globalClock; }
         std::default_random_engine& getRandomEngine() { return randomEngine; }
@@ -73,6 +75,7 @@ namespace PirateGame {
         GlobalValues& operator=(GlobalValues const&) = delete;
 
         bool showHUD = true;
+        bool showInventory = false;
         int textSize = 30;
         const int textScalingFactor = 750;
         std::default_random_engine randomEngine;
