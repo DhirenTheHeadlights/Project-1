@@ -359,7 +359,7 @@ void IslandMenu::interactWithMarket() {
 		sellButtons[i].interact();
 	}
 
-	// Draw the left and right navigation buttons
+	// Interact with the left and right navigation buttons
 	for (auto& button : leftRightNavButtons) {
 		button.interact();
 	}
@@ -503,8 +503,6 @@ void IslandMenu::draw() {
 			drawShipBuy();
 			break;
 		}
-
-		uiButtons[0].interact(); // Close menu button
 
 		// Draw the other ui buttons
 		for (auto& button : uiButtons) {
