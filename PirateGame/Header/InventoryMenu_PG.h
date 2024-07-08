@@ -33,7 +33,7 @@ namespace PirateGame {
 		sf::Sprite inventoryDisplayBackground;
 
 		std::vector<ShopItem> inventory;
-		std::vector<std::unique_ptr<Interactable>> inventoryBoxes;
+		std::vector<std::shared_ptr<Interactable>> inventoryBoxes;
 		std::vector<TextDisplayBox> shipDisplayInfo;
 
 		ScrollBar scrollBar;

@@ -29,6 +29,7 @@ void MenuHandler::openMenu(MenuType menuType) {
 		HUD->update();
 		break;
 	case MenuType::InventoryMenu:
+		inventoryMenu->update();
 		inventoryMenu->draw();
 		break;
 	}
