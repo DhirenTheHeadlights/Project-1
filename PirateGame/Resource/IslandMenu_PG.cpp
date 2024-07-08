@@ -115,13 +115,16 @@ void IslandMenu::addMarketInteractables() {
 				if (it != inventory.end()) {
 					// If the item exists, update its amount
 					it->amount += 1;
+					std::cout << item.name << " successfully incremented by 1." << std::endl;
 				}
 				else {
 					// Otherwise, add a new item with amount 1
 					ShopItem newItem = item;
 					newItem.amount = 1;
 					inventory.push_back(newItem);
+					std::cout << item.name << " successfully added to inventory." << std::endl;
 				}
+				for (auto& item : inventory) { std::cout << item.name << ": " << std::to_string(item.amount) << std::endl; }
 
 				// Update gold
 				ship->getInventoryHandler()->removeGold(item.price);

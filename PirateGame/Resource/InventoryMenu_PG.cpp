@@ -41,9 +41,17 @@ void InventoryMenu::setUpMenu() {
 }
 
 void InventoryMenu::addInteractablesToMenu() {
-	for (auto& item : inventory) {
-		addTextDisplayBox(sf::Text(item.name + ": " + std::to_string(item.amount), font, interactableTextSize), GlobalTextureHandler::getInstance().getInventoryTextures().getInventoryItemDisplay(), inventoryBoxes, scale);
+	inventoryBoxes.clear();
+	this->inventory = ship->getInventoryHandler()->getInventory();
+	for (auto& item : inventory){
+		std::shared_ptr<TextDisplayBox> textDisplayBox = std::make_shared<TextDisplayBox>();
+		sf::Text text = sf::Text(item.name + ": " + std::to_string(item.amount), font, interactableTextSize);
+		textDisplayBox->createInteractable(GlobalTextureHandler::getInstance().getInventoryTextures().getInventoryItemDisplay(), text, scale);
+		inventoryBoxes.push_back(textDisplayBox);
 	}
+	scrollBar.setInteractables(inventoryBoxes);
+
+	shipDisplayInfo.clear();
 	addTextDisplayBox(sf::Text(
 		ship->getShipClassString() + "\n" +
 		"Level: " + std::to_string(ship->getplayerLevel()) + "\n" +
@@ -51,7 +59,7 @@ void InventoryMenu::addInteractablesToMenu() {
 		"Speed: " + floatToString(ship->getSpecificShipProperties().baseSpeed) + "\n"
 		"Cannons: " + std::to_string(ship->getSpecificShipProperties().numCannons) + "\n", 
 		font, interactableTextSize), GlobalTextureHandler::getInstance().getInventoryTextures().getInventoryTextDisplay(), shipDisplayInfo, scale);
-	scrollBar.setInteractables(inventoryBoxes);
+
 }
 
 void InventoryMenu::setInteractablePositions() {
@@ -60,7 +68,6 @@ void InventoryMenu::setInteractablePositions() {
 		window->getView().getCenter().y - static_cast<float>(window->getSize().y / 2u));
 	titleText.setPosition(menu.getPosition().x + menu.getGlobalBounds().getSize().x / 2 - titleText.getGlobalBounds().getSize().x / 2,
 		menu.getPosition().y - titleText.getGlobalBounds().getSize().y - padding);
-
 	// Set the position of the ship display
 	shipDisplayBackground.setPosition(menu.getPosition() + shipDisplayPosition);
 	shipDisplaySprite.setPosition(shipDisplayBackground.getPosition() + sf::Vector2f(0.5f * shipDisplayBackground.getGlobalBounds().getSize().x - 0.5f * shipDisplaySprite.getGlobalBounds().getSize().x,
@@ -80,6 +87,8 @@ void InventoryMenu::interactWithMenuItems() {
 }
 
 void InventoryMenu::update() {
+
+	addInteractablesToMenu();
 	setInteractablePositions();
 	interactWithMenuItems();
 }

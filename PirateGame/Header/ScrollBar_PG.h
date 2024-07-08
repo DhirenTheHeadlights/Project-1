@@ -25,16 +25,20 @@ namespace PirateGame {
 
 		// Setters
 		void setSpacing(float spacing) { this->spacing = spacing; }
-		void setInteractables(std::vector<std::unique_ptr<Interactable>>& interactables) { this->interactables = std::move(interactables); }
+		void setInteractables(std::vector<std::shared_ptr<Interactable>>& interactables) { this->interactables = interactables; }
 		void setTextures(const sf::Texture& scrollBarTexture, const sf::Texture& scrollBarHandleTexture) {
 			scrollBarTrack.setTexture(scrollBarTexture);
 			scrollBarThumb.setTexture(scrollBarHandleTexture);
 		}
 		void setVertical(bool vertical) { this->vertical = vertical; }
 		void setScale(sf::Vector2f scale) { this->scale = scale; }
+
+		// Getters
+		sf::Sprite& getSprite() { return scrollBarTrack; }
+
 	private:
 		// Vars
-		std::vector<std::unique_ptr<Interactable>> interactables;
+		std::vector<std::shared_ptr<Interactable>> interactables;
 
 		sf::Vector2f scale;
 
