@@ -17,6 +17,12 @@ To streamline the setup process, we will be setting an environment variable name
 6. For the variable value, enter the path to the root of your SFML directory (e.g., `C:\SFML-2.5.1`).
 7. Click `OK` on all dialog boxes to save and exit.
 
+Thats it! You should be able to run the program now. If not, please follow the troubleshooting steps below.
+
+Make sure you run the program in "Release" configuration. It will not run in "Debug" configuration.
+Make sure that the "Platform" is set to "x64" and not "Win32".
+If a .dll is missing, add it manually in the file explorer from the SFML bin folder.
+
 ## Visual Studio Configuration
 
 - **Include Directories**:
@@ -30,12 +36,8 @@ To streamline the setup process, we will be setting an environment variable name
 - **Linking Libraries**:
   1. Go to `Project -> Properties -> Linker -> Input -> Additional Dependencies`.
   2. Make sure the names of the required SFML `.lib` files, like `sfml-graphics-s.lib`, `sfml-window.lib-s`, etc are in there.
-  
-Make sure you run the program in "Release" configuration. It will not run in "Debug" configuration.
-Make sure that the "Platform" is set to "x64" and not "Win32".
-If a .dll is missing, add it manually in the file explorer from the SFML bin folder.
 
-## Troubleshooting
+## More Troubleshooting
 
 1. **Environment Variable**: Ensure the `SFML_PATH` environment variable is correctly set.
 

@@ -11,6 +11,7 @@
 #include "OptionsMenuTextureHandler_PG.h"
 #include "MarketTextureHandler_PG.h"
 #include "ShipTextureHandler_PG.h"
+#include "InventoryTextures_PG.h"
 
 namespace PirateGame {
 	class GlobalTextureHandler {
@@ -21,34 +22,29 @@ namespace PirateGame {
 		}
 
 		// Getters for texture managers
-		InteractableTextureHandler& getInteractableTextures() { return *interactableTextures; }
-		LandmassTextureHandler& getLandMassTextures() { return *landMassTextures; }
-		HUDTextureHandler& getHUDTextures() { return *HUDTextures; }
-		OptionsMenuTextureHandler& getOptionsMenuTextures() { return *optionsMenuTextures; }
-		MarketTextureHandler& getMarketTextures() { return *marketTextures; }
-		ShipTextureHandler& getShipTextures() { return *shipTextures; }
+		InteractableTextureHandler& getInteractableTextures() { return interactableTextures; }
+		LandmassTextureHandler& getLandMassTextures() { return landMassTextures; }
+		HUDTextureHandler& getHUDTextures() { return HUDTextures; }
+		OptionsMenuTextureHandler& getOptionsMenuTextures() { return optionsMenuTextures; }
+		MarketTextureHandler& getMarketTextures() { return marketTextures; }
+		ShipTextureHandler& getShipTextures() { return shipTextures; }
+		InventoryTextureHandler& getInventoryTextures() { return inventoryTextures; }
 
 	private:
-		GlobalTextureHandler() {
-			interactableTextures = std::make_unique<InteractableTextureHandler>();
-			landMassTextures = std::make_unique<LandmassTextureHandler>();
-			HUDTextures = std::make_unique<HUDTextureHandler>();
-			optionsMenuTextures = std::make_unique<OptionsMenuTextureHandler>();
-			marketTextures = std::make_unique<MarketTextureHandler>();
-			shipTextures = std::make_unique<ShipTextureHandler>();
-		}
+		GlobalTextureHandler() {}
 
 		// Delete copy constructor and assignment operator
 		GlobalTextureHandler(GlobalTextureHandler const&) = delete;
 		GlobalTextureHandler& operator=(GlobalTextureHandler const&) = delete;
 
 		// Managers
-		std::unique_ptr<InteractableTextureHandler> interactableTextures;
-		std::unique_ptr<LandmassTextureHandler> landMassTextures;
-		std::unique_ptr<HUDTextureHandler> HUDTextures;
-		std::unique_ptr<OptionsMenuTextureHandler> optionsMenuTextures;
-		std::unique_ptr<MarketTextureHandler> marketTextures;
-		std::unique_ptr<ShipTextureHandler> shipTextures;
+		InteractableTextureHandler interactableTextures;
+		LandmassTextureHandler landMassTextures;
+		HUDTextureHandler HUDTextures;
+		OptionsMenuTextureHandler optionsMenuTextures;
+		MarketTextureHandler marketTextures;
+		ShipTextureHandler shipTextures;
+		InventoryTextureHandler inventoryTextures;
 	};
 
 }

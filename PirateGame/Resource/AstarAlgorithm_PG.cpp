@@ -136,7 +136,7 @@ std::vector<sf::Vector2i> AStar::getNeighbors(const sf::Vector2i& node) {
 }
 
 float AStar::heuristic(const sf::Vector2i& a, const sf::Vector2i& b) const {
-    return std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+    return static_cast<float>(std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)));
 }
 
 std::vector<sf::Vector2i> AStar::reconstructPath(std::shared_ptr<AstarNode> node) const {
@@ -150,11 +150,11 @@ std::vector<sf::Vector2i> AStar::reconstructPath(std::shared_ptr<AstarNode> node
 }
 
 sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) const {
-    return sf::Vector2i(std::floor(vector.x / tileSize), std::floor(vector.y / tileSize));
+    return sf::Vector2i(std::floor(vector.x / tileSize), std::floor(vector.y / static_cast<float>(tileSize)));
 }
 
 sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) const {
-    return sf::Vector2f(static_cast<int>(grid.x) * tileSize, static_cast<int>(grid.y) * tileSize);
+    return sf::Vector2f(grid.x * tileSize, grid.y * tileSize);
 }
 
 bool AStar::isObstacle(const sf::Vector2i& node) const {

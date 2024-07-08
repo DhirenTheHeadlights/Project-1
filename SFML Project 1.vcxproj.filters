@@ -257,6 +257,12 @@
     <Filter Include="Source Files\PirateGame\Sprites\World">
       <UniqueIdentifier>{1c90cba4-6c4a-4a25-a67c-84ab9085b1fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Menu">
+      <UniqueIdentifier>{c0b5adf1-f365-4302-9f51-c92344ec2821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Sprites\Inventory Menu">
+      <UniqueIdentifier>{0e35a1b4-0ed4-4f80-ba1f-5f632b1b70ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -507,6 +513,12 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\AstarAlgorithm_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\General</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\InventoryMenu_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\Specific Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ScrollBar_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Menus\General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -825,6 +837,15 @@
     <ClInclude Include="PirateGame\Header\AnimationHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\InventoryMenu_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\Specific Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\ScrollBar_PG.h">
+      <Filter>Source Files\PirateGame\Header\Menus\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\InventoryTextures_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -1059,8 +1080,29 @@
     <Image Include="PirateGameSprites\market_menu_buy_ship.png">
       <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
     </Image>
-    <Image Include="PirateGameSprites\water_tiles-Sheet.png">
+    <Image Include="PirateGameSprites\water_tiles_sheet.png">
       <Filter>Source Files\PirateGame\Sprites\World</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\scroll_bar_thumb.png">
+      <Filter>Source Files\PirateGame\Sprites\Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\scroll_bar_track_extendable.png">
+      <Filter>Source Files\PirateGame\Sprites\Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\inventory_menu.png">
+      <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\inventory_inventory_display.png">
+      <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\inventory_ship_display.png">
+      <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\inventory_text_display.png">
+      <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\inventory_menu_item_display.png">
+      <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

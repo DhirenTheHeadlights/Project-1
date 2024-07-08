@@ -108,6 +108,8 @@ namespace PirateGame {
 			destination.push_back(dropDown);
 		}
 
+		/// Some menus might require storage of interactables in the same vector, necessitating the use of unique pointers
+
 		// General function to add a button to a vector of interactables
 		virtual void addButton(sf::Text text, sf::Texture& texture, std::vector<std::unique_ptr<Interactable>>& destination, std::function<void()> function, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) {
 			std::unique_ptr<Button> button = std::make_unique<Button>(function);

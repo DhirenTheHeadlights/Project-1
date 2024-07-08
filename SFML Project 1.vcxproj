@@ -190,6 +190,7 @@
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\ScrollBar_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipInputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannon_PG.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\InventoryMenu_PG.h" />
+    <ClInclude Include="PirateGame\Header\InventoryTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\QuadtreeTemplate_PG.h" />
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
@@ -292,6 +294,7 @@
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
+    <ClInclude Include="PirateGame\Header\ScrollBar_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannon_PG.h" />
@@ -348,6 +351,11 @@
     <Image Include="PirateGameSprites\health_bar_red.png" />
     <Image Include="PirateGameSprites\HUD_info_icon.png" />
     <Image Include="PirateGameSprites\Interactable_basic_gray_black.png" />
+    <Image Include="PirateGameSprites\inventory_inventory_display.png" />
+    <Image Include="PirateGameSprites\inventory_menu.png" />
+    <Image Include="PirateGameSprites\inventory_menu_item_display.png" />
+    <Image Include="PirateGameSprites\inventory_ship_display.png" />
+    <Image Include="PirateGameSprites\inventory_text_display.png" />
     <Image Include="PirateGameSprites\island_banner.png" />
     <Image Include="PirateGameSprites\market_bottom_middle.png" />
     <Image Include="PirateGameSprites\market_bottom_right_left.png" />
@@ -404,6 +412,8 @@
     <Image Include="PirateGameSprites\pg_ship_sloop.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_sloop_sail.png" />
+    <Image Include="PirateGameSprites\scroll_bar_thumb.png" />
+    <Image Include="PirateGameSprites\scroll_bar_track_extendable.png" />
     <Image Include="PirateGameSprites\settings_button.png" />
     <Image Include="PirateGameSprites\slider_thumb.png" />
     <Image Include="PirateGameSprites\slider_track.png" />
