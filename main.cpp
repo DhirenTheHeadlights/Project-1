@@ -206,6 +206,26 @@ void doodleJump() {
 	}
 }
 
+/* commenitng out for gits and shiggles
+void assRoids() {
+    initializeGlobals("Platformer Window");
+
+    assRoids::World world(window);
+
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) { // Close the window if the user clicks the X button
+                window.close();
+            }
+        }
+        window.clear();
+        world.gameLoop(event);
+        window.display();
+    }
+}
+*/
+
 void exitTheLauncher() {
     exitLauncher = true;
 	window.close();
