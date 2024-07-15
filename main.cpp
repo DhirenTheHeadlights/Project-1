@@ -14,13 +14,14 @@
 #include "PirateGame/Header/WorldFactory_PG.h"
 #include "Platformer Game/Header/World_Plat.h"
 #include "DoodleJump/World_DJ.h"
+#include "Asteroids/Header/World_AR.h"
 
 #include "Credits.h"
 
 // Define a type alias for a function that takes no arguments and returns void
 using GameFunction = std::function<void()>;
 
-bool exitLauncher = false;
+bool exitLauncher = false; 
 
 class Game { // A class to store game data
 public:
@@ -148,7 +149,7 @@ void lightAndShadow() {
     }
 }
 
-void Platformer() {
+void platformer() {
     initializeGlobals("Platformer Window");
 
     PlatformerGame::World world(window);
@@ -206,11 +207,10 @@ void doodleJump() {
 	}
 }
 
-/* commenitng out for gits and shiggles
-void assRoids() {
+void asteroids() {
     initializeGlobals("Platformer Window");
 
-    assRoids::World world(window);
+    Asteriods::World world(&window);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -220,11 +220,10 @@ void assRoids() {
             }
         }
         window.clear();
-        world.gameLoop(event);
+        world.run(event);
         window.display();
     }
 }
-*/
 
 void exitTheLauncher() {
     exitLauncher = true;
@@ -242,8 +241,9 @@ int main() {
         Game("Aim Trainer", aimTrainer),
         Game("Light and Shadows", lightAndShadow),
         Game("Pirate Game", pirateGame),
-        Game("Platformer", Platformer),
+        Game("Platformer", platformer),
         Game("Doodle Jump", doodleJump),
+        Game("Asteroids", asteroids),
         // Add more games here...
 
         Game("Credits", credits),

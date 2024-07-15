@@ -89,10 +89,10 @@ void InGameHUD::setInteractablePositions() {
 	sf::View HUDView = window->getView();
 	HUDView.setRotation(0.f);
 
-	healthFraction = 100.f * ship->getHealth() / ship->getSpecificShipProperties().maxHealth;
+	healthFraction = ship->getHealth() / ship->getSpecificShipProperties().maxHealth;
 
 	// Set the health bar green to be proportional to ship health
-	healthBarGreenSprite.setScale(healthBarScale.x * healthFraction / 100, healthBarScale.y);
+	healthBarGreenSprite.setScale(healthBarScale.x * healthFraction, healthBarScale.y);
 
 	// Set the position of the health bar to be in the center of the screen the top
 	healthBarRedSprite.setPosition(HUDView.getCenter().x - healthBarRedSprite.getGlobalBounds().getSize().x / 2, HUDView.getCenter().y - window->getSize().y / 2 + padding);

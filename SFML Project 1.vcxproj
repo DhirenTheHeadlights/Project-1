@@ -121,7 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_PATH)\include;$(ProjectDir)AgarGame\Header;$(ProjectDir)AimTrainer\Header;$(ProjectDir)PirateGame\Header;$(ProjectDir)LightAndShadow\Header;$(ProjectDir)Globals\Header;$(ProjectDir)Fonts;$(ProjectDir)Sounds;$(ProjectDir)AimTrainer\Misc;$(ProjectDir)Platformer Game\Header</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_PATH)\include;$(ProjectDir)AgarGame\Header;$(ProjectDir)AimTrainer\Header;$(ProjectDir)PirateGame\Header;$(ProjectDir)LightAndShadow\Header;$(ProjectDir)Globals\Header;$(ProjectDir)Fonts;$(ProjectDir)Sounds;$(ProjectDir)AimTrainer\Misc;$(ProjectDir)Platformer Game\Header;$(ProjectDir)Asteroids\Header</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,7 +157,7 @@
     <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
-    <ClCompile Include="Assroids_Main.cpp" />
+    <ClCompile Include="Asteroids\Resource\World_AR.cpp" />
     <ClCompile Include="Globals\Resource\GameTemplate.cpp" />
     <ClCompile Include="Globals\Resource\Globals.cpp" />
     <ClCompile Include="Globals\Resource\Map.cpp" />
@@ -246,6 +246,7 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
+    <ClInclude Include="Asteroids\Header\World_AR.h" />
     <ClInclude Include="DoodleJump\World_DJ.h" />
     <ClInclude Include="Globals\Header\Credits.h" />
     <ClInclude Include="Globals\Header\GameTemplate.h" />

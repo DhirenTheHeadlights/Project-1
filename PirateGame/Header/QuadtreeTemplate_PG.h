@@ -319,5 +319,13 @@ namespace PirateGame {
         void draw(sf::RenderWindow* window) {
             root->draw(window);
         }
+
+        std::vector<T*> getObjects() {
+			std::vector<T*> objects;
+			for (auto& obj : objectMap) {
+				objects.push_back(obj.first);
+			}
+			return objects;
+		}
     };
 }
