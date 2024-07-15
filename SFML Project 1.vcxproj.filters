@@ -1113,6 +1113,9 @@
     <Image Include="PirateGameSprites\inventory_menu_item_display.png">
       <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
     </Image>
+    <Image Include="PirateGameSprites\pg_shipwreck_1.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt">
