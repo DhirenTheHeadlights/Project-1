@@ -67,7 +67,7 @@ void Minimap::update() {
                     landmassRect.setSize(rockIconSize);
                 }
                 else if (landmasses[i]->getType() == LandMassType::Shipwreck) {
-                    landmassRect.setFillColor(sf::Color::Blue);
+                    landmassRect.setFillColor(sf::Color::Magenta);
                 }
 
                 visibleLandmassRects.push_back(landmassRect);

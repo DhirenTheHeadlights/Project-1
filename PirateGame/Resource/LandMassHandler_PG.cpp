@@ -23,8 +23,8 @@ void LandMassHandler::addLandMassesToChunk(Map& map, int numLandMasses, float mi
 	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
 
 	for (int i = 0; i < points.size(); i++) {
-		// Generate a random number between 0 and 2
-		int randNum = rand() % 2;
+		// Generate a random number between 0 and 3
+		int randNum = rand() % 3;
 
 		// Create a land mass based on the random number; proportional to the distance between land masses
 		if (randNum == 0) createLandmass(LandMassType::Island, points[i]);
@@ -66,8 +66,19 @@ void LandMassHandler::interactWithLandmasses() {
 				nearestLandMass = landMass;
 				break; // Stop checking for other islands
 			}
+			if (distance <= lootDistance && landMass->getType() == LandMassType::Shipwreck) {
+				// Loot the land mass
+				std::string lootDisplayString = "";
+				for (auto& item : landMass->getLoot()) {
+					lootDisplayString += "+" + std::to_string(item.amount) + " " + item.name + "\n";
+					playerShip->getInventoryHandler()->addItemsToInventory(item);
+				}
+				lootDisplayText = sf::Text(lootDisplayString, *GlobalFontHandler::getInstance().getGlobalFont(), displayTextSize);
+				displayLootText = true;
+				textDisplayClock.restart();
+				break;
+			}
 		}
-
 		// Reset the 'player said no' and enteredIsland flag for all islands not nearby
 		for (auto& landMass : landmasses) {
 			if (landMass->getType() == LandMassType::Island && std::find(nearbyLandMasses.begin(), nearbyLandMasses.end(), landMass.get()) == nearbyLandMasses.end()) {
@@ -91,6 +102,15 @@ void LandMassHandler::interactWithLandmasses() {
 
 		if (distance > interactionDistance) {
 			nearestLandMass = nullptr;
+		}
+	}
+	if (displayLootText) {
+		sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+		lootDisplayText.setPosition(playerShip->getSprite().getPosition().x, playerShip->getSprite().getPosition().y - lootDisplayText.getGlobalBounds().height + displaySpacing);
+		window->draw(lootDisplayText);
+
+		if (textDisplayClock.getElapsedTime() > textDisplayTime) {
+			displayLootText = false;
 		}
 	}
 }

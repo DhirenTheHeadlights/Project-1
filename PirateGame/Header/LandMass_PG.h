@@ -27,9 +27,10 @@ namespace PirateGame {
 		LandMassType getType() const { return type; }
 		sf::Sprite& getSprite() { return sprite; }
 		std::vector<ShopItem>& getMarket() { return market; }
+		std::vector<ShopItem>& getLoot() { return loot; }
 		ShopItem& getMarketItem(std::string itemName);
 		IslandMenu* getIslandMenu() { return islandMenu.get(); }
-		std::variant<IslandType, RockType> getSpecificType() const { return specificType; }
+		std::variant<IslandType, RockType, ShipwreckType> getSpecificType() const { return specificType; }
 
 		// Draw the land mass
 		void draw(sf::RenderWindow& window) const { 
@@ -43,16 +44,22 @@ namespace PirateGame {
 
 		// Types
 		LandMassType type = LandMassType::Island;
-		std::variant<IslandType, RockType> specificType;
+		std::variant<IslandType, RockType, ShipwreckType> specificType;
 
 		// Market
 		std::vector<ShopItem> market;
+		std::vector<ShopItem> loot;
 		std::unique_ptr<IslandMenu> islandMenu;
+		int marketSizeLimit = 7;
+		int marketItemLimit = 100;
+		int marketPriceLimit = 100;
+		int shipwreckLootPoolSize = 3;
+		int shipwreckItemLimit = 5;
 
 		// Type generator
 		LandMassTypeGenerator<LandMassType> typeGenerator;
 
-		void createMarket();
+		std::vector<ShopItem> createLootPool(int marketSize, int marketPrice, int marketItems);
 
 		float gold = 0;
 	};

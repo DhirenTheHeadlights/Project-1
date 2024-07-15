@@ -16,6 +16,7 @@ namespace PirateGame {
 
 		TextureResourceManager<IslandType>& getIslandTextures() { return islandTextures; }
 		TextureResourceManager<RockType>& getRockTextures() { return rockTextures; }
+		TextureResourceManager<ShipwreckType>& getShipwreckTextures() { return shipwreckTextures; }
 		TextureResourceManager<MiscType>& getMiscTextures() { return miscTextures; }
 	private:
 		// Helper functions
@@ -33,10 +34,13 @@ namespace PirateGame {
 			rockTextures.loadTexture(RockType::Rock8, "PirateGameSprites/pg_rock_8.png");
 			rockTextures.loadTexture(RockType::Rock9, "PirateGameSprites/pg_rock_9.png");
 
+			shipwreckTextures.loadTexture(ShipwreckType::Shipwreck1, "PirateGameSprites/pg_shipwreck_1.png");
+
 			miscTextures.loadTexture(MiscType::Cannonball, "PirateGameSprites/pg_misc_cannonball.png");
 		}
 		TextureResourceManager<IslandType> islandTextures;
 		TextureResourceManager<RockType> rockTextures;
+		TextureResourceManager<ShipwreckType> shipwreckTextures;
 		TextureResourceManager<MiscType> miscTextures; // For cannonball only, this needs to change later
 	};
 }

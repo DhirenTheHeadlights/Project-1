@@ -42,5 +42,13 @@ namespace PirateGame {
 
         // Values
         float interactionDistance = 1000.f; // Distance for interaction with landmasses
+		float lootDistance = 300.f; // Distance for looting landmasses
+		bool displayLootText = false;
+        int displayTextSize = 20;
+        int displaySpacing = 100;
+        sf::Text lootDisplayText;
+        sf::Clock textDisplayClock;
+		sf::Time textDisplayTime = sf::seconds(2);
+
     };
 }

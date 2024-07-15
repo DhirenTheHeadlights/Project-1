@@ -390,6 +390,7 @@
     <Image Include="PirateGameSprites\pg_rock_7.png" />
     <Image Include="PirateGameSprites\pg_rock_8.png" />
     <Image Include="PirateGameSprites\pg_rock_9.png" />
+    <Image Include="PirateGameSprites\pg_shipwreck_1.png" />
     <Image Include="PirateGameSprites\pg_ship_brigantine.png" />
     <Image Include="PirateGameSprites\pg_ship_brigantine_cannon.png" />
     <Image Include="PirateGameSprites\pg_ship_brigantine_sail_back.png" />

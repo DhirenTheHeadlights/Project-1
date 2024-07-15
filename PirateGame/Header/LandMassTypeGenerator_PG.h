@@ -20,6 +20,9 @@ namespace PirateGame {
             else if constexpr (std::is_same<LMType, RockType>::value) {
                 return getRockType();
             }
+			else if constexpr (std::is_same<LMType, ShipwreckType>::value) {
+				return getShipwreckType();
+			}
         }
 
     private:
@@ -35,6 +38,12 @@ namespace PirateGame {
             static std::mt19937 gen(rd());
             static std::uniform_int_distribution<> dis(0, 8); // Assuming 9 rock types
             return static_cast<RockType>(dis(gen));
+        }
+        ShipwreckType getShipwreckType() const {
+            static std::random_device rd;
+            static std::mt19937 gen(rd());
+            static std::uniform_int_distribution<> dis(0, 0); // Assuming 1 wreck type
+            return static_cast<ShipwreckType>(dis(gen));
         }
     };
 }

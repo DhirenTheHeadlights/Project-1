@@ -520,6 +520,9 @@
     <ClCompile Include="PirateGame\Resource\ScrollBar_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\General</Filter>
     </ClCompile>
+    <ClCompile Include="Assroids_Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -1103,6 +1106,9 @@
     </Image>
     <Image Include="PirateGameSprites\inventory_menu_item_display.png">
       <Filter>Source Files\PirateGame\Sprites\Inventory Menu</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_shipwreck_1.png">
+      <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>

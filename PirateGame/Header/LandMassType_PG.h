@@ -22,6 +22,10 @@ namespace PirateGame {
 		Rock9,
 	};
 
+	enum class ShipwreckType {
+		Shipwreck1,
+	};
+
 	enum class MiscType {
 		Cannonball,
 	};

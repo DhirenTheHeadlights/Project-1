@@ -4,15 +4,16 @@ using namespace PirateGame;
 
 void LandMass::createLandMass(LandMassType type) {
 	this->type = type;
-
+	std::cout << "type: " << static_cast<int>(type) << std::endl;
 	switch (type) {
 	case LandMassType::Island: {
+		std::cout << "treating as island" << std::endl;
 		LandMassTypeGenerator<IslandType> typeGen;
 		specificType = typeGen.getType();
 		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getIslandTextures().getTexture(std::get<IslandType>(specificType)));
 		sprite.setScale(1.f * scaling, 1.f * scaling);
 
-		createMarket();
+		market = createLootPool(marketSizeLimit, marketPriceLimit, marketItemLimit);
 		islandMenu = std::make_unique<IslandMenu>(market);
 		islandMenu->setUpMenu();
 
@@ -26,7 +27,12 @@ void LandMass::createLandMass(LandMassType type) {
 		break;
 	}
 	case LandMassType::Shipwreck:
-		// Handle shipwrecks
+		LandMassTypeGenerator<ShipwreckType> typeGen;
+		specificType = typeGen.getType();
+		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getShipwreckTextures().getTexture(std::get<ShipwreckType>(specificType)));
+		sprite.setScale(5.f * scaling, 5.f * scaling);
+		// For shipwreck loot pool, price limit is market price because no price is needed.
+		loot = createLootPool(shipwreckLootPoolSize, marketPriceLimit, shipwreckItemLimit);
 		break;
 	}
 }
@@ -43,7 +49,7 @@ ShopItem& LandMass::getMarketItem(std::string itemName) {
 	return market.front();
 }
 
-void LandMass::createMarket() {
+std::vector<ShopItem> LandMass::createLootPool(int marketSize, int marketPrice, int marketItems) {
 	std::set<std::string> itemNames = { 
 		"Banana", "Cannonball", "Wood", "Gold", "Rum", "Cannon", "Sword", "Pistol", "Cloth", "Silk",
 		"Spices", "Tea", "Coffee", "Tobacco", "Sugar", "Cotton", "Indigo", "Dye", "Salt", "Iron",
@@ -53,7 +59,7 @@ void LandMass::createMarket() {
 		"Sodalite", "Sunstone", "Tiger's Eye", "Tourmaline", "Zircon"
 	};
 
-	int marketSize = 7;
+	std::vector<ShopItem> generated;
 
 	for (int i = 0; i < marketSize; i++) {
 		// Randomly select an item that is not already in the market
@@ -63,11 +69,13 @@ void LandMass::createMarket() {
 		} while (std::find_if(market.begin(), market.end(), [&randItem](ShopItem& item) { return item.name == randItem; }) != market.end());
 
 		// Randomly select the price and amount
-		float randPrice = (rand() % 100 + 1) * 0.1f;
-		int randAmount = rand() % 100 + 1;
+		float randPrice = (rand() % marketPrice + 1) * 0.1f;
+		int randAmount = rand() % marketItems + 1;
 
 		// Create the item and add it to the market
 		ShopItem item(randItem, randPrice, randAmount);
-		market.push_back(item);
 	}
+	
+	return generated;
+
 }
