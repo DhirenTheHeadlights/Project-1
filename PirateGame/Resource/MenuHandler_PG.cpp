@@ -12,7 +12,7 @@ void MenuHandler::createMenus() {
 
 void MenuHandler::openMenu(MenuType menuType) {
 	// This will reset the view so that the menu is correctly visible. However, it should not happen w the hud.
-	if (menuType != MenuType::HUD) {
+	if (menuType != MenuType::HUD && menuType != MenuType::InventoryMenu) {
 		GlobalValues::getInstance().getWindow()->setView(GlobalValues::getInstance().getWindow()->getDefaultView());
 	}
 	switch (menuType) {
@@ -29,8 +29,8 @@ void MenuHandler::openMenu(MenuType menuType) {
 		HUD->update();
 		break;
 	case MenuType::InventoryMenu:
-		inventoryMenu->update();
 		inventoryMenu->draw();
+		inventoryMenu->update();
 		break;
 	}
 }

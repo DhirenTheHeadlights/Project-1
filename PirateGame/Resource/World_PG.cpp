@@ -47,7 +47,6 @@ void World::setUpCollisionManager() {
 
 void World::setUpMenus() {
 	MH.createMenus();
-
 	
 	// Set up the hud
 	MH.getHUD()->getMinimap().setLandmasses(LMH.getLandMasses());
@@ -84,6 +83,7 @@ void World::updateCoreElements() {
 	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
 	GlobalWindController::getInstance().update();
 	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
+	view.showCoordsOnCursor();
 	waterTiler.update();
 }
 

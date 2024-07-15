@@ -3,9 +3,6 @@
 using namespace PirateGame;
 
 void InventoryMenu::setUpMenu() {
-	// Load in Player ship and inventory
-	this->inventory = ship->getInventoryHandler()->getInventory();
-
 	// TEMPORARY: MENU TEXTURES REQUIRED (20% window width, 100% height)
 	menu.setTexture(GlobalTextureHandler::getInstance().getInventoryTextures().getBackground());
 
@@ -33,11 +30,11 @@ void InventoryMenu::setUpMenu() {
 	// Prepare the inventory display background
 	inventoryDisplayBackground.setTexture(GlobalTextureHandler::getInstance().getInventoryTextures().getInventoryDisplay());
 
+	// Set up the scroll bar
+	scrollBar.setUpScrollBar(scrollBarPosition, inventoryDisplayBackground.getGlobalBounds().getSize().y, inventoryPosition, inventoryDisplayBackground.getGlobalBounds().getSize(), scale);
+
 	// Add the interactables to the menu and set their positions
 	addInteractablesToMenu();
-	setInteractablePositions();
-
-	scrollBar.setUpScrollBar(scrollBarPosition, inventoryDisplayBackground.getGlobalBounds().getSize().y, inventoryPosition, inventoryDisplayBackground.getGlobalBounds().getSize().y);
 }
 
 void InventoryMenu::addInteractablesToMenu() {
@@ -47,6 +44,7 @@ void InventoryMenu::addInteractablesToMenu() {
 		std::shared_ptr<TextDisplayBox> textDisplayBox = std::make_shared<TextDisplayBox>();
 		sf::Text text = sf::Text(item.name + ": " + std::to_string(item.amount), font, interactableTextSize);
 		textDisplayBox->createInteractable(GlobalTextureHandler::getInstance().getInventoryTextures().getInventoryItemDisplay(), text, scale);
+		textDisplayBox->getText().setFillColor(sf::Color::Black);
 		inventoryBoxes.push_back(textDisplayBox);
 	}
 	scrollBar.setInteractables(inventoryBoxes);
@@ -59,15 +57,15 @@ void InventoryMenu::addInteractablesToMenu() {
 		"Speed: " + floatToString(ship->getSpecificShipProperties().baseSpeed) + "\n"
 		"Cannons: " + std::to_string(ship->getSpecificShipProperties().numCannons) + "\n", 
 		font, interactableTextSize), GlobalTextureHandler::getInstance().getInventoryTextures().getInventoryTextDisplay(), shipDisplayInfo, scale);
-
+	shipDisplayInfo[0].getText().setFillColor(sf::Color::Black);
 }
 
 void InventoryMenu::setInteractablePositions() {
 	// Set the position of the menu and title text
-	menu.setPosition(static_cast<float>(window->getView().getCenter().x - window->getSize().x / 2u),
-		window->getView().getCenter().y - static_cast<float>(window->getSize().y / 2u));
+	menu.setPosition(window->getView().getCenter() - sf::Vector2f(window->getSize().x / 2, window->getSize().y / 2));
 	titleText.setPosition(menu.getPosition().x + menu.getGlobalBounds().getSize().x / 2 - titleText.getGlobalBounds().getSize().x / 2,
 		menu.getPosition().y - titleText.getGlobalBounds().getSize().y - padding);
+
 	// Set the position of the ship display
 	shipDisplayBackground.setPosition(menu.getPosition() + shipDisplayPosition);
 	shipDisplaySprite.setPosition(shipDisplayBackground.getPosition() + sf::Vector2f(0.5f * shipDisplayBackground.getGlobalBounds().getSize().x - 0.5f * shipDisplaySprite.getGlobalBounds().getSize().x,
@@ -87,8 +85,9 @@ void InventoryMenu::interactWithMenuItems() {
 }
 
 void InventoryMenu::update() {
-
-	addInteractablesToMenu();
+	if (inventory != ship->getInventoryHandler()->getInventory()) {
+		addInteractablesToMenu();
+	}
 	setInteractablePositions();
 	interactWithMenuItems();
 }

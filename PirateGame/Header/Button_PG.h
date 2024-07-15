@@ -30,5 +30,8 @@ namespace PirateGame {
 		ButtonFunction func;
 
 		bool holdDown = false;
+
+		sf::Clock cooldown;
+		sf::Time cooldownTime = sf::seconds(0.1f);
 	};
 }

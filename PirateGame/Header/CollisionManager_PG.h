@@ -51,5 +51,6 @@ namespace PirateGame {
 		void handleLandMassCollision(Ship* ship, LandMass* landmass, std::vector<LandMass*>& collidingLandMasses);
 		void handleShipCollision(Ship* ship1, Ship* ship2, std::vector<Ship*>& collidingShips);
 		void handleCannonballCollision(Ship* ship, Cannonball* cannonball, std::vector<Cannonball*>& collidingCannonballs);
+		void handleCannonballCollision(Cannonball* c1, Cannonball* c2);
 	};
 }

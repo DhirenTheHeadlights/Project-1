@@ -263,11 +263,11 @@
     <Filter Include="Source Files\PirateGame\Sprites\Inventory Menu">
       <UniqueIdentifier>{0e35a1b4-0ed4-4f80-ba1f-5f632b1b70ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Asteroids">
+      <UniqueIdentifier>{e53e3a7a-c20f-4ddf-8d11-2e37b664b728}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Globals\Resource\Globals.cpp">
       <Filter>Source Files\Globals\Resource</Filter>
     </ClCompile>
@@ -519,6 +519,12 @@
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\ScrollBar_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Menus\General</Filter>
+    </ClCompile>
+    <ClCompile Include="Asteroids\Resource\World_AR.cpp">
+      <Filter>Source Files\Asteroids</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -845,6 +851,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\InventoryTextures_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroids\Header\World_AR.h">
+      <Filter>Source Files\Asteroids</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

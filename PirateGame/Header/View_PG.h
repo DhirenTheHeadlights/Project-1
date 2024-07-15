@@ -18,6 +18,7 @@ namespace PirateGame {
 		void setUpView();
 		void setCenter(sf::Vector2f position);
 		void updateDebugView(sf::Event event);
+		void showCoordsOnCursor();
 
 		sf::View& getView() { return view;  }
 	private:
@@ -25,6 +26,9 @@ namespace PirateGame {
 		sf::RenderWindow* window = nullptr;
 
 		int scale = 2;
+		int coordsTextSize = 20;
+
+		float coordsOffset = 20.f;
 
 		bool sizeNotSet = false;
 	};

@@ -25,7 +25,6 @@ void DefaultWorld::createWorld(sf::Event event) {
 		// Run the game loop
 		drawGameLoop();
 		updateGameLoop(event);
-
 		break;
 	}
 
@@ -57,6 +56,11 @@ void DefaultWorld::createWorld(sf::Event event) {
 }
 
 void DefaultWorld::updateGameLoop(sf::Event event) {
+	if (GlobalValues::getInstance().getShowHUD()) MH.openMenu(MenuType::HUD);
+	if (GlobalValues::getInstance().getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
+
+	view.setCenter(playerShip->getSprite().getPosition());
+
 	updateCoreElements();
 
 	LMH.interactWithLandmasses();
@@ -70,13 +74,5 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 
 	playerShip->update();
 
-	if (GlobalValues::getInstance().getShowHUD()) MH.openMenu(MenuType::HUD);
-	if (GlobalValues::getInstance().getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
-
-	view.setCenter(playerShip->getSprite().getPosition());
-
-
-
 	GlobalValues::getInstance().setShowInventory(GlobalInputHandler::getInstance().isKeyToggled(sf::Keyboard::I));
-
 }

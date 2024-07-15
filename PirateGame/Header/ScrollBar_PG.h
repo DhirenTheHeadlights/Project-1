@@ -18,7 +18,7 @@ namespace PirateGame {
 			scrollBarThumb.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getScrollBarThumb());
 		}
 
-		void setUpScrollBar(sf::Vector2f scrollBarTrackOffset, float scrollBarTrackLength, sf::Vector2f interactablePositionOffset, float interactableMenuLength);
+		void setUpScrollBar(sf::Vector2f scrollBarTrackOffset, float scrollBarTrackLength, sf::Vector2f interactablePositionOffset, sf::Vector2f size, sf::Vector2f scale);
 
 		void update(sf::Vector2f menuPosition);
 		void draw();
@@ -37,10 +37,17 @@ namespace PirateGame {
 		sf::Sprite& getSprite() { return scrollBarTrack; }
 
 	private:
+		// Functions
+		void updateInteractablePositions(sf::Vector2f menuPosition);
+		void updateScrollBarPositions(sf::Vector2f mousePosition);
+
 		// Vars
 		std::vector<std::shared_ptr<Interactable>> interactables;
 
 		sf::Vector2f scale;
+		sf::Vector2f size;
+
+		sf::View menuView;
 
 		float spacing;
 
