@@ -46,7 +46,6 @@ namespace PirateGame {
 		sf::Vector2f rockIconSize = { 2.f, 2.f };
 		sf::Vector2f shipwreckIconSize = { 3.f, 3.f };
 		sf::Vector2f islandIconSize = { 4.f, 4.f };
-		sf::Vector2f shipwreckIconSize = { 3.f, 3.f };
 
 
 		Ship* ship = nullptr;
