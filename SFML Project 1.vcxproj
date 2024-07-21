@@ -183,6 +183,7 @@
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\InventoryMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\IslandMenu_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Island_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMassHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\MenuHandler_PG.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Rock_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ScrollBar_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipInputHandler_PG.cpp" />
@@ -202,6 +204,7 @@
     <ClCompile Include="PirateGame\Resource\ShipInputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipSailHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipSail_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\Shipwreck_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Ship_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShopItem_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Slider_PG.cpp" />
@@ -277,6 +280,7 @@
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\InventoryMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\InventoryTextures_PG.h" />
+    <ClInclude Include="PirateGame\Header\Island_PG.h" />
     <ClInclude Include="PirateGame\Header\QuadtreeTemplate_PG.h" />
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
@@ -296,6 +300,7 @@
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
+    <ClInclude Include="PirateGame\Header\Rock_PG.h" />
     <ClInclude Include="PirateGame\Header\ScrollBar_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipInputHandler_PG.h" />
@@ -309,6 +314,7 @@
     <ClInclude Include="PirateGame\Header\ShipSailHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipSail_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipTextureHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\Shipwreck_PG.h" />
     <ClInclude Include="PirateGame\Header\Ship_PG.h" />
     <ClInclude Include="PirateGame\Header\ShopItem_PG.h" />
     <ClInclude Include="PirateGame\Header\Slider_PG.h" />

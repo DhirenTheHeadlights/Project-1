@@ -27,20 +27,40 @@ void LandMassHandler::addLandMassesToChunk(Map& map, int numLandMasses, float mi
 		int randNum = rand() % 3;
 
 		// Create a land mass based on the random number; proportional to the distance between land masses
-		if (randNum == 0) createLandmass(LandMassType::Island, points[i]);
-		else if (randNum == 1) createLandmass(LandMassType::Rock, points[i]);
-		else createLandmass(LandMassType::Shipwreck, points[i]);
+		if (randNum == 0) createIsland(points[i]);
+		else if (randNum == 1) createRock(points[i]);
+		else createShipwreck(points[i]);
 	}
 }
 
-void LandMassHandler::createLandmass(LandMassType type, sf::Vector2f position) {
-	std::shared_ptr<LandMass> landMass = std::make_unique<LandMass>();
-	landMass->createLandMass(type);
-	landMass->setPosition(position);
+void LandMassHandler::createIsland(sf::Vector2f position) {
+	std::shared_ptr<Island> island = std::make_shared<Island>();
+	island->getSprite().setPosition(position);
+	island->createLandMass();
+	landmasses.push_back(island);
+	islands.push_back(island);
+	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(island.get());
+	GlobalQuadtreeHandler::getInstance().getIslandQuadtree()->addObject(island.get());
+}
 
+void LandMassHandler::createRock(sf::Vector2f position) {
+	std::shared_ptr<Rock> rock = std::make_shared<Rock>();
+	rock->getSprite().setPosition(position);
+	rock->createLandMass();
+	landmasses.push_back(rock);
+	rocks.push_back(rock);
+	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(rock.get());
+	GlobalQuadtreeHandler::getInstance().getRockQuadtree()->addObject(rock.get());
+}
 
-	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(landMass.get());
-	landmasses.push_back(std::move(landMass));
+void LandMassHandler::createShipwreck(sf::Vector2f position) {
+	std::shared_ptr<Shipwreck> shipwreck = std::make_shared<Shipwreck>();
+	shipwreck->getSprite().setPosition(position);
+	shipwreck->createLandMass();
+	landmasses.push_back(shipwreck);
+	shipwrecks.push_back(shipwreck);
+	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(shipwreck.get());
+	GlobalQuadtreeHandler::getInstance().getShipwreckQuadtree()->addObject(shipwreck.get());
 }
 
 // Draw all the land masses
@@ -53,57 +73,62 @@ void LandMassHandler::drawLandMasses() {
 }
 
 void LandMassHandler::interactWithLandmasses() {
-	if (nearestLandMass == nullptr) {
-		std::vector<LandMass*> nearbyLandMasses = GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<Island*> nearbyIslands = GlobalQuadtreeHandler::getInstance().getIslandQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<Shipwreck*> nearbyShipwrecks = GlobalQuadtreeHandler::getInstance().getShipwreckQuadtree()->findObjectsNearObject(playerShip, lootDistance);
+	std::vector<Rock*> nearbyRocks = GlobalQuadtreeHandler::getInstance().getRockQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
 
-		for (auto& landMass : nearbyLandMasses) {
-			sf::Vector2f shipPosition = playerShip->getSprite().getPosition(); // Ship position is already the center of the sprite
-			sf::Vector2f landMassPosition = landMass->getSprite().getPosition() + landMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
-			float distance = vm::magnitude(shipPosition - landMassPosition);
-
-			if (distance <= interactionDistance && landMass->getType() == LandMassType::Island) {
-				// Set this as the nearest land mass
-				nearestLandMass = landMass;
-				break; // Stop checking for other islands
-			}
-			if (distance <= lootDistance && landMass->getType() == LandMassType::Shipwreck) {
-				// Loot the land mass
-				std::string lootDisplayString = "";
-				for (auto& item : landMass->getLoot()) {
-					lootDisplayString += "+" + std::to_string(item.amount) + " " + item.name + "\n";
-					playerShip->getInventoryHandler()->addItemsToInventory(item);
-				}
-				lootDisplayText = sf::Text(lootDisplayString, *GlobalFontHandler::getInstance().getGlobalFont(), displayTextSize);
-				displayLootText = true;
-				textDisplayClock.restart();
+	if (nearestIsland == nullptr) {
+		for (auto& island : nearbyIslands) {
+			float distance = vm::magnitude(playerShip->getSprite().getPosition() - island->getSprite().getPosition() + island->getSprite().getGlobalBounds().getSize() / 2.f);
+			if (distance <= interactionDistance) {
+				nearestIsland = island;
 				break;
 			}
 		}
-		// Reset the 'player said no' and enteredIsland flag for all islands not nearby
-		for (auto& landMass : landmasses) {
-			if (landMass->getType() == LandMassType::Island && std::find(nearbyLandMasses.begin(), nearbyLandMasses.end(), landMass.get()) == nearbyLandMasses.end()) {
-				landMass->getIslandMenu()->setEnteredIsland(false);
-				landMass->getIslandMenu()->setHasPlayerSaidNo(false);
+
+		for (auto& island : islands) {
+			if (std::find(nearbyIslands.begin(), nearbyIslands.end(), island.get()) == nearbyIslands.end()) {
+				island->getIslandMenu()->setEnteredIsland(false);
+				island->getIslandMenu()->setHasPlayerSaidNo(false);
 			}
 		}
 	}
 	// Draw the island menu for the nearest land mass
 	else {
-		nearestLandMass->getIslandMenu()->setShip(*playerShip);
-		nearestLandMass->getIslandMenu()->draw();
-		nearestLandMass->getIslandMenu()->update();
+		nearestIsland->getIslandMenu()->setShip(*playerShip);
+		nearestIsland->getIslandMenu()->draw();
+		nearestIsland->getIslandMenu()->update();
+	}
+
+	// Handle shipwrecks
+	for (auto& shipwreck : nearbyShipwrecks) {
+		float distance = vm::magnitude(playerShip->getSprite().getPosition() - shipwreck->getSprite().getPosition() + shipwreck->getSprite().getGlobalBounds().getSize() / 2.f);
+		if (distance <= lootDistance) {
+			// Loot the shipwreck
+			std::string lootDisplayString = "";
+			for (auto& item : shipwreck->getLoot()) {
+				lootDisplayString += "+" + std::to_string(item.amount) + " " + item.name + "\n";
+				playerShip->getInventoryHandler()->addItemsToInventory(item);
+				std::cout << "Looted " << item.amount << " " << item.name << " from the shipwreck" << std::endl;
+			}
+			lootDisplayText = sf::Text(lootDisplayString, *GlobalFontHandler::getInstance().getGlobalFont(), displayTextSize);
+			displayLootText = true;
+			textDisplayClock.restart();
+			break;
+		}
 	}
 
 	// Set the nearest land mass to null if the player is no longer near it
-	if (nearestLandMass != nullptr) {
+	if (nearestIsland != nullptr) {
 		sf::Vector2f shipPosition = playerShip->getSprite().getPosition(); // Ship position is already the center of the sprite
-		sf::Vector2f landMassPosition = nearestLandMass->getSprite().getPosition() + nearestLandMass->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
-		float distance = vm::magnitude(shipPosition - landMassPosition);
+		sf::Vector2f islandPosition = nearestIsland->getSprite().getPosition() + nearestIsland->getSprite().getGlobalBounds().getSize() / 2.f; // Land mass position is the top left corner of the sprite
+		float distance = vm::magnitude(shipPosition - islandPosition);
 
 		if (distance > interactionDistance) {
-			nearestLandMass = nullptr;
+			nearestIsland = nullptr;
 		}
 	}
+
 	if (displayLootText) {
 		sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 		lootDisplayText.setPosition(playerShip->getSprite().getPosition().x, playerShip->getSprite().getPosition().y - lootDisplayText.getGlobalBounds().height + displaySpacing);

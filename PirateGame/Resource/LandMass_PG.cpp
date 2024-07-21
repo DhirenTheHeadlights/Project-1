@@ -2,54 +2,7 @@
 
 using namespace PirateGame;
 
-void LandMass::createLandMass(LandMassType type) {
-	this->type = type;
-	std::cout << "type: " << static_cast<int>(type) << std::endl;
-	switch (type) {
-	case LandMassType::Island: {
-		std::cout << "treating as island" << std::endl;
-		LandMassTypeGenerator<IslandType> typeGen;
-		specificType = typeGen.getType();
-		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getIslandTextures().getTexture(std::get<IslandType>(specificType)));
-		sprite.setScale(1.f * scaling, 1.f * scaling);
-
-		market = createLootPool(marketSizeLimit, marketPriceLimit, marketItemLimit);
-		islandMenu = std::make_unique<IslandMenu>(market);
-		islandMenu->setUpMenu();
-
-		break;
-	}
-	case LandMassType::Rock: {
-		LandMassTypeGenerator<RockType> typeGen;
-		specificType = typeGen.getType();
-		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getRockTextures().getTexture(std::get<RockType>(specificType)));
-		sprite.setScale(0.125f * scaling, 0.125f * scaling);
-		break;
-	}
-	case LandMassType::Shipwreck:
-		LandMassTypeGenerator<ShipwreckType> typeGen;
-		specificType = typeGen.getType();
-		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getShipwreckTextures().getTexture(std::get<ShipwreckType>(specificType)));
-		sprite.setScale(5.f * scaling, 5.f * scaling);
-		// For shipwreck loot pool, price limit is market price because no price is needed.
-		loot = createLootPool(shipwreckLootPoolSize, marketPriceLimit, shipwreckItemLimit);
-		break;
-	}
-}
-
-
-ShopItem& LandMass::getMarketItem(std::string itemName) {
-	for (auto& it : market) {
-		if (it.name == itemName) {
-			return it;
-		}
-	}
-
-	// If the item is not found, return the first item in the inventory
-	return market.front();
-}
-
-std::vector<ShopItem> LandMass::createLootPool(int marketSize, int marketPrice, int marketItems) {
+std::vector<ShopItem> LandMass::createLootPool(int lootPoolSize, int lootPriceLimit, int numItems) {
 	std::set<std::string> itemNames = { 
 		"Banana", "Cannonball", "Wood", "Gold", "Rum", "Cannon", "Sword", "Pistol", "Cloth", "Silk",
 		"Spices", "Tea", "Coffee", "Tobacco", "Sugar", "Cotton", "Indigo", "Dye", "Salt", "Iron",
@@ -61,21 +14,21 @@ std::vector<ShopItem> LandMass::createLootPool(int marketSize, int marketPrice, 
 
 	std::vector<ShopItem> generated;
 
-	for (int i = 0; i < marketSize; i++) {
+	for (int i = 0; i < lootPoolSize; i++) {
 		// Randomly select an item that is not already in the market
 		std::string randItem;
 		do {
 			randItem = *std::next(itemNames.begin(), rand() % itemNames.size());
-		} while (std::find_if(market.begin(), market.end(), [&randItem](ShopItem& item) { return item.name == randItem; }) != market.end());
+		} while (std::find_if(generated.begin(), generated.end(), [&randItem](ShopItem& item) { return item.name == randItem; }) != generated.end());
 
 		// Randomly select the price and amount
-		float randPrice = (rand() % marketPrice + 1) * 0.1f;
-		int randAmount = rand() % marketItems + 1;
+		float randPrice = (rand() % lootPriceLimit + 1) * 0.1f;
+		int randAmount = rand() % numItems + 1;
 
 		// Create the item and add it to the market
 		ShopItem item(randItem, randPrice, randAmount);
+		generated.push_back(item);
 	}
 	
 	return generated;
-
 }

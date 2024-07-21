@@ -27,7 +27,7 @@ void LMAvoidWorld::setUpLandMasses() {
 		}
 
 		// Create islands at main points
-		LMH.createLandmass(LandMassType::Island, sf::Vector2f(x, y));
+		LMH.createIsland(sf::Vector2f(x, y));
 
 		// Create rocks in between islands
 		if (i > 0) { // Ensure there is a previous point to place a rock between
@@ -45,11 +45,11 @@ void LMAvoidWorld::setUpLandMasses() {
 			float rockX = (x + prevX) / 2;
 			float rockY = (y + prevY) / 2;
 
-			LMH.createLandmass(LandMassType::Rock, sf::Vector2f(rockX, rockY));
+			LMH.createRock(sf::Vector2f(rockX, rockY));
 		}
 	}
 
-	LMH.createLandmass(LandMassType::Island, sf::Vector2f(10373.633789f, -3614.429199f));
+	LMH.createIsland(sf::Vector2f(10373.633789f, -3614.429199f));
 }
 
 

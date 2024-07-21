@@ -4,6 +4,9 @@
 
 #include "QuadtreeTemplate_PG.h"
 #include "Landmass_PG.h"
+#include "Island_PG.h"
+#include "Rock_PG.h"
+#include "Shipwreck_PG.h"
 #include "EnemyShip_PG.h"
 #include "Cannonball_PG.h"
 
@@ -26,6 +29,9 @@ namespace PirateGame {
 		Quadtree<LandMass>* getLandMassQuadtree() { return landmassQuadtree.get(); }
 		Quadtree<EnemyShip>* getShipQuadtree() { return shipQuadtree.get(); }
 		Quadtree<Cannonball>* getCannonballQuadtree() { return cannonballQuadtree.get(); }
+		Quadtree<Island>* getIslandQuadtree() { return islandQuadtree.get(); }
+		Quadtree<Rock>* getRockQuadtree() { return rockQuadtree.get(); }
+		Quadtree<Shipwreck>* getShipwreckQuadtree() { return shipwreckQuadtree.get(); }
 
 		// Setters
 		void setLandmasses(std::vector<std::shared_ptr<LandMass>> landmasses) { this->landmasses = landmasses; }
@@ -41,6 +47,9 @@ namespace PirateGame {
 
 		// Hashmaps
 		std::unique_ptr<Quadtree<LandMass>> landmassQuadtree = std::make_unique<Quadtree<LandMass>>();
+		std::unique_ptr<Quadtree<Island>> islandQuadtree = std::make_unique<Quadtree<Island>>();
+		std::unique_ptr<Quadtree<Rock>> rockQuadtree = std::make_unique<Quadtree<Rock>>();
+		std::unique_ptr<Quadtree<Shipwreck>> shipwreckQuadtree = std::make_unique<Quadtree<Shipwreck>>();
 		std::unique_ptr<Quadtree<EnemyShip>> shipQuadtree = std::make_unique<Quadtree<EnemyShip>>();
 		std::unique_ptr<Quadtree<Cannonball>> cannonballQuadtree = std::make_unique<Quadtree<Cannonball>>();
 

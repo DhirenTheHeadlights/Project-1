@@ -266,6 +266,15 @@
     <Filter Include="Source Files\Asteroids">
       <UniqueIdentifier>{e53e3a7a-c20f-4ddf-8d11-2e37b664b728}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game Objects\LandMass\General">
+      <UniqueIdentifier>{c90df5da-bfe6-4853-a57a-8f46e14d951b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Header\Game Objects\LandMass\Specific Landmasses">
+      <UniqueIdentifier>{fadeecd3-9df5-469f-86f4-be1dc5142c50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PirateGame\Resource\Game Objects\Landmass">
+      <UniqueIdentifier>{6d71498f-b51b-4862-a7f8-fdbfe3fdb110}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Globals\Resource\Globals.cpp">
@@ -409,9 +418,6 @@
     <ClCompile Include="PirateGame\Resource\Ship_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects\Ship</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp">
-      <Filter>Source Files\PirateGame\Resource\Game Objects\General</Filter>
-    </ClCompile>
     <ClCompile Include="PirateGame\Resource\ShopItem_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects\General</Filter>
     </ClCompile>
@@ -525,6 +531,18 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\LandMass_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects\Landmass</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Island_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects\Landmass</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Rock_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects\Landmass</Filter>
+    </ClCompile>
+    <ClCompile Include="PirateGame\Resource\Shipwreck_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game Objects\Landmass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -786,15 +804,6 @@
     <ClInclude Include="PirateGame\Header\ShipEnums_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\Ship</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMassType_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
-    </ClInclude>
-    <ClInclude Include="PirateGame\Header\LandMassTypeGenerator_PG.h">
-      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Ship\Enemy</Filter>
     </ClInclude>
@@ -854,6 +863,24 @@
     </ClInclude>
     <ClInclude Include="Asteroids\Header\World_AR.h">
       <Filter>Source Files\Asteroids</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMass_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMassType_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\LandMassTypeGenerator_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Island_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\Specific Landmasses</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Rock_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\Specific Landmasses</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Shipwreck_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\Specific Landmasses</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

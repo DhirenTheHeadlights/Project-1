@@ -12,7 +12,9 @@
 #include "GlobalSoundManager_PG.h"
 #include "GlobalMap_PG.h"
 
-#include "LandMass_PG.h"
+#include "Island_PG.h"
+#include "Rock_PG.h"
+#include "Shipwreck_PG.h"
 #include "LandMassHashmap_PG.h"
 #include "Map.h"
 
@@ -23,7 +25,9 @@ namespace PirateGame {
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
-        void createLandmass(LandMassType type, sf::Vector2f position);
+        void createIsland(sf::Vector2f position);
+        void createRock(sf::Vector2f position);
+        void createShipwreck(sf::Vector2f position);
         void drawLandMasses();
         void interactWithLandmasses();
 
@@ -37,7 +41,11 @@ namespace PirateGame {
         void addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses);
 
         std::vector<std::shared_ptr<LandMass>> landmasses;
-        LandMass* nearestLandMass = nullptr;
+        std::vector<std::shared_ptr<Island>> islands;
+        std::vector<std::shared_ptr<Rock>> rocks;
+        std::vector<std::shared_ptr<Shipwreck>> shipwrecks;
+
+        Island* nearestIsland = nullptr;
         PlayerShip* playerShip = nullptr;
 
         // Values
@@ -49,6 +57,5 @@ namespace PirateGame {
         sf::Text lootDisplayText;
         sf::Clock textDisplayClock;
 		sf::Time textDisplayTime = sf::seconds(2);
-
     };
 }

@@ -6,8 +6,8 @@ void ESAvoidWorld::setUpLandMasses() {
 	LMH.setPlayerShip(playerShip.get());
 
 	// Add 2 land masses, one behind each ship
-	LMH.createLandmass(LandMassType::Island, sf::Vector2f(-1000.f, 50.f));
-	LMH.createLandmass(LandMassType::Island, sf::Vector2f(4000.f, 50.f));
+	LMH.createIsland(sf::Vector2f(-1000.f, 50.f));
+	LMH.createIsland(sf::Vector2f(4000.f, 50.f));
 }
 
 void ESAvoidWorld::setUpEnemyShips() {

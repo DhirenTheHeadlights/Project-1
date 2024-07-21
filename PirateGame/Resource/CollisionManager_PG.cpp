@@ -207,16 +207,7 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 	if (!texture1 || !texture2) return false;
 
 	sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getImage(ship->getShipClass());
-	sf::Image image2;
-	
-	switch (landmass->getType()) { // Get the correct land mass texture, and then the correct image
-		case LandMassType::Island:
-			image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getIslandTextures().getImage(std::get<IslandType>(landmass->getSpecificType()));
-			break;
-		case LandMassType::Rock:
-			image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getRockTextures().getImage(std::get<RockType>(landmass->getSpecificType()));
-			break;
-	}
+	sf::Image image2 = landmass->getImage();
 
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();
