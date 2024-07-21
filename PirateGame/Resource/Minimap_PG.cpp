@@ -91,7 +91,7 @@ void Minimap::update() {
             if (sqrt(pow(relativePos.x - minimapCenter.x, 2) + pow(relativePos.y - minimapCenter.y, 2)) <= minimapRadius) {
 				shipRect.setPosition(relativePos);
 				shipRect.setFillColor(sf::Color::Red);
-				shipRect.setSize(shipRectSize);
+				shipRect.setSize(shipwreckIconSize);
 
 				visibleShipRects.push_back(shipRect);
 			}
