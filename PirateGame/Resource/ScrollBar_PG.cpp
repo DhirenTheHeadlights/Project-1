@@ -14,7 +14,6 @@ void ScrollBar::setUpScrollBar(sf::Vector2f scrollBarTrackOffset, float scrollBa
 
 	// Set up the view
 	menuView.setSize(size);
-	menuView.setCenter(interactablePositionOffset + size / 2.f);
 }
 
 void ScrollBar::updateInteractablePositions(sf::Vector2f menuPosition) {
@@ -26,13 +25,17 @@ void ScrollBar::updateInteractablePositions(sf::Vector2f menuPosition) {
 }
 
 void ScrollBar::updateScrollBarPositions(sf::Vector2f menuPosition) {
+
+	menuView.setCenter(menuPosition + interactablePositionOffset + menuView.getSize() / 2.f);
+	std::cout << "View Center: " << std::to_string(menuView.getCenter().x) << ", " << std::to_string(menuView.getCenter().y) << std::endl;
+
 	scrollBarTrack.setPosition(menuPosition + scrollBarTrackOffset);
-	scrollBarThumb.setPosition(scrollBarTrack.getPosition());
+	scrollBarThumb.setPosition(scrollBarTrack.getPosition().x, scrollBarTrack.getPosition().y + relativeThumbPosY);
 
 	// Update the scroll bar handle's position
 	sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*GlobalValues::getInstance().getWindow()));
 
-	if (scrollBarThumb.getGlobalBounds().contains(mousePosition) && GlobalInputHandler::getInstance().isMouseButtonPressedOnce(sf::Mouse::Left)) {
+	if (true/*scrollBarThumb.getGlobalBounds().contains(mousePosition) && sf::Mouse::isButtonPressed(sf::Mouse::Left)*/) {
 		isGrabbed = true;
 	}
 
@@ -41,19 +44,20 @@ void ScrollBar::updateScrollBarPositions(sf::Vector2f menuPosition) {
 	}
 
 	if (isGrabbed) {
+
 		// Calculate the new y position of the scroll bar thumb, keeping it within the bounds of the scroll bar track
-		float newY = mousePosition.y - scrollBarThumb.getGlobalBounds().height / 2;
+		float newY = (mousePosition.y - menuView.getCenter().y - menuView.getSize().y / 2);
 		newY = std::max(newY, scrollBarTrack.getPosition().y);
-		newY = std::min(newY, scrollBarTrack.getPosition().y + scrollBarTrack.getGlobalBounds().height - scrollBarThumb.getGlobalBounds().height);
-
-		// Set the new position of the scroll bar thumb
+		newY = std::min(newY, scrollBarTrack.getPosition().y + (menuView.getSize().y - scrollBarThumb.getGlobalBounds().height));
 		scrollBarThumb.setPosition(scrollBarThumb.getPosition().x, newY);
-
+		relativeThumbPosY = newY - scrollBarTrack.getPosition().y;
 		// Update the view
-		float scrollPercentage = (scrollBarThumb.getPosition().y - scrollBarTrack.getPosition().y) / (scrollBarTrack.getGlobalBounds().height - scrollBarThumb.getGlobalBounds().height);
+		float scrollPercentage = (newY - scrollBarTrack.getPosition().y) / (scrollBarTrack.getGlobalBounds().height);
+		std::cout << "Scroll Percentage: " << std::to_string(scrollPercentage) << std::endl;
 		float viewPercentage = (interactableMenuLength - menuView.getSize().y) * scrollPercentage;
-		menuView.setCenter(menuView.getCenter().x, interactablePositionOffset.y + viewPercentage + menuView.getSize().y / 2.f);
+		
 		std::cout << "Grabbed" << std::endl;
+
 	}
 }
 
@@ -61,6 +65,7 @@ void ScrollBar::update(sf::Vector2f menuPosition) {
 	GlobalValues::getInstance().getWindow()->setView(menuView);
 	updateInteractablePositions(menuPosition);
 	updateScrollBarPositions(menuPosition);
+	std::cout << "Thumb Y: " << std::to_string(scrollBarThumb.getPosition().y) << std::endl;
 }
 
 void ScrollBar::draw() {

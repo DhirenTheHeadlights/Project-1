@@ -216,6 +216,9 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 		case LandMassType::Rock:
 			image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getRockTextures().getImage(std::get<RockType>(landmass->getSpecificType()));
 			break;
+		case LandMassType::Shipwreck:
+			image2 = GlobalTextureHandler::getInstance().getLandMassTextures().getShipwreckTextures().getImage(std::get<ShipwreckType>(landmass->getSpecificType()));
+			break;
 	}
 
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();

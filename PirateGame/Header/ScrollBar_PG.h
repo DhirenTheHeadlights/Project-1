@@ -53,6 +53,7 @@ namespace PirateGame {
 
 		sf::Vector2f scrollBarTrackOffset;
 		float scrollBarTrackLength = 0.f;
+		float relativeThumbPosY = 0.f;
 
 		sf::Vector2f interactablePositionOffset;
 		float interactableMenuLength = 0.f;

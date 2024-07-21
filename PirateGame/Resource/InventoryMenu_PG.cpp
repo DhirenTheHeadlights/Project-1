@@ -77,7 +77,6 @@ void InventoryMenu::setInteractablePositions() {
 	// Set the position of the inventory display
 	inventoryDisplayBackground.setPosition(menu.getPosition() + inventoryPosition);
 
-	scrollBar.update(menu.getPosition());
 }
 
 void InventoryMenu::interactWithMenuItems() {
@@ -90,6 +89,7 @@ void InventoryMenu::update() {
 	}
 	setInteractablePositions();
 	interactWithMenuItems();
+	scrollBar.update(menu.getPosition());
 }
 
 void InventoryMenu::draw() {

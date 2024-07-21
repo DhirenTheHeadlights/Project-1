@@ -4,10 +4,8 @@ using namespace PirateGame;
 
 void LandMass::createLandMass(LandMassType type) {
 	this->type = type;
-	std::cout << "type: " << static_cast<int>(type) << std::endl;
 	switch (type) {
 	case LandMassType::Island: {
-		std::cout << "treating as island" << std::endl;
 		LandMassTypeGenerator<IslandType> typeGen;
 		specificType = typeGen.getType();
 		sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getIslandTextures().getTexture(std::get<IslandType>(specificType)));
