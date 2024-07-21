@@ -8,5 +8,5 @@ void Shipwreck::createLandMass() {
 	sprite.setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getShipwreckTextures().getTexture(type));
 	sprite.setScale(scaling, scaling);
 
-	loot = createLootPool(shipwreckLootPoolSize, 0, shipwreckItemLimit);
+	loot = createLootPool(shipwreckLootPoolSize, 1, shipwreckItemLimit);
 }
