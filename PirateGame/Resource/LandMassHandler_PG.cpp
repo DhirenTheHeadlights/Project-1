@@ -65,6 +65,16 @@ void LandMassHandler::createShipwreck(sf::Vector2f position) {
 
 // Draw all the land masses
 void LandMassHandler::drawLandMasses() {
+	// Remove any inactive land masses
+	for (auto& ship : shipwrecks) {
+		if (!ship->isActive()) {
+			GlobalQuadtreeHandler::getInstance().getShipwreckQuadtree()->removeObject(ship.get());
+			GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->removeObject(ship.get());
+		}
+	}
+	std::erase_if(shipwrecks, [](std::shared_ptr<Shipwreck> ship) { return !ship->isActive(); });
+	std::erase_if(landmasses, [](std::shared_ptr<LandMass> landmass) { return !landmass->isActive(); });
+
 	// Draw all the land masses and add them to the hashmap
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	for (auto& i : landmasses) {
@@ -114,6 +124,10 @@ void LandMassHandler::interactWithLandmasses() {
 			lootDisplayText = sf::Text(lootDisplayString, *GlobalFontHandler::getInstance().getGlobalFont(), displayTextSize);
 			displayLootText = true;
 			textDisplayClock.restart();
+
+			// Deactivate the shipwreck
+			shipwreck->deactivate();
+
 			break;
 		}
 	}

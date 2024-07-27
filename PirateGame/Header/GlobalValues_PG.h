@@ -65,7 +65,7 @@ namespace PirateGame {
         bool getShowHUD() const { return this->showHUD; }
         bool getShowInventory() const { return this->showInventory; }
         sf::RenderWindow* getWindow() { return this->globalWindow; }
-        sf::Clock getClock() const { return this->globalClock; }
+        sf::Clock& getGlobalClock() { return this->globalClock; }
         std::default_random_engine& getRandomEngine() { return randomEngine; }
         int getTextSize() const { return textSize; }
 

@@ -23,6 +23,10 @@ namespace PirateGame {
 		sf::Sprite& getSprite() { return sprite; }
 		virtual sf::Image getImage() = 0;
 		virtual LandMassType getType() = 0;
+		bool isActive() const { return active; }
+
+		// Setters
+		void deactivate() { active = false; }
 
 		// Draw the land mass
 		void draw(sf::RenderWindow& window) const {
@@ -32,6 +36,9 @@ namespace PirateGame {
 	protected:
 		// Sprite to represent the land mass
 		sf::Sprite sprite;
+
+		// Active flag
+		bool active = true;
 
 		// Type generator
 		LandMassTypeGenerator<LandMassType> typeGenerator;

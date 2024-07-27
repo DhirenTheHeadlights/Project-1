@@ -27,7 +27,7 @@ namespace PirateGame {
 
 		float scaling = 1.0f;
 
-		IslandType type;
+		IslandType type = IslandType::Island1;
 
 		std::vector<ShopItem> market;
 	};

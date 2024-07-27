@@ -18,6 +18,6 @@ namespace PirateGame {
 	private:
 		float scaling = 0.125f;
 
-		RockType type;
+		RockType type = RockType::Rock1;
 	};
 }
