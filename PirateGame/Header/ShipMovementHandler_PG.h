@@ -54,7 +54,6 @@ namespace PirateGame {
 		float getBaseSpeed() const { return baseSpeed; }
 
 		sf::Sprite& getSprite() { return sprite; }
-		sf::Clock& getDeltaTime() { return deltaTime; }
 
 		sf::Vector2f getVelocity() const { return velocity; }
 		sf::Vector2f getInitialPosition() const { return initialPosition; }
@@ -70,7 +69,6 @@ namespace PirateGame {
 	private:
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;
-		sf::Clock deltaTime;
 		sf::Sprite& sprite;
 
 		sf::Vector2f velocity;

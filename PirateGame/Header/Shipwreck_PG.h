@@ -22,7 +22,7 @@ namespace PirateGame {
 
 		float scaling = 5.f;
 
-		ShipwreckType type;
+		ShipwreckType type = ShipwreckType::Shipwreck1;
 
 		std::vector<ShopItem> loot;
 	};

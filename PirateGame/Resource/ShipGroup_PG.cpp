@@ -30,7 +30,7 @@ void ShipGroup::updateGroup() {
 		}
 
 		// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector
-		targetShips.erase(std::remove_if(targetShips.begin(), targetShips.end(), [](Ship* ship) { return ship == nullptr || ship->getHealth() < 0.001f; }), targetShips.end());
+		std::erase_if(targetShips, [](Ship* targetShip) { return targetShip == nullptr || targetShip->getHealth() < 0.001f; });
 	}
 }
 

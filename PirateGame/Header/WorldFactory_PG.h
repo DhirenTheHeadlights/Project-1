@@ -72,7 +72,7 @@ namespace PirateGame {
 					window->close();
 				}
 
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && button.isMouseOver(window)) {
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && button.isMouseOver(window) && (waitTimeClock.getElapsedTime() > waitTime)) {
 					hasSelectedWorld = true;
 					return createWorld(button.getWorldType(), window);
 				}
@@ -124,6 +124,9 @@ namespace PirateGame {
 		}
 
 		std::vector<SelectionButton> worldTypes;
+
+		sf::Clock waitTimeClock;
+		sf::Time waitTime = sf::seconds(0.5f);
 
 		bool hasSelectedWorld = false;
 

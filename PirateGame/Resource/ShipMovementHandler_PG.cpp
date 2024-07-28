@@ -3,32 +3,26 @@
 using namespace PirateGame;
 
 void ShipMovementHandler::move(float baseSpeed, sf::Vector2f sailDirection) {
-	float elapsed = deltaTime.restart().asSeconds();
-
 	// Calculate the direction based on the ship's current rotation
 	float rotationInRadians = vm::degreesToRadians(sprite.getRotation() - 90.f); // Subtract 90 degrees to align with SFML's rotation
 	sf::Vector2f direction(std::cos(rotationInRadians), std::sin(rotationInRadians));
 
 	// Update the position based on the direction and speed
-	sprite.setPosition(sprite.getPosition() + updateVelocity(direction, elapsed, baseSpeed, sailDirection));
+	sprite.setPosition(sprite.getPosition() + updateVelocity(direction, GlobalValues::getInstance().getGlobalClock().getElapsedTime().asSeconds(), baseSpeed, sailDirection));
 	setSpriteRotation();
 }
 
 sf::Vector2f ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection) {
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {
-		// Calculate wind effect
-		GlobalWindController& windController = GlobalWindController::getInstance();
-		sf::Vector2f windDirection = vm::normalize(windController.getWindDirection()); // Ensure wind direction is normalized
-
 		// Normalize sail direction
 		sailDirection = vm::normalize(sailDirection);
 
 		// Use the sail rotation to determine potency of wind effect.
-		float sailRotationEffect = std::max(0.f, vm::dot(sailDirection, windDirection)); // The closer to 1, the more effective the wind is
+		float sailRotationEffect = std::max(0.f, vm::dot(sailDirection, vm::normalize(GlobalWindController::getInstance().getWindDirection()))); // The closer to 1, the more effective the wind is
 
 		// Calculate the final wind effect
-		sailRotationEffect *= windController.getWindSpeed(); // The wind speed will determine the final wind effect
+		sailRotationEffect *= GlobalWindController::getInstance().getWindSpeed(); // The wind speed will determine the final wind effect
 
 		// Gradually increase the speed to the base speed, multiplied by the wind effect
 		const float acceleration = std::max(1.f, sailRotationEffect); // The acceleration factor

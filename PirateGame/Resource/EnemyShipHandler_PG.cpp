@@ -147,12 +147,7 @@ void EnemyShipHandler::update() {
 	}
 
 	// If the group size is 0, remove the group
-	shipGroups.erase(
-		std::remove_if(shipGroups.begin(), shipGroups.end(), [](std::shared_ptr<ShipGroup> group) {
-			return group->getEnemyShips().size() == 0;
-		}),
-		shipGroups.end()
-	);
+	std::erase_if(shipGroups, [](std::shared_ptr<ShipGroup> group) { return group->getEnemyShips().size() == 0; });
 }
 
 void EnemyShipHandler::updateShipsAsNotNearbyGroup(std::shared_ptr<ShipGroup> enemyShipGroup) {
@@ -228,10 +223,7 @@ void EnemyShipHandler::updateGroupCombat(std::shared_ptr<ShipGroup> enemyShipGro
 			}) == nearbyShipsTotal.end();
 		};
 
-	shipsCombatting.erase(
-		std::remove_if(shipsCombatting.begin(), shipsCombatting.end(), removeCondition),
-		shipsCombatting.end()
-	);
+	std::erase_if(shipsCombatting, removeCondition);
 
 	// If the ship group is not in combat, set the group to not in combat
 	if (shipsCombatting.size() == 0) {
