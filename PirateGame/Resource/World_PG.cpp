@@ -15,7 +15,7 @@ void World::setUpWorld() {
 void World::setUpWorldElements() {
 	// Set up the window and map/view
 	GlobalValues::getInstance().setWindow(window);
-	GlobalMap::getInstance().initializeMap();
+	GlobalChunkHandler::getInstance().initializeMap();
 	view.setUpView();
 
 	// Set up the background
@@ -80,7 +80,7 @@ void World::drawGameLoop() {
 }
 
 void World::updateCoreElements() {
-	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
+	GlobalChunkHandler::getInstance().updateChunks(playerShip->getSprite().getPosition());
 	GlobalWindController::getInstance().update();
 	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
 	view.showCoordsOnCursor();

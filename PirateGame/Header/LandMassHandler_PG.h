@@ -10,7 +10,7 @@
 #include "GlobalValues_PG.h"
 #include "GlobalQuadtreeHandler.h"
 #include "GlobalSoundManager_PG.h"
-#include "GlobalMap_PG.h"
+#include "GlobalChunkHandler_PG.h"
 
 #include "Island_PG.h"
 #include "Rock_PG.h"

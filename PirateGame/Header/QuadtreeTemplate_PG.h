@@ -12,7 +12,7 @@
 
 #include "VectorMath.h"
 #include "GlobalValues_PG.h"
-#include "GlobalMap_PG.h"
+#include "GlobalChunkHandler_PG.h"
 
 namespace PirateGame {
     /// Concept to check if a class has a method getSprite that returns an sf::Sprite
@@ -264,12 +264,12 @@ namespace PirateGame {
         std::unordered_map<T*, QuadtreeObject<T>*> objectMap;
 
         Quadtree() {
-            std::vector<Map*> maps = GlobalMap::getInstance().getAllChunks();
+            auto chunks = GlobalChunkHandler::getInstance().getAllChunks();
 
             // Find the boundaries as the minimum and maximum x and y values
-            sf::FloatRect initialBoundary = maps.front()->getBounds();
-            for (auto map : maps) {
-                sf::FloatRect mapBounds = map->getBounds();
+            sf::FloatRect initialBoundary = chunks.front()->getMap()->getBounds();
+            for (auto chunk : chunks) {
+                sf::FloatRect mapBounds = chunk->getMap()->getBounds();
                 if (mapBounds.left < initialBoundary.left) initialBoundary.left = mapBounds.left;
                 if (mapBounds.top < initialBoundary.top) initialBoundary.top = mapBounds.top;
                 if (mapBounds.left + mapBounds.width > initialBoundary.left + initialBoundary.width) initialBoundary.width = mapBounds.left + mapBounds.width - initialBoundary.left;

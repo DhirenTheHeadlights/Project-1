@@ -30,6 +30,7 @@ public:
         return position + sf::Vector2f(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
     }
     sf::FloatRect getBounds() const { return sf::FloatRect(position, sf::Vector2f(static_cast<float>(len), static_cast<float>(height))); }
+	bool mapContains(sf::Vector2f position) const { return getBounds().contains(position); }
 private:
     int rows = 1, cols = 1, cellSize = 1;
     int len = 1, height = 1;

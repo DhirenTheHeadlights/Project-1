@@ -20,7 +20,7 @@ namespace PirateGame {
 		int shipwreckLootPoolSize = 3;
 		int shipwreckItemLimit = 5;
 
-		float scaling = 0.5f;
+		float scaling = 5.f;
 
 		ShipwreckType type;
 

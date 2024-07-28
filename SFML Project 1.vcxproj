@@ -264,6 +264,7 @@
     <ClInclude Include="PirateGame\Header\BattleManager_PG.h" />
     <ClInclude Include="PirateGame\Header\Button_PG.h" />
     <ClInclude Include="PirateGame\Header\Cannonball_PG.h" />
+    <ClInclude Include="PirateGame\Header\Chunk_PG.h" />
     <ClInclude Include="PirateGame\Header\CollisionManager_PG.h" />
     <ClInclude Include="PirateGame\Header\DropDown_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipHandler_PG.h" />
@@ -275,7 +276,7 @@
     <ClInclude Include="PirateGame\Header\GlobalQuadtreeHandler.h" />
     <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalInputHandler_PG.h" />
-    <ClInclude Include="PirateGame\Header\GlobalMap_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalChunkHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\InventoryMenu_PG.h" />

@@ -6,7 +6,7 @@
 
 #include "GlobalValues_PG.h"
 #include "GlobalFontHandler_PG.h"
-#include "GlobalMap_PG.h"
+#include "GlobalChunkHandler_PG.h"
 #include "GlobalGameStateManager_PG.h"
 #include "GlobalInputHandler_PG.h"
 #include "GlobalWindController_PG.h"

@@ -4,10 +4,10 @@ using namespace PirateGame;
 
 void EnemyShipHandler::addEnemyShips(int numShipsPerChunk) {
 	// Grab all chunks
-	std::vector<Map*> maps = GlobalMap::getInstance().getAllChunks();
+	auto chunks = GlobalChunkHandler::getInstance().getAllChunks();
 
-	for (auto& map : maps) {
-		addEnemyShipsToChunk(*map, numShipsPerChunk);
+	for (auto& chunk : chunks) {
+		addEnemyShipsToChunk(*chunk->getMap(), numShipsPerChunk);
 	}
 }
 

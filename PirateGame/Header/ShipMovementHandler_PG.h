@@ -9,7 +9,7 @@
 #include "VectorMath.h"
 
 #include "GlobalValues_PG.h"
-#include "GlobalMap_PG.h"
+#include "GlobalChunkHandler_PG.h"
 #include "GlobalWindController_PG.h"
 #include "AstarAlgorithm_PG.h"
 

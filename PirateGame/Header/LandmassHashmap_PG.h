@@ -9,7 +9,7 @@
 #include <set>
 
 #include "GlobalValues_PG.h"
-#include "GlobalMap_PG.h"
+#include "GlobalChunkHandler_PG.h"
 
 #include "LandMass_PG.h"
 #include "Ship_PG.h"
