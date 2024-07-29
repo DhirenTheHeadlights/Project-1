@@ -22,6 +22,13 @@ namespace DhruvGame {
 		void setVelocity(float velocity) { this->velocity = velocity; }
 		void setSprite(sf::Sprite sprite) { this->sprite = sprite; }
 		void initializeBird();
+		void draw(sf::RenderWindow* window, bool debug = false) {
+			window->draw(sprite);
+			if (!debug) return;
+			window->draw(boundingBoxLower);
+			window->draw(boundingBoxMid);
+			window->draw(boundingBoxUpper);
+		}
 
 	private:
 		sf::Sprite sprite;

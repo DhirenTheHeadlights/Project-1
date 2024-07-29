@@ -12,7 +12,7 @@
 namespace DhruvGame {
 	class World {
 	public:
-		World(sf::RenderWindow* window);
+		World(sf::RenderWindow* window) : window(window) {}
 
 		void createWorld();
 		void gameLoop();
@@ -21,9 +21,6 @@ namespace DhruvGame {
 		sf::RenderWindow* window;
 		Bird bird;
 		std::vector<Pipe> pipes;
-		
-		
-		//18, 448
 		
 		float gravity = 10.f;
 		sf::Clock clock;

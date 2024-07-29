@@ -8,12 +8,22 @@ void Pipe::initializePipe() {
 		std::cerr << "Failed to load pipe texture" << std::endl;
 	}
 	else {
-		sprite.setTexture(texture);
-		boundingBox.setSize(sf::Vector2f(3 * scaleSizex, 64 * scaleSizey));
-
+		upper.setTexture(texture);
+		lower.setTexture(texture);
+		lowerBB.setSize(sf::Vector2f(3 * scaleSizex, 64 * scaleSizey));
+		upperBB.setSize(sf::Vector2f(3 * scaleSizex, 64 * scaleSizey));
 	}
-	//texture.loadFromFile("DhruvGame/Sprites/pipe.png");
-	//sprite.setTexture(texture);
-	
 }
 
+void Pipe::setPosition(sf::Vector2f position) {
+	upper.setPosition(position);
+
+	// Grab a random number of pixels to be in between the pipe
+	float gap = 200 + rand() % 200;
+
+	lower.setPosition(sf::Vector2f(position.x, position.y + upper.getGlobalBounds().height + gap));
+
+
+	lowerBB.setPosition(lower.getPosition());
+	upperBB.setPosition(upper.getPosition());
+}
