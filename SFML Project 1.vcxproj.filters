@@ -514,6 +514,15 @@
     <ClCompile Include="DhruvGame\Resource\World_DG.cpp">
       <Filter>Source Files\DhruvGame\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\AstarAlgorithm_PG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DhruvGame\Resource\Bird_DG.cpp">
+      <Filter>Source Files\DhruvGame\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="DhruvGame\Resource\Pipe_DG.cpp">
+      <Filter>Source Files\DhruvGame\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -825,6 +834,13 @@
     <ClInclude Include="DhruvGame\Header\World_DG.h">
       <Filter>Source Files\DhruvGame\Header</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\AstarAlgorithm_PG.h" />
+    <ClInclude Include="DhruvGame\Header\Bird_DG.h">
+      <Filter>Source Files\DhruvGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DhruvGame\Header\Pipe_DG.h">
+      <Filter>Source Files\DhruvGame\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -1059,6 +1075,7 @@
     <Image Include="PirateGameSprites\market_menu_buy_ship.png">
       <Filter>Source Files\PirateGame\Sprites\Market\Ship Shop</Filter>
     </Image>
+    <Image Include="DhruvGame\Sprites\bird.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt">

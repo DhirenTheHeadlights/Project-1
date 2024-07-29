@@ -157,6 +157,8 @@
     <ClCompile Include="AimTrainer\Resource\SaveData_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
+    <ClCompile Include="DhruvGame\Resource\Bird_DG.cpp" />
+    <ClCompile Include="DhruvGame\Resource\Pipe_DG.cpp" />
     <ClCompile Include="DhruvGame\Resource\World_DG.cpp" />
     <ClCompile Include="Globals\Resource\GameTemplate.cpp" />
     <ClCompile Include="Globals\Resource\Globals.cpp" />
@@ -244,6 +246,8 @@
     <ClInclude Include="AimTrainer\Header\SaveData_AT.h" />
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
+    <ClInclude Include="DhruvGame\Header\Bird_DG.h" />
+    <ClInclude Include="DhruvGame\Header\Pipe_DG.h" />
     <ClInclude Include="DhruvGame\Header\World_DG.h" />
     <ClInclude Include="DoodleJump\World_DJ.h" />
     <ClInclude Include="Globals\Header\Credits.h" />
@@ -340,6 +344,7 @@
     <Media Include="Sounds\select.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="DhruvGame\Sprites\bird.png" />
     <Image Include="PirateGameSprites\enter_island_menu_button.png" />
     <Image Include="PirateGameSprites\enter_island_menu_initial.png" />
     <Image Include="PirateGameSprites\health_bar_green.png" />

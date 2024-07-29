@@ -4,32 +4,34 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
+
+#include "Bird_DG.h"
+#include "Pipe_DG.h"
 
 namespace DhruvGame {
 	class World {
 	public:
-		World(sf::RenderWindow* window) : window(window) {};
+		World(sf::RenderWindow* window);
+
 		void createWorld();
 		void gameLoop();
+
 	private:
-		sf::RenderWindow* window = nullptr;
+		sf::RenderWindow* window;
+		Bird bird;
+		std::vector<Pipe> pipes;
 		
-		struct Tower {
-			sf::CircleShape shape;
-			float range;
-			float fireRate;
-			sf::Clock fireClock;
-		};
+		
+		//18, 448
+		
+		float gravity = 10.f;
+		sf::Clock clock;
+		bool isGameOver = false;
 
-		struct Enemy {
-			sf::RectangleShape shape;
-			float speed;
-		};
-
-		std::vector<Tower> towers;
-		std::vector<Enemy> enemies;
-
-		void updateEnemies();
-		void checkCollisions();
+		void handleInput();
+		void update();
+		void render();
+		void reset();
 	};
 }
