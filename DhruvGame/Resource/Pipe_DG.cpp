@@ -16,14 +16,15 @@ void Pipe::initializePipe() {
 }
 
 void Pipe::setPosition(sf::Vector2f position) {
-	upper.setPosition(position);
 
 	// Grab a random number of pixels to be in between the pipe
 	float gap = 200 + rand() % 200;
-
+	upper.setPosition(sf::Vector2f(position.x + gap, 0));
+	lower.setScale(5, -1);
 	lower.setPosition(sf::Vector2f(position.x, position.y + upper.getGlobalBounds().height + gap));
 
 
 	lowerBB.setPosition(lower.getPosition());
 	upperBB.setPosition(upper.getPosition());
 }
+//position.y + upper.getGlobalBounds().height + gap

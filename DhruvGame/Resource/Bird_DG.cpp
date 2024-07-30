@@ -21,10 +21,6 @@ void Bird::initializeBird() {
         midOffset *= scaleSize;
         upperOffset *= scaleSize;
 
-        std::cout << "lowerOffset: " << lowerOffset.x << ", " << lowerOffset.y << std::endl;
-        std::cout << "midOffset: " << midOffset.x << ", " << midOffset.y << std::endl;
-        std::cout << "upperOffset: " << upperOffset.x << ", " << upperOffset.y << std::endl;
-
     }
 }
 
