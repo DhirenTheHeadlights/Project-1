@@ -32,9 +32,8 @@ void World::gameLoop() {
 
 void World::handleInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		bird.getSprite().move(0, -20);
-		
-	}
+		bird.getSprite().move(0, -5);
+        
 }
 
 void World::reset() {

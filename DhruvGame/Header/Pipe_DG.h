@@ -28,6 +28,7 @@ namespace DhruvGame {
 		sf::RectangleShape lowerBB;
 		sf::RectangleShape upperBB;
 		float scaleSizex = 6.f;
-		float scaleSizey = 7.f;
+		float scaleSizey = 6.f;
+      
 	};
 }

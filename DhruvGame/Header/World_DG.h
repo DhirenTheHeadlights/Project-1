@@ -14,6 +14,7 @@ namespace DhruvGame {
 	public:
 		World(sf::RenderWindow* window) : window(window) {}
 
+	
 		void createWorld();
 		void gameLoop();
 
@@ -21,7 +22,6 @@ namespace DhruvGame {
 		sf::RenderWindow* window;
 		Bird bird;
 		std::vector<Pipe> pipes;
-		
 		float gravity = 10.f;
 		sf::Clock clock;
 		bool isGameOver = false;
