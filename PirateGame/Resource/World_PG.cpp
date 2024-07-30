@@ -81,7 +81,7 @@ void World::drawGameLoop() {
 
 void World::updateCoreElements() {
 	GlobalValues::getInstance().getGlobalClock().restart();
-	GlobalMap::getInstance().updateChunks(playerShip->getSprite().getPosition());
+	GlobalChunkHandler::getInstance().updateChunks(playerShip->getSprite().getPosition());
 	GlobalWindController::getInstance().update();
 	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
 	view.showCoordsOnCursor();
