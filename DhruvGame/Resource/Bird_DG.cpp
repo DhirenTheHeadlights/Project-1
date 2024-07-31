@@ -25,7 +25,7 @@ void Bird::initializeBird() {
 }
 
 void Bird::moveBird() {
-    sprite.move(speed, gravity);
+    sprite.move(velocity, gravity);
     boundingBoxLower.setPosition(sprite.getPosition() + lowerOffset);
     boundingBoxMid.setPosition(sprite.getPosition() + midOffset);
     boundingBoxUpper.setPosition(sprite.getPosition() + upperOffset);

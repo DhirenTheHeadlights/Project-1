@@ -20,9 +20,9 @@ namespace DhruvGame {
 
 	private:
 		sf::RenderWindow* window;
+		sf::View view;
 		Bird bird;
 		std::vector<Pipe> pipes;
-		float gravity = 10.f;
 		sf::Clock clock;
 		bool isGameOver = false;
 

@@ -5,7 +5,7 @@ using namespace DhruvGame;
 void World::createWorld() {
 	// Setup
 	bird.initializeBird();
-	
+	window->setView(view);
 	for (int i = 0; i < 10; ++i) {
 		Pipe pipe;
 		pipe.initializePipe();
@@ -33,17 +33,22 @@ void World::gameLoop() {
 void World::handleInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		bird.getSprite().move(0, -5);
+	
+	}
         
 }
 
 void World::reset() {
 	bird.getSprite().setPosition(100, 440);
-	bird.setVelocity(10);
+	bird.setVelocity(3);
 	isGameOver = false;
 }
 
 void World::render() {
 	bird.draw(window, true);
+	view.setCenter(bird.getSprite().getPosition());
+	view.setSize(800, 600);
+	view.move(0, bird.getVelocity());	
 	for (auto& pipe : pipes) {
 		pipe.draw(window);
 	}
