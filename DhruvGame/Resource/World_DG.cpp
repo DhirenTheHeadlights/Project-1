@@ -5,12 +5,11 @@ using namespace DhruvGame;
 void World::createWorld() {
 	// Setup
 	bird.initializeBird();
-	window->setView(view);
+	
 	for (int i = 0; i < 10; ++i) {
 		Pipe pipe;
 		pipe.initializePipe();
 		pipe.setPosition(sf::Vector2f(300.f + i * 300, 0.f));
-		pipe.getSprite().setScale(6.f, 7.f);
 		pipes.push_back(pipe);
 	}
 }
@@ -48,7 +47,7 @@ void World::render() {
 	bird.draw(window, true);
 	view.setCenter(bird.getSprite().getPosition());
 	view.setSize(800, 600);
-	view.move(0, bird.getVelocity());	
+	//view.move(0, bird.getVelocity());	
 	for (auto& pipe : pipes) {
 		pipe.draw(window);
 	}
