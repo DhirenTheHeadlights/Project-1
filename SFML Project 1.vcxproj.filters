@@ -544,6 +544,9 @@
     <ClCompile Include="PirateGame\Resource\Shipwreck_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects\Landmass</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\RegionHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Handlers\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -768,9 +771,6 @@
     <ClInclude Include="PirateGame\Header\GlobalQuadtreeHandler.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\GlobalMap_PG.h">
-      <Filter>Source Files\PirateGame\Header\Globals</Filter>
-    </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalFontHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
@@ -881,6 +881,14 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\Shipwreck_PG.h">
       <Filter>Source Files\PirateGame\Header\Game Objects\LandMass\Specific Landmasses</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Chunk_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalChunkHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\RegionHandler_PG.h">
+      <Filter>Source Files\PirateGame\Header\Handlers\General</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\Region_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

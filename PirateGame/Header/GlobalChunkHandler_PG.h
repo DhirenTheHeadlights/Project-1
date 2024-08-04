@@ -6,6 +6,7 @@
 
 #include "GlobalValues_PG.h"
 #include "Chunk_PG.h"
+#include "RegionHandler_PG.h"
 
 namespace PirateGame {
 	class GlobalChunkHandler {
@@ -61,6 +62,7 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<Chunk>> getAllChunks() {
 			return chunks;
 		}
+		RegionHandler getRegionHandler() { return regionHandler; }
 
 	private:
 		// Private Constructor
@@ -95,6 +97,7 @@ namespace PirateGame {
 			}
 			// Generate the chunk
 			std::shared_ptr<Chunk> newChunk = std::make_shared<Chunk>(chunkCoord, chunkSize, cellSize);
+			newChunk->setRegionType(regionHandler.generateRegionType(sf::Vector2f(chunkCoord.first, chunkCoord.second)));
 			chunks.push_back(newChunk);
 		}
 		
@@ -118,6 +121,7 @@ namespace PirateGame {
 		}
 
 		// Values
+		RegionHandler regionHandler;
 		sf::Vector2f chunkSize = sf::Vector2f(5000.f, 5000.f);
 		int cellSize = 100;
 		int renderDistance = 2;
