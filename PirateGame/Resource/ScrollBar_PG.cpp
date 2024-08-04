@@ -18,9 +18,8 @@ void ScrollBar::setUpScrollBar(sf::Vector2f scrollBarTrackOffset, float scrollBa
 
 void ScrollBar::updateInteractablePositions(sf::Vector2f menuPosition) {
 	menuView.setCenter(menuPosition + interactablePositionOffset + sf::Vector2f(menuView.getSize().x / 2.f, menuView.getSize().y * scrollPercentage));
-    std::cout << "Center: " << menuView.getCenter().x << ", " << menuView.getCenter().y << "\n";
     for (size_t i = 0; i < interactables.size(); ++i) {
-        interactables[i]->setPosition(sf::Vector2f(menuView.getCenter().x - menuView.getSize().x / 2.f, i * (interactables[i]->getSprite().getGlobalBounds().height + spacing) + menuDelta.y));
+        interactables[i]->setPosition(sf::Vector2f(menuView.getCenter().x - menuView.getSize().x / 2.f, i * (interactables[i]->getSprite().getGlobalBounds().height + spacing)));
 	}
 }
 

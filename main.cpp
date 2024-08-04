@@ -25,7 +25,7 @@ bool exitLauncher = false;
 
 class Game { // A class to store game data
 public:
-    Game(const std::string& n, GameFunction func) : name(n), gameFunc(func) {} // Constructor
+    Game(const std::string& n, GameFunction func) : name(n), gameFunc(func) {}
 
     std::string getName() const { return name; }
     void run() const {

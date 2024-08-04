@@ -3,7 +3,6 @@
 using namespace PirateGame;
 
 void InventoryMenu::setUpMenu() {
-	// TEMPORARY: MENU TEXTURES REQUIRED (20% window width, 100% height)
 	menu.setTexture(GlobalTextureHandler::getInstance().getInventoryTextures().getBackground());
 
 	interactableTextSize = 25;
