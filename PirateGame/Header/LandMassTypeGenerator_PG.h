@@ -5,6 +5,7 @@
 
 #include <random>
 #include "LandMassType_PG.h"
+#include "Region_PG.h"
 
 // This class will assign a random land mass type to a land mass
 namespace PirateGame {
@@ -13,36 +14,36 @@ namespace PirateGame {
     public:
         explicit LandMassTypeGenerator() {}
 
-        LMType getType() const {
+        LMType getType(int difficulty = 0) const {
             if constexpr (std::is_same<LMType, IslandType>::value) {
-                return getIslandType();
+                return getIslandType(difficulty);
             }
             else if constexpr (std::is_same<LMType, RockType>::value) {
-                return getRockType();
+                return getRockType(difficulty);
             }
 			else if constexpr (std::is_same<LMType, ShipwreckType>::value) {
-				return getShipwreckType();
+				return getShipwreckType(difficulty);
 			}
         }
-
+        
     private:
-        IslandType getIslandType() const {
+        IslandType getIslandType(int difficulty) const {
             static std::random_device rd;
             static std::mt19937 gen(rd());
-            static std::uniform_int_distribution<> dis(0, 1); // Assuming 2 island types
+            static std::uniform_int_distribution<> dis(difficulty * numIslands, difficulty * numIslands + (numIslands - 1)); // Assuming 2 island types
             return static_cast<IslandType>(dis(gen));
         }
 
-        RockType getRockType() const {
+        RockType getRockType(int difficulty) const {
             static std::random_device rd;
             static std::mt19937 gen(rd());
-            static std::uniform_int_distribution<> dis(0, 8); // Assuming 9 rock types
+            static std::uniform_int_distribution<> dis(difficulty * numRocks, difficulty * numRocks + (numRocks - 1)); // Assuming 9 rock types
             return static_cast<RockType>(dis(gen));
         }
-        ShipwreckType getShipwreckType() const {
+        ShipwreckType getShipwreckType(int difficulty) const {
             static std::random_device rd;
             static std::mt19937 gen(rd());
-            static std::uniform_int_distribution<> dis(0, 0); // Assuming 1 wreck type
+            static std::uniform_int_distribution<> dis(difficulty * numShipwrecks, difficulty * numShipwrecks + (numShipwrecks - 1)); // Assuming 1 wreck type
             return static_cast<ShipwreckType>(dis(gen));
         }
     };

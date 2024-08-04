@@ -78,6 +78,8 @@ void LandMassHandler::drawLandMasses() {
 	// Draw all the land masses and add them to the hashmap
 	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 	for (auto& i : landmasses) {
+		//Print debug for region types
+		//GlobalValues::getInstance().displayText(GlobalChunkHandler::getInstance().getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
 	}
 }

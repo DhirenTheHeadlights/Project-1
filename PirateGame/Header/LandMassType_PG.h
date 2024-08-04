@@ -32,4 +32,8 @@ namespace PirateGame {
 
 	// This enum will be used to determine the land mass type
 	enum class LandMassType { Island, Rock, Shipwreck };
+
+	const static int numIslands = 2;
+	const static int numRocks = 9;
+	const static int numShipwrecks = 1;
 }

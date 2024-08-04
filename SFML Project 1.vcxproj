@@ -192,6 +192,7 @@
     <ClCompile Include="PirateGame\Resource\OptionsMenu_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\PlayerShipMovementHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Player_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\RegionHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Rock_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ScrollBar_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\ShipCannonHandler_PG.cpp" />
@@ -301,6 +302,8 @@
     <ClInclude Include="PirateGame\Header\OptionsMenu_PG.h" />
     <ClInclude Include="PirateGame\Header\PlayerShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\Player_PG.h" />
+    <ClInclude Include="PirateGame\Header\RegionHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\Region_PG.h" />
     <ClInclude Include="PirateGame\Header\Rock_PG.h" />
     <ClInclude Include="PirateGame\Header\ScrollBar_PG.h" />
     <ClInclude Include="PirateGame\Header\ShipCannonHandler_PG.h" />

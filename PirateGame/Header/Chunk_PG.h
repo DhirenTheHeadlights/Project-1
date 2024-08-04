@@ -3,6 +3,7 @@
 /// Chunk data
 
 #include "Map.h"
+#include "Region_PG.h"
 
 namespace PirateGame {
 	class Chunk {
@@ -16,12 +17,16 @@ namespace PirateGame {
 		// Getters
 		Map* getMap() { return map.get(); }
 		std::pair<int, int> getChunkCoord() { return chunkCoord; }
+		Region getRegionType() { return regionType; }
 
 
+		// Setters
+		void setRegionType(Region regionType) { this->regionType = regionType; }
 	private:
 		std::unique_ptr<Map> map;
 		std::pair<int, int> chunkCoord;
 		sf::Vector2f chunkSize;
 		int cellSize;
+		Region regionType;
 	};
 }
