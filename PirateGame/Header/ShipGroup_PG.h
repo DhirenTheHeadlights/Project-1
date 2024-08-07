@@ -8,7 +8,7 @@
 #include "Ship_PG.h"
 #include "EnemyShip_PG.h"
 #include "GlobalIDManager_PG.h"
-#include "GlobalQuadtreeHandler.h"
+#include "GlobalQuadtreeHandler_PG.h"
 
 namespace PirateGame {
 	class ShipGroup {

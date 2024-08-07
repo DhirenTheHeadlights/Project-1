@@ -116,19 +116,13 @@ void LandMassHandler::interactWithLandmasses() {
 	for (auto& shipwreck : nearbyShipwrecks) {
 		float distance = vm::magnitude(playerShip->getSprite().getPosition() - shipwreck->getSprite().getPosition() + shipwreck->getSprite().getGlobalBounds().getSize() / 2.f);
 		if (distance <= lootDistance) {
-			// Loot the shipwreck
-			std::string lootDisplayString = "";
-			for (auto& item : shipwreck->getLoot()) {
-				lootDisplayString += "+" + std::to_string(item.amount) + " " + item.name + "\n";
-				playerShip->getInventoryHandler()->addItemsToInventory(item);
-				std::cout << "Looted " << item.amount << " " << item.name << " from the shipwreck" << std::endl;
-			}
-			lootDisplayText = sf::Text(lootDisplayString, *GlobalFontHandler::getInstance().getGlobalFont(), displayTextSize);
-			displayLootText = true;
-			textDisplayClock.restart();
-
 			// Deactivate the shipwreck
 			shipwreck->deactivate();
+
+			// Display the loot
+			for (auto& loot : shipwreck->getLoot()) {
+				GlobalTextQueuePipeline::getInstance().addTextToQueue("You have recieved " + loot.amount + ' ' + loot.name, sf::seconds(5.f));
+			}
 
 			break;
 		}
@@ -142,16 +136,6 @@ void LandMassHandler::interactWithLandmasses() {
 
 		if (distance > interactionDistance) {
 			nearestIsland = nullptr;
-		}
-	}
-
-	if (displayLootText) {
-		sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-		lootDisplayText.setPosition(playerShip->getSprite().getPosition().x, playerShip->getSprite().getPosition().y - lootDisplayText.getGlobalBounds().height + displaySpacing);
-		window->draw(lootDisplayText);
-
-		if (textDisplayClock.getElapsedTime() > textDisplayTime) {
-			displayLootText = false;
 		}
 	}
 }

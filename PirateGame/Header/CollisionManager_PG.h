@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "GlobalValues_PG.h"
-#include "GlobalQuadtreeHandler.h"
+#include "GlobalQuadtreeHandler_PG.h"
 #include "LandMass_PG.h"
 #include "PlayerShip_PG.h"
 #include "EnemyShip_PG.h"

@@ -13,24 +13,24 @@ namespace PirateGame {
 			switch (region) {
 			case Region::SandyShores:
 				displayString = "Sandy Shores";
-				scaling = 1;
+				scaling = 1.f;
 				break;
 			case Region::MurkyMarshes:
 				displayString = "Murky Marshes";
-				scaling = 1.2;
+				scaling = 1.2f;
 				break;
 			case Region::DevilsDen:
 				displayString = "Devil's Den";
-				scaling = 1.5;
+				scaling = 1.5f;
 				break;
 			case Region::ShipwreckShoals:
 				displayString = "Shipwreck Shoals";
-				scaling = 2;
+				scaling = 2.f;
 				break;
 			}
 		}
-		Region region;
-		float scaling;
-		std::string displayString;
+		Region region = Region::SandyShores;
+		float scaling = 1;
+		std::string displayString = "Sandy Shores";
 	};
 }

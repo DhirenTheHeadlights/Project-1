@@ -13,14 +13,14 @@ namespace PirateGame {
 	public:
 		RegionHandler() {};
 		Region generateRegionType(sf::Vector2f position) {
-			float distancefromorigin = sqrt(pow(position.x, 2) + pow(position.y, 2));
-			if (distancefromorigin < 1000) {
+			float distancefromorigin = vm::magnitude(position);
+			if (distancefromorigin < 1000.f) {
 				return Region::SandyShores;
 			}
-			else if (distancefromorigin < 2000) {
+			else if (distancefromorigin < 2000.f) {
 				return Region::MurkyMarshes;
 			}
-			else if (distancefromorigin < 3000) {
+			else if (distancefromorigin < 3000.f) {
 				return Region::DevilsDen;
 			}
 			else {

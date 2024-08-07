@@ -77,6 +77,7 @@ void World::drawGameLoop() {
 	window->draw(experience);
 	playerShip->draw();
 	ESH.draw();
+	GlobalTextQueuePipeline::getInstance().drawTextQueue();
 }
 
 void World::updateCoreElements() {
@@ -84,6 +85,7 @@ void World::updateCoreElements() {
 	GlobalChunkHandler::getInstance().updateChunks(playerShip->getSprite().getPosition());
 	GlobalWindController::getInstance().update();
 	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
+	GlobalTextQueuePipeline::getInstance().updateTextQueue();
 	view.showCoordsOnCursor();
 	waterTiler.update();
 }

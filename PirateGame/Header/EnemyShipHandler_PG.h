@@ -9,7 +9,7 @@
 #include <random>
 
 #include "GlobalValues_PG.h"
-#include "GlobalQuadtreeHandler.h"
+#include "GlobalQuadtreeHandler_PG.h"
 #include "ShipGroup_PG.h"
 #include "BattleManager_PG.h"
 

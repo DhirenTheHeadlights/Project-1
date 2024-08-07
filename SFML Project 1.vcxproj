@@ -272,12 +272,15 @@
     <ClInclude Include="PirateGame\Header\EnemyShipInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShip_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalClock_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalContext_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalGameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalFontHandler_PG.h" />
-    <ClInclude Include="PirateGame\Header\GlobalQuadtreeHandler.h" />
+    <ClInclude Include="PirateGame\Header\GlobalQuadtreeHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalChunkHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\GlobalTextQueuePipeline_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalTextureHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalValues_PG.h" />
     <ClInclude Include="PirateGame\Header\InventoryMenu_PG.h" />

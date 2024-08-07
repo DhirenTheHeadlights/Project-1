@@ -4,13 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalValues_PG.h"
-#include "GlobalFontHandler_PG.h"
-#include "GlobalChunkHandler_PG.h"
-#include "GlobalGameStateManager_PG.h"
-#include "GlobalInputHandler_PG.h"
-#include "GlobalWindController_PG.h"
-
+#include "GlobalContext_PG.h"
 
 #include "Player_PG.h"
 #include "View_PG.h"
@@ -43,6 +37,9 @@ namespace PirateGame {
 		virtual void updateGameLoop(sf::Event event) = 0;
 		virtual void drawGameLoop();
 		virtual void updateCoreElements();
+
+		// Global context
+		GlobalContext context;
 
 		// Game objects
 		Player player;

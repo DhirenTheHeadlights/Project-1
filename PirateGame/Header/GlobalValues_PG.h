@@ -9,6 +9,7 @@
 #include <unordered_map>
 
 #include "GlobalFontHandler_PG.h"
+#include "VectorMath.h"
 
 namespace PirateGame {
 	class GlobalValues {

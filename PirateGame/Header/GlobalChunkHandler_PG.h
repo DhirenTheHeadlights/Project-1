@@ -97,7 +97,7 @@ namespace PirateGame {
 			}
 			// Generate the chunk
 			std::shared_ptr<Chunk> newChunk = std::make_shared<Chunk>(chunkCoord, chunkSize, cellSize);
-			newChunk->setRegionType(regionHandler.generateRegionType(sf::Vector2f(chunkCoord.first, chunkCoord.second)));
+			newChunk->setRegionType(regionHandler.generateRegionType(sf::Vector2f(static_cast<float>(chunkCoord.first), static_cast<float>(chunkCoord.second))));
 			chunks.push_back(newChunk);
 		}
 		
