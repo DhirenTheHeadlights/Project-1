@@ -13,6 +13,7 @@ namespace DhruvGame {
 		
 		sf::Sprite& getSprite() { return upper; }
 		sf::RectangleShape getBB() { return lowerBB; }
+		float getDistance() { return distance; }
 		void initializePipe();
 		void setPosition(sf::Vector2f position);
 		void draw(sf::RenderWindow* window, bool debug = false) {
@@ -30,5 +31,6 @@ namespace DhruvGame {
 		float scaleSizex = 5.f;
 		float scaleSizey = 8.f;
 		sf::View View;
+		float distance;
 	};
 }

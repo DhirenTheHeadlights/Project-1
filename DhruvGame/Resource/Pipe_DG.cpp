@@ -16,8 +16,8 @@ void Pipe::initializePipe() {
 }
 
 void Pipe::setPosition(sf::Vector2f position) {
-	float distance = 500 + ((rand() % 500) * 5);
-	float gap = 50 + rand() % 100;
+	distance = 100 + ((rand() % 500));
+	float gap = 70 + rand() % 100;
 	lower.setScale(scaleSizex, -scaleSizey);
 	upper.setScale(scaleSizex, scaleSizey);
 	upper.setPosition(sf::Vector2f(position.x + distance, 0 - position.y));
@@ -27,3 +27,4 @@ void Pipe::setPosition(sf::Vector2f position) {
 	lowerBB.setPosition(lower.getPosition());
 	upperBB.setPosition(upper.getPosition());
 }
+	

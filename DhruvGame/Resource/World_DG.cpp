@@ -13,12 +13,11 @@ void World::createWorld() {
 	for (int i = 0; i < 30; ++i) {
 		Pipe pipe;
 		pipe.initializePipe();
-		pipe.setPosition(sf::Vector2f(lastPositionx, 10 + rand() % 30));
-		lastPositionx += 200.f;
+		pipe.setPosition(sf::Vector2f(lastPositionx * 1/3 * i, 10 + rand() % 30));
+		lastPositionx = pipe.getDistance();
 		pipes.push_back(pipe);
 	}
 }
-view.setMax
 
 void World::gameLoop() {
 	// Here, the code is called every frame. All you have to do is

@@ -36,7 +36,7 @@ namespace DhruvGame {
 		sf::RectangleShape boundingBoxMid;
 		sf::RectangleShape boundingBoxUpper;
 		float scaleSize = 3.f;
-		float gravity = 1.f;
+		float gravity = .8f;
 		float velocity = 1.f;
 		sf::Vector2f lowerOffset = { 0.f, 29.f };
 		sf::Vector2f midOffset = { 4.f, 24.f };
