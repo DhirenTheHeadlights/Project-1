@@ -523,6 +523,9 @@
     <ClCompile Include="DhruvGame\Resource\Pipe_DG.cpp">
       <Filter>Source Files\DhruvGame\Resource</Filter>
     </ClCompile>
+    <ClCompile Include="DhruvGame\Resource\gameOver_DG.cpp">
+      <Filter>Source Files\DhruvGame\Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -839,6 +842,9 @@
       <Filter>Source Files\DhruvGame\Header</Filter>
     </ClInclude>
     <ClInclude Include="DhruvGame\Header\Pipe_DG.h">
+      <Filter>Source Files\DhruvGame\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DhruvGame\Header\gameOver_DG.h">
       <Filter>Source Files\DhruvGame\Header</Filter>
     </ClInclude>
   </ItemGroup>

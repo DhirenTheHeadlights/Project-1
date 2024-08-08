@@ -17,9 +17,12 @@ namespace DhruvGame {
 		sf::RectangleShape& getMidBB() { return boundingBoxMid; }
 		sf::RectangleShape& getUpperBB() { return boundingBoxUpper; }
 		float getVelocity() { return velocity; }
-
+		float getOGVelocity() { return OGVelocity; }
+		float getOGGravity() { return OGGravity; }
 		void moveBird();
+		void pauseBird();
 		void setVelocity(float velocity) { this->velocity = velocity; }
+		void setGravity(float gravity) { this->gravity = gravity; }
 		void setSprite(sf::Sprite sprite) { this->sprite = sprite; }
 		void initializeBird();
 		void draw(sf::RenderWindow* window, bool debug = false) {
@@ -38,6 +41,8 @@ namespace DhruvGame {
 		float scaleSize = 3.f;
 		float gravity = .8f;
 		float velocity = 1.f;
+		float OGVelocity = 1.f;
+		float OGGravity = .8f;
 		sf::Vector2f lowerOffset = { 0.f, 29.f };
 		sf::Vector2f midOffset = { 4.f, 24.f };
 		sf::Vector2f upperOffset = { 8.f, 14.f };

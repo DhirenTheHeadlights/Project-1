@@ -9,7 +9,7 @@ void Bird::initializeBird() {
     }
     else {
         sprite.setTexture(texture);
-        sprite.setPosition(100, 440);
+        sprite.setPosition(-200, 300);
         sprite.setScale(scaleSize, scaleSize);
         boundingBoxUpper.setSize(sf::Vector2f(16 * scaleSize, 10 * scaleSize));
         boundingBoxMid.setSize(sf::Vector2f(22 * scaleSize, 5 * scaleSize));
@@ -29,4 +29,9 @@ void Bird::moveBird() {
     boundingBoxLower.setPosition(sprite.getPosition() + lowerOffset);
     boundingBoxMid.setPosition(sprite.getPosition() + midOffset);
     boundingBoxUpper.setPosition(sprite.getPosition() + upperOffset);
+}
+
+void Bird::pauseBird() {
+	velocity = 0;
+	gravity = 0;
 }

@@ -158,6 +158,7 @@
     <ClCompile Include="AimTrainer\Resource\StartMenu_AT.cpp" />
     <ClCompile Include="AimTrainer\Resource\Target_AT.cpp" />
     <ClCompile Include="DhruvGame\Resource\Bird_DG.cpp" />
+    <ClCompile Include="DhruvGame\Resource\gameOver_DG.cpp" />
     <ClCompile Include="DhruvGame\Resource\Pipe_DG.cpp" />
     <ClCompile Include="DhruvGame\Resource\World_DG.cpp" />
     <ClCompile Include="Globals\Resource\GameTemplate.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="AimTrainer\Header\StartMenu_AT.h" />
     <ClInclude Include="AimTrainer\Header\Target_AT.h" />
     <ClInclude Include="DhruvGame\Header\Bird_DG.h" />
+    <ClInclude Include="DhruvGame\Header\gameOver_DG.h" />
     <ClInclude Include="DhruvGame\Header\Pipe_DG.h" />
     <ClInclude Include="DhruvGame\Header\World_DG.h" />
     <ClInclude Include="DoodleJump\World_DJ.h" />
