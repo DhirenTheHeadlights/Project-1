@@ -2,8 +2,7 @@
 
 using namespace PirateGame;
 
-void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale) {
-    const sf::Texture& cannonTexture = GlobalTextureHandler::getInstance().getShipTextures().getCannonTextureManager().getTexture(type);
+void ShipCannonHandler::initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, int ID, sf::Vector2f scale) {
     for (int i = 0; i < numCannons; i++) {
         if (i < numCannons / 2) {
 			cannons.push_back(ShipCannon(cannonTexture, ID, FiringSide::Port, scale));
@@ -15,8 +14,6 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
 
     // Set the position of the cannons based on the ship sprite. In the ship sprite,
     // There is a 1 pixel red dot where the cannon should be placed.
-    const sf::Texture* shipTexture = shipSprite.getTexture();
-    sf::Image shipImage = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getImage(type);
     const sf::Uint8* pixels = shipImage.getPixelsPtr();
 
     // Store the positions of the red dots in the ship sprite
@@ -24,8 +21,8 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
     std::vector<sf::Vector2f> cannonPositions;
 
     // Find the center of the texture to make positions relative to it
-    sf::Vector2f textureCenter = sf::Vector2f(static_cast<float>(shipTexture->getSize().x) / 2.0f,
-        static_cast<float>(shipTexture->getSize().y) / 2.0f);
+    sf::Vector2f textureCenter = sf::Vector2f(static_cast<float>(shipImage.getSize().x) / 2.0f,
+        static_cast<float>(shipImage.getSize().y) / 2.0f);
 
     // Iterate through the pixels to find the red dots and store their positions relative to the texture center
     for (unsigned int x = 0; x < shipImage.getSize().x; x++) {
@@ -41,6 +38,8 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
 
     if (cannonPositions.size() != numCannons) {
         std::cout << "Error: Number of cannons does not match the number of red dots in the ship sprite: " << numCannons << " cannons, " << cannonPositions.size() << " red dots." << std::endl;
+        std::cout << "Texture Size : " << shipSprite.getTexture()->getSize().x << " " << shipSprite.getTexture()->getSize().y << std::endl;
+        std::cout << "Image Size : " << shipImage.getSize().x << " " << shipImage.getSize().y << std::endl;
     }
 
     // Set each cannon's offset based on the calculated and scaled positions
@@ -49,29 +48,21 @@ void ShipCannonHandler::initializeCannons(ShipClass type, int numCannons, int ID
     }
 }
 
-void ShipCannonHandler::shootCannonballs() {
-    if (cannonCooldownClock.getElapsedTime() < cooldown) return;
-
+void ShipCannonHandler::shootCannonballs(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) {
     // Fire the cannonballs with the adjusted direction
     for (auto& cannon : cannons) {
-        cannon.fireCannon(side, shipSprite);
+        cannon.fireCannon(side, shipSprite, cannonballTexture, GIDM);
 	}
-
-    // Play sound once per volley if numCannons > 0
-    if (inAudioRange) GlobalSoundManager::getInstance().playSound(SoundId::CannonShot);
-
-    // Reset the cooldown clock
-    cannonCooldownClock.restart();
 }
 
-void ShipCannonHandler::updateCannons() {
+void ShipCannonHandler::updateCannons(sf::RenderWindow* window, float elapsed) {
     for (size_t i = 0; i < cannons.size(); i++) {
-        cannons[i].updateCannon(shipSprite, side);
+        cannons[i].updateCannon(shipSprite, side, window, elapsed);
     }
 }
 
-void ShipCannonHandler::drawCannons() {
+void ShipCannonHandler::drawCannons(sf::RenderWindow* window) {
     for (auto& cannon : cannons) {
-        cannon.drawCannonNBalls();
+        cannon.drawCannonNBalls(window);
 	}
 }

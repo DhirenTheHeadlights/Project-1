@@ -2,8 +2,8 @@
 
 using namespace PirateGame;
 
-void ShipInputHandler::update() {
-	handleCannonFire();
+void ShipInputHandler::update(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) {
+	handleCannonFire(cannonballTexture, GIDM);
 	handleCannonAim();
 	handleAnchorDrop();
 	handleSailChange();

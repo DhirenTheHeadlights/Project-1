@@ -65,10 +65,10 @@ void LMAvoidWorld::setUpEnemyShips() {
 void LMAvoidWorld::createWorld(sf::Event event) {
 	window->clear();
 
-	GlobalInputHandler::getInstance().update();
+	context.GIH->update();
 
 	// Handle the different game states
-	switch (GlobalGameStateManager::getInstance().getCurrentGameState()) {
+	switch (context.GGSM->getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
 		MH.openMenu(MenuType::StartMenu);
@@ -101,7 +101,7 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 
 	ESH.update();
 
-	CM.handleCollisions();
+	CM.handleCollisions(GQH.get());
 
 	view.updateDebugView(event);
 
@@ -112,5 +112,5 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 		ESH.getEnemyShips().at(0)->getMovementHandler()->getAStar().recalculatePath();
 	}
 
-	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->draw(window);
+	GQH->getLandMassQuadtree()->draw(context.GV.get());
 }

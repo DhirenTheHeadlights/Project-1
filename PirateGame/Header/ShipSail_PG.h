@@ -6,25 +6,23 @@
 
 #include "VectorMath.h"
 
-#include "GlobalInputHandler_PG.h"
-#include "GlobalValues_PG.h"
-
 namespace PirateGame {
 	class Sail {
 	public:
-		Sail(const sf::Texture& texture, sf::Vector2f scaling) : sailSprite(texture) {
+		Sail(const sf::Texture& texture, const sf::Vector2f scaling) : sailSprite(texture) {
 			// Set the origin to the center of the sail
 			sailSprite.setOrigin(sailSprite.getGlobalBounds().width / 2.f - 1.f, sailSprite.getGlobalBounds().height / 2.f);
 
 			// Set the scale of the sail
 			sailSprite.setScale(scaling);
 		};
-		~Sail() {};
 
 		void updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection);
-		void updateSailLeftRight(const sf::Keyboard::Key leftKey, const sf::Keyboard::Key rightKey);
+		void moveLeft() { rotationOffset -= rotationSpeed; }
+		void moveRight() { rotationOffset += rotationSpeed; }
+		void moveUp() { /* implement later */ };
+		void moveDown() { /* implement later */ };
 		void updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection);
-		void updateSailUpDown(const sf::Keyboard::Key upKey, const sf::Keyboard::Key downKey);
 
 		sf::Sprite& getSprite() { return sailSprite; }
 		sf::Vector2f getOffset() const { return offset; }

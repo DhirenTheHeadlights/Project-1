@@ -7,7 +7,8 @@
 #include <cmath>
 #include <unordered_map>
 
-#include "GlobalValues_PG.h"
+#include "GlobalContext_PG.h"
+
 #include "Ship_PG.h"
 #include "PlayerShipInputHandler_PG.h"
 #include "PlayerShipMovementHandler_PG.h"
@@ -16,9 +17,7 @@
 namespace PirateGame {
 	class PlayerShip : public Ship {
 	public:
-		PlayerShip() {};
-
-		~PlayerShip() {};
+		PlayerShip(GlobalContext& context) : Ship(context) {};
 
 		// Experience
 		void addExperience(float exp) {

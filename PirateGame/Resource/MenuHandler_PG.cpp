@@ -4,16 +4,16 @@ using namespace PirateGame;
 
 void MenuHandler::createMenus() {
 	// Initialize the menu pointers and set up the menus
-	startMenu = std::make_unique<StartMenu>();
-	optionsMenu = std::make_unique<OptionsMenu>();
-	HUD = std::make_unique<InGameHUD>();
-	inventoryMenu = std::make_unique<InventoryMenu>();
+	startMenu = std::make_unique<StartMenu>(context);
+	optionsMenu = std::make_unique<OptionsMenu>(context);
+	HUD = std::make_unique<InGameHUD>(context);
+	inventoryMenu = std::make_unique<InventoryMenu>(context);
 }
 
 void MenuHandler::openMenu(MenuType menuType) {
 	// This will reset the view so that the menu is correctly visible. However, it should not happen w the hud.
 	if (menuType != MenuType::HUD && menuType != MenuType::InventoryMenu) {
-		GlobalValues::getInstance().getWindow()->setView(GlobalValues::getInstance().getWindow()->getDefaultView());
+		context.GV->getWindow()->setView(context.GV->getWindow()->getDefaultView());
 	}
 	switch (menuType) {
 	case MenuType::StartMenu:

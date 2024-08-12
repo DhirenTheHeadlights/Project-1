@@ -26,26 +26,23 @@ void StartMenu::setInteractablePositions() {
 
 // Add the interactables to the menu
 void StartMenu::addInteractablesToMenu() {
-	// Grab the global game state manager
-	GSM = &GlobalGameStateManager::getInstance();
-
 	// Create the start button
 	std::function<void()> startFunc = [this]() { GSM->changeGameState(GameState::GameLoop); };
-	addButton(sf::Text("Start", font, textSize), GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton(), buttons, startFunc, interactableScale);
+	addButton(sf::Text("Start", font, textSize), context.GTH->getInteractableTextures().getBlackGrayButton(), buttons, startFunc, interactableScale);
 
 	// Create the settings button
 	std::function<void()> settingsFunc = [this]() { std::cout << "opt" << std::endl; GSM->changeGameState(GameState::OptionsMenu); };
-	addButton(sf::Text("Options", font, textSize), GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton(), buttons, settingsFunc, interactableScale);
+	addButton(sf::Text("Options", font, textSize), context.GTH->getInteractableTextures().getBlackGrayButton(), buttons, settingsFunc, interactableScale);
 
 	// Create the quit button
 	std::function<void()> quitFunc = [this]() { GSM->changeGameState(GameState::End); };
-	addButton(sf::Text("Quit", font, textSize), GlobalTextureHandler::getInstance().getInteractableTextures().getBlackGrayButton(), buttons, quitFunc, interactableScale);
+	addButton(sf::Text("Quit", font, textSize), context.GTH->getInteractableTextures().getBlackGrayButton(), buttons, quitFunc, interactableScale);
 }
 
 void StartMenu::interactWithMenuItems() {
 	// Interact with the buttons
 	for (auto& button : buttons) {
-		button.interact();
+		button.interact(window, context.GIH.get(), context.GSM.get());
 	}
 }
 
@@ -55,7 +52,7 @@ void StartMenu::draw() {
 
 	// Draw the interactables
 	for (auto& button : buttons) {
-		button.draw();
+		button.draw(window);
 	}
 }
 

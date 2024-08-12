@@ -2,11 +2,11 @@
 
 using namespace PirateGame;
 
-void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite) {
+void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) {
     if (FS != side) return;
 
-    Cannonball* cannonball = new Cannonball(id);
-    cannonball->getSprite().setTexture(GlobalTextureHandler::getInstance().getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball));
+    Cannonball* cannonball = new Cannonball(GIDM, id);
+    cannonball->getSprite().setTexture(cannonballTexture);
     cannonball->getSprite().setScale(cannonballScale);
     cannonball->setSpeed(cannonballSpeed);
 
@@ -27,8 +27,7 @@ void ShipCannon::fireCannon(FiringSide FS, sf::Sprite& shipSprite) {
     cannonballs.push_back(cannonball);
 }
 
-void ShipCannon::drawCannonNBalls() {
-    sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+void ShipCannon::drawCannonNBalls(sf::RenderWindow* window) {
     for (auto& i : cannonballs) {
 		window->draw(i->getSprite());
 	}
@@ -48,7 +47,7 @@ sf::Vector2f ShipCannon::calculatePerpendicularDirection(float rotation) const {
     return cannonDirection;
 }
 
-sf::Vector2f ShipCannon::calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos) {
+sf::Vector2f ShipCannon::calculateDirectionToTarget(const sf::Sprite& shipSprite, sf::Vector2f targetPos) {
     const float pi = 3.14159265f;
     sf::Vector2f shipPos = shipSprite.getPosition();
 
@@ -93,7 +92,7 @@ void ShipCannon::rotateTowards(float targetAngle, float step) {
     }
 }
 
-void ShipCannon::updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS) {
+void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window) {
     // Calculate the cannon's position based on the ship's rotation
     float rotation = shipSprite.getRotation();
     sf::Transform rotationTransform;
@@ -113,7 +112,6 @@ void ShipCannon::updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS) {
 			break;
         case FiringState::TowardsMouse:
             if (FS == side) {
-		        sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
 		        sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
 		        sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
 		        sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
@@ -161,9 +159,7 @@ void ShipCannon::updateCannonballs(float elapsed) {
     }
 }
 
-void ShipCannon::updateCannon(sf::Sprite& shipSprite, FiringSide FS) {
-    updateCannonRotation(shipSprite, FS);
-
-    float elapsed = deltaTime.restart().asSeconds();
+void ShipCannon::updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, float elapsed) {
+    updateCannonRotation(shipSprite, FS, window);
     updateCannonballs(elapsed);
 }

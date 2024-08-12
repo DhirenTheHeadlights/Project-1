@@ -3,29 +3,24 @@
 using namespace PirateGame;
 
 // Interact with the button
-void Button::interact() {
-	if (holdDown) {
-		interactHold();
-	}
-	else {
-		interactOnce();
-	}
+void Button::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
+	holdDown ? interactHold(window, GIH, GSM) : interactOnce(window, GIH, GSM);
 }
 
-void Button::interactOnce() {
-	if (GlobalInputHandler::getInstance().isMouseButtonPressedOnce(sf::Mouse::Left)) {
+void Button::interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
+	if (GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		sf::Vector2i mousePosition = sf::Vector2i(sf::Mouse::getPosition(*window));
 		sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 
 		// If the mouse is over the button, call the button's callback function
 		if (sprite.getGlobalBounds().contains(worldPosition)) {
-			GlobalSoundManager::getInstance().playSound(SoundId::Select);
+			GSM->playSound(SoundId::Select);
 			func();
 		}
 	}
 }
 
-void Button::interactHold() {
+void Button::interactHold(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
 	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
 	sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 
@@ -33,7 +28,7 @@ void Button::interactHold() {
 		cooldown.getElapsedTime().asSeconds() > cooldownTime.asSeconds() && // If the cooldown has passed
 		sf::Mouse::isButtonPressed(sf::Mouse::Left) // If the left mouse button is pressed
 		) {
-		GlobalSoundManager::getInstance().playSound(SoundId::Select);
+		GSM->playSound(SoundId::Select);
 		func();
 		cooldown.restart();
 	}

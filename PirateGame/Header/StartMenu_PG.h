@@ -7,7 +7,7 @@
 namespace PirateGame {
 	class StartMenu : public Menu {
 	public:
-		StartMenu() : Menu() {};
+		StartMenu(GlobalContext& context) : Menu(context) {};
 		~StartMenu() {};
 
 		void setUpMenu() override;

@@ -34,7 +34,7 @@ namespace PirateGame {
             return true;
         }
 
-        bool loadTextures(EnumType type, std::vector<std::string> filenames) {
+        bool loadTextures(EnumType type, std::vector<std::string>& filenames) {
 			std::vector<sf::Texture> textureGroup;
             for (const auto& filename : filenames) {
 				sf::Texture texture;

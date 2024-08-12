@@ -4,10 +4,9 @@ using namespace PirateGame;
 
 void EnemyShip::customShipSetUp() {
 	// Add handlers
-	SIH = std::make_unique<EnemyShipInputHandler>(getSprite());
+	SIH = std::make_unique<EnemyShipInputHandler>(getSprite(), context.GWC.get(), context.GSM.get());
 	SMH = std::make_unique<EnemyShipMovementHandler>(getSprite());
 
-	SIH->setNumCannons(getSpecificShipProperties().numCannons);
 	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
@@ -15,17 +14,17 @@ void EnemyShip::customShipSetUp() {
 }
 
 void EnemyShip::customShipUpdate() {
-	SIH->update();
-	SMH->update(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection());
+	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
+	SMH->update(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection(), context.GV->getGlobalClock().getElapsedTime().asSeconds(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
 }
 
 void EnemyShip::customShipDraw() {
 	// Draw the health bar
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	sf::RenderWindow* window = context.GV->getWindow();
 	window->draw(healthBarRed);
 	window->draw(healthBarGreen);
 
-	getCannonHandler()->drawCannons();
-	getSailHandler()->draw();
+	getCannonHandler()->drawCannons(window);
+	getSailHandler()->draw(window);
 }
 

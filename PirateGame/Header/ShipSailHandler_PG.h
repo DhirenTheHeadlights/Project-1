@@ -6,27 +6,42 @@
 #include <iostream>
 
 #include "VectorMath.h"
-
-#include "GlobalValues_PG.h"
-#include "GlobalTextureHandler_PG.h"
 #include "GlobalInputHandler_PG.h"
 
-#include "ShipEnums_PG.h"
 #include "ShipSail_PG.h"
 
 namespace PirateGame {
 	class ShipSailHandler {
 	public:
-		ShipSailHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
-		~ShipSailHandler() {};
+		ShipSailHandler() {};
 
-		void loadSailPositions(ShipClass shipClass, sf::Vector2f scaleing);
+		void loadSailPositions(const std::vector<sf::Texture>& sailTextures, const sf::Image& shipImage, sf::Vector2f scaling);
 
-		void update(sf::Sprite& shipSprite, sf::Vector2f& shipDirection);
-		void moveSailsUpAndDown(sf::Keyboard::Key upKey, sf::Keyboard::Key downKey);
-		void moveSailLeftRightManually(sf::Keyboard::Key leftKey, sf::Keyboard::Key rightKey);
+		void update(const sf::Sprite& shipSprite, sf::Vector2f& shipDirection);
+
+		void moveSailsUp(sf::Keyboard::Key key) {
+			for (auto& sail : sails) {
+				sail.moveUp();
+			}
+		}
+		void moveSailsDown(sf::Keyboard::Key key) {
+			for (auto& sail : sails) {
+				sail.moveDown();
+			}
+		}
+		void moveSailsLeft(sf::Keyboard::Key key) {
+			for (auto& sail : sails) {
+				sail.moveLeft();
+			}
+		}
+		void moveSailsRight(sf::Keyboard::Key key) {
+			for (auto& sail : sails) {
+				sail.moveRight();
+			}
+		}
+
 		void moveSailLeftRightAutomatically(sf::Vector2f windDirection, sf::Vector2f shipDirection);
-		void draw();
+		void draw(sf::RenderWindow* window);
 
 		sf::Vector2f getAverageSailDirection() {
 			float avgRotation = 0.f;
@@ -45,9 +60,8 @@ namespace PirateGame {
 
 			return sailDirection;
 		}
+		std::vector<Sail>& getSails() { return sails; }
 	private:
 		std::vector<Sail> sails;
-
-		sf::Sprite& shipSprite;
 	};
 }

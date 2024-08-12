@@ -9,12 +9,12 @@
 namespace PirateGame {
 	class Shipwreck : public LandMass {
 	public:
-		Shipwreck() {}
+		Shipwreck(GlobalContext& context) : LandMass(context) {};
 
 		void createLandMass() override;
 
 		std::vector<ShopItem>& getLoot() { return loot; }
-		sf::Image getImage() override { return GlobalTextureHandler::getInstance().getLandMassTextures().getShipwreckTextures().getImage(type); }
+		const sf::Image& getImage(GlobalContext& context) override { return context.GTH->getLandMassTextures().getShipwreckTextures().getImage(type); }
 		LandMassType getType() { return LandMassType::Shipwreck; }
 	private:
 		int shipwreckLootPoolSize = 3;

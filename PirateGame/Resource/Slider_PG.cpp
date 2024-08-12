@@ -4,6 +4,7 @@ using namespace PirateGame;
 
 // Set up the slider
 void Slider::customInteractableSetUp() {
+    this->name = text.getString();
 	text.setString(name + ":  " + std::to_string(static_cast<int>(value * 100)));
     text.setOrigin(0.f, 0.f);
 }
@@ -23,7 +24,7 @@ void Slider::setPosition(sf::Vector2f pos) {
 }
 
 // Interact with the slider
-void Slider::interact() {
+void Slider::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
     sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*window));
 
     // Start grabbing if the mouse is over the slider thumb and the left mouse button is pressed
@@ -54,7 +55,7 @@ void Slider::interact() {
 
 
 // Draw the slider
-void Slider::draw() {
+void Slider::draw(sf::RenderWindow* window) {
 	window->draw(sprite);
 	window->draw(sliderTrack);
 	window->draw(sliderThumb);

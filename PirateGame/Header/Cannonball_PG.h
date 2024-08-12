@@ -8,7 +8,7 @@ namespace PirateGame {
 
 	class Cannonball {
 	public:
-		Cannonball(int shipID) : shipID(shipID) {}
+		Cannonball(GlobalIDManager* GIDM, int shipID) : shipID(shipID), ID(GIDM->getUniqueID()) {};
 		~Cannonball() {};
 
 		// Setters 
@@ -39,7 +39,7 @@ namespace PirateGame {
 		float speed = 10.f;
 
 		int shipID = -1;
-		int ID = GlobalIDManager::getInstance().getUniqueID();
+		int ID = -1;
 
 		bool isActive = true;
 	};

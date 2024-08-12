@@ -3,9 +3,7 @@
 #include <random>
 #include <unordered_map>
 
-#include "GlobalValues_PG.h"
 #include "LandMassTypeGenerator_PG.h"
-
 
 namespace PirateGame {
 	

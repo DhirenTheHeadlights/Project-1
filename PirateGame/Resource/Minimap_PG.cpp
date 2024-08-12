@@ -2,10 +2,7 @@
 
 using namespace PirateGame;
 
-void Minimap::draw() {
-    sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
-
-    window->draw(minimap);
+void Minimap::draw(sf::RenderWindow* window) {
     window->draw(minimapSprite);
 
     // Iterate only through visible landmasses

@@ -5,24 +5,23 @@ using namespace PirateGame;
 /// Custom functions
 
 void PlayerShip::customShipSetUp() {
-	SIH = std::make_unique<PlayerShipInputHandler>(getSprite());
-	SMH = std::make_unique<PlayerShipMovementHandler>(getSprite());
+	SIH = std::make_unique<PlayerShipInputHandler>(getSprite(), context.GSM.get(), context.GIH.get(), context.GWC.get());
+	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite());
 	
 	SIvH = std::make_unique<ShipInventoryHandler>();
 	SIvH->addGold(1000);
 	
-	SIH->setNumCannons(getSpecificShipProperties().numCannons);
 	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
 	SIH->setSailHandler(getSailHandler());
 
-	getCannonHandler()->setInAudioRange(true);
+	getInputHandler()->setInAudioRange(true);
 }
 
 void PlayerShip::customShipUpdate() {
-	SIH->update();
-	SMH->update(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection());
+	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
+	SMH->update(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection(), context.GV->getGlobalClock().getElapsedTime().asSeconds(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
 
 	// If the experience is greater than the experience to level up
 	// Level up the ship and also up the amount of exp to level up
@@ -35,8 +34,8 @@ void PlayerShip::customShipUpdate() {
 
 void PlayerShip::customShipDraw() {
 	// Draw the health bar
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	sf::RenderWindow* window = context.GV->getWindow();
 	
-	getCannonHandler()->drawCannons();
-	getSailHandler()->draw();
+	getCannonHandler()->drawCannons(window);
+	getSailHandler()->draw(window);
 }

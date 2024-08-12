@@ -40,6 +40,7 @@ namespace PirateGame {
 
 		// Global context
 		GlobalContext context;
+		std::shared_ptr<GlobalQuadtreeHandler> GQH = std::make_shared<GlobalQuadtreeHandler>();
 
 		// Game objects
 		Player player;
@@ -47,10 +48,10 @@ namespace PirateGame {
 		View view;
 
 		// Handlers
-		LandMassHandler LMH;
-		MenuHandler MH;
-		CollisionManager CM;
-		EnemyShipHandler ESH;
+		LandMassHandler LMH = LandMassHandler(context, GQH.get());
+		MenuHandler MH = MenuHandler(context);
+		CollisionManager CM = CollisionManager(context);
+		EnemyShipHandler ESH = EnemyShipHandler(context, GQH.get());
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;

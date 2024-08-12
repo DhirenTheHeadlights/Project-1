@@ -17,20 +17,6 @@ namespace PirateGame {
 
     class GlobalSoundManager {
     public:
-        // Provides global access to the single instance of SoundManager
-        static GlobalSoundManager& getInstance() {
-            static GlobalSoundManager instance;
-            return instance;
-        }
-
-        // Loads and plays sounds by their identifiers
-        void playSound(SoundId soundId);
-
-        // Setters
-        void setSoundVolume(float volume) { soundVolume = volume; }
-
-    private:
-        // Private constructor for singleton pattern
         GlobalSoundManager() {
             // Set up the sound paths
             setSoundFilePath(SoundId::Bonk, "Sounds/bonk.wav");
@@ -40,14 +26,17 @@ namespace PirateGame {
 
             // Load the sound buffers
             for (auto& sound : soundFilePaths) {
-				loadSound(sound.first);
-			}
+                loadSound(sound.first);
+            }
         }
 
-        // Delete the copy constructor and assignment operator
-        GlobalSoundManager(GlobalSoundManager const&) = delete;
-        GlobalSoundManager& operator=(GlobalSoundManager const&) = delete;
+        // Loads and plays sounds by their identifiers
+        void playSound(SoundId soundId);
 
+        // Setters
+        void setSoundVolume(float volume) { soundVolume = volume; }
+
+    private:
         // Helper methods
         sf::Sound& findAvailableSound();
         void loadSound(SoundId soundId);

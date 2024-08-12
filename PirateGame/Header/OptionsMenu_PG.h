@@ -16,7 +16,7 @@ enum class Tab {
 namespace PirateGame {
 	class OptionsMenu : public Menu {
 	public:
-		OptionsMenu() : Menu() {};
+		OptionsMenu(GlobalContext& context) : Menu(context), context(context) {};
 		~OptionsMenu() {};
 
 		void setUpMenu() override;
@@ -24,6 +24,9 @@ namespace PirateGame {
 		void update() override;
 
 	private:
+		// Reference to the global context
+		GlobalContext& context;
+
 		// Menu variables
 		Tab currentTab = Tab::General;
 
@@ -45,8 +48,8 @@ namespace PirateGame {
 		// Overriden function to 
 		void addDropDown(sf::Text text, sf::Texture& texture, std::vector<std::unique_ptr<Interactable>>& destination, std::vector<std::pair<std::function<void()>, std::string>> options, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) override {
 			std::unique_ptr<DropDown> dropDown = std::make_unique<DropDown>(options);
-			dropDown->createInteractable(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getDropDown(), text);
-			dropDown->setOptionsBoxSprite(GlobalTextureHandler::getInstance().getOptionsMenuTextures().getRightInteractable());
+			dropDown->createInteractable(context.GTH->getOptionsMenuTextures().getDropDown(), text);
+			dropDown->setOptionsBoxSprite(context.GTH->getOptionsMenuTextures().getRightInteractable());
 			dropDown->setOptionTextColor(sf::Color::Black);
 			destination.push_back(std::move(dropDown));
 		}

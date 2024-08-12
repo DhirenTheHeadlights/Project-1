@@ -6,25 +6,9 @@
 #include <unordered_map>
 #include <iostream>
 
-#include "GlobalInputHandler_PG.h"
-
 namespace PirateGame {
     class GlobalInputHandler {
     public:
-        static GlobalInputHandler& getInstance() {
-            static GlobalInputHandler instance;
-            return instance;
-        }
-
-        void update();
-
-        bool isKeyPressedOnce(sf::Keyboard::Key key);
-        bool isKeyToggled(sf::Keyboard::Key key);
-        bool isKeyHeld(sf::Keyboard::Key key);
-        bool isMouseButtonPressedOnce(sf::Mouse::Button button) const;
-        bool isMouseButtonHeld(sf::Mouse::Button button);
-
-    private:
         GlobalInputHandler() {
             // Initialize keyboard and mouse states
             for (int key = sf::Keyboard::A; key < sf::Keyboard::KeyCount; ++key) {
@@ -36,6 +20,15 @@ namespace PirateGame {
             }
         }
 
+        void update();
+
+        bool isKeyPressedOnce(sf::Keyboard::Key key);
+        bool isKeyToggled(sf::Keyboard::Key key);
+        bool isKeyHeld(sf::Keyboard::Key key);
+        bool isMouseButtonPressedOnce(sf::Mouse::Button button) const;
+        bool isMouseButtonHeld(sf::Mouse::Button button);
+
+    private:
         std::unordered_map<sf::Keyboard::Key, bool> lastKeyState;
         std::unordered_map<sf::Keyboard::Key, bool> currentKeyState;
 

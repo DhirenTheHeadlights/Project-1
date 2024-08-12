@@ -16,11 +16,6 @@
 namespace PirateGame {
 	class GlobalTextureHandler {
 	public:
-		static GlobalTextureHandler& getInstance() {
-			static GlobalTextureHandler instance;
-			return instance;
-		}
-
 		// Getters for texture managers
 		InteractableTextureHandler& getInteractableTextures() { return interactableTextures; }
 		LandmassTextureHandler& getLandMassTextures() { return landMassTextures; }
@@ -31,12 +26,6 @@ namespace PirateGame {
 		InventoryTextureHandler& getInventoryTextures() { return inventoryTextures; }
 
 	private:
-		GlobalTextureHandler() {}
-
-		// Delete copy constructor and assignment operator
-		GlobalTextureHandler(GlobalTextureHandler const&) = delete;
-		GlobalTextureHandler& operator=(GlobalTextureHandler const&) = delete;
-
 		// Managers
 		InteractableTextureHandler interactableTextures;
 		LandmassTextureHandler landMassTextures;

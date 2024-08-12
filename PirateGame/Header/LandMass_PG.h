@@ -8,7 +8,6 @@
 #include <iostream>
 #include <variant>
 
-#include "GlobalTextureHandler_PG.h"
 #include "ShopItem_PG.h"
 #include "IslandMenu_PG.h"
 #include "LandMassTypeGenerator_PG.h"
@@ -16,12 +15,14 @@
 namespace PirateGame {
 	class LandMass {
 	public:
+		LandMass(GlobalContext& context) : context(context) {}
+
 		virtual void createLandMass() = 0;
 		void setRandomRotation() { sprite.setRotation(static_cast<float>(rand() % 360)); }
 
 		// Getters
 		sf::Sprite& getSprite() { return sprite; }
-		virtual sf::Image getImage() = 0;
+		virtual const sf::Image& getImage(GlobalContext& context) = 0;
 		virtual LandMassType getType() = 0;
 		bool isActive() const { return active; }
 
@@ -34,6 +35,9 @@ namespace PirateGame {
 		}
 
 	protected:
+		// Global context
+		GlobalContext& context;
+
 		// Sprite to represent the land mass
 		sf::Sprite sprite;
 

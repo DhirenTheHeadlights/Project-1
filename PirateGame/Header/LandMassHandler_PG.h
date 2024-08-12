@@ -7,11 +7,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#include "GlobalValues_PG.h"
+#include "GlobalContext_PG.h"
 #include "GlobalQuadtreeHandler_PG.h"
-#include "GlobalSoundManager_PG.h"
-#include "GlobalChunkHandler_PG.h"
-#include "GlobalTextQueuePipeline_PG.h"
 
 #include "Island_PG.h"
 #include "Rock_PG.h"
@@ -22,7 +19,7 @@
 namespace PirateGame {
     class LandMassHandler {
     public:
-        LandMassHandler() {};
+        LandMassHandler(GlobalContext& context, GlobalQuadtreeHandler* GQH) : context(context), GQH(GQH) {};
         ~LandMassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
@@ -38,6 +35,9 @@ namespace PirateGame {
         // Setters
         void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
     private:
+        GlobalContext& context;
+        GlobalQuadtreeHandler* GQH = nullptr;
+
         // Helper functions
         void addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses);
 

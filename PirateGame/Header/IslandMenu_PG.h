@@ -16,7 +16,7 @@ namespace PirateGame {
 
 	class IslandMenu : public Menu {
 	public:
-		IslandMenu(std::vector<ShopItem>& market) : market(market) {};
+		IslandMenu(GlobalContext& context, std::vector<ShopItem>& market) : Menu(context), market(market) {};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;

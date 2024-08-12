@@ -37,8 +37,8 @@ void ScrollBar::updateScrollBarPositions(sf::Vector2f menuPosition) {
 	}   
 
     // Get the mouse position in window coordinates
-    sf::Vector2f mousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*GlobalValues::getInstance().getWindow()));
-    sf::Vector2f worldPosition = GlobalValues::getInstance().getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*GlobalValues::getInstance().getWindow()));
+    sf::Vector2f mousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*context.GV->getWindow()));
+    sf::Vector2f worldPosition = context.GV->getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*context.GV->getWindow()));
 
     // Check if the scroll bar thumb is grabbed
     if (scrollBarThumb.getGlobalBounds().contains(worldPosition) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -68,12 +68,12 @@ void ScrollBar::update(sf::Vector2f menuPosition) {
     // Calculate the change in menu position
     menuDelta = menuPosition - previousMenuPosition;
 	updateScrollBarPositions(menuPosition);
-	GlobalValues::getInstance().getWindow()->setView(menuView);
+	context.GV->getWindow()->setView(menuView);
 	updateInteractablePositions(menuPosition);
 }
 
-void ScrollBar::draw() {
+void ScrollBar::draw() const {
 	// Draw the scroll bar and handle
-	GlobalValues::getInstance().getWindow()->draw(scrollBarTrack);
-	GlobalValues::getInstance().getWindow()->draw(scrollBarThumb);
+	context.GV->getWindow()->draw(scrollBarTrack);
+	context.GV->getWindow()->draw(scrollBarThumb);
 }

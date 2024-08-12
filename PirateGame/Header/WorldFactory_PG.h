@@ -18,12 +18,7 @@ namespace PirateGame {
 
 	class SelectionButton {
 	public:
-		SelectionButton(const WorldType WT, const std::string& text) : worldType(WT) {
-			buttonText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
-			buttonText.setString(text);
-			buttonText.setCharacterSize(24);
-			buttonText.setFillColor(sf::Color::White);
-		}
+		SelectionButton(const WorldType WT, const sf::Text text) : worldType(WT), buttonText(text) {};
 
 		void setPosition(float x, float y) {
 			buttonText.setPosition(x, y);
@@ -40,6 +35,7 @@ namespace PirateGame {
 		const std::string& getText() const { return buttonText.getString(); }
 		const WorldType getWorldType() const { return worldType; }
 	private:
+		sf::Font font;
 		sf::Text buttonText;
 		WorldType worldType;
 	};
@@ -47,11 +43,15 @@ namespace PirateGame {
 	class WorldFactory {
 	public:
 		WorldFactory() {
+			if (!font.loadFromFile("Fonts/times_new_roman.ttf")) {
+				std::cerr << "Could not load font" << std::endl;
+			}
+
 			// Add buttons for each world type
-			worldTypes.push_back(SelectionButton(WorldType::Default, worldTypeToString(WorldType::Default)));
-			worldTypes.push_back(SelectionButton(WorldType::DefaultDebug, worldTypeToString(WorldType::DefaultDebug)));
-			worldTypes.push_back(SelectionButton(WorldType::LandmassAvoidanceTest, worldTypeToString(WorldType::LandmassAvoidanceTest)));
-			worldTypes.push_back(SelectionButton(WorldType::EnemyShipAvoidanceTest, worldTypeToString(WorldType::EnemyShipAvoidanceTest)));
+			worldTypes.push_back(SelectionButton(WorldType::Default, sf::Text(worldTypeToStr(WorldType::Default), font, 24)));
+			worldTypes.push_back(SelectionButton(WorldType::DefaultDebug, sf::Text(worldTypeToStr(WorldType::DefaultDebug), font, 24)));
+			worldTypes.push_back(SelectionButton(WorldType::LandmassAvoidanceTest, sf::Text(worldTypeToStr(WorldType::LandmassAvoidanceTest), font, 24)));
+			worldTypes.push_back(SelectionButton(WorldType::EnemyShipAvoidanceTest, sf::Text(worldTypeToStr(WorldType::EnemyShipAvoidanceTest), font, 24)));
 
 			// Set the position of the buttons
 			for (auto& button : worldTypes) {
@@ -83,7 +83,7 @@ namespace PirateGame {
 			window->display();
 		}
 
-		static std::string worldTypeToString(WorldType worldType) {
+		static std::string worldTypeToStr(WorldType worldType) {
 			switch (worldType) {
 			case WorldType::Default:
 				return "Default";
@@ -122,6 +122,8 @@ namespace PirateGame {
 			world->setUpWorld();
 			return world;
 		}
+
+		sf::Font font;
 
 		std::vector<SelectionButton> worldTypes;
 

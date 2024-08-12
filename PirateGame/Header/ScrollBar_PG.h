@@ -5,23 +5,22 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalValues_PG.h"
-#include "GlobalTextureHandler_PG.h"
+#include "GlobalContext_PG.h"
 
 #include "Interactable_PG.h"
 
 namespace PirateGame {
 	class ScrollBar {
 	public:
-		ScrollBar(float spacingBetweenInteractables = 0.f) : spacing(spacingBetweenInteractables) {
-			scrollBarTrack.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getScrollBarTrack());
-			scrollBarThumb.setTexture(GlobalTextureHandler::getInstance().getInteractableTextures().getScrollBarThumb());
+		ScrollBar(GlobalContext& context, float spacingBetweenInteractables = 0.f) : context(context), spacing(spacingBetweenInteractables) {
+			scrollBarTrack.setTexture(context.GTH->getInteractableTextures().getScrollBarTrack());
+			scrollBarThumb.setTexture(context.GTH->getInteractableTextures().getScrollBarThumb());
 		}
 
 		void setUpScrollBar(sf::Vector2f scrollBarTrackOffset, float scrollBarTrackLength, sf::Vector2f interactablePositionOffset, sf::Vector2f size, sf::Vector2f scale);
 
 		void update(sf::Vector2f menuPosition);
-		void draw();
+		void draw() const;
 
 		// Setters
 		void setSpacing(float spacing) { this->spacing = spacing; }
@@ -37,6 +36,9 @@ namespace PirateGame {
 		sf::Sprite& getSprite() { return scrollBarTrack; }
 
 	private:
+		// Context
+		GlobalContext& context;
+
 		// Functions
 		void updateInteractablePositions(sf::Vector2f menuPosition);
 		void updateScrollBarPositions(sf::Vector2f mousePosition);

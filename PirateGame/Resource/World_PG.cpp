@@ -13,19 +13,22 @@ void World::setUpWorld() {
 }
 
 void World::setUpWorldElements() {
-	// Set up the window and map/view
-	GlobalValues::getInstance().setWindow(window);
-	GlobalChunkHandler::getInstance().initializeMap();
-	view.setUpView();
+	// Set up the window and map
+	context.GV->setWindow(window);
+	context.GCH->initializeMap();
+	view = View(window);
 
 	// Set up the background
 	waterTiler.initialize();
+
+	// Set up qth
+	GQH->setUpQuadtrees(context.GCH.get());
 }
 
 void World::setUpPlayerShip() {
-	playerShip = std::make_unique<PlayerShip>();
+	playerShip = std::make_unique<PlayerShip>(context);
 	playerShip->setUpShip(ShipClass::ManOWar);
-	playerShip->getCannonHandler()->setCannonballHashmap(GlobalQuadtreeHandler::getInstance().getCannonballQuadtree());
+	playerShip->getCannonHandler()->setCannonballQuadtree(GQH->getCannonballQuadtree());
 }
 
 void World::setUpLandMasses() {
@@ -60,12 +63,12 @@ void World::setUpMenus() {
 
 void World::setUpUI() {
 	// Set up the frame rate text
-	frameRateText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
+	frameRateText.setFont(*context.GFH->getGlobalFont());
 	frameRateText.setCharacterSize(24u);
 	frameRateText.setFillColor(sf::Color::White);
 
 	// Set up the experience text
-	experience.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
+	experience.setFont(*context.GFH->getGlobalFont());
 	experience.setCharacterSize(24u);
 	experience.setFillColor(sf::Color::White);
 }
@@ -77,16 +80,16 @@ void World::drawGameLoop() {
 	window->draw(experience);
 	playerShip->draw();
 	ESH.draw();
-	GlobalTextQueuePipeline::getInstance().drawTextQueue();
+	context.GTQP->drawTextQueue(context.GV->getWindow());
 }
 
 void World::updateCoreElements() {
-	GlobalValues::getInstance().getGlobalClock().restart();
-	GlobalChunkHandler::getInstance().updateChunks(playerShip->getSprite().getPosition());
-	GlobalWindController::getInstance().update();
-	GlobalQuadtreeHandler::getInstance().updateQuadtrees();
-	GlobalTextQueuePipeline::getInstance().updateTextQueue();
-	view.showCoordsOnCursor();
+	context.GV->getGlobalClock().restart();
+	context.GCH->updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
+	context.GWC->update();
+	GQH->updateQuadtrees();
+	context.GTQP->updateTextQueue(window);
+	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();
 }
 

@@ -10,11 +10,8 @@
 #include <sstream>
 #include <string>
 
-#include "GlobalValues_PG.h"
-#include "GlobalGameStateManager_PG.h"
-#include "GlobalFontHandler_PG.h"
+#include "GlobalContext_PG.h"
 
-#include "Interactable_PG.h"
 #include "Button_PG.h"
 #include "Slider_PG.h"
 #include "TextDisplayBox_PG.h"
@@ -24,21 +21,16 @@
 namespace PirateGame {
 	class Menu {
 	public:
-		Menu() {
-			if (GlobalValues::getInstance().getWindow() == nullptr) {
-				std::cerr << "Attempted to set a nullptr window in Menu\n";
-			}
-			this->window = GlobalValues::getInstance().getWindow();
-		}
+		Menu(GlobalContext& context) : context(context), font(*context.GFH->getGlobalFont()), window(context.GV->getWindow()), GSM(context.GGSM.get()) {};
 
 		~Menu() {};
 
-		virtual void setUpMenu() = 0;
+		virtual void setUpMenu() {};
 		virtual void draw();
-		virtual void update() = 0;
-		virtual void addInteractablesToMenu() = 0;
-		virtual void setInteractablePositions() = 0;
-		virtual void interactWithMenuItems() = 0;
+		virtual void update() {};
+		virtual void addInteractablesToMenu() {};
+		virtual void setInteractablePositions() {};
+		virtual void interactWithMenuItems() {};
 
 	private:
 		// Menu variables
@@ -48,8 +40,11 @@ namespace PirateGame {
 		sf::Time totalPauseDuration;
 
 	protected:
+		// Context
+		GlobalContext& context;
+
 		// SFML objects
-		sf::Font& font = *GlobalFontHandler::getInstance().getGlobalFont();
+		sf::Font& font;
 		sf::RenderWindow* window = nullptr;
 
 		// Menu items
@@ -96,7 +91,7 @@ namespace PirateGame {
 
 		// General function to add a slider to a vector of sliders
 		virtual void addSlider(sf::Text text, sf::Texture& texture, std::vector<Slider>& destination, std::function<void(float value)> function, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) {
-			Slider slider(function);
+			Slider slider(context.GTH->getInteractableTextures().getScrollBarTrack(), context.GTH->getInteractableTextures().getScrollBarThumb(), function);
 			slider.createInteractable(texture, text, scale);
 			destination.push_back(slider);
 		}
@@ -126,7 +121,7 @@ namespace PirateGame {
 
 		// General function to add a slider to a vector of interactables
 		virtual void addSlider(sf::Text text, sf::Texture& texture, std::vector<std::unique_ptr<Interactable>>& destination, std::function<void(float value)> function, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) {
-			std::unique_ptr<Slider> slider = std::make_unique<Slider>(function);
+			std::unique_ptr<Slider> slider = std::make_unique<Slider>(context.GTH->getInteractableTextures().getScrollBarTrack(), context.GTH->getInteractableTextures().getScrollBarThumb(), function);
 			slider->createInteractable(texture, text, scale);
 			destination.push_back(std::move(slider));
 		}

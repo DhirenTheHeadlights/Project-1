@@ -2,27 +2,22 @@
 
 using namespace PirateGame;
 
-void EnemyShipInputHandler::handleCannonFire() {
+void EnemyShipInputHandler::handleCannonFire(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) {
 	// Only fire if the player is within firingRange
-	float distance = static_cast<float>(sqrt(pow(targetPos.x - sprite.getPosition().x, 2) + pow(targetPos.y - sprite.getPosition().y, 2)));
+	float distance = vm::distance(sprite.getPosition(), targetPos);
 	if (distance > firingDistance) {
 		return;
 	}
 
-    float maxAngle = SCH->getMaxFiringAngle();
-
     // Check if the angle is within the allowed firing arc
-    if (std::abs(SCH->getFiringDirectionAngle()) <= maxAngle) {
-        // Player is within the firing arc, so determine the number of cannons to fire
-        numCannons = baseNumCannons;
+    if (std::abs(SCH->getFiringDirectionAngle()) <= SCH->getMaxFiringAngle() // Check if the player is within the firing arc
+        && targetPos != sf::Vector2f(0, 0)                                       // Check if the target position is valid
+        && cannonCooldownClock.getElapsedTime() > cooldown) {                    // Check if the cooldown has expired
+
+        SCH->shootCannonballs(cannonballTexture, GIDM);
+        cannonCooldownClock.restart();
+        if (inAudioRange) GSM->playSound(SoundId::CannonShot);
     }
-    else {
-        // Player is outside the firing arc, so prevent firing
-        numCannons = 0;
-    }
-    
-	// Fire the cannons
-	if (targetPos != sf::Vector2f(0,0)) SCH->shootCannonballs();
 }
 
 void EnemyShipInputHandler::handleCannonAim() {
@@ -62,7 +57,7 @@ void EnemyShipInputHandler::handleAnchorDrop() {
 }
 
 void EnemyShipInputHandler::handleSailChange() {
-    sf::Vector2f windDireciton = GlobalWindController::getInstance().getWindDirection();
-    float windSpeed = GlobalWindController::getInstance().getWindSpeed();
+    sf::Vector2f windDireciton = GWC->getWindDirection();
+    float windSpeed = GWC->getWindSpeed();
     SSH->moveSailLeftRightAutomatically(windDireciton, SMH->getVelocity());
 }

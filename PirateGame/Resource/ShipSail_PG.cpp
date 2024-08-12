@@ -28,16 +28,6 @@ void Sail::updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirec
 	sailSprite.setRotation(rotation + rotationOffset);
 }
 
-void Sail::updateSailLeftRight(const sf::Keyboard::Key leftKey, const sf::Keyboard::Key rightKey) {
-	// If the key is pressed, update the sail rotation offset
-	if (GlobalInputHandler::getInstance().isKeyHeld(leftKey)) {
-		rotationOffset -= rotationSpeed;
-	}
-	else if (GlobalInputHandler::getInstance().isKeyHeld(rightKey)) {
-		rotationOffset += rotationSpeed;
-	}
-}
-
 float Sail::calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) const {
 	// Normalize the ship direction
 	sf::Vector2f normShipDirection = vm::normalize(shipDirection);
@@ -77,9 +67,4 @@ void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, c
 	else if (angleDiff < 0) {
 		rotationOffset -= rotationSpeed;
 	}
-}
-
-
-void Sail::updateSailUpDown(const sf::Keyboard::Key upKey, const sf::Keyboard::Key downKey) {
-	// TO DO: Implement the up and down movement of the sails
 }

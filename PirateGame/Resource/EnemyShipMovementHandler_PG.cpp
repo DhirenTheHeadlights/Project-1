@@ -3,20 +3,20 @@
 
 using namespace PirateGame;
 
-void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirection) {
-	setBaseSpeed(baseSpeed * enemySpeedMultiplier);
+void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirection, float dt, sf::Vector2f windDirection, float windSpeed) {
+    setBaseSpeed(baseSpeed * enemySpeedMultiplier);
 
     getAStar().update(getSprite().getPosition());
-    //getAStar().drawDebug(GlobalValues::getInstance().getWindow());
+    //getAStar().drawDebug(context.GV->getWindow());
 
-	move(baseSpeed, sailDirection);
+	move(baseSpeed, sailDirection, dt, windDirection, windSpeed);
 }
 
 void EnemyShipMovementHandler::setSpriteRotation() {
     if (getStopShipRotationFlag()) return;
 
-    //GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 200.f, sf::Color::Green));
-    //GlobalValues::getInstance().getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 200.f, sf::Color::Red));
+    //context.GV->getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 200.f, sf::Color::Green));
+    //context.GV->getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 200.f, sf::Color::Red));
 
     // Check if the ship is active towards the target
     if (activeTowardsTarget) {

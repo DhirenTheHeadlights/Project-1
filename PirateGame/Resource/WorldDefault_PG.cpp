@@ -5,10 +5,10 @@ using namespace PirateGame;
 void DefaultWorld::createWorld(sf::Event event) {
 	window->clear();
 
-	GlobalInputHandler::getInstance().update();
+	context.GIH->update();
 
 	// Handle the different game states
-	switch (GlobalGameStateManager::getInstance().getCurrentGameState()) {
+	switch (context.GGSM->getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
 		MH.openMenu(MenuType::StartMenu);
@@ -56,8 +56,8 @@ void DefaultWorld::createWorld(sf::Event event) {
 }
 
 void DefaultWorld::updateGameLoop(sf::Event event) {
-	if (GlobalValues::getInstance().getShowHUD()) MH.openMenu(MenuType::HUD);
-	if (GlobalValues::getInstance().getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
+	if (context.GV->getShowHUD()) MH.openMenu(MenuType::HUD);
+	if (context.GV->getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
 
 	view.setCenter(playerShip->getSprite().getPosition());
 
@@ -70,9 +70,9 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 		gameLoopClock.restart();
 	}
 
-	CM.handleCollisions();
+	CM.handleCollisions(GQH.get());
 
 	playerShip->update();
 
-	GlobalValues::getInstance().setShowInventory(GlobalInputHandler::getInstance().isKeyToggled(sf::Keyboard::I));
+	context.GV->setShowInventory(context.GIH->isKeyToggled(sf::Keyboard::I));
 }

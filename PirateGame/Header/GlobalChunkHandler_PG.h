@@ -4,18 +4,13 @@
 
 #include <unordered_map>
 
-#include "GlobalValues_PG.h"
 #include "Chunk_PG.h"
 #include "RegionHandler_PG.h"
 
 namespace PirateGame {
 	class GlobalChunkHandler {
 	public:
-		// Public method to access the instance
-		static GlobalChunkHandler& getInstance() {
-			static GlobalChunkHandler instance;
-			return instance;
-		}
+		GlobalChunkHandler() {};
 
 		void initializeMap() {
 			// Generate the initial chunks
@@ -27,7 +22,7 @@ namespace PirateGame {
 
 		}
 
-		void updateChunks(const sf::Vector2f position, bool debug = false) {
+		void updateChunks(sf::RenderWindow* window, const sf::Vector2f position, bool debug = false) {
 			std::shared_ptr<Chunk> currentChunk = getChunkAtPosition(position);
 			// Check if the player has moved to a new chunk
 			if (currentChunk->getChunkCoord() != lastChunk->getChunkCoord()) {
@@ -39,10 +34,9 @@ namespace PirateGame {
 			// Draw the grid for all chunks
 			if (debug) {
 				for (auto& chunk : chunks) {
-					chunk->getMap()->drawGrid(*GlobalValues::getInstance().getWindow());
+					chunk->getMap()->drawGrid(*window);
 				}
 			}
-
 		}
 
 
@@ -62,16 +56,10 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<Chunk>> getAllChunks() {
 			return chunks;
 		}
-		RegionHandler getRegionHandler() { return regionHandler; }
+		RegionHandler getRegionHandler() const { return regionHandler; }
 
 	private:
-		// Private Constructor
-		GlobalChunkHandler() {};
-
-		// Delete the copy constructor and assignment operator
-		GlobalChunkHandler(GlobalChunkHandler const&) = delete;
-		GlobalChunkHandler& operator=(GlobalChunkHandler const&) = delete;
-
+		GlobalValues* GV = nullptr;
 
 		// Vector to store 'chunks'
 		std::vector<std::shared_ptr<Chunk>> chunks;

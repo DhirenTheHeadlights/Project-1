@@ -225,24 +225,24 @@ namespace PirateGame {
         }
 
         // Method to draw the node boundaries for debugging
-        void draw(sf::RenderWindow* window) {
+        void draw(GlobalValues* gv) {
             if (!divided) {
-                GlobalValues::getInstance().displayText("Num obj: " + std::to_string(objects.size()), sf::Vector2f(boundary.left + boundary.width / 2 - 10.f, boundary.top + boundary.height / 2 - 5.f), sf::Color::White);
+                gv->displayText("Num obj: " + std::to_string(objects.size()), sf::Vector2f(boundary.left + boundary.width / 2 - 10.f, boundary.top + boundary.height / 2 - 5.f), sf::Color::White);
             }
 
             if (divided) {
                 for (auto& child : children) {
-                    child->draw(window);
+                    child->draw(gv);
                 }
             }
-
+                
             sf::RectangleShape rectangle(sf::Vector2f(boundary.width, boundary.height));
             rectangle.setPosition(boundary.left, boundary.top);
             rectangle.setFillColor(sf::Color::Transparent);
             rectangle.setOutlineThickness(5.f);
             rectangle.setOutlineColor(sf::Color::Blue); // Node boundary
 
-            window->draw(rectangle);
+            gv->getWindow()->draw(rectangle);
 
             // Draw the objects' positions
             for (auto object : objects) {
@@ -250,7 +250,7 @@ namespace PirateGame {
                 sf::Vector2f pos = object->getSprite().getPosition();
                 marker.setPosition(pos.x, pos.y);
                 marker.setFillColor(sf::Color::Magenta); // Object position
-                window->draw(marker);
+                gv->getWindow()->draw(marker);
             }
         }
     };
@@ -263,8 +263,8 @@ namespace PirateGame {
         std::unique_ptr<Node<T>> root;
         std::unordered_map<T*, QuadtreeObject<T>*> objectMap;
 
-        Quadtree() {
-            auto chunks = GlobalChunkHandler::getInstance().getAllChunks();
+        Quadtree(GlobalChunkHandler* GCH) {
+            auto chunks = GCH->getAllChunks();
 
             // Find the boundaries as the minimum and maximum x and y values
             sf::FloatRect initialBoundary = chunks.front()->getMap()->getBounds();
@@ -316,8 +316,8 @@ namespace PirateGame {
             return root->addObject(objectMap[object]);
         }
 
-        void draw(sf::RenderWindow* window) {
-            root->draw(window);
+        void draw(GlobalValues* gv) {
+            root->draw(gv);
         }
 
         std::vector<T*> getObjects() {

@@ -15,30 +15,27 @@ void InGameHUD::setUpMenu() {
 }
 
 void InGameHUD::addInteractablesToMenu() {
-	// Grab the global game state manager
-	GSM = &GlobalGameStateManager::getInstance();
-
 	// Add a settings button
 	std::function<void()> settingsFunc = [this]() { GSM->changeGameState(GameState::OptionsMenu); };
-	settingsButton = Button(settingsFunc);
+	Button settingsButton(settingsFunc);
 	sf::Text settingsText = sf::Text();
-	settingsButton.createInteractable(GlobalTextureHandler::getInstance().getHUDTextures().getSettingsButton(), settingsText);
+	settingsButton.createInteractable(context.GTH->getHUDTextures().getSettingsButton(), settingsText);
 
 
 	/// Left side of the HUD
 
-	addTextDisplayBox(sf::Text("Firing Side: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Manual Aim: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Ship Type: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Anchor: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Firing Side: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Manual Aim: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Ship Type: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Anchor: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
 
 	/// Right side of the HUD
 
-	addTextDisplayBox(sf::Text("Gold: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Coords: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Velocity: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Speed: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Wind Direction: ", font, interactableTextSize), GlobalTextureHandler::getInstance().getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Gold: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Coords: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Velocity: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Speed: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Wind Direction: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
 }
 
 // This function will update the strings of the ship properties
@@ -51,7 +48,7 @@ void InGameHUD::updateShipPropertiesStrings() {
 
 	// Update the manual aim indicator
 	std::string manualAim = "Manual Aim: " + std::string(ship->getCannonHandler()->getAimTowardsMouse() ? "On" : "Off");
-	shipPropertiesLeftSide[1].getText().setString(manualAim + " [" + ship->getInputHandler()->getManualAimKeyString() + "]");
+	shipPropertiesLeftSide[1].getText().setString(manualAim + " [" + context.GV->keyToString(ship->getInputHandler()->getManualAimKey()) + "]");
 	 
 	// Update the ship type indicator
 	std::string shipClass = "Ship Class: ";
@@ -59,7 +56,7 @@ void InGameHUD::updateShipPropertiesStrings() {
 
 	// Update the anchor drop indicator
 	std::string anchorDrop = "Anchor: " + std::string(ship->getMovementHandler()->getDroppedAnchor() ? "Down" : "Up");
-	shipPropertiesLeftSide[3].getText().setString(anchorDrop + " [" + ship->getInputHandler()->getAnchorDropKeyString() + "]");
+	shipPropertiesLeftSide[3].getText().setString(anchorDrop + " [" + context.GV->keyToString(ship->getInputHandler()->getAnchorDropKey()) + "]");
 
 	/// Right side of the HUD
 
@@ -80,7 +77,7 @@ void InGameHUD::updateShipPropertiesStrings() {
 	shipPropertiesRightSide[3].getText().setString(speed);
 
 	// Update the wind direction display
-	std::string windDirection = "Wind Direction: " + GlobalWindController::getInstance().getWindDirectionString();
+	std::string windDirection = "Wind Direction: " + context.GWC->getWindDirectionString();
 	shipPropertiesRightSide[4].getText().setString(windDirection);
 }
  
@@ -107,7 +104,7 @@ void InGameHUD::setInteractablePositions() {
 	settingsButton.setPosition(sf::Vector2f(HUDView.getCenter().x - window->getSize().x / 2u + padding, healthBarGreenSprite.getPosition().y));
 
 	// Set the mini map to be in the top right corner
-	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - minimap.getMinimapRadius() * 2 - padding, healthBarGreenSprite.getPosition().y));
+	minimap.setMinimapPosition(sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - minimap.getMinimapSprite().getGlobalBounds().height - padding, healthBarGreenSprite.getPosition().y));
 
 	// Set the position of the info boxes to be below the settings button on the left side
 	for (int i = 0; i < shipPropertiesLeftSide.size(); i++) {
@@ -119,23 +116,23 @@ void InGameHUD::setInteractablePositions() {
 	// Set the position of the info boxes to be below the mini map on the right side
 	for (int i = 0; i < shipPropertiesRightSide.size(); i++) {
 		float x = HUDView.getCenter().x + window->getSize().x / 2u - shipPropertiesRightSide[i].getSprite().getGlobalBounds().getSize().x - padding;
-		float y = minimap.getMinimapPosition().y + 2 * minimap.getMinimapRadius() + padding + shipPropertiesRightSide[i].getSprite().getGlobalBounds().getSize().y / 2 + i * (shipPropertiesRightSide[i].getSprite().getGlobalBounds().getSize().y + padding);
+		float y = minimap.getMinimapSprite().getPosition().y + 2 * minimap.getMinimapSprite().getGlobalBounds().height / 2.f + padding + shipPropertiesRightSide[i].getSprite().getGlobalBounds().getSize().y / 2 + i * (shipPropertiesRightSide[i].getSprite().getGlobalBounds().getSize().y + padding);
 		shipPropertiesRightSide[i].setPosition(sf::Vector2f(x, y));
 	}
 
 	// Set the position of the wind vector to be in the bottom right corner of the screen
 	sf::Vector2f windVectorPosition = sf::Vector2f(HUDView.getCenter().x + window->getSize().x / 2u - padding - 200.f, HUDView.getCenter().y + window->getSize().y / 2u - padding - 200.f);
-	windVector = GlobalWindController::getInstance().getWindDirectionIndicator(windVectorPosition, 5.f);
+	windVector = context.GWC->getWindDirectionIndicator(windVectorPosition, 5.f);
 	windCircle.setPosition(windVectorPosition - sf::Vector2f(windCircle.getRadius(), windCircle.getRadius()));
 	windCircle.setRadius(5.f);
-	windText = sf::Text("Wind Speed: " + std::to_string(static_cast<int>(GlobalWindController::getInstance().getWindSpeed())), font, 20);
+	windText = sf::Text("Wind Speed: " + std::to_string(static_cast<int>(context.GWC->getWindSpeed())), font, 20);
 	windText.setPosition(windVectorPosition.x - windText.getGlobalBounds().getSize().x / 2, windVectorPosition.y - windText.getGlobalBounds().getSize().y - padding);
 	windText.setFillColor(sf::Color::Black);
 }
 
 void InGameHUD::interactWithMenuItems() {
 	// Interact with the settings button
-	settingsButton.interact();
+	settingsButton.interact(window, context.GIH.get(), context.GSM.get());
 }
 
 void InGameHUD::update() {
@@ -151,18 +148,18 @@ void InGameHUD::draw() {
 	window->draw(healthBarGreenSprite);
 	window->draw(healthText);
 
-	minimap.draw();
+	minimap.draw(window);
 
 	for (auto& property : shipPropertiesLeftSide) {
-		property.draw();
+		property.draw(window);
 	}
 
 	for (auto& property : shipPropertiesRightSide) {
-		property.draw();
+		property.draw(window);
 	}
 
 	// Draw the interactables
-	settingsButton.draw();
+	settingsButton.draw(window);
 
 	// Draw a vector for the wind speed and direction in the bottom right corner of the screen
 	window->draw(windVector);

@@ -5,7 +5,7 @@ using namespace PirateGame;
 // Create the ship
 void Ship::setUpShip(ShipClass level) {
 	// Set the unique ID of the ship
-	ID = GlobalIDManager::getInstance().getUniqueID();
+	ID = context.GIDM->getUniqueID();
 
 	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
@@ -23,12 +23,15 @@ void Ship::setUpShip(ShipClass level) {
 		shipProperties = getShipProperties(level);
 	}
 
+	// Set class
+	shipClass = level;
+
 	health = shipProperties.maxHealth;
 
 	// Load the texture
 	sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
 
-	sprite.setTexture(GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(level));
+	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManager().getTexture(level));
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	sprite.setScale(scaling);
 
@@ -37,14 +40,13 @@ void Ship::setUpShip(ShipClass level) {
 
 	// Load the cannon handler
 	SCH = std::make_unique<ShipCannonHandler>(sprite);
-	SCH->initializeCannons(level, shipProperties.numCannons, ID, scaling);
+	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManager().getTexture(shipClass), 
+						context.GTH->getShipTextures().getShipTextureManager().getImage(shipClass), 
+						shipProperties.numCannons, ID, scaling);
 
 	// Load the sail handler
-	SSH = std::make_unique<ShipSailHandler>(sprite);
-	SSH->loadSailPositions(level, scaling);
-
-	// Set type and class
-	shipClass = level;
+	SSH = std::make_unique<ShipSailHandler>();
+	SSH->loadSailPositions(context.GTH->getShipTextures().getSailTextureManager().getTextureGroup(shipClass), context.GTH->getShipTextures().getShipTextureManager().getImage(shipClass), scaling);
 
 	// Execute custom ship setup
 	customShipSetUp();
@@ -56,7 +58,7 @@ void Ship::update() {
 	regenerateHealth();
 
 	// Update handlers
-	SCH->updateCannons();
+	SCH->updateCannons(context.GV->getWindow(), context.GV->getGlobalClock().getElapsedTime().asSeconds());
 	sf::Vector2f shipDirection = SMH->getVelocity();
 	SSH->update(sprite, shipDirection);
 
@@ -65,12 +67,12 @@ void Ship::update() {
 }
 
 void Ship::draw() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	sf::RenderWindow* window = context.GV->getWindow();
 
 	window->draw(sprite);
 
 	// Draw sails
-	SSH->draw();
+	SSH->draw(window);
 
 	// Custom ship draw
 	customShipDraw();

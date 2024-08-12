@@ -13,12 +13,11 @@
 #include "GlobalClock_PG.h"
 #include "GlobalIDManager_PG.h"
 #include "GlobalTextureHandler_PG.h"
-#include "GlobalQuadtreeHandler_PG.h"
 
 namespace PirateGame {
 	struct GlobalContext {
-		std::unique_ptr<GlobalValues> GV = std::make_unique<GlobalValues>();
 		std::unique_ptr<GlobalFontHandler> GFH = std::make_unique<GlobalFontHandler>();
+		std::unique_ptr<GlobalValues> GV = std::make_unique<GlobalValues>(GFH.get());
 		std::unique_ptr<GlobalChunkHandler> GCH = std::make_unique<GlobalChunkHandler>();
 		std::unique_ptr<GlobalGameStateManager> GGSM = std::make_unique<GlobalGameStateManager>();
 		std::unique_ptr<GlobalInputHandler> GIH = std::make_unique<GlobalInputHandler>();
@@ -28,6 +27,5 @@ namespace PirateGame {
 		std::unique_ptr<GlobalClock> GC = std::make_unique<GlobalClock>();
 		std::unique_ptr<GlobalIDManager> GIDM = std::make_unique<GlobalIDManager>();
 		std::unique_ptr<GlobalTextureHandler> GTH = std::make_unique<GlobalTextureHandler>();
-		std::unique_ptr<GlobalQuadtreeHandler> GQH = std::make_unique<GlobalQuadtreeHandler>();
 	};
 }

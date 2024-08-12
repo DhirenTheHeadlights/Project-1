@@ -1,7 +1,6 @@
 #pragma once
 
 /// This class contains all the global values used throughout the game.
-/// It is intended to be included in every file that needs access to these values.
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -14,11 +13,7 @@
 namespace PirateGame {
 	class GlobalValues {
 	public:
-		// Public method to access the instance
-		static GlobalValues& getInstance() {
-			static GlobalValues instance;
-			return instance;
-		}
+        GlobalValues(GlobalFontHandler* GFV) : GFV(GFV) {};
 
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);
@@ -30,7 +25,7 @@ namespace PirateGame {
             // Find or create the text object
             sf::Text& displayText = textCache[key];
             if (displayText.getString().isEmpty()) {
-                displayText.setFont(*GlobalFontHandler::getInstance().getGlobalFont());
+                displayText.setFont(*GFV->getGlobalFont());
                 displayText.setString(text);
                 displayText.setCharacterSize(size);
                 displayText.setFillColor(color);
@@ -47,11 +42,6 @@ namespace PirateGame {
                 globalWindow->draw(displayText);
             }
         }
-
-        void printTimeSinceLastCall() {
-			std::cout << "Time since last call: " << timeSinceLastCall.getElapsedTime().asSeconds() << " seconds\n";  
-			timeSinceLastCall.restart();
-		}
 
         void setWindow(sf::RenderWindow* window) {
             if (window == nullptr) {
@@ -71,22 +61,17 @@ namespace PirateGame {
         int getTextSize() const { return textSize; }
 
     private:
-        GlobalValues() {};
-        GlobalValues(GlobalValues const&) = delete;
-        GlobalValues& operator=(GlobalValues const&) = delete;
-
         bool showHUD = true;
         bool showInventory = false;
-        int textSize = 30;
+        int textSize = 30; 
         const int textScalingFactor = 750;
         std::default_random_engine randomEngine;
         sf::RenderWindow* globalWindow = nullptr;
         sf::Clock globalClock;
 
+        GlobalFontHandler* GFV = nullptr;
+
         // Cache for storing text objects
         std::unordered_map<std::string, sf::Text> textCache;
-
-        // Time since last call
-        sf::Clock timeSinceLastCall;
     };
 }

@@ -15,12 +15,6 @@ namespace PirateGame {
 
 	class GlobalGameStateManager {
 	public:
-		// Public method to access the instance
-		static GlobalGameStateManager& getInstance() {
-			static GlobalGameStateManager instance;
-			return instance;
-		}
-
 		// Change the GameState
 		void changeGameState(GameState gameState) { 
 			this->currGameState = gameState;
@@ -35,13 +29,6 @@ namespace PirateGame {
 		// Check if the game has started
 		bool hasGameStarted() const { return gameStarted; }
 	private:
-		// Private Constructor
-		GlobalGameStateManager() {};
-
-		// Delete the copy constructor and assignment operator
-		GlobalGameStateManager(GlobalGameStateManager const&) = delete;
-		GlobalGameStateManager& operator=(GlobalGameStateManager const&) = delete;
-
 		// Variable that stores the GameState
 		GameState currGameState = GameState::Start;
 

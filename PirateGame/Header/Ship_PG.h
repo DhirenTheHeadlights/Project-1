@@ -7,10 +7,7 @@
 #include <cmath>
 #include <unordered_map>
 
-#include "GlobalValues_PG.h"
-#include "GlobalTextureHandler_PG.h"
-#include "GlobalChunkHandler_PG.h"
-#include "GlobalIDManager_PG.h"
+#include "GlobalContext_PG.h"
 
 #include "ShipCannonHandler_PG.h"
 #include "ShipMovementHandler_PG.h"
@@ -22,9 +19,7 @@
 namespace PirateGame {
 	class Ship {
 	public:
-		Ship() {};
-
-		~Ship() {};
+		Ship(GlobalContext& context) : context(context) {};
 
 		// Create the ship and set its values. Random ship class if not specified.
 		void setUpShip(ShipClass shipClass = ShipClass::Random);
@@ -111,7 +106,11 @@ namespace PirateGame {
 		// Unique ID and group ID
 		int ID = -1;
 		int groupID = -1;
+
 	protected:
+		// Context
+		GlobalContext& context;
+
 		// Rectangle shape for the health bar
 		sf::RectangleShape healthBarGreen;
 		sf::RectangleShape healthBarRed;

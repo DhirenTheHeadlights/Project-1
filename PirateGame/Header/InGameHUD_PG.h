@@ -1,24 +1,19 @@
 #pragma once
 
-/// <summary>
 /// This class is used to represent the in-game HUD.
-/// </summary>
 
 #include "Menu_PG.h"
 #include "PlayerShip_PG.h"
 #include "Minimap_PG.h"
 
-#include "GlobalTextureHandler_PG.h"
-#include "GlobalWindController_PG.h"
-
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
-		InGameHUD() {
-			healthBarGreenSprite.setTexture(GlobalTextureHandler::getInstance().getHUDTextures().getHealthBarGreen());
+		InGameHUD(GlobalContext& context) : Menu(context), minimap(context.GTH->getHUDTextures().getMiniMap(), context.GTH->getHUDTextures().getMiniMapShipIcon()) {
+			healthBarGreenSprite.setTexture(context.GTH->getHUDTextures().getHealthBarGreen());
 			healthBarGreenSprite.setScale(healthBarScale);
 
-			healthBarRedSprite.setTexture(GlobalTextureHandler::getInstance().getHUDTextures().getHealthBarRed());
+			healthBarRedSprite.setTexture(context.GTH->getHUDTextures().getHealthBarRed());
 			healthBarRedSprite.setScale(healthBarScale);
 		};
 

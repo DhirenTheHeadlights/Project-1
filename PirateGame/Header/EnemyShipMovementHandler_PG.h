@@ -12,7 +12,7 @@ namespace PirateGame {
 		~EnemyShipMovementHandler() {};
 
 		// Movement function
-		void update(float baseSpeed, sf::Vector2f sailRotation) override;
+		void update(float baseSpeed, sf::Vector2f sailRotation, float dt, sf::Vector2f windDirection, float windSpeed) override;
 
 		// Setters
 		void setTargetPosition(sf::Vector2f targetPos) { this->targetPos = targetPos; }

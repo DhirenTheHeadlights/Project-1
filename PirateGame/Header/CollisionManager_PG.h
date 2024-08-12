@@ -5,8 +5,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "GlobalValues_PG.h"
+#include "GlobalContext_PG.h"
 #include "GlobalQuadtreeHandler_PG.h"
+
 #include "LandMass_PG.h"
 #include "PlayerShip_PG.h"
 #include "EnemyShip_PG.h"
@@ -15,10 +16,9 @@
 namespace PirateGame {
 	class CollisionManager {
 	public:
-		CollisionManager() {};
-		~CollisionManager() {};
+		CollisionManager(GlobalContext& context) : context(context) {}
 
-		void handleCollisions();
+		void handleCollisions(GlobalQuadtreeHandler* GQH);
 
 		// Setters
 		void setLandMasses(std::vector<std::shared_ptr<LandMass>>& landMasses) { this->landMasses = landMasses; }
@@ -30,6 +30,9 @@ namespace PirateGame {
 		void setPlayerShip(PlayerShip* playerShip) { ships.push_back(playerShip); this->playerShip = playerShip; }
 	
 	private:
+		// Context
+		GlobalContext& context;
+
 		std::vector<std::shared_ptr<LandMass>> landMasses;
 		std::vector<Ship*> ships;
 		PlayerShip* playerShip = nullptr;

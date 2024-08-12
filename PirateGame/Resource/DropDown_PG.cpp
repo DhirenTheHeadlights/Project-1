@@ -5,12 +5,12 @@ using namespace PirateGame;
 // Set up the drop down menu
 void DropDown::customInteractableSetUp() {
 	// Set the selected text
-	selectedText = sf::Text(options[0].second, font, static_cast<unsigned int>(defaultTextSize));
+	selectedText = sf::Text(options[0].second, *text.getFont(), static_cast<unsigned int>(text.getCharacterSize()));
 
 	// Set up the drop down menu
 	for (int i = 0; i < options.size(); i++) {
 		// Set up the option text
-		sf::Text optionText(options[i].second, font, static_cast<unsigned int>(defaultTextSize));
+		sf::Text optionText(options[i].second, *text.getFont(), static_cast<unsigned int>(text.getCharacterSize()));
 		optionText.setFillColor(optionTextColor);
 		optionTexts.push_back(optionText);
 
@@ -45,13 +45,14 @@ void DropDown::setPosition(sf::Vector2f pos) {
 }
 
 // Interact with the drop down menu
-void DropDown::interact() {
+void DropDown::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
 	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(*window));
 
 	// Check if the mouse is clicked.
-	if (GlobalInputHandler::getInstance().isMouseButtonPressedOnce(sf::Mouse::Left)) {
+	if (GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		// Toggle the open state if the mouse is over the sprite.
 		if (sprite.getGlobalBounds().contains(mousePos)) {
+			GSM->playSound(SoundId::Select);
 			isOpen = !isOpen;
 		}
 		else {
@@ -59,34 +60,11 @@ void DropDown::interact() {
 			isOpen = false;
 		}
 	}
-}
 
-
-// Draw the drop down menu
-void DropDown::draw() {
-	// Draw the background
-	window->draw(sprite);
-	window->draw(text);
-	window->draw(selectedText);
-
-	// If the drop down menu is open, open the drop down menu
+	// If the drop down menu is open, check if an option is clicked.
 	if (isOpen) {
-		openDropDown();
-	}
-}
-
-// Open the drop down menu if needed
-void DropDown::openDropDown() {
-	// Draw the options
-	for (int i = 0; i < options.size(); i++) {
-		window->draw(optionSprites[i]);
-		window->draw(optionTexts[i]);
-	}
-
-	// If the mouse is over an option
-	for (int i = 0; i < options.size(); i++) {
-		if (optionSprites[i].getGlobalBounds().contains(window->mapPixelToCoords(sf::Mouse::getPosition(*window)))) {
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		for (int i = 0; i < options.size(); i++) {
+			if (optionSprites[i].getGlobalBounds().contains(window->mapPixelToCoords(sf::Mouse::getPosition(*window))) && GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
 				// Set the selected option
 				selectedText.setString(options[i].second);
 
@@ -97,5 +75,28 @@ void DropDown::openDropDown() {
 				isOpen = false;
 			}
 		}
+	}
+}
+
+
+// Draw the drop down menu
+void DropDown::draw(sf::RenderWindow* window) {
+	// Draw the background
+	window->draw(sprite);
+	window->draw(text);
+	window->draw(selectedText);
+
+	// If the drop down menu is open, open the drop down menu
+	if (isOpen) {
+		openDropDown(window);
+	}
+}
+
+// Open the drop down menu if needed
+void DropDown::openDropDown(sf::RenderWindow* window) {
+	// Draw the options
+	for (int i = 0; i < options.size(); i++) {
+		window->draw(optionSprites[i]);
+		window->draw(optionTexts[i]);
 	}
 }

@@ -5,11 +5,6 @@
 #include <algorithm>
 #include <string>
 
-#include "GlobalValues_PG.h"
-#include "GlobalSoundManager_PG.h"
-#include "GlobalTextureHandler_PG.h"
-#include "QuadtreeTemplate_PG.h"
-
 #include "ShipCannon_PG.h"
 #include "Cannonball_PG.h"
 
@@ -19,25 +14,23 @@ namespace PirateGame {
 		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
 		~ShipCannonHandler() {};
 
-		void initializeCannons(ShipClass type, int numCannons, int ID, sf::Vector2f scale);
-		void shootCannonballs();
-		void updateCannons();
-		void drawCannons();
+		void initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, int ID, sf::Vector2f scale);
+		void shootCannonballs(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
+		void updateCannons(sf::RenderWindow* window, float elapsed);
+		void drawCannons(sf::RenderWindow* window);
 
 		// Setters
 		void setFiringSide(FiringSide side) { this->side = side; };
-		void setCooldown(float cooldown) { this->cooldown = sf::seconds(cooldown); };
 		void setFiringState(FiringState FS) {
 			for (auto& cannon : cannons) {
 				cannon.setFiringState(FS);
 			}
 		};
-		void setCannonballHashmap(Quadtree<Cannonball>* cannonballHashmap) {
+		void setCannonballQuadtree(Quadtree<Cannonball>* cannonballHashmap) {
 			for (auto& cannon : cannons) {
 				cannon.setCannonballHashmap(cannonballHashmap);
 			}
 		};
-		void setInAudioRange(bool inAudioRange) { this->inAudioRange = inAudioRange; };
 		void setTargetPos(sf::Vector2f targetPos) {
 			for (auto& cannon : cannons) {
 				cannon.setTargetPos(targetPos);
@@ -59,15 +52,11 @@ namespace PirateGame {
 		}
 		float getMaxFiringAngle() const { return maxFiringAngle; };
 	private:
-		sf::Clock cannonCooldownClock;
-		sf::Time cooldown = sf::seconds(0.5f);
-
 		sf::Vector2f cannonballDirection;
 		std::vector<ShipCannon> cannons;
 		
 		const float maxFiringAngle = 45.f;
 
-		bool inAudioRange = false;
 		bool aimTowardsTarget = false;
 
 		sf::Sprite& shipSprite;

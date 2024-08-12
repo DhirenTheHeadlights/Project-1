@@ -5,21 +5,21 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "QuadtreeTemplate_PG.h"
+
 #include "Ship_PG.h"
 #include "EnemyShip_PG.h"
-#include "GlobalIDManager_PG.h"
-#include "GlobalQuadtreeHandler_PG.h"
 
 namespace PirateGame {
 	class ShipGroup {
 	public:
-		ShipGroup() { ID = GlobalIDManager::getInstance().getUniqueID(); }
+		ShipGroup(GlobalContext& context) : context(context) { ID = context.GIDM->getUniqueID(); }
 		~ShipGroup() {};
 
-		void updateGroup();
+		void updateGroup(Quadtree<EnemyShip>* shipQuadtree);
 		void drawGroup(bool debug = false);
 
-		void addShip(std::shared_ptr<EnemyShip> ship) {
+		void addShip(std::shared_ptr<EnemyShip> ship, Quadtree<EnemyShip>* shipQuadtree) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
 			if (ships.size() == 0 || ship->getMovementHandler()->getBaseSpeed() < groupSpeed) {
 				groupSpeed = ship->getSpecificShipProperties().baseSpeed * ship->getMovementHandler()->getEnemySpeedMultiplier();
@@ -30,15 +30,15 @@ namespace PirateGame {
 			ship->getMovementHandler()->setDestination(destination);
 
 			// Add the ship to the hashmap
-			GlobalQuadtreeHandler::getInstance().getShipQuadtree()->addObject(ship.get());
+			shipQuadtree->addObject(ship.get());
 
 			ships.push_back(ship);
 			//std::cout << "Ship added to group. Group size: " << ships.size() << std::endl;
 		}
 
-		void removeShip(std::shared_ptr<EnemyShip> ship) {
+		void removeShip(std::shared_ptr<EnemyShip> ship, Quadtree<EnemyShip>* shipQuadtree) {
 			// Remove the ship from the hashmap
-			GlobalQuadtreeHandler::getInstance().getShipQuadtree()->removeObject(ship.get());
+			shipQuadtree->removeObject(ship.get());
 
 			// Check if the ship was the slowest ship in the group
 			if (ship->getMovementHandler()->getBaseSpeed() == groupSpeed) {
@@ -108,6 +108,9 @@ namespace PirateGame {
 		std::vector<int> getGroupIDsInteractedWith() { return groupIDsInteractedWith; }
 
 	private:
+		// Context
+		GlobalContext& context;
+
 		/// Functions
 		// 3 main methods for flocking behavior
 		sf::Vector2f calculateAlignment(std::shared_ptr<EnemyShip> ship);

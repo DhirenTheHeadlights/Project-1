@@ -4,14 +4,14 @@ using namespace PirateGame;
 
 LandMassHandler::~LandMassHandler() {
 	for (auto& landMass : landmasses) {
-		GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->removeObject(landMass.get());
+		GQH->getLandMassQuadtree()->removeObject(landMass.get());
 	}
 }
 
 // Add all the land masses to the vector
 void LandMassHandler::addLandMasses(int numLandMassesPerChunk, float minDistBetweenLandmasses) {
 	// Grab all chunks
-	auto chunks = GlobalChunkHandler::getInstance().getAllChunks();
+	auto chunks = context.GCH->getAllChunks();
 
 	for (auto& chunk : chunks) {
 		addLandMassesToChunk(*chunk->getMap(), numLandMassesPerChunk, minDistBetweenLandmasses);
@@ -34,33 +34,33 @@ void LandMassHandler::addLandMassesToChunk(Map& map, int numLandMasses, float mi
 }
 
 void LandMassHandler::createIsland(sf::Vector2f position) {
-	std::shared_ptr<Island> island = std::make_shared<Island>();
+	std::shared_ptr<Island> island = std::make_shared<Island>(context);
 	island->getSprite().setPosition(position);
 	island->createLandMass();
 	landmasses.push_back(island);
 	islands.push_back(island);
-	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(island.get());
-	GlobalQuadtreeHandler::getInstance().getIslandQuadtree()->addObject(island.get());
+	GQH->getLandMassQuadtree()->addObject(island.get());
+	GQH->getIslandQuadtree()->addObject(island.get());
 }
 
 void LandMassHandler::createRock(sf::Vector2f position) {
-	std::shared_ptr<Rock> rock = std::make_shared<Rock>();
+	std::shared_ptr<Rock> rock = std::make_shared<Rock>(context);
 	rock->getSprite().setPosition(position);
 	rock->createLandMass();
 	landmasses.push_back(rock);
 	rocks.push_back(rock);
-	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(rock.get());
-	GlobalQuadtreeHandler::getInstance().getRockQuadtree()->addObject(rock.get());
+	GQH->getLandMassQuadtree()->addObject(rock.get());
+	GQH->getRockQuadtree()->addObject(rock.get());
 }
 
 void LandMassHandler::createShipwreck(sf::Vector2f position) {
-	std::shared_ptr<Shipwreck> shipwreck = std::make_shared<Shipwreck>();
+	std::shared_ptr<Shipwreck> shipwreck = std::make_shared<Shipwreck>(context);
 	shipwreck->getSprite().setPosition(position);
 	shipwreck->createLandMass();
 	landmasses.push_back(shipwreck);
 	shipwrecks.push_back(shipwreck);
-	GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->addObject(shipwreck.get());
-	GlobalQuadtreeHandler::getInstance().getShipwreckQuadtree()->addObject(shipwreck.get());
+	GQH->getLandMassQuadtree()->addObject(shipwreck.get());
+	GQH->getShipwreckQuadtree()->addObject(shipwreck.get());
 }
 
 // Draw all the land masses
@@ -68,26 +68,26 @@ void LandMassHandler::drawLandMasses() {
 	// Remove any inactive land masses
 	for (auto& ship : shipwrecks) {
 		if (!ship->isActive()) {
-			GlobalQuadtreeHandler::getInstance().getShipwreckQuadtree()->removeObject(ship.get());
-			GlobalQuadtreeHandler::getInstance().getLandMassQuadtree()->removeObject(ship.get());
+			GQH->getShipwreckQuadtree()->removeObject(ship.get());
+			GQH->getLandMassQuadtree()->removeObject(ship.get());
 		}
 	}
 	std::erase_if(shipwrecks, [](std::shared_ptr<Shipwreck> ship) { return !ship->isActive(); });
 	std::erase_if(landmasses, [](std::shared_ptr<LandMass> landmass) { return !landmass->isActive(); });
 
 	// Draw all the land masses and add them to the hashmap
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+	sf::RenderWindow* window = context.GV->getWindow();
 	for (auto& i : landmasses) {
 		//Print debug for region types
-		//GlobalValues::getInstance().displayText(GlobalChunkHandler::getInstance().getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+		//context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
 	}
 }
 
 void LandMassHandler::interactWithLandmasses() {
-	std::vector<Island*> nearbyIslands = GlobalQuadtreeHandler::getInstance().getIslandQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
-	std::vector<Shipwreck*> nearbyShipwrecks = GlobalQuadtreeHandler::getInstance().getShipwreckQuadtree()->findObjectsNearObject(playerShip, lootDistance);
-	std::vector<Rock*> nearbyRocks = GlobalQuadtreeHandler::getInstance().getRockQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<Island*> nearbyIslands = GQH->getIslandQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<Shipwreck*> nearbyShipwrecks = GQH->getShipwreckQuadtree()->findObjectsNearObject(playerShip, lootDistance);
+	std::vector<Rock*> nearbyRocks = GQH->getRockQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
 
 	if (nearestIsland == nullptr) {
 		for (auto& island : nearbyIslands) {
@@ -121,7 +121,8 @@ void LandMassHandler::interactWithLandmasses() {
 
 			// Display the loot
 			for (auto& loot : shipwreck->getLoot()) {
-				GlobalTextQueuePipeline::getInstance().addTextToQueue("You have recieved " + loot.amount + ' ' + loot.name, sf::seconds(5.f));
+				sf::Text lootText("You have recieved " + loot.amount + ' ' + loot.name, *context.GFH->getGlobalFont());
+				context.GTQP->addTextToQueue(lootText, sf::seconds(5.f));
 			}
 
 			break;

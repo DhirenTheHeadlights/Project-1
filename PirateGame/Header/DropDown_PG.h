@@ -13,9 +13,9 @@ namespace PirateGame {
 
 		// Set up the drop down menu
 		void customInteractableSetUp() override;
-		void interact() override;
-		void draw() override;
-		void openDropDown();
+		void interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) override;
+		void draw(sf::RenderWindow* window) override;
+		void openDropDown(sf::RenderWindow* window);
 
 		// Setters
 		void setPosition(sf::Vector2f pos) override;

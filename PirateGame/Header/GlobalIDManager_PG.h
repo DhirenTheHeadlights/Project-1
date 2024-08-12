@@ -9,22 +9,10 @@
 namespace PirateGame {
 	class GlobalIDManager {
 	public:
-		static GlobalIDManager& getInstance() {
-			static GlobalIDManager instance;
-			return instance;
-		}
-
 		int getUniqueID() {
 			return currentID++;
 		}
-
 	private:
-		GlobalIDManager() {};
-		~GlobalIDManager() {};
-
-		GlobalIDManager(GlobalIDManager const&) = delete;
-		GlobalIDManager& operator=(GlobalIDManager const&) = delete;
-
 		int currentID = 0;
 	};
 }

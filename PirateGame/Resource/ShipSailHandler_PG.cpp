@@ -2,16 +2,10 @@
 
 using namespace PirateGame;
 
-void ShipSailHandler::loadSailPositions(ShipClass shipClass, sf::Vector2f scaling) {
-	// Grab the sail texture for the ship class
-	const std::vector<sf::Texture>& sailTextures = GlobalTextureHandler::getInstance().getShipTextures().getSailTextureManager().getTextureGroup(shipClass);
-
+void ShipSailHandler::loadSailPositions(const std::vector<sf::Texture>& sailTextures, const sf::Image& shipImage, sf::Vector2f scaling) {
 	for (auto& i : sailTextures) {
 		sails.push_back(Sail(i, scaling));
 	}
-
-	// Grab the image for the sprite of the ship class
-	sf::Image shipImage = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getImage(shipClass);
 
 	// Iterate through the pixels to find the green dots and store their positions relative to the texture center
 	const sf::Uint8* pixels = shipImage.getPixelsPtr();
@@ -21,9 +15,8 @@ void ShipSailHandler::loadSailPositions(ShipClass shipClass, sf::Vector2f scalin
 	std::vector<sf::Vector2f> sailPositions;
 
 	// Find the center of the ship texture to make positions relative to it
-	const sf::Texture& shipTexture = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getTexture(shipClass);
-	sf::Vector2f textureCenter = sf::Vector2f(static_cast<float>(shipTexture.getSize().x) / 2.0f,
-				static_cast<float>(shipTexture.getSize().y) / 2.0f);
+	sf::Vector2f textureCenter = sf::Vector2f(static_cast<float>(shipImage.getSize().x) / 2.0f,
+				static_cast<float>(shipImage.getSize().y) / 2.0f);
 
 	// Iterate through the pixels to find the green dots and store their positions relative to the texture center
 	for (unsigned int x = 0; x < shipImage.getSize().x; x++) {
@@ -48,33 +41,20 @@ void ShipSailHandler::loadSailPositions(ShipClass shipClass, sf::Vector2f scalin
 	}
 }
 
-void ShipSailHandler::moveSailLeftRightManually(sf::Keyboard::Key sailLeftKey, sf::Keyboard::Key sailRightKey) {
-	for (auto& sail : sails) {
-		sail.updateSailLeftRight(sailLeftKey, sailRightKey);
-	}
-}
-
 void ShipSailHandler::moveSailLeftRightAutomatically(sf::Vector2f windDirection, sf::Vector2f shipDirection) {
 	for (auto& sail : sails) {
 		sail.updateSailLeftRightAutomatically(windDirection, shipDirection);
 	}
 }
 
-void ShipSailHandler::moveSailsUpAndDown(sf::Keyboard::Key sailUpKey, sf::Keyboard::Key sailDownKey) {
-	for (auto& sail : sails) {
-		sail.updateSailUpDown(sailUpKey, sailDownKey);
-	}
-}
-
-void ShipSailHandler::update(sf::Sprite& shipSprite, sf::Vector2f& shipDirection) {
+void ShipSailHandler::update(const sf::Sprite& shipSprite, sf::Vector2f& shipDirection) {
 	for (auto& sail : sails) {
 		sail.updateSail(shipSprite, shipDirection);
 	}
 }
 
-void ShipSailHandler::draw() {
+void ShipSailHandler::draw(sf::RenderWindow* window) {
 	for (auto& sail : sails) {
-		sf::Sprite& sailSprite = sail.getSprite();
-		GlobalValues::getInstance().getWindow()->draw(sailSprite);
+		window->draw(sail.getSprite());
 	}
 }

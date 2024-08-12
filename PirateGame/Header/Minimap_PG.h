@@ -2,28 +2,26 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalValues_PG.h"
 #include "PlayerShip_PG.h"
 #include "EnemyShip_PG.h"
 #include "LandMass_PG.h"
-#include "HUDTextures_PG.h"
 
 /// This class will handle the minimap for the game.
 
 namespace PirateGame {
 	class Minimap {
 	public:
-		Minimap() {
+		Minimap(sf::Texture minimap, sf::Texture shipIcon) {
 			// Load the textures
-			minimapSprite.setTexture(textures.getMiniMap());
+			minimapSprite.setTexture(minimap);
 			minimapSprite.setScale(1.6f, 1.6f);
 
-			shipIconSprite.setTexture(textures.getMiniMapShipIcon());
+			shipIconSprite.setTexture(shipIcon);
 			shipIconSprite.setScale(0.02f, 0.02f);
 		};
 		~Minimap() {};
 
-		void draw();
+		void draw(sf::RenderWindow* window);
 		void update();
 
 		// Setters
@@ -35,9 +33,6 @@ namespace PirateGame {
 		
 		// Getters
 		sf::Sprite& getMinimapSprite() { return minimapSprite; }
-		sf::CircleShape& getMinimap() { return minimap; }
-		float getMinimapRadius() const { return size; }
-		sf::Vector2f getMinimapPosition() const { return position; }
 	private:
 		// Values
 		float size = 0;
@@ -47,22 +42,15 @@ namespace PirateGame {
 		sf::Vector2f shipwreckIconSize = { 3.f, 3.f };
 		sf::Vector2f islandIconSize = { 4.f, 4.f };
 
-
 		Ship* ship = nullptr;
 
 		sf::Sprite minimapSprite;
 		sf::Sprite shipIconSprite;
 
-		HUDTextureHandler textures;
-
-		// Temp rectangle for minimap
-		sf::CircleShape minimap;
-		sf::RectangleShape shipIcon; // Temp
-
 		std::vector<std::shared_ptr<EnemyShip>> ships;
 		std::vector<std::shared_ptr<LandMass>> landmasses;
 
-		std::vector<sf::RectangleShape> visibleLandmassRects; // Landmasses on the minimap
-		std::vector<sf::RectangleShape> visibleShipRects; // Ships on the minimap
+		std::vector<sf::RectangleShape> visibleLandmassRects;
+		std::vector<sf::RectangleShape> visibleShipRects;
 	};
 }

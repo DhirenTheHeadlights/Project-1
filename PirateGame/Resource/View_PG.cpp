@@ -2,10 +2,6 @@
 
 using namespace PirateGame;
 
-void View::setUpView() {
-	window = GlobalValues::getInstance().getWindow();
-}
-
 void View::setCenter(sf::Vector2f position) {
 	view.setCenter(position);
 	sf::Vector2f size = sf::Vector2f(window->getSize());
@@ -56,11 +52,11 @@ void View::updateDebugView(sf::Event event) {
 	window->setView(view);
 }
 
-void View::showCoordsOnCursor() {
+void View::showCoordsOnCursor(const sf::Font& font) {
 	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
 	sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 	std::string coords = "Coords: " + std::to_string(static_cast<int>(worldPosition.x)) + ", " + std::to_string(static_cast<int>(worldPosition.y));
-	sf::Text coordsText(coords, *GlobalFontHandler::getInstance().getGlobalFont(), coordsTextSize);
+	sf::Text coordsText(coords, font, coordsTextSize);
 	coordsText.setPosition(worldPosition.x + coordsOffset, worldPosition.y + coordsOffset);
-	GlobalValues::getInstance().getWindow()->draw(coordsText);
+	window->draw(coordsText);
 }

@@ -10,11 +10,9 @@
 namespace PirateGame {
     class GlobalWindController {
     public:
-        // Public method to access the instance
-        static GlobalWindController& getInstance() {
-			static GlobalWindController instance;
-			return instance;
-		}
+        GlobalWindController() {
+            randomizeWind();
+        }
 
         void update() {
             sf::Time elapsed = windChangeTimer.getElapsedTime();
@@ -80,15 +78,6 @@ namespace PirateGame {
         }
 
     private:
-        // Private constructor
-        GlobalWindController() {
-            randomizeWind();
-        }
-
-        // Private copy constructor and assignment operator
-        GlobalWindController(GlobalWindController const&) = delete;
-        GlobalWindController& operator=(GlobalWindController const&) = delete;
-
         // Wind values
         sf::Vector2f windDirection = sf::Vector2f(0.f, 0.f);
         sf::Vector2f targetWindDirection = sf::Vector2f(0.f, 0.f);

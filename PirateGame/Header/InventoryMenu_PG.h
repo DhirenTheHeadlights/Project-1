@@ -10,7 +10,7 @@
 namespace PirateGame {
 	class InventoryMenu : public Menu {
 	public:
-		InventoryMenu() {};
+		InventoryMenu(GlobalContext& context) : Menu(context) {};
 
 		void setUpMenu() override;
 		void setInteractablePositions() override;
@@ -36,7 +36,7 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<Interactable>> inventoryBoxes;
 		std::vector<TextDisplayBox> shipDisplayInfo;
 
-		ScrollBar scrollBar;
+		ScrollBar scrollBar = ScrollBar(context);
 
 		// Menu Size Constants
 		float xProportion = 0.2f;

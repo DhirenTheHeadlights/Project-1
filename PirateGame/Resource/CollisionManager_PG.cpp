@@ -2,21 +2,21 @@
 
 using namespace PirateGame;
 
-void CollisionManager::handleCollisions() {
+void CollisionManager::handleCollisions(GlobalQuadtreeHandler* GQH) {
 	// Delete ships that are dead
 	for (auto& ship : ships) {
 		if (ship->getIsDead()) ships.erase(std::remove(ships.begin(), ships.end(), ship), ships.end());
 	}
 
 	// Grab global hashmaps
-	Quadtree<EnemyShip>* shipHashmap = GlobalQuadtreeHandler::getInstance().getShipQuadtree();
-	Quadtree<LandMass>* landMassHashmap = GlobalQuadtreeHandler::getInstance().getLandMassQuadtree();
+	Quadtree<EnemyShip>* shipHashmap = GQH->getEnemyShipQuadtree();
+	Quadtree<LandMass>* landMassHashmap = GQH->getLandMassQuadtree();
 
 	// Grab the nearby landmasses and ships for each ship
 	for (auto& ship : ships) {
 		std::vector<LandMass*> nearbyLandMasses = landMassHashmap->findObjectsNearObject(ship, nearbyDistanceLandmass);
 		std::vector<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(ship, nearbyDistanceShip);
-		std::vector<Cannonball*> nearbyCannonballs = GlobalQuadtreeHandler::getInstance().getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
+		std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
 
 		// Vectors to hold the colliding objects
 		std::vector<LandMass*> collidingLandMasses = {};
@@ -49,7 +49,7 @@ void CollisionManager::handleCollisions() {
 	}
 
 	// Grab nearby cannonballs for each cannonball
-	std::vector<Cannonball*> cannonballs = GlobalQuadtreeHandler::getInstance().getCannonballQuadtree()->getObjects();
+	std::vector<Cannonball*> cannonballs = GQH->getCannonballQuadtree()->getObjects();
 
 	for (auto& c1 : cannonballs) {
 		for (auto& c2 : cannonballs) {
@@ -71,7 +71,7 @@ void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, s
 		ship->damageShip(collisionDamagePerFrame * collidingLandMasses.size());
 
 		// Play the collision sound
-		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
+		context.GSM->playSound(SoundId::Bonk);
 	}
 	else {
 		ship->getMovementHandler()->setIsColliding(false);
@@ -94,7 +94,7 @@ void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector
 		ship2->damageShip(collisionDamagePerFrame * collidingShips.size());
 
 		// Play the collision sound
-		GlobalSoundManager::getInstance().playSound(SoundId::Bonk);
+		context.GSM->playSound(SoundId::Bonk);
 	}
 	else {
 		ship1->getMovementHandler()->setIsColliding(false);
@@ -198,7 +198,7 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 	const sf::Sprite& sprite1 = ship->getSprite();
 	const sf::Sprite& sprite2 = landmass->getSprite();
 
-	sf::RenderWindow& window = *GlobalValues::getInstance().getWindow();
+	sf::RenderWindow& window = *context.GV->getWindow();
 	sf::FloatRect intersection;
 	if (!sprite1.getGlobalBounds().intersects(sprite2.getGlobalBounds(), intersection)) return false;
 
@@ -206,8 +206,8 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 	const sf::Texture* texture2 = sprite2.getTexture();
 	if (!texture1 || !texture2) return false;
 
-	sf::Image image1 = GlobalTextureHandler::getInstance().getShipTextures().getShipTextureManager().getImage(ship->getShipClass());
-	sf::Image image2 = landmass->getImage();
+	const sf::Image& image1 = context.GTH->getShipTextures().getShipTextureManager().getImage(ship->getShipClass());
+	const sf::Image& image2 = landmass->getImage(context);
 
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();

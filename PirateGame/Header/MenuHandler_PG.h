@@ -21,7 +21,7 @@ namespace PirateGame {
 
 	class MenuHandler {
 	public:
-		MenuHandler() {};
+		MenuHandler(GlobalContext& context) : context(context) {};
 		~MenuHandler() {};
 
 		void createMenus();
@@ -34,6 +34,9 @@ namespace PirateGame {
 		InventoryMenu* getInventoryMenu() { return inventoryMenu.get(); }
 		
 	private:
+		// Reference to the global context
+		GlobalContext& context;
+
 		// Pointers to the different menus
 		std::unique_ptr<StartMenu> startMenu;
 		std::unique_ptr<OptionsMenu> optionsMenu;

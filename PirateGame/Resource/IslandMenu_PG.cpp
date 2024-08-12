@@ -4,9 +4,9 @@ using namespace PirateGame;
 
 void IslandMenu::setUpMenu() {
 	// Set up the inital menu that asks the player if they wish to enter the island
-	menu.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getMarketMenu());
-	banner.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getIslandBanner());
-	initialMenu.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getInitialMenu());
+	menu.setTexture(context.GTH->getMarketTextures().getMarketMenu());
+	banner.setTexture(context.GTH->getMarketTextures().getIslandBanner());
+	initialMenu.setTexture(context.GTH->getMarketTextures().getInitialMenu());
 
 	// Set up the island names to be names from islands in 'one piece' but a little different to avoid copyright
 	std::vector<std::string> islandNames = {
@@ -45,22 +45,19 @@ void IslandMenu::setUpMenu() {
 }
 
 void IslandMenu::addInteractablesToMenu() {
-	// Grab the global game state manager
-	GSM = &GlobalGameStateManager::getInstance();
-
 	// Initial buttons to enter the island
-	addButton(sf::Text("Island Menu", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getInitialMenuButton(), initialButtons, [this]() {
+	addButton(sf::Text("Island Menu", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getInitialMenuButton(), initialButtons, [this]() {
 		// Set the flag to true so the menu shows
 		enteredIsland = true;
 		ship->getMovementHandler()->setAnchorDrop(true);
 	});
 	initialButtons[0].getText().setFillColor(sf::Color::Black);
 
-	addButton(sf::Text("Close", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getInitialMenuButton(), initialButtons, [this]() {
+	addButton(sf::Text("Close", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getInitialMenuButton(), initialButtons, [this]() {
 		hasPlayerSaidNo = true; // Set the flag to true so the menu does not show
 		ship->getMovementHandler()->setAnchorDrop(false);
 		// Enable the HUD
-		GlobalValues::getInstance().setShowHUD(true);
+		context.GV->setShowHUD(true);
 	});
 	initialButtons[1].getText().setFillColor(sf::Color::Black);
 
@@ -74,25 +71,25 @@ void IslandMenu::addInteractablesToMenu() {
 void IslandMenu::addGeneralInteractables() {
 	// Create a text display box to show the merchant's gold
 	sf::Text goldText = sf::Text("Merchant Gold: " + std::to_string(gold), font, interactableTextSizeSmall);
-	islandGoldDisplay.createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getBottomRightLeft(), goldText);
+	islandGoldDisplay.createInteractable(context.GTH->getMarketTextures().getBottomRightLeft(), goldText);
 
 	// Create a text display box to show the ship's gold
 	sf::Text shipGoldText = sf::Text("Ship Gold: ", font, interactableTextSizeSmall);
-	shipGoldDisplay.createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getBottomRightLeft(), shipGoldText);
+	shipGoldDisplay.createInteractable(context.GTH->getMarketTextures().getBottomRightLeft(), shipGoldText);
 
 	// Create an "exit" button to leave the island
-	addButton(sf::Text("Close Menu", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketBottomMiddle(), uiButtons, [this]() {
+	addButton(sf::Text("Close Menu", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketBottomMiddle(), uiButtons, [this]() {
 		enteredIsland = false;
 	});
 
 	// Left and right buttons to navigate each menu 
-	addButton(sf::Text("", font, interactableTextSizeBig), GlobalTextureHandler::getInstance().getMarketTextures().getMarketLeftRightNavigation(), leftRightNavButtons, [this]() {
+	addButton(sf::Text("", font, interactableTextSizeBig), context.GTH->getMarketTextures().getMarketLeftRightNavigation(), leftRightNavButtons, [this]() {
 		if (currentPage != pages.front()) {
 			currentPage = pages[static_cast<std::vector<PirateGame::Page, std::allocator<PirateGame::Page>>::size_type>(static_cast<int>(currentPage)) - 1];
 		}
 	});
 	leftRightNavButtons[0].getSprite().setScale(-1.f, 1.f); // Flip the sprite to face left
-	addButton(sf::Text("", font, interactableTextSizeBig), GlobalTextureHandler::getInstance().getMarketTextures().getMarketLeftRightNavigation(), leftRightNavButtons, [this]() {
+	addButton(sf::Text("", font, interactableTextSizeBig), context.GTH->getMarketTextures().getMarketLeftRightNavigation(), leftRightNavButtons, [this]() {
 		if (currentPage != pages.back()) {
 			currentPage = pages[static_cast<std::vector<PirateGame::Page, std::allocator<PirateGame::Page>>::size_type>(static_cast<int>(currentPage)) + 1];
 		}
@@ -104,7 +101,7 @@ void IslandMenu::addMarketInteractables() {
 	// with a buy and sell button and the price of the item
 	for (auto& item : market) {
 		// Create the buy button
-		addButton(sf::Text("Buy", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getBuySell(), buyButtons, [this, &item]() {
+		addButton(sf::Text("Buy", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getBuySell(), buyButtons, [this, &item]() {
 			if (ship->getInventoryHandler()->getGold() >= item.price && item.amount > 0) {
 				// Attempt to find the item in the ship's inventory
 				auto& inventory = ship->getInventoryHandler()->getInventory();
@@ -136,7 +133,7 @@ void IslandMenu::addMarketInteractables() {
 		});
 
 		// Create the sell button
-		addButton(sf::Text("Sell", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getBuySell(), sellButtons, [this, &item]() {
+		addButton(sf::Text("Sell", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getBuySell(), sellButtons, [this, &item]() {
 			auto& inventory = ship->getInventoryHandler()->getInventory();
 			auto it = std::find_if(inventory.begin(), inventory.end(), [&item](const ShopItem& inventoryItem) {
 				return inventoryItem.name == item.name;
@@ -161,10 +158,10 @@ void IslandMenu::addMarketInteractables() {
 		});
 
 		// Create the text display box for the item
-		addTextDisplayBox(sf::Text(item.name + " - " + floatToString(item.price), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketMiddle(), merchandise);
+		addTextDisplayBox(sf::Text(item.name + " - " + floatToString(item.price), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketMiddle(), merchandise);
 
 		// Create a text display box to show the amount of the item in the market
-		addTextDisplayBox(sf::Text(std::to_string(item.amount), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), marketInventory);
+		addTextDisplayBox(sf::Text(std::to_string(item.amount), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketFarLeftRight(), marketInventory);
 	}
 
 	// Set hold down to be true for the buy and sell buttons
@@ -177,26 +174,26 @@ void IslandMenu::addMarketInteractables() {
 
 	// Create a box that says merchant
 	sf::Text merchantText = sf::Text("Merchant", font, interactableTextSizeBig);
-	marketNameDisplay.createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketTopLeftRight(), merchantText);
+	marketNameDisplay.createInteractable(context.GTH->getMarketTextures().getMarketTopLeftRight(), merchantText);
 
 	// Create a text display box to show the ship's name
 	sf::Text shipNameText = sf::Text("Ship", font, interactableTextSizeBig);
-	shipNameDisplay.createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketTopLeftRight(), shipNameText);
+	shipNameDisplay.createInteractable(context.GTH->getMarketTextures().getMarketTopLeftRight(), shipNameText);
 
 	// Create a text display box to show the island's name
 	sf::Text islandNameText = sf::Text(islandName, font, interactableTextSizeBig);
-	islandNameDisplay.createInteractable(GlobalTextureHandler::getInstance().getMarketTextures().getMarketTopMiddle(), islandNameText);
+	islandNameDisplay.createInteractable(context.GTH->getMarketTextures().getMarketTopMiddle(), islandNameText);
 }
 
 void IslandMenu::addShipBuyInteractables() {
 	// Display for the ship column
-	addTextDisplayBox(sf::Text("Ships", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuTopLeft(), shipBuyTabs);
+	addTextDisplayBox(sf::Text("Ships", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuTopLeft(), shipBuyTabs);
 
 	// Displays for the ship's stats
-	addTextDisplayBox(sf::Text("Health", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
-	addTextDisplayBox(sf::Text("Speed", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
-	addTextDisplayBox(sf::Text("Cannons", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
-	addTextDisplayBox(sf::Text("Regen", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
+	addTextDisplayBox(sf::Text("Health", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
+	addTextDisplayBox(sf::Text("Speed", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
+	addTextDisplayBox(sf::Text("Cannons", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
+	addTextDisplayBox(sf::Text("Regen", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuTopRight(), shipBuyTabs);
 
 	// Grab all of the ships from the ship enums
 	for (int i = 0; i < numShipsForSale; i++) {
@@ -206,13 +203,13 @@ void IslandMenu::addShipBuyInteractables() {
 		std::vector<TextDisplayBox> shipStatsVec;
 
 		// Create a text display box to show the ship's name
-		addTextDisplayBox(sf::Text(shipClassToString(shipClass), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleLeft(), shipStatsVec);
+		addTextDisplayBox(sf::Text(shipClassToString(shipClass), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuMiddleLeft(), shipStatsVec);
 
 		// Create display boxes for the ship's stats. The stats displayed are the ship's health, speed, num cannons, regen rate, and cannon range
-		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).maxHealth), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
-		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).baseSpeed), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
-		addTextDisplayBox(sf::Text(std::to_string(getShipProperties(shipClass).numCannons), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
-		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).regenRate), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
+		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).maxHealth), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
+		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).baseSpeed), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
+		addTextDisplayBox(sf::Text(std::to_string(getShipProperties(shipClass).numCannons), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
+		addTextDisplayBox(sf::Text(floatToString(getShipProperties(shipClass).regenRate), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getShipBuyMenuMiddleRight(), shipStatsVec);
 
 		shipStats.push_back(std::make_pair(shipClass, std::move(shipStatsVec)));
 	}
@@ -227,11 +224,11 @@ void IslandMenu::addShipInventoryInteractables() {
 
 		if (it != ship->getInventoryHandler()->getInventory().end()) {
 			// Item exists in ship's inventory, display with details
-			addTextDisplayBox(sf::Text(it->name + " - " + std::to_string(it->amount), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), shipInventoryInteractables);
+			addTextDisplayBox(sf::Text(it->name + " - " + std::to_string(it->amount), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketFarLeftRight(), shipInventoryInteractables);
 		}
 		else {
 			// Item does not exist, display an empty box
-			addTextDisplayBox(sf::Text("Empty", font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), shipInventoryInteractables);
+			addTextDisplayBox(sf::Text("Empty", font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketFarLeftRight(), shipInventoryInteractables);
 		}
 	}
 	this->shipInventory = ship->getInventoryHandler()->getInventory();
@@ -263,7 +260,7 @@ void IslandMenu::setInteractablePositions() {
 		ship->getMovementHandler()->setStopShipRotationFlag(true);
 
 		// Disable the HUD
-		GlobalValues::getInstance().setShowHUD(false);
+		context.GV->setShowHUD(false);
 
 		return; // Return early if the player has not entered the island
 	}
@@ -329,7 +326,7 @@ void IslandMenu::updateMarket() {
 		}
 		else {
 			// Add new box if necessary
-			addTextDisplayBox(sf::Text(std::to_string(market[i].amount), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), shipInventoryInteractables);
+			addTextDisplayBox(sf::Text(std::to_string(market[i].amount), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketFarLeftRight(), shipInventoryInteractables);
 		}
 	}
 
@@ -346,7 +343,7 @@ void IslandMenu::updateMarket() {
 		}
 		else {
 			// Add new box if necessary
-			addTextDisplayBox(sf::Text(market[i].name + " - " + std::to_string(market[i].amount), font, interactableTextSizeSmall), GlobalTextureHandler::getInstance().getMarketTextures().getMarketFarLeftRight(), marketInventory);
+			addTextDisplayBox(sf::Text(market[i].name + " - " + std::to_string(market[i].amount), font, interactableTextSizeSmall), context.GTH->getMarketTextures().getMarketFarLeftRight(), marketInventory);
 		}
 	}
 
@@ -358,13 +355,13 @@ void IslandMenu::updateMarket() {
 void IslandMenu::interactWithMarket() {
 	// Interact with the market
 	for (size_t i = 0; i < buyButtons.size(); ++i) {
-		buyButtons[i].interact();
-		sellButtons[i].interact();
+		buyButtons[i].interact(window, context.GIH.get(), context.GSM.get());
+		sellButtons[i].interact(window, context.GIH.get(), context.GSM.get());
 	}
 
 	// Interact with the left and right navigation buttons
 	for (auto& button : leftRightNavButtons) {
-		button.interact();
+		button.interact(window, context.GIH.get(), context.GSM.get());
 	}
 
 	// Update the market
@@ -374,51 +371,51 @@ void IslandMenu::interactWithMarket() {
 void IslandMenu::interactWithShipBuy() {
 	// Interact with the ship buy menu
 	for (size_t i = 0; i < shipStats.size(); ++i) {
-		shipStats[i].second[0].interact();
+		shipStats[i].second[0].interact(window, context.GIH.get(), context.GSM.get());
 		for (size_t j = 1; j < shipStats[i].second.size(); ++j) {
-			shipStats[i].second[j].interact();
+			shipStats[i].second[j].interact(window, context.GIH.get(), context.GSM.get());
 		}
 	}
 
 	// Draw the ship buy tabs
 	for (auto& tab : shipBuyTabs) {
-		tab.interact();
+		tab.interact(window, context.GIH.get(), context.GSM.get());
 	}
 }
 
 void IslandMenu::drawMarket() {
 	// Set the texture of the menu to be the market menu
-	menu.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getMarketMenu());
+	menu.setTexture(context.GTH->getMarketTextures().getMarketMenu());
 
 	// Draw the market interactables
 	for (size_t i = 0; i < buyButtons.size(); ++i) {
-		buyButtons[i].draw();
-		sellButtons[i].draw();
-		merchandise[i].draw();
-		shipInventoryInteractables[i].draw();
-		marketInventory[i].draw();
+		buyButtons[i].draw(window);
+		sellButtons[i].draw(window);
+		merchandise[i].draw(window);
+		shipInventoryInteractables[i].draw(window);
+		marketInventory[i].draw(window);
 	}
 
 	// Draw the other ui buttons
 	for (auto& button : uiButtons) {
-		button.draw();
+		button.draw(window);
 	}
 
 	// Draw the left and right navigation buttons
 	for (auto& button : leftRightNavButtons) {
-		button.draw();
+		button.draw(window);
 	}
 
 	// Draw information
-	shipGoldDisplay.draw();
-	islandGoldDisplay.draw();
+	shipGoldDisplay.draw(window);
+	islandGoldDisplay.draw(window);
 
 	// Draw the island name
-	islandNameDisplay.draw();
+	islandNameDisplay.draw(window);
 
 	// Draw the and ship name
-	marketNameDisplay.draw();
-	shipNameDisplay.draw();
+	marketNameDisplay.draw(window);
+	shipNameDisplay.draw(window);
 }
 
 void IslandMenu::interactWithMenuItems() {
@@ -437,40 +434,40 @@ void IslandMenu::interactWithMenuItems() {
 
 		// Interact with the left and right navigation buttons
 		for (auto& button : leftRightNavButtons) {
-			button.interact();
+			button.interact(window, context.GIH.get(), context.GSM.get());
 		}
 
 		// Interact with the close menu button
-		uiButtons[0].interact();
+		uiButtons[0].interact(window, context.GIH.get(), context.GSM.get());
 	}
 	else {
 		// Interact with the inital menu
 		for (auto& interactable : initialButtons) {
-			interactable.interact();
+			interactable.interact(window, context.GIH.get(), context.GSM.get());
 		}
 	}
 }
 
 void IslandMenu::drawShipBuy() {
 	// Set the texture of the menu to be the ship buy menu
-	menu.setTexture(GlobalTextureHandler::getInstance().getMarketTextures().getShipBuyMenu());
+	menu.setTexture(context.GTH->getMarketTextures().getShipBuyMenu());
 
 	// Draw the ship buy interactables
 	for (size_t i = 0; i < shipStats.size(); ++i) {
 		// Draw the ship name
-		shipStats[i].second[0].draw();
+		shipStats[i].second[0].draw(window);
 		shipStats[i].second[0].getText().setFillColor(sf::Color::Black);
 
 		// Draw the ship stats
 		for (size_t j = 1; j < shipStats[i].second.size(); ++j) {
-			shipStats[i].second[j].draw();
+			shipStats[i].second[j].draw(window);
 			shipStats[i].second[j].getText().setFillColor(sf::Color::Black);
 		}
 	}
 
 	// Draw the ship buy tabs
 	for (auto& tab : shipBuyTabs) {
-		tab.draw();
+		tab.draw(window);
 		tab.getText().setFillColor(sf::Color::Black);
 	}
 }
@@ -509,17 +506,17 @@ void IslandMenu::draw() {
 
 		// Draw the other ui buttons
 		for (auto& button : uiButtons) {
-			button.draw();
+			button.draw(window);
 		}
 
 		// Draw the left and right navigation buttons
 		for (auto& button : leftRightNavButtons) {
-			button.draw();
+			button.draw(window);
 		}
 
 		// Draw information
-		shipGoldDisplay.draw();
-		islandGoldDisplay.draw();
+		shipGoldDisplay.draw(window);
+		islandGoldDisplay.draw(window);
 	}
 	else {
 		// Draw the inital menu
@@ -531,7 +528,7 @@ void IslandMenu::draw() {
 
 		// Draw the inital buttons and interact with them
 		for (auto& interactable : initialButtons) {
-			interactable.draw();
+			interactable.draw(window);
 		}
 	}
 }

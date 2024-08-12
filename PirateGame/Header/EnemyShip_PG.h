@@ -7,17 +7,15 @@
 #include <cmath>
 #include <unordered_map>
 
-#include "GlobalValues_PG.h"
+#include "GlobalContext_PG.h"
 #include "Ship_PG.h"
 #include "EnemyShipInputHandler_PG.h"
 #include "EnemyShipMovementHandler_PG.h"
-#include "QuadtreeTemplate_PG.h"
-#include "GlobalIDManager_PG.h"
 
 namespace PirateGame {
 	class EnemyShip : public Ship {
 	public:
-		EnemyShip() {};
+		EnemyShip(GlobalContext& context) : Ship(context) {};
 		~EnemyShip() {};
 
 		// Custom functions

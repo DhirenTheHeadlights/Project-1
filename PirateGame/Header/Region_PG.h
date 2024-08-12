@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace PirateGame {
 	enum class Region {
 		SandyShores, //0

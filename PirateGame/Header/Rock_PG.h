@@ -9,11 +9,11 @@
 namespace PirateGame {
 	class Rock : public LandMass {
 	public:
-		Rock() {} 
+		Rock(GlobalContext& context) : LandMass(context) {};
 
 		void createLandMass() override;
 
-		sf::Image getImage() override { return GlobalTextureHandler::getInstance().getLandMassTextures().getRockTextures().getImage(type); }
+		const sf::Image& getImage(GlobalContext& context) override { return context.GTH->getLandMassTextures().getRockTextures().getImage(type); }
 		LandMassType getType() { return LandMassType::Rock; }
 	private:
 		float scaling = 0.125f;

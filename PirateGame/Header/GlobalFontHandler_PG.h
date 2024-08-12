@@ -8,22 +8,6 @@
 namespace PirateGame {
 	class GlobalFontHandler {
 	public:
-		// Public method to access the instance
-		static GlobalFontHandler& getInstance() {
-			static GlobalFontHandler instance;
-			return instance;
-		}
-
-		// Getters
-		sf::Font* getGlobalFont() { return pixelifySansRegular.get(); }
-		sf::Font* getTimesNewRoman() { return timesNewRoman.get(); }
-		sf::Font* getPixelifySansRegular() { return pixelifySansRegular.get(); }
-		sf::Font* getPixelifySansMedium() { return pixelifySansMedium.get(); }
-		sf::Font* getPixelifySansSemiBold() { return pixelifySansSemiBold.get(); }
-		sf::Font* getPixelifySansBold() { return pixelifySansBold.get(); }
-
-	private:
-		// Private Constructor
 		GlobalFontHandler() {
 			// Initalize the pointers
 			timesNewRoman = std::make_unique<sf::Font>();
@@ -50,10 +34,15 @@ namespace PirateGame {
 			}
 		};
 
-		// Delete the copy constructor and assignment operator
-		GlobalFontHandler(GlobalFontHandler const&) = delete;
-		GlobalFontHandler& operator=(GlobalFontHandler const&) = delete;
+		// Getters
+		sf::Font* getGlobalFont() { return pixelifySansRegular.get(); }
+		sf::Font* getTimesNewRoman() { return timesNewRoman.get(); }
+		sf::Font* getPixelifySansRegular() { return pixelifySansRegular.get(); }
+		sf::Font* getPixelifySansMedium() { return pixelifySansMedium.get(); }
+		sf::Font* getPixelifySansSemiBold() { return pixelifySansSemiBold.get(); }
+		sf::Font* getPixelifySansBold() { return pixelifySansBold.get(); }
 
+	private:
 		// Fonts
 		std::unique_ptr<sf::Font> timesNewRoman;
 		std::unique_ptr<sf::Font> pixelifySansRegular;

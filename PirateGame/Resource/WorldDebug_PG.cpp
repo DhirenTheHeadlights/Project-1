@@ -5,10 +5,10 @@ using namespace PirateGame;
 void DefaultDebugWorld::createWorld(sf::Event event) {
 	window->clear();
 
-	GlobalInputHandler::getInstance().update();
+	context.GIH->update();
 
 	// Handle the different game states
-	switch (GlobalGameStateManager::getInstance().getCurrentGameState()) {
+	switch (context.GGSM->getCurrentGameState()) {
 	case GameState::Start:
 		// Draw the main menu
 		MH.openMenu(MenuType::StartMenu);
@@ -43,11 +43,11 @@ void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 
 	ESH.update();
 
-	CM.handleCollisions();
+	CM.handleCollisions(GQH.get());
 
 	playerShip->update();
 
 	view.updateDebugView(event);
 
-	GlobalQuadtreeHandler::getInstance().getShipQuadtree()->draw(window);
+	GQH->getEnemyShipQuadtree()->draw(context.GV.get());
 }

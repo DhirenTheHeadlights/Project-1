@@ -3,8 +3,6 @@
 
 #include "VectorMath.h"
 
-#include "GlobalTextureHandler_PG.h"
-#include "GlobalValues_PG.h"
 #include "QuadtreeTemplate_PG.h"
 
 #include "Cannonball_PG.h"
@@ -38,9 +36,9 @@ namespace PirateGame {
 		};
 		~ShipCannon() {};
 
-		void fireCannon(FiringSide FS, sf::Sprite& shipSprite);
-		void drawCannonNBalls();
-		void updateCannon(sf::Sprite& shipSprite, FiringSide FS);
+		void fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
+		void drawCannonNBalls(sf::RenderWindow* window);
+		void updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, float elapsed);
 
 		// Setters
 		void setCannonballHashmap(Quadtree<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
@@ -55,15 +53,14 @@ namespace PirateGame {
 		FiringSide getFiringSide() const { return side; }
 	private:
 		// Helpers
-		sf::Vector2f calculateDirectionToTarget(sf::Sprite& shipSprite, sf::Vector2f targetPos);
+		sf::Vector2f calculateDirectionToTarget(const sf::Sprite& shipSprite, sf::Vector2f targetPos);
 		sf::Vector2f calculatePerpendicularDirection(float rotation) const;
 		void rotateTowards(float angle, float step);
-		void updateCannonRotation(sf::Sprite& shipSprite, FiringSide FS);
+		void updateCannonRotation(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window);
 		void updateCannonballs(float elapsed);
 
 		sf::Clock resetRotationClock;
 		sf::Time resetRotationTime = sf::seconds(2.f);
-		sf::Clock deltaTime;
 
 		sf::Sprite cannonSprite;
 		std::vector<Cannonball*> cannonballs;

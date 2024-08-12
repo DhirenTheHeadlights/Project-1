@@ -8,9 +8,6 @@
 
 #include "VectorMath.h"
 
-#include "GlobalValues_PG.h"
-#include "GlobalChunkHandler_PG.h"
-#include "GlobalWindController_PG.h"
 #include "AstarAlgorithm_PG.h"
 
 namespace PirateGame {
@@ -20,13 +17,13 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions 
-		virtual void update(float baseSpeed, sf::Vector2f sailDirection) = 0;
-		void move(float baseSpeed, sf::Vector2f sailDirection);
+		virtual void update(float baseSpeed, sf::Vector2f sailDirection, float dt, sf::Vector2f windDirection, float windSpeed) = 0;
+		void move(float baseSpeed, sf::Vector2f sailDirection, float dt, sf::Vector2f windDirection, float windSpeed);
 		void rotateTowards(float targetAngle);
 		void collisionMovement(sf::Sprite& collidingSprite);
 		void addCannonRecoil(sf::Vector2f direction, float recoil);
 
-		virtual sf::Vector2f updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection = sf::Vector2f(0, 0));
+		virtual sf::Vector2f updateVelocity(const sf::Vector2f& direction, float elapsedTime, const float baseSpeed, sf::Vector2f sailDirection, sf::Vector2f windDirection, float windSpeed);
 		virtual void setSpriteRotation() = 0;
 
 		// These functions stay constant
@@ -66,9 +63,9 @@ namespace PirateGame {
 		bool getIsColliding() const { return isColliding; }
 		bool getWindSpeedApplied() const { return windSpeedApplied; }
 		bool getInitialPositionSet() const { return initialPositionSet; }
+
 	private:
 		// SFML Objects
-		sf::RenderWindow* window = nullptr;
 		sf::Sprite& sprite;
 
 		sf::Vector2f velocity;

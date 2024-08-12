@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 void EnemyShipHandler::addEnemyShips(int numShipsPerChunk) {
 	// Grab all chunks
-	auto chunks = GlobalChunkHandler::getInstance().getAllChunks();
+	auto chunks = context.GCH->getAllChunks();
 
 	for (auto& chunk : chunks) {
 		addEnemyShipsToChunk(*chunk->getMap(), numShipsPerChunk);
@@ -23,11 +23,11 @@ void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
 
 void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	// Create a new ship
-	std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>();
+	std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>(context);
 
 	// Set up the ship
 	ship->setUpShip(type);
-	ship->getCannonHandler()->setCooldown(enemyCannonCooldown);
+	ship->getInputHandler()->setCooldown(enemyCannonCooldown);
 	ship->getMovementHandler()->setTurningSpeed(turningSpeed);
 	ship->getMovementHandler()->setEnemySpeedMultiplier(enemySpeedMultiplier);
 	ship->getInputHandler()->setFiringDistance(firingDistance);
@@ -37,14 +37,14 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
 	// hashmap is global, but it is necessary because to avoid circular dependencies because
 	// the global hashmap handler includes enemy ship which included the SCH.
-	ship->getCannonHandler()->setCannonballHashmap(GlobalQuadtreeHandler::getInstance().getCannonballQuadtree());
+	ship->getCannonHandler()->setCannonballQuadtree(GQH->getCannonballQuadtree());
 
 	// Add the ship to a new ship group and vector, std::move is not needed
 	// do after setting up the ship, otherwise the ship will be empty
-	std::shared_ptr<ShipGroup> group = std::make_shared<ShipGroup>();
+	std::shared_ptr<ShipGroup> group = std::make_shared<ShipGroup>(context);
 	ship->setGroupID(group->getID());
 	setShipGroupDestination(group);
-	group->addShip(ship);
+	group->addShip(ship, GQH->getEnemyShipQuadtree());
 	enemyShips.push_back(std::move(ship));
 	shipGroups.push_back(std::move(group));
 }
@@ -82,7 +82,7 @@ void EnemyShipHandler::updateGroupDestination(std::shared_ptr<ShipGroup> group) 
 
 void EnemyShipHandler::updateGroupsNearPlayer() {
 	// Grab nearby ships for the player ship
-	std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
 	
 	// Update all the enemy ships groups near the player ship
 	for (auto& ship : nearbyShips) {
@@ -98,17 +98,17 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 		(*it)->setInCombat(true);
 	}
 
-	std::vector<EnemyShip*> nearbyShipsAudio = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(playerShip, audioRange);
+	std::vector<EnemyShip*> nearbyShipsAudio = GQH->getEnemyShipQuadtree()->findObjectsNearObject(playerShip, audioRange);
 
 	// Set all the ships in nearby audio range to play cannon sounds
 	for (auto& ship : nearbyShipsAudio) {
-		ship->getCannonHandler()->setInAudioRange(true);
+		ship->getInputHandler()->setInAudioRange(true);
 	}
 
 	// Set all the ships in nearby audio range to not play cannon sounds
 	for (auto& ship : enemyShips) {
 		if (std::find(nearbyShipsAudio.begin(), nearbyShipsAudio.end(), ship.get()) == nearbyShipsAudio.end()) {
-			ship->getCannonHandler()->setInAudioRange(false);
+			ship->getInputHandler()->setInAudioRange(false);
 		}
 	}
 }
@@ -122,7 +122,7 @@ void EnemyShipHandler::update() {
 	// Update all the enemy ships
 	for (auto& enemyShipGroup : shipGroups) {
 		updateGroupDestination(enemyShipGroup);
-		enemyShipGroup->updateGroup();
+		enemyShipGroup->updateGroup(GQH->getEnemyShipQuadtree());
 	}
 
 	// Ship groups edited by random chance when 2 enemy ship groups are close to each other
@@ -133,7 +133,7 @@ void EnemyShipHandler::update() {
 		// Grab nearby ships, of all of the ships in the group
 		std::set<EnemyShip*> nearbyShipsTotal;
 		for (auto& ship : enemyShipGroup->getEnemyShips()) {
-			std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(ship.get(), interactionDistance);
+			std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(ship.get(), interactionDistance);
 			nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
 		}
 
@@ -157,7 +157,7 @@ void EnemyShipHandler::updateShipsAsNotNearbyGroup(std::shared_ptr<ShipGroup> en
 
 	// Grab all nearby ships from each ship in the group
 	for (auto& ship : enemyShipGroup->getEnemyShips()) {
-		std::vector<EnemyShip*> nearbyShips = GlobalQuadtreeHandler::getInstance().getShipQuadtree()->findObjectsNearObject(ship.get(), interactionDistance);
+		std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(ship.get(), interactionDistance);
 		nearbyShipsTotal.insert(nearbyShips.begin(), nearbyShips.end());
 	}
 
@@ -181,10 +181,10 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 
 	// Otherwise, roll a coin to see if the ship should be added to the group. 1 is a grouping, 2 is an attack, all other values are no interaction.
 	std::uniform_int_distribution<int> dist(0, interactionChance + static_cast<int>(enemyShipGroup->getEnemyShips().size())); // The more ships in the group, the less likely it is to interact (to prevent large groups from becoming too large)
-	int interaction = dist(GlobalValues::getInstance().getRandomEngine());
+	int interaction = dist(context.GV->getRandomEngine());
 
 	// Shows if there is interaction. Possible framework for future attack indicator!
-	GlobalValues::getInstance().displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
+	context.GV->displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
 
 	auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
 
@@ -207,7 +207,7 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 void EnemyShipHandler::joinGroups(std::shared_ptr<ShipGroup> group1, ShipGroup* group2) {
 	// Add all of the ships in the other group to the current group
 	for (auto& ship : group2->getEnemyShips()) {
-		group1->addShip(ship);
+		group1->addShip(ship, GQH->getEnemyShipQuadtree());
 	}
 	group2->clearEnemyShips();
 }

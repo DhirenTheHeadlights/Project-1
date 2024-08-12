@@ -4,16 +4,13 @@ using namespace PirateGame;
 
 void Interactable::createInteractable(sf::Texture& texture, sf::Text& title, sf::Vector2f scale) {
 	this->text = title;
-	this->texture = texture;
-	this->name = title.getString();
 	sprite.setTexture(texture);
 	sprite.setScale(scale);
 
 	customInteractableSetUp();
 }
 
-void Interactable::draw() {
-	sf::RenderWindow* window = GlobalValues::getInstance().getWindow();
+void Interactable::draw(sf::RenderWindow* window) {
 	window->draw(sprite);
 	window->draw(text);
 }

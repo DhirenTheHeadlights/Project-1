@@ -5,25 +5,18 @@
 #include <SFML/Graphics.hpp>
 #include <queue>
 
-#include "GlobalValues_PG.h"
-#include "GlobalFontHandler_PG.h"
-
 namespace PirateGame {
 	class GlobalTextQueuePipeline {
 	public:
-		static GlobalTextQueuePipeline& getInstance() {
-			static GlobalTextQueuePipeline instance;
-			return instance;
-		}
-
-		void addTextToQueue(std::string text, sf::Time duration) {
-			TextDuration textDuration(text, duration, textSize);
+		void addTextToQueue(sf::Text text, sf::Time duration) {
+			text.setCharacterSize(textSize);
+			TextDuration textDuration(text, duration);
 			textQueue.push_back(textDuration);
 		}
 
-		void updateTextQueue() {
-			float textX = GlobalValues::getInstance().getWindow()->getView().getCenter().x + GlobalValues::getInstance().getWindow()->getSize().x / 2.f;
-			float textY = GlobalValues::getInstance().getWindow()->getView().getCenter().y + GlobalValues::getInstance().getWindow()->getSize().y / 2.f;
+		void updateTextQueue(sf::RenderWindow* window) {
+			float textX = window->getView().getCenter().x + window->getSize().x / 2.f;
+			float textY = window->getView().getCenter().y + window->getSize().y / 2.f;
 
 			for (int i = 0; i < textQueue.size(); i++) {
 				// Set the position of the text
@@ -38,19 +31,12 @@ namespace PirateGame {
 			}
 		}
 
-		void drawTextQueue() {
+		void drawTextQueue(sf::RenderWindow* window) {
 			for (int i = 0; i < textQueue.size(); i++) {
-				GlobalValues::getInstance().getWindow()->draw(textQueue[i].text);
+				window->draw(textQueue[i].text);
 			}
 		}
 	private:
-		// Private constructor
-		GlobalTextQueuePipeline() {};
-
-		// Disable copy constructor and assignment operator
-		GlobalTextQueuePipeline(GlobalTextQueuePipeline const&) = delete;
-		void operator=(GlobalTextQueuePipeline const&) = delete;
-
 		const int maxTextVisible = 5;
 		const int textSize = 20;
 
@@ -60,15 +46,14 @@ namespace PirateGame {
 			sf::Time duration;
 			sf::Clock clock;
 
-			TextDuration(std::string string, sf::Time duration, int textSize = 20)
-				: duration(duration) {
-				sf::Text text(string, *GlobalFontHandler::getInstance().getGlobalFont(), textSize);
+			TextDuration(sf::Text input, sf::Time duration)
+				: duration(duration), text(input) {
 				text.setFillColor(sf::Color::White);
 				this->text = text;
 			}
 		};
 
 		// Queue to hold text and duration
-		std::deque<TextDuration> textQueue;
+		std::deque<TextDuration> textQueue = {};
 	};
 }

@@ -4,26 +4,29 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalValues_PG.h"
 #include "ShipInputHandler_PG.h"
 
 namespace PirateGame {
 	class PlayerShipInputHandler : public ShipInputHandler {
 	public:
-		PlayerShipInputHandler(sf::Sprite& sprite) : ShipInputHandler(sprite) {};
+		PlayerShipInputHandler(sf::Sprite& sprite, GlobalSoundManager* GSM, GlobalInputHandler* GIH, GlobalWindController* GWC) : ShipInputHandler(sprite, GSM), GIH(GIH), GWC(GWC) {};
 		~PlayerShipInputHandler() {};
 
-		void handleCannonFire() override;
+		void handleCannonFire(const sf::Texture& cannonBallTexture, GlobalIDManager* GIDM) override;
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
 		void handleSailChange() override;
 
-		std::string  getFireKeyString() const { return GlobalValues::getInstance().keyToString(fireKey); }
-		std::string  getManualAimKeyString() const { return GlobalValues::getInstance().keyToString(manualAimKey); }
-		std::string  getPortMouseButtonString() const { return GlobalValues::getInstance().buttonToString(portMouseButton); }
-		std::string  getStarboardMouseButtonString() const { return GlobalValues::getInstance().buttonToString(starboardMouseButton); }
-		std::string  getAnchorDropKeyString() const { return GlobalValues::getInstance().keyToString(anchorDropKey); }
+		sf::Keyboard::Key getFireKey() const { return fireKey; }
+		sf::Keyboard::Key getManualAimKey() const { return manualAimKey; }
+		sf::Mouse::Button getPortMouseButton() const { return portMouseButton; }
+		sf::Mouse::Button getStarboardMouseButton() const { return starboardMouseButton; }
+		sf::Keyboard::Key getAnchorDropKey() const { return anchorDropKey; }
+
 	private:
+		GlobalInputHandler* GIH;
+		GlobalWindController* GWC;
+
 		// Keys
 		sf::Keyboard::Key fireKey = sf::Keyboard::Space;
 		sf::Keyboard::Key manualAimKey = sf::Keyboard::E;

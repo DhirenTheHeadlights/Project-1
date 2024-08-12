@@ -8,21 +8,22 @@
 #include <memory>
 #include <random>
 
-#include "GlobalValues_PG.h"
+#include "GlobalContext_PG.h"
 #include "GlobalQuadtreeHandler_PG.h"
+
 #include "ShipGroup_PG.h"
 #include "BattleManager_PG.h"
 
 namespace PirateGame {
 	class EnemyShipHandler {
 	public:
-		EnemyShipHandler() {};
+		EnemyShipHandler(GlobalContext& context, GlobalQuadtreeHandler* GQH) : context(context), GQH(GQH) {};
 		~EnemyShipHandler() {
 			// Remove all enemy ships
-			enemyShips.clear();
 			for (auto& ship : enemyShips) {
-				GlobalQuadtreeHandler::getInstance().getShipQuadtree()->removeObject(ship.get());
+				GQH->getEnemyShipQuadtree()->removeObject(ship.get());
 			}
+			enemyShips.clear();
 		};
 
 		void addEnemyShips(int numShips);
@@ -42,6 +43,10 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<ShipGroup>>& getShipGroups() { return shipGroups; }
 
 	private:
+		// Context
+		GlobalContext& context;
+		GlobalQuadtreeHandler* GQH = nullptr;
+
 		// helper functions
 		void addEnemyShipsToChunk(Map& map, int numShips);
 		void setShipGroupDestination(std::shared_ptr<ShipGroup> group);
@@ -59,7 +64,7 @@ namespace PirateGame {
 		PlayerShip* playerShip = nullptr;
 
 		// Values
-		const float enemyCannonCooldown = 2.f;
+		const sf::Time enemyCannonCooldown = sf::seconds(2.f);
 		const float maxDetectionDistance = 1000.f;
 		const float audioRange = 5000.f;
 		const float firingDistance = 1000.f;
