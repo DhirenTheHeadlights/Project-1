@@ -33,6 +33,9 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	ship->getInputHandler()->setFiringDistance(firingDistance);
 	ship->getSprite().setPosition(position);
 
+	// Update ship properties to match region difficulty
+	ship->setDifficultyScaling(context.GCH->getRegionHandler().getRegionValuesAtPosition(position).scaling);
+	
 	// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
 	// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the
 	// hashmap is global, but it is necessary because to avoid circular dependencies because

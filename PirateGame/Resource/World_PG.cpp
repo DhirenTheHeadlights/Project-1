@@ -91,5 +91,6 @@ void World::updateCoreElements() {
 	context.GTQP->updateTextQueue(window);
 	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();
+
 }
 

@@ -50,4 +50,9 @@ void DefaultDebugWorld::updateGameLoop(sf::Event event) {
 	view.updateDebugView(event);
 
 	GQH->getEnemyShipQuadtree()->draw(context.GV.get());
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
+		playerShip->getMovementHandler()->setVelocity(playerShip->getMovementHandler()->getVelocity()* 10.f);
+		std::cout << "Speed: " << vm::magnitude(playerShip->getMovementHandler()->getVelocity()) << std::endl;
+	}
 }

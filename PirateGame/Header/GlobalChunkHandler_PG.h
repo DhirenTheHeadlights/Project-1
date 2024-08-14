@@ -86,6 +86,8 @@ namespace PirateGame {
 			// Generate the chunk
 			std::shared_ptr<Chunk> newChunk = std::make_shared<Chunk>(chunkCoord, chunkSize, cellSize);
 			newChunk->setRegionType(regionHandler.generateRegionType(sf::Vector2f(static_cast<float>(chunkCoord.first), static_cast<float>(chunkCoord.second))));
+			//grab all enemy ships in newChunks' bounds
+			
 			chunks.push_back(newChunk);
 		}
 		
