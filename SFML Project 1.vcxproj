@@ -178,7 +178,7 @@
     <ClCompile Include="PirateGame\Resource\GameStateManager_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GlobalInputHandler_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\GlobalValues_PG.cpp" />
-    <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp" />
+    <ClCompile Include="PirateGame\Resource\QuadtreeTemplate_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\inGameHUD_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\Interactable_PG.cpp" />
     <ClCompile Include="PirateGame\Resource\InventoryMenu_PG.cpp" />

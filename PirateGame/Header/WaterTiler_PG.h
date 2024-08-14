@@ -9,7 +9,7 @@ namespace PirateGame {
 
         void initialize() {
             if (!waterTileTexture.loadFromFile("PirateGameSprites/water_tiles_sheet.png")) {
-                throw std::runtime_error("Failed to load water tile texture");
+                std::cerr << "Failed to load water tile texture" << std::endl;
             }
             waterTileTexture.setRepeated(true);
 

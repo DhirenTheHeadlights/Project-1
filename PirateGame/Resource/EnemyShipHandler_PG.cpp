@@ -69,7 +69,7 @@ bool EnemyShipHandler::isDestinationReached(std::shared_ptr<ShipGroup> shipGroup
 void EnemyShipHandler::updateGroupDestination(std::shared_ptr<ShipGroup> group) {
 	// Check if nullptr
 	if (group == nullptr) {
-		std::cout << "Error: Ship group: " << group->getID() << " is nullptr when updating destination" << std::endl;
+		std::cout << "Error: Ship group: " << group->getID()->id << " is nullptr when updating destination" << std::endl;
 		return;
 	}
 
@@ -88,7 +88,7 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 	for (auto& ship : nearbyShips) {
 
 		// Grab the ship group ID
-		int groupID = ship->getGroupID();
+		ID* groupID = ship->getGroupID();
 
 		// Look for the ship group
 		auto it = std::find_if(shipGroups.begin(), shipGroups.end(), [groupID](std::shared_ptr<ShipGroup> group) { return group->getID() == groupID; });
@@ -184,7 +184,7 @@ void EnemyShipHandler::interactWithNearbyShips(std::shared_ptr<ShipGroup> enemyS
 	int interaction = dist(context.GV->getRandomEngine());
 
 	// Shows if there is interaction. Possible framework for future attack indicator!
-	context.GV->displayText(std::to_string(otherShip->getID()) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
+	context.GV->displayText(std::to_string(otherShip->getID()->id) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
 
 	auto otherShipGroup = std::find_if(shipGroups.begin(), shipGroups.end(), [otherShip](std::shared_ptr<ShipGroup> group) { return group->getID() == otherShip->getGroupID(); });
 

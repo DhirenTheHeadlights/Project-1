@@ -14,7 +14,7 @@ namespace PirateGame {
 		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
 		~ShipCannonHandler() {};
 
-		void initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, int ID, sf::Vector2f scale);
+		void initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, ID* ID, sf::Vector2f scale);
 		void shootCannonballs(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
 		void updateCannons(sf::RenderWindow* window, float elapsed);
 		void drawCannons(sf::RenderWindow* window);

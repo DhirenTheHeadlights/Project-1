@@ -4,9 +4,6 @@ using namespace PirateGame;
 
 // Create the ship
 void Ship::setUpShip(ShipClass level) {
-	// Set the unique ID of the ship
-	ID = context.GIDM->getUniqueID();
-
 	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
 		// Generate a random number between 1 and 5
@@ -42,7 +39,7 @@ void Ship::setUpShip(ShipClass level) {
 	SCH = std::make_unique<ShipCannonHandler>(sprite);
 	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManager().getTexture(shipClass), 
 						context.GTH->getShipTextures().getShipTextureManager().getImage(shipClass), 
-						shipProperties.numCannons, ID, scaling);
+						shipProperties.numCannons, id.get(), scaling);
 
 	// Load the sail handler
 	SSH = std::make_unique<ShipSailHandler>();

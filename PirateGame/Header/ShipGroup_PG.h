@@ -13,7 +13,7 @@
 namespace PirateGame {
 	class ShipGroup {
 	public:
-		ShipGroup(GlobalContext& context) : context(context) { ID = context.GIDM->getUniqueID(); }
+		ShipGroup(GlobalContext& context) : context(context), ID(context.GIDM->generateID()) {};
 		~ShipGroup() {};
 
 		void updateGroup(Quadtree<EnemyShip>* shipQuadtree);
@@ -26,7 +26,7 @@ namespace PirateGame {
 			}
 
 			ship->setBaseSpeed(groupSpeed);
-			ship->setGroupID(ID);
+			ship->setGroupID(ID.get());
 			ship->getMovementHandler()->setDestination(destination);
 
 			// Add the ship to the hashmap
@@ -73,8 +73,8 @@ namespace PirateGame {
 		void setTargetVelocity(sf::Vector2f targetVelocity) { this->targetVelocity = targetVelocity; }
 		void setInCombat(bool inCombat) { this->inCombat = inCombat; }
 		void setIsInteracting(bool isInteracting) { this->isInteracting = isInteracting; }
-		void addGroupIDInteractedWithRecently(int groupID) { groupIDsInteractedWith.push_back(groupID); }
-		void removeGroupIDInteractedWith(int groupID) {
+		void addGroupIDInteractedWithRecently(ID* groupID) { groupIDsInteractedWith.push_back(groupID); }
+		void removeGroupIDInteractedWith(ID* groupID) {
 			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) == groupIDsInteractedWith.end()) {
 				//std::cout << "Error: Group ID [" << groupID << "] not found in groupIDsInteractedWith vector!" << std::endl;
 				return;
@@ -86,10 +86,10 @@ namespace PirateGame {
 		std::vector<std::shared_ptr<EnemyShip>>& getEnemyShips() { return ships; }
 		std::vector<Ship*> getTargetShips() { return targetShips; }
 
-		int getID() const { return ID; }
+		ID* getID() const { return ID.get(); }
 		bool getInCombat() const { return inCombat; }
 		bool getIsInteracting() const { return isInteracting; }
-		bool isGroupIDInteractedWithRecently(int groupID) {
+		bool isGroupIDInteractedWithRecently(ID* groupID) {
 			if (std::find(groupIDsInteractedWith.begin(), groupIDsInteractedWith.end(), groupID) != groupIDsInteractedWith.end()) {
 				return true;
 			}
@@ -105,7 +105,7 @@ namespace PirateGame {
 			return averagePosition;
 		}
 		sf::Vector2f getHeading() const { return destination; }
-		std::vector<int> getGroupIDsInteractedWith() { return groupIDsInteractedWith; }
+		std::vector<ID*> getGroupIDsInteractedWith() { return groupIDsInteractedWith; }
 
 	private:
 		// Context
@@ -141,9 +141,9 @@ namespace PirateGame {
 
 		// Game objects
 		std::vector<std::shared_ptr<EnemyShip>> ships;
-		std::vector<int> groupIDsInteractedWith;
+		std::vector<ID*> groupIDsInteractedWith;
 
 		// Unique ID
-		int ID = -1;
+		std::shared_ptr<ID> ID;
 	};
 }

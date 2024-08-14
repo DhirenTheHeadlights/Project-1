@@ -8,7 +8,7 @@ namespace PirateGame {
 
 	class Cannonball {
 	public:
-		Cannonball(GlobalIDManager* GIDM, int shipID) : shipID(shipID), ID(GIDM->getUniqueID()) {};
+		Cannonball(GlobalIDManager* GIDM, ID* shipID) : shipID(shipID), ID(GIDM->generateID()) {};
 		~Cannonball() {};
 
 		// Setters 
@@ -23,8 +23,8 @@ namespace PirateGame {
 		sf::Sprite& getSprite() { return sprite; }
 		float getSpeed() const { return speed; }
 		bool getActive() const { return isActive; }
-		int getShipID() const { return shipID; }
-		int getID() const { return ID; }
+		ID* getShipID() const { return shipID; }
+		ID* getID() const { return ID.get(); }
 		sf::CircleShape getApproximateHitbox() { return sf::CircleShape(sprite.getGlobalBounds().width / 2.f); }
 
 		bool operator==(const Cannonball& other) const {
@@ -38,8 +38,8 @@ namespace PirateGame {
 
 		float speed = 10.f;
 
-		int shipID = -1;
-		int ID = -1;
+		ID* shipID;
+		std::shared_ptr<ID> ID;
 
 		bool isActive = true;
 	};

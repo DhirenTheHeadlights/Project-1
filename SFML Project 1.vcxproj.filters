@@ -496,7 +496,7 @@
     <ClCompile Include="PirateGame\Resource\ShipSail_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game Objects\Ship</Filter>
     </ClCompile>
-    <ClCompile Include="PirateGame\Resource\HashmapTemplate_PG.cpp">
+    <ClCompile Include="PirateGame\Resource\QuadtreeTemplate_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\General</Filter>
     </ClCompile>
     <ClCompile Include="PirateGame\Resource\View_PG.cpp">

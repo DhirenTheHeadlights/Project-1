@@ -19,7 +19,7 @@
 namespace PirateGame {
 	class Ship {
 	public:
-		Ship(GlobalContext& context) : context(context) {};
+		Ship(GlobalContext& context) : context(context), id(context.GIDM->generateID()) {};
 
 		// Create the ship and set its values. Random ship class if not specified.
 		void setUpShip(ShipClass shipClass = ShipClass::Random);
@@ -30,7 +30,7 @@ namespace PirateGame {
 		virtual void customShipDraw() = 0; // Virtual method to allow for custom ship draw
 
 		// Setters
-		void damageShip(float damagePerFrame) {
+		void damageShip(const float damagePerFrame) {
 			health -= damagePerFrame;
 			if (health < 0) health = 0;
 		}
@@ -41,14 +41,14 @@ namespace PirateGame {
 		void setBaseSpeed(float speed) { shipProperties.baseSpeed = speed; }
 		void setMaxHealth(float health) { shipProperties.maxHealth = health; }
 		void setRegenRate(float rate) { shipProperties.regenRate = rate; }
-		void setGroupID(int groupID) { this->groupID = groupID; }
+		void setGroupID(ID* groupID) { this->groupID = groupID; }
 		void setDead(bool isDead) { this->isDead = isDead; }
 
 		// Getters
 		float getHealth() const { return health; }
 		sf::Sprite& getSprite() { return sprite; }
-		int getID() const { return ID; }
-		int getGroupID() const { return groupID; }
+		ID* getID() const { return id.get(); }
+		ID* getGroupID() const { return groupID; }
 		bool getIsDead() const { return isDead; }
 
 		ShipProperties& getSpecificShipProperties() { return shipProperties; }
@@ -104,9 +104,8 @@ namespace PirateGame {
 		sf::Time regenTime = sf::seconds(2.f);
 
 		// Unique ID and group ID
-		int ID = -1;
-		int groupID = -1;
-
+		std::shared_ptr<ID> id;
+		ID* groupID;
 	protected:
 		// Context
 		GlobalContext& context;

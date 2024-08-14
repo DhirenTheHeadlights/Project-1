@@ -19,7 +19,7 @@ namespace PirateGame {
 
 	class ShipCannon {
 	public:
-		ShipCannon(const sf::Texture& texture, int id, FiringSide FS, sf::Vector2f scale) : cannonSprite(texture), id(id), side(FS) {
+		ShipCannon(const sf::Texture& texture, ID* id, FiringSide FS, sf::Vector2f scale) : cannonSprite(texture), id(id), side(FS) {
 			cannonSprite.setScale(scale);
 
 			if (FS == FiringSide::Port) {
@@ -85,7 +85,7 @@ namespace PirateGame {
 
 		Quadtree<Cannonball>* cannonballHashmap = nullptr;
 
-		int id;
+		ID* id;
 	};
 }
 	
