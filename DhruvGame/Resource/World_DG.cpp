@@ -58,7 +58,7 @@ void World::reset() {
 
 void World::render() {
 	bird.draw(window);
-	view.setCenter(bird.getSprite().getPosition().x, bird.getSprite().getPosition().y);	
+	score.draw(window);
 	
 	for (auto& pipe : pipes) {
 		pipe.draw(window);
