@@ -59,8 +59,6 @@ namespace PirateGame {
 		RegionHandler getRegionHandler() const { return regionHandler; }
 
 	private:
-		GlobalValues* GV = nullptr;
-
 		// Vector to store 'chunks'
 		std::vector<std::shared_ptr<Chunk>> chunks;
 

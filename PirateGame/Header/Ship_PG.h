@@ -105,7 +105,7 @@ namespace PirateGame {
 
 		// Unique ID and group ID
 		std::shared_ptr<ID> id;
-		ID* groupID;
+		ID* groupID = nullptr;
 	protected:
 		// Context
 		GlobalContext& context;

@@ -2,8 +2,6 @@
 
 /// Landmass types, mainly to know which texture is used
 
-#include <random>
-
 namespace PirateGame {
 	enum class IslandType {
 		Island1,

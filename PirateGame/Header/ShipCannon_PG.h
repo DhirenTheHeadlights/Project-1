@@ -38,7 +38,7 @@ namespace PirateGame {
 
 		void fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
 		void drawCannonNBalls(sf::RenderWindow* window);
-		void updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, float elapsed);
+		void updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, sf::Time elapsed);
 
 		// Setters
 		void setCannonballHashmap(Quadtree<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
@@ -57,7 +57,7 @@ namespace PirateGame {
 		sf::Vector2f calculatePerpendicularDirection(float rotation) const;
 		void rotateTowards(float angle, float step);
 		void updateCannonRotation(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window);
-		void updateCannonballs(float elapsed);
+		void updateCannonballs(sf::Time elapsed);
 
 		sf::Clock resetRotationClock;
 		sf::Time resetRotationTime = sf::seconds(2.f);

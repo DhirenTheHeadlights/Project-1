@@ -13,8 +13,6 @@
 #include "Island_PG.h"
 #include "Rock_PG.h"
 #include "Shipwreck_PG.h"
-#include "LandMassHashmap_PG.h"
-#include "Map.h"
 
 namespace PirateGame {
     class LandMassHandler {

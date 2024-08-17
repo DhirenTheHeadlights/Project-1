@@ -17,7 +17,7 @@ namespace PirateGame {
 
 		void loadSailPositions(const std::vector<sf::Texture>& sailTextures, const sf::Image& shipImage, sf::Vector2f scaling);
 
-		void update(const sf::Sprite& shipSprite, sf::Vector2f& shipDirection);
+		void update(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection);
 
 		void moveSailsUp(sf::Keyboard::Key key) {
 			for (auto& sail : sails) {

@@ -55,21 +55,20 @@ void Ship::update() {
 	regenerateHealth();
 
 	// Update handlers
-	SCH->updateCannons(context.GV->getWindow(), context.GV->getGlobalClock().getElapsedTime().asSeconds());
-	sf::Vector2f shipDirection = SMH->getVelocity();
-	SSH->update(sprite, shipDirection);
+	SCH->updateCannons(context.GV->getWindow(), context.GC->getDeltaTime());
+	SSH->update(sprite, SMH->getVelocity());
+	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
+	SMH->update(SSH->getAverageSailDirection(), context.GC->getDeltaTime(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
 
 	// Execute custom ship update
 	customShipUpdate();
 }
 
 void Ship::draw() {
-	sf::RenderWindow* window = context.GV->getWindow();
-
-	window->draw(sprite);
+	context.GV->getWindow()->draw(sprite);
 
 	// Draw sails
-	SSH->draw(window);
+	SSH->draw(context.GV->getWindow());
 
 	// Custom ship draw
 	customShipDraw();

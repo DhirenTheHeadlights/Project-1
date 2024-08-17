@@ -103,46 +103,46 @@ void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide F
     cannonSprite.setPosition(cannonPosition);
 
     switch (state) {
-        case FiringState::TowardsTarget:
-            if (FS == side) {
-				sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, targetPos);
-				float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
-				rotateTowards(targetRotation, rotationSpeed);
-			}
-			break;
-        case FiringState::TowardsMouse:
-            if (FS == side) {
-		        sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
-		        sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
-		        sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
-		        float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
+    case FiringState::TowardsTarget:
+        if (FS == side) {
+			sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, targetPos);
+			float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
+			rotateTowards(targetRotation, rotationSpeed);
+		}
+		break;
+    case FiringState::TowardsMouse:
+        if (FS == side) {
+		    sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
+		    sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
+		    sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
+		    float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
 
-		        rotateTowards(targetRotation, rotationSpeed);
+		    rotateTowards(targetRotation, rotationSpeed);
 
-		        resetRotationClock.restart();
-		    }
-            break;
-        case FiringState::Untargeted:
-            float targetRotation = rotation + defaultRotation;
-			// If firing state is untargeted, slowly rotate towards the default rotation
-            if (resetRotationClock.getElapsedTime() < resetRotationTime) {
-                rotateTowards(rotation + defaultRotation, rotationSpeed);
-            }
-            // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
-			else cannonSprite.setRotation(targetRotation);
-            break;
+		    resetRotationClock.restart();
+		}
+        break;
+    case FiringState::Untargeted:
+        float targetRotation = rotation + defaultRotation;
+		// If firing state is untargeted, slowly rotate towards the default rotation
+        if (resetRotationClock.getElapsedTime() < resetRotationTime) {
+            rotateTowards(rotation + defaultRotation, rotationSpeed);
+        }
+        // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
+		else cannonSprite.setRotation(targetRotation);
+        break;
     }
 }
 
-void ShipCannon::updateCannonballs(float elapsed) {
+void ShipCannon::updateCannonballs(sf::Time elapsed) {
     for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
         // Update the cannonball in the hashmap
         cannonballHashmap->updateObjectPosition(*it);
 
         // Update the position and velocity (1% Decay) of the cannonball
-        sf::Vector2f velocity = (*it)->getVelocity() * pow(0.97f, elapsed);
+        sf::Vector2f velocity = (*it)->getVelocity() * pow(0.97f, elapsed.asSeconds());
         (*it)->setVelocity(velocity);
-        (*it)->getSprite().setPosition((*it)->getSprite().getPosition() + velocity * elapsed);
+        (*it)->getSprite().setPosition((*it)->getSprite().getPosition() + velocity * elapsed.asSeconds());
 
         // If more than 2 seconds have passed, delete the cannonball
         if ((*it)->getClock().getElapsedTime().asSeconds() > cannonballFlightTime || (*it)->getActive() == false) {
@@ -159,7 +159,7 @@ void ShipCannon::updateCannonballs(float elapsed) {
     }
 }
 
-void ShipCannon::updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, float elapsed) {
+void ShipCannon::updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, sf::Time elapsed) {
     updateCannonRotation(shipSprite, FS, window);
     updateCannonballs(elapsed);
 }

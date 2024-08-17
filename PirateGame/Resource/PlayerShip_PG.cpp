@@ -6,7 +6,7 @@ using namespace PirateGame;
 
 void PlayerShip::customShipSetUp() {
 	SIH = std::make_unique<PlayerShipInputHandler>(getSprite(), context.GSM.get(), context.GIH.get(), context.GWC.get());
-	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite());
+	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite(), getSpecificShipProperties().baseSpeed);
 	
 	SIvH = std::make_unique<ShipInventoryHandler>();
 	SIvH->addGold(1000);
@@ -20,9 +20,6 @@ void PlayerShip::customShipSetUp() {
 }
 
 void PlayerShip::customShipUpdate() {
-	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
-	SMH->update(getSpecificShipProperties().baseSpeed, SSH->getAverageSailDirection(), context.GV->getGlobalClock().getElapsedTime().asSeconds(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
-
 	// If the experience is greater than the experience to level up
 	// Level up the ship and also up the amount of exp to level up
 	if (experience > experienceToLevelUp) {

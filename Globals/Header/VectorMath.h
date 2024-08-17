@@ -122,20 +122,6 @@ namespace vm {
 		return fabs(angleDifference) > PI / 2;
 	}
 
-	inline float randomFloat(float min, float max) {
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_real_distribution<float> dis(min, max);
-		return dis(gen);
-	}
-
-	inline int randomInt(int min, int max) {
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_int_distribution<int> dis(min, max);
-		return dis(gen);
-	}
-
 	inline float distanceToLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) {
 		sf::Vector2f line = lineEnd - lineStart;
 		sf::Vector2f pointToLineStart = point - lineStart;
@@ -149,5 +135,13 @@ namespace vm {
 		sf::Vector2f pointToLineStart = point - lineStart;
 		float projection = dot(pointToLineStart, normalize(line));
 		return lineStart + normalize(line) * projection;
+	}
+
+	template <typename T>
+	inline T randomValue(const T& min, const T& max) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<T> dis(min, max);
+		return dis(gen);
 	}
 }

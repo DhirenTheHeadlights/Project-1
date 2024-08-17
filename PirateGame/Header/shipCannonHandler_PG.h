@@ -16,7 +16,7 @@ namespace PirateGame {
 
 		void initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, ID* ID, sf::Vector2f scale);
 		void shootCannonballs(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
-		void updateCannons(sf::RenderWindow* window, float elapsed);
+		void updateCannons(sf::RenderWindow* window, sf::Time elapsed);
 		void drawCannons(sf::RenderWindow* window);
 
 		// Setters

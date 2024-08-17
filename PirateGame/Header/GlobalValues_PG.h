@@ -7,13 +7,12 @@
 #include <random>
 #include <unordered_map>
 
-#include "GlobalFontHandler_PG.h"
 #include "VectorMath.h"
 
 namespace PirateGame {
 	class GlobalValues {
 	public:
-        GlobalValues(GlobalFontHandler* GFV) : GFV(GFV) {};
+        GlobalValues(sf::Font& font) : font(font) {};
 
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);
@@ -25,7 +24,7 @@ namespace PirateGame {
             // Find or create the text object
             sf::Text& displayText = textCache[key];
             if (displayText.getString().isEmpty()) {
-                displayText.setFont(*GFV->getGlobalFont());
+                displayText.setFont(font);
                 displayText.setString(text);
                 displayText.setCharacterSize(size);
                 displayText.setFillColor(color);
@@ -49,14 +48,12 @@ namespace PirateGame {
             }
             this->globalWindow = window;
         }
-        void setClock(sf::Clock clock) { this->globalClock = clock; }
         void setShowHUD(bool showHUD) { this->showHUD = showHUD; }
         void setShowInventory(bool showInventory) { this->showInventory = showInventory; }
 
         bool getShowHUD() const { return this->showHUD; }
         bool getShowInventory() const { return this->showInventory; }
         sf::RenderWindow* getWindow() { return this->globalWindow; }
-        sf::Clock& getGlobalClock() { return this->globalClock; }
         std::default_random_engine& getRandomEngine() { return randomEngine; }
         int getTextSize() const { return textSize; }
 
@@ -66,10 +63,10 @@ namespace PirateGame {
         int textSize = 30; 
         const int textScalingFactor = 750;
         std::default_random_engine randomEngine;
-        sf::RenderWindow* globalWindow = nullptr;
-        sf::Clock globalClock;
 
-        GlobalFontHandler* GFV = nullptr;
+        sf::RenderWindow* globalWindow = nullptr;
+
+        sf::Font& font;
 
         // Cache for storing text objects
         std::unordered_map<std::string, sf::Text> textCache;

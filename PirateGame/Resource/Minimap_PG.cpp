@@ -20,7 +20,7 @@ void Minimap::draw(sf::RenderWindow* window) {
 
 void Minimap::update() {
     sf::Vector2f shipPos = ship->getSprite().getPosition();
-    sf::Vector2f minimapCenter = sf::Vector2f(minimapSprite.getPosition().x + minimapSprite.getGlobalBounds().width / 2, minimapSprite.getPosition().y + minimapSprite.getGlobalBounds().height / 2);
+    sf::Vector2f minimapCenter = minimapSprite.getPosition() + minimapSprite.getGlobalBounds().getSize() / 2.f;
 
     minimapSprite.setPosition(position);
 
@@ -28,7 +28,7 @@ void Minimap::update() {
     float visibilityRadius = 10000.0f;
 
     shipIconSprite.setPosition(minimapCenter);
-    shipIconSprite.setOrigin(shipIconSprite.getLocalBounds().width / 2, shipIconSprite.getLocalBounds().height / 2);
+    shipIconSprite.setOrigin(shipIconSprite.getLocalBounds().getSize() / 2.f);
     shipIconSprite.setRotation(ship->getSprite().getRotation());
 
     // Clear the previous visible landmasses

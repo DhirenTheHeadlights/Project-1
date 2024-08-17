@@ -21,7 +21,7 @@ namespace PirateGame {
 
 		void addShip(std::shared_ptr<EnemyShip> ship, Quadtree<EnemyShip>* shipQuadtree) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
-			if (ships.size() == 0 || ship->getMovementHandler()->getBaseSpeed() < groupSpeed) {
+			if (ships.size() == 0 || ship->getSpecificShipProperties().baseSpeed < groupSpeed) {
 				groupSpeed = ship->getSpecificShipProperties().baseSpeed * ship->getMovementHandler()->getEnemySpeedMultiplier();
 			}
 
@@ -41,12 +41,12 @@ namespace PirateGame {
 			shipQuadtree->removeObject(ship.get());
 
 			// Check if the ship was the slowest ship in the group
-			if (ship->getMovementHandler()->getBaseSpeed() == groupSpeed) {
+			if (ship->getSpecificShipProperties().baseSpeed == groupSpeed) {
 				// If it was, find the next slowest ship and set the group speed to that ship's speed
 				float newGroupSpeed = 0.f;
 				for (auto& otherShip : ships) {
-					if (otherShip->getMovementHandler()->getBaseSpeed() < newGroupSpeed) {
-						newGroupSpeed = otherShip->getMovementHandler()->getBaseSpeed() * otherShip->getMovementHandler()->getEnemySpeedMultiplier();
+					if (otherShip->getSpecificShipProperties().baseSpeed < newGroupSpeed) {
+						newGroupSpeed = otherShip->getSpecificShipProperties().baseSpeed * otherShip->getMovementHandler()->getEnemySpeedMultiplier();
 					}
 				}
 				groupSpeed = newGroupSpeed;

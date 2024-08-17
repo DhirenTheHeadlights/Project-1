@@ -7,11 +7,11 @@
 namespace PirateGame {
 	class PlayerShipMovementHandler : public ShipMovementHandler {
 	public:
-		PlayerShipMovementHandler(sf::RenderWindow* window, sf::Sprite& sprite) : ShipMovementHandler(sprite), window(window) {};
+		PlayerShipMovementHandler(sf::RenderWindow* window, sf::Sprite& sprite, float& baseSpeed) : ShipMovementHandler(sprite, baseSpeed), window(window) {};
 		~PlayerShipMovementHandler() {};
 
 		// Movement functions
-		void update(float baseSpeed, sf::Vector2f sailDirection, float dt, sf::Vector2f windDirection, float windSpeed) override;
+		void update(sf::Vector2f sailDirection, sf::Time dt, sf::Vector2f windDirection, float windSpeed) override;
 
 	private:
 		void setSpriteRotation() override;

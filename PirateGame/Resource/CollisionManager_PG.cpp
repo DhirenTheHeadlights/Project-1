@@ -3,61 +3,63 @@
 using namespace PirateGame;
 
 void CollisionManager::handleCollisions(GlobalQuadtreeHandler* GQH) {
-	// Delete ships that are dead
-	for (auto& ship : ships) {
-		if (ship->getIsDead()) ships.erase(std::remove(ships.begin(), ships.end(), ship), ships.end());
-	}
+	// Handle collisions for the player ship
+	handleShipCollisions(GQH, playerShip);
 
-	// Grab global hashmaps
-	Quadtree<EnemyShip>* shipHashmap = GQH->getEnemyShipQuadtree();
-	Quadtree<LandMass>* landMassHashmap = GQH->getLandMassQuadtree();
+	std::erase_if(ships, [](const std::shared_ptr<EnemyShip>& s) { return s->getIsDead(); });
 
-	// Grab the nearby landmasses and ships for each ship
-	for (auto& ship : ships) {
-		std::vector<LandMass*> nearbyLandMasses = landMassHashmap->findObjectsNearObject(ship, nearbyDistanceLandmass);
-		std::vector<EnemyShip*> nearbyShips = shipHashmap->findObjectsNearObject(ship, nearbyDistanceShip);
-		std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
-
-		// Vectors to hold the colliding objects
-		std::vector<LandMass*> collidingLandMasses = {};
-		std::vector<Ship*> collidingShips = {};
-		std::vector<Cannonball*> collidingCannonballs = {};
-
-		// Check if the ship is colliding with any of the nearby land masses and send to movement handler
-		std::vector<sf::Sprite> nearbySprites;
-		for (auto& i : nearbyLandMasses) {
-			handleLandMassCollision(ship, i, collidingLandMasses);
-			nearbySprites.push_back(i->getSprite());
-		}
-
-		// Check if the ship is colliding with any of the nearby ships
-		for (auto& i : nearbyShips) {
-			// Skip if the ship is the same ship
-			if (i->getID() == ship->getID()) continue;
-			handleShipCollision(ship, i, collidingShips);
-			nearbySprites.push_back(i->getSprite());
-		}
-
-		ship->getMovementHandler()->setNearbySprites(nearbySprites);
-
-		// Check if the ship is colliding with any of the nearby cannonballs 
-		for (auto& i : nearbyCannonballs) {
-			// Skip if the cannonball is from the same ship
-			if (i->getShipID() == ship->getID()) continue;
-			handleCannonballCollision(ship, i, collidingCannonballs);
-		}
+	// Handle collisions for each enemy ship
+	for (auto& enemyShip : ships) {
+		enemyShip->getMovementHandler()->setNearbySprites(handleShipCollisions(GQH, enemyShip.get()));
 	}
 
 	// Grab nearby cannonballs for each cannonball
 	std::vector<Cannonball*> cannonballs = GQH->getCannonballQuadtree()->getObjects();
 
 	for (auto& c1 : cannonballs) {
-		for (auto& c2 : cannonballs) {
-			// Skip if the cannonballs are the same
+		std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(c1, nearbyDistanceCannonball);
+		for (auto& c2 : nearbyCannonballs) {
+			// Skip if the cannonballs are the same cannonball
 			if (c1->getID() == c2->getID()) continue;
 			handleCannonballCollision(c1, c2);
 		}
 	}
+}
+
+std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHandler* GQH, Ship* ship) {
+	std::vector<LandMass*> nearbyLandMasses = GQH->getLandMassQuadtree()->findObjectsNearObject(ship, nearbyDistanceLandmass);
+	std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(ship, nearbyDistanceShip);
+	std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
+
+	// Vectors to hold the colliding objects
+	std::vector<LandMass*> collidingLandMasses = {};
+	std::vector<Ship*> collidingShips = {};
+	std::vector<Cannonball*> collidingCannonballs = {};
+
+	// Check if the ship is colliding with any of the nearby land masses and send to movement handler
+	std::vector<sf::Sprite> nearbySprites;
+	for (auto& i : nearbyLandMasses) {
+		handleLandMassCollision(ship, i, collidingLandMasses);
+		nearbySprites.push_back(i->getSprite());
+	}
+
+	// Check if the ship is colliding with any of the nearby ships
+	for (auto& i : nearbyShips) {
+		// Skip if the ship is the same ship
+		if (i->getID() == ship->getID()) continue;
+		handleShipCollision(ship, i, collidingShips);
+		nearbySprites.push_back(i->getSprite());
+	}
+
+	// Check if the ship is colliding with any of the nearby cannonballs 
+	for (auto& i : nearbyCannonballs) {
+		// Skip if the cannonball is from the same ship
+		if (i->getShipID() == ship->getID()) continue;
+		handleCannonballCollision(ship, i, collidingCannonballs);
+	}
+
+	// Return the nearby sprites for the ship's movement handler if needed
+	return nearbySprites;
 }
 
 void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, std::vector<LandMass*>& collidingLandMasses) {

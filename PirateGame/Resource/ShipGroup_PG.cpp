@@ -4,29 +4,28 @@ using namespace PirateGame;
 
 void ShipGroup::updateGroup(Quadtree<EnemyShip>* shipQuadtree) {
 	for (size_t i = 0; i < ships.size(); i++) {
-		std::shared_ptr<EnemyShip> ship = ships[i];
-		ship->update();
-		shipQuadtree->updateObjectPosition(ship.get());
+		ships[i]->update();
+		shipQuadtree->updateObjectPosition(ships[i].get());
 
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
-		sf::Vector2f resultantVector = vm::normalize(calculateAlignment(ship) + calculateCohesion(ship) + calculateSeparation(ship) + calculateGoalVector(ship));
+		sf::Vector2f resultantVector = vm::normalize(calculateAlignment(ships[i]) + calculateCohesion(ships[i]) + calculateSeparation(ships[i]) + calculateGoalVector(ships[i]));
 
 		// If the ship is in combat, set the target position to be the closest enemy ship
-		Ship* targetShip = getClosestEnemyShip(ship);
+		Ship* targetShip = getClosestEnemyShip(ships[i]);
 		if (inCombat && targetShip != nullptr) {
-			ship->setTargetPosition(targetShip->getSprite().getPosition());
-			ship->getMovementHandler()->setActiveTowardsTarget(true);
-			ship->getMovementHandler()->setBaseSpeed(combatSpeedMultiplier * groupSpeed);
+			ships[i]->setTargetPosition(targetShip->getSprite().getPosition());
+			ships[i]->getMovementHandler()->setActiveTowardsTarget(true);
+			ships[i]->getSpecificShipProperties().baseSpeed = combatSpeedMultiplier * groupSpeed;
 		}
 		else {
-			ship->getMovementHandler()->setActiveTowardsTarget(false);
-			ship->getMovementHandler()->setBaseSpeed(groupSpeed);
+			ships[i]->getMovementHandler()->setActiveTowardsTarget(false);
+			ships[i]->getSpecificShipProperties().baseSpeed = groupSpeed;
 		}
 
 		// If the health of the ship is almost 0, remove the ship from the group
-		if (ship->getHealth() < 0.001f) {
-			ship->setDead(true);
-			removeShip(ship, shipQuadtree);
+		if (ships[i]->getHealth() < 0.001f) {
+			ships[i]->setDead(true);
+			removeShip(ships[i], shipQuadtree);
 		}
 
 		// If any ships in the target ships vector is null or has health less than 0.001f, remove them from the vector

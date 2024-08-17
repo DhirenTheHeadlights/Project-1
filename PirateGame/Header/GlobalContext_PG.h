@@ -17,7 +17,7 @@
 namespace PirateGame {
 	struct GlobalContext {
 		std::unique_ptr<GlobalFontHandler> GFH = std::make_unique<GlobalFontHandler>();
-		std::unique_ptr<GlobalValues> GV = std::make_unique<GlobalValues>(GFH.get());
+		std::unique_ptr<GlobalValues> GV = std::make_unique<GlobalValues>(*GFH->getGlobalFont());
 		std::unique_ptr<GlobalChunkHandler> GCH = std::make_unique<GlobalChunkHandler>();
 		std::unique_ptr<GlobalGameStateManager> GGSM = std::make_unique<GlobalGameStateManager>();
 		std::unique_ptr<GlobalInputHandler> GIH = std::make_unique<GlobalInputHandler>();

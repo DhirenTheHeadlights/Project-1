@@ -11,7 +11,7 @@
 namespace PirateGame {
 	class Minimap {
 	public:
-		Minimap(sf::Texture minimap, sf::Texture shipIcon) {
+		Minimap(const sf::Texture& minimap, const sf::Texture& shipIcon) {
 			// Load the textures
 			minimapSprite.setTexture(minimap);
 			minimapSprite.setScale(1.6f, 1.6f);

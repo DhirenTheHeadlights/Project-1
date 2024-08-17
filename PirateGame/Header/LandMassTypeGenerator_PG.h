@@ -3,9 +3,9 @@
 /// Landmass type generator, so that we can assign a random land mass type to a land mass
 /// Also, this way the textures can be synced up with the land mass type in the texture manager
 
-#include <random>
 #include "LandMassType_PG.h"
 #include "Region_PG.h"
+//#include "VectorMath.h"
 
 // This class will assign a random land mass type to a land mass
 namespace PirateGame {
@@ -25,26 +25,21 @@ namespace PirateGame {
 				return getShipwreckType(difficulty);
 			}
         }
-        
+
     private:
         IslandType getIslandType(int difficulty) const {
-            static std::random_device rd;
-            static std::mt19937 gen(rd());
-            static std::uniform_int_distribution<> dis(difficulty * numIslands, difficulty * numIslands + (numIslands - 1)); // Assuming 2 island types
-            return static_cast<IslandType>(dis(gen));
+            int randomValue = vm::randomValue(difficulty * numIslands, difficulty * numIslands + (numIslands - 1));
+            return static_cast<IslandType>(randomValue);
         }
 
         RockType getRockType(int difficulty) const {
-            static std::random_device rd;
-            static std::mt19937 gen(rd());
-            static std::uniform_int_distribution<> dis(difficulty * numRocks, difficulty * numRocks + (numRocks - 1)); // Assuming 9 rock types
-            return static_cast<RockType>(dis(gen));
+            int randomValue = vm::randomValue(difficulty * numRocks, difficulty * numRocks + (numRocks - 1));
+            return static_cast<RockType>(randomValue);
         }
+
         ShipwreckType getShipwreckType(int difficulty) const {
-            static std::random_device rd;
-            static std::mt19937 gen(rd());
-            static std::uniform_int_distribution<> dis(difficulty * numShipwrecks, difficulty * numShipwrecks + (numShipwrecks - 1)); // Assuming 1 wreck type
-            return static_cast<ShipwreckType>(dis(gen));
+            int randomValue = vm::randomValue(difficulty * numShipwrecks, difficulty * numShipwrecks + (numShipwrecks - 1));
+            return static_cast<ShipwreckType>(randomValue);
         }
     };
 }

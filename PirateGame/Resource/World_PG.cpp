@@ -84,12 +84,16 @@ void World::drawGameLoop() {
 }
 
 void World::updateCoreElements() {
-	context.GV->getGlobalClock().restart();
+	context.GC->update();
 	context.GCH->updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
 	context.GWC->update();
 	GQH->updateQuadtrees();
 	context.GTQP->updateTextQueue(window);
 	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
+		playerShip->getMovementHandler()->setSpeed(playerShip->getMovementHandler()->getSpeed() * 2.f);
+	}
 }
 

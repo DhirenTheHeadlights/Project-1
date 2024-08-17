@@ -1,9 +1,8 @@
 #pragma once
 
-#include <random>
 #include <unordered_map>
 
-#include "LandMassTypeGenerator_PG.h"
+#include "Region_PG.h"
 
 namespace PirateGame {
 	

@@ -1,16 +1,22 @@
 #pragma once
 
-/// Global clock to be used throughout the game
-
 #include <SFML/Graphics.hpp>
 
 namespace PirateGame {
 	class GlobalClock {
 	public:
-		void update() { clock.restart(); }
+		// Call this at the beginning of each frame
+		void update() {
+			dt = clock.restart();
+		}
 
-		sf::Time getElapsedTime() { return clock.getElapsedTime(); }
+		// Get the same delta time for all classes
+		sf::Time getDeltaTime() const {
+			return dt;
+		}
+
 	private:
 		sf::Clock clock;
+		sf::Time dt;  // Store the delta time for each frame
 	};
 }

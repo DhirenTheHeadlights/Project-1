@@ -7,6 +7,7 @@ namespace PirateGame {
 		DevilsDen, //3
 		ShipwreckShoals, //4
 	};
+
 	struct RegionValues {
 		RegionValues(Region region) : region(region) {
 			switch (region) {

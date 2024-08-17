@@ -55,7 +55,7 @@ void ShipCannonHandler::shootCannonballs(const sf::Texture& cannonballTexture, G
 	}
 }
 
-void ShipCannonHandler::updateCannons(sf::RenderWindow* window, float elapsed) {
+void ShipCannonHandler::updateCannons(sf::RenderWindow* window, sf::Time elapsed) {
     for (size_t i = 0; i < cannons.size(); i++) {
         cannons[i].updateCannon(shipSprite, side, window, elapsed);
     }

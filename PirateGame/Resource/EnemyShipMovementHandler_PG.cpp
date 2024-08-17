@@ -3,13 +3,11 @@
 
 using namespace PirateGame;
 
-void EnemyShipMovementHandler::update(float baseSpeed, sf::Vector2f sailDirection, float dt, sf::Vector2f windDirection, float windSpeed) {
-    setBaseSpeed(baseSpeed * enemySpeedMultiplier);
-
-    getAStar().update(getSprite().getPosition());
+void EnemyShipMovementHandler::update(const sf::Vector2f sailDirection, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed) {
+    astar.update(sprite.getPosition());
     //getAStar().drawDebug(context.GV->getWindow());
 
-	move(baseSpeed, sailDirection, dt, windDirection, windSpeed);
+	move(sailDirection, dt, windDirection, windSpeed);
 }
 
 void EnemyShipMovementHandler::setSpriteRotation() {
@@ -20,7 +18,7 @@ void EnemyShipMovementHandler::setSpriteRotation() {
 
     // Check if the ship is active towards the target
     if (activeTowardsTarget) {
-        sf::Vector2f directionToTarget = targetPos - getSprite().getPosition();
+        sf::Vector2f directionToTarget = targetPos - sprite.getPosition();
         float distance = vm::magnitude(directionToTarget);
         if (distance < broadsideDistance) { // Go perpendicular
             direction = sf::Vector2f(directionToTarget.y, -directionToTarget.x);
@@ -28,11 +26,10 @@ void EnemyShipMovementHandler::setSpriteRotation() {
     }
     else {
         // Get the next point from the A* algorithm
-        direction = getAStar().getNextPoint(getSprite().getPosition()) - getSprite().getPosition();
+        direction = astar.getNextPoint(sprite.getPosition()) - sprite.getPosition();
     }
 
     setTurningMultiplier(activeTowardsTarget ? 1.5f : 1.f);
 
-    float targetAngle = vm::normalizeAngle(vm::vectorToAngleDegrees(vm::normalize(direction)) + 90.f); // +90 to account for sprite rotation
-    rotateTowards(targetAngle);
+    rotateTowards(vm::normalizeAngle(vm::vectorToAngleDegrees(direction) + 90.f)); // Add 90 degrees to align with SFML's rotation
 }

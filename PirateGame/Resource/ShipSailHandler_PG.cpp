@@ -47,7 +47,7 @@ void ShipSailHandler::moveSailLeftRightAutomatically(sf::Vector2f windDirection,
 	}
 }
 
-void ShipSailHandler::update(const sf::Sprite& shipSprite, sf::Vector2f& shipDirection) {
+void ShipSailHandler::update(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection) {
 	for (auto& sail : sails) {
 		sail.updateSail(shipSprite, shipDirection);
 	}

@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalValues_PG.h"
 #include "InteractableTextures_PG.h"
 #include "LandMassTextures_PG.h"
 #include "HUDTextures_PG.h"
