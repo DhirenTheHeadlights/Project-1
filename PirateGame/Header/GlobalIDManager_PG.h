@@ -7,19 +7,26 @@
 
 namespace PirateGame {
     struct ID {
+    public:
+        
         int id;
 
-    private:
         ID() : id(-1) {}
+
+        bool operator==(const ID& other) const {
+			if (id == -1 || other.id == -1) {
+				return false;
+			}
+            return id == other.id;
+        }
+    private:
+        
 
         explicit ID(int id) : id(id) {}
 
         friend class GlobalIDManager;
 
-    public:
-        bool operator==(const ID& other) const {
-            return id == other.id;
-        }
+
     };
 
     class GlobalIDManager {

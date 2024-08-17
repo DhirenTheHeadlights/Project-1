@@ -35,12 +35,20 @@ namespace PirateGame {
 			this->targetPosition = targetPos;
 		}
 
+		void setDifficultyScaling(float difficultyScaling) {
+			setBaseSpeed(this->getSpecificShipProperties().baseSpeed * difficultyScaling);
+			setMaxHealth(this->getSpecificShipProperties().maxHealth * difficultyScaling);
+			setHealth(this->getSpecificShipProperties().maxHealth);
+			setRegenRate(this->getSpecificShipProperties().regenRate * difficultyScaling);
+		}
+
 		// Overridden getters
 		EnemyShipInputHandler* getInputHandler() override { return dynamic_cast<EnemyShipInputHandler*>(SIH.get()); };
 		EnemyShipMovementHandler* getMovementHandler() override { return dynamic_cast<EnemyShipMovementHandler*>(SMH.get()); };
 	private:
 		// Variables
 		sf::Vector2f targetPosition;
+		bool debug = true;
 	};
 }
 

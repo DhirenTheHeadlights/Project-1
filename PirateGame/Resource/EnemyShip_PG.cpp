@@ -24,5 +24,9 @@ void EnemyShip::customShipDraw() {
 
 	getCannonHandler()->drawCannons(window);
 	getSailHandler()->draw(window);
+
+	if (debug) {
+		context.GV->displayText("Health: " + std::to_string(getSpecificShipProperties().maxHealth), getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+	}
 }
 
