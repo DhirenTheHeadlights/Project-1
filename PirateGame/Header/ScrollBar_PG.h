@@ -12,45 +12,45 @@
 namespace PirateGame {
 	class ScrollBar {
 	public:
-		ScrollBar(GlobalContext& context, float spacingBetweenInteractables = 0.f) : context(context), spacing(spacingBetweenInteractables) {
+		ScrollBar(GlobalContext& context, float spacingBetweenInteractables = 0.f) noexcept : context(context), spacing(spacingBetweenInteractables) {
 			scrollBarTrack.setTexture(context.GTH->getInteractableTextures().getScrollBarTrack());
 			scrollBarThumb.setTexture(context.GTH->getInteractableTextures().getScrollBarThumb());
 		}
 
-		void setUpScrollBar(sf::Vector2f scrollBarTrackOffset, float scrollBarTrackLength, sf::Vector2f interactablePositionOffset, sf::Vector2f size, sf::Vector2f scale);
+		void setUpScrollBar(const sf::Vector2f& scrollBarTrackOffset, const float scrollBarTrackLength, const sf::Vector2f& interactablePositionOffset, const sf::Vector2f& size, const sf::Vector2f& scale);
 
-		void update(sf::Vector2f menuPosition);
+		void update(const sf::Vector2f& menuPosition, const std::vector<std::shared_ptr<Interactable>>& interactables);
 		void draw() const;
 
 		// Setters
-		void setSpacing(float spacing) { this->spacing = spacing; }
-		void setInteractables(std::vector<std::shared_ptr<Interactable>>& interactables) { this->interactables = interactables; }
-		void setTextures(const sf::Texture& scrollBarTexture, const sf::Texture& scrollBarHandleTexture) {
+		void setSpacing(float spacing) noexcept { this->spacing = spacing; }
+		void setTextures(const sf::Texture& scrollBarTexture, const sf::Texture& scrollBarHandleTexture) noexcept {
 			scrollBarTrack.setTexture(scrollBarTexture);
 			scrollBarThumb.setTexture(scrollBarHandleTexture);
 		}
-		void setVertical(bool vertical) { this->vertical = vertical; }
-		void setScale(sf::Vector2f scale) { this->scale = scale; }
+		void setVertical(bool vertical) noexcept { this->vertical = vertical; }
+		void setScale(sf::Vector2f& scale) noexcept { this->scale = scale; }
+
+		// Call this function to correctly space the interactables
+		void setFirstBoxSize(sf::Vector2f topBoxBounds) noexcept { this->firstBoxSize = topBoxBounds; }
+
 
 		// Getters
-		sf::Sprite& getSprite() { return scrollBarTrack; }
+		sf::Sprite& getSprite() noexcept { return scrollBarTrack; }
+		float getScrollPercentage() const noexcept { return scrollPercentage; }
 
 	private:
 		// Context
 		GlobalContext& context;
 
 		// Functions
-		void updateInteractablePositions(sf::Vector2f menuPosition);
-		void updateScrollBarPositions(sf::Vector2f mousePosition);
-
-		// Vars
-		std::vector<std::shared_ptr<Interactable>> interactables;
+		void updateInteractablePositions(const sf::Vector2f& menuPosition, const std::vector<std::shared_ptr<Interactable>>& interactables);
+		void updateScrollBarPositions(const sf::Vector2f& mousePosition);
 
 		sf::Vector2f scale;
 		sf::Vector2f size;
 		sf::Vector2f menuDelta;
-
-		sf::View menuView;
+		sf::Vector2f firstBoxSize;
 
 		float spacing;
 

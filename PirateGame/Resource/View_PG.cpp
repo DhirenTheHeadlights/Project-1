@@ -2,10 +2,13 @@
 
 using namespace PirateGame;
 
-void View::setCenter(sf::Vector2f position) {
-	view.setCenter(position);
-	sf::Vector2f size = sf::Vector2f(window->getSize());
+void View::setUpView(const sf::Vector2f& initalPosition, const sf::Vector2f& size) {
+	view.setCenter(initalPosition);
 	view.setSize(size);
+}
+
+void View::updateView(const sf::Vector2f& offset) {
+	view.move(offset);
 	window->setView(view);
 }
 

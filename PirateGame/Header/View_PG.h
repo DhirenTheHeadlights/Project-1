@@ -10,9 +10,9 @@ namespace PirateGame {
 	public:
 		View() {};
 		View(sf::RenderWindow* window) : window(window) {};
-		~View() {};
 
-		void setCenter(sf::Vector2f position);
+		void setUpView(const sf::Vector2f& initialPosition, const sf::Vector2f& size);
+		void updateView(const sf::Vector2f& offset);
 		void updateDebugView(sf::Event event);
 		void showCoordsOnCursor(const sf::Font& font);
 

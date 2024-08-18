@@ -59,9 +59,9 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 	if (context.GV->getShowHUD()) MH.openMenu(MenuType::HUD);
 	if (context.GV->getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
 
-	view.setCenter(playerShip->getSprite().getPosition());
-
 	updateCoreElements();
+
+	view.updateView(playerShip->getMovementHandler()->getVelocity());
 
 	LMH.interactWithLandmasses();
 

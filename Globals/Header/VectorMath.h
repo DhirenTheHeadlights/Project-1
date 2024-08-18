@@ -8,35 +8,35 @@
 namespace vm {
 	const float PI = 3.14159265f;
 
-	inline float magnitude(const sf::Vector2f& v) {
+	inline float magnitude(const sf::Vector2f& v) noexcept {
 		return std::sqrt(v.x * v.x + v.y * v.y);
 	}
 
-	inline float vectorToAngleDegrees(const sf::Vector2f& v) {
+	inline float vectorToAngleDegrees(const sf::Vector2f& v) noexcept {
 		return std::atan2(v.y, v.x) * 180.f / PI;
 	}
 
-	inline float vectorToAngleRadians(const sf::Vector2f& v) {
+	inline float vectorToAngleRadians(const sf::Vector2f& v) noexcept {
 		return std::atan2(v.y, v.x);
 	}
 
-	inline sf::Vector2f angleDegreesToVector(float angle) {
+	inline sf::Vector2f angleDegreesToVector(float angle) noexcept {
 		return sf::Vector2f(std::cos(angle * PI / 180.f), std::sin(angle * PI / 180.f));
 	}
 
-	inline sf::Vector2f angleRadiansToVector(float angle) {
+	inline sf::Vector2f angleRadiansToVector(float angle) noexcept {
 		return sf::Vector2f(std::cos(angle), std::sin(angle));
 	}
 
-	inline float degreesToRadians(float degrees) {
+	inline float degreesToRadians(float degrees) noexcept {
 		return degrees * PI / 180.f;
 	}
 
-	inline float radiansToDegrees(float radians) {
+	inline float radiansToDegrees(float radians) noexcept {
 		return radians * 180.f / PI;
 	}
 
-	inline sf::Vector2f normalize(const sf::Vector2f& v) {
+	inline sf::Vector2f normalize(const sf::Vector2f& v) noexcept {
 		float len = magnitude(v);
 		if (len != 0) {
 			return sf::Vector2f(v.x / len, v.y / len);
@@ -44,26 +44,26 @@ namespace vm {
 		return v;
 	}
 
-	inline float distance(const sf::Vector2f& v1, const sf::Vector2f& v2) {
+	inline float distance(const sf::Vector2f& v1, const sf::Vector2f& v2) noexcept {
 		return magnitude(v1 - v2);
 	}
 
-	inline float dot(const sf::Vector2f& v1, const sf::Vector2f& v2) {
+	inline float dot(const sf::Vector2f& v1, const sf::Vector2f& v2) noexcept {
 		return v1.x * v2.x + v1.y * v2.y;
 	}
 
-	inline float angleBetweenVectorsDegrees(const sf::Vector2f& v1, const sf::Vector2f& v2) {
+	inline float angleBetweenVectorsDegrees(const sf::Vector2f& v1, const sf::Vector2f& v2) noexcept {
 		return std::acos(dot(v1, v2) / (magnitude(v1) * magnitude(v2)));
 	}
 
-	inline sf::Vector2f limit(const sf::Vector2f& v, float max) {
+	inline sf::Vector2f limit(const sf::Vector2f& v, float max) noexcept {
 		if (magnitude(v) > max) {
 			return normalize(v) * max;
 		}
 		return v;
 	}
 
-	inline sf::VertexArray createVectorLine(const sf::Vector2f& position, const sf::Vector2f& direction, const sf::Color& color) {
+	inline sf::VertexArray createVectorLine(const sf::Vector2f& position, const sf::Vector2f& direction, const sf::Color& color) noexcept {
 		sf::VertexArray vector(sf::Lines, 2);
 		vector[0].position = position;
 		vector[0].color = color;
@@ -72,20 +72,20 @@ namespace vm {
 		return vector;
 	}
 
-	inline float normalizeAngle(float angle, float min = 0.f, float max = 360.f) {
+	inline float normalizeAngle(float angle, float min = 0.f, float max = 360.f) noexcept {
 		while (angle < min) angle += 360;
 		while (angle >= max) angle -= 360;
 		return angle;
 	}
 
-	inline float clampAngleInDegrees(float angle, float refAngle, float maxOffset) {
+	inline float clampAngleInDegrees(float angle, float refAngle, float maxOffset) noexcept {
 		float diff = angle - refAngle;
 		if (diff > maxOffset) return refAngle + maxOffset;
 		if (diff < -maxOffset) return refAngle - maxOffset;
 		return angle;
 	}
 
-	inline sf::Vector2f rotateAngleInDegrees(const sf::Vector2f& vector, float angleInDeg) {
+	inline sf::Vector2f rotateAngleInDegrees(const sf::Vector2f& vector, float angleInDeg) noexcept {
 		float rad = angleInDeg * PI / 180.0f;
 		return sf::Vector2f(
 			vector.x * std::cos(rad) - vector.y * std::sin(rad),
@@ -93,7 +93,7 @@ namespace vm {
 		);
 	}
 
-	inline float angleBetweenVectorsRadians(const sf::Vector2f& v1, const sf::Vector2f& v2) {
+	inline float angleBetweenVectorsRadians(const sf::Vector2f& v1, const sf::Vector2f& v2) noexcept {
 		return angleBetweenVectorsDegrees(v1, v2) * PI / 180.f;
 	}
 
@@ -114,7 +114,7 @@ namespace vm {
 		return sf::Vector2f(x, y);
 	}
 
-	inline bool isInFront(const sf::Vector2f& movingPos, const sf::Vector2f& stationaryPos, const sf::Vector2f& travelDirection) {
+	inline bool isInFront(const sf::Vector2f& movingPos, const sf::Vector2f& stationaryPos, const sf::Vector2f& travelDirection) noexcept {
 		sf::Vector2f vectorToObject = stationaryPos - movingPos;
 		float angleToObject = atan2(vectorToObject.y, vectorToObject.x);
 		float travelAngle = atan2(travelDirection.y, travelDirection.x);
@@ -122,7 +122,7 @@ namespace vm {
 		return fabs(angleDifference) > PI / 2;
 	}
 
-	inline float distanceToLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) {
+	inline float distanceToLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) noexcept {
 		sf::Vector2f line = lineEnd - lineStart;
 		sf::Vector2f pointToLineStart = point - lineStart;
 		float projection = dot(pointToLineStart, normalize(line));
@@ -130,7 +130,7 @@ namespace vm {
 		return distance(point, closestPoint);
 	}
 
-	inline sf::Vector2f closestPointOnLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) {
+	inline sf::Vector2f closestPointOnLine(const sf::Vector2f& lineStart, const sf::Vector2f& lineEnd, const sf::Vector2f& point) noexcept {
 		sf::Vector2f line = lineEnd - lineStart;
 		sf::Vector2f pointToLineStart = point - lineStart;
 		float projection = dot(pointToLineStart, normalize(line));
@@ -143,5 +143,11 @@ namespace vm {
 		std::mt19937 gen(rd());
 		std::uniform_int_distribution<T> dis(min, max);
 		return dis(gen);
+	}
+
+	template <typename T>
+	inline T setSignificantFigures(const T& value, int numFigures) {
+		T factor = std::pow(10, numFigures);
+		return std::round(value * factor) / factor;
 	}
 }

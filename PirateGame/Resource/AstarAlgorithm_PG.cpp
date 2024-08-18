@@ -150,7 +150,7 @@ std::vector<sf::Vector2i> AStar::reconstructPath(std::shared_ptr<AstarNode> node
 }
 
 sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) const {
-    return sf::Vector2i(std::floor(vector.x / tileSize), std::floor(vector.y / static_cast<float>(tileSize)));
+    return sf::Vector2i(std::floor(vector.x / static_cast<float>(tileSize)), std::floor(vector.y / static_cast<float>(tileSize)));
 }
 
 sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) const {

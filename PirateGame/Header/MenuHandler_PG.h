@@ -37,11 +37,14 @@ namespace PirateGame {
 		// Reference to the global context
 		GlobalContext& context;
 
+		// Map of menu types and game states to the menu objects
+		std::unordered_map<MenuType, std::shared_ptr<Menu>> menus;
+
 		// Pointers to the different menus
-		std::unique_ptr<StartMenu> startMenu;
-		std::unique_ptr<OptionsMenu> optionsMenu;
-		std::unique_ptr<InGameHUD> HUD;
-		std::unique_ptr<InventoryMenu> inventoryMenu;
+		std::shared_ptr<StartMenu> startMenu;
+		std::shared_ptr<OptionsMenu> optionsMenu;
+		std::shared_ptr<InGameHUD> HUD;
+		std::shared_ptr<InventoryMenu> inventoryMenu;
 		//...
 	};
 }

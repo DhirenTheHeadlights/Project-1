@@ -10,6 +10,9 @@ void World::setUpWorld() {
 	setUpCollisionManager();
 	setUpMenus();
 	setUpUI();
+
+	// Set up the view
+	view.setUpView(playerShip->getSprite().getPosition(), sf::Vector2f(window->getSize()));
 }
 
 void World::setUpWorldElements() {

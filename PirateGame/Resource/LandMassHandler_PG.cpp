@@ -78,8 +78,8 @@ void LandMassHandler::drawLandMasses() {
 	// Draw all the land masses and add them to the hashmap
 	sf::RenderWindow* window = context.GV->getWindow();
 	for (auto& i : landmasses) {
-		//Print debug for region types
-		context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+		// Print debug for region types
+		//context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
 	}
 }
@@ -121,7 +121,7 @@ void LandMassHandler::interactWithLandmasses() {
 
 			// Display the loot
 			for (auto& loot : shipwreck->getLoot()) {
-				sf::Text lootText("You have recieved " + loot.amount + ' ' + loot.name, *context.GFH->getGlobalFont());
+				sf::Text lootText("You have recieved " + vm::setSignificantFigures(loot.amount, 4) + ' ' + loot.name, *context.GFH->getGlobalFont());
 				context.GTQP->addTextToQueue(lootText, sf::seconds(5.f));
 			}
 
