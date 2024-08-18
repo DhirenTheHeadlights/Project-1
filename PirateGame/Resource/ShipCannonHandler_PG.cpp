@@ -1,4 +1,4 @@
-#include "shipCannonHandler_PG.h"
+#include "ShipCannonHandler_PG.h"
 
 using namespace PirateGame;
 
