@@ -2,10 +2,11 @@
 
 namespace PirateGame {
 	enum class Region {
-		SandyShores, //0
-		MurkyMarshes, //1
-		DevilsDen, //3
-		ShipwreckShoals, //4
+		SandyShores,		//0
+		MurkyMarshes,		//1
+		DevilsDen,			//3
+		ShipwreckShoals,	//4
+		StormySeas			//5
 	};
 
 	struct RegionValues {
@@ -27,6 +28,11 @@ namespace PirateGame {
 				displayString = "Shipwreck Shoals";
 				scaling = 2.f;
 				break;
+			case Region::StormySeas:
+				displayString = "Stormy Seas";
+				scaling = 15.f;
+				break;
+			
 			}
 		}
 		Region region = Region::SandyShores;

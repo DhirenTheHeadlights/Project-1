@@ -1,9 +1,8 @@
 #include "Ship_PG.h"
-
 using namespace PirateGame;
 
 // Create the ship
-void Ship::setUpShip(ShipClass level) {
+void Ship::setUpShip(ShipClass level, const Region region) {
 	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
 		// Generate a random number between 1 and 5
@@ -22,13 +21,13 @@ void Ship::setUpShip(ShipClass level) {
 
 	// Set class
 	shipClass = level;
-
 	health = shipProperties.maxHealth;
+	birthRegion = region;
 
 	// Load the texture
 	sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
 
-	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManager().getTexture(level));
+	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getTexture(level));
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	sprite.setScale(scaling);
 
@@ -37,13 +36,13 @@ void Ship::setUpShip(ShipClass level) {
 
 	// Load the cannon handler
 	SCH = std::make_unique<ShipCannonHandler>(sprite);
-	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManager().getTexture(shipClass), 
-						context.GTH->getShipTextures().getShipTextureManager().getImage(shipClass), 
+	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManagerByRegion(birthRegion).getTexture(shipClass), 
+						context.GTH->getShipTextures().getShipTextureManagerByRegion(region).getImage(shipClass), 
 						shipProperties.numCannons, id.get(), scaling);
 
 	// Load the sail handler
 	SSH = std::make_unique<ShipSailHandler>();
-	SSH->loadSailPositions(context.GTH->getShipTextures().getSailTextureManager().getTextureGroup(shipClass), context.GTH->getShipTextures().getShipTextureManager().getImage(shipClass), scaling);
+	SSH->loadSailPositions(context.GTH->getShipTextures().getSailTextureManagerByRegion(birthRegion).getTextureGroup(shipClass), context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getImage(shipClass), scaling);
 
 	// Execute custom ship setup
 	customShipSetUp();

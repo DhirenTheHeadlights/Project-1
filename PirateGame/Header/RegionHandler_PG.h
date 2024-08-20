@@ -20,9 +20,10 @@ namespace PirateGame {
 			else if (distancefromorigin < 40000.f) {
 				return Region::DevilsDen;
 			}
-			else {
+			else if (distancefromorigin < 60000.f) {
 				return Region::ShipwreckShoals;
 			}	
+			else return Region::StormySeas;
 		}
 
 		// Getters

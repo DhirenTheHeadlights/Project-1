@@ -48,7 +48,7 @@ namespace PirateGame {
 	private:
 		// Variables
 		sf::Vector2f targetPosition;
-		bool debug = true;
+		bool debug = false;
 	};
 }
 

@@ -208,7 +208,7 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 	const sf::Texture* texture2 = sprite2.getTexture();
 	if (!texture1 || !texture2) return false;
 
-	const sf::Image& image1 = context.GTH->getShipTextures().getShipTextureManager().getImage(ship->getShipClass());
+	const sf::Image& image1 = context.GTH->getShipTextures().getShipTextureManagerByRegion(ship->getBirthRegion()).getImage(ship->getShipClass());
 	const sf::Image& image2 = landmass->getImage(context);
 
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();

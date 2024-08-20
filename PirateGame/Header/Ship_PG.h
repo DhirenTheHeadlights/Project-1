@@ -15,6 +15,7 @@
 #include "ShipSailHandler_PG.h"
 #include "ShipInventoryHandler_PG.h"
 #include "ShipEnums_PG.h"
+#include "Region_PG.h"
 
 namespace PirateGame {
 	class Ship {
@@ -22,7 +23,7 @@ namespace PirateGame {
 		Ship(GlobalContext& context) : context(context), id(context.GIDM->generateID()) {};
 
 		// Create the ship and set its values. Random ship class if not specified.
-		void setUpShip(ShipClass shipClass = ShipClass::Random);
+		void setUpShip(const ShipClass shipClass = ShipClass::Random, const Region region = Region::SandyShores);
 		virtual void customShipSetUp() = 0; // Virtual method to allow for custom ship setup
 		void update();
 		virtual void customShipUpdate() = 0; // Virtual method to allow for custom ship update
@@ -51,6 +52,7 @@ namespace PirateGame {
 		ID* getID() const { return id.get(); }
 		ID* getGroupID() const { return groupID; }
 		bool getIsDead() const { return isDead; }
+		Region getBirthRegion() const { return birthRegion; }
 
 		ShipProperties& getSpecificShipProperties() { return shipProperties; }
 		ShipClass getShipClass() const { return shipClass; }
@@ -99,6 +101,7 @@ namespace PirateGame {
 
 		ShipClass shipClass = ShipClass::Sloop;
 		ShipProperties shipProperties;
+		Region birthRegion = Region::SandyShores;
 
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;

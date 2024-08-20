@@ -79,7 +79,7 @@ void LandMassHandler::drawLandMasses() {
 	sf::RenderWindow* window = context.GV->getWindow();
 	for (auto& i : landmasses) {
 		// Print debug for region types
-		//context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+		context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
 	}
 }

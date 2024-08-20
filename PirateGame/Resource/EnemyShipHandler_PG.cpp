@@ -26,7 +26,7 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>(context);
 
 	// Set up the ship
-	ship->setUpShip(type);
+	ship->setUpShip(type, context.GCH->getRegionHandler().getRegionValuesAtPosition(position).region);
 	ship->getInputHandler()->setCooldown(enemyCannonCooldown);
 	ship->getMovementHandler()->setTurningSpeed(turningSpeed);
 	ship->getMovementHandler()->setEnemySpeedMultiplier(enemySpeedMultiplier);

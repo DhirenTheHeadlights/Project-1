@@ -1164,6 +1164,21 @@
     <Image Include="PirateGameSprites\pg_shipwreck_1.png">
       <Filter>Source Files\PirateGame\Sprites\Landmass</Filter>
     </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate_2.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Frigate</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate_2_sail_middle.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Frigate</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate_2_sail_front.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Frigate</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate_2_sail_back.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Frigate</Filter>
+    </Image>
+    <Image Include="PirateGameSprites\pg_ship_frigate_2_cannon.png">
+      <Filter>Source Files\PirateGame\Sprites\Ship\Frigate</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt">

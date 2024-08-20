@@ -23,7 +23,7 @@ void InventoryMenu::setUpMenu() {
 	titleText.setFillColor(sf::Color::White);
 
 	// Prepare the ship display
-	shipDisplaySprite.setTexture(context.GTH->getShipTextures().getShipTextureManager().getTexture(ship->getShipClass()));
+	shipDisplaySprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(ship->getBirthRegion()).getTexture(ship->getShipClass()));
 	shipDisplayBackground.setTexture(context.GTH->getInventoryTextures().getInventoryShipDisplay());
 
 	// Prepare the inventory display background
@@ -87,6 +87,14 @@ void InventoryMenu::update() {
 	setInteractablePositions();
 	interactWithMenuItems();
 	scrollBar.update(menu.getPosition(), inventoryBoxes);
+
+	// Update ship display info
+	shipDisplayInfo[0].getText().setString(
+		ship->getShipClassString() + "\n" +
+		"Level: " + std::to_string(ship->getplayerLevel()) + "\n" +
+		"Health: " + floatToString(ship->getHealth()) + " / " + floatToString(ship->getSpecificShipProperties().maxHealth) + "\n"
+		"Speed: " + floatToString(ship->getSpecificShipProperties().baseSpeed) + "\n"
+		"Cannons: " + std::to_string(ship->getSpecificShipProperties().numCannons) + "\n");
 }
 
 void InventoryMenu::draw() {
