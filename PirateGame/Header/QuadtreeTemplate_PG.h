@@ -281,7 +281,12 @@ namespace PirateGame {
             root = std::make_unique<Node<T>>(initialBoundary, maxObjects);
         }
 
-        void update() {
+        void update(sf::FloatRect currentBoundary) {
+            // If the current boundary is smaller or equal to the current root boundary, do nothing
+            if (currentBoundary.contains(root->boundary)) {
+                return;
+            }
+
             root->update();
         }
 
@@ -304,6 +309,24 @@ namespace PirateGame {
         template <HasGetSprite U>
         std::vector<T*> findObjectsNearObject(U* queryObject, float distance) {
             return root->findObjectsNearObject(queryObject, distance);
+        }
+
+        // Extend function to enlarge the quadtree boundary
+        void extend(const sf::FloatRect& newBoundary) {
+            // Create a new root node with the expanded boundary
+            auto newRoot = std::make_unique<Node<T>>(newBoundary, maxObjects);
+
+            // Add the current root node as a child to the new root
+            newRoot->children.push_back(std::move(root));
+            newRoot->divided = true;
+
+            // Set the new root as the root of the quadtree
+            root = std::move(newRoot);
+
+            // Redistribute objects that might now fall into the extended region
+            for (auto& [object, qtObject] : objectMap) {
+                root->addObject(qtObject);  // Reinsert each object into the new root
+            }
         }
 
         bool updateObjectPosition(T* object) {

@@ -13,7 +13,7 @@ void ScrollBar::setUpScrollBar(const sf::Vector2f& scrollBarTrackOffset, const f
 	scrollBarTrack.setScale(scale);
 }
 
-void ScrollBar::updateInteractablePositions(const sf::Vector2f& menuPosition, const std::vector<std::shared_ptr<Interactable>>& interactables) {
+void ScrollBar::updateInteractablePositions(const sf::Vector2f& menuPosition, const std::vector<std::shared_ptr<Interactable>>& interactables) const {
     float sumHeight = 0.0f;
 
     for (size_t i = 0; i < interactables.size(); ++i) {

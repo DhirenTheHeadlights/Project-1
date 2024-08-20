@@ -12,12 +12,12 @@ namespace PirateGame {
 		~EnemyShipMovementHandler() {};
 
 		// Movement function
-		void update(const sf::Vector2f sailRotation, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed) override;
+		void update(const sf::Vector2f& sailRotation, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) override;
 
 		// Setters
-		void setTargetPosition(sf::Vector2f targetPos) { this->targetPos = targetPos; }
+		void setTargetPosition(sf::Vector2f& targetPos) { this->targetPos = targetPos; }
 		void setEnemySpeedMultiplier(float enemySpeedMultiplier) { this->enemySpeedMultiplier = enemySpeedMultiplier; }
-		void setDestination(const sf::Vector2f destination) { 
+		void setDestination(const sf::Vector2f& destination) { 
 			this->destination = destination;
 			astar.setStartAndEndPoints(sprite.getPosition(), destination);
 		}

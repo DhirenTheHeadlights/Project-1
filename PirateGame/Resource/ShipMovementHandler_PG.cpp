@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void ShipMovementHandler::move(const sf::Vector2f sailDirection, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed) {
+void ShipMovementHandler::move(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) {
 	// Calculate the direction based on the ship's current rotation
 	sf::Vector2f direction = vm::angleDegreesToVector(sprite.getRotation() - 90.f); // Subtract 90 degrees to align with SFML's rotation
 
@@ -12,7 +12,7 @@ void ShipMovementHandler::move(const sf::Vector2f sailDirection, const sf::Time 
 	setSpriteRotation();
 }
 
-void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, const sf::Time elapsedTime, const sf::Vector2f sailDirection, const sf::Vector2f windDirection, const float windSpeed) {
+void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, const sf::Time& elapsedTime, const sf::Vector2f& sailDirection, const sf::Vector2f& windDirection, const float windSpeed) {
 	if (isColliding && speed > 0) speed -= 10.f;
 	else if (!dropAnchor) {
 		// Use the sail rotation to determine potency of wind effect.
@@ -112,7 +112,7 @@ void ShipMovementHandler::ensureSeparation(const sf::Vector2f& normal, const sf:
 	sprite.move(pushOutVector);
 }
 
-void ShipMovementHandler::addCannonRecoil(sf::Vector2f direction, float recoil) {
+void ShipMovementHandler::addCannonRecoil(const sf::Vector2f& direction, const float recoil) {
 	// Apply the recoil to the ship's position
 	sprite.move(direction * recoil);
 }

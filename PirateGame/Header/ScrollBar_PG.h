@@ -44,7 +44,7 @@ namespace PirateGame {
 		GlobalContext& context;
 
 		// Functions
-		void updateInteractablePositions(const sf::Vector2f& menuPosition, const std::vector<std::shared_ptr<Interactable>>& interactables);
+		void updateInteractablePositions(const sf::Vector2f& menuPosition, const std::vector<std::shared_ptr<Interactable>>& interactables) const;
 		void updateScrollBarPositions(const sf::Vector2f& mousePosition);
 
 		sf::Vector2f scale;

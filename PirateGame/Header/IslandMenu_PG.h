@@ -79,6 +79,7 @@ namespace PirateGame {
 		std::vector<Button> leftRightNavButtons;
 		std::vector<TextDisplayBox> shipBuyTabs;
 		std::vector<std::pair<ShipClass, std::vector<TextDisplayBox>>> shipStats;
+		std::vector<Button> shipBuyButtons;
 
 		sf::Vector2f bannerScale = sf::Vector2f(1.5f, 1.5f);
 

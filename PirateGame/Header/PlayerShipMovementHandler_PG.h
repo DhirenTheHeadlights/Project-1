@@ -11,7 +11,7 @@ namespace PirateGame {
 		~PlayerShipMovementHandler() {};
 
 		// Movement functions
-		void update(sf::Vector2f sailDirection, sf::Time dt, sf::Vector2f windDirection, float windSpeed) override;
+		void update(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) override;
 
 	private:
 		void setSpriteRotation() override;

@@ -3,7 +3,7 @@
 
 using namespace PirateGame;
 
-void EnemyShipMovementHandler::update(const sf::Vector2f sailDirection, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed) {
+void EnemyShipMovementHandler::update(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) {
     astar.update(sprite.getPosition());
     //getAStar().drawDebug(context.GV->getWindow());
 

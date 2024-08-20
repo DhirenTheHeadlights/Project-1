@@ -13,10 +13,10 @@
 namespace PirateGame {
 	class GlobalQuadtreeHandler {
 	public:
-		void updateQuadtrees() {
-			landmassQuadtree->update();
-			enemyShipQuadtree->update();
-			cannonballQuadtree->update();
+		void updateQuadtrees(sf::FloatRect& updatedBounds) {
+			landmassQuadtree->update(updatedBounds);
+			enemyShipQuadtree->update(updatedBounds);
+			cannonballQuadtree->update(updatedBounds);
 		}
 
 		void setUpQuadtrees(GlobalChunkHandler* GCH) {

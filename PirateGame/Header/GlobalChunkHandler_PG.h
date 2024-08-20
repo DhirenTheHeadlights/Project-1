@@ -26,6 +26,7 @@ namespace PirateGame {
 			std::shared_ptr<Chunk> currentChunk = getChunkAtPosition(position);
 			// Check if the player has moved to a new chunk
 			if (currentChunk->getChunkCoord() != lastChunk->getChunkCoord()) {
+				std::cout << "Player has moved to a new chunk: " << currentChunk->getChunkCoord().first << ", " << currentChunk->getChunkCoord().second << std::endl;
 				generateSurroundingChunks(currentChunk.get());
 				deleteChunksOutOfRange(currentChunk.get());
 			}

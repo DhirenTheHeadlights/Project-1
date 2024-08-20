@@ -17,13 +17,13 @@ namespace PirateGame {
 		~ShipMovementHandler() {};
 
 		// Movement functions 
-		virtual void update(const sf::Vector2f sailDirection, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed) = 0;
-		void move(const sf::Vector2f sailDirection, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed);
+		virtual void update(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) = 0;
+		void move(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed);
 		void rotateTowards(float targetAngle);
 		void collisionMovement(const sf::Sprite& collidingSprite);
-		void addCannonRecoil(const sf::Vector2f direction, const float recoil);
+		void addCannonRecoil(const sf::Vector2f& direction, const float recoil);
 
-		virtual void updateVelocity(const sf::Vector2f& direction, const sf::Time elapsedTime, const sf::Vector2f sailDirection, const sf::Vector2f windDirection, const float windSpeed);
+		virtual void updateVelocity(const sf::Vector2f& direction, const sf::Time& elapsedTime, const sf::Vector2f& sailDirection, const sf::Vector2f& windDirection, const float windSpeed);
 		virtual void setSpriteRotation() = 0;
 
 		// These functions stay constant

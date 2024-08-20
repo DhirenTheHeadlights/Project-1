@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 // Move the ship
-void PlayerShipMovementHandler::update(const sf::Vector2f sailDirection, const sf::Time dt, const sf::Vector2f windDirection, const float windSpeed) {
+void PlayerShipMovementHandler::update(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) {
 	move(sailDirection, dt, windDirection, windSpeed);
 }
 

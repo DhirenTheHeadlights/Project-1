@@ -126,7 +126,7 @@ std::vector<sf::Vector2i> AStar::findPath() {
 }
 
 
-std::vector<sf::Vector2i> AStar::getNeighbors(const sf::Vector2i& node) {
+std::vector<sf::Vector2i> AStar::getNeighbors(const sf::Vector2i& node) noexcept {
     return {
         {node.x + 1, node.y}, {node.x - 1, node.y},
         {node.x, node.y + 1}, {node.x, node.y - 1},
@@ -135,7 +135,7 @@ std::vector<sf::Vector2i> AStar::getNeighbors(const sf::Vector2i& node) {
     };
 }
 
-float AStar::heuristic(const sf::Vector2i& a, const sf::Vector2i& b) const {
+float AStar::heuristic(const sf::Vector2i& a, const sf::Vector2i& b) const noexcept {
     return static_cast<float>(std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)));
 }
 
@@ -149,11 +149,11 @@ std::vector<sf::Vector2i> AStar::reconstructPath(std::shared_ptr<AstarNode> node
     return path;
 }
 
-sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) const {
+sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) const noexcept {
     return sf::Vector2i(std::floor(vector.x / static_cast<float>(tileSize)), std::floor(vector.y / static_cast<float>(tileSize)));
 }
 
-sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) const {
+sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) const noexcept {
     return sf::Vector2f(grid.x * tileSize, grid.y * tileSize);
 }
 

@@ -25,14 +25,15 @@ namespace PirateGame {
 		float regenRate = 0.5f;
 		float scaleX = 1.f, scaleY = 1.f;
 		int numCannons = 1;
+		float price = 0.f;
 	};
 
 	inline std::unordered_map<ShipClass, ShipProperties> ShipConfig = {
-		{ ShipClass::Sloop,		 {100.f, 100.f, 1,     .1f,  .1f,  2}},
-		{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, .12f, .12f, 4}},
-		{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, .15f, .15f, 6}},
-		{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   .18f, .18f, 8}},
-		{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  .23f, .23f, 10}}
+		{ ShipClass::Sloop,		 {100.f, 100.f, 1,     .1f,  .1f,  2, 1000.f}},
+		{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, .12f, .12f, 4, 2000.f}},
+		{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, .15f, .15f, 6, 5000.f}},
+		{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   .18f, .18f, 8, 8000.f}},
+		{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  .23f, .23f, 10, 15000.f}}
 	};
 
 	inline ShipProperties getShipProperties(ShipClass shipClass) {

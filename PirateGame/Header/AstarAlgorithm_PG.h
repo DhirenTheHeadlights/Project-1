@@ -46,13 +46,13 @@ namespace PirateGame {
         AstarNode(sf::Vector2i pos, float g, float h, std::shared_ptr<AstarNode> p = nullptr)
             : position(pos), gCost(g), hCost(h), parent(p) {}
 
-        float fCost() const { return gCost + hCost; }
-        bool operator==(const AstarNode& other) const { return position == other.position; }
-        sf::FloatRect getRect() const { return sf::FloatRect(position.x * static_cast<float>(tileSize), position.y * static_cast<float>(tileSize), static_cast<float>(tileSize), static_cast<float>(tileSize)); }
+        float fCost() const noexcept { return gCost + hCost; }
+        bool operator==(const AstarNode& other) const noexcept { return position == other.position; }
+        sf::FloatRect getRect() const noexcept { return sf::FloatRect(position.x * static_cast<float>(tileSize), position.y * static_cast<float>(tileSize), static_cast<float>(tileSize), static_cast<float>(tileSize)); }
     };
 
     struct NodeComparator {
-        bool operator()(const std::shared_ptr<AstarNode>& lhs, const std::shared_ptr<AstarNode>& rhs) const {
+        bool operator()(const std::shared_ptr<AstarNode>& lhs, const std::shared_ptr<AstarNode>& rhs) const noexcept {
             return lhs->fCost() > rhs->fCost();
         }
     };
@@ -94,15 +94,15 @@ namespace PirateGame {
 
         std::vector<sf::Vector2i> findPath();
 
-        static std::vector<sf::Vector2i> getNeighbors(const sf::Vector2i& node);
+        static std::vector<sf::Vector2i> getNeighbors(const sf::Vector2i& node) noexcept;
 
-        float heuristic(const sf::Vector2i& a, const sf::Vector2i& b) const;
+        float heuristic(const sf::Vector2i& a, const sf::Vector2i& b) const noexcept;
 
         std::vector<sf::Vector2i> reconstructPath(std::shared_ptr<AstarNode> node) const;
 
-        sf::Vector2i vectorToGrid(const sf::Vector2f& vector) const;
+        sf::Vector2i vectorToGrid(const sf::Vector2f& vector) const noexcept;
 
-        sf::Vector2f gridToVector(const sf::Vector2i& grid) const;
+        sf::Vector2f gridToVector(const sf::Vector2i& grid) const noexcept;
 
         bool isObstacle(const sf::Vector2i& node) const;
 
