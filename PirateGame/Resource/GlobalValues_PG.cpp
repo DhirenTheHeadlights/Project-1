@@ -78,3 +78,7 @@ std::string GlobalValues::buttonToString(sf::Mouse::Button button) {
 		case sf::Mouse::XButton2: return "X2";
 	}
 }
+
+void GlobalValues::loadFromJSON(const std::string filename) {
+
+}

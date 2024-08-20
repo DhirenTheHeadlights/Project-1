@@ -258,6 +258,7 @@
     <ClInclude Include="Globals\Header\Map.h" />
     <ClInclude Include="Globals\Header\Quadtree.h" />
     <ClInclude Include="Globals\Header\VectorMath.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="LightAndShadow\Header\Obsticles_LS.h" />
     <ClInclude Include="LightAndShadow\Header\WorldLS.h" />
     <ClInclude Include="PirateGame\Header\AnimationHandler_PG.h" />
@@ -443,6 +444,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gameConfig.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

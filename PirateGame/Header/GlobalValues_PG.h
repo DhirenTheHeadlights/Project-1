@@ -8,11 +8,15 @@
 #include <unordered_map>
 
 #include "VectorMath.h"
+#include "json.hpp"
+#include "ShopItem_PG.h"
 
 namespace PirateGame {
 	class GlobalValues {
 	public:
         GlobalValues(sf::Font& font) : font(font) {};
+
+        void loadFromJSON(const std::string filename);
 
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);
@@ -70,5 +74,58 @@ namespace PirateGame {
 
         // Cache for storing text objects
         std::unordered_map<std::string, sf::Text> textCache;
+
+        std::unordered_map<std::string, float> jsonParsed;
+
+        struct jsonValues {
+            struct saveData {
+                int playerExperience;
+                int playerExperienceToLevelUp;
+                int playerLevel;
+                int playerGold;
+                std::vector<ShopItem> playerInventory;
+            };
+
+            struct gameConfig {
+                struct landmasses {
+                    float rockScaling;
+                    float shipwreckScaling;
+                    float islandScaling;
+                    int islandMarketSizeLimit;
+                    int islandMarketItemLimit;
+                    int islandMarketPriceLimit;
+                };
+                struct ship {
+                    sf::Time shipHealthRegenTime;
+                    sf::Time cannonResetRotationTime;
+                    sf::Time cannonCooldown;
+                    sf::Vector2f cannonballScale;
+                    float cannonballSpeed;
+                    float cannonballFlightTime;
+                    float maxFiringAngle;
+                    float cannonRotationSpeed;
+                    float turningSpeed;
+                    float turningMultiplier;
+                    float frictionCoefficient;
+                    float dampingFactor;
+                    float separationDistance;
+                    float pushOutDistance;
+                    std::unordered_map<std::string, std::vector<int>> shipEnumProperties;
+                };
+                struct shipGroup {
+                    float shipGroupAlignmentWeight;
+                    float shipGroupCohesionWeight;
+                    float shipGroupSeparationWeight;
+                    float shipGroupCombatSpeedMultiplier;
+                };
+                struct gameWorld {
+                    float sandyShoresScaling;
+                    float murkyMarshesScaling;
+                    float devilsDenScaling;
+                    float shipwreckShoalScaling;
+                    float stormySeasScaling;
+                };
+            };
+        };
     };
 }

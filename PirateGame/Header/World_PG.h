@@ -45,6 +45,7 @@ namespace PirateGame {
 		// Game objects
 		Player player;
 		std::unique_ptr<PlayerShip> playerShip;
+		ShipClass playerShipClass = ShipClass::ManOWar;
 		View view;
 
 		// Handlers
