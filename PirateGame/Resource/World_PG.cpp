@@ -90,7 +90,7 @@ void World::updateCoreElements() {
 	context.GC->update();
 	context.GCH->updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
 	context.GWC->update();
-	GQH->updateQuadtrees(GCH->getMapBounds());
+	GQH->updateQuadtrees(context.GCH->getMapBounds());
 	context.GTQP->updateTextQueue(window);
 	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();

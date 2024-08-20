@@ -281,12 +281,14 @@ namespace PirateGame {
             root = std::make_unique<Node<T>>(initialBoundary, maxObjects);
         }
 
-        void update(sf::FloatRect currentBoundary) {
-            // If the current boundary is smaller or equal to the current root boundary, do nothing
-            if (currentBoundary.contains(root->boundary)) {
-                return;
+        void update(sf::FloatRect& currentBoundary) {
+            if (currentBoundary.left <= root->boundary.left &&
+                currentBoundary.top <= root->boundary.top &&
+                currentBoundary.left + currentBoundary.width >= root->boundary.left + root->boundary.width &&
+                currentBoundary.top + currentBoundary.height >= root->boundary.top + root->boundary.height) {
+                // The new boundary fully contains the current root boundary
+                extend(currentBoundary);
             }
-
             root->update();
         }
 
@@ -327,7 +329,10 @@ namespace PirateGame {
             for (auto& [object, qtObject] : objectMap) {
                 root->addObject(qtObject);  // Reinsert each object into the new root
             }
+
+            std::cout << "Extended boundary to: " << newBoundary.left << ", " << newBoundary.top << ", " << newBoundary.width << ", " << newBoundary.height << std::endl;
         }
+
 
         bool updateObjectPosition(T* object) {
             // First remove the object from its current node

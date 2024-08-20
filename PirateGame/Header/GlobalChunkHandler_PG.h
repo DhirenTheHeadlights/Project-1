@@ -58,6 +58,7 @@ namespace PirateGame {
 			return chunks;
 		}
 		RegionHandler getRegionHandler() const { return regionHandler; }
+		sf::FloatRect getMapBounds() const { return mapBounds; }
 
 	private:
 		// Vector to store 'chunks'
@@ -112,6 +113,7 @@ namespace PirateGame {
 		// Values
 		RegionHandler regionHandler;
 		sf::Vector2f chunkSize = sf::Vector2f(5000.f, 5000.f);
+		sf::FloatRect mapBounds;
 		int cellSize = 100;
 		int renderDistance = 2;
 		int regionRenderDistance = 10;
