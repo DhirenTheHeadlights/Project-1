@@ -15,8 +15,8 @@ namespace PirateGame {
 
 		// Getters
 		Map* getMap() { return map.get(); }
-		std::pair<int, int> getChunkCoord() { return chunkCoord; }
-		Region getRegionType() { return regionType; }
+		std::pair<int, int> getChunkCoord() const { return chunkCoord; }
+		Region getRegionType() const { return regionType; }
 
 		// Setters
 		void setRegionType(Region regionType) { this->regionType = regionType; }
@@ -24,7 +24,7 @@ namespace PirateGame {
 		std::unique_ptr<Map> map;
 		std::pair<int, int> chunkCoord;
 		sf::Vector2f chunkSize;
-		int cellSize;
-		Region regionType;
+		int cellSize = 0;
+		Region regionType = Region::SandyShores;
 	};
 }

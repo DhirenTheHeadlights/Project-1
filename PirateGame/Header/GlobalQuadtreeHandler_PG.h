@@ -20,12 +20,12 @@ namespace PirateGame {
 		}
 
 		void setUpQuadtrees(GlobalChunkHandler* GCH) {
-			landmassQuadtree = std::make_unique<Quadtree<LandMass>>(GCH);
-			islandQuadtree = std::make_unique<Quadtree<Island>>(GCH);
-			rockQuadtree = std::make_unique<Quadtree<Rock>>(GCH);
-			shipwreckQuadtree = std::make_unique<Quadtree<Shipwreck>>(GCH);
-			enemyShipQuadtree = std::make_unique<Quadtree<EnemyShip>>(GCH);
-			cannonballQuadtree = std::make_unique<Quadtree<Cannonball>>(GCH);
+			landmassQuadtree = std::make_unique<Quadtree<LandMass>>(GCH->getMapBounds());
+			islandQuadtree = std::make_unique<Quadtree<Island>>(GCH->getMapBounds());
+			rockQuadtree = std::make_unique<Quadtree<Rock>>(GCH->getMapBounds());
+			shipwreckQuadtree = std::make_unique<Quadtree<Shipwreck>>(GCH->getMapBounds());
+			enemyShipQuadtree = std::make_unique<Quadtree<EnemyShip>>(GCH->getMapBounds());
+			cannonballQuadtree = std::make_unique<Quadtree<Cannonball>>(GCH->getMapBounds());
 		}
 
 		// Getters

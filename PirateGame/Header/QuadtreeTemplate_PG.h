@@ -12,7 +12,6 @@
 
 #include "VectorMath.h"
 #include "GlobalValues_PG.h"
-#include "GlobalChunkHandler_PG.h"
 
 namespace PirateGame {
     /// Concept to check if a class has a method getSprite that returns an sf::Sprite
@@ -263,30 +262,16 @@ namespace PirateGame {
         std::unique_ptr<Node<T>> root;
         std::unordered_map<T*, QuadtreeObject<T>*> objectMap;
 
-        Quadtree(GlobalChunkHandler* GCH) {
-            auto chunks = GCH->getAllChunks();
+        Quadtree(const sf::FloatRect initalBounds) {
 
-            // Find the boundaries as the minimum and maximum x and y values
-            sf::FloatRect initialBoundary = chunks.front()->getMap()->getBounds();
-            for (auto chunk : chunks) {
-                sf::FloatRect mapBounds = chunk->getMap()->getBounds();
-                if (mapBounds.left < initialBoundary.left) initialBoundary.left = mapBounds.left;
-                if (mapBounds.top < initialBoundary.top) initialBoundary.top = mapBounds.top;
-                if (mapBounds.left + mapBounds.width > initialBoundary.left + initialBoundary.width) initialBoundary.width = mapBounds.left + mapBounds.width - initialBoundary.left;
-                if (mapBounds.top + mapBounds.height > initialBoundary.top + initialBoundary.height) initialBoundary.height = mapBounds.top + mapBounds.height - initialBoundary.top;
-            }
+            std::cout << "Initial boundary: " << initalBounds.left << ", " << initalBounds.top << ", " << initalBounds.width << ", " << initalBounds.height << std::endl;
 
-            std::cout << "Initial boundary: " << initialBoundary.left << ", " << initialBoundary.top << ", " << initialBoundary.width << ", " << initialBoundary.height << std::endl;
-
-            root = std::make_unique<Node<T>>(initialBoundary, maxObjects);
+            root = std::make_unique<Node<T>>(initalBounds, maxObjects);
         }
 
         void update(sf::FloatRect& currentBoundary) {
-            if (currentBoundary.left <= root->boundary.left &&
-                currentBoundary.top <= root->boundary.top &&
-                currentBoundary.left + currentBoundary.width >= root->boundary.left + root->boundary.width &&
-                currentBoundary.top + currentBoundary.height >= root->boundary.top + root->boundary.height) {
-                // The new boundary fully contains the current root boundary
+            if (currentBoundary.left != root->boundary.left || currentBoundary.top != root->boundary.top || currentBoundary.width != root->boundary.width || currentBoundary.height != root->boundary.height) {
+                // The new boundary is different from the current root boundary
                 extend(currentBoundary);
             }
             root->update();

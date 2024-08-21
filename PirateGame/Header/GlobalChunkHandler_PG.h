@@ -16,6 +16,7 @@ namespace PirateGame {
 			// Generate the initial chunks
 			lastChunk = std::make_shared<Chunk>(std::pair<int, int>(0, 0), chunkSize, cellSize);
 			generateSurroundingChunks(lastChunk.get());
+			updateMapBounds();
 		}
 
 		void generateRegionCoords(const std::pair<int, int>& chunkCoord) {
@@ -29,6 +30,9 @@ namespace PirateGame {
 				std::cout << "Player has moved to a new chunk: " << currentChunk->getChunkCoord().first << ", " << currentChunk->getChunkCoord().second << std::endl;
 				generateSurroundingChunks(currentChunk.get());
 				deleteChunksOutOfRange(currentChunk.get());
+
+				// Update the map bounds
+				updateMapBounds();
 			}
 			lastChunk = currentChunk;
 
@@ -86,13 +90,11 @@ namespace PirateGame {
 			// Generate the chunk
 			std::shared_ptr<Chunk> newChunk = std::make_shared<Chunk>(chunkCoord, chunkSize, cellSize);
 			newChunk->setRegionType(regionHandler.generateRegionType(sf::Vector2f(static_cast<float>(chunkCoord.first), static_cast<float>(chunkCoord.second))));
-			//grab all enemy ships in newChunks' bounds
-			
 			chunks.push_back(newChunk);
 		}
 		
 		void deleteChunksOutOfRange(Chunk* currentChunk) {
-			std::vector<Chunk*> chunksToDelete;
+			/*std::vector<Chunk*> chunksToDelete;
 			for (auto& chunk : chunks) {
 				if (abs(chunk->getChunkCoord().first - currentChunk->getChunkCoord().first) > renderDistance || 
 					abs(chunk->getChunkCoord().second - currentChunk->getChunkCoord().second) > renderDistance) {
@@ -102,12 +104,29 @@ namespace PirateGame {
 
 			for (auto& chunk : chunksToDelete) {
 				deleteChunk(chunk);
-			}
+			}*/
 		}
 
 		void deleteChunk(Chunk* chunk) {
 			// Check if the chunk exists, then erase.
 			std::erase_if(chunks, [&](const std::shared_ptr<Chunk>& c) { return c.get() == chunk; });
+		}
+
+		void updateMapBounds() {
+			for (auto& chunk : chunks) {
+				if (chunk->getChunkCoord().first * chunkSize.x < mapBounds.left) {
+					mapBounds.left = chunk->getChunkCoord().first * chunkSize.x;
+				}
+				if (chunk->getChunkCoord().second * chunkSize.y < mapBounds.top) {
+					mapBounds.top = chunk->getChunkCoord().second * chunkSize.y;
+				}
+				if (chunk->getChunkCoord().first * chunkSize.x + chunkSize.x > mapBounds.left + mapBounds.width) {
+					mapBounds.width = chunk->getChunkCoord().first * chunkSize.x + chunkSize.x - mapBounds.left;
+				}
+				if (chunk->getChunkCoord().second * chunkSize.y + chunkSize.y > mapBounds.top + mapBounds.height) {
+					mapBounds.height = chunk->getChunkCoord().second * chunkSize.y + chunkSize.y - mapBounds.top;
+				}
+			}
 		}
 
 		// Values
