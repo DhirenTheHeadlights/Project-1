@@ -14,6 +14,8 @@ namespace PirateGame {
 	public:
         GlobalValues(sf::Font& font) : font(font) {};
 
+        void loadFromJSON(const std::string filename);
+
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);
 
@@ -70,5 +72,9 @@ namespace PirateGame {
 
         // Cache for storing text objects
         std::unordered_map<std::string, sf::Text> textCache;
+
+        std::unordered_map<std::string, float> jsonParsed;
+
+        
     };
 }

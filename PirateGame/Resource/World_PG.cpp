@@ -30,7 +30,7 @@ void World::setUpWorldElements() {
 
 void World::setUpPlayerShip() {
 	playerShip = std::make_unique<PlayerShip>(context);
-	playerShip->setUpShip(ShipClass::ManOWar);
+	playerShip->setUpShip(playerShipClass);
 	playerShip->getCannonHandler()->setCannonballQuadtree(GQH->getCannonballQuadtree());
 }
 

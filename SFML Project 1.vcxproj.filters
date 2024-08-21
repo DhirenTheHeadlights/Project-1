@@ -903,6 +903,9 @@
     <ClInclude Include="PirateGame\Header\GlobalContext_PG.h">
       <Filter>Source Files\PirateGame\Header\Globals</Filter>
     </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Source Files\PirateGame\JSON</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -1184,5 +1187,10 @@
     <Text Include="AimTrainer\Misc\HighScores.txt">
       <Filter>Source Files\AimTrainer\Misc</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gameConfig.json">
+      <Filter>Source Files\PirateGame\JSON</Filter>
+    </None>
   </ItemGroup>
 </Project>
