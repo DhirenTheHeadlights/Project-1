@@ -4,10 +4,10 @@ using namespace PirateGame;
 
 void EnemyShipHandler::addEnemyShips(int numShipsPerChunk) {
 	// Grab all chunks
-	auto chunks = context.GCH->getAllChunks();
+	auto& chunks = context.GCH->getAllChunks();
 
 	for (auto& chunk : chunks) {
-		addEnemyShipsToChunk(*chunk->getMap(), numShipsPerChunk);
+		addEnemyShipsToChunk(*chunk.getMap(), numShipsPerChunk);
 	}
 }
 

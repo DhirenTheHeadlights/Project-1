@@ -15,7 +15,7 @@
 namespace PirateGame {
 	class LandMass {
 	public:
-		LandMass(GlobalContext& context) : context(context) {}
+		LandMass(GlobalContext& context) : context(context), id(context.GIDM->generateID()) {}
 
 		virtual void createLandMass() = 0;
 		void setRandomRotation() { sprite.setRotation(static_cast<float>(rand() % 360)); }
@@ -25,6 +25,7 @@ namespace PirateGame {
 		virtual const sf::Image& getImage(GlobalContext& context) = 0;
 		virtual LandMassType getType() = 0;
 		bool isActive() const { return active; }
+		ID* getID() const { return id.get(); }
 
 		// Setters
 		void deactivate() { active = false; }
@@ -43,6 +44,9 @@ namespace PirateGame {
 
 		// Active flag
 		bool active = true;
+
+		// ID
+		std::shared_ptr<ID> id;
 
 		// Type generator
 		LandMassTypeGenerator<LandMassType> typeGenerator;

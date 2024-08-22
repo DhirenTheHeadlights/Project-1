@@ -903,8 +903,11 @@
     <ClInclude Include="PirateGame\Header\GlobalContext_PG.h">
       <Filter>Source Files\PirateGame\Header\Globals</Filter>
     </ClInclude>
-    <ClInclude Include="json.hpp">
+    <ClInclude Include="PirateGame\json\json.hpp">
       <Filter>Source Files\PirateGame\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\JSONLoader_PG.h">
+      <Filter>Source Files\PirateGame\Header\Globals</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1189,7 +1192,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="gameConfig.json">
+    <None Include="PirateGame\json\gameConfig.json">
+      <Filter>Source Files\PirateGame\JSON</Filter>
+    </None>
+    <None Include="PirateGame\json\saveFile.json">
       <Filter>Source Files\PirateGame\JSON</Filter>
     </None>
   </ItemGroup>

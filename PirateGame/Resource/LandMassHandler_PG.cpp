@@ -11,10 +11,10 @@ LandMassHandler::~LandMassHandler() {
 // Add all the land masses to the vector
 void LandMassHandler::addLandMasses(int numLandMassesPerChunk, float minDistBetweenLandmasses) {
 	// Grab all chunks
-	auto chunks = context.GCH->getAllChunks();
+	auto& chunks = context.GCH->getAllChunks();
 
 	for (auto& chunk : chunks) {
-		addLandMassesToChunk(*chunk->getMap(), numLandMassesPerChunk, minDistBetweenLandmasses);
+		addLandMassesToChunk(*chunk.getMap(), numLandMassesPerChunk, minDistBetweenLandmasses);
 	}
 }
 

@@ -12,59 +12,51 @@
 
 #include "VectorMath.h"
 #include "GlobalValues_PG.h"
+#include "GlobalIDManager_PG.h"
 
 namespace PirateGame {
     /// Concept to check if a class has a method getSprite that returns an sf::Sprite
+    template <class T>
+    concept HasGetID = requires(T t) {
+        { t.getID() } -> std::convertible_to<ID*>;
+    };
+
     template <class T>
     concept HasGetSprite = requires(T t) {
         { t.getSprite() } -> std::convertible_to<sf::Sprite>;
     };
 
-    template <HasGetSprite T>
     class Node;  // Forward declaration of Node to be used in QuadtreeObject
 
-    template <HasGetSprite T>
     class QuadtreeObject {
     public:
-        T* object; // Pointer to the actual object
-        std::unordered_set<Node<T>*> registeredNodes; // Nodes that this object is registered with
+        ID* id;                                     // ID of the object
+        sf::Sprite sprite;                          // Sprite of the object
+        std::unordered_set<Node*> registeredNodes;  // Nodes that this object is registered with
 
-        QuadtreeObject(T* obj) : object(obj) {}
-
-        // Return the position using the underlying object's sprite
-        sf::Vector2f getPosition() const {
-            return object->getSprite().getPosition();
-        }
-
-        // Ensure compatibility with the quadtree by forwarding the getSprite method
-        sf::Sprite getSprite() const {
-            return object->getSprite();
-        }
+        QuadtreeObject(ID* id, const sf::Sprite& sprite) : id(id), sprite(sprite) {}
 
         // Additional methods to handle node registration could go here
-        void registerNode(Node<T>* node) {
+        void registerNode(Node* node) {
             registeredNodes.insert(node);
         }
 
-        void unregisterNode(Node<T>* node) {
+        void unregisterNode(Node* node) {
             registeredNodes.erase(node);
         }
-
-        T* getObject() {
-			return object;
-		}
     };
 
-    template <HasGetSprite T>
     class Node {
     public:
         sf::FloatRect boundary;
-        std::vector<QuadtreeObject<T>*> objects;
-        std::vector<std::unique_ptr<Node<T>>> children;
+        std::vector<QuadtreeObject*> objects;
+        std::vector<std::unique_ptr<Node>> children;
         bool divided;
         int maxObjects;
 
-        Node(const sf::FloatRect& bounds, const int maxObjects) : boundary(bounds), divided(false), maxObjects(maxObjects) {}
+        Node(const sf::FloatRect& bounds, const int maxObjects) : boundary(bounds), divided(false), maxObjects(maxObjects) {
+            objects.reserve(maxObjects);
+        }
 
         void update() {
             if (divided) {
@@ -92,17 +84,17 @@ namespace PirateGame {
             float width = boundary.width / 2;
             float height = boundary.height / 2;
 
-            children.push_back(std::make_unique<Node<T>>(sf::FloatRect(x, y, width, height), maxObjects));
-            children.push_back(std::make_unique<Node<T>>(sf::FloatRect(x + width, y, width, height), maxObjects));
-            children.push_back(std::make_unique<Node<T>>(sf::FloatRect(x, y + height, width, height), maxObjects));
-            children.push_back(std::make_unique<Node<T>>(sf::FloatRect(x + width, y + height, width, height), maxObjects));
+            children.push_back(std::make_unique<Node>(sf::FloatRect(x, y, width, height), maxObjects));
+            children.push_back(std::make_unique<Node>(sf::FloatRect(x + width, y, width, height), maxObjects));
+            children.push_back(std::make_unique<Node>(sf::FloatRect(x, y + height, width, height), maxObjects));
+            children.push_back(std::make_unique<Node>(sf::FloatRect(x + width, y + height, width, height), maxObjects));
 
             divided = true;
 
             // Redistribute objects to new children
             for (auto obj : objects) {
                 for (auto& child : children) {
-                    if (child->boundary.contains(obj->getSprite().getPosition())) {
+                    if (child->boundary.contains(obj->sprite.getPosition())) {
                         child->objects.push_back(obj);
                         break;
                     }
@@ -112,8 +104,8 @@ namespace PirateGame {
             objects.clear();  // Clear the objects in the current node as they are now in the children
         }
 
-        bool addObject(QuadtreeObject<T>* qtObject) {
-            if (!boundary.contains(qtObject->getPosition())) {
+        bool addObject(QuadtreeObject* qtObject) {
+            if (!boundary.contains(qtObject->sprite.getPosition())) {
                 return false;
             }
 
@@ -136,9 +128,9 @@ namespace PirateGame {
             return true;
         }
 
-        bool removeObject(QuadtreeObject<T>* qtObject) {
+        bool removeObject(QuadtreeObject* qtObject) {
             // Check current node's objects
-            auto it = std::find_if(objects.begin(), objects.end(), [&](QuadtreeObject<T>* obj) {
+            auto it = std::find_if(objects.begin(), objects.end(), [&](QuadtreeObject* obj) {
                 return obj == qtObject;
                 });
 
@@ -170,29 +162,27 @@ namespace PirateGame {
             }
         }
 
-        template <HasGetSprite U>
-        std::vector<T*> findObjectsNearObject(U* queryObject, float distance) {
-            sf::FloatRect queryBounds = queryObject->getSprite().getGlobalBounds();
+        std::vector<QuadtreeObject*> findObjectsNearObject(sf::FloatRect queryObjectBounds, float distance) {
+            sf::FloatRect queryBounds = queryObjectBounds;
             queryBounds.left -= distance;
             queryBounds.top -= distance;
             queryBounds.width += 2 * distance;
             queryBounds.height += 2 * distance;
 
-            if (!boundary.intersects(queryBounds)) return std::vector<T*>();
+            if (!boundary.intersects(queryBounds)) return std::vector<QuadtreeObject*>();
 
-            std::vector<T*> found;
-            findObjectsInRange(queryBounds, found, distance, queryObject);
+            std::vector<QuadtreeObject*> found;
+            findObjectsInRange(queryBounds, found, distance, queryObjectBounds);
 
             return found;
         }
 
-        template <HasGetSprite U>
-        void findObjectsInRange(const sf::FloatRect& range, std::vector<T*>& found, float distance, U* queryObject) {
+        void findObjectsInRange(const sf::FloatRect& range, std::vector<QuadtreeObject*>& found, float distance, sf::FloatRect queryObjectBounds) {
             // Check objects in the current node
             for (auto object : objects) {
-                if (range.intersects(object->getSprite().getGlobalBounds())) {
-                    if (vm::distance(object->getSprite().getPosition(), queryObject->getSprite().getPosition()) <= distance) {
-                        found.push_back(object->getObject());
+                if (range.intersects(queryObjectBounds)) {
+                    if (vm::distance(object->sprite.getPosition(), queryObjectBounds.getPosition()) <= distance) {
+                        found.push_back(object);
                     }
                 }
             }
@@ -201,16 +191,16 @@ namespace PirateGame {
             if (divided) {
                 for (auto& child : children) {
                     if (child->boundary.intersects(range)) {
-                        child->findObjectsInRange(range, found, distance, queryObject);
+                        child->findObjectsInRange(range, found, distance, queryObjectBounds);
                     }
                 }
             }
         }
 
 
-        bool updateObjectPosition(QuadtreeObject<T>* object) {
+        bool updateObjectPosition(QuadtreeObject* object) {
             // Check if the sprite is still within the boundary
-            if (boundary.intersects(object->getSprite().getGlobalBounds())) {
+            if (boundary.intersects(object->sprite.getGlobalBounds())) {
                 // If already within the same node and correct position, no need to do anything
                 return true;
             }
@@ -246,7 +236,7 @@ namespace PirateGame {
             // Draw the objects' positions
             for (auto object : objects) {
                 sf::CircleShape marker(10); // Small circle marker
-                sf::Vector2f pos = object->getSprite().getPosition();
+                sf::Vector2f pos = object->sprite.getPosition();
                 marker.setPosition(pos.x, pos.y);
                 marker.setFillColor(sf::Color::Magenta); // Object position
                 gv->getWindow()->draw(marker);
@@ -255,18 +245,19 @@ namespace PirateGame {
     };
 
     /// Quadtree class, this will be the main class that will be used to create the quadtree.
-    template <HasGetSprite T>
+    template <typename T> requires HasGetSprite<T> && HasGetID<T>
     class Quadtree {
     public:
         const int maxObjects = 4;
-        std::unique_ptr<Node<T>> root;
-        std::unordered_map<T*, QuadtreeObject<T>*> objectMap;
+        std::unique_ptr<Node> root;
+        std::unordered_map<T*, QuadtreeObject*> objectMap;
+        std::unordered_map<QuadtreeObject*, T*> reverseObjectMap;
 
         Quadtree(const sf::FloatRect initalBounds) {
 
             std::cout << "Initial boundary: " << initalBounds.left << ", " << initalBounds.top << ", " << initalBounds.width << ", " << initalBounds.height << std::endl;
 
-            root = std::make_unique<Node<T>>(initalBounds, maxObjects);
+            root = std::make_unique<Node>(initalBounds, maxObjects);
         }
 
         void update(sf::FloatRect& currentBoundary) {
@@ -278,9 +269,10 @@ namespace PirateGame {
         }
 
         void addObject(T* object) {
-            auto qtObject = new QuadtreeObject<T>(object);
+            auto qtObject = new QuadtreeObject(object->getID(), object->getSprite());
             if (root->addObject(qtObject)) {
-                objectMap[object] = qtObject; // Store the mapping
+                objectMap[object] = qtObject;           // Store the mapping
+                reverseObjectMap[qtObject] = object;    // Store the reverse mapping
             }
         }
 
@@ -288,20 +280,27 @@ namespace PirateGame {
             auto it = objectMap.find(object);
             if (it != objectMap.end()) {
                 root->removeObject(it->second);
-                objectMap.erase(it); // Remove the mapping
-                delete it->second; // Clean up the QuadtreeObject
+                objectMap.erase(it);                    // Remove the mapping
+                reverseObjectMap.erase(it->second);     // Remove the reverse mapping
+                delete it->second;                      // Clean up the QuadtreeObject
             }
         }
 
         template <HasGetSprite U>
         std::vector<T*> findObjectsNearObject(U* queryObject, float distance) {
-            return root->findObjectsNearObject(queryObject, distance);
+            auto nearby = root->findObjectsNearObject(queryObject->getSprite().getGlobalBounds(), distance);
+            std::vector<T*> found;
+            found.reserve(nearby.size());
+            for (auto qtobject : nearby) {
+                found.push_back(reverseObjectMap.at(qtobject));
+			}
+            return found;
         }
 
         // Extend function to enlarge the quadtree boundary
         void extend(const sf::FloatRect& newBoundary) {
             // Create a new root node with the expanded boundary
-            auto newRoot = std::make_unique<Node<T>>(newBoundary, maxObjects);
+            auto newRoot = std::make_unique<Node>(newBoundary, maxObjects);
 
             // Add the current root node as a child to the new root
             newRoot->children.push_back(std::move(root));
@@ -326,7 +325,10 @@ namespace PirateGame {
                 return false;
             }
             // Try to add the object starting from the root node
-            return root->addObject(objectMap[object]);
+            if (!root->addObject(objectMap[object])) {
+                std::cout << "Failed to add object back to the quadtree" << std::endl;
+                return false;
+            }
         }
 
         void draw(GlobalValues* gv) {

@@ -14,8 +14,8 @@ namespace PirateGame {
 
 		void initializeMap() {
 			// Generate the initial chunks
-			lastChunk = std::make_shared<Chunk>(std::pair<int, int>(0, 0), chunkSize, cellSize);
-			generateSurroundingChunks(lastChunk.get());
+			Chunk initalChunk(std::pair<int, int>(0, 0), chunkSize, cellSize);
+			generateSurroundingChunks(initalChunk);
 			updateMapBounds();
 		}
 
@@ -24,22 +24,24 @@ namespace PirateGame {
 		}
 
 		void updateChunks(sf::RenderWindow* window, const sf::Vector2f position, bool debug = false) {
-			std::shared_ptr<Chunk> currentChunk = getChunkAtPosition(position);
+			Chunk& currentChunk = getChunkAtPosition(position);
+
 			// Check if the player has moved to a new chunk
-			if (currentChunk->getChunkCoord() != lastChunk->getChunkCoord()) {
-				std::cout << "Player has moved to a new chunk: " << currentChunk->getChunkCoord().first << ", " << currentChunk->getChunkCoord().second << std::endl;
-				generateSurroundingChunks(currentChunk.get());
-				deleteChunksOutOfRange(currentChunk.get());
+			if (currentChunk.getChunkCoord() != lastChunkCoord) {
+				std::cout << "Player has moved to a new chunk: " << currentChunk.getChunkCoord().first << ", " << currentChunk.getChunkCoord().second << std::endl;
+				generateSurroundingChunks(currentChunk);
+				deleteChunksOutOfRange(currentChunk);
 
 				// Update the map bounds
 				updateMapBounds();
+
+				lastChunkCoord = currentChunk.getChunkCoord();
 			}
-			lastChunk = currentChunk;
 
 			// Draw the grid for all chunks
 			if (debug) {
 				for (auto& chunk : chunks) {
-					chunk->getMap()->drawGrid(*window);
+					chunk.getMap()->drawGrid(*window);
 				}
 			}
 		}
@@ -49,16 +51,17 @@ namespace PirateGame {
 		void setRenderDistance(int distance) { renderDistance = distance; }
 
 		// Getters
-		std::shared_ptr<Chunk> getChunkAtPosition(sf::Vector2f position) {
+		Chunk& getChunkAtPosition(const sf::Vector2f position) {
 			for (auto& chunk : chunks) {
-				if (chunk->getMap()->mapContains(position)) {
+				if (chunk.getMap()->mapContains(position)) {
 					return chunk;
 				}
 			}
 			std::cout << "No chunk found at position: " << position.x << ", " << position.y << std::endl;
-			return nullptr;
+			static Chunk defaultChunk(std::pair<int, int>(0, 0), chunkSize, cellSize);
+			return defaultChunk;
 		}
-		std::vector<std::shared_ptr<Chunk>> getAllChunks() {
+		std::vector<Chunk>& getAllChunks() {
 			return chunks;
 		}
 		RegionHandler getRegionHandler() const { return regionHandler; }
@@ -66,15 +69,15 @@ namespace PirateGame {
 
 	private:
 		// Vector to store 'chunks'
-		std::vector<std::shared_ptr<Chunk>> chunks;
+		std::vector<Chunk> chunks;
 
 		// Store the last chunk the player was in
-		std::shared_ptr<Chunk> lastChunk;
+		std::pair<int, int> lastChunkCoord = { 0, 0 };
 
-		void generateSurroundingChunks(Chunk* currentChunk) {
+		void generateSurroundingChunks(Chunk& currentChunk) {
 			for (int dx = -renderDistance; dx <= renderDistance; ++dx) {
 				for (int dy = -renderDistance; dy <= renderDistance; ++dy) {
-					std::pair<int, int> chunkCoord = { currentChunk->getChunkCoord().first + dx, currentChunk->getChunkCoord().second + dy};
+					std::pair<int, int> chunkCoord = { currentChunk.getChunkCoord().first + dx, currentChunk.getChunkCoord().second + dy};
 					generateChunk(chunkCoord);
 				}
 			}
@@ -83,22 +86,22 @@ namespace PirateGame {
 		void generateChunk(const std::pair<int, int>& chunkCoord) {
 			// Check if the chunk is already generated
 			for (auto& chunk : chunks) {
-				if (chunk->getChunkCoord() == chunkCoord) {
+				if (chunk.getChunkCoord() == chunkCoord) {
 					return;
 				}
 			}
 			// Generate the chunk
-			std::shared_ptr<Chunk> newChunk = std::make_shared<Chunk>(chunkCoord, chunkSize, cellSize);
-			newChunk->setRegionType(regionHandler.generateRegionType(sf::Vector2f(static_cast<float>(chunkCoord.first), static_cast<float>(chunkCoord.second))));
-			chunks.push_back(newChunk);
+			Chunk newChunk(chunkCoord, chunkSize, cellSize);
+			newChunk.setRegionType(regionHandler.generateRegionType(sf::Vector2f(static_cast<float>(chunkCoord.first), static_cast<float>(chunkCoord.second))));
+			chunks.push_back(std::move(newChunk));
 		}
 		
-		void deleteChunksOutOfRange(Chunk* currentChunk) {
-			/*std::vector<Chunk*> chunksToDelete;
+		void deleteChunksOutOfRange(Chunk& currentChunk) {
+			/*std::vector<Chunk> chunksToDelete;
 			for (auto& chunk : chunks) {
-				if (abs(chunk->getChunkCoord().first - currentChunk->getChunkCoord().first) > renderDistance || 
-					abs(chunk->getChunkCoord().second - currentChunk->getChunkCoord().second) > renderDistance) {
-					chunksToDelete.push_back(chunk.get());
+				if (abs(chunk.getChunkCoord().first - currentChunk.getChunkCoord().first) > renderDistance || 
+					abs(chunk.getChunkCoord().second - currentChunk.getChunkCoord().second) > renderDistance) {
+					chunksToDelete.push_back(chunk);
 				}
 			}
 
@@ -107,24 +110,24 @@ namespace PirateGame {
 			}*/
 		}
 
-		void deleteChunk(Chunk* chunk) {
+		void deleteChunk(Chunk& chunk) {
 			// Check if the chunk exists, then erase.
-			std::erase_if(chunks, [&](const std::shared_ptr<Chunk>& c) { return c.get() == chunk; });
+			std::erase_if(chunks, [&chunk](const Chunk& c) { return c.getChunkCoord() == chunk.getChunkCoord(); });
 		}
 
 		void updateMapBounds() {
 			for (auto& chunk : chunks) {
-				if (chunk->getChunkCoord().first * chunkSize.x < mapBounds.left) {
-					mapBounds.left = chunk->getChunkCoord().first * chunkSize.x;
+				if (chunk.getChunkCoord().first * chunkSize.x < mapBounds.left) {
+					mapBounds.left = chunk.getChunkCoord().first * chunkSize.x;
 				}
-				if (chunk->getChunkCoord().second * chunkSize.y < mapBounds.top) {
-					mapBounds.top = chunk->getChunkCoord().second * chunkSize.y;
+				if (chunk.getChunkCoord().second * chunkSize.y < mapBounds.top) {
+					mapBounds.top = chunk.getChunkCoord().second * chunkSize.y;
 				}
-				if (chunk->getChunkCoord().first * chunkSize.x + chunkSize.x > mapBounds.left + mapBounds.width) {
-					mapBounds.width = chunk->getChunkCoord().first * chunkSize.x + chunkSize.x - mapBounds.left;
+				if (chunk.getChunkCoord().first * chunkSize.x + chunkSize.x > mapBounds.left + mapBounds.width) {
+					mapBounds.width = chunk.getChunkCoord().first * chunkSize.x + chunkSize.x - mapBounds.left;
 				}
-				if (chunk->getChunkCoord().second * chunkSize.y + chunkSize.y > mapBounds.top + mapBounds.height) {
-					mapBounds.height = chunk->getChunkCoord().second * chunkSize.y + chunkSize.y - mapBounds.top;
+				if (chunk.getChunkCoord().second * chunkSize.y + chunkSize.y > mapBounds.top + mapBounds.height) {
+					mapBounds.height = chunk.getChunkCoord().second * chunkSize.y + chunkSize.y - mapBounds.top;
 				}
 			}
 		}
