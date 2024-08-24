@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 /// This class is used to represent the land masses in the game.
 /// The types of land masses include: islands, rocks, and shipwrecks.

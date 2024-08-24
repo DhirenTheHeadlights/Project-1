@@ -52,16 +52,15 @@ namespace PirateGame {
         std::vector<QuadtreeObject*> objects;
         std::vector<std::unique_ptr<Node>> children;
         bool divided;
-        int maxObjects;
 
-        Node(const sf::FloatRect& bounds, const int maxObjects) : boundary(bounds), divided(false), maxObjects(maxObjects) {
+        Node(const sf::FloatRect& bounds, const int maxObjects) : boundary(bounds), divided(false) {
             objects.reserve(maxObjects);
         }
 
-        void update() {
+        void update(const int maxObjects) {
             if (divided) {
                 for (auto& child : children) {
-                    child->update();
+                    child->update(maxObjects);
                 }
             }
 
@@ -78,7 +77,7 @@ namespace PirateGame {
             }
         }
 
-        void subdivide() {
+        void subdivide(const int maxObjects) {
             float x = boundary.left;
             float y = boundary.top;
             float width = boundary.width / 2;
@@ -104,14 +103,14 @@ namespace PirateGame {
             objects.clear();  // Clear the objects in the current node as they are now in the children
         }
 
-        bool addObject(QuadtreeObject* qtObject) {
+        bool addObject(QuadtreeObject* qtObject, const int maxObjects) {
             if (!boundary.contains(qtObject->sprite.getPosition())) {
                 return false;
             }
 
             if (divided) {
                 for (auto& child : children) {
-                    if (child->addObject(qtObject)) {
+                    if (child->addObject(qtObject, maxObjects)) {
                         return true;
                     }
                 }
@@ -119,8 +118,8 @@ namespace PirateGame {
             }
 
             if (objects.size() >= maxObjects) {
-                subdivide();
-                return addObject(qtObject);
+                subdivide(maxObjects);
+                return addObject(qtObject, maxObjects);
             }
 
             objects.push_back(qtObject);
@@ -198,7 +197,7 @@ namespace PirateGame {
         }
 
 
-        bool updateObjectPosition(QuadtreeObject* object) {
+        bool updateObjectPosition(QuadtreeObject* object, const int maxObjects) {
             // Check if the sprite is still within the boundary
             if (boundary.intersects(object->sprite.getGlobalBounds())) {
                 // If already within the same node and correct position, no need to do anything
@@ -206,9 +205,7 @@ namespace PirateGame {
             }
             else {
                 // If the position is outside the current node's boundary, remove and reinsert the object
-                if (removeObject(object)) {
-                    return addObject(object);
-                }
+                return removeObject(object) && addObject(object, maxObjects);
             }
             return false;
         }
@@ -254,37 +251,63 @@ namespace PirateGame {
         std::unordered_map<QuadtreeObject*, T*> reverseObjectMap;
 
         Quadtree(const sf::FloatRect initalBounds) {
-
             std::cout << "Initial boundary: " << initalBounds.left << ", " << initalBounds.top << ", " << initalBounds.width << ", " << initalBounds.height << std::endl;
 
             root = std::make_unique<Node>(initalBounds, maxObjects);
         }
 
         void update(sf::FloatRect& currentBoundary) {
-            if (currentBoundary.left != root->boundary.left || currentBoundary.top != root->boundary.top || currentBoundary.width != root->boundary.width || currentBoundary.height != root->boundary.height) {
+            const float threshold = 0.1f;
+            if (std::fabs(currentBoundary.left - root->boundary.left) > threshold ||
+                std::fabs(currentBoundary.top - root->boundary.top) > threshold ||
+                std::fabs(currentBoundary.width - root->boundary.width) > threshold ||
+                std::fabs(currentBoundary.height - root->boundary.height) > threshold) {
                 // The new boundary is different from the current root boundary
                 extend(currentBoundary);
             }
-            root->update();
+            root->update(maxObjects);
         }
 
-        void addObject(T* object) {
+        bool addObject(T* object) {
+            if (!root->boundary.contains(object->getSprite().getPosition())) {
+                std::cerr << "Error: Object is out of quadtree bounds. Cannot add." << std::endl;
+                return false;
+            }
+
             auto qtObject = new QuadtreeObject(object->getID(), object->getSprite());
-            if (root->addObject(qtObject)) {
-                objectMap[object] = qtObject;           // Store the mapping
-                reverseObjectMap[qtObject] = object;    // Store the reverse mapping
+            if (root->addObject(qtObject, maxObjects)) {
+                objectMap.insert({ object, qtObject });
+                reverseObjectMap.insert({ qtObject, object });
+                return true;
+            }
+            else {
+                delete qtObject;  // Clean up if the addition failed
+                std::cerr << "Error: Object addition failed." << std::endl;
+                return false;
             }
         }
 
-        void removeObject(T* object) {
+
+        bool removeObject(T* object) {
             auto it = objectMap.find(object);
-            if (it != objectMap.end()) {
-                root->removeObject(it->second);
-                objectMap.erase(it);                    // Remove the mapping
-                reverseObjectMap.erase(it->second);     // Remove the reverse mapping
-                delete it->second;                      // Clean up the QuadtreeObject
+
+            if (it == objectMap.end()) {
+                std::cerr << "Error: Failed to remove object from quadtree." << std::endl;
+                return false;
             }
+
+            // Try to remove from quadtree
+            if (root->removeObject(it->second)) {
+                delete it->second;                  // Clean up the QuadtreeObject
+                reverseObjectMap.erase(it->second);
+                objectMap.erase(it);                // Remove from objectMap only after successful removal
+                return true;
+            }
+
+            std::cerr << "Error: Object not found in objectMap." << std::endl;
+            return false;
         }
+
 
         template <HasGetSprite U>
         std::vector<T*> findObjectsNearObject(U* queryObject, float distance) {
@@ -308,28 +331,16 @@ namespace PirateGame {
 
             // Set the new root as the root of the quadtree
             root = std::move(newRoot);
-
-            // Redistribute objects that might now fall into the extended region
-            for (auto& [object, qtObject] : objectMap) {
-                root->addObject(qtObject);  // Reinsert each object into the new root
-            }
-
-            std::cout << "Extended boundary to: " << newBoundary.left << ", " << newBoundary.top << ", " << newBoundary.width << ", " << newBoundary.height << std::endl;
         }
 
 
-        bool updateObjectPosition(T* object) {
-            // First remove the object from its current node
-            if (!root->removeObject(objectMap[object])) {
-                // If removeObject returns false, the object was not found in the current boundary
-                return false;
-            }
-            // Try to add the object starting from the root node
-            if (!root->addObject(objectMap[object])) {
-                std::cout << "Failed to add object back to the quadtree" << std::endl;
-                return false;
+        void updateObjectPosition(T* object) {
+            QuadtreeObject* qtObject = objectMap.at(object);
+            if (!root->updateObjectPosition(qtObject, maxObjects)) {
+                std::cerr << "Error: Object position update failed." << std::endl;
             }
         }
+
 
         void draw(GlobalValues* gv) {
             root->draw(gv);

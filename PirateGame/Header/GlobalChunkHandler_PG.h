@@ -116,26 +116,34 @@ namespace PirateGame {
 		}
 
 		void updateMapBounds() {
-			for (auto& chunk : chunks) {
-				if (chunk.getChunkCoord().first * chunkSize.x < mapBounds.left) {
-					mapBounds.left = chunk.getChunkCoord().first * chunkSize.x;
-				}
-				if (chunk.getChunkCoord().second * chunkSize.y < mapBounds.top) {
-					mapBounds.top = chunk.getChunkCoord().second * chunkSize.y;
-				}
-				if (chunk.getChunkCoord().first * chunkSize.x + chunkSize.x > mapBounds.left + mapBounds.width) {
-					mapBounds.width = chunk.getChunkCoord().first * chunkSize.x + chunkSize.x - mapBounds.left;
-				}
-				if (chunk.getChunkCoord().second * chunkSize.y + chunkSize.y > mapBounds.top + mapBounds.height) {
-					mapBounds.height = chunk.getChunkCoord().second * chunkSize.y + chunkSize.y - mapBounds.top;
-				}
+			float minX = std::numeric_limits<float>::max();
+			float maxX = std::numeric_limits<float>::lowest();
+			float minY = std::numeric_limits<float>::max();
+			float maxY = std::numeric_limits<float>::lowest();
+
+			for (const auto& chunk : chunks) {
+				float chunkLeft = chunk.getChunkCoord().first * chunkSize.x;
+				float chunkTop = chunk.getChunkCoord().second * chunkSize.y;
+				float chunkRight = chunkLeft + chunkSize.x;
+				float chunkBottom = chunkTop + chunkSize.y;
+
+				minX = std::min(minX, chunkLeft);
+				maxX = std::max(maxX, chunkRight);
+				minY = std::min(minY, chunkTop);
+				maxY = std::max(maxY, chunkBottom);
 			}
+
+			mapBounds.left = minX;
+			mapBounds.top = minY;
+			mapBounds.width = maxX - minX;
+			mapBounds.height = maxY - minY;
 		}
+
 
 		// Values
 		RegionHandler regionHandler;
 		sf::Vector2f chunkSize = sf::Vector2f(5000.f, 5000.f);
-		sf::FloatRect mapBounds;
+		sf::FloatRect mapBounds = sf::FloatRect(std::numeric_limits<float>::max(), std::numeric_limits<float>::max(), 0.f, 0.f);
 		int cellSize = 100;
 		int renderDistance = 2;
 		int regionRenderDistance = 10;
