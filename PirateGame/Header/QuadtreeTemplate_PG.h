@@ -333,14 +333,12 @@ namespace PirateGame {
             root = std::move(newRoot);
         }
 
-
         void updateObjectPosition(T* object) {
             QuadtreeObject* qtObject = objectMap.at(object);
             if (!root->updateObjectPosition(qtObject, maxObjects)) {
                 std::cerr << "Error: Object position update failed." << std::endl;
             }
         }
-
 
         void draw(GlobalValues* gv) {
             root->draw(gv);

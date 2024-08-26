@@ -25,7 +25,7 @@ namespace PirateGame {
 		bool getActive() const { return isActive; }
 		ID* getShipID() const { return shipID; }
 		ID* getID() const { return ID.get(); }
-		sf::CircleShape getApproximateHitbox() { return sf::CircleShape(sprite.getGlobalBounds().width / 2.f); }
+		sf::CircleShape getApproximateHitbox() const { return sf::CircleShape(sprite.getGlobalBounds().width / 2.f); }
 
 		bool operator==(const Cannonball& other) const {
 			return velocity == other.velocity && clock.getElapsedTime() == other.clock.getElapsedTime();
