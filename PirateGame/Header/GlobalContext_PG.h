@@ -13,6 +13,7 @@
 #include "GlobalClock_PG.h"
 #include "GlobalIDManager_PG.h"
 #include "GlobalTextureHandler_PG.h"
+#include "JSONLoader_PG.h"
 
 namespace PirateGame {
 	struct GlobalContext {
@@ -27,5 +28,6 @@ namespace PirateGame {
 		std::unique_ptr<GlobalClock> GC = std::make_unique<GlobalClock>();
 		std::unique_ptr<GlobalIDManager> GIDM = std::make_unique<GlobalIDManager>();
 		std::unique_ptr<GlobalTextureHandler> GTH = std::make_unique<GlobalTextureHandler>();
+		std::unique_ptr<JSONLoader> JSL = std::make_unique<JSONLoader>();
 	};
 }

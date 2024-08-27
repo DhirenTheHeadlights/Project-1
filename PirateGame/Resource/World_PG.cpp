@@ -21,6 +21,10 @@ void World::setUpWorldElements() {
 	context.GCH->initializeMap();
 	view = View(window);
 
+	// Load JSON Values
+	context.JSL->loadGameConfig("PirateGame/json/gameConfig.json");
+	context.JSL->loadSaveData("PirateGame/json/saveFile.json");
+
 	// Set up the background
 	waterTiler.initialize();
 
