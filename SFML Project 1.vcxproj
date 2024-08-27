@@ -272,6 +272,7 @@
     <ClInclude Include="PirateGame\Header\EnemyShipInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShipMovementHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\EnemyShip_PG.h" />
+    <ClInclude Include="PirateGame\Header\GameConfigStructs_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalClock_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalContext_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalGameStateManager_PG.h" />
@@ -447,8 +448,8 @@
     <Text Include="AimTrainer\Misc\HighScores.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PirateGame\json\gameConfig.json" />
-    <None Include="PirateGame\json\saveFile.json" />
+    <None Include="PirateGame\json\GameConfig.json" />
+    <None Include="PirateGame\json\SaveFile.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

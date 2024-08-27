@@ -35,12 +35,10 @@ void ShipCannon::drawCannonNBalls(sf::RenderWindow* window) {
 }
 
 sf::Vector2f ShipCannon::calculatePerpendicularDirection(float rotation) const {
-    float rotationInRadians = (rotation - 180.f) * pi / 180.f;
+    float rotationInRadians = vm::degreesToRadians(rotation);
 
     // Calculate the direction of the cannon and normalize it
-    sf::Vector2f cannonDirection(cos(rotationInRadians), sin(rotationInRadians));
-    float magnitude = sqrt(cannonDirection.x * cannonDirection.x + cannonDirection.y * cannonDirection.y);
-    cannonDirection /= magnitude;
+    sf::Vector2f cannonDirection = vm::normalize(vm::angleRadiansToVector(rotationInRadians));
 
     cannonDirection *= (side == FiringSide::Starboard) ? -1.f : 1.f;
 
@@ -48,7 +46,6 @@ sf::Vector2f ShipCannon::calculatePerpendicularDirection(float rotation) const {
 }
 
 sf::Vector2f ShipCannon::calculateDirectionToTarget(const sf::Sprite& shipSprite, sf::Vector2f targetPos) {
-    const float pi = 3.14159265f;
     sf::Vector2f shipPos = shipSprite.getPosition();
 
     // Calculate vector from ship to target
@@ -56,7 +53,7 @@ sf::Vector2f ShipCannon::calculateDirectionToTarget(const sf::Sprite& shipSprite
     directionToTarget *= (side == FiringSide::Starboard) ? -1.f : 1.f;
 
     // Calculate angle from ship to target in degrees
-    float angleToMouse = atan2(directionToTarget.y, directionToTarget.x) * 180 / pi;
+    float angleToMouse = vm::vectorToAngleDegrees(directionToTarget);
 
     // Adjust angle based on ship orientation and capped angle
     float shipRotation = (shipSprite.getRotation() - 180);
@@ -66,12 +63,11 @@ sf::Vector2f ShipCannon::calculateDirectionToTarget(const sf::Sprite& shipSprite
     angleDifference = std::max(std::min(angleDifference, maxFiringAngle), -maxFiringAngle);
 
     // Calculate final direction vector based on capped angle
-    float cappedAngleRadians = (shipRotation + angleDifference) * pi / 180;
-    sf::Vector2f cappedDirection(cos(cappedAngleRadians), sin(cappedAngleRadians));
+    float cappedAngleRadians = vm::degreesToRadians(shipRotation + angleDifference);
+    sf::Vector2f cappedDirection = vm::angleRadiansToVector(cappedAngleRadians);
 
     // Normalize the capped direction vector
-    float magnitude = sqrt(cappedDirection.x * cappedDirection.x + cappedDirection.y * cappedDirection.y);
-    cappedDirection /= magnitude;
+    cappedDirection = vm::normalize(cappedDirection);
 
     // Invert the direction if firing from the starboard side
     cappedDirection *= (side == FiringSide::Starboard) ? -1.f : 1.f;
@@ -93,6 +89,10 @@ void ShipCannon::rotateTowards(float targetAngle, float step) {
 }
 
 void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window) {
+    if (FS != side) {
+        state = FiringState::Untargeted;
+    }
+
     // Calculate the cannon's position based on the ship's rotation
     float rotation = shipSprite.getRotation();
     sf::Transform rotationTransform;
@@ -103,34 +103,35 @@ void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide F
     cannonSprite.setPosition(cannonPosition);
 
     switch (state) {
-    case FiringState::TowardsTarget:
-        if (FS == side) {
-			sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, targetPos);
-			float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
-			rotateTowards(targetRotation, rotationSpeed);
-		}
-		break;
-    case FiringState::TowardsMouse:
-        if (FS == side) {
-		    sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
-		    sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
-		    sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
-		    float targetRotation = atan2(targetDirection.y, targetDirection.x) * 180 / pi;
+        case FiringState::TowardsTarget: {
+            sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, targetPos);
+            float targetRotation = vm::vectorToAngleDegrees(targetDirection);
+            rotateTowards(targetRotation, rotationSpeed);
 
-		    rotateTowards(targetRotation, rotationSpeed);
-
-		    resetRotationClock.restart();
-		}
-        break;
-    case FiringState::Untargeted:
-        float targetRotation = rotation + defaultRotation;
-		// If firing state is untargeted, slowly rotate towards the default rotation
-        if (resetRotationClock.getElapsedTime() < resetRotationTime) {
-            rotateTowards(rotation + defaultRotation, rotationSpeed);
+            resetRotationClock.restart();
+            break;
         }
-        // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
-		else cannonSprite.setRotation(targetRotation);
-        break;
+        case FiringState::TowardsMouse: {
+            sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
+            sf::Vector2f worldMousePos = window->mapPixelToCoords(mousePosition);
+            sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
+            float targetRotation = vm::vectorToAngleDegrees(targetDirection);
+
+            rotateTowards(targetRotation, rotationSpeed);
+
+            resetRotationClock.restart();
+            break;
+        }
+        case FiringState::Untargeted: {
+            float targetRotation = rotation + defaultRotation;
+            // If firing state is untargeted, slowly rotate towards the default rotation
+            if (resetRotationClock.getElapsedTime() < resetRotationTime) {
+                rotateTowards(rotation + defaultRotation, rotationSpeed);
+            }
+            // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
+            else cannonSprite.setRotation(targetRotation);
+            break;
+        }
     }
 }
 
