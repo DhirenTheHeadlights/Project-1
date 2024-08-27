@@ -6926,6 +6926,7 @@ class json_sax_dom_parser
         static_cast<void>(ex);
         if (allow_exceptions)
         {
+			std::cout << ex.what() << std::endl;
             JSON_THROW(ex);
         }
         return false;
