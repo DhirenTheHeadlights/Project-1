@@ -14,13 +14,12 @@ namespace PirateGame {
 			std::ifstream savefile(filename);
             json save = json::parse(savefile);
 
-            gameData.saveData.playerExperience = static_cast<int>(save["playerExperience"]);
-            gameData.saveData.playerExperienceToLevelUp = static_cast<int>(save["playerExperienceToLevelUp"]);
-            gameData.saveData.playerLevel = static_cast<int>(save["playerLevel"]);
-            gameData.saveData.playerGold = static_cast<int>(save["playerGold"]);
-			for (auto i : save["playerInventory"]) {
-				gameData.saveData.playerInventory.push_back(std::make_pair(i[0], std::make_pair(i[1], i[2])));
-			}
+            parseSection(save["playerExperience"], gameData.saveData.playerExperience);
+            parseSection(save["playerExperienceToLevelUp"], gameData.saveData.playerExperienceToLevelUp);
+            parseSection(save["playerLevel"], gameData.saveData.playerLevel);
+            parseSection(save["playerGold"], gameData.saveData.playerGold);
+            parseSection(save["playerInventory"], gameData.saveData.playerInventory);
+
             savefile.close();
         }
         void loadGameConfig(const std::string filename) {
@@ -35,25 +34,25 @@ namespace PirateGame {
         }
 	private:
         // Template for loading JSON files
-        template<typename T>
+        template <typename T>
         void parseSection(const nlohmann::json& json, T& section) {
-            section = json.get<T>();
+            if (!json.is_null()) section = json.get<T>();
         }
 
         template <>
         void parseSection(const nlohmann::json& json, sf::Time& section) {
-			section = sf::seconds(json.get<float>());
+            if (!json.is_null()) section = sf::seconds(json.get<float>());
 		}
 
         template <>
         void parseSection(const nlohmann::json& json, sf::Vector2f& section) {
-            section = sf::Vector2f(json[0], json[1]);
+            if (!json.is_null()) section = sf::Vector2f(json[0], json[1]);
         }
 
         template <>
         void parseSection(const nlohmann::json& json, std::unordered_map<std::string, std::vector<float>>& section) {
             for (auto& i : json) {
-                if (i.is_array() && i.size() == 2 && i[0].is_string() && i[1].is_array()) {
+                if (i.is_array() && i.size() == 2 && i[0].is_string() && i[1].is_array() && i[1].size() > 0) {
                     section.insert({ i[0].get<std::string>(), i[1].get<std::vector<float>>() });
                 }
                 else {
@@ -66,7 +65,13 @@ namespace PirateGame {
         template <>
         void parseSection(const nlohmann::json& json, std::vector<std::pair<std::string, std::pair<float, int>>>& section) {
             for (auto i : json) {
-                section.push_back(std::make_pair(i[0], std::make_pair(i[1], i[2])));
+                if (i.is_array() && i.size() == 3 && i[0].is_string() && i[1].is_number_float() && i[2].is_number_integer()) {
+                    section.push_back(std::make_pair(i[0], std::make_pair(i[1], i[2])));
+                }
+				else {
+					// Handle error or unexpected format
+					std::cerr << "Error: Unexpected format in JSON file when parsing for vector<std::pair<std::string, std::pair<float, int>>>" << std::endl;
+				}
             }
         }
 
