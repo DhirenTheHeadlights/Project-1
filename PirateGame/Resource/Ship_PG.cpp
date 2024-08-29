@@ -24,7 +24,7 @@ void Ship::setUpShip(ShipClass level, const Region region) {
 	constSpriteBounds = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 
 	// Load the cannon handler
-	SCH = std::make_unique<ShipCannonHandler>(context.JSL, sprite);
+	SCH = std::make_unique<ShipCannonHandler>(context.JSL.get(), sprite);
 	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManagerByRegion(birthRegion).getTexture(shipClass), 
 						context.GTH->getShipTextures().getShipTextureManagerByRegion(region).getImage(shipClass), 
 						shipProperties.numCannons, id.get(), scaling);
@@ -90,16 +90,12 @@ void Ship::setHealthBarPosition() {
 	sf::Vector2f healthBarOffset(-1 * constSpriteBounds.x / 2, constSpriteBounds.y / 2);
 
 	// Calculate the health bar's position based on the ship's rotation
-	float rotation = sprite.getRotation();
-	sf::Transform rotationTransform;
-	rotationTransform.rotate(rotation, sprite.getPosition());
-
-	sf::Vector2f rotationPoint(sprite.getPosition().x  + healthBarRed.getSize().x / 2, sprite.getPosition().y + healthBarOffset.y + healthBarRed.getSize().y);
-	sf::Vector2f healthBarPosition = rotationTransform.transformPoint(rotationPoint);
+	sf::Vector2f offset(healthBarRed.getSize().x / 2, healthBarOffset.y + healthBarRed.getSize().y);
+	sf::Vector2f healthBarPosition = vm::relativeRotationTransformedPosition(sprite.getPosition(), offset, sprite.getRotation());
 
 	// Set the position and rotation of the health bars
 	healthBarGreen.setPosition(healthBarPosition);
 	healthBarRed.setPosition(healthBarPosition );
-	healthBarGreen.setRotation(rotation);
-	healthBarRed.setRotation(rotation);
+	healthBarGreen.setRotation(sprite.getRotation());
+	healthBarRed.setRotation(sprite.getRotation());
 }

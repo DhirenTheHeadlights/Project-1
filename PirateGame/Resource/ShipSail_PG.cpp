@@ -4,28 +4,17 @@ using namespace PirateGame;
 
 void Sail::updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection, const float maxRotationOffset) {
 	// Calculate the sail's position based on the ship's rotation
-	float rotation = shipSprite.getRotation();
-	sf::Transform rotationTransform;
-	rotationTransform.rotate(rotation, shipSprite.getPosition());
-
-	sf::Vector2f rotationPoint(shipSprite.getPosition() + offset);
-	sf::Vector2f sailPosition = rotationTransform.transformPoint(rotationPoint);
-	sailSprite.setPosition(sailPosition);
+	sailSprite.setPosition(vm::relativeRotationTransformedPosition(shipSprite.getPosition(), offset, shipSprite.getRotation()));
 
 	// Find the rotation of the sail with respect to the ship
 	float currRotationOffset = calculateAngleRelativeToShip(shipDirection);
 	currRotationOffset = vm::normalizeAngle(currRotationOffset, -180.f, 180.f); // Ensure angle is within -180 to 180 range
 
 	// Dynamically adjust rotationOffset to approach currRotationOffset within max limits
-	if (currRotationOffset > maxRotationOffset) {
-		rotationOffset = maxRotationOffset;
-	}
-	else if (currRotationOffset < -maxRotationOffset) {
-		rotationOffset = -maxRotationOffset;
-	}
+	std::clamp(currRotationOffset, -maxRotationOffset, maxRotationOffset);
 
 	// Apply new rotation
-	sailSprite.setRotation(rotation + rotationOffset);
+	sailSprite.setRotation(shipSprite.getRotation() + rotationOffset);
 }
 
 float Sail::calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) const {
@@ -51,8 +40,7 @@ void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, c
     float relativeWindAngle = windAngle - shipAngle;
 
     // Current sail angle relative to the ship
-    float currentSailAngle = calculateAngleRelativeToShip(shipDirection);
-    currentSailAngle = vm::normalizeAngle(currentSailAngle);
+    float currentSailAngle = vm::normalizeAngle(calculateAngleRelativeToShip(shipDirection));
 
     // Calculate angle difference and normalize
     float angleDiff = vm::normalizeAngle(relativeWindAngle - currentSailAngle);
@@ -61,10 +49,5 @@ void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, c
 	}
 
     // Find the fastest direction to rotate the sail
-	if (angleDiff > 0) {
-		rotationOffset += rotationSpeed;
-	}
-	else if (angleDiff < 0) {
-		rotationOffset -= rotationSpeed;
-	}
+	rotationOffset += (angleDiff > 0) ? rotationSpeed : -rotationSpeed;
 }

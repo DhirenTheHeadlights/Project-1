@@ -36,12 +36,11 @@ namespace PirateGame {
         sf::Time cannonCooldown;
         sf::Time cannonballLifetime;
         sf::Vector2f cannonballScale;
-        float cannonballSpeed = 0.0f;
-        float cannonballFlightTime = 0.0f;
-        float cannonballVelocityFallOff = 0.0f;
-        float maxFiringAngle = 0.0f;
-        float cannonRotationSpeed = 0.0f;
-        float minDifferenceBetweenCannonAndTarget = 0.0f;
+        float cannonballSpeed;
+        float cannonballVelocityFallOff;
+        float maxFiringAngle;
+        float cannonRotationSpeed;
+        float minDifferenceBetweenCannonAndTarget;
 
         // Sail Handler
         float maxSailRotationOffset = 0.0f;

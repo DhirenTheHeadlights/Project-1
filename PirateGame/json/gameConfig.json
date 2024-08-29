@@ -34,7 +34,6 @@
       "cannonballScale": [ 0.4, 0.4 ],
       "cannonballSpeed": 300.0,
       "cannonballLifetime": 5.0,
-      "cannonballFlightTime": 4.0,
       "cannonballVelocityFallOff": 0.97,
       "maxFiringAngle": 45.0,
       "cannonRotationSpeed": 0.5,
