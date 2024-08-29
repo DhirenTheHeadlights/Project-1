@@ -6,5 +6,5 @@ void Rock::createLandMass() {
 	LandMassTypeGenerator<RockType> typeGen;
 	type = typeGen.getType();
 	sprite.setTexture(context.GTH->getLandMassTextures().getRockTextures().getTexture(type));
-	sprite.setScale(scaling, scaling);
+	sprite.setScale(context.JSL->getGameData().gameConfig.landmassData.rockScaling, context.JSL->getGameData().gameConfig.landmassData.rockScaling);
 }

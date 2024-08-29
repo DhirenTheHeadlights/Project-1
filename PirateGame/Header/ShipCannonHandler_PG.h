@@ -1,4 +1,5 @@
 #pragma	once
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cmath>
@@ -11,8 +12,7 @@
 namespace PirateGame {
 	class ShipCannonHandler {
 	public:
-		ShipCannonHandler(sf::Sprite& shipSprite) : shipSprite(shipSprite) {};
-		~ShipCannonHandler() {};
+		ShipCannonHandler(JSONLoader* jsl, sf::Sprite& shipSprite) : shipSprite(shipSprite), jsl(jsl) {}
 
 		void initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, ID* ID, sf::Vector2f scale);
 		void shootCannonballs(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
@@ -52,6 +52,8 @@ namespace PirateGame {
 		}
 		float getMaxFiringAngle() const { return maxFiringAngle; };
 	private:
+		JSONLoader* jsl;
+
 		sf::Vector2f cannonballDirection;
 		std::vector<ShipCannon> cannons;
 		

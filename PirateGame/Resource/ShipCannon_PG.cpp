@@ -5,11 +5,6 @@ using namespace PirateGame;
 void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) {
     if (FS != side) return;
 
-    Cannonball* cannonball = new Cannonball(GIDM, id);
-    cannonball->getSprite().setTexture(cannonballTexture);
-    cannonball->getSprite().setScale(cannonballScale);
-    cannonball->setSpeed(cannonballSpeed);
-
     // Set the cannonball to come out of the cannon's muzzle
     sf::Vector2f muzzleOffset;
     sf::Vector2f currentFireDirection = vm::angleDegreesToVector(cannonSprite.getRotation());
@@ -17,10 +12,9 @@ void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const s
     muzzleOffset.y = 0.f * currentFireDirection.y;  // This will always be zero since second component is zero
 
     // Adjust the muzzleOffset to also consider the size of the cannonball sprite
-    muzzleOffset -= (sf::Vector2f(0.f, cannonball->getSprite().getGlobalBounds().height / 2.f * (FS == FiringSide::Starboard ? -1.f : 1.f)));
-    
-    cannonball->getSprite().setPosition(cannonSprite.getPosition() + muzzleOffset);
-    cannonball->setVelocity(currentFireDirection * cannonballSpeed);
+    muzzleOffset -= (sf::Vector2f(0.f, cannonballTexture.getSize().y / 2.f * (FS == FiringSide::Starboard ? -1.f : 1.f)));
+
+    Cannonball* cannonball = new Cannonball(GIDM, id, cannonballTexture, cannonSprite.getPosition() + muzzleOffset, vm::normalize(currentFireDirection), jsl->getGameData().gameConfig.shipData.cannonballFlightTime, jsl->getGameData().gameConfig.shipData.cannonballSpeed);
 
     // Add the cannonball to the management systems
     cannonballHashmap->addObject(cannonball);
@@ -29,7 +23,7 @@ void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const s
 
 void ShipCannon::drawCannonNBalls(sf::RenderWindow* window) {
     for (auto& i : cannonballs) {
-		window->draw(i->getSprite());
+		window->draw(i->sprite);
 	}
     window->draw(cannonSprite);
 }
@@ -60,7 +54,7 @@ sf::Vector2f ShipCannon::calculateDirectionToTarget(const sf::Sprite& shipSprite
     float angleDifference = vm::normalizeAngle((angleToMouse - shipRotation), -180.f, 180.f);
 
     // Cap the angleDifference within the maxAngle
-    angleDifference = std::max(std::min(angleDifference, maxFiringAngle), -maxFiringAngle);
+    angleDifference = std::max(std::min(angleDifference, jsl->getGameData().gameConfig.shipData.maxFiringAngle), -jsl->getGameData().gameConfig.shipData.maxFiringAngle);
 
     // Calculate final direction vector based on capped angle
     float cappedAngleRadians = vm::degreesToRadians(shipRotation + angleDifference);
@@ -106,7 +100,7 @@ void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide F
         case FiringState::TowardsTarget: {
             sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, targetPos);
             float targetRotation = vm::vectorToAngleDegrees(targetDirection);
-            rotateTowards(targetRotation, rotationSpeed);
+            rotateTowards(targetRotation, jsl->getGameData().gameConfig.shipData.cannonRotationSpeed);
 
             resetRotationClock.restart();
             break;
@@ -117,7 +111,7 @@ void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide F
             sf::Vector2f targetDirection = calculateDirectionToTarget(shipSprite, worldMousePos);
             float targetRotation = vm::vectorToAngleDegrees(targetDirection);
 
-            rotateTowards(targetRotation, rotationSpeed);
+            rotateTowards(targetRotation, jsl->getGameData().gameConfig.shipData.cannonRotationSpeed);
 
             resetRotationClock.restart();
             break;
@@ -125,8 +119,8 @@ void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide F
         case FiringState::Untargeted: {
             float targetRotation = rotation + defaultRotation;
             // If firing state is untargeted, slowly rotate towards the default rotation
-            if (resetRotationClock.getElapsedTime() < resetRotationTime) {
-                rotateTowards(rotation + defaultRotation, rotationSpeed);
+            if (resetRotationClock.getElapsedTime() < jsl->getGameData().gameConfig.shipData.cannonResetRotationTime) {
+                rotateTowards(rotation + defaultRotation, jsl->getGameData().gameConfig.shipData.cannonRotationSpeed);
             }
             // Now, rotate towards the default rotation immediately so that the cannon isnt affected by the ship's rotation
             else cannonSprite.setRotation(targetRotation);
@@ -136,28 +130,17 @@ void ShipCannon::updateCannonRotation(const sf::Sprite& shipSprite, FiringSide F
 }
 
 void ShipCannon::updateCannonballs(sf::Time elapsed) {
-    for (auto it = cannonballs.begin(); it != cannonballs.end(); /* no increment here */) {
-        // Update the cannonball in the hashmap
-        cannonballHashmap->updateObjectPosition(*it);
+    for (auto& i : cannonballs) {
+        if (i->clock.getElapsedTime() > jsl.getGameData().gameConfig.shipData.cannonballFlightTime) {
+			cannonballHashmap->removeObject(i);
+            cannonballs.erase(std::remove(cannonballs.begin(), cannonballs.end(), i), cannonballs.end());
+		}
 
-        // Update the position and velocity (1% Decay) of the cannonball
-        sf::Vector2f velocity = (*it)->getVelocity() * pow(0.97f, elapsed.asSeconds());
-        (*it)->setVelocity(velocity);
-        (*it)->getSprite().setPosition((*it)->getSprite().getPosition() + velocity * elapsed.asSeconds());
+        cannonballHashmap->updateObjectPosition(i);
 
-        // If more than 2 seconds have passed, delete the cannonball
-        if ((*it)->getClock().getElapsedTime().asSeconds() > cannonballFlightTime || (*it)->getActive() == false) {
-            // Remove the cannonball from the hashmap
-            cannonballHashmap->removeObject(*it);
-
-            // Delete the cannonball and erase it from the vector
-            delete* it; // delete the object
-            it = cannonballs.erase(it);
-        }
-        else {
-            ++it;
-        }
-    }
+		i->speed = i->speed * pow(jsl.getGameData().gameConfig.shipData.cannonballVelocityFallOff, elapsed.asSeconds());
+		i->sprite.move(i->velocity * i->speed * elapsed.asSeconds());
+	}
 }
 
 void ShipCannon::updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, sf::Time elapsed) {

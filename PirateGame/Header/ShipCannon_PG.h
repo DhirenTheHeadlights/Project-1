@@ -2,9 +2,8 @@
 #include <SFML/Graphics.hpp>
 
 #include "VectorMath.h"
-
 #include "QuadtreeTemplate_PG.h"
-
+#include "JSONLoader_PG.h"
 #include "Cannonball_PG.h"
 #include "ShipEnums_PG.h"
 
@@ -19,7 +18,7 @@ namespace PirateGame {
 
 	class ShipCannon {
 	public:
-		ShipCannon(const sf::Texture& texture, ID* id, FiringSide FS, sf::Vector2f scale) : cannonSprite(texture), id(id), side(FS) {
+		ShipCannon(JSONLoader* jsl, const sf::Texture& texture, ID* id, FiringSide FS, sf::Vector2f scale) : jsl(jsl), cannonSprite(texture), id(id), side(FS) {
 			cannonSprite.setScale(scale);
 
 			if (FS == FiringSide::Port) {
@@ -52,6 +51,8 @@ namespace PirateGame {
 		float getFiringDirectionAngle() const { return firingDirectionAngle; }
 		FiringSide getFiringSide() const { return side; }
 	private:
+		JSONLoader* jsl;
+
 		// Helpers
 		sf::Vector2f calculateDirectionToTarget(const sf::Sprite& shipSprite, sf::Vector2f targetPos);
 		sf::Vector2f calculatePerpendicularDirection(float rotation) const;
@@ -60,27 +61,19 @@ namespace PirateGame {
 		void updateCannonballs(sf::Time elapsed);
 
 		sf::Clock resetRotationClock;
-		sf::Time resetRotationTime = sf::seconds(2.f);
 
 		sf::Sprite cannonSprite;
 		std::vector<Cannonball*> cannonballs;
-		sf::Vector2f cannonballScale = { 0.4f, 0.4f };
-		sf::Vector2f offset = { 0.f, 0.f };
-		sf::Vector2f targetPos = { 0.f, 0.f };
-		sf::Vector2f fireDirection = { 0.f, 0.f };
+		sf::Vector2f offset;
+		sf::Vector2f targetPos;
+		sf::Vector2f fireDirection;
 
 		const float approxCannonOffsetToEdgeRatio = 0.85f;
-		const float pi = 3.14159265f;
-		float cannonballSpeed = 300;
-		float cannonballFlightTime = 4.f;
 		float defaultRotation = 0.f;
-		float maxFiringAngle = 45.f;
 		float firingDirectionAngle = 0.f;
 		float aimRotation = 0.f;
-		float rotationSpeed = 0.5f;
-		float minDifferenceBetweenTargetAndCannon = 0.01f;
 
-		FiringSide side;
+		FiringSide side = FiringSide::Starboard;
 		FiringState state = FiringState::Untargeted;
 
 		Quadtree<Cannonball>* cannonballHashmap = nullptr;

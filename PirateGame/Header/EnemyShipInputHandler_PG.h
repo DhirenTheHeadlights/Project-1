@@ -11,7 +11,7 @@
 namespace PirateGame {
 	class EnemyShipInputHandler : public ShipInputHandler {
 	public:
-		EnemyShipInputHandler(sf::Sprite& sprite, GlobalWindController* GWC, GlobalSoundManager* GSM) : ShipInputHandler(sprite, GSM), GWC(GWC) {};
+		EnemyShipInputHandler(JSONLoader* json, sf::Sprite& sprite, GlobalWindController* GWC, GlobalSoundManager* GSM) : ShipInputHandler(json, sprite, GSM), GWC(GWC) {};
 		~EnemyShipInputHandler() {};
 
 		void handleCannonFire(const sf::Texture& cannonBallTexture, GlobalIDManager* GIDM) override;

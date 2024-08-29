@@ -10,7 +10,7 @@ namespace PirateGame {
 	public:
 		Chunk(const std::pair<int, int>& chunkCoord, sf::Vector2f chunkSize, int cellSize) : chunkCoord(chunkCoord), chunkSize(chunkSize), cellSize(cellSize) {
 			map = std::make_unique<Map>();
-			map->grid(static_cast<int>(chunkSize.x), static_cast<int>(chunkSize.y), cellSize, sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
+			map->initialize(static_cast<int>(chunkSize.x), static_cast<int>(chunkSize.y), cellSize, sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
 		}
 
 		// Getters

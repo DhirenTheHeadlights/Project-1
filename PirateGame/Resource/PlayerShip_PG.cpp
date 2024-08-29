@@ -5,13 +5,13 @@ using namespace PirateGame;
 /// Custom functions
 
 void PlayerShip::customShipSetUp() {
-	SIH = std::make_unique<PlayerShipInputHandler>(getSprite(), context.GSM.get(), context.GIH.get(), context.GWC.get());
+	SIH = std::make_unique<PlayerShipInputHandler>(context.JSL.get(), getSprite(), context.GSM.get(), context.GIH.get(), context.GWC.get());
 	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite(), getSpecificShipProperties().baseSpeed);
 	
 	SIvH = std::make_unique<ShipInventoryHandler>();
 	SIvH->addGold(1000);
 	
-	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed*15);
+	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());
 	SIH->setMovementHandler(SMH.get());
 	SIH->setSailHandler(getSailHandler());

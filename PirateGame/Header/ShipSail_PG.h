@@ -17,20 +17,16 @@ namespace PirateGame {
 			sailSprite.setScale(scaling);
 		};
 
-		void updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection);
-		void moveLeft() { rotationOffset -= rotationSpeed; }
-		void moveRight() { rotationOffset += rotationSpeed; }
+		void updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection, const float maxRotationOffset);
+		void moveLeft(const float rotationSpeed) { rotationOffset -= rotationSpeed; }
+		void moveRight(const float rotationSpeed) { rotationOffset += rotationSpeed; }
 		void moveUp() { /* implement later */ };
 		void moveDown() { /* implement later */ };
-		void updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection);
+		void updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection, const float rotationSpeed);
 
 		sf::Sprite& getSprite() { return sailSprite; }
 		sf::Vector2f getOffset() const { return offset; }
-		sf::Vector2f getDirectionVector() const {
-			const float pi = 3.14159265f;
-			float rotationRad = sailSprite.getRotation() * pi / 180.f;
-			return sf::Vector2f(std::sin(rotationRad), -std::cos(rotationRad));
-		}
+		sf::Vector2f getDirectionVector() const { return vm::angleDegreesToVector(sailSprite.getRotation()); }
 		float getRotationOffset() const { return rotationOffset; }
 
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
@@ -41,8 +37,5 @@ namespace PirateGame {
 
 		sf::Vector2f offset;
 		float rotationOffset = 0.f;
-
-		const float maxRotationOffset = 45.f;
-		const float rotationSpeed = 0.1f;
 	};
 }

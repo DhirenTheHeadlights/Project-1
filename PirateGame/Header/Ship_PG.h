@@ -32,19 +32,15 @@ namespace PirateGame {
 
 		// Setters
 		void damageShip(const float damagePerFrame) {
-			health -= damagePerFrame;
-			if (health < 0) health = 0;
+			health -= (health < 0.f) ? 0.f : damagePerFrame;
 		}
 		void changeShipClass(ShipClass shipClass) {
 			this->shipClass = shipClass;
 			setUpShip(shipClass);
 		}
-		void setBaseSpeed(float speed) { shipProperties.baseSpeed = speed; }
-		void setMaxHealth(float health) { shipProperties.maxHealth = health; }
-		void setHealth(float health) { this->health = health; }
-		void setRegenRate(float rate) { shipProperties.regenRate = rate; }
 		void setGroupID(ID* groupID) { this->groupID = groupID; }
 		void setDead(bool isDead) { this->isDead = isDead; }
+		void setHealth(float health) { this->health = health; }
 
 		// Getters
 		float getHealth() const { return health; }
@@ -97,7 +93,6 @@ namespace PirateGame {
 		bool isDead = false;
 
 		sf::Vector2f constSpriteBounds;
-		sf::Vector2f healthBarSize = { 100.f, 10.f };
 
 		ShipClass shipClass = ShipClass::Sloop;
 		ShipProperties shipProperties;

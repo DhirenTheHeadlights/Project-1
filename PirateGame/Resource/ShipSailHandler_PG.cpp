@@ -41,15 +41,15 @@ void ShipSailHandler::loadSailPositions(const std::vector<sf::Texture>& sailText
 	}
 }
 
-void ShipSailHandler::moveSailLeftRightAutomatically(sf::Vector2f windDirection, sf::Vector2f shipDirection) {
+void ShipSailHandler::moveSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection, const float rotationSpeed) {
 	for (auto& sail : sails) {
-		sail.updateSailLeftRightAutomatically(windDirection, shipDirection);
+		sail.updateSailLeftRightAutomatically(windDirection, shipDirection, rotationSpeed);
 	}
 }
 
-void ShipSailHandler::update(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection) {
+void ShipSailHandler::update(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection, const float maxSailAngle) {
 	for (auto& sail : sails) {
-		sail.updateSail(shipSprite, shipDirection);
+		sail.updateSail(shipSprite, shipDirection, maxSailAngle);
 	}
 }
 

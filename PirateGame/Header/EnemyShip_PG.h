@@ -36,10 +36,10 @@ namespace PirateGame {
 		}
 
 		void setDifficultyScaling(float difficultyScaling) {
-			setBaseSpeed(this->getSpecificShipProperties().baseSpeed * difficultyScaling);
-			setMaxHealth(this->getSpecificShipProperties().maxHealth * difficultyScaling);
+			getSpecificShipProperties().baseSpeed *= difficultyScaling;
+			getSpecificShipProperties().maxHealth *= difficultyScaling;
+			getSpecificShipProperties().regenRate *= difficultyScaling;
 			setHealth(this->getSpecificShipProperties().maxHealth);
-			setRegenRate(this->getSpecificShipProperties().regenRate * difficultyScaling);
 		}
 
 		// Overridden getters

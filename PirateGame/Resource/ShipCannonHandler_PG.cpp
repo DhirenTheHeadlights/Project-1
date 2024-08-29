@@ -5,10 +5,10 @@ using namespace PirateGame;
 void ShipCannonHandler::initializeCannons(const sf::Texture& cannonTexture, const sf::Image& shipImage, int numCannons, ID* id, sf::Vector2f scale) {
     for (int i = 0; i < numCannons; i++) {
         if (i < numCannons / 2) {
-			cannons.push_back(ShipCannon(cannonTexture, id, FiringSide::Port, scale));
+			cannons.push_back(ShipCannon(jsl, cannonTexture, id, FiringSide::Port, scale));
 		}
         else {
-			cannons.push_back(ShipCannon(cannonTexture, id, FiringSide::Starboard, scale));
+			cannons.push_back(ShipCannon(jsl, cannonTexture, id, FiringSide::Starboard, scale));
 		}
 	}
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 #include <fstream>
 
@@ -32,6 +34,10 @@ namespace PirateGame {
             loadShipGroupData(config);
             file.close();
         }
+
+        GameData& getGameData() {
+			return gameData;
+		}
 	private:
         // Template for loading JSON files
         template <typename T>
@@ -51,9 +57,9 @@ namespace PirateGame {
 
         template <>
         void parseSection(const nlohmann::json& json, std::unordered_map<std::string, std::vector<float>>& section) {
-            for (auto& i : json) {
-                if (i.is_array() && i.size() == 2 && i[0].is_string() && i[1].is_array() && i[1].size() > 0) {
-                    section.insert({ i[0].get<std::string>(), i[1].get<std::vector<float>>() });
+            for (auto& i : json.items()) {               // Use items() to iterate over key-value pairs
+                if (i.value().is_array()) {                                     // Check if the value is an array
+                    section[i.key()] = i.value().get<std::vector<float>>();     // Directly insert the key-value pair
                 }
                 else {
                     // Handle error or unexpected format
@@ -78,6 +84,8 @@ namespace PirateGame {
         void loadLandmassData(const nlohmann::json& json) {
 			parseSection(json["rockScaling"], gameData.gameConfig.landmassData.rockScaling);
 			parseSection(json["shipwreckScaling"], gameData.gameConfig.landmassData.shipwreckScaling);
+            parseSection(json["shipwreckLootPoolSize"], gameData.gameConfig.landmassData.shipwreckLootPoolSize);
+            parseSection(json["shipwreckLootPoolItemLimit"], gameData.gameConfig.landmassData.shipwreckLootPoolItemLimit);
 			parseSection(json["islandScaling"], gameData.gameConfig.landmassData.islandScaling);
 			parseSection(json["islandMarketSizeLimit"], gameData.gameConfig.landmassData.islandMarketSizeLimit);
 			parseSection(json["islandMarketItemLimit"], gameData.gameConfig.landmassData.islandMarketItemLimit);
@@ -85,21 +93,34 @@ namespace PirateGame {
 		}
 
         void loadShipData(const nlohmann::json& json) {
+            // Ship
             parseSection(json["shipHealthRegenTime"], gameData.gameConfig.shipData.shipHealthRegenTime);
+            parseSection(json["shipHealthBarSize"], gameData.gameConfig.shipData.shipHealthBarSize);
+            parseSection(json["shipEnumProperties"], gameData.gameConfig.shipData.shipEnumProperties);
+
+            // Cannons
             parseSection(json["cannonResetRotationTime"], gameData.gameConfig.shipData.cannonResetRotationTime);
             parseSection(json["cannonCooldown"], gameData.gameConfig.shipData.cannonCooldown);
+            parseSection(json["cannonballLifetime"], gameData.gameConfig.shipData.cannonballLifetime);
             parseSection(json["cannonballScale"], gameData.gameConfig.shipData.cannonballScale);
             parseSection(json["cannonballSpeed"], gameData.gameConfig.shipData.cannonballSpeed);
             parseSection(json["cannonballFlightTime"], gameData.gameConfig.shipData.cannonballFlightTime);
+            parseSection(json["cannonballVelocityFallOff"], gameData.gameConfig.shipData.cannonballVelocityFallOff);
             parseSection(json["maxFiringAngle"], gameData.gameConfig.shipData.maxFiringAngle);
             parseSection(json["cannonRotationSpeed"], gameData.gameConfig.shipData.cannonRotationSpeed);
+            parseSection(json["minDifferenceBetweenCannonAndTarget"], gameData.gameConfig.shipData.minDifferenceBetweenCannonAndTarget);
+
+            // Sails
+            parseSection(json["maxSailRotationOffset"], gameData.gameConfig.shipData.maxSailRotationOffset);
+            parseSection(json["sailRotationSpeed"], gameData.gameConfig.shipData.sailRotationSpeed);
+
+            // Movement
             parseSection(json["turningSpeed"], gameData.gameConfig.shipData.turningSpeed);
             parseSection(json["turningMultiplier"], gameData.gameConfig.shipData.turningMultiplier);
             parseSection(json["frictionCoefficient"], gameData.gameConfig.shipData.frictionCoefficient);
             parseSection(json["dampingFactor"], gameData.gameConfig.shipData.dampingFactor);
             parseSection(json["separationDistance"], gameData.gameConfig.shipData.separationDistance);
             parseSection(json["pushOutDistance"], gameData.gameConfig.shipData.pushOutDistance);
-            parseSection(json["shipEnumProperties"], gameData.gameConfig.shipData.shipEnumProperties);
         }
 
         void loadShipGroupData(const nlohmann::json& json) {

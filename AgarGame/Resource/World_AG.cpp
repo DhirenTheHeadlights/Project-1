@@ -3,7 +3,7 @@
 using namespace AgarGame;
 
 World::World(sf::RenderWindow& window) : colMan(window, map), view(window.getDefaultView()), pelHan(window), debug(window), input(window), window(window) {
-    map.grid(10000, 10000, 100);
+    map.initialize(10000, 10000, 100);
 }
 
 void World::createWorld(sf::Event& event) {

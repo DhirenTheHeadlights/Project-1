@@ -5,41 +5,25 @@
 #include "GlobalIDManager_PG.h"
 
 namespace PirateGame {
-
-	class Cannonball {
-	public:
-		Cannonball(GlobalIDManager* GIDM, ID* shipID) : shipID(shipID), ID(GIDM->generateID()) {};
-		~Cannonball() {};
-
-		// Setters 
-		void setVelocity(sf::Vector2f vel) { velocity = vel; }
-		void arrrMatey() { std::cout << "Avast, ye scallywags!" << std::endl; }
-		void setSpeed(float speed) { this->speed = speed; }
-		void setInactive() { isActive = false; }
-
-		// Getters
-		sf::Clock getClock() const { return clock; }
-		sf::Vector2f getVelocity() const { return velocity; }
-		sf::Sprite& getSprite() { return sprite; }
-		float getSpeed() const { return speed; }
-		bool getActive() const { return isActive; }
-		ID* getShipID() const { return shipID; }
-		ID* getID() const { return ID.get(); }
-		sf::CircleShape getApproximateHitbox() const { return sf::CircleShape(sprite.getGlobalBounds().width / 2.f); }
+	struct Cannonball {
+		Cannonball(GlobalIDManager* GIDM, ID* shipID, sf::Texture& texture, sf::Vector2f position, sf::Vector2f normalizedVelocity, float speed) :
+			shipID(shipID), id(GIDM->generateID().get()), sprite(texture), velocity(normalizedVelocity), speed(speed) {
+			sprite.setPosition(position);
+		}
 
 		bool operator==(const Cannonball& other) const {
-			return velocity == other.velocity && clock.getElapsedTime() == other.clock.getElapsedTime();
+			return this->id == other.id;
 		}
-		
-	private:
+
 		sf::Clock clock;
+
 		sf::Vector2f velocity;
 		sf::Sprite sprite;
 
-		float speed = 10.f;
+		float speed = 0;
 
 		ID* shipID;
-		std::shared_ptr<ID> ID;
+		ID* id;
 
 		bool isActive = true;
 	};

@@ -17,7 +17,7 @@ namespace PirateGame {
 
 		void loadSailPositions(const std::vector<sf::Texture>& sailTextures, const sf::Image& shipImage, sf::Vector2f scaling);
 
-		void update(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection);
+		void update(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection, const float maxAngle);
 
 		void moveSailsUp(sf::Keyboard::Key key) {
 			for (auto& sail : sails) {
@@ -29,18 +29,18 @@ namespace PirateGame {
 				sail.moveDown();
 			}
 		}
-		void moveSailsLeft(sf::Keyboard::Key key) {
+		void moveSailsLeft(sf::Keyboard::Key key, const float rotationSpeed) {
 			for (auto& sail : sails) {
-				sail.moveLeft();
+				sail.moveLeft(rotationSpeed);
 			}
 		}
-		void moveSailsRight(sf::Keyboard::Key key) {
+		void moveSailsRight(sf::Keyboard::Key key, const float rotationSpeed) {
 			for (auto& sail : sails) {
-				sail.moveRight();
+				sail.moveRight(rotationSpeed);
 			}
 		}
 
-		void moveSailLeftRightAutomatically(sf::Vector2f windDirection, sf::Vector2f shipDirection);
+		void moveSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection, const float rotationSpeed);
 		void draw(sf::RenderWindow* window);
 
 		sf::Vector2f getAverageSailDirection() {
@@ -52,13 +52,8 @@ namespace PirateGame {
 			}
 			avgRotation /= sails.size();
 
-			// Convert average rotation to radians
-			float rotationRad = vm::degreesToRadians(avgRotation);
-
-			// Determine the direction vector based on the average rotation
-			sf::Vector2f sailDirection(std::sin(rotationRad), -std::cos(rotationRad));
-
-			return sailDirection;
+			// Convert average rotation to a vector
+			return vm::angleDegreesToVector(avgRotation);
 		}
 		std::vector<Sail>& getSails() { return sails; }
 	private:

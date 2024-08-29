@@ -34,7 +34,7 @@ namespace PirateGame {
             return true;
         }
 
-        bool loadTextures(EnumType type, std::vector<std::string>& filenames) {
+        bool loadTextures(EnumType type, const std::vector<std::string>& filenames) {
 			std::vector<sf::Texture> textureGroup;
             for (const auto& filename : filenames) {
 				sf::Texture texture;
@@ -54,20 +54,17 @@ namespace PirateGame {
 			return true;
 		}
 
-        const sf::Texture& getTexture(EnumType type) const {
+        const sf::Texture& getTexture(const EnumType type) const {
             return textures.at(type);
         }
 
-        const std::vector<sf::Texture>& getTextureGroup(EnumType type) const {
+        const std::vector<sf::Texture>& getTextureGroup(const EnumType type) const {
 			return textureGroups.at(type);
 		}
 
         const sf::Texture& getRandomTexture() const {
-            std::random_device rd;
-			std::mt19937 gen(rd());
-			std::uniform_int_distribution<int> dist(0, textures.size() - 1);
 			auto it = textures.begin();
-			std::advance(it, dist(gen));
+			std::advance(it, vm::randomValue(0, textures.size() - 1));
 			return it->second;
         }
 

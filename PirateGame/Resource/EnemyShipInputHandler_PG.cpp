@@ -53,5 +53,5 @@ void EnemyShipInputHandler::handleAnchorDrop() {
 void EnemyShipInputHandler::handleSailChange() {
     sf::Vector2f windDireciton = GWC->getWindDirection();
     float windSpeed = GWC->getWindSpeed();
-    SSH->moveSailLeftRightAutomatically(windDireciton, SMH->getVelocity());
+    SSH->moveSailLeftRightAutomatically(windDireciton, SMH->getVelocity(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
 }

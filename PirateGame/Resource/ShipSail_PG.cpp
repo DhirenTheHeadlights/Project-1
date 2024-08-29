@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void Sail::updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection) {
+void Sail::updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection, const float maxRotationOffset) {
 	// Calculate the sail's position based on the ship's rotation
 	float rotation = shipSprite.getRotation();
 	sf::Transform rotationTransform;
@@ -38,7 +38,7 @@ float Sail::calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) cons
 	return SailAngle - ShipAngle; // Sail angle relative to the ship
 }
 
-void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection) {
+void Sail::updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection, float rotationSpeed) {
     // Normalize the ship and wind directions
     sf::Vector2f normShipDirection = vm::normalize(shipDirection);
     sf::Vector2f normWindDirection = vm::normalize(windDirection);

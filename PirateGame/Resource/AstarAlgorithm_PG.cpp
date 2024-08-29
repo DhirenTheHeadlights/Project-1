@@ -154,7 +154,7 @@ sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) const noexcept {
 }
 
 sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) const noexcept {
-    return sf::Vector2f(grid.x * tileSize, grid.y * tileSize);
+    return sf::Vector2f(static_cast<float>(grid.x * tileSize), static_cast<float>(grid.y * tileSize));
 }
 
 bool AStar::isObstacle(const sf::Vector2i& node) const {

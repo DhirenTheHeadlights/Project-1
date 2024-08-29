@@ -5,29 +5,18 @@ using namespace PirateGame;
 void Ship::setUpShip(ShipClass level, const Region region) {
 	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
-		// Generate a random number between 1 and 5
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_int_distribution<int> dis(1, 5);
-		level = static_cast<ShipClass>(dis(gen));
-
-		// Access ship properties from the configuration map using the generated random number
-		shipProperties = getShipProperties(level);
-	}
-	else {
-		// Access ship properties from the configuration map using the provided ship class
-		shipProperties = getShipProperties(level);
+		shipClass = getRandomShipClass();
 	}
 
 	// Set class
-	shipClass = level;
+	shipProperties = getShipProperties(shipClass);
 	health = shipProperties.maxHealth;
 	birthRegion = region;
 
 	// Load the texture
 	sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
 
-	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getTexture(level));
+	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getTexture(shipClass));
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	sprite.setScale(scaling);
 
@@ -35,7 +24,7 @@ void Ship::setUpShip(ShipClass level, const Region region) {
 	constSpriteBounds = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
 
 	// Load the cannon handler
-	SCH = std::make_unique<ShipCannonHandler>(sprite);
+	SCH = std::make_unique<ShipCannonHandler>(context.JSL, sprite);
 	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManagerByRegion(birthRegion).getTexture(shipClass), 
 						context.GTH->getShipTextures().getShipTextureManagerByRegion(region).getImage(shipClass), 
 						shipProperties.numCannons, id.get(), scaling);
@@ -55,7 +44,7 @@ void Ship::update() {
 
 	// Update handlers
 	SCH->updateCannons(context.GV->getWindow(), context.GC->getDeltaTime());
-	SSH->update(sprite, SMH->getVelocity());
+	SSH->update(sprite, SMH->getVelocity(), context.JSL->getGameData().gameConfig.shipData.maxSailRotationOffset);
 	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
 	SMH->update(SSH->getAverageSailDirection(), context.GC->getDeltaTime(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
 
@@ -90,11 +79,11 @@ void Ship::regenerateHealth() {
 // Draw the health bars
 void Ship::setHealthBarPosition() {
 	// Determine the size of the health bar green based on health
-	healthBarGreen.setSize(sf::Vector2f(-healthBarSize.x * health / shipProperties.maxHealth, healthBarSize.y));
+	healthBarGreen.setSize(sf::Vector2f(-context.JSL->getGameData().gameConfig.shipData.shipHealthBarSize.x * health / shipProperties.maxHealth, context.JSL->getGameData().gameConfig.shipData.shipHealthBarSize.y));
 	healthBarGreen.setFillColor(sf::Color::Green);
 
 	// Determine the size of the health bar red based on health
-	healthBarRed.setSize(sf::Vector2f( - healthBarSize.x, healthBarSize.y));
+	healthBarRed.setSize(healthBarGreen.getSize());
 	healthBarRed.setFillColor(sf::Color::Red);
 
 	// Define the offset from the center of the ship to where the health bar should be
@@ -102,11 +91,10 @@ void Ship::setHealthBarPosition() {
 
 	// Calculate the health bar's position based on the ship's rotation
 	float rotation = sprite.getRotation();
-	float angleRad = rotation * 3.1415926f / 180.0f;
 	sf::Transform rotationTransform;
 	rotationTransform.rotate(rotation, sprite.getPosition());
 
-	sf::Vector2f rotationPoint(sprite.getPosition().x  + healthBarSize.x / 2, sprite.getPosition().y + healthBarOffset.y  + healthBarSize.y);
+	sf::Vector2f rotationPoint(sprite.getPosition().x  + healthBarRed.getSize().x / 2, sprite.getPosition().y + healthBarOffset.y + healthBarRed.getSize().y);
 	sf::Vector2f healthBarPosition = rotationTransform.transformPoint(rotationPoint);
 
 	// Set the position and rotation of the health bars

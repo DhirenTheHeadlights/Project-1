@@ -25,7 +25,7 @@ namespace PirateGame {
 				groupSpeed = ship->getSpecificShipProperties().baseSpeed * ship->getMovementHandler()->getEnemySpeedMultiplier();
 			}
 
-			ship->setBaseSpeed(groupSpeed);
+			ship->getSpecificShipProperties().baseSpeed = groupSpeed;
 			ship->setGroupID(ID.get());
 			ship->getMovementHandler()->setDestination(destination);
 

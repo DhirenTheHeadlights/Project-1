@@ -20,7 +20,7 @@ void CollisionManager::handleCollisions(GlobalQuadtreeHandler* GQH) {
 		std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(c1, nearbyDistanceCannonball);
 		for (auto& c2 : nearbyCannonballs) {
 			// Skip if the cannonballs are the same cannonball
-			if (c1->getID() == c2->getID()) continue;
+			if (c1 = c2) continue;
 			handleCannonballCollision(c1, c2);
 		}
 	}
@@ -54,7 +54,7 @@ std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHan
 	// Check if the ship is colliding with any of the nearby cannonballs 
 	for (auto& i : nearbyCannonballs) {
 		// Skip if the cannonball is from the same ship
-		if (i->getShipID() == ship->getID()) continue;
+		if (i->shipID == ship->getID()) continue;
 		handleCannonballCollision(ship, i, collidingCannonballs);
 	}
 
@@ -106,10 +106,10 @@ void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector
 
 void CollisionManager::handleCannonballCollision(Ship* ship, Cannonball* cannonball, std::vector<Cannonball*>& collidingCannonballs) {
 	// Check if the ship is colliding with the cannonball
-	if (!cannonball->getSprite().getGlobalBounds().intersects(ship->getSprite().getGlobalBounds())) return;
+	if (!cannonball->sprite.getGlobalBounds().intersects(ship->getSprite().getGlobalBounds())) return;
 
 	const sf::Sprite& sprite1 = ship->getSprite();
-	const sf::Sprite& sprite2 = cannonball->getSprite();
+	const sf::Sprite& sprite2 = cannonball->sprite;
 
 	// Calculate the positions of the ship's center
 	sf::Vector2f center1 = sprite1.getPosition();
@@ -130,11 +130,11 @@ void CollisionManager::handleCannonballCollision(Ship* ship, Cannonball* cannonb
 		// Damage the ship based on the multiplier
 		collidingCannonballs.push_back(cannonball);
 		ship->damageShip(collisionDamagePerFrame * collidingCannonballs.size());
-		cannonball->setInactive();
+		cannonball->isActive = false;
 
 		// Check if the cannonball is from the player ship and the ship dies from it
 		addedExp = false;
-		if (cannonball->getShipID() == playerShip->getID() && ship->getHealth() <= 0.001 && !addedExp) {
+		if (cannonball->shipID == playerShip->getID() && ship->getHealth() <= 0.001 && !addedExp) {
 			playerShip->addExperience(killExp);
 			addedExp = true;
 		}
@@ -144,19 +144,19 @@ void CollisionManager::handleCannonballCollision(Ship* ship, Cannonball* cannonb
 // Collision check for cannonballs with each other
 void CollisionManager::handleCannonballCollision(Cannonball* c1, Cannonball* c2) {
 	// Check if the cannonballs are colliding
-	if (!c1->getSprite().getGlobalBounds().intersects(c2->getSprite().getGlobalBounds())) return;
+	if (!c1->sprite.getGlobalBounds().intersects(c2->sprite.getGlobalBounds())) return;
 
-	sf::CircleShape circle1(c1->getSprite().getGlobalBounds().width / 2.0f);
-	circle1.setPosition(c1->getSprite().getPosition());
-	sf::CircleShape circle2(c2->getSprite().getGlobalBounds().width / 2.0f);
-	circle2.setPosition(c2->getSprite().getPosition());
+	sf::CircleShape circle1(c1->sprite.getGlobalBounds().width / 2.0f);
+	circle1.setPosition(c1->sprite.getPosition());
+	sf::CircleShape circle2(c2->sprite.getGlobalBounds().width / 2.0f);
+	circle2.setPosition(c2->sprite.getPosition());
 
 	// Calculate the distance between the centers of the two cannonballs
 	float distance = vm::distance(circle1.getPosition(), circle2.getPosition());
 	if (distance < circle1.getRadius() + circle2.getRadius()) {
 		// Set both cannonballs to inactive
-		c1->setInactive();
-		c2->setInactive();
+		c1->isActive = false;
+		c2->isActive = false;
 	}
 }
 

@@ -141,8 +141,18 @@ namespace vm {
 	inline T randomValue(const T& min, const T& max) {
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::uniform_int_distribution<T> dis(min, max);
-		return dis(gen);
+
+		if constexpr (std::is_integral_v<T>) {
+			std::uniform_int_distribution<T> dis(min, max);
+			return dis(gen);
+		}
+		else if constexpr (std::is_floating_point_v<T>) {
+			std::uniform_real_distribution<T> dis(min, max);
+			return dis(gen);
+		}
+		else {
+			static_assert(std::is_arithmetic_v<T>, "Type must be integral or floating-point/doubles.");
+		}
 	}
 
 	template <typename T>

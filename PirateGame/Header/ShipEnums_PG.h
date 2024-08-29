@@ -42,10 +42,7 @@ namespace PirateGame {
 
 	inline ShipClass getRandomShipClass() {
 		// Generate a random number between 1 and 5
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_int_distribution<int> dis(1, 5); // 0 is not included
-		return static_cast<ShipClass>(dis(gen));
+		return static_cast<ShipClass>(vm::randomValue(1, numShipClasses));
 	}
 
 	inline std::string shipClassToString(ShipClass shipClass) {

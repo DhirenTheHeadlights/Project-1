@@ -15,8 +15,7 @@
 namespace PirateGame {
 	class ShipInputHandler {
 	public:
-		ShipInputHandler(sf::Sprite& sprite, GlobalSoundManager* GSM) : sprite(sprite), GSM(GSM) {};
-		~ShipInputHandler() {};
+		ShipInputHandler(JSONLoader* json, const sf::Sprite& sprite, GlobalSoundManager* GSM) : sprite(sprite), GSM(GSM), json(json) {}
 
 		void update(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
 		virtual void handleCannonFire(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) = 0;
@@ -37,8 +36,9 @@ namespace PirateGame {
 
 	protected:
 		GlobalSoundManager* GSM = nullptr;
+		JSONLoader* json;
 
-		sf::Sprite& sprite;
+		const sf::Sprite& sprite;
 
 		// Handlers
 		ShipCannonHandler* SCH = nullptr;

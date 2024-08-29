@@ -15,16 +15,37 @@
 #include "GlobalIDManager_PG.h"
 
 namespace PirateGame {
-    /// Concept to check if a class has a method getSprite that returns an sf::Sprite
+    /// Concept to check if a class has a method getID that returns an ID*
     template <class T>
     concept HasGetID = requires(T t) {
         { t.getID() } -> std::convertible_to<ID*>;
     };
 
+    /// Concept to check if a class has a method getSprite that returns an sf::Sprite
     template <class T>
     concept HasGetSprite = requires(T t) {
         { t.getSprite() } -> std::convertible_to<sf::Sprite>;
     };
+
+    /// Concept to check if a class has a public member variable named id
+    template <class T>
+    concept HasPublicID = requires(T t) {
+        { t.id } -> std::convertible_to<ID*>;
+    };
+
+    /// Concept to check if a class has a public member variable named sprite
+    template <class T>
+    concept HasPublicSprite = requires(T t) {
+        { t.sprite } -> std::convertible_to<sf::Sprite>;
+    };
+
+    /// Concept to check if a class has either getID() or a public member variable id
+    template <class T>
+    concept SupportsID = HasGetID<T> || HasPublicID<T>;
+
+    /// Concept to check if a class has either getSprite() or a public member variable sprite
+    template <class T>
+    concept SupportsSprite = HasGetSprite<T> || HasPublicSprite<T>;
 
     class Node;  // Forward declaration of Node to be used in QuadtreeObject
 
@@ -242,9 +263,29 @@ namespace PirateGame {
     };
 
     /// Quadtree class, this will be the main class that will be used to create the quadtree.
-    template <typename T> requires HasGetSprite<T> && HasGetID<T>
+    template <typename T> requires SupportsSprite<T> && SupportsID<T>
     class Quadtree {
     public:
+        template <typename V> requires SupportsSprite<V>
+        sf::Sprite& getObjectSprite(V* object) {
+            if constexpr (HasGetSprite<V>) {
+				return object->getSprite();
+			}
+			else {
+				return object->sprite;
+			}
+        }
+
+        template <typename V> requires SupportsID<V>
+        ID* getObjectID(V* object) {
+            if constexpr (HasGetID<V>) {
+                return object->getID();
+            }
+            else {
+                return object->id;
+            }
+        }
+
         const int maxObjects = 4;
         std::unique_ptr<Node> root;
         std::unordered_map<T*, QuadtreeObject*> objectMap;
@@ -269,12 +310,12 @@ namespace PirateGame {
         }
 
         bool addObject(T* object) {
-            if (!root->boundary.contains(object->getSprite().getPosition())) {
+            if (!root->boundary.contains(getObjectSprite(object).getPosition())) {
                 std::cerr << "Error: Object is out of quadtree bounds. Cannot add." << std::endl;
                 return false;
             }
 
-            auto qtObject = new QuadtreeObject(object->getID(), object->getSprite());
+            auto qtObject = new QuadtreeObject(getObjectID(object), getObjectSprite(object));
             if (root->addObject(qtObject, maxObjects)) {
                 objectMap.insert({ object, qtObject });
                 reverseObjectMap.insert({ qtObject, object });
@@ -309,9 +350,9 @@ namespace PirateGame {
         }
 
 
-        template <HasGetSprite U>
+        template <SupportsSprite U>
         std::vector<T*> findObjectsNearObject(U* queryObject, float distance) {
-            auto nearby = root->findObjectsNearObject(queryObject->getSprite().getGlobalBounds(), distance);
+            auto nearby = root->findObjectsNearObject(getObjectSprite(queryObject).getGlobalBounds(), distance);
             std::vector<T*> found;
             found.reserve(nearby.size());
             for (auto qtobject : nearby) {

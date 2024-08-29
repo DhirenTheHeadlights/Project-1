@@ -45,11 +45,11 @@ void PlayerShipInputHandler::handleSailChange() {
 		SSH->moveSailsDown(sailDownKey);
 	}
 	if (GIH->isKeyHeld(sailLeftKey)) {
-		SSH->moveSailsLeft(sailLeftKey);
+		SSH->moveSailsLeft(sailLeftKey, json->getGameData().gameConfig.shipData.sailRotationSpeed);
 	}
 	if (GIH->isKeyHeld(sailRightKey)) {
-		SSH->moveSailsRight(sailRightKey);
+		SSH->moveSailsRight(sailRightKey, json->getGameData().gameConfig.shipData.sailRotationSpeed);
 	}
 
-	SSH->moveSailLeftRightAutomatically(GWC->getWindDirection(), SMH->getVelocity());
+	SSH->moveSailLeftRightAutomatically(GWC->getWindDirection(), SMH->getVelocity(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
 }

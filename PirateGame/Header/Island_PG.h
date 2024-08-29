@@ -21,12 +21,6 @@ namespace PirateGame {
 	private:
 		std::unique_ptr<IslandMenu> islandMenu;
 
-		int marketSizeLimit = 7;
-		int marketItemLimit = 100;
-		int marketPriceLimit = 100;
-
-		float scaling = 1.0f;
-
 		IslandType type = IslandType::Island1;
 
 		std::vector<ShopItem> market;

@@ -6,7 +6,7 @@ void Shipwreck::createLandMass() {
 	LandMassTypeGenerator<ShipwreckType> typeGen;
 	type = typeGen.getType();
 	sprite.setTexture(context.GTH->getLandMassTextures().getShipwreckTextures().getTexture(type));
-	sprite.setScale(scaling, scaling);
+	sprite.setScale(context.JSL->getGameData().gameConfig.landmassData.shipwreckScaling, context.JSL->getGameData().gameConfig.landmassData.shipwreckScaling);
 
-	loot = createLootPool(shipwreckLootPoolSize, 1, shipwreckItemLimit);
+	loot = createLootPool(context.JSL->getGameData().gameConfig.landmassData.shipwreckLootPoolSize, 1, context.JSL->getGameData().gameConfig.landmassData.shipwreckLootPoolSize);
 }

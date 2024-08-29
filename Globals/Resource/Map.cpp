@@ -1,7 +1,7 @@
 #include "Map.h"
 
 // Constructor
-void Map::grid(int boardLength, int boardHeight, int cellSize, sf::Vector2f position) {
+void Map::initialize(int boardLength, int boardHeight, int cellSize, sf::Vector2f position) {
     rows = boardHeight / cellSize;
     cols = boardLength / cellSize;
 
@@ -19,29 +19,24 @@ void Map::grid(int boardLength, int boardHeight, int cellSize, sf::Vector2f posi
 // called once to generate the points.
 std::vector<sf::Vector2f> const Map::getRandomPositions(float minDistance, int numPoints) const {
     const int k = 30; // attempts before giving up on finding a new point
-    const float pi = 3.14159265358979323846f;
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_real_distribution<float> dis(0.0, 1.0);
 
     std::vector<sf::Vector2f> samplePoints;
     std::vector<sf::Vector2f> activeList;
 
     // Initialize with the first point
-    sf::Vector2f initialPoint(dis(gen) * static_cast<float>(len), dis(gen) * static_cast<float>(height));
-    initialPoint += position; // Adjust for the position of the map
+    sf::Vector2f initialPoint = getRandomPosition();
     activeList.push_back(initialPoint);
     samplePoints.push_back(initialPoint);
 
     while (!activeList.empty() && samplePoints.size() < static_cast<size_t>(numPoints)) {
-        std::uniform_int_distribution<> dist(0, static_cast<int>(activeList.size()) - 1);
-        int randIndex = dist(gen);
+        int randIndex = vm::randomValue(0, static_cast<int>(activeList.size()) - 1);
         sf::Vector2f point = activeList[randIndex];
         bool found = false;
 
         for (int i = 0; i < k && samplePoints.size() < static_cast<size_t>(numPoints); ++i) {
-            float angle = dis(gen) * 2 * pi;
-            float radius = minDistance * (1 + dis(gen));
+            float angle = vm::randomValue(0.0f, 1.0f) * 2 * vm::PI;
+            float radius = minDistance * (1 + vm::randomValue(0.0f, 1.0f));
+
             // Generate a new point, this doesnt need to be adjusted for the map position
             // because the point is generated relative to the current point, which is already adjusted
             sf::Vector2f newPoint(point.x + radius * cos(angle), point.y + radius * sin(angle));
