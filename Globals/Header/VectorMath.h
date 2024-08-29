@@ -160,4 +160,10 @@ namespace vm {
 		T factor = std::pow(10, numFigures);
 		return std::round(value * factor) / factor;
 	}
+
+	inline sf::Vector2f relativeRotationTransformedPosition(const sf::Vector2f& obj1Position, const sf::Vector2f& obj2Offset, float rotationInDegrees) noexcept {
+		sf::Transform transform;
+		transform.rotate(rotationInDegrees, obj1Position);
+		return transform.transformPoint(obj1Position + obj2Offset);
+	}
 }

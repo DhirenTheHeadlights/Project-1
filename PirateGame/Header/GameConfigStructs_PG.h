@@ -37,7 +37,6 @@ namespace PirateGame {
         sf::Time cannonballLifetime;
         sf::Vector2f cannonballScale;
         float cannonballSpeed;
-        float cannonballFlightTime;
         float cannonballVelocityFallOff;
         float maxFiringAngle;
         float cannonRotationSpeed;

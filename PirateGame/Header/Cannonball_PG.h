@@ -6,9 +6,10 @@
 
 namespace PirateGame {
 	struct Cannonball {
-		Cannonball(GlobalIDManager* GIDM, ID* shipID, sf::Texture& texture, sf::Vector2f position, sf::Vector2f normalizedVelocity, float speed) :
+		Cannonball(GlobalIDManager* GIDM, ID* shipID, const sf::Texture& texture, sf::Vector2f& position, sf::Vector2f& normalizedVelocity, float speed, sf::Vector2f& scale) :
 			shipID(shipID), id(GIDM->generateID().get()), sprite(texture), velocity(normalizedVelocity), speed(speed) {
 			sprite.setPosition(position);
+			sprite.setScale(scale);
 		}
 
 		bool operator==(const Cannonball& other) const {
