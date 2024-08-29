@@ -909,6 +909,9 @@
     <ClInclude Include="PirateGame\Header\JSONLoader_PG.h">
       <Filter>Source Files\PirateGame\Header\Globals</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\GameConfigStructs_PG.h">
+      <Filter>Source Files\PirateGame\Header\Globals</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">

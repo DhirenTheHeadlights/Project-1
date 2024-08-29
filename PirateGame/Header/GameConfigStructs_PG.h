@@ -7,22 +7,22 @@
 
 namespace PirateGame {
     struct SaveData {
-        int playerExperience;
-        int playerExperienceToLevelUp;
-        int playerLevel;
-        int playerGold;
+        int playerExperience = 0;
+        int playerExperienceToLevelUp = 0;
+        int playerLevel = 0;
+        int playerGold = 0;
         std::vector<std::pair<std::string, std::pair<float, int>>> playerInventory;
     };
 
     struct LandmassData {
-        float rockScaling;
-        float shipwreckScaling;
-        int shipwreckLootPoolSize;
-        int shipwreckLootPoolItemLimit;
-        float islandScaling;
-        int islandMarketSizeLimit;
-        int islandMarketItemLimit;
-        int islandMarketPriceLimit;
+        float rockScaling = 0.0f;
+        float shipwreckScaling = 0.0f;
+        int shipwreckLootPoolSize = 0;
+        int shipwreckLootPoolItemLimit = 0;
+        float islandScaling = 0.0f;
+        int islandMarketSizeLimit = 0;
+        int islandMarketItemLimit = 0;
+        int islandMarketPriceLimit = 0;
     };
 
     struct ShipData {
@@ -36,39 +36,39 @@ namespace PirateGame {
         sf::Time cannonCooldown;
         sf::Time cannonballLifetime;
         sf::Vector2f cannonballScale;
-        float cannonballSpeed;
-        float cannonballFlightTime;
-        float cannonballVelocityFallOff;
-        float maxFiringAngle;
-        float cannonRotationSpeed;
-        float minDifferenceBetweenCannonAndTarget;
+        float cannonballSpeed = 0.0f;
+        float cannonballFlightTime = 0.0f;
+        float cannonballVelocityFallOff = 0.0f;
+        float maxFiringAngle = 0.0f;
+        float cannonRotationSpeed = 0.0f;
+        float minDifferenceBetweenCannonAndTarget = 0.0f;
 
         // Sail Handler
-        float maxSailRotationOffset;
-        float sailRotationSpeed;
+        float maxSailRotationOffset = 0.0f;
+        float sailRotationSpeed = 0.0f;
 
         // Movement Handler
-        float turningSpeed;
-        float turningMultiplier;
-        float frictionCoefficient;
-        float dampingFactor;
-        float separationDistance;
-        float pushOutDistance;
+        float turningSpeed = 0.0f;
+        float turningMultiplier = 0.0f;
+        float frictionCoefficient = 0.0f;
+        float dampingFactor = 0.0f;
+        float separationDistance = 0.0f;
+        float pushOutDistance = 0.0f;
     };
 
     struct ShipGroupData {
-        float shipGroupAlignmentWeight;
-        float shipGroupCohesionWeight;
-        float shipGroupSeparationWeight;
-        float shipGroupCombatSpeedMultiplier;
+        float shipGroupAlignmentWeight = 0.0f;
+        float shipGroupCohesionWeight = 0.0f;
+        float shipGroupSeparationWeight = 0.0f;
+        float shipGroupCombatSpeedMultiplier = 0.0f;
     };
 
     struct GameWorldData {
-        float sandyShoresScaling;
-        float murkyMarshesScaling;
-        float devilsDenScaling;
-        float shipwreckShoalsScaling;
-        float stormySeasScaling;
+        float sandyShoresScaling = 0.0f;
+        float murkyMarshesScaling = 0.0f;
+        float devilsDenScaling = 0.0f;
+        float shipwreckShoalsScaling = 0.0f;
+        float stormySeasScaling = 0.0f;
     };
 
     struct GameConfig {
