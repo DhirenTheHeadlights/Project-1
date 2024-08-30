@@ -192,7 +192,10 @@ namespace PirateGame {
             if (!boundary.intersects(queryBounds)) return std::vector<QuadtreeObject*>();
 
             std::vector<QuadtreeObject*> found;
+            found.reserve(objects.size()); // Educated guess for the number of objects
             findObjectsInRange(queryBounds, found, distance, queryObjectBounds);
+
+            found.shrink_to_fit(); // Shrink the vector to fit the actual number of objects found
 
             return found;
         }
@@ -229,36 +232,6 @@ namespace PirateGame {
                 return removeObject(object) && addObject(object, maxObjects);
             }
             return false;
-        }
-
-        // Method to draw the node boundaries for debugging
-        void draw(GlobalValues* gv) {
-            if (!divided) {
-                gv->displayText("Num obj: " + std::to_string(objects.size()), sf::Vector2f(boundary.left + boundary.width / 2 - 10.f, boundary.top + boundary.height / 2 - 5.f), sf::Color::White);
-            }
-
-            if (divided) {
-                for (auto& child : children) {
-                    child->draw(gv);
-                }
-            }
-                
-            sf::RectangleShape rectangle(sf::Vector2f(boundary.width, boundary.height));
-            rectangle.setPosition(boundary.left, boundary.top);
-            rectangle.setFillColor(sf::Color::Transparent);
-            rectangle.setOutlineThickness(5.f);
-            rectangle.setOutlineColor(sf::Color::Blue); // Node boundary
-
-            gv->getWindow()->draw(rectangle);
-
-            // Draw the objects' positions
-            for (auto object : objects) {
-                sf::CircleShape marker(10); // Small circle marker
-                sf::Vector2f pos = object->sprite.getPosition();
-                marker.setPosition(pos.x, pos.y);
-                marker.setFillColor(sf::Color::Magenta); // Object position
-                gv->getWindow()->draw(marker);
-            }
         }
     };
 
@@ -382,8 +355,37 @@ namespace PirateGame {
         }
 
         void draw(GlobalValues* gv) {
-            root->draw(gv);
+            drawNode(root.get(), gv);
         }
+
+        void drawNode(Node* node, GlobalValues* gv) {
+			if (!node->divided) {
+				gv->displayText("Num obj: " + std::to_string(node->objects.size()), sf::Vector2f(node->boundary.left + node->boundary.width / 2 - 10.f, node->boundary.top + node->boundary.height / 2 - 5.f), sf::Color::White);
+			}
+
+			if (node->divided) {
+				for (auto& child : node->children) {
+					drawNode(child.get(), gv);
+				}
+			}
+
+			sf::RectangleShape rectangle(sf::Vector2f(node->boundary.width, node->boundary.height));
+			rectangle.setPosition(node->boundary.left, node->boundary.top);
+			rectangle.setFillColor(sf::Color::Transparent);
+			rectangle.setOutlineThickness(5.f);
+			rectangle.setOutlineColor(sf::Color::Blue); // Node boundary
+
+			gv->getWindow()->draw(rectangle);
+
+			// Draw the objects' positions
+			for (auto object : node->objects) {
+				sf::CircleShape marker(10); // Small circle marker
+				sf::Vector2f pos = object->sprite.getPosition();
+				marker.setPosition(pos.x, pos.y);
+				marker.setFillColor(sf::Color::Magenta); // Object position
+				gv->getWindow()->draw(marker);
+			}
+		}
 
         std::vector<T*> getObjects() {
 			std::vector<T*> objects;
