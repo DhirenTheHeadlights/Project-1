@@ -14,6 +14,7 @@
 #include "CollisionManager_PG.h"
 #include "MenuHandler_PG.h"
 #include "WaterTiler_PG.h"
+#include "JSONSave_PG.h"
 
 namespace PirateGame {
 	class World {

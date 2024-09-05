@@ -1,5 +1,6 @@
 #include "World_PG.h"
 
+
 using namespace PirateGame;
 
 void World::setUpWorld() {
@@ -30,6 +31,9 @@ void World::setUpWorldElements() {
 
 	// Set up qth
 	GQH->setUpQuadtrees(context.GCH.get());
+
+	// Load ship properties
+	setShipConfig(context.JSL->getGameData().gameConfig);
 }
 
 void World::setUpPlayerShip() {
@@ -98,9 +102,19 @@ void World::updateCoreElements() {
 	context.GTQP->updateTextQueue(window);
 	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
 		playerShip->getMovementHandler()->setSpeed(playerShip->getMovementHandler()->getSpeed() + 2.f);
+	}
+
+	// Autosave
+	if (context.GC->getAutosaveTrigger()) {
+		JSONSave::saveData("PirateGame/json/SaveFile.json", playerShip.get());
+		std::cout << "Game autosaved!" << std::endl;
+	}
+	// Save game data if ` is pressed
+	if (context.GIH->isKeyPressedOnce(sf::Keyboard::Tilde)) {
+		JSONSave::saveData("PirateGame/json/SaveFile.json", playerShip.get());
+		std::cout << "Game manual saved!" << std::endl;
 	}
 }
 

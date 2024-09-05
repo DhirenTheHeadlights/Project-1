@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
+#include "GameConfigStructs_PG.h"
 
 namespace PirateGame {
 	const int numShipClasses = 5;
@@ -20,6 +21,16 @@ namespace PirateGame {
 
 	// Struct to hold ship properties
 	struct ShipProperties {
+		ShipProperties() {};
+		ShipProperties(const std::vector<float>& properties) {
+			maxHealth = properties[0];
+			baseSpeed = properties[1];
+			regenRate = properties[2];
+			scaleX = properties[3];
+			scaleY = properties[4];
+			numCannons = properties[5];
+			price = properties[6];
+		}
 		float baseSpeed = 1.f;
 		float maxHealth = 100.f;
 		float regenRate = 0.5f;
@@ -28,16 +39,18 @@ namespace PirateGame {
 		float price = 0.f;
 	};
 
-	inline std::unordered_map<ShipClass, ShipProperties> ShipConfig = {
-		{ ShipClass::Sloop,		 {100.f, 100.f, 1,     .1f,  .1f,  2, 1000.f}},
-		{ ShipClass::Brigantine, {95.f,  133.f, 1.48f, .12f, .12f, 4, 2000.f}},
-		{ ShipClass::Frigate,	 {82.f,  192.f, 2.15f, .15f, .15f, 6, 5000.f}},
-		{ ShipClass::ManOWar,	 {77.f,  250.f, 3.f,   .18f, .18f, 8, 8000.f}},
-		{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  .23f, .23f, 10, 15000.f}}
-	};
+	inline std::unordered_map<ShipClass, ShipProperties> shipConfig;
+
+	static void setShipConfig(GameConfig& gameConfig) {
+		shipConfig.insert(std::make_pair(ShipClass::Sloop, gameConfig.shipData.shipEnumProperties["Sloop"]));
+		shipConfig.insert(std::make_pair(ShipClass::Brigantine, gameConfig.shipData.shipEnumProperties["Brigantine"]));
+		shipConfig.insert(std::make_pair(ShipClass::Frigate, gameConfig.shipData.shipEnumProperties["Frigate"]));
+		shipConfig.insert(std::make_pair(ShipClass::ManOWar, gameConfig.shipData.shipEnumProperties["ManOWar"]));
+		shipConfig.insert(std::make_pair(ShipClass::Galleon, gameConfig.shipData.shipEnumProperties["Galleon"]));
+	}
 
 	inline ShipProperties getShipProperties(ShipClass shipClass) {
-		return ShipConfig[shipClass];
+		return shipConfig[shipClass];
 	}
 
 	inline ShipClass getRandomShipClass() {

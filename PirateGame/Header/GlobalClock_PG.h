@@ -15,8 +15,20 @@ namespace PirateGame {
 			return dt;
 		}
 
+		bool getAutosaveTrigger() {
+			if (autosaveClock.getElapsedTime().asSeconds() > 15) {
+				autosaveClock.restart();
+				return true;
+			}
+			return false;
+		}
+
+
 	private:
 		sf::Clock clock;
 		sf::Time dt;  // Store the delta time for each frame
+
+		sf::Clock autosaveClock;
+
 	};
 }

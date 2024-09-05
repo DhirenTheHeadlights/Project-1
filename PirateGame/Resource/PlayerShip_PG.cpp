@@ -9,7 +9,8 @@ void PlayerShip::customShipSetUp() {
 	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite(), getSpecificShipProperties().baseSpeed);
 	
 	SIvH = std::make_unique<ShipInventoryHandler>();
-	SIvH->addGold(1000);
+	SIvH->addGold(context.JSL->getGameData().saveData.playerGold);
+	SIvH->setInventory(context.JSL->getGameData().saveData.playerInventory);
 	
 	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());

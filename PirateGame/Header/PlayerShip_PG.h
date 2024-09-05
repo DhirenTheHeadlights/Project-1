@@ -37,8 +37,8 @@ namespace PirateGame {
 		PlayerShipMovementHandler* getMovementHandler() override { return dynamic_cast<PlayerShipMovementHandler*>(SMH.get()); }
 	private:
 		// Experience
-		float experience = 0;
-		float experienceToLevelUp = 1;
-		int playerLevel = 0;
+		float experience = context.JSL->getGameData().saveData.playerExperience;
+		float experienceToLevelUp = context.JSL->getGameData().saveData.playerExperienceToLevelUp;
+		int playerLevel = context.JSL->getGameData().saveData.playerLevel;
 	};
 }

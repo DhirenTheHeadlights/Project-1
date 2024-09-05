@@ -12,7 +12,7 @@ namespace PirateGame {
 	class ShipInventoryHandler {
 	public:
 		ShipInventoryHandler() {
-			addItemsToInventory(ShopItem("Test1", 10.f, 5));
+			/*addItemsToInventory(ShopItem("Test1", 10.f, 5));
 			addItemsToInventory(ShopItem("Test2", 20.f, 10));
 			addItemsToInventory(ShopItem("Test3", 30.f, 15));
 			addItemsToInventory(ShopItem("Test4", 40.f, 20));
@@ -26,7 +26,7 @@ namespace PirateGame {
 			addItemsToInventory(ShopItem("Test12", 120.f, 60));
 			addItemsToInventory(ShopItem("Test13", 130.f, 65));
 			addItemsToInventory(ShopItem("Test14", 140.f, 70));
-			addItemsToInventory(ShopItem("Test15", 150.f, 75));
+			addItemsToInventory(ShopItem("Test15", 150.f, 75));*/
 		};
 
 		void addItemsToInventory(ShopItem item) { inventory.push_back(item); }
@@ -41,6 +41,13 @@ namespace PirateGame {
 		void setGold(float gold) { this->gold = gold; }
 		void removeGold(float gold) { this->gold -= gold; }
 		void addGold(float gold) { this->gold += gold; }
+
+		void setInventory(std::vector<ShopItem> inventory) { this->inventory = inventory; }
+		void setInventory(std::vector<std::pair<std::string, std::pair<float, int>>> playerInventory) {
+			for (auto& item : playerInventory) {
+				inventory.push_back(ShopItem(item.first, item.second.first, item.second.second));
+			}
+		}
 		
 	private:
 		std::vector<ShopItem> inventory;

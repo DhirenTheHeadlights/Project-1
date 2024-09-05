@@ -41,17 +41,17 @@ namespace PirateGame {
 
     private:
         template <typename T>
-        void parseSection(const nlohmann::json& json, T& section) {
+        void parseSection(const json& json, T& section) {
             if (!json.is_null()) section = json.get<T>();
         }
 
         template <>
-        void parseSection(const nlohmann::json& json, sf::Time& section) {
+        void parseSection(const json& json, sf::Time& section) {
             if (!json.is_null()) section = sf::seconds(json.get<float>());
         }
 
         template <>
-        void parseSection(const nlohmann::json& json, sf::Vector2f& section) {
+        void parseSection(const json& json, sf::Vector2f& section) {
             if (!json.is_null() && json.is_array() && json.size() == 2) {
                 section = sf::Vector2f(json[0], json[1]);
             }
@@ -61,7 +61,7 @@ namespace PirateGame {
         }
 
         template <>
-        void parseSection(const nlohmann::json& json, std::unordered_map<std::string, std::vector<float>>& section) {
+        void parseSection(const json& json, std::unordered_map<std::string, std::vector<float>>& section) {
             for (auto& i : json.items()) {
                 if (i.value().is_array()) {
                     section[i.key()] = i.value().get<std::vector<float>>();
@@ -73,7 +73,7 @@ namespace PirateGame {
         }
 
         template <>
-        void parseSection(const nlohmann::json& json, std::vector<std::pair<std::string, std::pair<float, int>>>& section) {
+        void parseSection(const json& json, std::vector<std::pair<std::string, std::pair<float, int>>>& section) {
             for (auto& i : json) {
                 if (i.is_array() && i.size() == 3 && i[0].is_string() && i[1].is_number_float() && i[2].is_number_integer()) {
                     section.push_back(std::make_pair(i[0], std::make_pair(i[1], i[2])));
@@ -84,7 +84,7 @@ namespace PirateGame {
             }
         }
 
-        void loadLandmassData(const nlohmann::json& json) {
+        void loadLandmassData(const json& json) {
             parseSection(json["rockScaling"], gameData.gameConfig.landmassData.rockScaling);
             parseSection(json["shipwreckScaling"], gameData.gameConfig.landmassData.shipwreckScaling);
             parseSection(json["shipwreckLootPoolSize"], gameData.gameConfig.landmassData.shipwreckLootPoolSize);
@@ -95,7 +95,7 @@ namespace PirateGame {
             parseSection(json["islandMarketPriceLimit"], gameData.gameConfig.landmassData.islandMarketPriceLimit);
         }
 
-        void loadShipData(const nlohmann::json& json) {
+        void loadShipData(const json& json) {
             auto baseJson = json["base"];
             parseSection(baseJson["shipHealthRegenTime"], gameData.gameConfig.shipData.shipHealthRegenTime);
             parseSection(baseJson["shipHealthBarSize"], gameData.gameConfig.shipData.shipHealthBarSize);
@@ -131,7 +131,7 @@ namespace PirateGame {
             parseSection(shipGroupJson["shipGroupCombatSpeedMultiplier"], gameData.gameConfig.shipGroupData.shipGroupCombatSpeedMultiplier);
         }
 
-        void loadGameWorldData(const nlohmann::json& json) {
+        void loadGameWorldData(const json& json) {
             parseSection(json["sandyShoresScaling"], gameData.gameConfig.gameWorldData.sandyShoresScaling);
             parseSection(json["murkyMarshesScaling"], gameData.gameConfig.gameWorldData.murkyMarshesScaling);
             parseSection(json["devilsDenScaling"], gameData.gameConfig.gameWorldData.devilsDenScaling);
