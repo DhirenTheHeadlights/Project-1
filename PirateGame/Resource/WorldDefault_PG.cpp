@@ -61,7 +61,7 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 
 	updateCoreElements();
 
-	view.updateView(playerShip->getMovementHandler()->getVelocity());
+	view.updateView(playerShip->getSprite().getPosition(), playerShip->getMovementHandler()->getVelocity());
 
 	LMH.interactWithLandmasses();
 

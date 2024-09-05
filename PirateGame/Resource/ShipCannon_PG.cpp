@@ -6,18 +6,12 @@ void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const s
     if (FS != side) return;
 
     // Set the cannonball to come out of the cannon's muzzle
-    sf::Vector2f untransformedPositionOutOfCannon = cannonSprite.getPosition() + cannonSprite.getGlobalBounds().getSize() / 2.f - sf::Vector2f(cannonballTexture.getSize()) / 2.f;
+    sf::Vector2f untransformedPositionOutOfCannon = cannonSprite.getPosition() + sf::Vector2f(cannonSprite.getGlobalBounds().width, cannonSprite.getGlobalBounds().height / 2.f);
     sf::Vector2f transformedPositionOutOfCannon = vm::relativeRotationTransformedPosition(untransformedPositionOutOfCannon, sf::Vector2f(0.f, 0.f), cannonSprite.getRotation());
 
     sf::Vector2f currentFireDirection = vm::normalize(vm::angleDegreesToVector(cannonSprite.getRotation()));
 
-    // Calculate the scale factor to match the height of the cannon sprite
-    float scaleFactor = cannonSprite.getGlobalBounds().height / static_cast<float>(cannonballTexture.getSize().y);
-
-    // Set the cannonball scale while maintaining its aspect ratio
-    sf::Vector2f cannonballScale(scaleFactor, scaleFactor);
-
-    Cannonball* cannonball = new Cannonball(GIDM, id, cannonballTexture, transformedPositionOutOfCannon, currentFireDirection, jsl->getGameData().gameConfig.shipData.cannonballSpeed, cannonballScale);
+    Cannonball* cannonball = new Cannonball(GIDM, id, cannonballTexture, transformedPositionOutOfCannon, currentFireDirection, jsl->getGameData().gameConfig.shipData.cannonballSpeed, jsl->getGameData().gameConfig.shipData.cannonballScale);
 
     // Add the cannonball to the management systems
     cannonballHashmap->addObject(cannonball);

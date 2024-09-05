@@ -3,6 +3,7 @@
 /// This is a simple class that encompasses one of the sails on a ship
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 #include "VectorMath.h"
 
@@ -17,12 +18,12 @@ namespace PirateGame {
 			sailSprite.setScale(scaling);
 		};
 
-		void updateSail(const sf::Sprite& shipSprite, const sf::Vector2f shipDirection, const float maxRotationOffset);
+		void updateSail(const sf::Sprite& shipSprite, const sf::Vector2f& shipDirection, const float maxRotationOffset);
 		void moveLeft(const float rotationSpeed) { rotationOffset -= rotationSpeed; }
 		void moveRight(const float rotationSpeed) { rotationOffset += rotationSpeed; }
 		void moveUp() { /* implement later */ };
 		void moveDown() { /* implement later */ };
-		void updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection, const float rotationSpeed);
+		void updateSailLeftRightAutomatically(const sf::Vector2f& windDirection, const float shipRotation, const float rotationSpeed);
 
 		sf::Sprite& getSprite() { return sailSprite; }
 		sf::Vector2f getOffset() const { return offset; }
@@ -31,8 +32,6 @@ namespace PirateGame {
 
 		void setOffset(sf::Vector2f offset) { this->offset = offset; }
 	private:
-		float calculateAngleRelativeToShip(const sf::Vector2f& shipDirection) const;
-
 		sf::Sprite sailSprite;
 
 		sf::Vector2f offset;

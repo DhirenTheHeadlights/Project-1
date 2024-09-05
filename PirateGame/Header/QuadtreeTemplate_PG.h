@@ -182,25 +182,27 @@ namespace PirateGame {
             }
         }
 
-        std::vector<QuadtreeObject*> findObjectsNearObject(sf::FloatRect queryObjectBounds, float distance) {
+        std::vector<QuadtreeObject*>& findObjectsNearObject(const sf::FloatRect& queryObjectBounds, const float distance, const int numObjectsInQuadtree) {
             sf::FloatRect queryBounds = queryObjectBounds;
             queryBounds.left -= distance;
             queryBounds.top -= distance;
             queryBounds.width += 2 * distance;
             queryBounds.height += 2 * distance;
 
-            if (!boundary.intersects(queryBounds)) return std::vector<QuadtreeObject*>();
+            if (!boundary.intersects(queryBounds)) {
+                std::vector<QuadtreeObject*> empty;
+				return empty;
+            }
 
             std::vector<QuadtreeObject*> found;
-            found.reserve(objects.size()); // Educated guess for the number of objects
             findObjectsInRange(queryBounds, found, distance, queryObjectBounds);
-
-            found.shrink_to_fit(); // Shrink the vector to fit the actual number of objects found
 
             return found;
         }
 
-        void findObjectsInRange(const sf::FloatRect& range, std::vector<QuadtreeObject*>& found, float distance, sf::FloatRect queryObjectBounds) {
+        void findObjectsInRange(const sf::FloatRect& range, std::vector<QuadtreeObject*>& found, float distance, const sf::FloatRect& queryObjectBounds) {
+            found.reserve(objects.size()); // Reserve space with the worst case scenario
+
             // Check objects in the current node
             for (auto object : objects) {
                 if (range.intersects(queryObjectBounds)) {
@@ -325,7 +327,7 @@ namespace PirateGame {
 
         template <SupportsSprite U>
         std::vector<T*> findObjectsNearObject(U* queryObject, float distance) {
-            auto nearby = root->findObjectsNearObject(getObjectSprite(queryObject).getGlobalBounds(), distance);
+            auto& nearby = root->findObjectsNearObject(getObjectSprite(queryObject).getGlobalBounds(), distance, objectMap.size());
             std::vector<T*> found;
             found.reserve(nearby.size());
             for (auto qtobject : nearby) {

@@ -12,7 +12,7 @@ namespace PirateGame {
 		View(sf::RenderWindow* window) : window(window) {};
 
 		void setUpView(const sf::Vector2f& initialPosition, const sf::Vector2f& size);
-		void updateView(const sf::Vector2f& offset);
+		void updateView(const sf::Vector2f& targetPos, const sf::Vector2f& offset);
 		void updateDebugView(sf::Event event);
 		void showCoordsOnCursor(const sf::Font& font);
 

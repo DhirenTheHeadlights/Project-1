@@ -52,7 +52,7 @@
 
     "sailHandler": 
     {
-      "maxSailRotationOffset": 0.45,
+      "maxSailRotationOffset": 45.0,
       "sailRotationSpeed": 0.1
     },
 

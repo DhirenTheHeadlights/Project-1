@@ -6,6 +6,7 @@
 #include "WorldDefault_PG.h"
 #include "WorldLMAvoid_PG.h"
 #include "WorldESAvoid_PG.h"
+#include "WorldPlayerOnly_PG.h"
 
 namespace PirateGame {
 	enum class WorldType {
@@ -14,6 +15,7 @@ namespace PirateGame {
 		LandmassAvoidanceTest,
 		EnemyShipAvoidanceTest,
 		ShipCombatTest,
+		PlayerShipOnly
 	};
 
 	class SelectionButton {
@@ -52,6 +54,7 @@ namespace PirateGame {
 			worldTypes.push_back(SelectionButton(WorldType::DefaultDebug, sf::Text(worldTypeToStr(WorldType::DefaultDebug), font, 24)));
 			worldTypes.push_back(SelectionButton(WorldType::LandmassAvoidanceTest, sf::Text(worldTypeToStr(WorldType::LandmassAvoidanceTest), font, 24)));
 			worldTypes.push_back(SelectionButton(WorldType::EnemyShipAvoidanceTest, sf::Text(worldTypeToStr(WorldType::EnemyShipAvoidanceTest), font, 24)));
+			worldTypes.push_back(SelectionButton(WorldType::PlayerShipOnly, sf::Text(worldTypeToStr(WorldType::PlayerShipOnly), font, 24)));
 
 			// Set the position of the buttons
 			for (auto& button : worldTypes) {
@@ -93,6 +96,10 @@ namespace PirateGame {
 				return "Landmass Avoidance Test";
 			case WorldType::EnemyShipAvoidanceTest:
 				return "Enemy Ship Avoidance Test";
+			case WorldType::ShipCombatTest:
+				return "Ship Combat Test";
+			case WorldType::PlayerShipOnly:
+				return "Player Ship Only";
 			default:
 				return "Unknown";
 			}
@@ -115,6 +122,11 @@ namespace PirateGame {
 				break;
 			case WorldType::EnemyShipAvoidanceTest:
 				world = new ESAvoidWorld(window);
+				break;
+			case WorldType::ShipCombatTest:
+				break;
+			case WorldType::PlayerShipOnly:
+				world = new PlayerOnlyWorld(window);
 				break;
 			default:
 				return nullptr;

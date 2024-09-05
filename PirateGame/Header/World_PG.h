@@ -23,7 +23,7 @@ namespace PirateGame {
 
 		virtual void setUpWorld();
 
-		virtual void createWorld(sf::Event event) = 0;
+		virtual void createWorld(sf::Event event);
 	protected:
 		// Functions
 		virtual void setUpWorldElements();

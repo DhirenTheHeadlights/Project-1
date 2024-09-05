@@ -547,6 +547,9 @@
     <ClCompile Include="PirateGame\Resource\RegionHandler_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Handlers\General</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\WorldPlayerOnly_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -911,6 +914,9 @@
     </ClInclude>
     <ClInclude Include="PirateGame\Header\GameConfigStructs_PG.h">
       <Filter>Source Files\PirateGame\Header\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="PirateGame\Header\WorldPlayerOnly_PG.h">
+      <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

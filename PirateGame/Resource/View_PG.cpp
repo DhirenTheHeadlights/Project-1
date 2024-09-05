@@ -7,8 +7,11 @@ void View::setUpView(const sf::Vector2f& initalPosition, const sf::Vector2f& siz
 	view.setSize(size);
 }
 
-void View::updateView(const sf::Vector2f& offset) {
+void View::updateView(const sf::Vector2f& targetPos, const sf::Vector2f& offset) {
 	view.move(offset);
+	if (std::fabs(view.getCenter().x - targetPos.x) > 0.1f) {
+		view.setCenter(targetPos); // In case the view shifts rapidly
+	}
 	window->setView(view);
 }
 

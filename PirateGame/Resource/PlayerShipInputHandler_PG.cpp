@@ -51,5 +51,5 @@ void PlayerShipInputHandler::handleSailChange() {
 		SSH->moveSailsRight(sailRightKey, json->getGameData().gameConfig.shipData.sailRotationSpeed);
 	}
 
-	SSH->moveSailLeftRightAutomatically(GWC->getWindDirection(), SMH->getVelocity(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
+	SSH->moveSailLeftRightAutomatically(GWC->getWindDirection(), sprite.getRotation(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
 }

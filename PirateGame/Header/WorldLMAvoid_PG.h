@@ -8,9 +8,6 @@ namespace PirateGame {
 	class LMAvoidWorld : public World {
 	public:
 		LMAvoidWorld(sf::RenderWindow* window) : World(window) {};
-		~LMAvoidWorld() {};
-
-		void createWorld(sf::Event event) override;
 	private:
 		void updateGameLoop(sf::Event event) override;
 		void setUpLandMasses() override;

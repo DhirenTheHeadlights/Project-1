@@ -13,9 +13,7 @@ namespace PirateGame {
 			numEnemyShips = 2;
 			distanceBetweenEnemyShips = 100.f;
 		}
-		~DefaultDebugWorld() {};
 
-		void createWorld(sf::Event event) override;
 	private:
 		void updateGameLoop(sf::Event event) override;
 	};

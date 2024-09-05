@@ -40,7 +40,7 @@ namespace PirateGame {
 			}
 		}
 
-		void moveSailLeftRightAutomatically(const sf::Vector2f& windDirection, const sf::Vector2f& shipDirection, const float rotationSpeed);
+		void moveSailLeftRightAutomatically(const sf::Vector2f& windDirection, const float shipRotation, const float rotationSpeed);
 		void draw(sf::RenderWindow* window);
 
 		sf::Vector2f getAverageSailDirection() {

@@ -104,3 +104,37 @@ void World::updateCoreElements() {
 	}
 }
 
+void World::createWorld(sf::Event event) {
+	window->clear();
+
+	context.GIH->update();
+
+	// Handle the different game states
+	switch (context.GGSM->getCurrentGameState()) {
+	case GameState::Start:
+		// Draw the main menu
+		MH.openMenu(MenuType::StartMenu);
+		break;
+	case GameState::OptionsMenu:
+		// Draw the options menu
+		MH.openMenu(MenuType::OptionsMenu);
+		break;
+	case GameState::End:
+		// End the game and close the window
+		window->close();
+		break;
+	case GameState::GameLoop:
+		// Run the game loop
+		drawGameLoop();
+		updateGameLoop(event);
+		break;
+	}
+
+	// Close if the escape key is pressed
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		window->close();
+	}
+
+	window->display();
+}
+

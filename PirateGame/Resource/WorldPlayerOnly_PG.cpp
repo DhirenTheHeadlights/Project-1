@@ -1,8 +1,13 @@
-#include "WorldDebug_PG.h"
+#include "WorldPlayerOnly_PG.h"
 
 using namespace PirateGame;
 
-void DefaultDebugWorld::updateGameLoop(sf::Event event) {
+void PlayerOnlyWorld::setUpEnemyShips() {
+	ESH.setLandmasses(LMH.getLandMasses());
+	ESH.setPlayerShip(playerShip.get());
+} // No enemy ships in this world
+
+void PlayerOnlyWorld::updateGameLoop(sf::Event event) {
 	updateCoreElements();
 
 	LMH.interactWithLandmasses();
