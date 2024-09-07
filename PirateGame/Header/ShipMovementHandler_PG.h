@@ -19,7 +19,7 @@ namespace PirateGame {
 		// Movement functions 
 		virtual void update(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) = 0;
 		void move(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed);
-		void rotateTowards(float targetAngle);
+		void rotateTowards(float targetAngle) const;
 		void collisionMovement(const sf::Sprite& collidingSprite);
 		void addCannonRecoil(const sf::Vector2f& direction, const float recoil);
 
@@ -27,7 +27,7 @@ namespace PirateGame {
 		virtual void setSpriteRotation() = 0;
 
 		// These functions stay constant
-		void ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite);
+		void ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite) const;
 
 		// Setters
 		void setSpeed(float speed) { this->speed = speed; } // For testing purposes, but cannot be set above the baseSpeed

@@ -29,7 +29,7 @@ namespace PirateGame {
 
 		// Setters
 		void setShip(PlayerShip& ship) { this->ship = &ship; };
-		void setMarket(std::vector<ShopItem> market) { this->market = market; }
+		void setMarket(std::vector<ShopItem> market) const { this->market = market; }
 		void setEnteredIsland(bool enteredIsland) { this->enteredIsland = enteredIsland; }
 		void setHasPlayerSaidNo(bool playerPromptedOnce) { this->hasPlayerSaidNo = playerPromptedOnce; }
 

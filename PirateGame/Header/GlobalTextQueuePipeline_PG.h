@@ -31,7 +31,7 @@ namespace PirateGame {
 			}
 		}
 
-		void drawTextQueue(sf::RenderWindow* window) {
+		void drawTextQueue(sf::RenderWindow* window) const {
 			for (int i = 0; i < textQueue.size(); i++) {
 				window->draw(textQueue[i].text);
 			}

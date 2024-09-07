@@ -38,7 +38,7 @@ void CellGroup::removeCircle(Circle& cell, Map& map) {
 	}
 }
 
-void CellGroup::draw(sf::RenderWindow& window) {
+void CellGroup::draw(sf::RenderWindow& window) const {
 	for (Circle* cell : cells) cell->draw(window);
 }
 

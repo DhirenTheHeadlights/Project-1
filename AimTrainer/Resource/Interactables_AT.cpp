@@ -188,7 +188,7 @@ void Interactable::updateSliderPositionVariable(const sf::Vector2f& mousePos) {
     offset = std::max(rectHorizontal.getPosition().x, min);
 }
 
-void Interactable::callSliderAction() {
+void Interactable::callSliderAction() const {
     // Calculate the offset between the horizontal and vertical rectangles
     float offset = rectVertical.getPosition().x - rectHorizontal.getPosition().x;
 

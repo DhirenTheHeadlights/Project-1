@@ -115,7 +115,7 @@ sf::Text& PlayerInputBox::getPlayerInputText() {
 
 // Get the clicked variable to update other classes if needed
 
-bool PlayerInputBox::getClicked() {
+bool PlayerInputBox::getClicked() const {
 	return clicked;
 }
 

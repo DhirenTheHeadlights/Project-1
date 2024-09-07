@@ -7,6 +7,9 @@ void Ship::setUpShip(ShipClass level, const Region region) {
 	if (level == ShipClass::Random) {
 		shipClass = getRandomShipClass();
 	}
+	else {
+		shipClass = level;
+	}
 
 	// Set class
 	shipProperties = getShipProperties(shipClass);

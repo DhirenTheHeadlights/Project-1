@@ -45,7 +45,7 @@ void StartMenu::drawMenu(sf::Event currentEvent, sf::Clock& mainClock, Crosshair
 
 // Functions for the menu interactions
 
-void StartMenu::start() {
+void StartMenu::start() const {
     GSM->startGame();
 }
 

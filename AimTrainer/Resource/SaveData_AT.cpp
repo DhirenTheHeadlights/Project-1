@@ -43,7 +43,7 @@ void SaveData::file_write() {
     outdata.close();
 }
 
-std::vector<std::pair<std::string, int>> SaveData::file_read() {
+std::vector<std::pair<std::string, int>> SaveData::file_read() const {
     std::fstream indata(filename);
     std::vector<std::pair<std::string, int>> data;
     if (!indata) {

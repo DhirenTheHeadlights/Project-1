@@ -2,17 +2,13 @@
 
 /// This class is used to represent the player ship in the game.
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
 #include <cmath>
-#include <unordered_map>
 
 #include "GlobalContext_PG.h"
 
 #include "Ship_PG.h"
 #include "PlayerShipInputHandler_PG.h"
 #include "PlayerShipMovementHandler_PG.h"
-#include "ShipInventoryHandler_PG.h"
 
 namespace PirateGame {
 	class PlayerShip : public Ship {
@@ -20,12 +16,12 @@ namespace PirateGame {
 		PlayerShip(GlobalContext& context) : Ship(context) {};
 
 		// Experience
-		void addExperience(float exp) {
+		void addExperience(const float exp) {
 			experience += exp;
 		}
 		float getExp() const { return experience; }
 		float getExpToLevelUp() const { return experienceToLevelUp; }
-		int getplayerLevel() const { return playerLevel; }
+		int getPlayerLevel() const { return playerLevel; }
 
 		// Create the ship and set its values
 		virtual void customShipSetUp() override;

@@ -15,7 +15,7 @@ namespace PirateGame {
 		~BattleManager() {};
 
 		void startBattle(std::shared_ptr<ShipGroup> group1, ShipGroup* group2);
-		void updateBattles();
+		void updateBattles() const;
 	private:
 		// Store battles
 		std::vector<std::pair<std::shared_ptr<ShipGroup>, ShipGroup*>> battles;

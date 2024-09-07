@@ -4,8 +4,6 @@
 /// This class is used to represent the player in the game.
 /// </summary>
 
-#include "SFML/Graphics.hpp"
-
 namespace PirateGame {
 	class Player {
 	public:

@@ -3,7 +3,6 @@
 /// ShipGroup class is used to represent the group of ships in the game.
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 #include "QuadtreeTemplate_PG.h"
 
@@ -17,7 +16,7 @@ namespace PirateGame {
 		~ShipGroup() {};
 
 		void updateGroup(Quadtree<EnemyShip>* shipQuadtree);
-		void drawGroup(bool debug = false);
+		void drawGroup(bool debug = false) const;
 
 		void addShip(std::shared_ptr<EnemyShip> ship, Quadtree<EnemyShip>* shipQuadtree) {
 			// If this is the first ship or if the ship has a lower speed than the group speed, set the group speed to the ship's speed
@@ -96,7 +95,7 @@ namespace PirateGame {
 			return false;
 		}
 
-		sf::Vector2f getAveragePosition() {
+		sf::Vector2f getAveragePosition() const {
 			sf::Vector2f averagePosition = sf::Vector2f(0, 0);
 			for (auto& ship : ships) {
 				averagePosition += ship->getSprite().getPosition();

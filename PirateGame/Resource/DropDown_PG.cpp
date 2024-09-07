@@ -93,7 +93,7 @@ void DropDown::draw(sf::RenderWindow* window) {
 }
 
 // Open the drop down menu if needed
-void DropDown::openDropDown(sf::RenderWindow* window) {
+void DropDown::openDropDown(sf::RenderWindow* window) const {
 	// Draw the options
 	for (int i = 0; i < options.size(); i++) {
 		window->draw(optionSprites[i]);

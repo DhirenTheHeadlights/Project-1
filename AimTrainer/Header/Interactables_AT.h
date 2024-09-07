@@ -99,5 +99,5 @@ private:
     void callButtonAction() const;
     void sliderDrag(sf::RenderWindow& window);
     void updateSliderPositionVariable(const sf::Vector2f& mousePos);
-    void callSliderAction();
+    void callSliderAction() const;
 };

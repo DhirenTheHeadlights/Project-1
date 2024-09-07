@@ -2,8 +2,6 @@
 
 /// Map for pirate game
 
-#include <unordered_map>
-
 #include "Chunk_PG.h"
 #include "RegionHandler_PG.h"
 

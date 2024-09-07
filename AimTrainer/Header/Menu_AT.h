@@ -48,7 +48,7 @@ private:
     void setInteractablePositions();
     void interactWithMenuItems();
     void handlePauseTime(sf::Clock& mainClock, Crosshair& xhair);
-    float calculateMenuHeight();
+    float calculateMenuHeight() const;
 
     // Vector to store interactable elements (buttons, sliders, etc.)
     std::vector<Interactable*> interactables;

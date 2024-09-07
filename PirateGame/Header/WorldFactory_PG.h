@@ -26,7 +26,7 @@ namespace PirateGame {
 			buttonText.setPosition(x, y);
 		}
 
-		void draw(sf::RenderWindow* window) {
+		void draw(sf::RenderWindow* window) const {
 			window->draw(buttonText);
 		}
 

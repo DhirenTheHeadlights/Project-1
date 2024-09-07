@@ -45,7 +45,7 @@ void InsertNameMenu::drawMenu(sf::Event currentEvent, sf::Clock& mainClock, Cros
 
 // Functions for the menu interactions
 
-void InsertNameMenu::setName() {
+void InsertNameMenu::setName() const {
 	GSM->setName(Menu::getInputStringForInteractableI(0));
 	GSM->startGame();
 }

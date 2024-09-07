@@ -10,7 +10,7 @@ namespace PirateGame {
 		float price;
 		int amount;
 
-		ShopItem(const std::string& name, float price, int amount)
+		ShopItem(const std::string& name, const float price, const int amount)
 			: name(name), price(price), amount(amount) {};
 
 		// Define the equality operator

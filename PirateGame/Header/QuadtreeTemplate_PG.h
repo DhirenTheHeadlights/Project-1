@@ -8,7 +8,6 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include <set>
 
 #include "VectorMath.h"
 #include "GlobalValues_PG.h"
@@ -200,7 +199,7 @@ namespace PirateGame {
             return found;
         }
 
-        void findObjectsInRange(const sf::FloatRect& range, std::vector<QuadtreeObject*>& found, float distance, const sf::FloatRect& queryObjectBounds) {
+        void findObjectsInRange(const sf::FloatRect& range, std::vector<QuadtreeObject*>& found, float distance, const sf::FloatRect& queryObjectBounds) const {
             found.reserve(objects.size()); // Reserve space with the worst case scenario
 
             // Check objects in the current node

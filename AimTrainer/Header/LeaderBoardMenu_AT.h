@@ -12,7 +12,7 @@ public:
 	void setUpLeaderBoard();
 private:
 	// Functions for the menu interactions
-	void returnToTitleScreen();
+	void returnToTitleScreen() const;
 	// No function for showing the leaderboard
 
 	// Lambda functions for menu interactions

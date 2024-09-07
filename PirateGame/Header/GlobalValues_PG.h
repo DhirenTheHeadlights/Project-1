@@ -7,8 +7,6 @@
 #include <random>
 #include <unordered_map>
 
-#include "VectorMath.h"
-
 namespace PirateGame {
 	class GlobalValues {
 	public:
@@ -55,7 +53,7 @@ namespace PirateGame {
 
         bool getShowHUD() const { return this->showHUD; }
         bool getShowInventory() const { return this->showInventory; }
-        sf::RenderWindow* getWindow() { return this->globalWindow; }
+        sf::RenderWindow* getWindow() const { return this->globalWindow; }
         std::default_random_engine& getRandomEngine() { return randomEngine; }
         int getTextSize() const { return textSize; }
 

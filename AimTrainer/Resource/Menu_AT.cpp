@@ -126,7 +126,7 @@ void Menu::drawMenu(sf::Event event) {
 	window.draw(title);
 }
 
-float Menu::calculateMenuHeight() {
+float Menu::calculateMenuHeight() const {
 	// Calculate total height required for all interactables with padding and spacing
 	float spacing = 20.0f; // Spacing between interactables
 	float interactableHeight = buttonWid; // Assuming all interactables have the same height

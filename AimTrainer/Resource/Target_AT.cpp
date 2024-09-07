@@ -20,7 +20,7 @@ void Target::setPos(sf::Vector2f position) {
 }
 
 // Get the position of the target
-sf::Vector2f Target::getPos() {
+sf::Vector2f Target::getPos() const {
 	return shape.getPosition() + sf::Vector2f(shape.getRadius(), shape.getRadius());
 }
 

@@ -43,7 +43,7 @@ std::set<Pellet*> CollisionManager::pelletCollisionWithinBoundsOfCircle(sf::Rend
     return collidedPellets;
 }
 
-void CollisionManager::checkCollisionWithPellet(const std::string& key, Circle* circle, std::set<Pellet*>& collidedPellets) { // Checks if there is a collision with a pellet in the hashmap
+void CollisionManager::checkCollisionWithPellet(const std::string& key, Circle* circle, std::set<Pellet*>& collidedPellets) const { // Checks if there is a collision with a pellet in the hashmap
     auto it = hashmap.getPelletHashmap().find(key);
     if (it != hashmap.getPelletHashmap().end()) {
         for (Pellet* pellet : it->second) {

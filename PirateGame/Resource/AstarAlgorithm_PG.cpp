@@ -38,7 +38,7 @@ void AStar::update(const sf::Vector2f& currentPosition) {
     }
 }
 
-sf::Vector2f AStar::getNextPoint(const sf::Vector2f& currentPosition) {
+sf::Vector2f AStar::getNextPoint(const sf::Vector2f& currentPosition) const {
     if (cachedPath.empty()) {
         return gridToVector(end);
     }

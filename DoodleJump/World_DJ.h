@@ -18,7 +18,7 @@ namespace DoodleJump {
     class World {
     public:
         World(sf::RenderWindow& window) : window(window) {};
-        void run() {
+        void run() const {
             srand(time(0)); //seeding rand
             window.setSize(sf::Vector2u(400, 533)); //setting window size
 

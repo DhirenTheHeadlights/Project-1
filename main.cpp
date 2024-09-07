@@ -57,7 +57,7 @@ public:
         window.draw(gameName);
     }
 
-    bool isMouseOver(sf::RenderWindow& window) { // Check if the mouse is over the button
+    bool isMouseOver(sf::RenderWindow& window) const { // Check if the mouse is over the button
         auto mousePos = sf::Mouse::getPosition(window);
         auto translatedPos = window.mapPixelToCoords(mousePos);
         return button.getGlobalBounds().contains(translatedPos);

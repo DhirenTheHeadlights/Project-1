@@ -8,7 +8,7 @@ public:
     Pellet(float x, float y);
     sf::Vector2f getPosition() const;
     int getRadius() const;
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
     bool deActivate();
     bool isActive() const;
 private:

@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#include "VectorMath.h"
 #include "QuadtreeTemplate_PG.h"
 #include "JSONLoader_PG.h"
 #include "Cannonball_PG.h"
@@ -18,7 +17,7 @@ namespace PirateGame {
 
 	class ShipCannon {
 	public:
-		ShipCannon(JSONLoader* jsl, const sf::Texture& texture, ID* id, FiringSide FS, sf::Vector2f scale) : jsl(jsl), cannonSprite(texture), id(id), side(FS) {
+		ShipCannon(JSONLoader* jsl, const sf::Texture& texture, ID* id, const FiringSide FS, const sf::Vector2f scale) : jsl(jsl), cannonSprite(texture), side(FS), id(id) {
 			cannonSprite.setScale(scale);
 
 			if (FS == FiringSide::Port) {
@@ -36,14 +35,14 @@ namespace PirateGame {
 		~ShipCannon() {};
 
 		void fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
-		void drawCannonNBalls(sf::RenderWindow* window);
+		void drawCannonNBalls(sf::RenderWindow* window) const;
 		void updateCannon(const sf::Sprite& shipSprite, FiringSide FS, sf::RenderWindow* window, sf::Time elapsed);
 
 		// Setters
 		void setCannonballHashmap(Quadtree<Cannonball>* cannonballHashmap) { this->cannonballHashmap = cannonballHashmap; }
-		void setOffset(sf::Vector2f offset) { this->offset = offset; }
-		void setFiringState(FiringState FS) { this->state = FS; }
-		void setTargetPos(sf::Vector2f targetPos) { this->targetPos = targetPos; }
+		void setOffset(const sf::Vector2f offset) { this->offset = offset; }
+		void setFiringState(const FiringState FS) { this->state = FS; }
+		void setTargetPos(const sf::Vector2f targetPos) { this->targetPos = targetPos; }
 	
 		// Getters
 		sf::Sprite& getSprite() { return cannonSprite; }

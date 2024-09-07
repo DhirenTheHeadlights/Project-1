@@ -10,7 +10,7 @@ public:
 	~CellGroup();
 	void split();
 	void removeCircle(Circle& cell, Map& map);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow& window) const;
 	void move(double moveSpeed, Map& map, sf::RenderWindow& window);
 	void reset();
 	std::vector<Circle*> getCellGroup();

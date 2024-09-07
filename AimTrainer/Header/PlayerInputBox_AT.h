@@ -32,7 +32,7 @@ public:
 	sf::Text& getPlayerInputText();
 
 	// Get the clicked variable to update other classes if needed
-	bool getClicked();
+	bool getClicked() const;
 
 	// Get the text string
 	std::string getString();

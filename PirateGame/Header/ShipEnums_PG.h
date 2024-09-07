@@ -6,7 +6,7 @@
 #include <unordered_map>
 
 namespace PirateGame {
-	const int numShipClasses = 5;
+	constexpr int numShipClasses = 5;
 	enum class ShipClass {
 		Random,
 		Sloop,
@@ -36,7 +36,7 @@ namespace PirateGame {
 		{ ShipClass::Galleon,	 {63.f,  380.f, 4.6f,  .23f, .23f, 10, 15000.f}}
 	};
 
-	inline ShipProperties getShipProperties(ShipClass shipClass) {
+	inline ShipProperties getShipProperties(const ShipClass shipClass) {
 		return ShipConfig[shipClass];
 	}
 
@@ -45,7 +45,7 @@ namespace PirateGame {
 		return static_cast<ShipClass>(vm::randomValue(1, numShipClasses));
 	}
 
-	inline std::string shipClassToString(ShipClass shipClass) {
+	inline std::string shipClassToString(const ShipClass shipClass) {
 		switch (shipClass) {
 		case ShipClass::Sloop:
 			return "Sloop";

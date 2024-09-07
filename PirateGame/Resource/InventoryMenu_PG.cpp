@@ -50,7 +50,7 @@ void InventoryMenu::addInteractablesToMenu() {
 	shipDisplayInfo.clear();
 	addTextDisplayBox(sf::Text(
 		ship->getShipClassString() + "\n" +
-		"Level: " + std::to_string(ship->getplayerLevel()) + "\n" +
+		"Level: " + std::to_string(ship->getPlayerLevel()) + "\n" +
 		"Health: " + floatToString(ship->getHealth()) + " / " + floatToString(ship->getSpecificShipProperties().maxHealth) + "\n"
 		"Speed: " + floatToString(ship->getSpecificShipProperties().baseSpeed) + "\n"
 		"Cannons: " + std::to_string(ship->getSpecificShipProperties().numCannons) + "\n", 
@@ -91,7 +91,7 @@ void InventoryMenu::update() {
 	// Update ship display info
 	shipDisplayInfo[0].getText().setString(
 		ship->getShipClassString() + "\n" +
-		"Level: " + std::to_string(ship->getplayerLevel()) + "\n" +
+		"Level: " + std::to_string(ship->getPlayerLevel()) + "\n" +
 		"Health: " + floatToString(ship->getHealth()) + " / " + floatToString(ship->getSpecificShipProperties().maxHealth) + "\n"
 		"Speed: " + floatToString(ship->getSpecificShipProperties().baseSpeed) + "\n"
 		"Cannons: " + std::to_string(ship->getSpecificShipProperties().numCannons) + "\n");

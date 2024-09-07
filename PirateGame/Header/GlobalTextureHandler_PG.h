@@ -2,8 +2,6 @@
 
 /// This class is a singleton class that contains all of the texture managers for the game.
 
-#include <SFML/Graphics.hpp>
-
 #include "InteractableTextures_PG.h"
 #include "LandMassTextures_PG.h"
 #include "HUDTextures_PG.h"

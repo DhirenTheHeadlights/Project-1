@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
-#include <iostream>
 
 namespace PirateGame {
     class GlobalInputHandler {

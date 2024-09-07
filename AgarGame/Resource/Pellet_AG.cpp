@@ -26,7 +26,7 @@ int Pellet::getRadius() const {
     return radius;
 }
 
-void Pellet::draw(sf::RenderWindow& window) {
+void Pellet::draw(sf::RenderWindow& window) const {
     if (active) window.draw(shape);
 }
 

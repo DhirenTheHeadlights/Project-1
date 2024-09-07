@@ -11,7 +11,7 @@ namespace PlatformerGame {
 
 		// Movement methods
 		void move();
-		void draw();
+		void draw() const;
 
 		// Physics methods
 		void applyGravity();

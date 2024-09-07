@@ -11,7 +11,7 @@ void Hashmap_AT::addTarget(Target* target) {
 }
 
 // Helper function to generate a key for the hashmap
-std::string Hashmap_AT::generateKey(sf::Vector2f position) {
+std::string Hashmap_AT::generateKey(sf::Vector2f position) const {
 	int x_key = static_cast<int>(position.x) / grid_size;
 	int y_key = static_cast<int>(position.y) / grid_size;
 	return std::to_string(x_key) + "," + std::to_string(y_key);

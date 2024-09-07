@@ -44,7 +44,7 @@ void EndMenu::drawMenu(sf::Event currentEvent, sf::Clock& mainClock, Crosshair& 
 
 // Functions for the menu interactions
 
-void EndMenu::restart() {
+void EndMenu::restart() const {
 	GSM->startGame();
 }
 

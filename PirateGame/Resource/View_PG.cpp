@@ -58,7 +58,7 @@ void View::updateDebugView(sf::Event event) {
 	window->setView(view);
 }
 
-void View::showCoordsOnCursor(const sf::Font& font) {
+void View::showCoordsOnCursor(const sf::Font& font) const {
 	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
 	sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 	std::string coords = "Coords: " + std::to_string(static_cast<int>(worldPosition.x)) + ", " + std::to_string(static_cast<int>(worldPosition.y));

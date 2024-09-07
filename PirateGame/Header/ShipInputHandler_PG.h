@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "GlobalSoundManager_PG.h"
-#include "GlobalWindController_PG.h"
 
 #include "ShipCannonHandler_PG.h"
 #include "ShipMovementHandler_PG.h"

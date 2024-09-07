@@ -36,7 +36,7 @@ void OptionsMenu::setInteractablePositions() {
 	setTabInteractablePositions(controlsTabInteractables);
 }
 
-void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables) {
+void OptionsMenu::setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables) const {
 	// Set the positions of the interactables to be under the menu
 	sf::Vector2f leftPosition = sf::Vector2f(menu.getPosition() + leftColumnPosition);
 	sf::Vector2f rightPosition = sf::Vector2f(menu.getPosition() + rightColumnPosition);

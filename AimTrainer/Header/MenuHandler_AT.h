@@ -13,7 +13,7 @@
 class MenuHandler {
 public:
 	MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateManager* GSM);
-	void setUpMenus();
+	void setUpMenus() const;
 
 	// Function to draw the menus
 	void drawStartMenu(sf::Event currentEvent, sf::Clock& mainClock, Crosshair& crosshair);
@@ -23,7 +23,7 @@ public:
 	void drawEndMenu(sf::Event currentEvent, sf::Clock& mainClock, Crosshair& crosshair);
 
 	// getters
-	StartMenu* getStartMenu() { return startMenu.get(); }
+	StartMenu* getStartMenu() const { return startMenu.get(); }
 	OptionsMenu* getOptionsMenu() { return optionsMenu.get(); }
 	LeaderBoardMenu* getLeaderBoardMenu() { return leaderBoardMenu.get(); }
 	EndMenu* getEndMenu() { return endMenu.get(); }

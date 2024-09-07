@@ -10,7 +10,7 @@ public:
 	void drawMenu(sf::Event currentEvent, sf::Clock& mainClock, Crosshair& crosshair);
 private:
 	// Functions for the menu interactions
-	void start();
+	void start() const;
 	void openLeaderBoard();
 	void setName();
 

@@ -15,7 +15,7 @@ class CollisionManager {
 public:
 	CollisionManager(sf::RenderWindow& window, Map& map);
 	std::set<Pellet*> pelletCollisionWithinBoundsOfCircle(sf::RenderWindow& window, Circle* circle, Map& map);
-	void checkCollisionWithPellet(const std::string& key, Circle* circle, std::set<Pellet*>& collidedPellets);
+	void checkCollisionWithPellet(const std::string& key, Circle* circle, std::set<Pellet*>& collidedPellets) const;
 	void separateAllCells(CellGroup& cells, Map& map);
 	void removePelletWhenCollision(sf::RenderWindow& window, Circle* cell, Map& map, std::vector<std::shared_ptr<Pellet>> activePellets);
 	void checkPelletCollisionForEveryCell(sf::RenderWindow& window, CellGroup& cells, Map& map, std::vector<std::shared_ptr<Pellet>> activePellets);

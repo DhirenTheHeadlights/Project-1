@@ -14,7 +14,7 @@ namespace PirateGame {
 		}
 
 		// Getters
-		Map* getMap() { return map.get(); }
+		Map* getMap() const { return map.get(); }
 		std::pair<int, int> getChunkCoord() const { return chunkCoord; }
 		Region getRegionType() const { return regionType; }
 

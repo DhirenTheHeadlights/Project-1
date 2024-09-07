@@ -49,7 +49,7 @@ namespace PirateGame {
 
 		// helper functions
 		void addEnemyShipsToChunk(Map& map, int numShips);
-		void setShipGroupDestination(std::shared_ptr<ShipGroup> group);
+		void setShipGroupDestination(std::shared_ptr<ShipGroup> group) const;
 		bool isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) const;
 		void updateGroupDestination(std::shared_ptr<ShipGroup> group);
 		void updateGroupsNearPlayer();

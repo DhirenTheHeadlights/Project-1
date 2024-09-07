@@ -26,9 +26,9 @@ namespace PirateGame {
 
 		void createMenus();
 		void setUpMenus();
-		void openMenu(MenuType menuType);
+		void openMenu(MenuType menuType) const;
 
-		StartMenu* getStartMenu() { return startMenu.get(); }
+		StartMenu* getStartMenu() const { return startMenu.get(); }
 		OptionsMenu* getOptionsMenu() { return optionsMenu.get(); }
 		InGameHUD* getHUD() { return HUD.get(); }
 		InventoryMenu* getInventoryMenu() { return inventoryMenu.get(); }

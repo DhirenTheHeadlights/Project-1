@@ -55,7 +55,7 @@ void Player::applyGravity() {
 	}
 }
 
-void Player::draw() {
+void Player::draw() const {
 	window.draw(playerSprite);
 }
 

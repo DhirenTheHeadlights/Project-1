@@ -3,8 +3,6 @@
 /// Ship class is used to represent the ships in the game.
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <cmath>
 #include <unordered_map>
 
 #include "GlobalContext_PG.h"
@@ -59,7 +57,7 @@ namespace PirateGame {
 		virtual ShipInputHandler* getInputHandler() { return SIH.get(); }
 		virtual ShipInventoryHandler* getInventoryHandler() { return SIvH.get(); }
 
-		std::string getShipClassString() {
+		std::string getShipClassString() const {
 			switch (shipClass) {
 			case ShipClass::Sloop:
 				return "Sloop";
@@ -71,6 +69,7 @@ namespace PirateGame {
 				return "Man O' War";
 			case ShipClass::Galleon:
 				return "Galleon";
+			default: ;
 			}
 			return "Error: Ship class not found.";
 		}

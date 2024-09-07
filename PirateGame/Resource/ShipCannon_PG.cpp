@@ -6,7 +6,7 @@ void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const s
     if (FS != side) return;
 
     // Set the cannonball to come out of the cannon's muzzle
-    sf::Vector2f untransformedPositionOutOfCannon = cannonSprite.getPosition() + sf::Vector2f(cannonSprite.getGlobalBounds().width, cannonSprite.getGlobalBounds().height / 2.f);
+    sf::Vector2f untransformedPositionOutOfCannon = cannonSprite.getPosition() + sf::Vector2f((side == FiringSide::Port) ? cannonSprite.getGlobalBounds().width : 0.f, cannonSprite.getGlobalBounds().height / 2.f);
     sf::Vector2f transformedPositionOutOfCannon = vm::relativeRotationTransformedPosition(untransformedPositionOutOfCannon, sf::Vector2f(0.f, 0.f), cannonSprite.getRotation());
 
     sf::Vector2f currentFireDirection = vm::normalize(vm::angleDegreesToVector(cannonSprite.getRotation()));
@@ -18,7 +18,7 @@ void ShipCannon::fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const s
     cannonballs.push_back(cannonball);
 }
 
-void ShipCannon::drawCannonNBalls(sf::RenderWindow* window) {
+void ShipCannon::drawCannonNBalls(sf::RenderWindow* window) const {
     for (auto& i : cannonballs) {
 		window->draw(i->sprite);
 	}

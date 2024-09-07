@@ -9,15 +9,15 @@
 namespace PirateGame {
 	class Island : public LandMass {
 	public:
-		Island(GlobalContext& context) : LandMass(context) {};
+		explicit Island(GlobalContext& context) : LandMass(context) {};
 
 		void createLandMass() override;
 
-		IslandMenu* getIslandMenu() { return islandMenu.get(); }
+		IslandMenu* getIslandMenu() const { return islandMenu.get(); }
 		std::vector<ShopItem>& getMarket() { return market; }
 
 		const sf::Image& getImage(GlobalContext& context) override { return context.GTH->getLandMassTextures().getIslandTextures().getImage(type); }
-		LandMassType getType() { return LandMassType::Island; }
+		LandMassType getType() override { return LandMassType::Island; }
 	private:
 		std::unique_ptr<IslandMenu> islandMenu;
 

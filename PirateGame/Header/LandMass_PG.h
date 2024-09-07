@@ -14,17 +14,17 @@
 namespace PirateGame {
 	class LandMass {
 	public:
-		LandMass(GlobalContext& context) : context(context), id(context.GIDM->generateID()) {}
+		explicit LandMass(GlobalContext& context) : context(context), id(context.GIDM->generateID()) {}
 
 		virtual void createLandMass() = 0;
-		void setRandomRotation() { sprite.setRotation(static_cast<float>(rand() % 360)); }
+		void setRandomRotation() { sprite.setRotation(vm::randomValue(0.f, 360.f)); }
 
 		// Getters
 		sf::Sprite& getSprite() { return sprite; }
 		virtual const sf::Image& getImage(GlobalContext& context) = 0;
 		virtual LandMassType getType() = 0;
 		bool isActive() const { return active; }
-		ID* getID() const { return id.get(); }
+		ID* getId() const { return id.get(); }
 
 		// Setters
 		void deactivate() { active = false; }
@@ -50,6 +50,6 @@ namespace PirateGame {
 		// Type generator
 		LandMassTypeGenerator<LandMassType> typeGenerator;
 
-		std::vector<ShopItem> createLootPool(int marketSize, int marketPrice, int marketItems);
+		static std::vector<ShopItem> createLootPool(int marketSize, int marketPrice, int marketItems);
 	};
 }

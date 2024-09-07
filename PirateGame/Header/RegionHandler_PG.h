@@ -1,7 +1,5 @@
 #pragma once
 
-#include <unordered_map>
-
 #include "Region_PG.h"
 
 namespace PirateGame {

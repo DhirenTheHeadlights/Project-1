@@ -1,12 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 #include "GlobalIDManager_PG.h"
 
 namespace PirateGame {
 	struct Cannonball {
-		Cannonball(GlobalIDManager* GIDM, ID* shipID, const sf::Texture& texture, sf::Vector2f& position, sf::Vector2f& normalizedVelocity, float speed, sf::Vector2f& scale) :
+		Cannonball(GlobalIDManager* GIDM, ID* shipID, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& normalizedVelocity, const float speed, const sf::Vector2f& scale) :
 			shipID(shipID), id(GIDM->generateID().get()), sprite(texture), velocity(normalizedVelocity), speed(speed) {
 			sprite.setPosition(position);
 			sprite.setScale(scale);

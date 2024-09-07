@@ -2,7 +2,7 @@
 
 using namespace PirateGame;
 
-void Minimap::draw(sf::RenderWindow* window) {
+void Minimap::draw(sf::RenderWindow* window) const {
     window->draw(minimapSprite);
 
     // Iterate only through visible landmasses

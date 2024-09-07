@@ -23,7 +23,7 @@ namespace PirateGame {
         }
 
         void update() {
-            sf::Time deltaTime = frameClock.restart();
+	        const sf::Time deltaTime = frameClock.restart();
             elapsedTime += deltaTime;
 
             if (elapsedTime >= frameTime) {
@@ -41,17 +41,17 @@ namespace PirateGame {
         }
 
         void draw(sf::RenderWindow* window) {
-            sf::Vector2f viewCenter = window->getView().getCenter();
-            sf::Vector2f viewSize = window->getView().getSize();
-            sf::Vector2f viewPosition = viewCenter - (viewSize / 2.0f);
+	        const sf::Vector2f viewCenter = window->getView().getCenter();
+	        const sf::Vector2f viewSize = window->getView().getSize();
+	        const sf::Vector2f viewPosition = viewCenter - (viewSize / 2.0f);
 
-            int scaledFrameWidth = static_cast<int>(frameWidth * scalingFactor);
-            int scaledFrameHeight = static_cast<int>(frameHeight * scalingFactor);
+	        const int scaledFrameWidth = static_cast<int>(frameWidth * scalingFactor);
+	        const int scaledFrameHeight = static_cast<int>(frameHeight * scalingFactor);
 
-            int startX = static_cast<int>(viewPosition.x) / scaledFrameWidth - 1;
-            int startY = static_cast<int>(viewPosition.y) / scaledFrameHeight - 1;
-            int endX = static_cast<int>((viewPosition.x + viewSize.x)) / scaledFrameWidth + 1;
-            int endY = static_cast<int>((viewPosition.y + viewSize.y)) / scaledFrameHeight + 1;
+	        const int startX = static_cast<int>(viewPosition.x) / scaledFrameWidth - 1;
+	        const int startY = static_cast<int>(viewPosition.y) / scaledFrameHeight - 1;
+	        const int endX = static_cast<int>((viewPosition.x + viewSize.x)) / scaledFrameWidth + 1;
+	        const int endY = static_cast<int>((viewPosition.y + viewSize.y)) / scaledFrameHeight + 1;
 
             for (int x = startX; x <= endX; ++x) {
                 for (int y = startY; y <= endY; ++y) {

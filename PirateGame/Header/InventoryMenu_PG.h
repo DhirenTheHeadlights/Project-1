@@ -23,7 +23,7 @@ namespace PirateGame {
 		void setPlayerShip(PlayerShip* ship) { this->ship = ship; };
 
 		// Getters
-		PlayerShip* getPlayerShip() { return this->ship; }
+		PlayerShip* getPlayerShip() const { return this->ship; }
 	private:
 		// Menu items
 		PlayerShip* ship = nullptr;

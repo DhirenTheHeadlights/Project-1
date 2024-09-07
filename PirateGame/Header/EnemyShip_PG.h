@@ -3,20 +3,16 @@
 /// This class is almost identical to PlayerShip, but it is used for the enemy ships.
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <cmath>
-#include <unordered_map>
 
-#include "GlobalContext_PG.h"
-#include "Ship_PG.h"
 #include "EnemyShipInputHandler_PG.h"
 #include "EnemyShipMovementHandler_PG.h"
+#include "GlobalContext_PG.h"
+#include "Ship_PG.h"
 
 namespace PirateGame {
 	class EnemyShip : public Ship {
 	public:
-		EnemyShip(GlobalContext& context) : Ship(context) {};
-		~EnemyShip() {};
+		EnemyShip(GlobalContext& context) : Ship(context) {}
 
 		// Custom functions
 		void customShipSetUp() override;
@@ -26,10 +22,10 @@ namespace PirateGame {
 		// Setters
 		void setTargetPosition(sf::Vector2f targetPos) {
 			// Perform a dynamic cast to check if SIH and SMH are enemy types
-			if (EnemyShipInputHandler* SIHEnemy = dynamic_cast<EnemyShipInputHandler*>(SIH.get())) {
+			if (const auto SIHEnemy = dynamic_cast<EnemyShipInputHandler*>(SIH.get())) {
 				SIHEnemy->setTargetPos(targetPos);
 			}
-			if (EnemyShipMovementHandler* SMHEnemy = dynamic_cast<EnemyShipMovementHandler*>(SMH.get())) {
+			if (const auto SMHEnemy = dynamic_cast<EnemyShipMovementHandler*>(SMH.get())) {
 				SMHEnemy->setTargetPosition(targetPos);
 			}
 			this->targetPosition = targetPos;

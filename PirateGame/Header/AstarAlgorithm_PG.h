@@ -67,7 +67,7 @@ namespace PirateGame {
 
         void updateNearbySprites(const std::vector<sf::Sprite>& newNearbySprites) { nearbySprites = newNearbySprites; }
 
-        sf::Vector2f getNextPoint(const sf::Vector2f& currentPosition);
+        sf::Vector2f getNextPoint(const sf::Vector2f& currentPosition) const;
 
         void drawDebug(sf::RenderWindow* window);
 

@@ -35,7 +35,7 @@ namespace PirateGame {
 		};
 
 		// Getters
-		sf::Font* getGlobalFont() { return pixelifySansRegular.get(); }
+		sf::Font* getGlobalFont() const { return pixelifySansRegular.get(); }
 		sf::Font* getTimesNewRoman() { return timesNewRoman.get(); }
 		sf::Font* getPixelifySansRegular() { return pixelifySansRegular.get(); }
 		sf::Font* getPixelifySansMedium() { return pixelifySansMedium.get(); }

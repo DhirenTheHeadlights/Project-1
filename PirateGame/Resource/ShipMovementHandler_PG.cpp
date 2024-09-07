@@ -36,7 +36,7 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, const sf
 
 	if (dropAnchor) {
 		// Gradually decrease the speed to 0
-		const float deceleration = 20.f; // The deceleration factor, proportional to the speed
+		constexpr float deceleration = 20.f; // The deceleration factor, proportional to the speed
 
 		// Here, we are going to specify a speed value that will be subtracted from the speed when 
 		// the speed goes to 0. This will create a "backwards" effect as the negative speed will
@@ -44,27 +44,27 @@ void ShipMovementHandler::updateVelocity(const sf::Vector2f& direction, const sf
 		// Anchor will pull back more if the ship is moving faster.
 		const float speedMin = -0.2f * speedBeforeAnchorDrop; 
 
-		// The reacceleration factor, also proportional to the speed before anchor drop
-		const float reacceleration = 0.2f * speedBeforeAnchorDrop;
+		// The acceleration factor, also proportional to the speed before anchor drop
+		const float acceleration = 0.2f * speedBeforeAnchorDrop;
 
 		if (speed > 0) speed -= deceleration; // Gradually decrease the speed to 0
 		else if (speed < 0.01f && !anchorPushBack && speed > speedMin) { // Start pull back when the speed is close to 0
 			speed -= deceleration;
 			if (speed < speedMin) anchorPushBack = true;
 		}
-		else if (speed < 0) speed += reacceleration * elapsedTime.asSeconds(); // This will bring the speed back up to 0	
+		else if (speed < 0) speed += acceleration * elapsedTime.asSeconds(); // This will bring the speed back up to 0	
 	}
 
 	velocity = direction * speed * elapsedTime.asSeconds(); // Set the velocity based on the speed
 }
 
-void ShipMovementHandler::rotateTowards(float targetAngle) {
+void ShipMovementHandler::rotateTowards(float targetAngle) const {
 	// Calculate the difference between the target and current angle
 	float angleDifference = vm::normalizeAngle(targetAngle - sprite.getRotation(), -180.f, 180.f);
 
 	// Calculate the extra rotational acceleration based on the angle difference
 	// Also, the accel is based on the speed of the ship
-	float accel = abs(10 * angleDifference / 180.f * speed / baseSpeed);
+	const float accel = abs(10 * angleDifference / 180.f * speed / baseSpeed);
 
 	// Limit the turning speed
 	angleDifference = std::clamp(angleDifference, -turningSpeed * turningMultiplier, turningSpeed * turningMultiplier);
@@ -77,7 +77,7 @@ void ShipMovementHandler::collisionMovement(const sf::Sprite& collidingSprite) {
 	isColliding = true;
 
 	// Calculate the normalized normal vector from the ship's center to the colliding sprite's center
-	sf::Vector2f normal = sf::Vector2f(
+	auto normal = sf::Vector2f(
 		sprite.getPosition().x + sprite.getGlobalBounds().width / 2 -
 		(collidingSprite.getPosition().x + collidingSprite.getGlobalBounds().width / 2),
 		sprite.getPosition().y + sprite.getGlobalBounds().height / 2 -
@@ -86,7 +86,7 @@ void ShipMovementHandler::collisionMovement(const sf::Sprite& collidingSprite) {
 	normal = vm::normalize(normal);
 
 	// Apply a damping factor to the velocity to simulate friction and prevent oscillations
-	sf::Vector2f dampedVelocity = velocity - normal * vm::dot(velocity, normal) * dampingFactor;
+	const sf::Vector2f dampedVelocity = velocity - normal * vm::dot(velocity, normal) * dampingFactor;
 
 	// Ensure the ship is moved slightly away from the colliding object to prevent sticking
 	sprite.move(normal * separationDistance);
@@ -98,7 +98,7 @@ void ShipMovementHandler::collisionMovement(const sf::Sprite& collidingSprite) {
 	ensureSeparation(normal, collidingSprite);
 }
 
-void ShipMovementHandler::ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite) {
+void ShipMovementHandler::ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite) const {
 	// Calculate a push-out vector based on normal and ship's approach direction
 	sf::Vector2f pushOutVector = normal * pushOutDistance;
 

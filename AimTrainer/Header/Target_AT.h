@@ -7,7 +7,7 @@ public:
 	Target(sf::Vector2f position, float radius);
 	~Target();
 	void setPos(sf::Vector2f position);
-	sf::Vector2f getPos();
+	sf::Vector2f getPos() const;
 	sf::CircleShape getShape();
 	bool isActive();
 	void deActivate();

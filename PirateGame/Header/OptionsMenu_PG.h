@@ -40,7 +40,7 @@ namespace PirateGame {
 
 		// Helper functions
 		void setInteractablePositions() override;
-		void setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
+		void setTabInteractablePositions(std::vector<std::unique_ptr<Interactable>>& tabInteractables) const;
 		void addInteractablesToMenu() override;
 		void drawTabInteractables(std::vector<std::unique_ptr<Interactable>>& tabInteractables);
 		void interactWithMenuItems() override;

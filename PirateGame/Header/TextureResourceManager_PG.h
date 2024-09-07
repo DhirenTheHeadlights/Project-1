@@ -5,7 +5,6 @@
 #include <string>
 #include <iostream>
 #include <type_traits>
-#include <random>
 
 namespace PirateGame {
     template<typename EnumType>

@@ -14,7 +14,7 @@ public:
 	void drawMenu(sf::Event currentEvent, sf::Clock& mainClock, Crosshair& crosshair);
 private:
 	// Functions for the menu interactions
-	void setName();
+	void setName() const;
 
 	// Lambda functions for menu interactions
 	std::function<void(float value)> setNameFunc;

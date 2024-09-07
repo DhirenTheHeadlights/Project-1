@@ -9,7 +9,7 @@ MenuHandler::MenuHandler(sf::RenderWindow& window, sf::Font& font, GameStateMana
 	insertNameMenu = std::make_unique<InsertNameMenu>(window, font, GSM);
 }
 
-void MenuHandler::setUpMenus() {
+void MenuHandler::setUpMenus() const {
 	// Set up the menus
 	startMenu->setUpMenu();
 	optionsMenu->setUpMenu();

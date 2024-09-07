@@ -196,7 +196,7 @@ bool CollisionManager::shipCollisionTest(Ship* ship1, Ship* ship2) {
 }
 
 // This pixel perfect test is specifically for ships and land masses. Sprite1 is the ship, sprite2 is the land mass
-bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit) {
+bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit) const {
 	const sf::Sprite& sprite1 = ship->getSprite();
 	const sf::Sprite& sprite2 = landmass->getSprite();
 

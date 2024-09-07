@@ -48,7 +48,7 @@ void LeaderBoardMenu::drawMenu(sf::Event currentEvent, sf::Clock& mainClock, Cro
 
 // Functions for the menu interactions
 
-void LeaderBoardMenu::returnToTitleScreen() {
+void LeaderBoardMenu::returnToTitleScreen() const {
 	GSM->openStartMenu();
 }
 

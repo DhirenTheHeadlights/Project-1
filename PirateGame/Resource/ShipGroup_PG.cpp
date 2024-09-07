@@ -33,7 +33,7 @@ void ShipGroup::updateGroup(Quadtree<EnemyShip>* shipQuadtree) {
 	}
 }
 
-void ShipGroup::drawGroup(bool debug) {
+void ShipGroup::drawGroup(bool debug) const {
 	for (auto& ship : ships) {
 		ship->draw();
 

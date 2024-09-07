@@ -3,7 +3,6 @@
 /// This class handles all the collision detection in the game.
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 #include "GlobalContext_PG.h"
 #include "GlobalQuadtreeHandler_PG.h"
@@ -44,7 +43,7 @@ namespace PirateGame {
 		float nearbyDistanceCannonball = 500.f;
 
 		// Helper functions
-		bool pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit = 5);
+		bool pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit = 5) const;
 		bool shipCollisionTest(Ship* ship1, Ship* ship2);
 
 		std::vector<sf::Sprite> handleShipCollisions(GlobalQuadtreeHandler * GQH, Ship* ship);

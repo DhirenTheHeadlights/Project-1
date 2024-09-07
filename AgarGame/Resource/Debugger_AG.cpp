@@ -6,7 +6,7 @@ Debugger::Debugger(sf::RenderWindow& window) {
     }
 }
 
-void Debugger::drawInformation(sf::RenderWindow& window, const std::string& info, int textSize, float setPosX, float setPosY) {
+void Debugger::drawInformation(sf::RenderWindow& window, const std::string& info, int textSize, float setPosX, float setPosY) const {
     sf::Text text;
     text.setFont(font);  // Use the preloaded font
     text.setString(info);

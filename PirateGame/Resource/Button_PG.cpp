@@ -7,7 +7,7 @@ void Button::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalS
 	holdDown ? interactHold(window, GIH, GSM) : interactOnce(window, GIH, GSM);
 }
 
-void Button::interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
+void Button::interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) const {
 	if (GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		sf::Vector2i mousePosition = sf::Vector2i(sf::Mouse::getPosition(*window));
 		sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);

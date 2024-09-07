@@ -21,7 +21,7 @@ namespace PirateGame {
 
 		void interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) override;
 		void customInteractableSetUp() override {}; // Need it but does nothing for now
-		void interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM);
+		void interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) const;
 		void interactHold(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM);
 
 		// This flag allows for multiple button presses if the button is held down

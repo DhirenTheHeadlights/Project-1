@@ -38,7 +38,7 @@ namespace Asteriods {
         void update();
 
         // checks if the animation cycle completes
-        bool isEnd() {
+        bool isEnd() const {
             // determines if the animation is at or past the final frame
             return Frame + speed >= frames.size();
         }

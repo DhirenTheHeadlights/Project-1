@@ -3,12 +3,12 @@
 /// Landmass types, mainly to know which texture is used
 
 namespace PirateGame {
-	enum class IslandType {
+	enum class IslandType : uint8_t {
 		Island1,
 		Island2,
 	};
 
-	enum class RockType {
+	enum class RockType : uint8_t {
 		Rock1,
 		Rock2,
 		Rock3,
@@ -20,7 +20,7 @@ namespace PirateGame {
 		Rock9,
 	};
 
-	enum class ShipwreckType {
+	enum class ShipwreckType : uint8_t {
 		Shipwreck1,
 	};
 
@@ -29,9 +29,9 @@ namespace PirateGame {
 	};
 
 	// This enum will be used to determine the land mass type
-	enum class LandMassType { Island, Rock, Shipwreck };
+	enum class LandMassType : uint8_t { Island, Rock, Shipwreck };
 
-	const static int numIslands = 2;
-	const static int numRocks = 9;
-	const static int numShipwrecks = 1;
+	static constexpr int numIslands = 2;
+	static constexpr int numRocks = 9;
+	static constexpr int numShipwrecks = 1;
 }

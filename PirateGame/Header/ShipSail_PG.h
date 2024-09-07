@@ -3,7 +3,6 @@
 /// This is a simple class that encompasses one of the sails on a ship
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
 #include "VectorMath.h"
 

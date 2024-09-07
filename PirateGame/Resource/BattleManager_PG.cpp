@@ -22,7 +22,7 @@ void BattleManager::startBattle(std::shared_ptr<ShipGroup> group1, ShipGroup* gr
 	battles.push_back(std::make_pair(group1, group2));
 }
 
-void BattleManager::updateBattles() {
+void BattleManager::updateBattles() const {
 	// Loop through each battle
 	for (auto& battle : battles) {
 		// Grab the groups

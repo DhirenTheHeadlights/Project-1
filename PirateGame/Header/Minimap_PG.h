@@ -21,7 +21,7 @@ namespace PirateGame {
 		};
 		~Minimap() {};
 
-		void draw(sf::RenderWindow* window);
+		void draw(sf::RenderWindow* window) const;
 		void update();
 
 		// Setters

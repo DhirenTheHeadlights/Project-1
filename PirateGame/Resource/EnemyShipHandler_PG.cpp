@@ -52,7 +52,7 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	shipGroups.push_back(std::move(group));
 }
 
-void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) {
+void EnemyShipHandler::setShipGroupDestination(std::shared_ptr<ShipGroup> group) const {
 	sf::Vector2f position = landmasses[std::rand() % landmasses.size()]->getSprite().getPosition();
 	group->setDestination(position);
 }
