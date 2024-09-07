@@ -289,6 +289,7 @@
     <ClInclude Include="PirateGame\Header\InventoryTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\Island_PG.h" />
     <ClInclude Include="PirateGame\Header\JSONLoader_PG.h" />
+    <ClInclude Include="PirateGame\Header\JSONSave_PG.h" />
     <ClInclude Include="PirateGame\Header\QuadtreeTemplate_PG.h" />
     <ClInclude Include="PirateGame\Header\HUDTextures_PG.h" />
     <ClInclude Include="PirateGame\Header\InGameHUD_PG.h" />
