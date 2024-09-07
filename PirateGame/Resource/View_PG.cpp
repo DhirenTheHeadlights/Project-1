@@ -2,8 +2,8 @@
 
 using namespace PirateGame;
 
-void View::setUpView(const sf::Vector2f& initalPosition, const sf::Vector2f& size) {
-	view.setCenter(initalPosition);
+void View::setUpView(const sf::Vector2f& initialPosition, const sf::Vector2f& size) {
+	view.setCenter(initialPosition);
 	view.setSize(size);
 }
 
@@ -16,9 +16,9 @@ void View::updateView(const sf::Vector2f& targetPos, const sf::Vector2f& offset)
 }
 
 // This function uses WASD to move the view around the map, for debugging purposes
-void View::updateDebugView(sf::Event event) {
+void View::updateDebugView(const sf::Event& event) {
 	if (!sizeNotSet) {
-		sf::Vector2f size = sf::Vector2f(window->getSize());
+		const auto size = sf::Vector2f(window->getSize());
 		view.setSize(size);
 		sizeNotSet = true;
 	}
@@ -59,9 +59,9 @@ void View::updateDebugView(sf::Event event) {
 }
 
 void View::showCoordsOnCursor(const sf::Font& font) const {
-	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
-	sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
-	std::string coords = "Coords: " + std::to_string(static_cast<int>(worldPosition.x)) + ", " + std::to_string(static_cast<int>(worldPosition.y));
+	const sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
+	const sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
+	const std::string coords = "Coords: " + std::to_string(static_cast<int>(worldPosition.x)) + ", " + std::to_string(static_cast<int>(worldPosition.y));
 	sf::Text coordsText(coords, font, coordsTextSize);
 	coordsText.setPosition(worldPosition.x + coordsOffset, worldPosition.y + coordsOffset);
 	window->draw(coordsText);

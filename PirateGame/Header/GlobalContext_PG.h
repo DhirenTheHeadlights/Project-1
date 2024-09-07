@@ -2,17 +2,17 @@
 
 /// One stop shop for all global context classes
 
-#include "GlobalValues_PG.h"
-#include "GlobalFontHandler_PG.h"
 #include "GlobalChunkHandler_PG.h"
-#include "GlobalGameStateManager_PG.h"
-#include "GlobalInputHandler_PG.h"
-#include "GlobalWindController_PG.h"
-#include "GlobalTextQueuePipeline_PG.h"
-#include "GlobalSoundManager_PG.h"
 #include "GlobalClock_PG.h"
+#include "GlobalFontHandler_PG.h"
+#include "GlobalGameStateManager_PG.h"
 #include "GlobalIDManager_PG.h"
+#include "GlobalInputHandler_PG.h"
+#include "GlobalSoundManager_PG.h"
+#include "GlobalTextQueuePipeline_PG.h"
 #include "GlobalTextureHandler_PG.h"
+#include "GlobalValues_PG.h"
+#include "GlobalWindController_PG.h"
 #include "JSONLoader_PG.h"
 
 namespace PirateGame {

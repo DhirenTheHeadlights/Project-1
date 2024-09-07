@@ -15,7 +15,7 @@ namespace PirateGame {
 			json save;
 			save["playerExperience"] = playerShip->getExp();
 			save["playerExperienceToLevelUp"] = playerShip->getExpToLevelUp();
-			save["playerLevel"] = playerShip->getplayerLevel();
+			save["playerLevel"] = playerShip->getPlayerLevel();
 			save["playerGold"] = playerShip->getInventoryHandler()->getGold();
 			std::vector<std::tuple<std::string, float, int>> playerInventoryVector;
 			for (auto& item : playerShip->getInventoryHandler()->getInventory()) {

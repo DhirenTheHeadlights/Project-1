@@ -3,15 +3,15 @@
 /// This is a template class for a hashmap that will store pointers to objects.
 /// Each object needs to have a sprite to grab a position from.
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
+#include <SFML/Graphics.hpp>
 
-#include "VectorMath.h"
-#include "GlobalValues_PG.h"
 #include "GlobalIDManager_PG.h"
+#include "GlobalValues_PG.h"
+#include "VectorMath.h"
 
 namespace PirateGame {
     /// Concept to check if a class has a method getID that returns an ID*
@@ -79,7 +79,7 @@ namespace PirateGame {
 
         void update(const int maxObjects) {
             if (divided) {
-                for (auto& child : children) {
+                for (const auto& child : children) {
                     child->update(maxObjects);
                 }
             }
@@ -92,16 +92,16 @@ namespace PirateGame {
             }
 
             // If total objects in children are less than maxObjects and no child is divided, merge them
-            if (totalObjects < maxObjects && std::none_of(children.begin(), children.end(), [](const auto& child) { return child->divided; })) {
+            if (totalObjects < maxObjects && std::ranges::none_of(children, [](const auto& child) { return child->divided; })) {
                 merge();
             }
         }
 
         void subdivide(const int maxObjects) {
-            float x = boundary.left;
-            float y = boundary.top;
-            float width = boundary.width / 2;
-            float height = boundary.height / 2;
+	        const float x = boundary.left;
+	        const float y = boundary.top;
+	        const float width = boundary.width / 2;
+	        const float height = boundary.height / 2;
 
             children.push_back(std::make_unique<Node>(sf::FloatRect(x, y, width, height), maxObjects));
             children.push_back(std::make_unique<Node>(sf::FloatRect(x + width, y, width, height), maxObjects));
@@ -112,7 +112,7 @@ namespace PirateGame {
 
             // Redistribute objects to new children
             for (auto obj : objects) {
-                for (auto& child : children) {
+                for (const auto& child : children) {
                     if (child->boundary.contains(obj->sprite.getPosition())) {
                         child->objects.push_back(obj);
                         break;
@@ -129,12 +129,9 @@ namespace PirateGame {
             }
 
             if (divided) {
-                for (auto& child : children) {
-                    if (child->addObject(qtObject, maxObjects)) {
-                        return true;
-                    }
-                }
-                return false;
+                return std::ranges::any_of(children, [&](const auto& child) {
+					return child->addObject(qtObject, maxObjects);
+				});
             }
 
             if (objects.size() >= maxObjects) {
@@ -149,7 +146,7 @@ namespace PirateGame {
 
         bool removeObject(QuadtreeObject* qtObject) {
             // Check current node's objects
-            auto it = std::find_if(objects.begin(), objects.end(), [&](QuadtreeObject* obj) {
+            const auto it = std::ranges::find_if(objects, [&](const QuadtreeObject* obj) {
                 return obj == qtObject;
                 });
 
@@ -161,7 +158,7 @@ namespace PirateGame {
 
             // Check children if not found
             if (divided) {
-                for (auto& child : children) {
+                for (const auto& child : children) {
                     if (child->removeObject(qtObject)) {
                         return true;
                     }
@@ -172,7 +169,7 @@ namespace PirateGame {
 
         void merge() {
             if (divided) {
-                for (auto& child : children) {
+                for (const auto& child : children) {
                     child->merge();
                     objects.insert(objects.end(), child->objects.begin(), child->objects.end());
                 }
@@ -181,7 +178,7 @@ namespace PirateGame {
             }
         }
 
-        std::vector<QuadtreeObject*>& findObjectsNearObject(const sf::FloatRect& queryObjectBounds, const float distance, const int numObjectsInQuadtree) {
+        std::vector<QuadtreeObject*>& findObjectsNearObject(const sf::FloatRect& queryObjectBounds, const float distance, const int numObjectsInQuadtree) const {
             sf::FloatRect queryBounds = queryObjectBounds;
             queryBounds.left -= distance;
             queryBounds.top -= distance;
@@ -241,7 +238,7 @@ namespace PirateGame {
     class Quadtree {
     public:
         template <typename V> requires SupportsSprite<V>
-        sf::Sprite& getObjectSprite(V* object) {
+        static sf::Sprite& getObjectSprite(V* object) {
             if constexpr (HasGetSprite<V>) {
 				return object->getSprite();
 			}
@@ -251,7 +248,7 @@ namespace PirateGame {
         }
 
         template <typename V> requires SupportsID<V>
-        ID* getObjectID(V* object) {
+        static ID* getObjectID(V* object) {
             if constexpr (HasGetID<V>) {
                 return object->getID();
             }
@@ -265,14 +262,14 @@ namespace PirateGame {
         std::unordered_map<T*, QuadtreeObject*> objectMap;
         std::unordered_map<QuadtreeObject*, T*> reverseObjectMap;
 
-        Quadtree(const sf::FloatRect initalBounds) {
-            std::cout << "Initial boundary: " << initalBounds.left << ", " << initalBounds.top << ", " << initalBounds.width << ", " << initalBounds.height << std::endl;
+        explicit Quadtree(const sf::FloatRect initialBounds) {
+            std::cout << "Initial boundary: " << initialBounds.left << ", " << initialBounds.top << ", " << initialBounds.width << ", " << initialBounds.height << std::endl;
 
-            root = std::make_unique<Node>(initalBounds, maxObjects);
+            root = std::make_unique<Node>(initialBounds, maxObjects);
         }
 
-        void update(sf::FloatRect& currentBoundary) {
-            const float threshold = 0.1f;
+        void update(const sf::FloatRect& currentBoundary) {
+	        constexpr float threshold = 0.1f;
             if (std::fabs(currentBoundary.left - root->boundary.left) > threshold ||
                 std::fabs(currentBoundary.top - root->boundary.top) > threshold ||
                 std::fabs(currentBoundary.width - root->boundary.width) > threshold ||
@@ -355,11 +352,11 @@ namespace PirateGame {
             }
         }
 
-        void draw(GlobalValues* gv) {
+        void draw(GlobalValues* gv) const {
             drawNode(root.get(), gv);
         }
 
-        void drawNode(Node* node, GlobalValues* gv) {
+        static void drawNode(Node* node, GlobalValues* gv) {
 			if (!node->divided) {
 				gv->displayText("Num obj: " + std::to_string(node->objects.size()), sf::Vector2f(node->boundary.left + node->boundary.width / 2 - 10.f, node->boundary.top + node->boundary.height / 2 - 5.f), sf::Color::White);
 			}

@@ -2,7 +2,7 @@
 using namespace PirateGame;
 
 // Create the ship
-void Ship::setUpShip(ShipClass level, const Region region) {
+void Ship::setUpShip(const ShipClass level, const Region region) {
 	// If the level is random, generate a random number between 1 and 5
 	if (level == ShipClass::Random) {
 		shipClass = getRandomShipClass();
@@ -17,7 +17,7 @@ void Ship::setUpShip(ShipClass level, const Region region) {
 	birthRegion = region;
 
 	// Load the texture
-	sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
+	const sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
 
 	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getTexture(shipClass));
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
@@ -90,11 +90,11 @@ void Ship::setHealthBarPosition() {
 	healthBarRed.setFillColor(sf::Color::Red);
 
 	// Define the offset from the center of the ship to where the health bar should be
-	sf::Vector2f healthBarOffset(-1 * constSpriteBounds.x / 2, constSpriteBounds.y / 2);
+	const sf::Vector2f healthBarOffset(-1 * constSpriteBounds.x / 2, constSpriteBounds.y / 2);
 
 	// Calculate the health bar's position based on the ship's rotation
-	sf::Vector2f offset(healthBarRed.getSize().x / 2, healthBarOffset.y + healthBarRed.getSize().y);
-	sf::Vector2f healthBarPosition = vm::relativeRotationTransformedPosition(sprite.getPosition(), offset, sprite.getRotation());
+	const sf::Vector2f offset(healthBarRed.getSize().x / 2, healthBarOffset.y + healthBarRed.getSize().y);
+	const sf::Vector2f healthBarPosition = vm::relativeRotationTransformedPosition(sprite.getPosition(), offset, sprite.getRotation());
 
 	// Set the position and rotation of the health bars
 	healthBarGreen.setPosition(healthBarPosition);

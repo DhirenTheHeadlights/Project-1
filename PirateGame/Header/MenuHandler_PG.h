@@ -5,10 +5,10 @@
 /// It also contains every menu object and their respective functions.
 /// </summary>
 
-#include "StartMenu_PG.h"
-#include "OptionsMenu_PG.h"
 #include "InGameHUD_PG.h"
 #include "InventoryMenu_PG.h"
+#include "OptionsMenu_PG.h"
+#include "StartMenu_PG.h"
 
 namespace PirateGame {
 	// Enum for the different types of menus
@@ -29,9 +29,9 @@ namespace PirateGame {
 		void openMenu(MenuType menuType) const;
 
 		StartMenu* getStartMenu() const { return startMenu.get(); }
-		OptionsMenu* getOptionsMenu() { return optionsMenu.get(); }
-		InGameHUD* getHUD() { return HUD.get(); }
-		InventoryMenu* getInventoryMenu() { return inventoryMenu.get(); }
+		OptionsMenu* getOptionsMenu() const { return optionsMenu.get(); }
+		InGameHUD* getHUD() const { return HUD.get(); }
+		InventoryMenu* getInventoryMenu() const { return inventoryMenu.get(); }
 		
 	private:
 		// Reference to the global context

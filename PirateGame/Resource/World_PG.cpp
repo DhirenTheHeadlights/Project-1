@@ -118,7 +118,7 @@ void World::updateCoreElements() {
 	}
 }
 
-void World::createWorld(sf::Event event) {
+void World::createWorld(const sf::Event event) {
 	window->clear();
 
 	context.GIH->update();
@@ -142,6 +142,7 @@ void World::createWorld(sf::Event event) {
 		drawGameLoop();
 		updateGameLoop(event);
 		break;
+	default: ;
 	}
 
 	// Close if the escape key is pressed

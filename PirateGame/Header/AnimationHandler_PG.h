@@ -9,7 +9,7 @@ namespace PirateGame {
 	public:
 		AnimationHandler() : numFrames(0), currentFrame(0) {}
 
-		void initialize(const std::string& texturePath, int numFrames, sf::Vector2f frameSize, sf::Time frameTime) {
+		void initialize(const std::string& texturePath, const int numFrames, sf::Vector2f frameSize, sf::Time frameTime) {
 			if (!texture.loadFromFile(texturePath)) {
 				throw std::runtime_error("Failed to load texture");
 			}
@@ -24,7 +24,7 @@ namespace PirateGame {
 		}
 
 		void update() {
-			sf::Time deltaTime = frameClock.restart();
+			const sf::Time deltaTime = frameClock.restart();
 			elapsedTime += deltaTime;
 
 			if (elapsedTime >= frameTime) {

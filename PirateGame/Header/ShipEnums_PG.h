@@ -22,7 +22,8 @@ namespace PirateGame {
 	// Struct to hold ship properties
 	struct ShipProperties {
 		ShipProperties() {};
-		ShipProperties(const std::vector<float>& properties) {
+
+		explicit ShipProperties(const std::vector<float>& properties) {
 			maxHealth = properties[0];
 			baseSpeed = properties[1];
 			regenRate = properties[2];
@@ -49,7 +50,7 @@ namespace PirateGame {
 		shipConfig.insert(std::make_pair(ShipClass::Galleon, gameConfig.shipData.shipEnumProperties["Galleon"]));
 	}
 
-	inline ShipProperties getShipProperties(ShipClass shipClass) {
+	inline ShipProperties getShipProperties(const ShipClass shipClass) {
 		return shipConfig[shipClass];
 	}
 

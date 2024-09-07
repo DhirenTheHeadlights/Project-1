@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "GlobalWindController_PG.h"
 #include "ShipInputHandler_PG.h"
 
 namespace PirateGame {

@@ -36,7 +36,7 @@ namespace PirateGame {
         GlobalQuadtreeHandler* GQH = nullptr;
 
         // Helper functions
-        void addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses);
+        void addLandMassesToChunk(const Map& map, int numLandMasses, float minDistBetweenLandmasses);
 
         std::vector<std::shared_ptr<LandMass>> landmasses;
         std::vector<std::shared_ptr<Island>> islands;

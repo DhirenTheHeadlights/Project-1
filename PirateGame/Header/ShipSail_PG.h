@@ -29,7 +29,7 @@ namespace PirateGame {
 		sf::Vector2f getDirectionVector() const { return vm::angleDegreesToVector(sailSprite.getRotation()); }
 		float getRotationOffset() const { return rotationOffset; }
 
-		void setOffset(sf::Vector2f offset) { this->offset = offset; }
+		void setOffset(const sf::Vector2f offset) { this->offset = offset; }
 	private:
 		sf::Sprite sailSprite;
 

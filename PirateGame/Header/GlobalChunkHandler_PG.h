@@ -12,12 +12,12 @@ namespace PirateGame {
 
 		void initializeMap() {
 			// Generate the initial chunks
-			Chunk initalChunk(std::pair<int, int>(0, 0), chunkSize, cellSize);
-			generateSurroundingChunks(initalChunk);
+			Chunk initialChunk(std::pair<int, int>(0, 0), chunkSize, cellSize);
+			generateSurroundingChunks(initialChunk);
 			updateMapBounds();
 		}
 
-		void generateRegionCoords(const std::pair<int, int>& chunkCoord) {
+		static void generateRegionCoords(const std::pair<int, int>& chunkCoord) {
 
 		}
 
@@ -26,7 +26,6 @@ namespace PirateGame {
 
 			// Check if the player has moved to a new chunk
 			if (currentChunk.getChunkCoord() != lastChunkCoord) {
-				std::cout << "Player has moved to a new chunk: " << currentChunk.getChunkCoord().first << ", " << currentChunk.getChunkCoord().second << std::endl;
 				generateSurroundingChunks(currentChunk);
 				deleteChunksOutOfRange(currentChunk);
 
@@ -72,7 +71,7 @@ namespace PirateGame {
 		// Store the last chunk the player was in
 		std::pair<int, int> lastChunkCoord = { 0, 0 };
 
-		void generateSurroundingChunks(Chunk& currentChunk) {
+		void generateSurroundingChunks(const Chunk& currentChunk) {
 			for (int dx = -renderDistance; dx <= renderDistance; ++dx) {
 				for (int dy = -renderDistance; dy <= renderDistance; ++dy) {
 					std::pair<int, int> chunkCoord = { currentChunk.getChunkCoord().first + dx, currentChunk.getChunkCoord().second + dy};

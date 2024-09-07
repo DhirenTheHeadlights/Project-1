@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "AStarAlgorithm_PG.h"
 
 using namespace PirateGame;
@@ -24,11 +26,11 @@ void AStar::update(const sf::Vector2f& currentPosition) {
         return;
     }
 
-    sf::Vector2i currentGridPos = vectorToGrid(currentPosition);
-    size_t nearestPointIndex = getNearestPathIndex(currentGridPos);
+    const sf::Vector2i currentGridPos = vectorToGrid(currentPosition);
+    const size_t nearestPointIndex = getNearestPathIndex(currentGridPos);
 
     if (nearestPointIndex < cachedPath.size() - 1) {
-        sf::Vector2i nextGridPos = cachedPath[nearestPointIndex + 1];
+	    const sf::Vector2i nextGridPos = cachedPath[nearestPointIndex + 1];
 
         if (hasObstacleChanged(nextGridPos)) {
             auto subPath = findPath();
@@ -43,8 +45,8 @@ sf::Vector2f AStar::getNextPoint(const sf::Vector2f& currentPosition) const {
         return gridToVector(end);
     }
 
-    sf::Vector2i currentGridPos = vectorToGrid(currentPosition);
-    size_t nearestPointIndex = getNearestPathIndex(currentGridPos);
+    const sf::Vector2i currentGridPos = vectorToGrid(currentPosition);
+    const size_t nearestPointIndex = getNearestPathIndex(currentGridPos);
 
     if (nearestPointIndex < cachedPath.size() - 1) {
         return gridToVector(cachedPath[nearestPointIndex + 1]);
@@ -59,7 +61,7 @@ size_t AStar::getNearestPathIndex(const sf::Vector2i& currentPos) const {
     float nearestDistance = heuristic(currentPos, cachedPath[0]);
 
     for (size_t i = 1; i < cachedPath.size(); ++i) {
-        float distance = heuristic(currentPos, cachedPath[i]);
+	    const float distance = heuristic(currentPos, cachedPath[i]);
         if (distance < nearestDistance) {
             nearestIndex = i;
             nearestDistance = distance;
@@ -81,8 +83,8 @@ bool AStar::hasObstacleChanged(const sf::Vector2i& gridPos) const {
 
 std::vector<sf::Vector2i> AStar::findPath() {
     std::priority_queue<std::shared_ptr<AstarNode>, std::vector<std::shared_ptr<AstarNode>>, NodeComparator> openSet;
-    std::unordered_map<sf::Vector2i, std::shared_ptr<AstarNode>, std::hash<sf::Vector2i>, std::equal_to<sf::Vector2i>> allNodes;
-    std::unordered_set<sf::Vector2i, std::hash<sf::Vector2i>, std::equal_to<sf::Vector2i>> closedSet;
+    std::unordered_map<sf::Vector2i, std::shared_ptr<AstarNode>, std::hash<sf::Vector2i>, std::equal_to<>> allNodes;
+    std::unordered_set<sf::Vector2i, std::hash<sf::Vector2i>, std::equal_to<>> closedSet;
 
     auto startNode = std::make_shared<AstarNode>(start, 0.0f, heuristic(start, end));
     openSet.emplace(startNode);
@@ -101,7 +103,7 @@ std::vector<sf::Vector2i> AStar::findPath() {
         closedSet.insert(current->position);
 
         for (const auto& neighborPos : getNeighbors(current->position)) {
-            if (closedSet.count(neighborPos)) {
+            if (closedSet.contains(neighborPos)) {
                 continue;
             }
 
@@ -135,25 +137,25 @@ std::vector<sf::Vector2i> AStar::getNeighbors(const sf::Vector2i& node) noexcept
     };
 }
 
-float AStar::heuristic(const sf::Vector2i& a, const sf::Vector2i& b) const noexcept {
+float AStar::heuristic(const sf::Vector2i& a, const sf::Vector2i& b) noexcept {
     return static_cast<float>(std::sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)));
 }
 
-std::vector<sf::Vector2i> AStar::reconstructPath(std::shared_ptr<AstarNode> node) const {
+std::vector<sf::Vector2i> AStar::reconstructPath(std::shared_ptr<AstarNode> node) {
     std::vector<sf::Vector2i> path;
     while (node != nullptr) {
         path.push_back(node->position);
         node = node->parent;
     }
-    std::reverse(path.begin(), path.end());
+    std::ranges::reverse(path);
     return path;
 }
 
-sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) const noexcept {
+sf::Vector2i AStar::vectorToGrid(const sf::Vector2f& vector) noexcept {
     return sf::Vector2i(std::floor(vector.x / static_cast<float>(tileSize)), std::floor(vector.y / static_cast<float>(tileSize)));
 }
 
-sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) const noexcept {
+sf::Vector2f AStar::gridToVector(const sf::Vector2i& grid) noexcept {
     return sf::Vector2f(static_cast<float>(grid.x * tileSize), static_cast<float>(grid.y * tileSize));
 }
 
@@ -168,7 +170,7 @@ bool AStar::isObstacle(const sf::Vector2i& node) const {
     return false;
 }
 
-void AStar::drawDebug(sf::RenderWindow* window) {
+void AStar::drawDebug(sf::RenderWindow* window) const {
     for (const auto& pos : cachedPath) {
         sf::RectangleShape rectangle(sf::Vector2f(tileSize, tileSize));
         rectangle.setPosition(gridToVector(pos));

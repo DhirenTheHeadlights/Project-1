@@ -13,7 +13,7 @@ namespace PirateGame {
 
 		void setUpView(const sf::Vector2f& initialPosition, const sf::Vector2f& size);
 		void updateView(const sf::Vector2f& targetPos, const sf::Vector2f& offset);
-		void updateDebugView(sf::Event event);
+		void updateDebugView(const sf::Event& event);
 		void showCoordsOnCursor(const sf::Font& font) const;
 
 		sf::View& getView() { return view;  }
@@ -21,7 +21,6 @@ namespace PirateGame {
 		sf::View view;
 		sf::RenderWindow* window = nullptr;
 
-		int scale = 2;
 		int coordsTextSize = 20;
 
 		float coordsOffset = 20.f;

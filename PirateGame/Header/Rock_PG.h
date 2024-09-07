@@ -9,7 +9,7 @@
 namespace PirateGame {
 	class Rock : public LandMass {
 	public:
-		explicit Rock(GlobalContext& context) : LandMass(context) {};
+		Rock(GlobalContext& context) : LandMass(context) {};
 
 		void createLandMass() override;
 

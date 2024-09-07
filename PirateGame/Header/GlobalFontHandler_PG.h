@@ -9,14 +9,14 @@ namespace PirateGame {
 	class GlobalFontHandler {
 	public:
 		GlobalFontHandler() {
-			// Initalize the pointers
+			// Initialize the pointers
 			timesNewRoman = std::make_unique<sf::Font>();
 			pixelifySansRegular = std::make_unique<sf::Font>();
 			pixelifySansMedium = std::make_unique<sf::Font>();
 			pixelifySansSemiBold = std::make_unique<sf::Font>();
 			pixelifySansBold = std::make_unique<sf::Font>();
 
-			// Initalize the fonts
+			// Initialize the fonts
 			if (!timesNewRoman->loadFromFile("Fonts/times_new_roman.ttf")) {
 				std::cout << "Error loading Times New Roman font" << std::endl;
 			}
@@ -36,11 +36,11 @@ namespace PirateGame {
 
 		// Getters
 		sf::Font* getGlobalFont() const { return pixelifySansRegular.get(); }
-		sf::Font* getTimesNewRoman() { return timesNewRoman.get(); }
-		sf::Font* getPixelifySansRegular() { return pixelifySansRegular.get(); }
-		sf::Font* getPixelifySansMedium() { return pixelifySansMedium.get(); }
-		sf::Font* getPixelifySansSemiBold() { return pixelifySansSemiBold.get(); }
-		sf::Font* getPixelifySansBold() { return pixelifySansBold.get(); }
+		sf::Font* getTimesNewRoman() const { return timesNewRoman.get(); }
+		sf::Font* getPixelifySansRegular() const { return pixelifySansRegular.get(); }
+		sf::Font* getPixelifySansMedium() const { return pixelifySansMedium.get(); }
+		sf::Font* getPixelifySansSemiBold() const { return pixelifySansSemiBold.get(); }
+		sf::Font* getPixelifySansBold() const { return pixelifySansBold.get(); }
 
 	private:
 		// Fonts

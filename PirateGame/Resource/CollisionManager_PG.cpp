@@ -14,22 +14,20 @@ void CollisionManager::handleCollisions(GlobalQuadtreeHandler* GQH) {
 	}
 
 	// Grab nearby cannonballs for each cannonball
-	std::vector<Cannonball*> cannonballs = GQH->getCannonballQuadtree()->getObjects();
 
-	for (auto& c1 : cannonballs) {
-		std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(c1, nearbyDistanceCannonball);
-		for (auto& c2 : nearbyCannonballs) {
+	for (const std::vector<Cannonball*> cannonballs = GQH->getCannonballQuadtree()->getObjects(); auto& c1 : cannonballs) {
+		for (std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(c1, nearbyDistanceCannonball); const auto& c2 : nearbyCannonballs) {
 			// Skip if the cannonballs are the same cannonball
-			if (c1 = c2) continue;
+			if (c1 == c2) continue;
 			handleCannonballCollision(c1, c2);
 		}
 	}
 }
 
 std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHandler* GQH, Ship* ship) {
-	std::vector<LandMass*> nearbyLandMasses = GQH->getLandMassQuadtree()->findObjectsNearObject(ship, nearbyDistanceLandmass);
-	std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(ship, nearbyDistanceShip);
-	std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
+	const std::vector<LandMass*> nearbyLandMasses = GQH->getLandMassQuadtree()->findObjectsNearObject(ship, nearbyDistanceLandmass);
+	const std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(ship, nearbyDistanceShip);
+	const std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
 
 	// Vectors to hold the colliding objects
 	std::vector<LandMass*> collidingLandMasses = {};
@@ -38,13 +36,13 @@ std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHan
 
 	// Check if the ship is colliding with any of the nearby land masses and send to movement handler
 	std::vector<sf::Sprite> nearbySprites;
-	for (auto& i : nearbyLandMasses) {
+	for (const auto& i : nearbyLandMasses) {
 		handleLandMassCollision(ship, i, collidingLandMasses);
 		nearbySprites.push_back(i->getSprite());
 	}
 
 	// Check if the ship is colliding with any of the nearby ships
-	for (auto& i : nearbyShips) {
+	for (const auto& i : nearbyShips) {
 		// Skip if the ship is the same ship
 		if (i->getID() == ship->getID()) continue;
 		handleShipCollision(ship, i, collidingShips);
@@ -52,7 +50,7 @@ std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHan
 	}
 
 	// Check if the ship is colliding with any of the nearby cannonballs 
-	for (auto& i : nearbyCannonballs) {
+	for (const auto& i : nearbyCannonballs) {
 		// Skip if the cannonball is from the same ship
 		if (i->shipID == ship->getID()) continue;
 		handleCannonballCollision(ship, i, collidingCannonballs);
@@ -62,7 +60,7 @@ std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHan
 	return nearbySprites;
 }
 
-void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, std::vector<LandMass*>& collidingLandMasses) {
+void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, std::vector<LandMass*>& collidingLandMasses) const {
 	// Check if the ship is colliding with the land mass
 	if (pixelPerfectTest(ship, landmass)) {
 		// Move the ship away from the land mass
@@ -112,21 +110,20 @@ void CollisionManager::handleCannonballCollision(Ship* ship, Cannonball* cannonb
 	const sf::Sprite& sprite2 = cannonball->sprite;
 
 	// Calculate the positions of the ship's center
-	sf::Vector2f center1 = sprite1.getPosition();
+	const sf::Vector2f center1 = sprite1.getPosition();
 
 	// Calculate the semi-major (a) and semi-minor (b) axes for the ship
 	// Assuming the ship's bounding box width is the semi-major axis and height is the semi-minor axis
-	float a1 = sprite1.getGlobalBounds().width / 2.0f;
+	const float a1 = sprite1.getGlobalBounds().width / 2.0f;
 	float b1 = sprite1.getGlobalBounds().height / 2.0f;
 
 	// Calculate the distance between the center of the ship and the cannonball
-	float distance = vm::distance(center1, sprite2.getPosition());
+	const float distance = vm::distance(center1, sprite2.getPosition());
 
 	// Use an adjusted sum of semi-major axes as a simple overlap check
 	// This factor can be tuned based on ship shapes/collision "sensitivity"
-	float collisionDistance = (a1 + sprite2.getGlobalBounds().width / 2.0f) * 0.75f;
 
-	if (distance < collisionDistance) {
+	if (const float collisionDistance = (a1 + sprite2.getGlobalBounds().width / 2.0f) * 0.75f; distance < collisionDistance) {
 		// Damage the ship based on the multiplier
 		collidingCannonballs.push_back(cannonball);
 		ship->damageShip(collisionDamagePerFrame * collidingCannonballs.size());
@@ -170,25 +167,24 @@ bool CollisionManager::shipCollisionTest(Ship* ship1, Ship* ship2) {
 	const sf::Sprite& sprite2 = ship2->getSprite();
 
 	// Calculate the positions of the ships' centers
-	sf::Vector2f center1 = sprite1.getPosition();
-	sf::Vector2f center2 = sprite2.getPosition();
+	const sf::Vector2f center1 = sprite1.getPosition();
+	const sf::Vector2f center2 = sprite2.getPosition();
 
 	// Calculate the semi-major (a) and semi-minor (b) axes for both ships
 	// Assuming the ships' bounding box width is the semi-major axis and height is the semi-minor axis
-	float a1 = sprite1.getGlobalBounds().width / 2.0f;
+	const float a1 = sprite1.getGlobalBounds().width / 2.0f;
 	float b1 = sprite1.getGlobalBounds().height / 2.0f;
-	float a2 = sprite2.getGlobalBounds().width / 2.0f;
+	const float a2 = sprite2.getGlobalBounds().width / 2.0f;
 	float b2 = sprite2.getGlobalBounds().height / 2.0f;
 
 	// Calculate the distance between the centers of the two ships
-	float distance = vm::distance(center1, center2);
+	const float distance = vm::distance(center1, center2);
 
 	// Use an adjusted sum of semi-major axes as a simple overlap check
 	// This factor can be tuned based on ship shapes/collision "sensitivity"
-	float collisionDistance = (a1 + a2) * 0.75f;
 
 	// Check if the distance is less than the adjusted sum of semi-major axes
-	if (distance < collisionDistance) {
+	if (const float collisionDistance = (a1 + a2) * 0.75f; distance < collisionDistance) {
 		return true; // Collision detected
 	}
 
@@ -214,30 +210,30 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned
 	const sf::Uint8* pixels1 = image1.getPixelsPtr();
 	const sf::Uint8* pixels2 = image2.getPixelsPtr();
 
-	sf::IntRect rect1 = sprite1.getTextureRect();
-	sf::IntRect rect2 = sprite2.getTextureRect();
+	const sf::IntRect rect1 = sprite1.getTextureRect();
+	const sf::IntRect rect2 = sprite2.getTextureRect();
 
 	// Assuming sails make up about 20% of the sprite width on each side
-	float sailExclusionFactor = 0.8f; // Use 80% of the width for the body
+	constexpr float sailExclusionFactor = 0.8f; // Use 80% of the width for the body
 
 	// Semi-major axis (long axis) adjusted to be thinner
-	float a = (rect1.width * sailExclusionFactor) / 2.0f;
-	float b = rect1.height / 2.0f; // Semi-minor axis remains the same
+	const float a = (rect1.width * sailExclusionFactor) / 2.0f;
+	const float b = rect1.height / 2.0f; // Semi-minor axis remains the same
 
 	for (int i = static_cast<int>(intersection.left); i < intersection.left + intersection.width; i++) {
 		for (int j = static_cast<int>(intersection.top); j < intersection.top + intersection.height; j++) {
 			// Convert global coordinates to sprite1's local space
-			sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
+			const sf::Vector2f localPos1 = sprite1.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
 
 			// Adjust for sail exclusion by re-centering the ellipse in the reduced width
-			float x_rel = localPos1.x - (rect1.width * (1 - sailExclusionFactor) / 2.0f) - (a * 2 * sailExclusionFactor) / 2.0f;
-			float y_rel = localPos1.y - rect1.height / 2.0f;
+			const float x_rel = localPos1.x - (rect1.width * (1 - sailExclusionFactor) / 2.0f) - (a * 2 * sailExclusionFactor) / 2.0f;
+			const float y_rel = localPos1.y - rect1.height / 2.0f;
 			if ((x_rel * x_rel) / (a * a) + (y_rel * y_rel) / (b * b) <= 1) {
 				// Now check pixel alpha values for collision
-				int idx1 = ((int)localPos1.y * rect1.width + (int)localPos1.x) * 4;
+				const int idx1 = (static_cast<int>(localPos1.y) * rect1.width + static_cast<int>(localPos1.x)) * 4;
 				// Convert global coordinates to sprite2's local space
-				sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
-				int idx2 = ((int)localPos2.y * rect2.width + (int)localPos2.x) * 4;
+				const sf::Vector2f localPos2 = sprite2.getInverseTransform().transformPoint(static_cast<float>(i), static_cast<float>(j));
+				const int idx2 = (static_cast<int>(localPos2.y) * rect2.width + static_cast<int>(localPos2.x)) * 4;
 
 				if (idx1 < 0 || idx1 >= rect1.width * rect1.height * 4 || idx2 < 0 || idx2 >= rect2.width * rect2.height * 4) {
 					// Skip this pixel as it's out of the valid range

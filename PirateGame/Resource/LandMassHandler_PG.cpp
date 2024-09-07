@@ -9,22 +9,21 @@ LandMassHandler::~LandMassHandler() {
 }
 
 // Add all the land masses to the vector
-void LandMassHandler::addLandMasses(int numLandMassesPerChunk, float minDistBetweenLandmasses) {
+void LandMassHandler::addLandMasses(const int numLandMassesPerChunk, const float minDistBetweenLandmasses) {
 	// Grab all chunks
-	auto& chunks = context.GCH->getAllChunks();
 
-	for (auto& chunk : chunks) {
+	for (const auto& chunks = context.GCH->getAllChunks(); auto& chunk : chunks) {
 		addLandMassesToChunk(*chunk.getMap(), numLandMassesPerChunk, minDistBetweenLandmasses);
 	}
 }
 
-void LandMassHandler::addLandMassesToChunk(Map& map, int numLandMasses, float minDistBetweenLandmasses) {
+void LandMassHandler::addLandMassesToChunk(const Map& map, const int numLandMasses, const float minDistBetweenLandmasses) {
 	// Grab a numLandMasses number of points from the map
-	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
+	const std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
 
 	for (int i = 0; i < points.size(); i++) {
 		// Generate a random number between 0 and 3
-		int randNum = rand() % 3;
+		const int randNum = rand() % 3;
 
 		// Create a land mass based on the random number; proportional to the distance between land masses
 		if (randNum == 0) createIsland(points[i]);
@@ -33,8 +32,8 @@ void LandMassHandler::addLandMassesToChunk(Map& map, int numLandMasses, float mi
 	}
 }
 
-void LandMassHandler::createIsland(sf::Vector2f position) {
-	std::shared_ptr<Island> island = std::make_shared<Island>(context);
+void LandMassHandler::createIsland(const sf::Vector2f position) {
+	const std::shared_ptr<Island> island = std::make_shared<Island>(context);
 	island->getSprite().setPosition(position);
 	island->createLandMass();
 	landmasses.push_back(island);
@@ -43,8 +42,8 @@ void LandMassHandler::createIsland(sf::Vector2f position) {
 	GQH->getIslandQuadtree()->addObject(island.get());
 }
 
-void LandMassHandler::createRock(sf::Vector2f position) {
-	std::shared_ptr<Rock> rock = std::make_shared<Rock>(context);
+void LandMassHandler::createRock(const sf::Vector2f position) {
+	const auto rock = std::make_shared<Rock>(context);
 	rock->getSprite().setPosition(position);
 	rock->createLandMass();
 	landmasses.push_back(rock);
@@ -53,8 +52,8 @@ void LandMassHandler::createRock(sf::Vector2f position) {
 	GQH->getRockQuadtree()->addObject(rock.get());
 }
 
-void LandMassHandler::createShipwreck(sf::Vector2f position) {
-	std::shared_ptr<Shipwreck> shipwreck = std::make_shared<Shipwreck>(context);
+void LandMassHandler::createShipwreck(const sf::Vector2f position) {
+	const auto shipwreck = std::make_shared<Shipwreck>(context);
 	shipwreck->getSprite().setPosition(position);
 	shipwreck->createLandMass();
 	landmasses.push_back(shipwreck);
@@ -72,12 +71,12 @@ void LandMassHandler::drawLandMasses() {
 			GQH->getLandMassQuadtree()->removeObject(ship.get());
 		}
 	}
-	std::erase_if(shipwrecks, [](std::shared_ptr<Shipwreck> ship) { return !ship->isActive(); });
-	std::erase_if(landmasses, [](std::shared_ptr<LandMass> landmass) { return !landmass->isActive(); });
+	std::erase_if(shipwrecks, [](const std::shared_ptr<Shipwreck>& ship) { return !ship->isActive(); });
+	std::erase_if(landmasses, [](const std::shared_ptr<LandMass>& landmass) { return !landmass->isActive(); });
 
 	// Draw all the land masses and add them to the hashmap
 	sf::RenderWindow* window = context.GV->getWindow();
-	for (auto& i : landmasses) {
+	for (const auto& i : landmasses) {
 		// Print debug for region types
 		context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
@@ -99,7 +98,7 @@ void LandMassHandler::interactWithLandmasses() {
 		}
 
 		for (auto& island : islands) {
-			if (std::find(nearbyIslands.begin(), nearbyIslands.end(), island.get()) == nearbyIslands.end()) {
+			if (std::ranges::find(nearbyIslands, island.get()) == nearbyIslands.end()) {
 				island->getIslandMenu()->setEnteredIsland(false);
 				island->getIslandMenu()->setHasPlayerSaidNo(false);
 			}
@@ -121,7 +120,7 @@ void LandMassHandler::interactWithLandmasses() {
 
 			// Display the loot
 			for (auto& loot : shipwreck->getLoot()) {
-				sf::Text lootText("You have recieved " + vm::setSignificantFigures(loot.amount, 4) + ' ' + loot.name, *context.GFH->getGlobalFont());
+				sf::Text lootText("You have received " + vm::setSignificantFigures(loot.amount, 4) + ' ' + loot.name, *context.GFH->getGlobalFont());
 				context.GTQP->addTextToQueue(lootText, sf::seconds(5.f));
 			}
 

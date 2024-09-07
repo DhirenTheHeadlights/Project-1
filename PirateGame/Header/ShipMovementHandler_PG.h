@@ -30,12 +30,12 @@ namespace PirateGame {
 		void ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite) const;
 
 		// Setters
-		void setSpeed(float speed) { this->speed = speed; } // For testing purposes, but cannot be set above the baseSpeed
-		void setTurningSpeed(float turningSpeed) { this->turningSpeed = turningSpeed; }
-		void setTurningMultiplier(float turningMultiplier) { this->turningMultiplier = turningMultiplier; }
-		void setIsColliding(bool isColliding) { this->isColliding = isColliding; }
-		void setStopShipRotationFlag(bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
-		void setAnchorDrop(bool anchorDrop) { this->dropAnchor = anchorDrop; }
+		void setSpeed(const float speed) { this->speed = speed; } // For testing purposes, but cannot be set above the baseSpeed
+		void setTurningSpeed(const float turningSpeed) { this->turningSpeed = turningSpeed; }
+		void setTurningMultiplier(const float turningMultiplier) { this->turningMultiplier = turningMultiplier; }
+		void setIsColliding(const bool isColliding) { this->isColliding = isColliding; }
+		void setStopShipRotationFlag(const bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
+		void setAnchorDrop(const bool anchorDrop) { this->dropAnchor = anchorDrop; }
 
 		// Getters
 		float getSpeed() const { return speed; }

@@ -11,7 +11,7 @@ namespace PirateGame {
         GlobalInputHandler() {
             // Initialize keyboard and mouse states
             for (int key = sf::Keyboard::A; key < sf::Keyboard::KeyCount; ++key) {
-                sf::Keyboard::Key k = static_cast<sf::Keyboard::Key>(key);
+	            auto k = static_cast<sf::Keyboard::Key>(key);
                 lastKeyState[k] = false;
                 currentKeyState[k] = false;
                 toggledKeyState[k] = false;

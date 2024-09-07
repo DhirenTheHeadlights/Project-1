@@ -8,7 +8,7 @@
 namespace PirateGame {
 	class Chunk {
 	public:
-		Chunk(const std::pair<int, int>& chunkCoord, sf::Vector2f chunkSize, int cellSize) : chunkCoord(chunkCoord), chunkSize(chunkSize), cellSize(cellSize) {
+		Chunk(const std::pair<int, int>& chunkCoord, const sf::Vector2f chunkSize, const int cellSize) : chunkCoord(chunkCoord), chunkSize(chunkSize), cellSize(cellSize) {
 			map = std::make_unique<Map>();
 			map->initialize(static_cast<int>(chunkSize.x), static_cast<int>(chunkSize.y), cellSize, sf::Vector2f(chunkCoord.first * chunkSize.x, chunkCoord.second * chunkSize.y));
 		}
@@ -19,7 +19,7 @@ namespace PirateGame {
 		Region getRegionType() const { return regionType; }
 
 		// Setters
-		void setRegionType(Region regionType) { this->regionType = regionType; }
+		void setRegionType(const Region regionType) { this->regionType = regionType; }
 	private:
 		std::unique_ptr<Map> map;
 		std::pair<int, int> chunkCoord;

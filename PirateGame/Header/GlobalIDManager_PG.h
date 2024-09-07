@@ -19,13 +19,9 @@ namespace PirateGame {
             return id == other.id;
         }
     private:
-        
-
-        explicit ID(int id) : id(id) {}
+        explicit ID(const int id) : id(id) {}
 
         friend class GlobalIDManager;
-
-
     };
 
     class GlobalIDManager {
@@ -37,18 +33,17 @@ namespace PirateGame {
             return idPtr;
         }
 
-        void registerObject(std::shared_ptr<ID> obj) {
-            idMap_[obj->id] = obj;
+        void registerObject(const std::shared_ptr<ID>& obj) {
+            idMap[obj->id] = obj;
         }
 
-        bool isObjectAlive(int id) {
-            auto it = idMap_.find(id);
-            if (it != idMap_.end()) {
+        bool isObjectAlive(const int id) {
+	        if (const auto it = idMap.find(id); it != idMap.end()) {
                 if (!it->second.expired()) {
                     return true;
                 }
                 else {
-                    idMap_.erase(it);
+                    idMap.erase(it);
                 }
             }
             return false;
@@ -56,6 +51,6 @@ namespace PirateGame {
 
     private:
         std::vector<std::shared_ptr<ID>> ids;
-        std::unordered_map<int, std::weak_ptr<ID>> idMap_;
+        std::unordered_map<int, std::weak_ptr<ID>> idMap;
     };
 }

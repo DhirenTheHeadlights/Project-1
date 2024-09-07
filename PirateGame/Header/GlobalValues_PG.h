@@ -2,10 +2,10 @@
 
 /// This class contains all the global values used throughout the game.
 
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <random>
 #include <unordered_map>
+#include <SFML/Graphics.hpp>
 
 namespace PirateGame {
 	class GlobalValues {

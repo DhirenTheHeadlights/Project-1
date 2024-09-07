@@ -6,15 +6,15 @@
 
 #include "GlobalContext_PG.h"
 
+#include "CollisionManager_PG.h"
+#include "EnemyShipHandler_PG.h"
+#include "JSONSave_PG.h"
+#include "LandMassHandler_PG.h"
+#include "MenuHandler_PG.h"
+#include "PlayerShip_PG.h"
 #include "Player_PG.h"
 #include "View_PG.h"
-#include "PlayerShip_PG.h"
-#include "EnemyShipHandler_PG.h"
-#include "LandMassHandler_PG.h"
-#include "CollisionManager_PG.h"
-#include "MenuHandler_PG.h"
 #include "WaterTiler_PG.h"
-#include "JSONSave_PG.h"
 
 namespace PirateGame {
 	class World {

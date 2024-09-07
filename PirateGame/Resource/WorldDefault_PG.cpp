@@ -26,6 +26,7 @@ void DefaultWorld::createWorld(sf::Event event) {
 		drawGameLoop();
 		updateGameLoop(event);
 		break;
+	default: ;
 	}
 
 	// Close if the escape key is pressed
@@ -34,7 +35,7 @@ void DefaultWorld::createWorld(sf::Event event) {
 	}
 
 	// Frame rate calculation
-	sf::Time deltaTime = frameRateClock.restart();
+	const sf::Time deltaTime = frameRateClock.restart();
 	frameRateUpdateTime += deltaTime;
 	++frameCount;
 
