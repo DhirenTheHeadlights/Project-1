@@ -6,6 +6,7 @@
 #include "ShipEnums_PG.h"
 #include "Region_PG.h"
 
+
 namespace PirateGame {
 	class ShipTextureHandler : public TextureHandler {
 	public:
@@ -34,7 +35,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> murkyMarshesSTM;
 			{
 				murkyMarshesSTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop.png");
-				murkyMarshesSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine.png");
+				murkyMarshesSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_2.png");
 				murkyMarshesSTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2.png");
 				murkyMarshesSTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon.png");
 				murkyMarshesSTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar.png");
@@ -43,7 +44,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> devilsDenSTM;
 			{
 				devilsDenSTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop.png");
-				devilsDenSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine.png");
+				devilsDenSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_3.png");
 				devilsDenSTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2.png");
 				devilsDenSTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon.png");
 				devilsDenSTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar.png");
@@ -52,7 +53,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> shipwreckShoalsSTM;
 			{
 				shipwreckShoalsSTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop.png");
-				shipwreckShoalsSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine.png");
+				shipwreckShoalsSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_4.png");
 				shipwreckShoalsSTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2.png");
 				shipwreckShoalsSTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon.png");
 				shipwreckShoalsSTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar.png");
@@ -61,7 +62,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> stormySeasSTM;
 			{
 				stormySeasSTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop.png");
-				stormySeasSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine.png");
+				stormySeasSTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_5.png");
 				stormySeasSTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2.png");
 				stormySeasSTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon.png");
 				stormySeasSTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar.png");
@@ -81,7 +82,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> murkyMarshesCTM;
 			{
 				murkyMarshesCTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop_cannon.png");
-				murkyMarshesCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_cannon.png");
+				murkyMarshesCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_2_cannon.png");
 				murkyMarshesCTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2_cannon.png");
 				murkyMarshesCTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_cannon.png");
 				murkyMarshesCTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_cannon.png");
@@ -90,7 +91,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> devilsDenCTM;
 			{
 				devilsDenCTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop_cannon.png");
-				devilsDenCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_cannon.png");
+				devilsDenCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_3_cannon.png");
 				devilsDenCTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2_cannon.png");
 				devilsDenCTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_cannon.png");
 				devilsDenCTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_cannon.png");
@@ -99,7 +100,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> shipwreckShoalsCTM;
 			{
 				shipwreckShoalsCTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop_cannon.png");
-				shipwreckShoalsCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_cannon.png");
+				shipwreckShoalsCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_4_cannon.png");
 				shipwreckShoalsCTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2_cannon.png");
 				shipwreckShoalsCTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_cannon.png");
 				shipwreckShoalsCTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_cannon.png");
@@ -108,7 +109,7 @@ namespace PirateGame {
 			TextureResourceManager<ShipClass> stormySeasCTM;
 			{
 				stormySeasCTM.loadTexture(ShipClass::Sloop, "PirateGameSprites/pg_ship_sloop_cannon.png");
-				stormySeasCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_cannon.png");
+				stormySeasCTM.loadTexture(ShipClass::Brigantine, "PirateGameSprites/pg_ship_brigantine_5_cannon.png");
 				stormySeasCTM.loadTexture(ShipClass::Frigate, "PirateGameSprites/pg_ship_frigate_2_cannon.png");
 				stormySeasCTM.loadTexture(ShipClass::Galleon, "PirateGameSprites/pg_ship_galleon_cannon.png");
 				stormySeasCTM.loadTexture(ShipClass::ManOWar, "PirateGameSprites/pg_ship_manowar_cannon.png");
@@ -155,8 +156,8 @@ namespace PirateGame {
 				};
 				murkyMarshesSailTM.loadTextures(ShipClass::Sloop, sloopSailTexturesMurkyMarshes);
 				std::vector<std::string> brigantineSailTexturesMurkyMarshes = {
-					"PirateGameSprites/pg_ship_brigantine_sail_front.png",
-					"PirateGameSprites/pg_ship_brigantine_sail_back.png"
+					"PirateGameSprites/pg_ship_brigantine_2_sail_front.png",
+					"PirateGameSprites/pg_ship_brigantine_2_sail_back.png"
 				};
 				murkyMarshesSailTM.loadTextures(ShipClass::Brigantine, brigantineSailTexturesMurkyMarshes);
 				std::vector<std::string> frigateSailTexturesMurkyMarshes = {
@@ -187,8 +188,8 @@ namespace PirateGame {
 				};
 				devilsDenSailTM.loadTextures(ShipClass::Sloop, sloopSailTexturesDevilsDen);
 				std::vector<std::string> brigantineSailTexturesDevilsDen = {
-					"PirateGameSprites/pg_ship_brigantine_sail_front.png",
-					"PirateGameSprites/pg_ship_brigantine_sail_back.png"
+					"PirateGameSprites/pg_ship_brigantine_3_sail_front.png",
+					"PirateGameSprites/pg_ship_brigantine_3_sail_back.png"
 				};
 				devilsDenSailTM.loadTextures(ShipClass::Brigantine, brigantineSailTexturesDevilsDen);
 				std::vector<std::string> frigateSailTexturesDevilsDen = {
@@ -219,8 +220,8 @@ namespace PirateGame {
 				};
 				shipwreckShoalsSailTM.loadTextures(ShipClass::Sloop, sloopSailTexturesShipwreckShoals);
 				std::vector<std::string> brigantineSailTexturesShipwreckShoals = {
-					"PirateGameSprites/pg_ship_brigantine_sail_front.png",
-					"PirateGameSprites/pg_ship_brigantine_sail_back.png"
+					"PirateGameSprites/pg_ship_brigantine_4_sail_front.png",
+					"PirateGameSprites/pg_ship_brigantine_4_sail_back.png"
 				};
 				shipwreckShoalsSailTM.loadTextures(ShipClass::Brigantine, brigantineSailTexturesShipwreckShoals);
 				std::vector<std::string> frigateSailTexturesShipwreckShoals = {
@@ -251,8 +252,8 @@ namespace PirateGame {
 				};
 				stormySeasSailTM.loadTextures(ShipClass::Sloop, sloopSailTexturesStormySeas);
 				std::vector<std::string> brigantineSailTexturesStormySeas = {
-					"PirateGameSprites/pg_ship_brigantine_sail_front.png",
-					"PirateGameSprites/pg_ship_brigantine_sail_back.png"
+					"PirateGameSprites/pg_ship_brigantine_5_sail_front.png",
+					"PirateGameSprites/pg_ship_brigantine_5_sail_back.png"
 				};
 				stormySeasSailTM.loadTextures(ShipClass::Brigantine, brigantineSailTexturesStormySeas);
 				std::vector<std::string> frigateSailTexturesStormySeas = {
