@@ -5,7 +5,7 @@
     "shipwreckScaling": 5.0,
     "shipwreckLootPoolSize": 3,
     "shipwreckLootPoolItemLimit": 5,
-    "islandScaling": 1.0,
+    "islandScaling": 6.0,
     "islandMarketSizeLimit": 7,
     "islandMarketItemLimit": 100,
     "islandMarketPriceLimit": 100
