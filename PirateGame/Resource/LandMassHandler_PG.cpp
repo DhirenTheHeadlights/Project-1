@@ -84,9 +84,9 @@ void LandMassHandler::drawLandMasses() {
 }
 
 void LandMassHandler::interactWithLandmasses() {
-	std::vector<Island*> nearbyIslands = GQH->getIslandQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<Island*> nearbyIslands = GQH->getIslandQuadtree()->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
 	std::vector<Shipwreck*> nearbyShipwrecks = GQH->getShipwreckQuadtree()->findObjectsNearObject(playerShip, lootDistance);
-	std::vector<Rock*> nearbyRocks = GQH->getRockQuadtree()->findObjectsNearObject(playerShip, interactionDistance);
+	std::vector<Rock*> nearbyRocks = GQH->getRockQuadtree()->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
 
 	if (nearestIsland == nullptr) {
 		for (auto& island : nearbyIslands) {

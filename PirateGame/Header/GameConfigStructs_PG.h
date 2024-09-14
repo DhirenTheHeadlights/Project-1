@@ -23,6 +23,8 @@ namespace PirateGame {
         int islandMarketSizeLimit = 0;
         int islandMarketItemLimit = 0;
         int islandMarketPriceLimit = 0;
+		float landmassInteractionDistance = 0.0f;
+		float shipwreckInteractionDistance = 0.0f;
     };
 
     struct ShipData {

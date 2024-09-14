@@ -93,6 +93,8 @@ namespace PirateGame {
             parseSection(json["islandMarketSizeLimit"], gameData.gameConfig.landmassData.islandMarketSizeLimit);
             parseSection(json["islandMarketItemLimit"], gameData.gameConfig.landmassData.islandMarketItemLimit);
             parseSection(json["islandMarketPriceLimit"], gameData.gameConfig.landmassData.islandMarketPriceLimit);
+			parseSection(json["landmassInteractionDistance"], gameData.gameConfig.landmassData.landmassInteractionDistance);
+			parseSection(json["shipwreckInteractionDistance"], gameData.gameConfig.landmassData.shipwreckInteractionDistance);
         }
 
         void loadShipData(const json& json) {
