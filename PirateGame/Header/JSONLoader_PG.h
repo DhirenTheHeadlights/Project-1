@@ -21,6 +21,7 @@ namespace PirateGame {
             parseSection(save["playerLevel"], gameData.saveData.playerLevel);
             parseSection(save["playerGold"], gameData.saveData.playerGold);
             parseSection(save["playerInventory"], gameData.saveData.playerInventory);
+			parseSection(save["playerShipClass"], gameData.saveData.playerShipClass);
 
             savefile.close();
         }

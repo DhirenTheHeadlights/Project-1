@@ -11,6 +11,7 @@ namespace PirateGame {
         int playerExperienceToLevelUp = 0;
         int playerLevel = 0;
         int playerGold = 0;
+		int playerShipClass = 0;
         std::vector<std::pair<std::string, std::pair<float, int>>> playerInventory;
     };
 

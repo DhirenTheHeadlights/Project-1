@@ -68,7 +68,7 @@ void Ship::draw() {
 // Regen Health
 void Ship::regenerateHealth() {
 	// Regen health
-	if (healthRegenClock.getElapsedTime().asMilliseconds() > context.JSL->getGameData().gameConfig.shipData.shipHealthRegenTime.asMilliseconds()) {
+	if (healthRegenClock.getElapsedTime().asMilliseconds() > regenTime.asMilliseconds()) {
 		health += shipProperties.regenRate;
 		healthRegenClock.restart();
 	}

@@ -99,6 +99,7 @@ namespace PirateGame {
 
 		// Clock for regenerating health
 		sf::Clock healthRegenClock;
+		sf::Time regenTime = sf::seconds(2.f);
 
 		// Unique ID and group ID
 		std::shared_ptr<ID> id;

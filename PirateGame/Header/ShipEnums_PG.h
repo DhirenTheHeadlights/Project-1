@@ -16,7 +16,6 @@ namespace PirateGame {
 		ManOWar,
 		Galleon
 	};
-
 	enum class FiringSide { Port, Starboard };
 
 	// Struct to hold ship properties

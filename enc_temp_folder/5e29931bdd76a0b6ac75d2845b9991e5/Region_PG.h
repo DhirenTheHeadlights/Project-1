@@ -10,27 +10,27 @@ namespace PirateGame {
 	};
 
 	struct RegionValues {
-		RegionValues(Region region, const std::vector<float>& scalingvector) : region(region) {
+		RegionValues(Region region) : region(region) {
 			switch (region) {
 			case Region::SandyShores:
 				displayString = "Sandy Shores";
-				scaling = scalingvector[0];
+				scaling = 1.f;
 				break;
 			case Region::MurkyMarshes:
 				displayString = "Murky Marshes";
-				scaling = scalingvector[1];
+				scaling = 1.2f;
 				break;
 			case Region::DevilsDen:
 				displayString = "Devil's Den";
-				scaling = scalingvector[2];
+				scaling = 1.5f;
 				break;
 			case Region::ShipwreckShoals:
 				displayString = "Shipwreck Shoals";
-				scaling = scalingvector[3];
+				scaling = 2.f;
 				break;
 			case Region::StormySeas:
 				displayString = "Stormy Seas";
-				scaling = scalingvector[4];
+				scaling = 15.f;
 				break;
 			
 			}

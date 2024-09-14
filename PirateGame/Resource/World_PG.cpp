@@ -38,7 +38,7 @@ void World::setUpWorldElements() {
 
 void World::setUpPlayerShip() {
 	playerShip = std::make_unique<PlayerShip>(context);
-	playerShip->setUpShip(playerShipClass);
+	playerShip->setUpShip(static_cast<ShipClass>(context.JSL->getGameData().saveData.playerShipClass));
 	playerShip->getCannonHandler()->setCannonballQuadtree(GQH->getCannonballQuadtree());
 }
 

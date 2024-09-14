@@ -22,7 +22,7 @@ namespace PirateGame {
 				playerInventoryVector.push_back(std::make_tuple(item.name, item.price, item.amount));
 			}
 			save["playerInventory"] = playerInventoryVector;
-
+			save["playerShipClass"] = static_cast<int>(playerShip->getShipClass());
 			std::ofstream savefile(filename);
 			savefile << save.dump(4);
 			savefile.close();
