@@ -8,7 +8,9 @@
     "islandScaling": 6.0,
     "islandMarketSizeLimit": 7,
     "islandMarketItemLimit": 100,
-    "islandMarketPriceLimit": 100
+    "islandMarketPriceLimit": 100,
+    "landmassInteractionDistance": 500.0,
+    "shipwreckInteractionDistance": 300.0
   },
 
   "ship": 
