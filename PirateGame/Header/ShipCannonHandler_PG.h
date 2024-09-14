@@ -50,14 +50,14 @@ namespace PirateGame {
 			}
 			return firingAngle / cannons.size() / 2.f; // Divide by 2 for only one side
 		}
-		float getMaxFiringAngle() const { return maxFiringAngle; };
+		float getMaxFiringAngle() const { return maxFiringAngle; }
 	private:
 		JSONLoader* jsl;
 
 		sf::Vector2f cannonballDirection;
 		std::vector<ShipCannon> cannons;
 		
-		const float maxFiringAngle = 45.f;
+		const float maxFiringAngle = jsl->getGameData().gameConfig.shipData.maxFiringAngle;
 
 		bool aimTowardsTarget = false;
 

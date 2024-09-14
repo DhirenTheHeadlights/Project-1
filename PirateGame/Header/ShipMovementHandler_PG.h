@@ -3,17 +3,19 @@
 /// This class controls the movement and collisions of the ship class
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include <optional>
-
+#include <iostream>
 #include "VectorMath.h"
-
-#include "AstarAlgorithm_PG.h"
+#include "AstarAlgorithm_PG.h"'
+#include "JSONLoader_PG.h"
 
 namespace PirateGame {
 	class ShipMovementHandler {
 	public:
-		ShipMovementHandler(sf::Sprite& sprite, float& baseSpeed) : sprite(sprite), baseSpeed(baseSpeed) {};
+		ShipMovementHandler(sf::Sprite& sprite, float& baseSpeed, JSONLoader* json) : sprite(sprite), baseSpeed(baseSpeed), json(json) {
+			this->turningSpeed = json->getGameData().gameConfig.shipData.turningSpeed;
+			this->turningMultiplier = json->getGameData().gameConfig.shipData.turningMultiplier;
+		};
 		~ShipMovementHandler() {};
 
 		// Movement functions 
@@ -31,12 +33,11 @@ namespace PirateGame {
 
 		// Setters
 		void setSpeed(const float speed) { this->speed = speed; } // For testing purposes, but cannot be set above the baseSpeed
-		void setTurningSpeed(const float turningSpeed) { this->turningSpeed = turningSpeed; }
-		void setTurningMultiplier(const float turningMultiplier) { this->turningMultiplier = turningMultiplier; }
 		void setIsColliding(const bool isColliding) { this->isColliding = isColliding; }
 		void setStopShipRotationFlag(const bool stopShipRotationFlag) { this->stopShipRotationFlag = stopShipRotationFlag; }
 		void setAnchorDrop(const bool anchorDrop) { this->dropAnchor = anchorDrop; }
-
+		void setTurningSpeed(float turningSpeed) { this->turningSpeed = turningSpeed; }
+		void setTurningMultiplier(float turningMultiplier) { this->turningMultiplier = turningMultiplier; }
 		// Getters
 		float getSpeed() const { return speed; }
 		sf::Vector2f getVelocity() const { return velocity; }
@@ -55,18 +56,17 @@ namespace PirateGame {
 		bool anchorPushBack = false;
 
 		float& baseSpeed;
+		float turningMultiplier = 0;
+		float turningSpeed = 0;
 
-		float turningSpeed = 0.1f;
-		float turningMultiplier = 1.f;
 		float speed = 0;
 		float speedBeforeAnchorDrop = 0;
-		float frictionCoefficient = 0.1f; // For friction
-		float dampingFactor = 0.5f;		  // For collisionMovement
-		float separationDistance = 5.0f;  // For collisionMovement
-		float pushOutDistance = 1.0f;	  // For ensureSeparation
+
+
 
 	protected:
 		sf::Sprite& sprite;
+		JSONLoader* json = nullptr;
 	};
 }
 

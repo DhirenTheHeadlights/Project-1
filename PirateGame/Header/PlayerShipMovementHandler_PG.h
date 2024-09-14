@@ -7,7 +7,7 @@
 namespace PirateGame {
 	class PlayerShipMovementHandler : public ShipMovementHandler {
 	public:
-		PlayerShipMovementHandler(sf::RenderWindow* window, sf::Sprite& sprite, float& baseSpeed) : ShipMovementHandler(sprite, baseSpeed), window(window) {};
+		PlayerShipMovementHandler(sf::RenderWindow* window, sf::Sprite& sprite, float& baseSpeed, JSONLoader* json ) : ShipMovementHandler(sprite, baseSpeed, json), window(window) {};
 		~PlayerShipMovementHandler() {};
 
 		// Movement functions

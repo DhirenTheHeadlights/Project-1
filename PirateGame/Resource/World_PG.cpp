@@ -34,11 +34,16 @@ void World::setUpWorldElements() {
 
 	// Load ship properties
 	setShipConfig(context.JSL->getGameData().gameConfig);
+
+	// Load region properties
+	GameWorldData data = context.JSL->getGameData().gameConfig.gameWorldData;
+	context.GCH->getRegionHandler().setRegionScaling({ data.sandyShoresScaling, data.murkyMarshesScaling, data.devilsDenScaling, data.shipwreckShoalsScaling, data.stormySeasScaling });
 }
 
 void World::setUpPlayerShip() {
 	playerShip = std::make_unique<PlayerShip>(context);
 	playerShip->setUpShip(static_cast<ShipClass>(context.JSL->getGameData().saveData.playerShipClass));
+	playerShip->getSprite().setPosition(context.JSL->getGameData().saveData.playerPosition[0], context.JSL->getGameData().saveData.playerPosition[1]);
 	playerShip->getCannonHandler()->setCannonballQuadtree(GQH->getCannonballQuadtree());
 }
 

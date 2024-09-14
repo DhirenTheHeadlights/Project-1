@@ -67,7 +67,8 @@ void ShipMovementHandler::rotateTowards(float targetAngle) const {
 	const float accel = abs(10 * angleDifference / 180.f * speed / baseSpeed);
 
 	// Limit the turning speed
-	angleDifference = std::clamp(angleDifference, -turningSpeed * turningMultiplier, turningSpeed * turningMultiplier);
+	angleDifference = std::clamp(angleDifference, -turningSpeed * turningMultiplier,
+		turningSpeed * turningMultiplier);
 
 	// Set the new rotation
 	sprite.rotate(accel * angleDifference);
@@ -86,10 +87,10 @@ void ShipMovementHandler::collisionMovement(const sf::Sprite& collidingSprite) {
 	normal = vm::normalize(normal);
 
 	// Apply a damping factor to the velocity to simulate friction and prevent oscillations
-	const sf::Vector2f dampedVelocity = velocity - normal * vm::dot(velocity, normal) * dampingFactor;
+	const sf::Vector2f dampedVelocity = velocity - normal * vm::dot(velocity, normal) * json->getGameData().gameConfig.shipData.dampingFactor;
 
 	// Ensure the ship is moved slightly away from the colliding object to prevent sticking
-	sprite.move(normal * separationDistance);
+	sprite.move(normal * json->getGameData().gameConfig.shipData.separationDistance);
 
 	// Update the ship's velocity
 	velocity = dampedVelocity;
@@ -100,7 +101,7 @@ void ShipMovementHandler::collisionMovement(const sf::Sprite& collidingSprite) {
 
 void ShipMovementHandler::ensureSeparation(const sf::Vector2f& normal, const sf::Sprite& collidingSprite) const {
 	// Calculate a push-out vector based on normal and ship's approach direction
-	sf::Vector2f pushOutVector = normal * pushOutDistance;
+	sf::Vector2f pushOutVector = normal * json->getGameData().gameConfig.shipData.pushOutDistance;
 
 	// Check the direction of approach and adjust the pushOutVector accordingly
 	sf::Vector2f approachVector = sprite.getPosition() - collidingSprite.getPosition();

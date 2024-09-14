@@ -22,7 +22,7 @@ namespace PirateGame {
             parseSection(save["playerGold"], gameData.saveData.playerGold);
             parseSection(save["playerInventory"], gameData.saveData.playerInventory);
 			parseSection(save["playerShipClass"], gameData.saveData.playerShipClass);
-
+			parseSection(save["playerPosition"], gameData.saveData.playerPosition);
             savefile.close();
         }
 

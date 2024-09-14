@@ -10,5 +10,8 @@
         ]
     ],
     "playerLevel": 0,
+    "playerPosition": [
+        0.0, 0.0
+    ],
     "playerShipClass": 1
 }

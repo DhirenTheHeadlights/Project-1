@@ -49,7 +49,7 @@ namespace PirateGame {
 
 		// Cooldown
 		sf::Clock cannonCooldownClock;
-		sf::Time cooldown = sf::seconds(0.5f);
+		sf::Time cooldown =json->getGameData().gameConfig.shipData.cannonCooldown;
 		bool inAudioRange = false;
 	};
 }

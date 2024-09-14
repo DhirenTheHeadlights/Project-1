@@ -42,7 +42,7 @@ namespace PirateGame {
 				}
 			}
 		}
-
+		
 
 		// Setters
 		void setRenderDistance(int distance) { renderDistance = distance; }
@@ -61,7 +61,7 @@ namespace PirateGame {
 		std::vector<Chunk>& getAllChunks() {
 			return chunks;
 		}
-		RegionHandler getRegionHandler() const { return regionHandler; }
+		RegionHandler& getRegionHandler() { return regionHandler; }
 		sf::FloatRect getMapBounds() const { return mapBounds; }
 
 	private:
@@ -144,5 +144,6 @@ namespace PirateGame {
 		int cellSize = 100;
 		int renderDistance = 2;
 		int regionRenderDistance = 10;
+		std::vector<float> regionScaling = { 0.5f, 0.5f, 0.5f, 0.5f };
 	};
 }

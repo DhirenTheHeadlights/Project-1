@@ -6,7 +6,7 @@ using namespace PirateGame;
 
 void PlayerShip::customShipSetUp() {
 	SIH = std::make_unique<PlayerShipInputHandler>(context.JSL.get(), getSprite(), context.GSM.get(), context.GIH.get(), context.GWC.get());
-	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite(), getSpecificShipProperties().baseSpeed);
+	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite(), getSpecificShipProperties().baseSpeed, context.JSL.get());
 	
 	SIvH = std::make_unique<ShipInventoryHandler>();
 	SIvH->addGold(context.JSL->getGameData().saveData.playerGold);

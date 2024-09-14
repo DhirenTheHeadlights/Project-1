@@ -8,7 +8,7 @@
 namespace PirateGame {
 	class EnemyShipMovementHandler : public ShipMovementHandler {
 	public:
-		EnemyShipMovementHandler(sf::Sprite& sprite, float& baseSpeed) : ShipMovementHandler(sprite, baseSpeed) {};
+		EnemyShipMovementHandler(sf::Sprite& sprite, float& baseSpeed, JSONLoader* json) : ShipMovementHandler(sprite, baseSpeed, json) {};
 		~EnemyShipMovementHandler() {};
 
 		// Movement function

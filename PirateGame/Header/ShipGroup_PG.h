@@ -121,14 +121,14 @@ namespace PirateGame {
 		Ship* getClosestEnemyShip(std::shared_ptr<EnemyShip> ship);
 
 		// Variables
-		float alignmentWeight = 1.f;
-		float cohesionWeight = 1.f;
-		float separationWeight = 1.f;
+		float alignmentWeight = context.JSL->getGameData().gameConfig.shipGroupData.shipGroupAlignmentWeight;
+		float cohesionWeight = context.JSL->getGameData().gameConfig.shipGroupData.shipGroupCohesionWeight;
+		float separationWeight = context.JSL->getGameData().gameConfig.shipGroupData.shipGroupSeparationWeight;
 		float goalWeight = 1.f;
 
 		float minDistance = 100.f;
 		float groupSpeed = 0.f;
-		float combatSpeedMultiplier = 0.75f;
+		float combatSpeedMultiplier = context.JSL->getGameData().gameConfig.shipGroupData.shipGroupCombatSpeedMultiplier;
 
 		bool inCombat = false;
 		bool isInteracting = false;

@@ -29,5 +29,6 @@ namespace PirateGame {
 		std::unique_ptr<GlobalIDManager> GIDM = std::make_unique<GlobalIDManager>();
 		std::unique_ptr<GlobalTextureHandler> GTH = std::make_unique<GlobalTextureHandler>();
 		std::unique_ptr<JSONLoader> JSL = std::make_unique<JSONLoader>();
+
 	};
 }

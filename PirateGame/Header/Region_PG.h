@@ -2,35 +2,35 @@
 
 namespace PirateGame {
 	enum class Region {
-		SandyShores,		//0
-		MurkyMarshes,		//1
-		DevilsDen,			//3
-		ShipwreckShoals,	//4
-		StormySeas			//5
+		SandyShores, //0
+		MurkyMarshes, //1
+		DevilsDen, //3
+		ShipwreckShoals, //4
+		StormySeas //5
 	};
 
 	struct RegionValues {
-		RegionValues(Region region, const std::vector<float>& scalingvector) : region(region) {
+		RegionValues(const Region region, const std::vector<float>& scalingVector) : region(region) {
 			switch (region) {
 			case Region::SandyShores:
 				displayString = "Sandy Shores";
-				scaling = scalingvector[0];
+				scaling = scalingVector[0];
 				break;
 			case Region::MurkyMarshes:
 				displayString = "Murky Marshes";
-				scaling = scalingvector[1];
+				scaling = scalingVector[1];
 				break;
 			case Region::DevilsDen:
 				displayString = "Devil's Den";
-				scaling = scalingvector[2];
+				scaling = scalingVector[2];
 				break;
 			case Region::ShipwreckShoals:
 				displayString = "Shipwreck Shoals";
-				scaling = scalingvector[3];
+				scaling = scalingVector[3];
 				break;
 			case Region::StormySeas:
 				displayString = "Stormy Seas";
-				scaling = scalingvector[4];
+				scaling = scalingVector[4];
 				break;
 			
 			}

@@ -23,6 +23,7 @@ namespace PirateGame {
 			}
 			save["playerInventory"] = playerInventoryVector;
 			save["playerShipClass"] = static_cast<int>(playerShip->getShipClass());
+			save["playerPosition"] = { playerShip->getSprite().getPosition().x, playerShip->getSprite().getPosition().y };
 			std::ofstream savefile(filename);
 			savefile << save.dump(4);
 			savefile.close();

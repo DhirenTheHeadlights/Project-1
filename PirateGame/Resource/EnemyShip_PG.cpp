@@ -5,7 +5,7 @@ using namespace PirateGame;
 void EnemyShip::customShipSetUp() {
 	// Add handlers
 	SIH = std::make_unique<EnemyShipInputHandler>(context.JSL.get(), getSprite(), context.GWC.get(), context.GSM.get());
-	SMH = std::make_unique<EnemyShipMovementHandler>(getSprite(), getSpecificShipProperties().baseSpeed);
+	SMH = std::make_unique<EnemyShipMovementHandler>(getSprite(), getSpecificShipProperties().baseSpeed, context.JSL.get());
 
 	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
 	SIH->setCannonHandler(getCannonHandler());

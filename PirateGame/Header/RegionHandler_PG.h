@@ -6,35 +6,36 @@ namespace PirateGame {
 	
 	class RegionHandler {
 	public:
-		RegionHandler() {};
+		RegionHandler()  {}
 		Region generateRegionType(sf::Vector2f position) {
-			float distancefromorigin = vm::magnitude(position);
-			if (distancefromorigin < 10000.f) {
+			const float distanceFromOrigin = vm::magnitude(position);
+			if (distanceFromOrigin < 10000.f) {
 				return Region::SandyShores;
 			}
-			else if (distancefromorigin < 20000.f) {
+			if (distanceFromOrigin < 20000.f) {
 				return Region::MurkyMarshes;
 			}
-			else if (distancefromorigin < 40000.f) {
+			if (distanceFromOrigin < 40000.f) {
 				return Region::DevilsDen;
 			}
-			else if (distancefromorigin < 60000.f) {
+			if (distanceFromOrigin < 60000.f) {
 				return Region::ShipwreckShoals;
 			}	
-			else return Region::StormySeas;
+			return Region::StormySeas;
+		}
+
+		// Setter
+		void setRegionScaling(const std::vector<float>& regionScaling) {
+			this->regionScaling = regionScaling;
 		}
 
 		// Getters
-		RegionValues getRegionValuesAtPosition(sf::Vector2f position) {
+		RegionValues getRegionValuesAtPosition(const sf::Vector2f position) {
 			Region region = generateRegionType(position);
-			return RegionValues(region);
+			return { region, regionScaling };
 		}	
 	private:
-		/*std::unordered_map<std::string, Region> enumMap = {
-		{"Island1", Island1},
-		{"Island2", Island2},
-		{"Ship", Ship}
-		};*/
+		std::vector<float> regionScaling;
 	};
 
 }
