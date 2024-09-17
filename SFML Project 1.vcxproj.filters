@@ -550,6 +550,9 @@
     <ClCompile Include="PirateGame\Resource\WorldPlayerOnly_PG.cpp">
       <Filter>Source Files\PirateGame\Resource\Game World\Worlds</Filter>
     </ClCompile>
+    <ClCompile Include="PirateGame\Resource\ChunkHandler_PG.cpp">
+      <Filter>Source Files\PirateGame\Resource\Globals</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Globals\Header\Globals.h">
@@ -894,7 +897,7 @@
     <ClInclude Include="PirateGame\Header\Chunk_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\General</Filter>
     </ClInclude>
-    <ClInclude Include="PirateGame\Header\GlobalChunkHandler_PG.h">
+    <ClInclude Include="PirateGame\Header\ChunkHandler_PG.h">
       <Filter>Source Files\PirateGame\Header\Handlers\Global</Filter>
     </ClInclude>
     <ClInclude Include="PirateGame\Header\GlobalClock_PG.h">
@@ -918,6 +921,7 @@
     <ClInclude Include="PirateGame\Header\WorldPlayerOnly_PG.h">
       <Filter>Source Files\PirateGame\Header\Game World\Worlds</Filter>
     </ClInclude>
+    <ClInclude Include="PirateGame\Header\JSONSave_PG.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\MGS2.ttf">
@@ -1036,9 +1040,6 @@
       <Filter>Source Files\PirateGame\Sprites\Ship\Misc</Filter>
     </Image>
     <Image Include="PirateGameSprites\pg_ship_brigantine.png">
-      <Filter>Source Files\PirateGame\Sprites\Ship\Brigantine</Filter>
-    </Image>
-    <Image Include="PirateGameSprites\pg_ship_brigantine_cannon.png">
       <Filter>Source Files\PirateGame\Sprites\Ship\Brigantine</Filter>
     </Image>
     <Image Include="PirateGameSprites\pg_ship_frigate.png">
@@ -1194,6 +1195,23 @@
     <Image Include="PirateGameSprites\pg_ship_frigate_2_cannon.png">
       <Filter>Source Files\PirateGame\Sprites\Ship\Frigate</Filter>
     </Image>
+    <Image Include="PirateGameSprites\pg_ship_brigantine_2.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_2_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_2_sail_front.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_3.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_3_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_3_sail_front.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_4.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_4_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_4_sail_front.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_5.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_5_sail_back.png" />
+    <Image Include="PirateGameSprites\pg_ship_brigantine_5_sail_front.png" />
+    <Image Include="PirateGameSprites\PirateGameSpritesAsepriteFiles\pg_ship_brigantine_2_cannon.png" />
+    <Image Include="PirateGameSprites\PirateGameSpritesAsepriteFiles\pg_ship_brigantine_3_cannon.png" />
+    <Image Include="PirateGameSprites\PirateGameSpritesAsepriteFiles\pg_ship_brigantine_4_cannon.png" />
+    <Image Include="PirateGameSprites\PirateGameSpritesAsepriteFiles\pg_ship_brigantine_5_cannon.png" />
+    <Image Include="PirateGameSprites\PirateGameSpritesAsepriteFiles\pg_ship_brigantine_cannon.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="AimTrainer\Misc\HighScores.txt">

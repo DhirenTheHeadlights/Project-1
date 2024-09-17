@@ -6,6 +6,8 @@
 #include <iostream>
 #include <type_traits>
 
+#include "VectorMath.h"
+
 namespace PirateGame {
     template<typename EnumType>
 

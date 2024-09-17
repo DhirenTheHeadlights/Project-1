@@ -19,7 +19,7 @@ void World::setUpWorld() {
 void World::setUpWorldElements() {
 	// Set up the window and map
 	context.GV->setWindow(window);
-	context.GCH->initializeMap();
+	ChunkHandler::initializeMap();
 	view = View(window);
 
 	// Load JSON Values
@@ -30,14 +30,14 @@ void World::setUpWorldElements() {
 	waterTiler.initialize();
 
 	// Set up qth
-	GQH->setUpQuadtrees(context.GCH.get());
+	GQH->setUpQuadtrees();
 
 	// Load ship properties
 	setShipConfig(context.JSL->getGameData().gameConfig);
 
 	// Load region properties
 	GameWorldData data = context.JSL->getGameData().gameConfig.gameWorldData;
-	context.GCH->getRegionHandler().setRegionScaling({ data.sandyShoresScaling, data.murkyMarshesScaling, data.devilsDenScaling, data.shipwreckShoalsScaling, data.stormySeasScaling });
+	ChunkHandler::getRegionHandler().setRegionScaling({ data.sandyShoresScaling, data.murkyMarshesScaling, data.devilsDenScaling, data.shipwreckShoalsScaling, data.stormySeasScaling });
 }
 
 void World::setUpPlayerShip() {
@@ -101,9 +101,9 @@ void World::drawGameLoop() {
 
 void World::updateCoreElements() {
 	context.GC->update();
-	context.GCH->updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
+	ChunkHandler::updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
 	context.GWC->update();
-	GQH->updateQuadtrees(context.GCH->getMapBounds());
+	GQH->updateQuadtrees(ChunkHandler::getMapBounds());
 	context.GTQP->updateTextQueue(window);
 	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();

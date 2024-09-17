@@ -2,22 +2,22 @@
 
 using namespace PirateGame;
 
-LandMassHandler::~LandMassHandler() {
+LandmassHandler::~LandmassHandler() {
 	for (auto& landMass : landmasses) {
 		GQH->getLandMassQuadtree()->removeObject(landMass.get());
 	}
 }
 
 // Add all the land masses to the vector
-void LandMassHandler::addLandMasses(const int numLandMassesPerChunk, const float minDistBetweenLandmasses) {
+void LandmassHandler::addLandMasses(const int numLandMassesPerChunk, const float minDistBetweenLandmasses) {
 	// Grab all chunks
 
-	for (const auto& chunks = context.GCH->getAllChunks(); auto& chunk : chunks) {
+	for (const auto& chunks = ChunkHandler::getAllChunks(); auto& chunk : chunks) {
 		addLandMassesToChunk(*chunk.getMap(), numLandMassesPerChunk, minDistBetweenLandmasses);
 	}
 }
 
-void LandMassHandler::addLandMassesToChunk(const Map& map, const int numLandMasses, const float minDistBetweenLandmasses) {
+void LandmassHandler::addLandMassesToChunk(const Map& map, const int numLandMasses, const float minDistBetweenLandmasses) {
 	// Grab a numLandMasses number of points from the map
 	const std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenLandmasses, numLandMasses);
 
@@ -32,7 +32,7 @@ void LandMassHandler::addLandMassesToChunk(const Map& map, const int numLandMass
 	}
 }
 
-void LandMassHandler::createIsland(const sf::Vector2f position) {
+void LandmassHandler::createIsland(const sf::Vector2f position) {
 	const std::shared_ptr<Island> island = std::make_shared<Island>(context);
 	island->getSprite().setPosition(position);
 	island->createLandMass();
@@ -42,7 +42,7 @@ void LandMassHandler::createIsland(const sf::Vector2f position) {
 	GQH->getIslandQuadtree()->addObject(island.get());
 }
 
-void LandMassHandler::createRock(const sf::Vector2f position) {
+void LandmassHandler::createRock(const sf::Vector2f position) {
 	const auto rock = std::make_shared<Rock>(context);
 	rock->getSprite().setPosition(position);
 	rock->createLandMass();
@@ -52,7 +52,7 @@ void LandMassHandler::createRock(const sf::Vector2f position) {
 	GQH->getRockQuadtree()->addObject(rock.get());
 }
 
-void LandMassHandler::createShipwreck(const sf::Vector2f position) {
+void LandmassHandler::createShipwreck(const sf::Vector2f position) {
 	const auto shipwreck = std::make_shared<Shipwreck>(context);
 	shipwreck->getSprite().setPosition(position);
 	shipwreck->createLandMass();
@@ -63,7 +63,7 @@ void LandMassHandler::createShipwreck(const sf::Vector2f position) {
 }
 
 // Draw all the land masses
-void LandMassHandler::drawLandMasses() {
+void LandmassHandler::drawLandMasses() {
 	// Remove any inactive land masses
 	for (auto& ship : shipwrecks) {
 		if (!ship->isActive()) {
@@ -78,12 +78,12 @@ void LandMassHandler::drawLandMasses() {
 	sf::RenderWindow* window = context.GV->getWindow();
 	for (const auto& i : landmasses) {
 		// Print debug for region types
-		context.GV->displayText(context.GCH->getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+		context.GV->displayText(ChunkHandler::getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
 	}
 }
 
-void LandMassHandler::interactWithLandmasses() {
+void LandmassHandler::interactWithLandmasses() {
 	std::vector<Island*> nearbyIslands = GQH->getIslandQuadtree()->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
 	std::vector<Shipwreck*> nearbyShipwrecks = GQH->getShipwreckQuadtree()->findObjectsNearObject(playerShip, lootDistance);
 	std::vector<Rock*> nearbyRocks = GQH->getRockQuadtree()->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);

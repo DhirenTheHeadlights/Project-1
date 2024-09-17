@@ -1,19 +1,20 @@
 #include "EnemyShipHandler_PG.h"
+#include "ChunkHandler_PG.h"
 
 using namespace PirateGame;
 
 void EnemyShipHandler::addEnemyShips(int numShipsPerChunk) {
 	// Grab all chunks
-	auto& chunks = context.GCH->getAllChunks();
+	auto& chunks = ChunkHandler::getAllChunks();
 
 	for (auto& chunk : chunks) {
-		addEnemyShipsToChunk(*chunk.getMap(), numShipsPerChunk);
+		addEnemyShipsToChunk(chunk, numShipsPerChunk);
 	}
 }
 
-void EnemyShipHandler::addEnemyShipsToChunk(Map& map, int numShipsPerChunk) {
+void EnemyShipHandler::addEnemyShipsToChunk(Chunk& chunk, int numShipsPerChunk) {
 	// Grab positions for the ships
-	std::vector<sf::Vector2f> points = map.getRandomPositions(minDistBetweenShips, numShipsPerChunk);
+	std::vector<sf::Vector2f> points = chunk.getMap()->getRandomPositions(minDistBetweenShips, numShipsPerChunk);
 
 	// Add the ships
 	for (int i = 0; i < points.size(); i++) {
@@ -25,8 +26,10 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	// Create a new ship
 	std::shared_ptr<EnemyShip> ship = std::make_shared<EnemyShip>(context);
 
+	// Pass ship ownership to its chuink
+	//ChunkHandler::getChunkAtPosition(position).getEnemyShips().push_back(ship);
 	// Set up the ship
-	ship->setUpShip(type, context.GCH->getRegionHandler().getRegionValuesAtPosition(position).region);
+	ship->setUpShip(type, ChunkHandler::getRegionHandler().getRegionValuesAtPosition(position).region);
 	ship->getInputHandler()->setCooldown(enemyCannonCooldown);
 	ship->getMovementHandler()->setTurningSpeed(turningSpeed);
 	ship->getMovementHandler()->setEnemySpeedMultiplier(enemySpeedMultiplier);
@@ -34,7 +37,7 @@ void EnemyShipHandler::addEnemyShip(sf::Vector2f position, ShipClass type) {
 	ship->getSprite().setPosition(position);
 
 	// Update ship properties to match region difficulty
-	ship->setDifficultyScaling(context.GCH->getRegionHandler().getRegionValuesAtPosition(position).scaling);
+	ship->setDifficultyScaling(ChunkHandler::getRegionHandler().getRegionValuesAtPosition(position).scaling);
 	
 	// Here, the hashmap for the cannonballs is given to each ship. The hashmap is taken
 	// from the GlobalHashmapHandler, which you would think wouldnt be necessary since the

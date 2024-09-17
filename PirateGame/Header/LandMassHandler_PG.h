@@ -14,10 +14,10 @@
 #include "Shipwreck_PG.h"
 
 namespace PirateGame {
-    class LandMassHandler {
+    class LandmassHandler {
     public:
-        LandMassHandler(GlobalContext& context, GlobalQuadtreeHandler* GQH) : context(context), GQH(GQH) {};
-        ~LandMassHandler();
+        LandmassHandler(GlobalContext& context, GlobalQuadtreeHandler* GQH) : context(context), GQH(GQH) {};
+        ~LandmassHandler();
 
         void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
         void createIsland(sf::Vector2f position);

@@ -1,7 +1,7 @@
 #pragma once
 
 /// This class contains all quadtrees.
-
+#include "ChunkHandler_PG.h"
 #include "QuadtreeTemplate_PG.h"
 #include "Landmass_PG.h"
 #include "Island_PG.h"
@@ -19,13 +19,13 @@ namespace PirateGame {
 			cannonballQuadtree->update(updatedBounds);
 		}
 
-		void setUpQuadtrees(GlobalChunkHandler* GCH) {
-			landmassQuadtree = std::make_unique<Quadtree<LandMass>>(GCH->getMapBounds());
-			islandQuadtree = std::make_unique<Quadtree<Island>>(GCH->getMapBounds());
-			rockQuadtree = std::make_unique<Quadtree<Rock>>(GCH->getMapBounds());
-			shipwreckQuadtree = std::make_unique<Quadtree<Shipwreck>>(GCH->getMapBounds());
-			enemyShipQuadtree = std::make_unique<Quadtree<EnemyShip>>(GCH->getMapBounds());
-			cannonballQuadtree = std::make_unique<Quadtree<Cannonball>>(GCH->getMapBounds());
+		void setUpQuadtrees() {
+			landmassQuadtree = std::make_unique<Quadtree<LandMass>>(ChunkHandler::getMapBounds());
+			islandQuadtree = std::make_unique<Quadtree<Island>>(ChunkHandler::getMapBounds());
+			rockQuadtree = std::make_unique<Quadtree<Rock>>(ChunkHandler::getMapBounds());
+			shipwreckQuadtree = std::make_unique<Quadtree<Shipwreck>>(ChunkHandler::getMapBounds());
+			enemyShipQuadtree = std::make_unique<Quadtree<EnemyShip>>(ChunkHandler::getMapBounds());
+			cannonballQuadtree = std::make_unique<Quadtree<Cannonball>>(ChunkHandler::getMapBounds());
 		}
 
 		// Getters

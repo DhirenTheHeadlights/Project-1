@@ -51,6 +51,8 @@ void Ship::update() {
 	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
 	SMH->update(SSH->getAverageSailDirection(), context.GC->getDeltaTime(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
 
+	// 
+
 	// Execute custom ship update
 	customShipUpdate();
 }
