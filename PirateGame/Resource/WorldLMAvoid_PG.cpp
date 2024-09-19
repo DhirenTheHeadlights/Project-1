@@ -67,16 +67,16 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 
 	ESH.update();
 
-	CM.handleCollisions(GQH.get());
+	CM.handleCollisions();
 
 	view.updateDebugView(event);
 
 	// Set the position of the first ship to wherever the mouse clicks
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		sf::Vector2f mousePos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+		const sf::Vector2f mousePos = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
 		ESH.getEnemyShips().at(0)->getSprite().setPosition(mousePos);
 		ESH.getEnemyShips().at(0)->getMovementHandler()->getAStar().recalculatePath();
 	}
 
-	GQH->getLandMassQuadtree()->draw(context.GV.get());
+	QuadtreeHandler::landmassQuadtree->draw(context.GV.get());
 }

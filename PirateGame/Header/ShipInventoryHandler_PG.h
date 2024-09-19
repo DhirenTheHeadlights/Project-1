@@ -30,11 +30,11 @@ namespace PirateGame {
 		};
 
 		void addItemsToInventory(ShopItem item) { inventory.push_back(item); }
-		void removeItem(ShopItem item);
+		void removeItem(const ShopItem& item);
 
 		// Getters
 		std::vector<ShopItem>& getInventory() { return inventory; }
-		ShopItem& getItem(std::string itemName);
+		ShopItem& getItem(const std::string& itemName);
 		float getGold() const { return gold; }
 
 		// Setters

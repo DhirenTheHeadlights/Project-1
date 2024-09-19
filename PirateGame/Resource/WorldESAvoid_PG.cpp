@@ -29,9 +29,9 @@ void ESAvoidWorld::updateGameLoop(sf::Event event) {
 
 	ESH.update();
 
-	CM.handleCollisions(GQH.get());
+	CM.handleCollisions();
 
 	view.updateDebugView(event);
 
-	GQH->getEnemyShipQuadtree()->draw(context.GV.get());
+	QuadtreeHandler::enemyShipQuadtree->draw(context.GV.get());
 }

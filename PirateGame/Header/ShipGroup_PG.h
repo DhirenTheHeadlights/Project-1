@@ -112,10 +112,10 @@ namespace PirateGame {
 
 		/// Functions
 		// 3 main methods for flocking behavior
-		sf::Vector2f calculateAlignment(std::shared_ptr<EnemyShip> ship);
-		sf::Vector2f calculateCohesion(std::shared_ptr<EnemyShip> ship);
-		sf::Vector2f calculateSeparation(std::shared_ptr<EnemyShip> ship);
-		sf::Vector2f calculateGoalVector(std::shared_ptr<EnemyShip> ship) const;
+		sf::Vector2f calculateAlignment(const std::shared_ptr<EnemyShip>& ship);
+		sf::Vector2f calculateCohesion(const std::shared_ptr<EnemyShip>& ship);
+		sf::Vector2f calculateSeparation(const std::shared_ptr<EnemyShip>& ship);
+		sf::Vector2f calculateGoalVector(const std::shared_ptr<EnemyShip>& ship) const;
 
 		// Combat methods
 		Ship* getClosestEnemyShip(std::shared_ptr<EnemyShip> ship);

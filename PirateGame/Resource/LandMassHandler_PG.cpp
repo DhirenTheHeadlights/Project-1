@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 LandmassHandler::~LandmassHandler() {
 	for (auto& landMass : landmasses) {
-		GQH->getLandMassQuadtree()->removeObject(landMass.get());
+		QuadtreeHandler::landmassQuadtree->removeObject(landMass.get());
 	}
 }
 
@@ -25,7 +25,7 @@ void LandmassHandler::addLandMassesToChunk(const Map& map, const int numLandMass
 		// Generate a random number between 0 and 3
 		const int randNum = rand() % 3;
 
-		// Create a land mass based on the random number; proportional to the distance between land masses
+		// Create a land mass based on the random number
 		if (randNum == 0) createIsland(points[i]);
 		else if (randNum == 1) createRock(points[i]);
 		else createShipwreck(points[i]);
@@ -33,13 +33,13 @@ void LandmassHandler::addLandMassesToChunk(const Map& map, const int numLandMass
 }
 
 void LandmassHandler::createIsland(const sf::Vector2f position) {
-	const std::shared_ptr<Island> island = std::make_shared<Island>(context);
+	const auto island = std::make_shared<Island>(context);
 	island->getSprite().setPosition(position);
 	island->createLandMass();
 	landmasses.push_back(island);
 	islands.push_back(island);
-	GQH->getLandMassQuadtree()->addObject(island.get());
-	GQH->getIslandQuadtree()->addObject(island.get());
+	QuadtreeHandler::landmassQuadtree->addObject(island.get());
+	QuadtreeHandler::islandQuadtree->addObject(island.get());
 }
 
 void LandmassHandler::createRock(const sf::Vector2f position) {
@@ -48,8 +48,8 @@ void LandmassHandler::createRock(const sf::Vector2f position) {
 	rock->createLandMass();
 	landmasses.push_back(rock);
 	rocks.push_back(rock);
-	GQH->getLandMassQuadtree()->addObject(rock.get());
-	GQH->getRockQuadtree()->addObject(rock.get());
+	QuadtreeHandler::landmassQuadtree->addObject(rock.get());
+	QuadtreeHandler::rockQuadtree->addObject(rock.get());
 }
 
 void LandmassHandler::createShipwreck(const sf::Vector2f position) {
@@ -58,8 +58,8 @@ void LandmassHandler::createShipwreck(const sf::Vector2f position) {
 	shipwreck->createLandMass();
 	landmasses.push_back(shipwreck);
 	shipwrecks.push_back(shipwreck);
-	GQH->getLandMassQuadtree()->addObject(shipwreck.get());
-	GQH->getShipwreckQuadtree()->addObject(shipwreck.get());
+	QuadtreeHandler::landmassQuadtree->addObject(shipwreck.get());
+	QuadtreeHandler::shipwreckQuadtree->addObject(shipwreck.get());
 }
 
 // Draw all the land masses
@@ -67,8 +67,8 @@ void LandmassHandler::drawLandMasses() {
 	// Remove any inactive land masses
 	for (auto& ship : shipwrecks) {
 		if (!ship->isActive()) {
-			GQH->getShipwreckQuadtree()->removeObject(ship.get());
-			GQH->getLandMassQuadtree()->removeObject(ship.get());
+			QuadtreeHandler::shipwreckQuadtree->removeObject(ship.get());
+			QuadtreeHandler::landmassQuadtree->removeObject(ship.get());
 		}
 	}
 	std::erase_if(shipwrecks, [](const std::shared_ptr<Shipwreck>& ship) { return !ship->isActive(); });
@@ -84,9 +84,9 @@ void LandmassHandler::drawLandMasses() {
 }
 
 void LandmassHandler::interactWithLandmasses() {
-	std::vector<Island*> nearbyIslands = GQH->getIslandQuadtree()->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
-	std::vector<Shipwreck*> nearbyShipwrecks = GQH->getShipwreckQuadtree()->findObjectsNearObject(playerShip, lootDistance);
-	std::vector<Rock*> nearbyRocks = GQH->getRockQuadtree()->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
+	std::vector<Island*> nearbyIslands = QuadtreeHandler::islandQuadtree->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
+	std::vector<Shipwreck*> nearbyShipwrecks = QuadtreeHandler::shipwreckQuadtree->findObjectsNearObject(playerShip, lootDistance);
+	std::vector<Rock*> nearbyRocks = QuadtreeHandler::rockQuadtree->findObjectsNearObject(playerShip, context.JSL->getGameData().gameConfig.landmassData.landmassInteractionDistance);
 
 	if (nearestIsland == nullptr) {
 		for (auto& island : nearbyIslands) {

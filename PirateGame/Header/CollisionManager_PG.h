@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GlobalContext_PG.h"
-#include "GlobalQuadtreeHandler_PG.h"
+#include "QuadtreeHandler_PG.h"
 
 #include "EnemyShip_PG.h"
 #include "LandMass_PG.h"
@@ -17,7 +17,7 @@ namespace PirateGame {
 	public:
 		CollisionManager(GlobalContext& context) : context(context) {}
 
-		void handleCollisions(GlobalQuadtreeHandler* GQH);
+		void handleCollisions();
 
 		// Setters
 		void setLandMasses(const std::vector<std::shared_ptr<LandMass>>& landMasses) { this->landMasses = landMasses; }
@@ -46,9 +46,9 @@ namespace PirateGame {
 		bool pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit = 5) const;
 		static bool shipCollisionTest(Ship* ship1, Ship* ship2);
 
-		std::vector<sf::Sprite> handleShipCollisions(GlobalQuadtreeHandler * GQH, Ship* ship);
+		std::vector<sf::Sprite> handleShipCollisions( Ship* ship);
 		void handleLandMassCollision(Ship* ship, LandMass* landmass, std::vector<LandMass*>& collidingLandMasses) const;
-		void handleShipCollision(Ship* ship1, Ship* ship2, std::vector<Ship*>& collidingShips);
+		void handleShipCollision(Ship* ship1, Ship* ship2, std::vector<Ship*>& collidingShips) const;
 		void handleCannonballCollision(Ship* ship, Cannonball* cannonball, std::vector<Cannonball*>& collidingCannonballs);
 		static void handleCannonballCollision(Cannonball* c1, Cannonball* c2);
 	};

@@ -12,7 +12,7 @@ namespace PirateGame {
 	public:
         GlobalValues(sf::Font& font) : font(font) {};
 
-        void loadFromJSON(const std::string filename);
+        void loadFromJSON(const std::string& filename);
 
 		std::string keyToString(sf::Keyboard::Key key);
 		std::string buttonToString(sf::Mouse::Button button);

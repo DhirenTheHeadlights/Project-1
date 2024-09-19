@@ -9,7 +9,7 @@
 #include <random>
 
 #include "GlobalContext_PG.h"
-#include "GlobalQuadtreeHandler_PG.h"
+#include "QuadtreeHandler_PG.h"
 
 #include "ShipGroup_PG.h"
 #include "BattleManager_PG.h"
@@ -17,11 +17,11 @@
 namespace PirateGame {
 	class EnemyShipHandler {
 	public:
-		EnemyShipHandler(GlobalContext& context, GlobalQuadtreeHandler* GQH) : context(context), GQH(GQH) {};
+		EnemyShipHandler(GlobalContext& context) : context(context) {}
 		~EnemyShipHandler() {
 			// Remove all enemy ships
 			for (auto& ship : enemyShips) {
-				GQH->getEnemyShipQuadtree()->removeObject(ship.get());
+				QuadtreeHandler::enemyShipQuadtree->removeObject(ship.get());
 			}
 			enemyShips.clear();
 		};
@@ -31,7 +31,7 @@ namespace PirateGame {
 
 		// Update and draw
 		void update();
-		void draw();
+		void draw() const;
 
 		// Setters
 		void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
@@ -45,18 +45,17 @@ namespace PirateGame {
 	private:
 		// Context
 		GlobalContext& context;
-		GlobalQuadtreeHandler* GQH = nullptr;
 
 		// helper functions
 		void addEnemyShipsToChunk(Chunk& chunk, int numShips);
-		void setShipGroupDestination(std::shared_ptr<ShipGroup> group) const;
-		bool isDestinationReached(std::shared_ptr<ShipGroup> shipGroup) const;
-		void updateGroupDestination(std::shared_ptr<ShipGroup> group);
+		void setShipGroupDestination(const std::shared_ptr<ShipGroup>& group) const;
+		bool isDestinationReached(const std::shared_ptr<ShipGroup>& shipGroup) const;
+		void updateGroupDestination(const std::shared_ptr<ShipGroup>& group) const;
 		void updateGroupsNearPlayer();
-		void updateShipsAsNotNearbyGroup(std::shared_ptr<ShipGroup> group);
-		void joinGroups(std::shared_ptr<ShipGroup> group1, ShipGroup* group2);
-		void updateGroupCombat(std::shared_ptr<ShipGroup> group, std::set<EnemyShip*> nearbyShipsTotal);
-		void interactWithNearbyShips(std::shared_ptr<ShipGroup> group, EnemyShip* otherShip);
+		void updateShipsAsNotNearbyGroup(const std::shared_ptr<ShipGroup>& group) const;
+		static void joinGroups(const std::shared_ptr<ShipGroup>& group1, ShipGroup* group2);
+		void updateGroupCombat(const std::shared_ptr<ShipGroup>& group, std::set<EnemyShip*> nearbyShipsTotal);
+		void interactWithNearbyShips(const std::shared_ptr<ShipGroup>& group, EnemyShip* otherShip);
 
 		std::vector<std::shared_ptr<EnemyShip>> enemyShips;
 		std::vector<std::shared_ptr<ShipGroup>> shipGroups;

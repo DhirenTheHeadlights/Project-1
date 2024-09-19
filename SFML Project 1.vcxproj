@@ -279,7 +279,7 @@
     <ClInclude Include="PirateGame\Header\GlobalContext_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalGameStateManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalFontHandler_PG.h" />
-    <ClInclude Include="PirateGame\Header\GlobalQuadtreeHandler_PG.h" />
+    <ClInclude Include="PirateGame\Header\QuadtreeHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalIDManager_PG.h" />
     <ClInclude Include="PirateGame\Header\GlobalInputHandler_PG.h" />
     <ClInclude Include="PirateGame\Header\ChunkHandler_PG.h" />

@@ -14,13 +14,13 @@ void PlayerOnlyWorld::updateGameLoop(sf::Event event) {
 
 	ESH.update();
 
-	CM.handleCollisions(GQH.get());
+	CM.handleCollisions();
 
 	playerShip->update();
 
 	view.updateDebugView(event);
 
-	GQH->getEnemyShipQuadtree()->draw(context.GV.get());
+	QuadtreeHandler::enemyShipQuadtree->draw(context.GV.get());
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
 		playerShip->getMovementHandler()->setSpeed(playerShip->getMovementHandler()->getSpeed() + 10.f);

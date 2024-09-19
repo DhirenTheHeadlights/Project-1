@@ -21,7 +21,7 @@ namespace PirateGame {
 	class World {
 	public:
 		World(sf::RenderWindow* window) : window(window) {};
-		~World() {};
+		~World() {}
 
 		virtual void setUpWorld();
 
@@ -42,7 +42,6 @@ namespace PirateGame {
 
 		// Global context
 		GlobalContext context;
-		std::shared_ptr<GlobalQuadtreeHandler> GQH = std::make_shared<GlobalQuadtreeHandler>();
 
 		// Game objects
 		Player player;
@@ -51,10 +50,10 @@ namespace PirateGame {
 		View view;
 
 		// Handlers
-		LandmassHandler LMH = LandmassHandler(context, GQH.get());
+		LandmassHandler LMH = LandmassHandler(context);
 		MenuHandler MH = MenuHandler(context);
 		CollisionManager CM = CollisionManager(context);
-		EnemyShipHandler ESH = EnemyShipHandler(context, GQH.get());
+		EnemyShipHandler ESH = EnemyShipHandler(context);
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;

@@ -30,7 +30,7 @@ void World::setUpWorldElements() {
 	waterTiler.initialize();
 
 	// Set up qth
-	GQH->setUpQuadtrees();
+	QuadtreeHandler::setUpQuadtrees();
 
 	// Load ship properties
 	setShipConfig(context.JSL->getGameData().gameConfig);
@@ -44,7 +44,7 @@ void World::setUpPlayerShip() {
 	playerShip = std::make_unique<PlayerShip>(context);
 	playerShip->setUpShip(static_cast<ShipClass>(context.JSL->getGameData().saveData.playerShipClass));
 	playerShip->getSprite().setPosition(context.JSL->getGameData().saveData.playerPosition[0], context.JSL->getGameData().saveData.playerPosition[1]);
-	playerShip->getCannonHandler()->setCannonballQuadtree(GQH->getCannonballQuadtree());
+	playerShip->getCannonHandler()->setCannonballQuadtree(QuadtreeHandler::cannonballQuadtree.get());
 }
 
 void World::setUpLandMasses() {
@@ -70,7 +70,7 @@ void World::setUpMenus() {
 	// Set up the hud
 	MH.getHUD()->getMinimap().setLandmasses(LMH.getLandMasses());
 	MH.getHUD()->getMinimap().setEnemyShips(ESH.getEnemyShips());
-	MH.getHUD()->setPlayerShip(*playerShip.get());
+	MH.getHUD()->setPlayerShip(*playerShip);
 
 	// Set up the inventory
 	MH.getInventoryMenu()->setPlayerShip(playerShip.get());
@@ -103,7 +103,7 @@ void World::updateCoreElements() {
 	context.GC->update();
 	ChunkHandler::updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
 	context.GWC->update();
-	GQH->updateQuadtrees(ChunkHandler::getMapBounds());
+	QuadtreeHandler::updateQuadtrees(ChunkHandler::getMapBounds());
 	context.GTQP->updateTextQueue(window);
 	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
 	waterTiler.update();

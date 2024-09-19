@@ -73,7 +73,7 @@ Ship* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
 		}
 		// Check if any of the group ships are erroniously in the target ships vector. Compare the IDs
 		// as there is a shared pointer in the group ships vector and a raw pointer in the target ships vector
-		if (std::find_if(ships.begin(), ships.end(), [ship](std::shared_ptr<Ship> groupShip) { return groupShip->getID() == ship->getID(); }) != ships.end()) {
+		if (std::find_if(ships.begin(), ships.end(), [ship](const std::shared_ptr<Ship>& groupShip) { return groupShip->getID() == ship->getID(); }) != ships.end()) {
 			std::cout << "Error: Ship [" << ship->getID() << "] is in the target ships vector but is also in the group ships vector! Removing from target ships vector. Wtf are you doing, change the code you idiot." << std::endl;
 			targetShips.erase(std::remove(targetShips.begin(), targetShips.end(), ship), targetShips.end());
 		}
@@ -81,7 +81,7 @@ Ship* ShipGroup::getClosestEnemyShip(std::shared_ptr<EnemyShip> ship) {
 	return closestShip;
 }
 
-sf::Vector2f ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateAlignment(const std::shared_ptr<EnemyShip>& ship) {
 	sf::Vector2f alignment = sf::Vector2f(0, 0);
 	int count = 0;
 
@@ -104,7 +104,7 @@ sf::Vector2f ShipGroup::calculateAlignment(std::shared_ptr<EnemyShip> ship) {
 	return alignment;
 }
 
-sf::Vector2f ShipGroup::calculateCohesion(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateCohesion(const std::shared_ptr<EnemyShip>& ship) {
 	sf::Vector2f cohesion = sf::Vector2f(0, 0);
 	int count = 0;
 
@@ -128,7 +128,7 @@ sf::Vector2f ShipGroup::calculateCohesion(std::shared_ptr<EnemyShip> ship) {
 	return cohesion;
 }
 
-sf::Vector2f ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
+sf::Vector2f ShipGroup::calculateSeparation(const std::shared_ptr<EnemyShip>& ship) {
 	sf::Vector2f separation = sf::Vector2f(0, 0);
 	int count = 0;
 
@@ -151,7 +151,7 @@ sf::Vector2f ShipGroup::calculateSeparation(std::shared_ptr<EnemyShip> ship) {
 	return separation;
 }
 
-sf::Vector2f ShipGroup::calculateGoalVector(std::shared_ptr<EnemyShip> ship) const {
+sf::Vector2f ShipGroup::calculateGoalVector(const std::shared_ptr<EnemyShip>& ship) const {
 	// Calculate the goal vector from the average position of all the ships
 	// and the position of the heading
 	sf::Vector2f goalVector = destination - ship->getSprite().getPosition();

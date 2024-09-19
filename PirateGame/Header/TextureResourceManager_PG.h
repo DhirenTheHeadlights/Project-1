@@ -12,7 +12,7 @@ namespace PirateGame {
     template<typename EnumType>
 
     class TextureResourceManager {
-        static_assert(std::is_enum<EnumType>::value, "TextureResourceManager requires an enum type as a template argument");
+        static_assert(std::is_enum_v<EnumType>, "TextureResourceManager requires an enum type as a template argument");
 
         // Custom hash function for enum class
         struct EnumHash {

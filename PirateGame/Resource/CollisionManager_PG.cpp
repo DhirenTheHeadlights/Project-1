@@ -1,22 +1,24 @@
 #include "CollisionManager_PG.h"
 
+#include "QuadtreeHandler_PG.h"
+
 using namespace PirateGame;
 
-void CollisionManager::handleCollisions(GlobalQuadtreeHandler* GQH) {
+void CollisionManager::handleCollisions() {
 	// Handle collisions for the player ship
-	handleShipCollisions(GQH, playerShip);
+	handleShipCollisions(playerShip);
 
 	std::erase_if(ships, [](const std::shared_ptr<EnemyShip>& s) { return s->getIsDead(); });
 
 	// Handle collisions for each enemy ship
 	for (auto& enemyShip : ships) {
-		enemyShip->getMovementHandler()->setNearbySprites(handleShipCollisions(GQH, enemyShip.get()));
+		enemyShip->getMovementHandler()->setNearbySprites(handleShipCollisions(enemyShip.get()));
 	}
 
 	// Grab nearby cannonballs for each cannonball
 
-	for (const std::vector<Cannonball*> cannonballs = GQH->getCannonballQuadtree()->getObjects(); auto& c1 : cannonballs) {
-		for (std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(c1, nearbyDistanceCannonball); const auto& c2 : nearbyCannonballs) {
+	for (const std::vector<Cannonball*> cannonballs = QuadtreeHandler::cannonballQuadtree->getObjects(); auto& c1 : cannonballs) {
+		for (std::vector<Cannonball*> nearbyCannonballs = QuadtreeHandler::cannonballQuadtree->findObjectsNearObject(c1, nearbyDistanceCannonball); const auto& c2 : nearbyCannonballs) {
 			// Skip if the cannonballs are the same cannonball
 			if (c1 == c2) continue;
 			handleCannonballCollision(c1, c2);
@@ -24,10 +26,10 @@ void CollisionManager::handleCollisions(GlobalQuadtreeHandler* GQH) {
 	}
 }
 
-std::vector<sf::Sprite> CollisionManager::handleShipCollisions(GlobalQuadtreeHandler* GQH, Ship* ship) {
-	const std::vector<LandMass*> nearbyLandMasses = GQH->getLandMassQuadtree()->findObjectsNearObject(ship, nearbyDistanceLandmass);
-	const std::vector<EnemyShip*> nearbyShips = GQH->getEnemyShipQuadtree()->findObjectsNearObject(ship, nearbyDistanceShip);
-	const std::vector<Cannonball*> nearbyCannonballs = GQH->getCannonballQuadtree()->findObjectsNearObject(ship, nearbyDistanceCannonball);
+std::vector<sf::Sprite> CollisionManager::handleShipCollisions(Ship* ship) {
+	const std::vector<LandMass*> nearbyLandMasses = QuadtreeHandler::landmassQuadtree->findObjectsNearObject(ship, nearbyDistanceLandmass);
+	const std::vector<EnemyShip*> nearbyShips = QuadtreeHandler::enemyShipQuadtree->findObjectsNearObject(ship, nearbyDistanceShip);
+	const std::vector<Cannonball*> nearbyCannonballs = QuadtreeHandler::cannonballQuadtree->findObjectsNearObject(ship, nearbyDistanceCannonball);
 
 	// Vectors to hold the colliding objects
 	std::vector<LandMass*> collidingLandMasses = {};
@@ -78,7 +80,7 @@ void CollisionManager::handleLandMassCollision(Ship* ship, LandMass* landmass, s
 	}
 }
 
-void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector<Ship*>& collidingShips) {
+void CollisionManager::handleShipCollision(Ship* ship1, Ship* ship2, std::vector<Ship*>& collidingShips) const {
 	// Check if the ships are colliding
 	if (shipCollisionTest(ship1, ship2)) {
 		// Add the ship to the colliding ships vector
@@ -192,7 +194,7 @@ bool CollisionManager::shipCollisionTest(Ship* ship1, Ship* ship2) {
 }
 
 // This pixel perfect test is specifically for ships and land masses. Sprite1 is the ship, sprite2 is the land mass
-bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, unsigned alphaLimit) const {
+bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, const unsigned alphaLimit) const {
 	const sf::Sprite& sprite1 = ship->getSprite();
 	const sf::Sprite& sprite2 = landmass->getSprite();
 

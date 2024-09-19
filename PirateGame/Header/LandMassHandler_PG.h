@@ -7,7 +7,7 @@
 #include <vector>
 
 #include "GlobalContext_PG.h"
-#include "GlobalQuadtreeHandler_PG.h"
+#include "QuadtreeHandler_PG.h"
 
 #include "Island_PG.h"
 #include "Rock_PG.h"
@@ -16,10 +16,10 @@
 namespace PirateGame {
     class LandmassHandler {
     public:
-        LandmassHandler(GlobalContext& context, GlobalQuadtreeHandler* GQH) : context(context), GQH(GQH) {};
+        LandmassHandler(GlobalContext& context) : context(context) {};
         ~LandmassHandler();
 
-        void addLandMasses(int numLandMasses, float minDistBetweenLandmasses);
+        void addLandMasses(int numLandMassesPerChunk, float minDistBetweenLandmasses);
         void createIsland(sf::Vector2f position);
         void createRock(sf::Vector2f position);
         void createShipwreck(sf::Vector2f position);
@@ -33,7 +33,6 @@ namespace PirateGame {
         void setPlayerShip(PlayerShip* playerShip) { this->playerShip = playerShip; }
     private:
         GlobalContext& context;
-        GlobalQuadtreeHandler* GQH = nullptr;
 
         // Helper functions
         void addLandMassesToChunk(const Map& map, int numLandMasses, float minDistBetweenLandmasses);

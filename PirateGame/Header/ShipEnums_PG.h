@@ -31,6 +31,7 @@ namespace PirateGame {
 			numCannons = properties[5];
 			price = properties[6];
 		}
+
 		float baseSpeed = 1.f;
 		float maxHealth = 100.f;
 		float regenRate = 0.5f;

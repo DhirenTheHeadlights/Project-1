@@ -79,6 +79,6 @@ std::string GlobalValues::buttonToString(sf::Mouse::Button button) {
 	}
 }
 
-void GlobalValues::loadFromJSON(const std::string filename) {
+void GlobalValues::loadFromJSON(const std::string& filename) {
 
 }

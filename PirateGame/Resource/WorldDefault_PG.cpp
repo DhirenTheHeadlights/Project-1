@@ -71,7 +71,7 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 		gameLoopClock.restart();
 	}
 
-	CM.handleCollisions(GQH.get());
+	CM.handleCollisions();
 
 	playerShip->update();
 
