@@ -2,7 +2,6 @@
 
 /// One stop shop for all global context classes
 #include "GlobalClock_PG.h"
-#include "GlobalFontHandler_PG.h"
 #include "GlobalGameStateManager_PG.h"
 #include "GlobalIDManager_PG.h"
 #include "GlobalInputHandler_PG.h"
@@ -15,8 +14,7 @@
 
 namespace PirateGame {
 	struct GlobalContext {
-		std::unique_ptr<GlobalFontHandler> GFH = std::make_unique<GlobalFontHandler>();
-		std::unique_ptr<GlobalValues> GV = std::make_unique<GlobalValues>(*GFH->getGlobalFont());
+		std::unique_ptr<GlobalValues> GV = std::make_unique<GlobalValues>();
 		std::unique_ptr<GlobalGameStateManager> GGSM = std::make_unique<GlobalGameStateManager>();
 		std::unique_ptr<GlobalInputHandler> GIH = std::make_unique<GlobalInputHandler>();
 		std::unique_ptr<GlobalWindController> GWC = std::make_unique<GlobalWindController>();

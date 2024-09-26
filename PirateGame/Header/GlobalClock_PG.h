@@ -3,32 +3,28 @@
 #include <SFML/Graphics.hpp>
 
 namespace PirateGame {
-	class GlobalClock {
-	public:
+	namespace Clock {
+		inline sf::Clock clock;
+		inline sf::Time dt;
+
+		inline sf::Clock autosaveClock;
+
 		// Call this at the beginning of each frame
-		void update() {
+		inline void update() {
 			dt = clock.restart();
 		}
 
 		// Get the same delta time for all classes
-		sf::Time getDeltaTime() const {
+		inline sf::Time getDeltaTime() {
 			return dt;
 		}
 
-		bool getAutosaveTrigger() {
+		inline bool getAutosaveTrigger() {
 			if (autosaveClock.getElapsedTime().asSeconds() > 15) {
 				autosaveClock.restart();
 				return true;
 			}
 			return false;
 		}
-
-
-	private:
-		sf::Clock clock;
-		sf::Time dt;  // Store the delta time for each frame
-
-		sf::Clock autosaveClock;
-
 	};
 }

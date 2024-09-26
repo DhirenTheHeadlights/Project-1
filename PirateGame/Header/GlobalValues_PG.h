@@ -4,13 +4,16 @@
 
 #include <iostream>
 #include <random>
+#include <string>
 #include <unordered_map>
 #include <SFML/Graphics.hpp>
+
+#include "GlobalFontHandler_PG.h"
 
 namespace PirateGame {
 	class GlobalValues {
 	public:
-        GlobalValues(sf::Font& font) : font(font) {};
+        GlobalValues() {};
 
         void loadFromJSON(const std::string& filename);
 
@@ -24,7 +27,7 @@ namespace PirateGame {
             // Find or create the text object
             sf::Text& displayText = textCache[key];
             if (displayText.getString().isEmpty()) {
-                displayText.setFont(font);
+				displayText.setFont(Font::timesNewRoman);
                 displayText.setString(text);
                 displayText.setCharacterSize(size);
                 displayText.setFillColor(color);
@@ -65,8 +68,6 @@ namespace PirateGame {
         std::default_random_engine randomEngine;
 
         sf::RenderWindow* globalWindow = nullptr;
-
-        sf::Font& font;
 
         // Cache for storing text objects
         std::unordered_map<std::string, sf::Text> textCache;
