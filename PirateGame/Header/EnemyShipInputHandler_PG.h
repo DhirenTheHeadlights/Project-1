@@ -4,20 +4,20 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalWindController_PG.h"
+#include "WindHandler_PG.h"
 
 #include "ShipInputHandler_PG.h"
 
 namespace PirateGame {
 	class EnemyShipInputHandler : public ShipInputHandler {
 	public:
-		EnemyShipInputHandler(JSONLoader* json, sf::Sprite& sprite, GlobalWindController* GWC, GlobalSoundManager* GSM) : ShipInputHandler(json, sprite, GSM), GWC(GWC) {};
+		EnemyShipInputHandler(JSONLoader* json, sf::Sprite& sprite, GlobalSoundManager* GSM) : ShipInputHandler(json, sprite, GSM) {};
 		~EnemyShipInputHandler() {};
 
 		void handleCannonFire(const sf::Texture& cannonBallTexture, GlobalIDManager* GIDM) override;
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
-		void handleSailChange() override;
+		void handleSailChange(const sf::Vector2f& windDirection) override;
 
 		// Setters
 		void setTargetPos(sf::Vector2f targetPos) { 
@@ -26,7 +26,7 @@ namespace PirateGame {
 		}
 		void setFiringDistance(float firingDistance) { this->firingDistance = firingDistance; }
 	private:
-		GlobalWindController* GWC;
+
 
 		sf::Vector2f targetPos;
 		float firingDistance = 0.f;

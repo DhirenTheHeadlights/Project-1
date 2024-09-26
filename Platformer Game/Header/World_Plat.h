@@ -1,3 +1,5 @@
+#pragma once
+
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "Map.h"
@@ -5,7 +7,6 @@
 #include "Platforms_Plat.h"
 #include "Player_Plat.h"
 
-#pragma once
 
 namespace PlatformerGame {
 	class World {

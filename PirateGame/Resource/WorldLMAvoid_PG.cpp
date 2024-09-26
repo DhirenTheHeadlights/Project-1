@@ -65,7 +65,7 @@ void LMAvoidWorld::setUpEnemyShips() {
 void LMAvoidWorld::updateGameLoop(sf::Event event) {
 	updateCoreElements();
 
-	ESH.update();
+	ESH.update(WH.getWindDirection(), WH.getWindSpeed());
 
 	CM.handleCollisions();
 
@@ -78,5 +78,5 @@ void LMAvoidWorld::updateGameLoop(sf::Event event) {
 		ESH.getEnemyShips().at(0)->getMovementHandler()->getAStar().recalculatePath();
 	}
 
-	QuadtreeHandler::landmassQuadtree->draw(context.GV.get());
+	QuadtreeHandler::landmassQuadtree->draw();
 }

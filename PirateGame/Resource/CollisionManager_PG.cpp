@@ -198,7 +198,7 @@ bool CollisionManager::pixelPerfectTest(Ship* ship, LandMass* landmass, const un
 	const sf::Sprite& sprite1 = ship->getSprite();
 	const sf::Sprite& sprite2 = landmass->getSprite();
 
-	sf::RenderWindow& window = *context.GV->getWindow();
+	sf::RenderWindow& window = *Globals::window;
 	sf::FloatRect intersection;
 	if (!sprite1.getGlobalBounds().intersects(sprite2.getGlobalBounds(), intersection)) return false;
 

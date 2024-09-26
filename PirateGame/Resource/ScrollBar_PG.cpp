@@ -1,4 +1,5 @@
 #include "ScrollBar_PG.h"
+#include "Globals_PG.h"
 
 using namespace PirateGame;
 
@@ -44,12 +45,8 @@ void ScrollBar::updateScrollBarPositions(const sf::Vector2f& menuPosition) {
 		scrollBarThumb.setPosition(scrollBarTrack.getPosition().x, scrollBarTrack.getPosition().y + (scrollBarTrackLength - scrollBarThumb.getGlobalBounds().height));
 	}   
 
-    // Get the mouse position in window coordinates
-    sf::Vector2f mousePosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*context.GV->getWindow()));
-    sf::Vector2f worldPosition = context.GV->getWindow()->mapPixelToCoords(sf::Mouse::getPosition(*context.GV->getWindow()));
-
     // Check if the scroll bar thumb is grabbed
-    if (scrollBarThumb.getGlobalBounds().contains(worldPosition) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+    if (scrollBarThumb.getGlobalBounds().contains(Globals::getGlobalWorldPosition()) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         isGrabbed = true;
     }
     else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -58,7 +55,7 @@ void ScrollBar::updateScrollBarPositions(const sf::Vector2f& menuPosition) {
 
     // If grabbed, update the thumb position
     if (isGrabbed) {
-        float newY = worldPosition.y - scrollBarThumb.getGlobalBounds().height / 2;
+        float newY = Globals::getGlobalWorldPosition().y - scrollBarThumb.getGlobalBounds().height / 2;
         newY = std::max(newY, scrollBarTrack.getPosition().y);
         newY = std::min(newY, scrollBarTrack.getPosition().y + (interactableMenuLength - scrollBarThumb.getGlobalBounds().height));
         scrollBarThumb.setPosition(scrollBarTrack.getPosition().x, newY);
@@ -79,6 +76,6 @@ void ScrollBar::update(const sf::Vector2f& menuPosition, const std::vector<std::
 
 void ScrollBar::draw() const {
 	// Draw the scroll bar and handle
-	context.GV->getWindow()->draw(scrollBarTrack);
-	context.GV->getWindow()->draw(scrollBarThumb);
+	Globals::window->draw(scrollBarTrack);
+	Globals::window->draw(scrollBarThumb);
 }

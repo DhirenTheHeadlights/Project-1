@@ -1,4 +1,5 @@
 #include "StartMenu_PG.h"
+#include "GameState_PG.h"
 
 using namespace PirateGame;
 
@@ -27,22 +28,22 @@ void StartMenu::setInteractablePositions() {
 // Add the interactables to the menu
 void StartMenu::addInteractablesToMenu() {
 	// Create the start button
-	std::function<void()> startFunc = [this]() { GSM->changeGameState(GameState::GameLoop); };
+	std::function<void()> startFunc = [this]() { GameState::changeGameState(GameState::State::GameLoop); };
 	addButton(sf::Text("Start", font, textSize), context.GTH->getInteractableTextures().getBlackGrayButton(), buttons, startFunc, interactableScale);
 
 	// Create the settings button
-	std::function<void()> settingsFunc = [this]() { std::cout << "opt" << std::endl; GSM->changeGameState(GameState::OptionsMenu); };
+	std::function<void()> settingsFunc = [this]() { std::cout << "opt" << std::endl; GameState::changeGameState(GameState::State::OptionsMenu); };
 	addButton(sf::Text("Options", font, textSize), context.GTH->getInteractableTextures().getBlackGrayButton(), buttons, settingsFunc, interactableScale);
 
 	// Create the quit button
-	std::function<void()> quitFunc = [this]() { GSM->changeGameState(GameState::End); };
+	std::function<void()> quitFunc = [this]() { GameState::changeGameState(GameState::State::End); };
 	addButton(sf::Text("Quit", font, textSize), context.GTH->getInteractableTextures().getBlackGrayButton(), buttons, quitFunc, interactableScale);
 }
 
 void StartMenu::interactWithMenuItems() {
 	// Interact with the buttons
 	for (auto& button : buttons) {
-		button.interact(window, context.GIH.get(), context.GSM.get());
+		button.interact(window,  context.GSM.get());
 	}
 }
 

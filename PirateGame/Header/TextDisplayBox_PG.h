@@ -11,7 +11,7 @@ namespace PirateGame {
 		TextDisplayBox() {};
 
 		// Have to define but it doesn't do anything
-		void interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) override {};
+		void interact(sf::RenderWindow* window, GlobalSoundManager* GSM) override {};
 		void customInteractableSetUp() override {};
 	};
 } 

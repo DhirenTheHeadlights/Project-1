@@ -5,7 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalValues_PG.h"
+#include "Globals_PG.h"
 #include "ShopItem_PG.h"
 
 namespace PirateGame {

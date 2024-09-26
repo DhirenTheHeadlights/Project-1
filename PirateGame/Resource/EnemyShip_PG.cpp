@@ -1,10 +1,11 @@
 #include "EnemyShip_PG.h"
 
+
 using namespace PirateGame;
 
 void EnemyShip::customShipSetUp() {
 	// Add handlers
-	SIH = std::make_unique<EnemyShipInputHandler>(context.JSL.get(), getSprite(), context.GWC.get(), context.GSM.get());
+	SIH = std::make_unique<EnemyShipInputHandler>(context.JSL.get(), getSprite(), context.GSM.get());
 	SMH = std::make_unique<EnemyShipMovementHandler>(getSprite(), getSpecificShipProperties().baseSpeed, context.JSL.get());
 
 	SIH->setBaseSpeed(getSpecificShipProperties().baseSpeed);
@@ -18,7 +19,7 @@ void EnemyShip::customShipUpdate() {
 
 void EnemyShip::customShipDraw() {
 	// Draw the health bar
-	sf::RenderWindow* window = context.GV->getWindow();
+	sf::RenderWindow* window = Globals::window;
 	window->draw(healthBarRed);
 	window->draw(healthBarGreen);
 
@@ -26,7 +27,7 @@ void EnemyShip::customShipDraw() {
 	getSailHandler()->draw(window);
 
 	if (debug) {
-		context.GV->displayText("Health: " + std::to_string(getSpecificShipProperties().maxHealth), getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+		TextQueue::displayText("Health: " + std::to_string(getSpecificShipProperties().maxHealth), getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 	}
 }
 

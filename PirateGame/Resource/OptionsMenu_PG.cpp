@@ -1,4 +1,5 @@
 #include "OptionsMenu_PG.h"
+#include "GameState_PG.h"
 
 using namespace PirateGame;
 
@@ -64,11 +65,11 @@ void OptionsMenu::addInteractablesToMenu() {
 	// Create the back button
 	std::function<void()> backFunc = [this]() {
 		// Grab the global game state manager
-		if (GSM->hasGameStarted()) {
-			GSM->changeGameState(GameState::GameLoop);
+		if (GameState::gameStarted) {
+			GameState::changeGameState(GameState::State::GameLoop);
 		} // Enter the game loop again if the game has started
 		else {
-			GSM->changeGameState(GameState::Start);
+			GameState::changeGameState(GameState::State::Start);
 		}
 		};
 	addButton(sf::Text("Exit", font, interactableTextSize), context.GTH->getOptionsMenuTextures().getTab(), tabButtons, backFunc);
@@ -166,29 +167,29 @@ void OptionsMenu::addControlsTabInteractables() {
 void OptionsMenu::interactWithMenuItems() {
 	// Interact with the tabs
 	for (auto& tab : tabButtons) {
-		tab.interact(window, context.GIH.get(), context.GSM.get());
+		tab.interact(window,  context.GSM.get());
 	}
 
 	// Interact with the interactables for the current tab
 	switch (currentTab) {
 	case Tab::General:
 		for (auto& interactable : generalTabInteractables) {
-			interactable->interact(window, context.GIH.get(), context.GSM.get());
+			interactable->interact(window,  context.GSM.get());
 		}
 		break;
 	case Tab::Graphics:
 		for (auto& interactable : graphicsTabInteractables) {
-			interactable->interact(window, context.GIH.get(), context.GSM.get());
+			interactable->interact(window,  context.GSM.get());
 		}
 		break;
 	case Tab::Audio:
 		for (auto& interactable : audioTabInteractables) {
-			interactable->interact(window, context.GIH.get(), context.GSM.get());
+			interactable->interact(window,  context.GSM.get());
 		}
 		break;
 	case Tab::Controls:
 		for (auto& interactable : controlsTabInteractables) {
-			interactable->interact(window, context.GIH.get(), context.GSM.get());
+			interactable->interact(window,  context.GSM.get());
 		}
 		break;
 	}

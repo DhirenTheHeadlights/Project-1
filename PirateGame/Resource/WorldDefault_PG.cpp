@@ -5,23 +5,23 @@ using namespace PirateGame;
 void DefaultWorld::createWorld(sf::Event event) {
 	window->clear();
 
-	context.GIH->update();
+	Input::update();
 
 	// Handle the different game states
-	switch (context.GGSM->getCurrentGameState()) {
-	case GameState::Start:
+	switch (GameState::currGameState) {
+	case GameState::State::Start:
 		// Draw the main menu
 		MH.openMenu(MenuType::StartMenu);
 		break;
-	case GameState::OptionsMenu:
+	case GameState::State::OptionsMenu:
 		// Draw the options menu
 		MH.openMenu(MenuType::OptionsMenu);
 		break;
-	case GameState::End:
+	case GameState::State::End:
 		// End the game and close the window
 		window->close();
 		break;
-	case GameState::GameLoop:
+	case GameState::State::GameLoop:
 		// Run the game loop
 		drawGameLoop();
 		updateGameLoop(event);
@@ -57,8 +57,8 @@ void DefaultWorld::createWorld(sf::Event event) {
 }
 
 void DefaultWorld::updateGameLoop(sf::Event event) {
-	if (context.GV->getShowHUD()) MH.openMenu(MenuType::HUD);
-	if (context.GV->getShowInventory()) MH.openMenu(MenuType::InventoryMenu);
+	if (Globals::showHUD) MH.openMenu(MenuType::HUD);
+	if (Globals::showInventory) MH.openMenu(MenuType::InventoryMenu);
 
 	updateCoreElements();
 
@@ -67,13 +67,13 @@ void DefaultWorld::updateGameLoop(sf::Event event) {
 	LMH.interactWithLandmasses();
 
 	if (gameLoopClock.getElapsedTime() > gameLoopWaitTime) {
-		ESH.update();
+		ESH.update(WH.getWindDirection(), WH.getWindSpeed());
 		gameLoopClock.restart();
 	}
 
 	CM.handleCollisions();
 
-	playerShip->update();
+	playerShip->update(WH.getWindDirection(), WH.getWindSpeed());
 
-	context.GV->setShowInventory(context.GIH->isKeyToggled(sf::Keyboard::I));
+	Globals::showInventory = Input::isKeyToggled(sf::Keyboard::I);
 }

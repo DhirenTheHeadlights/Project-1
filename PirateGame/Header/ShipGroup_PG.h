@@ -15,7 +15,7 @@ namespace PirateGame {
 		ShipGroup(GlobalContext& context) : context(context), ID(context.GIDM->generateID()) {};
 		~ShipGroup() {};
 
-		void updateGroup(Quadtree<EnemyShip>* shipQuadtree);
+		void updateGroup(Quadtree<EnemyShip>* shipQuadtree, const sf::Vector2f& windDirection, float windSpeed);
 		void drawGroup(bool debug = false) const;
 
 		void addShip(std::shared_ptr<EnemyShip> ship, Quadtree<EnemyShip>* shipQuadtree) {

@@ -6,7 +6,7 @@
 #include <iostream>
 
 #include "VectorMath.h"
-#include "GlobalInputHandler_PG.h"
+#include "Input_PG.h"
 
 #include "ShipSail_PG.h"
 

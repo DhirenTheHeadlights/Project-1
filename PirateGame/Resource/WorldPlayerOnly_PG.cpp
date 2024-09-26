@@ -12,15 +12,15 @@ void PlayerOnlyWorld::updateGameLoop(sf::Event event) {
 
 	LMH.interactWithLandmasses();
 
-	ESH.update();
+	ESH.update(WH.getWindDirection(), WH.getWindSpeed());
 
 	CM.handleCollisions();
 
-	playerShip->update();
+	playerShip->update(WH.getWindDirection(), WH.getWindSpeed());
 
 	view.updateDebugView(event);
 
-	QuadtreeHandler::enemyShipQuadtree->draw(context.GV.get());
+	QuadtreeHandler::enemyShipQuadtree->draw();
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
 		playerShip->getMovementHandler()->setSpeed(playerShip->getMovementHandler()->getSpeed() + 10.f);

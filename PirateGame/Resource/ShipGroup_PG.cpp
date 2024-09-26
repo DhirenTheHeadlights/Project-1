@@ -2,9 +2,9 @@
 
 using namespace PirateGame;
 
-void ShipGroup::updateGroup(Quadtree<EnemyShip>* shipQuadtree) {
+void ShipGroup::updateGroup(Quadtree<EnemyShip>* shipQuadtree, const sf::Vector2f& windDirection, const float windSpeed) {
 	for (size_t i = 0; i < ships.size(); i++) {
-		ships[i]->update();
+		ships[i]->update(windDirection, windSpeed);
 		shipQuadtree->updateObjectPosition(ships[i].get());
 
 		// Calculate the alignment, cohesion, and separation vectors and add them to the destination
@@ -41,23 +41,23 @@ void ShipGroup::drawGroup(bool debug) const {
 		if (!debug) continue;
 
 		// Check if the shipgroup is near the view, if so, display the shipgroup information
-		if (!(vm::distance(ship->getSprite().getPosition(), context.GV->getWindow()->getView().getCenter()) < 2000.f)) continue;
+		if (!(vm::distance(ship->getSprite().getPosition(), Globals::window->getView().getCenter()) < 2000.f)) continue;
 
 		sf::Vector2f pos = sf::Vector2f(ship->getSprite().getPosition().x + 150.f, ship->getSprite().getPosition().y);
-		context.GV->displayText("GID: " + std::to_string(ID->id) + " SID: " + std::to_string(ship->getID()->id), pos, sf::Color::White, 10);
-		context.GV->displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, static_cast<float>(context.GV->getTextSize())), sf::Color::White, 10);
-		context.GV->displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * static_cast<float>(context.GV->getTextSize())), sf::Color::White, 10);
-		context.GV->displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 3 * static_cast<float>(context.GV->getTextSize())), sf::Color::White, 10);
+		TextQueue::displayText("GID: " + std::to_string(ID->id) + " SID: " + std::to_string(ship->getID()->id), pos, sf::Color::White, 10);
+		TextQueue::displayText("Ship group size: " + std::to_string(ships.size()), pos + sf::Vector2f(0, static_cast<float>(TextQueue::textSize)), sf::Color::White, 10);
+		TextQueue::displayText("Heading: " + std::to_string(heading.x) + ", " + std::to_string(heading.y), pos + sf::Vector2f(0, 2 * static_cast<float>(TextQueue::textSize)), sf::Color::White, 10);
+		TextQueue::displayText("Num of target ships: " + std::to_string(targetShips.size()), pos + sf::Vector2f(0, 3 * static_cast<float>(TextQueue::textSize)), sf::Color::White, 10);
 		std::string targetShipIDs = "Target ship IDs: ";
 		for (auto& targetShip : targetShips) {
 			targetShipIDs += std::to_string(targetShip->getID()->id) + ", ";
 		}
-		context.GV->displayText(targetShipIDs, pos + sf::Vector2f(0, 4 * static_cast<float>(context.GV->getTextSize())), sf::Color::White, 10);
+		TextQueue::displayText(targetShipIDs, pos + sf::Vector2f(0, 4 * static_cast<float>(TextQueue::textSize)), sf::Color::White, 10);
 		std::string groupIDsInteractedWithStr = "Group IDs interacted with: ";
 		for (auto& groupID : groupIDsInteractedWith) {
 			groupIDsInteractedWithStr += std::to_string(groupID->id) + ", ";
 		}
-		context.GV->displayText(groupIDsInteractedWithStr, pos + sf::Vector2f(0, 5 * static_cast<float>(context.GV->getTextSize())), sf::Color::White, 10);
+		TextQueue::displayText(groupIDsInteractedWithStr, pos + sf::Vector2f(0, 5 * static_cast<float>(TextQueue::textSize)), sf::Color::White, 10);
 	}
 }
 

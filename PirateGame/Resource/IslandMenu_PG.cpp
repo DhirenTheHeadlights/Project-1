@@ -58,7 +58,7 @@ void IslandMenu::addInteractablesToMenu() {
 		hasPlayerSaidNo = true; // Set the flag to true so the menu does not show
 		ship->getMovementHandler()->setAnchorDrop(false);
 		// Enable the HUD
-		context.GV->setShowHUD(true);
+		Globals::showHUD = true;
 	});
 	initialButtons[1].getText().setFillColor(sf::Color::Black);
 
@@ -274,7 +274,7 @@ void IslandMenu::setInteractablePositions() {
 		ship->getMovementHandler()->setStopShipRotationFlag(true);
 
 		// Disable the HUD
-		context.GV->setShowHUD(false);
+		Globals::showHUD = false;
 
 		return; // Return early if the player has not entered the island
 	}
@@ -374,13 +374,13 @@ void IslandMenu::updateMarket() {
 void IslandMenu::interactWithMarket() {
 	// Interact with the market
 	for (size_t i = 0; i < buyButtons.size(); ++i) {
-		buyButtons[i].interact(window, context.GIH.get(), context.GSM.get());
-		sellButtons[i].interact(window, context.GIH.get(), context.GSM.get());
+		buyButtons[i].interact(window,  context.GSM.get());
+		sellButtons[i].interact(window,  context.GSM.get());
 	}
 
 	// Interact with the left and right navigation buttons
 	for (auto& button : leftRightNavButtons) {
-		button.interact(window, context.GIH.get(), context.GSM.get());
+		button.interact(window,  context.GSM.get());
 	}
 
 	// Update the market
@@ -390,7 +390,7 @@ void IslandMenu::interactWithMarket() {
 void IslandMenu::interactWithShipBuy() {
 	// Interact with the ship buy menu
 	for (size_t i = 0; i < shipBuyButtons.size(); ++i) {
-		shipBuyButtons[i].interact(window, context.GIH.get(), context.GSM.get());
+		shipBuyButtons[i].interact(window,  context.GSM.get());
 	}
 }
 
@@ -445,16 +445,16 @@ void IslandMenu::interactWithMenuItems() {
 
 		// Interact with the left and right navigation buttons
 		for (auto& button : leftRightNavButtons) {
-			button.interact(window, context.GIH.get(), context.GSM.get());
+			button.interact(window,  context.GSM.get());
 		}
 
 		// Interact with the close menu button
-		uiButtons[0].interact(window, context.GIH.get(), context.GSM.get());
+		uiButtons[0].interact(window,  context.GSM.get());
 	}
 	else {
 		// Interact with the inital menu
 		for (auto& interactable : initialButtons) {
-			interactable.interact(window, context.GIH.get(), context.GSM.get());
+			interactable.interact(window,  context.GSM.get());
 		}
 	}
 }

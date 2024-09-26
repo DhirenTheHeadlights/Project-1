@@ -119,7 +119,7 @@ void EnemyShipHandler::updateGroupsNearPlayer() {
 	}
 }
 
-void EnemyShipHandler::update() {
+void EnemyShipHandler::update(const sf::Vector2f& windDirection, const float windSpeed) {
 	// Update battle manager
 	battleManager.updateBattles();
 
@@ -128,7 +128,7 @@ void EnemyShipHandler::update() {
 	// Update all the enemy ships
 	for (auto& enemyShipGroup : shipGroups) {
 		updateGroupDestination(enemyShipGroup);
-		enemyShipGroup->updateGroup(QuadtreeHandler::enemyShipQuadtree.get());
+		enemyShipGroup->updateGroup(QuadtreeHandler::enemyShipQuadtree.get(), windDirection, windSpeed);
 	}
 
 	// Ship groups edited by random chance when 2 enemy ship groups are close to each other
@@ -189,7 +189,7 @@ void EnemyShipHandler::interactWithNearbyShips(const std::shared_ptr<ShipGroup>&
 	const int interaction = vm::randomValue(0, interactionChance + static_cast<int>(enemyShipGroup->getEnemyShips().size()));
 
 	// Shows if there is interaction. Possible framework for future attack indicator!
-	context.GV->displayText(std::to_string(otherShip->getID()->id) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
+	TextQueue::displayText(std::to_string(otherShip->getID()->id) + ", Interact = " + std::to_string(interaction), otherShip->getSprite().getPosition() + sf::Vector2f(25, 25), (interaction != 1 && interaction != 2) ? sf::Color::White : sf::Color::Red, 20);
 
 	const auto otherShipGroup = std::ranges::find_if(shipGroups, [otherShip](const std::shared_ptr<ShipGroup>& group) { return group->getID() == otherShip->getGroupID(); });
 

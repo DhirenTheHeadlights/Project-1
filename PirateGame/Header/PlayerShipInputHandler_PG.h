@@ -4,19 +4,19 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GlobalWindController_PG.h"
+#include "WindHandler_PG.h"
 #include "ShipInputHandler_PG.h"
 
 namespace PirateGame {
 	class PlayerShipInputHandler : public ShipInputHandler {
 	public:
-		PlayerShipInputHandler(JSONLoader* json, sf::Sprite& sprite, GlobalSoundManager* GSM, GlobalInputHandler* GIH, GlobalWindController* GWC) : ShipInputHandler(json, sprite, GSM), GIH(GIH), GWC(GWC) {};
+		PlayerShipInputHandler(JSONLoader* json, sf::Sprite& sprite, GlobalSoundManager* GSM) : ShipInputHandler(json, sprite, GSM) {};
 		~PlayerShipInputHandler() {};
 
 		void handleCannonFire(const sf::Texture& cannonBallTexture, GlobalIDManager* GIDM) override;
 		void handleCannonAim() override;
 		void handleAnchorDrop() override;
-		void handleSailChange() override;
+		void handleSailChange(const sf::Vector2f& windDirection) override;
 
 		sf::Keyboard::Key getFireKey() const { return fireKey; }
 		sf::Keyboard::Key getManualAimKey() const { return manualAimKey; }
@@ -25,8 +25,6 @@ namespace PirateGame {
 		sf::Keyboard::Key getAnchorDropKey() const { return anchorDropKey; }
 
 	private:
-		GlobalInputHandler* GIH;
-		GlobalWindController* GWC;
 
 		// Keys
 		sf::Keyboard::Key fireKey = sf::Keyboard::Space;

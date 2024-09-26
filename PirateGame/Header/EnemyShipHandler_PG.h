@@ -30,7 +30,7 @@ namespace PirateGame {
 		void addEnemyShip(sf::Vector2f position, ShipClass type = ShipClass::Random);
 
 		// Update and draw
-		void update();
+		void update(const sf::Vector2f& windDirection, float windSpeed);
 		void draw() const;
 
 		// Setters

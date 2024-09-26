@@ -10,9 +10,9 @@ void EnemyShipInputHandler::handleCannonFire(const sf::Texture& cannonballTextur
 	}
 
     // Check if the angle is within the allowed firing arc
-    if (std::abs(SCH->getFiringDirectionAngle()) <= SCH->getMaxFiringAngle() // Check if the player is within the firing arc
-        && targetPos != sf::Vector2f(0, 0)                                       // Check if the target position is valid
-        && cannonCooldownClock.getElapsedTime() > cooldown) {                    // Check if the cooldown has expired
+    if (std::abs(SCH->getFiringDirectionAngle()) <= SCH->getMaxFiringAngle()			// Check if the player is within the firing arc
+        && targetPos != sf::Vector2f(0, 0)											// Check if the target position is valid
+        && cannonCooldownClock.getElapsedTime() > cooldown) {							// Check if the cooldown has expired
 
         SCH->shootCannonballs(cannonballTexture, GIDM);
         cannonCooldownClock.restart();
@@ -50,6 +50,6 @@ void EnemyShipInputHandler::handleAnchorDrop() {
 	//...
 }
 
-void EnemyShipInputHandler::handleSailChange() {
-    SSH->moveSailLeftRightAutomatically(GWC->getWindDirection(), sprite.getRotation(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
+void EnemyShipInputHandler::handleSailChange(const sf::Vector2f& windDirection) {
+    SSH->moveSailLeftRightAutomatically(windDirection, sprite.getRotation(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
 }

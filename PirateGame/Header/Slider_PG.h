@@ -23,7 +23,7 @@ namespace PirateGame {
 		~Slider() {};
 
 		void customInteractableSetUp() override;
-		void interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) override;
+		void interact(sf::RenderWindow* window, GlobalSoundManager* GSM) override;
 		void draw(sf::RenderWindow* window) override;
 		void setPosition(sf::Vector2f pos) override;
 

@@ -9,7 +9,7 @@
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
-		InGameHUD(GlobalContext& context) : Menu(context), minimap(context.GTH->getHUDTextures().getMiniMap(), context.GTH->getHUDTextures().getMiniMapShipIcon()) {
+		InGameHUD(GlobalContext& context, WindHandler& WH) : Menu(context), minimap(context.GTH->getHUDTextures().getMiniMap(), context.GTH->getHUDTextures().getMiniMapShipIcon()), WH(WH) {
 			healthBarGreenSprite.setTexture(context.GTH->getHUDTextures().getHealthBarGreen());
 			healthBarGreenSprite.setScale(healthBarScale);
 
@@ -44,6 +44,7 @@ namespace PirateGame {
 		sf::Vector2f settingsScale = { 0.8f, 0.8f };
 		sf::Vector2f infoBoxScale = { 0.5f, 0.5f };
 
+		WindHandler& WH;
 		sf::VertexArray windVector;
 		sf::CircleShape windCircle;
 		sf::Text windText;

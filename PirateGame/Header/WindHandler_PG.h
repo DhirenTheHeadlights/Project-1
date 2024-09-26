@@ -8,9 +8,9 @@
 #include "VectorMath.h"
 
 namespace PirateGame {
-    class GlobalWindController {
+    class WindHandler {
     public:
-        GlobalWindController() {
+        WindHandler() {
             randomizeWind();
         }
 

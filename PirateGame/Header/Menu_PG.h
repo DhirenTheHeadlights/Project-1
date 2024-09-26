@@ -11,26 +11,27 @@
 #include <string>
 
 #include "GlobalContext_PG.h"
-
+#include "Font_PG.h"
 #include "Button_PG.h"
 #include "Slider_PG.h"
 #include "TextDisplayBox_PG.h"
 #include "TextInpuBox_PG.h"
 #include "DropDown_PG.h"
+#include "Globals_PG.h"
 
 namespace PirateGame {
 	class Menu {
 	public:
-		Menu(GlobalContext& context) : context(context), font(*context.GFH->getGlobalFont()), window(context.GV->getWindow()), GSM(context.GGSM.get()) {};
+		Menu(GlobalContext& context) : context(context), font(Font::globalFont), window(Globals::window) {}
 
-		~Menu() {};
+		~Menu() {}
 
-		virtual void setUpMenu() {};
+		virtual void setUpMenu() {}
 		virtual void draw();
-		virtual void update() {};
-		virtual void addInteractablesToMenu() {};
-		virtual void setInteractablePositions() {};
-		virtual void interactWithMenuItems() {};
+		virtual void update() {}
+		virtual void addInteractablesToMenu() {}
+		virtual void setInteractablePositions() {}
+		virtual void interactWithMenuItems() {}
 
 	private:
 		// Menu variables
@@ -65,8 +66,6 @@ namespace PirateGame {
 		unsigned interactableTextSize = 10u;
 		float padding = 10.0f;
 
-		// GameStateManager
-		GlobalGameStateManager* GSM = nullptr;
 
 		// Helper function to convert a float to a string with a set number of decimal places
 		std::string floatToString(float number, int decimalPlaces = 2) {

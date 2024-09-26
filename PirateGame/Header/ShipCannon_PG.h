@@ -32,7 +32,7 @@ namespace PirateGame {
 				cannonSprite.setOrigin(5.f, 5.f);
 			}
 		};
-		~ShipCannon() {};
+		~ShipCannon() {}
 
 		void fireCannon(FiringSide FS, const sf::Sprite& shipSprite, const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
 		void drawCannonNBalls(sf::RenderWindow* window) const;

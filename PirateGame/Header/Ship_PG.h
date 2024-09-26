@@ -23,7 +23,7 @@ namespace PirateGame {
 		// Create the ship and set its values. Random ship class if not specified.
 		void setUpShip(const ShipClass shipClass = ShipClass::Random, const Region region = Region::SandyShores);
 		virtual void customShipSetUp() = 0; // Virtual method to allow for custom ship setup
-		void update();
+		void update(const sf::Vector2f& windDirection, float windSpeed);
 		virtual void customShipUpdate() = 0; // Virtual method to allow for custom ship update
 		void draw();
 		virtual void customShipDraw() = 0; // Virtual method to allow for custom ship draw

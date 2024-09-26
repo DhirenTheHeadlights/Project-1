@@ -24,8 +24,8 @@ namespace PirateGame {
 		MenuHandler(GlobalContext& context) : context(context) {};
 		~MenuHandler() {};
 
-		void createMenus();
-		void setUpMenus();
+		void createMenus(WindHandler& WH);
+		void setUpMenus() const;
 		void openMenu(MenuType menuType) const;
 
 		StartMenu* getStartMenu() const { return startMenu.get(); }

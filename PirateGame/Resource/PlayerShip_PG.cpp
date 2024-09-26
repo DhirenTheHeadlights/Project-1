@@ -5,8 +5,8 @@ using namespace PirateGame;
 /// Custom functions
 
 void PlayerShip::customShipSetUp() {
-	SIH = std::make_unique<PlayerShipInputHandler>(context.JSL.get(), getSprite(), context.GSM.get(), context.GIH.get(), context.GWC.get());
-	SMH = std::make_unique<PlayerShipMovementHandler>(context.GV->getWindow(), getSprite(), getSpecificShipProperties().baseSpeed, context.JSL.get());
+	SIH = std::make_unique<PlayerShipInputHandler>(context.JSL.get(), getSprite(), context.GSM.get());
+	SMH = std::make_unique<PlayerShipMovementHandler>(Globals::window, getSprite(), getSpecificShipProperties().baseSpeed, context.JSL.get());
 	
 	SIvH = std::make_unique<ShipInventoryHandler>();
 	SIvH->addGold(context.JSL->getGameData().saveData.playerGold);
@@ -32,7 +32,7 @@ void PlayerShip::customShipUpdate() {
 
 void PlayerShip::customShipDraw() {
 	// Draw the health bar
-	sf::RenderWindow* window = context.GV->getWindow();
+	sf::RenderWindow* window = Globals::window;
 	
 	getCannonHandler()->drawCannons(window);
 	getSailHandler()->draw(window);

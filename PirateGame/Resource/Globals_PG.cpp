@@ -1,8 +1,8 @@
-#include "GlobalValues_PG.h"
+#include "Globals_PG.h"
 
 using namespace PirateGame;
 
-std::string GlobalValues::keyToString(sf::Keyboard::Key key) {
+std::string Globals::keyToString(const sf::Keyboard::Key key) {
 	switch (key) {
 		case sf::Keyboard::A: return "A";
 		case sf::Keyboard::B: return "B";
@@ -69,7 +69,7 @@ std::string GlobalValues::keyToString(sf::Keyboard::Key key) {
 	return "Error: Key not found.";
 }
 
-std::string GlobalValues::buttonToString(sf::Mouse::Button button) {
+std::string Globals::buttonToString(const sf::Mouse::Button button) {
 	switch (button) {
 		case sf::Mouse::Left: return "LMB";
 		case sf::Mouse::Right: return "RMB";
@@ -79,6 +79,6 @@ std::string GlobalValues::buttonToString(sf::Mouse::Button button) {
 	}
 }
 
-void GlobalValues::loadFromJSON(const std::string& filename) {
+void Globals::loadFromJSON(const std::string& filename) {
 
 }

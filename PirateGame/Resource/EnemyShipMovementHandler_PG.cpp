@@ -5,7 +5,7 @@ using namespace PirateGame;
 
 void EnemyShipMovementHandler::update(const sf::Vector2f& sailDirection, const sf::Time& dt, const sf::Vector2f& windDirection, const float windSpeed) {
     astar.update(sprite.getPosition());
-    //getAStar().drawDebug(context.GV->getWindow());
+    //getAStar().drawDebug(Globals::window);
 
 	move(sailDirection, dt, windDirection, windSpeed);
 }
@@ -13,8 +13,8 @@ void EnemyShipMovementHandler::update(const sf::Vector2f& sailDirection, const s
 void EnemyShipMovementHandler::setSpriteRotation() {
     if (getStopShipRotationFlag()) return;
 
-    //context.GV->getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 200.f, sf::Color::Green));
-    //context.GV->getWindow()->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 200.f, sf::Color::Red));
+    //Globals::window->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(destination - getSprite().getPosition()) * 200.f, sf::Color::Green));
+    //Globals::window->draw(vm::createVectorLine(getSprite().getPosition(), vm::normalize(direction) * 200.f, sf::Color::Red));
 
     // Check if the ship is active towards the target
     if (activeTowardsTarget) {

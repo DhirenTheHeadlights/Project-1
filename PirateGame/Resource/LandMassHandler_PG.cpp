@@ -75,10 +75,10 @@ void LandmassHandler::drawLandMasses() {
 	std::erase_if(landmasses, [](const std::shared_ptr<LandMass>& landmass) { return !landmass->isActive(); });
 
 	// Draw all the land masses and add them to the hashmap
-	sf::RenderWindow* window = context.GV->getWindow();
+	sf::RenderWindow* window = Globals::window;
 	for (const auto& i : landmasses) {
 		// Print debug for region types
-		context.GV->displayText(ChunkHandler::getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
+		TextQueue::displayText(ChunkHandler::getRegionHandler().getRegionValuesAtPosition(i->getSprite().getPosition()).displayString, i->getSprite().getPosition() + sf::Vector2f(0, 50), sf::Color::White);
 		i->draw(*window);
 	}
 }
@@ -120,8 +120,8 @@ void LandmassHandler::interactWithLandmasses() {
 
 			// Display the loot
 			for (auto& loot : shipwreck->getLoot()) {
-				sf::Text lootText("You have received " + vm::setSignificantFigures(loot.amount, 4) + ' ' + loot.name, *context.GFH->getGlobalFont());
-				context.GTQP->addTextToQueue(lootText, sf::seconds(5.f));
+				sf::Text lootText("You have received " + vm::setSignificantFigures(loot.amount, 4) + ' ' + loot.name, Font::globalFont);
+				TextQueue::addTextToQueue(lootText, sf::seconds(5.f));
 			}
 
 			break;

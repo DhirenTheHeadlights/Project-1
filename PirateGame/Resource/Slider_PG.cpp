@@ -24,7 +24,7 @@ void Slider::setPosition(sf::Vector2f pos) {
 }
 
 // Interact with the slider
-void Slider::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
+void Slider::interact(sf::RenderWindow* window, GlobalSoundManager* GSM) {
     sf::Vector2f mousePosition = sf::Vector2f(sf::Mouse::getPosition(*window));
 
     // Start grabbing if the mouse is over the slider thumb and the left mouse button is pressed

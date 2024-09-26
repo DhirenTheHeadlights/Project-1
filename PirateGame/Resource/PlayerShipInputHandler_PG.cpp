@@ -4,7 +4,7 @@ using namespace PirateGame;
 
 void PlayerShipInputHandler::handleCannonFire(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) {
 	// Fire the cannons
-	if (GIH->isKeyPressedOnce(fireKey) && cannonCooldownClock.getElapsedTime().asSeconds() > cooldown.asSeconds()) {
+	if (Input::isKeyPressedOnce(fireKey) && cannonCooldownClock.getElapsedTime().asSeconds() > cooldown.asSeconds()) {
 		SCH->shootCannonballs(cannonballTexture, GIDM);
 		cannonCooldownClock.restart();
 		if (inAudioRange) GSM->playSound(SoundId::CannonShot);
@@ -13,15 +13,15 @@ void PlayerShipInputHandler::handleCannonFire(const sf::Texture& cannonballTextu
 
 void PlayerShipInputHandler::handleCannonAim() {
 	// Set the firing side of the ship
-	if (GIH->isMouseButtonPressedOnce(portMouseButton)) {
+	if (Input::isMouseButtonPressedOnce(portMouseButton)) {
 		SCH->setFiringSide(FiringSide::Port);
 	}
-	if (GIH->isMouseButtonPressedOnce(starboardMouseButton)) {
+	if (Input::isMouseButtonPressedOnce(starboardMouseButton)) {
 		SCH->setFiringSide(FiringSide::Starboard);
 	}
 
 	// Rotate the cannons based on the mouse position if cannon mode is set to manual
-	if (GIH->isKeyToggled(manualAimKey)) {
+	if (Input::isKeyToggled(manualAimKey)) {
 		SCH->setFiringState(FiringState::TowardsMouse);
 		SMH->setStopShipRotationFlag(true);
 	}
@@ -32,24 +32,24 @@ void PlayerShipInputHandler::handleCannonAim() {
 }
 
 void PlayerShipInputHandler::handleAnchorDrop() {
-	if (GIH->isKeyPressedOnce(anchorDropKey)) {
+	if (Input::isKeyPressedOnce(anchorDropKey)) {
 		SMH->setAnchorDrop(!SMH->getDroppedAnchor());
 	}
 }
 
-void PlayerShipInputHandler::handleSailChange() {
-	if (GIH->isKeyHeld(sailUpKey)) {
+void PlayerShipInputHandler::handleSailChange(const sf::Vector2f& windDirection) {
+	if (Input::isKeyHeld(sailUpKey)) {
 		SSH->moveSailsUp(sailUpKey);
 	}
-	if (GIH->isKeyHeld(sailDownKey)) {
+	if (Input::isKeyHeld(sailDownKey)) {
 		SSH->moveSailsDown(sailDownKey);
 	}
-	if (GIH->isKeyHeld(sailLeftKey)) {
+	if (Input::isKeyHeld(sailLeftKey)) {
 		SSH->moveSailsLeft(sailLeftKey, json->getGameData().gameConfig.shipData.sailRotationSpeed);
 	}
-	if (GIH->isKeyHeld(sailRightKey)) {
+	if (Input::isKeyHeld(sailRightKey)) {
 		SSH->moveSailsRight(sailRightKey, json->getGameData().gameConfig.shipData.sailRotationSpeed);
 	}
 
-	SSH->moveSailLeftRightAutomatically(GWC->getWindDirection(), sprite.getRotation(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
+	SSH->moveSailLeftRightAutomatically(windDirection, sprite.getRotation(), json->getGameData().gameConfig.shipData.sailRotationSpeed);
 }

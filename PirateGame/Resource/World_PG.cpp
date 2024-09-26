@@ -1,5 +1,5 @@
 #include "World_PG.h"
-
+#include "Font_PG.h"
 
 using namespace PirateGame;
 
@@ -18,7 +18,7 @@ void World::setUpWorld() {
 
 void World::setUpWorldElements() {
 	// Set up the window and map
-	context.GV->setWindow(window);
+	Globals::window = window;
 	ChunkHandler::initializeMap();
 	view = View(window);
 
@@ -26,11 +26,15 @@ void World::setUpWorldElements() {
 	context.JSL->loadGameConfig("PirateGame/json/gameConfig.json");
 	context.JSL->loadSaveData("PirateGame/json/saveFile.json");
 
-	// Set up the background
+	// Set up the background and load fonts
 	waterTiler.initialize();
+	Font::setUpFonts();
 
 	// Set up qth
 	QuadtreeHandler::setUpQuadtrees();
+
+	// Set up Input Handler
+	Input::initializeInput();
 
 	// Load ship properties
 	setShipConfig(context.JSL->getGameData().gameConfig);
@@ -65,7 +69,7 @@ void World::setUpCollisionManager() {
 }
 
 void World::setUpMenus() {
-	MH.createMenus();
+	MH.createMenus(WH);
 	
 	// Set up the hud
 	MH.getHUD()->getMinimap().setLandmasses(LMH.getLandMasses());
@@ -79,12 +83,12 @@ void World::setUpMenus() {
 
 void World::setUpUI() {
 	// Set up the frame rate text
-	frameRateText.setFont(*context.GFH->getGlobalFont());
+	frameRateText.setFont(Font::globalFont);
 	frameRateText.setCharacterSize(24u);
 	frameRateText.setFillColor(sf::Color::White);
 
 	// Set up the experience text
-	experience.setFont(*context.GFH->getGlobalFont());
+	experience.setFont(Font::globalFont);
 	experience.setCharacterSize(24u);
 	experience.setFillColor(sf::Color::White);
 }
@@ -96,28 +100,28 @@ void World::drawGameLoop() {
 	window->draw(experience);
 	playerShip->draw();
 	ESH.draw();
-	context.GTQP->drawTextQueue(context.GV->getWindow());
+	TextQueue::drawTextQueue(Globals::window);
 }
 
 void World::updateCoreElements() {
-	context.GC->update();
-	ChunkHandler::updateChunks(context.GV->getWindow(), playerShip->getSprite().getPosition());
-	context.GWC->update();
+	Clock::update();
+	ChunkHandler::updateChunks(Globals::window, playerShip->getSprite().getPosition());
+	WH.update();
 	QuadtreeHandler::updateQuadtrees(ChunkHandler::getMapBounds());
-	context.GTQP->updateTextQueue(window);
-	view.showCoordsOnCursor(*context.GFH->getGlobalFont());
+	TextQueue::updateTextQueue(window);
+	view.showCoordsOnCursor(Font::globalFont);
 	waterTiler.update();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
 		playerShip->getMovementHandler()->setSpeed(playerShip->getMovementHandler()->getSpeed() + 2.f);
 	}
 
 	// Autosave
-	if (context.GC->getAutosaveTrigger()) {
+	if (Clock::getAutosaveTrigger()) {
 		JSONSave::saveData("PirateGame/json/SaveFile.json", playerShip.get());
 		std::cout << "Game autosaved!" << std::endl;
 	}
 	// Save game data if ` is pressed
-	if (context.GIH->isKeyPressedOnce(sf::Keyboard::Tilde)) {
+	if (Input::isKeyPressedOnce(sf::Keyboard::Tilde)) {
 		JSONSave::saveData("PirateGame/json/SaveFile.json", playerShip.get());
 		std::cout << "Game manual saved!" << std::endl;
 	}
@@ -126,23 +130,23 @@ void World::updateCoreElements() {
 void World::createWorld(const sf::Event event) {
 	window->clear();
 
-	context.GIH->update();
+	Input::update();
 
 	// Handle the different game states
-	switch (context.GGSM->getCurrentGameState()) {
-	case GameState::Start:
+	switch (GameState::currGameState) {
+	case GameState::State::Start:
 		// Draw the main menu
 		MH.openMenu(MenuType::StartMenu);
 		break;
-	case GameState::OptionsMenu:
+	case GameState::State::OptionsMenu:
 		// Draw the options menu
 		MH.openMenu(MenuType::OptionsMenu);
 		break;
-	case GameState::End:
+	case GameState::State::End:
 		// End the game and close the window
 		window->close();
 		break;
-	case GameState::GameLoop:
+	case GameState::State::GameLoop:
 		// Run the game loop
 		drawGameLoop();
 		updateGameLoop(event);

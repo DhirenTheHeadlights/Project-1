@@ -15,7 +15,8 @@
 #include "Player_PG.h"
 #include "View_PG.h"
 #include "WaterTiler_PG.h"
-
+#include "GameState_PG.h"
+#include "Clock_PG.h"
 
 namespace PirateGame {
 	class World {
@@ -54,6 +55,7 @@ namespace PirateGame {
 		MenuHandler MH = MenuHandler(context);
 		CollisionManager CM = CollisionManager(context);
 		EnemyShipHandler ESH = EnemyShipHandler(context);
+		WindHandler WH;
 
 		// SFML Objects
 		sf::RenderWindow* window = nullptr;

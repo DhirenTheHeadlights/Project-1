@@ -19,10 +19,10 @@ namespace PirateGame {
 		Button(ButtonFunction func = []() {}) : func(func) {};
 		~Button() {};
 
-		void interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) override;
+		void interact(sf::RenderWindow* window, GlobalSoundManager* GSM) override;
 		void customInteractableSetUp() override {}; // Need it but does nothing for now
-		void interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) const;
-		void interactHold(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM);
+		void interactOnce(sf::RenderWindow* window, GlobalSoundManager* GSM) const;
+		void interactHold(sf::RenderWindow* window, GlobalSoundManager* GSM);
 
 		// This flag allows for multiple button presses if the button is held down
 		void setHoldDown(bool hold) { holdDown = hold; }

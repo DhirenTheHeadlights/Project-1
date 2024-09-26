@@ -13,6 +13,7 @@ namespace PirateGame {
 		inline sf::Font pixelifySansMedium;
 		inline sf::Font pixelifySansSemiBold;
 		inline sf::Font pixelifySansBold;
+		inline sf::Font globalFont;
 
 		inline void setUpFonts() {
 			// Initialize the fonts
@@ -30,6 +31,9 @@ namespace PirateGame {
 			}
 			if (!pixelifySansBold.loadFromFile("Fonts/PixelifySans-Bold.ttf")) {
 				std::cout << "Error loading Pixelify Sans Bold font" << std::endl;
+			}
+			if (!globalFont.loadFromFile("Fonts/PixelifySans-Regular.ttf")) {
+				std::cout << "Error loading global font" << std::endl;
 			}
 		};
 	};

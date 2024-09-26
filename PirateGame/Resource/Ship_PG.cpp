@@ -1,4 +1,5 @@
 #include "Ship_PG.h"
+#include "Clock_PG.h"
 using namespace PirateGame;
 
 // Create the ship
@@ -41,15 +42,15 @@ void Ship::setUpShip(const ShipClass level, const Region region) {
 }
 
 // Draw and update the ship
-void Ship::update() {
+void Ship::update(const sf::Vector2f& windDirection, const float windSpeed) {
 	setHealthBarPosition();
 	regenerateHealth();
 
 	// Update handlers
-	SCH->updateCannons(context.GV->getWindow(), context.GC->getDeltaTime());
+	SCH->updateCannons(Globals::window, Clock::getDeltaTime());
 	SSH->update(sprite, SMH->getVelocity(), context.JSL->getGameData().gameConfig.shipData.maxSailRotationOffset);
-	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get());
-	SMH->update(SSH->getAverageSailDirection(), context.GC->getDeltaTime(), context.GWC->getWindDirection(), context.GWC->getWindSpeed());
+	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get(), windDirection, windSpeed);
+	SMH->update(SSH->getAverageSailDirection(), Clock::getDeltaTime(), windDirection, windSpeed);
 
 	// 
 
@@ -58,10 +59,10 @@ void Ship::update() {
 }
 
 void Ship::draw() {
-	context.GV->getWindow()->draw(sprite);
+	Globals::window->draw(sprite);
 
 	// Draw sails
-	SSH->draw(context.GV->getWindow());
+	SSH->draw(Globals::window);
 
 	// Custom ship draw
 	customShipDraw();

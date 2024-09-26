@@ -27,11 +27,11 @@ void ESAvoidWorld::setUpEnemyShips() {
 void ESAvoidWorld::updateGameLoop(sf::Event event) {
 	updateCoreElements();
 
-	ESH.update();
+	ESH.update(WH.getWindDirection(), WH.getWindSpeed());
 
 	CM.handleCollisions();
 
 	view.updateDebugView(event);
 
-	QuadtreeHandler::enemyShipQuadtree->draw(context.GV.get());
+	QuadtreeHandler::enemyShipQuadtree->draw();
 }

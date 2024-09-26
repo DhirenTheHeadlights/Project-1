@@ -1,12 +1,13 @@
 #include "MenuHandler_PG.h"
+#include "GameState_PG.h"
 
 using namespace PirateGame;
 
-void MenuHandler::createMenus() {
+void MenuHandler::createMenus(WindHandler& WH) {
 	// Add the menus to the map
 	startMenu = std::make_shared<StartMenu>(context);
 	optionsMenu = std::make_shared<OptionsMenu>(context);
-	HUD = std::make_shared<InGameHUD>(context);
+	HUD = std::make_shared<InGameHUD>(context, WH);
 	inventoryMenu = std::make_shared<InventoryMenu>(context);
 
 	menus.insert(std::make_pair(MenuType::StartMenu, startMenu));
@@ -17,8 +18,8 @@ void MenuHandler::createMenus() {
 
 void MenuHandler::openMenu(MenuType menuType) const {
 	// This will reset the view so that the menu is correctly visible. However, it should not happen w the hud.
-	if (context.GGSM->getCurrentGameState() != GameState::GameLoop) {
-		context.GV->getWindow()->setView(context.GV->getWindow()->getDefaultView());
+	if (GameState::currGameState != GameState::State::GameLoop) {
+		Globals::window->setView(Globals::window->getDefaultView());
 	}
 
 	for (auto& menu : menus) {
@@ -29,7 +30,7 @@ void MenuHandler::openMenu(MenuType menuType) const {
 	}
 }
 
-void MenuHandler::setUpMenus() {
+void MenuHandler::setUpMenus() const {
 	// Set up the menus
 	for (auto& menu : menus) {
 		menu.second->setUpMenu();

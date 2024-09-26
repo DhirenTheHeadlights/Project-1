@@ -16,11 +16,11 @@ namespace PirateGame {
 	public:
 		ShipInputHandler(JSONLoader* json, const sf::Sprite& sprite, GlobalSoundManager* GSM) : sprite(sprite), GSM(GSM), json(json) {}
 
-		void update(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM);
+		void update(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM, sf::Vector2f windDirection, float windSpeed);
 		virtual void handleCannonFire(const sf::Texture& cannonballTexture, GlobalIDManager* GIDM) = 0;
 		virtual void handleCannonAim() = 0;
 		virtual void handleAnchorDrop() = 0;
-		virtual void handleSailChange() = 0;
+		virtual void handleSailChange(const sf::Vector2f& windDirection) = 0;
 
 		// Setters
 		void setBaseSpeed(float baseSpeed) { this->baseSpeed = baseSpeed; }

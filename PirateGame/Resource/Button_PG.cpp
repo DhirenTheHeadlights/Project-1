@@ -3,12 +3,12 @@
 using namespace PirateGame;
 
 // Interact with the button
-void Button::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
-	holdDown ? interactHold(window, GIH, GSM) : interactOnce(window, GIH, GSM);
+void Button::interact(sf::RenderWindow* window, GlobalSoundManager* GSM) {
+	holdDown ? interactHold(window, GSM) : interactOnce(window, GSM);
 }
 
-void Button::interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) const {
-	if (GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
+void Button::interactOnce(sf::RenderWindow* window, GlobalSoundManager* GSM) const {
+	if (Input::isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		sf::Vector2i mousePosition = sf::Vector2i(sf::Mouse::getPosition(*window));
 		sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 
@@ -20,7 +20,7 @@ void Button::interactOnce(sf::RenderWindow* window, GlobalInputHandler* GIH, Glo
 	}
 }
 
-void Button::interactHold(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
+void Button::interactHold(sf::RenderWindow* window, GlobalSoundManager* GSM) {
 	sf::Vector2i mousePosition = sf::Mouse::getPosition(*window);
 	sf::Vector2f worldPosition = window->mapPixelToCoords(mousePosition);
 

@@ -10,7 +10,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GlobalIDManager_PG.h"
-#include "GlobalValues_PG.h"
+#include "TextQueue_PG.h"
 #include "VectorMath.h"
 
 namespace PirateGame {
@@ -352,18 +352,18 @@ namespace PirateGame {
             }
         }
 
-        void draw(GlobalValues* gv) const {
-            drawNode(root.get(), gv);
+        void draw() const {
+            drawNode(root.get());
         }
 
-        static void drawNode(Node* node, GlobalValues* gv) {
+        static void drawNode(Node* node) {
 			if (!node->divided) {
-				gv->displayText("Num obj: " + std::to_string(node->objects.size()), sf::Vector2f(node->boundary.left + node->boundary.width / 2 - 10.f, node->boundary.top + node->boundary.height / 2 - 5.f), sf::Color::White);
+				TextQueue::displayText("Num obj: " + std::to_string(node->objects.size()), sf::Vector2f(node->boundary.left + node->boundary.width / 2 - 10.f, node->boundary.top + node->boundary.height / 2 - 5.f), sf::Color::White);
 			}
 
 			if (node->divided) {
 				for (auto& child : node->children) {
-					drawNode(child.get(), gv);
+					drawNode(child.get());
 				}
 			}
 
@@ -373,7 +373,7 @@ namespace PirateGame {
 			rectangle.setOutlineThickness(5.f);
 			rectangle.setOutlineColor(sf::Color::Blue); // Node boundary
 
-			gv->getWindow()->draw(rectangle);
+			Globals::window->draw(rectangle);
 
 			// Draw the objects' positions
 			for (auto object : node->objects) {
@@ -381,7 +381,7 @@ namespace PirateGame {
 				sf::Vector2f pos = object->sprite.getPosition();
 				marker.setPosition(pos.x, pos.y);
 				marker.setFillColor(sf::Color::Magenta); // Object position
-				gv->getWindow()->draw(marker);
+				Globals::window->draw(marker);
 			}
 		}
 

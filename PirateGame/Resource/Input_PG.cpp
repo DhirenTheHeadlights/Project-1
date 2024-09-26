@@ -1,8 +1,31 @@
-#include "GlobalInputHandler_PG.h"
+#include "Input_PG.h"
 
 using namespace PirateGame;
-  
-void GlobalInputHandler::update() {
+
+std::unordered_map<sf::Keyboard::Key, bool> lastKeyState;
+std::unordered_map<sf::Keyboard::Key, bool> currentKeyState;
+std::unordered_map<sf::Keyboard::Key, bool> toggledKeyState;
+std::unordered_map<sf::Keyboard::Key, sf::Time> keyToggleTimes; // Cooldown times
+std::unordered_map<sf::Mouse::Button, bool> lastButtonState;
+sf::Clock mouseSingleClickCooldown;
+sf::Clock mouseHoldCooldown;
+sf::Clock keyCooldownClock; // General clock for all key cooldowns
+sf::Time cooldownTime = sf::milliseconds(100);
+bool mouseClickedThisFrame = false;
+sf::Mouse::Button clickedButton = sf::Mouse::Button::ButtonCount;
+
+void Input::initializeInput() {
+	// Initialize keyboard and mouse states
+	for (int key = sf::Keyboard::A; key < sf::Keyboard::KeyCount; ++key) {
+		auto k = static_cast<sf::Keyboard::Key>(key);
+		lastKeyState[k] = false;
+		currentKeyState[k] = false;
+		toggledKeyState[k] = false;
+		keyToggleTimes[k] = keyCooldownClock.getElapsedTime(); // Initialize cooldown times
+	}
+}
+
+void Input::update() {
     currentKeyState = lastKeyState; // Update the current key state
 
     const sf::Time currentTime = keyCooldownClock.getElapsedTime();
@@ -45,23 +68,23 @@ void GlobalInputHandler::update() {
     }
 }
 
-bool GlobalInputHandler::isKeyPressedOnce(sf::Keyboard::Key key) {
+bool Input::isKeyPressedOnce(sf::Keyboard::Key key) {
     return currentKeyState[key] && !lastKeyState[key];
 }
 
-bool GlobalInputHandler::isKeyToggled(sf::Keyboard::Key key) {
+bool Input::isKeyToggled(sf::Keyboard::Key key) {
     return toggledKeyState[key];
 }
 
-bool GlobalInputHandler::isKeyHeld(sf::Keyboard::Key key) {
+bool Input::isKeyHeld(sf::Keyboard::Key key) {
     return sf::Keyboard::isKeyPressed(key);
 }
 
-bool GlobalInputHandler::isMouseButtonPressedOnce(sf::Mouse::Button button) const {
+bool Input::isMouseButtonPressedOnce(sf::Mouse::Button button) {
     return mouseClickedThisFrame && clickedButton == button;
 }
 
-bool GlobalInputHandler::isMouseButtonHeld(sf::Mouse::Button button) {
+bool Input::isMouseButtonHeld(sf::Mouse::Button button) {
     if (sf::Mouse::isButtonPressed(button) && mouseHoldCooldown.getElapsedTime() > cooldownTime) {
         mouseHoldCooldown.restart();
         return true;

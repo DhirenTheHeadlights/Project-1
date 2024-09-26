@@ -45,11 +45,11 @@ void DropDown::setPosition(sf::Vector2f pos) {
 }
 
 // Interact with the drop down menu
-void DropDown::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, GlobalSoundManager* GSM) {
+void DropDown::interact(sf::RenderWindow* window, GlobalSoundManager* GSM) {
 	sf::Vector2f mousePos = sf::Vector2f(sf::Mouse::getPosition(*window));
 
 	// Check if the mouse is clicked.
-	if (GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
+	if (Input::isMouseButtonPressedOnce(sf::Mouse::Left)) {
 		// Toggle the open state if the mouse is over the sprite.
 		if (sprite.getGlobalBounds().contains(mousePos)) {
 			GSM->playSound(SoundId::Select);
@@ -64,7 +64,7 @@ void DropDown::interact(sf::RenderWindow* window, GlobalInputHandler* GIH, Globa
 	// If the drop down menu is open, check if an option is clicked.
 	if (isOpen) {
 		for (int i = 0; i < options.size(); i++) {
-			if (optionSprites[i].getGlobalBounds().contains(window->mapPixelToCoords(sf::Mouse::getPosition(*window))) && GIH->isMouseButtonPressedOnce(sf::Mouse::Left)) {
+			if (optionSprites[i].getGlobalBounds().contains(window->mapPixelToCoords(sf::Mouse::getPosition(*window))) && Input::isMouseButtonPressedOnce(sf::Mouse::Left)) {
 				// Set the selected option
 				selectedText.setString(options[i].second);
 
