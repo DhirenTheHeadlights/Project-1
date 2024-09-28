@@ -9,12 +9,8 @@
 
 namespace PirateGame {
 	struct GlobalContext {
-
-
 		std::unique_ptr<GlobalSoundManager> GSM = std::make_unique<GlobalSoundManager>();
 		std::unique_ptr<GlobalIDManager> GIDM = std::make_unique<GlobalIDManager>();
-		std::unique_ptr<GlobalTextureHandler> GTH = std::make_unique<GlobalTextureHandler>();
 		std::unique_ptr<JSONLoader> JSL = std::make_unique<JSONLoader>();
-
 	};
 }

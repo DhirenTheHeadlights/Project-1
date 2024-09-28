@@ -1,6 +1,6 @@
 {
-    "playerExperience": 0.0,
-    "playerExperienceToLevelUp": 16.0,
+    "playerExperience": 20.0,
+    "playerExperienceToLevelUp": 64.0,
     "playerGold": 50.0,
     "playerInventory": [
         [
@@ -9,10 +9,10 @@
             5
         ]
     ],
-    "playerLevel": 4,
+    "playerLevel": 6,
     "playerPosition": [
-        -747.4735107421875,
-        -8917.65625
+        -20.837825775146484,
+        -7758.830078125
     ],
     "playerShipClass": 5
 }

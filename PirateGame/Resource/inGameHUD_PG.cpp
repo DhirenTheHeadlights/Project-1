@@ -20,23 +20,23 @@ void InGameHUD::addInteractablesToMenu() {
 	std::function<void()> settingsFunc = [this]() { GameState::changeGameState(GameState::State::OptionsMenu); };
 	Button settingsButton(settingsFunc);
 	sf::Text settingsText = sf::Text();
-	settingsButton.createInteractable(context.GTH->getHUDTextures().getSettingsButton(), settingsText);
+	settingsButton.createInteractable(Textures::HUDTextures.getSettingsButton(), settingsText);
 
 
 	/// Left side of the HUD
 
-	addTextDisplayBox(sf::Text("Firing Side: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Manual Aim: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Ship Type: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Anchor: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Firing Side: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Manual Aim: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Ship Type: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Anchor: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesLeftSide, infoBoxScale);
 
 	/// Right side of the HUD
 
-	addTextDisplayBox(sf::Text("Gold: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Coords: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Velocity: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Speed: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
-	addTextDisplayBox(sf::Text("Wind Direction: ", font, interactableTextSize), context.GTH->getHUDTextures().getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Gold: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Coords: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Velocity: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Speed: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesRightSide, infoBoxScale);
+	addTextDisplayBox(sf::Text("Wind Direction: ", font, interactableTextSize), Textures::HUDTextures.getInfoBox(), shipPropertiesRightSide, infoBoxScale);
 }
 
 // This function will update the strings of the ship properties

@@ -25,7 +25,7 @@ bool exitLauncher = false;
 
 class Game { // A class to store game data
 public:
-    Game(const std::string& n, GameFunction func) : name(n), gameFunc(func) {}
+    Game(const std::string& n, const GameFunction& func) : name(n), gameFunc(func) {}
 
     std::string getName() const { return name; }
     void run() const {
@@ -39,15 +39,15 @@ private:
 
 class gameButton {
 public:
-    gameButton(Game& gamedata, sf::Font& font, float width = 300.f, float height = 100.f) :
-        game(gamedata), button(sf::Vector2f(width, height)), gameName(gamedata.getName(), font, 24) {
+    gameButton(const Game& gamedata, const sf::Font& font, const float width = 300.f, const float height = 100.f) :
+        button(sf::Vector2f(width, height)), gameName(gamedata.getName(), font, 24), game(gamedata) {
         // Set the button text (game name)
         gameName.setFillColor(sf::Color::Red);
         // Set button size and color
         button.setFillColor(sf::Color::White);
     }
 
-    void setPosition(float x, float y) {
+    void setPosition(const float x, const float y) {
         button.setPosition(x, y);
         gameName.setPosition(x + 10, y + (button.getSize().y - gameName.getCharacterSize()) / 2); // Center text vertically
     }
@@ -57,9 +57,9 @@ public:
         window.draw(gameName);
     }
 
-    bool isMouseOver(sf::RenderWindow& window) const { // Check if the mouse is over the button
-        auto mousePos = sf::Mouse::getPosition(window);
-        auto translatedPos = window.mapPixelToCoords(mousePos);
+    bool isMouseOver(const sf::RenderWindow& window) const { // Check if the mouse is over the button
+	    const auto mousePos = sf::Mouse::getPosition(window);
+	    const auto translatedPos = window.mapPixelToCoords(mousePos);
         return button.getGlobalBounds().contains(translatedPos);
     }
 
@@ -192,7 +192,7 @@ void credits() {
 void doodleJump() {
 	initializeGlobals("Doodle Jump Window");
 
-	DoodleJump::World world(window);
+	const DoodleJump::World world(window);
 
     while (window.isOpen()) {
 		sf::Event event;

@@ -13,8 +13,8 @@ namespace PirateGame {
 	class ScrollBar {
 	public:
 		ScrollBar(GlobalContext& context, float spacingBetweenInteractables = 0.f) noexcept : context(context), spacing(spacingBetweenInteractables) {
-			scrollBarTrack.setTexture(context.GTH->getInteractableTextures().getScrollBarTrack());
-			scrollBarThumb.setTexture(context.GTH->getInteractableTextures().getScrollBarThumb());
+			scrollBarTrack.setTexture(Textures::interactableTextures.getScrollBarTrack());
+			scrollBarThumb.setTexture(Textures::interactableTextures.getScrollBarThumb());
 		}
 
 		void setUpScrollBar(const sf::Vector2f& scrollBarTrackOffset, const float scrollBarTrackLength, const sf::Vector2f& interactablePositionOffset, const sf::Vector2f& size, const sf::Vector2f& scale);

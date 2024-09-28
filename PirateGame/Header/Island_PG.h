@@ -16,7 +16,7 @@ namespace PirateGame {
 		IslandMenu* getIslandMenu() const { return islandMenu.get(); }
 		std::vector<ShopItem>& getMarket() { return market; }
 
-		const sf::Image& getImage(GlobalContext& context) override { return context.GTH->getLandMassTextures().getIslandTextures().getImage(type); }
+		const sf::Image& getImage(GlobalContext& context) override { return Textures::landmassTextures.getIslandTextures().getImage(type); }
 		LandMassType getType() override { return LandMassType::Island; }
 	private:
 		std::unique_ptr<IslandMenu> islandMenu;

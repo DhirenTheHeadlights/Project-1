@@ -90,7 +90,7 @@ namespace PirateGame {
 
 		// General function to add a slider to a vector of sliders
 		virtual void addSlider(sf::Text text, sf::Texture& texture, std::vector<Slider>& destination, std::function<void(float value)> function, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) {
-			Slider slider(context.GTH->getInteractableTextures().getScrollBarTrack(), context.GTH->getInteractableTextures().getScrollBarThumb(), function);
+			Slider slider(Textures::interactableTextures.getScrollBarTrack(), Textures::interactableTextures.getScrollBarThumb(), function);
 			slider.createInteractable(texture, text, scale);
 			destination.push_back(slider);
 		}
@@ -120,7 +120,7 @@ namespace PirateGame {
 
 		// General function to add a slider to a vector of interactables
 		virtual void addSlider(sf::Text text, sf::Texture& texture, std::vector<std::unique_ptr<Interactable>>& destination, std::function<void(float value)> function, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) {
-			std::unique_ptr<Slider> slider = std::make_unique<Slider>(context.GTH->getInteractableTextures().getScrollBarTrack(), context.GTH->getInteractableTextures().getScrollBarThumb(), function);
+			std::unique_ptr<Slider> slider = std::make_unique<Slider>(Textures::interactableTextures.getScrollBarTrack(), Textures::interactableTextures.getScrollBarThumb(), function);
 			slider->createInteractable(texture, text, scale);
 			destination.push_back(std::move(slider));
 		}

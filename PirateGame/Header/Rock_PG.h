@@ -13,7 +13,7 @@ namespace PirateGame {
 
 		void createLandMass() override;
 
-		const sf::Image& getImage(GlobalContext& context) override { return context.GTH->getLandMassTextures().getRockTextures().getImage(type); }
+		const sf::Image& getImage(GlobalContext& context) override { return Textures::landmassTextures.getRockTextures().getImage(type); }
 		LandMassType getType() override { return LandMassType::Rock; }
 	private:
 		RockType type = RockType::Rock1;

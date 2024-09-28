@@ -20,7 +20,7 @@ void Ship::setUpShip(const ShipClass level, const Region region) {
 	// Load the texture
 	const sf::Vector2f scaling(shipProperties.scaleX * scalingFactor, shipProperties.scaleY * scalingFactor);
 
-	sprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getTexture(shipClass));
+	sprite.setTexture(Textures::shipTextures.getShipTextureManagerByRegion(birthRegion).getTexture(shipClass));
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	sprite.setScale(scaling);
 
@@ -29,13 +29,13 @@ void Ship::setUpShip(const ShipClass level, const Region region) {
 
 	// Load the cannon handler
 	SCH = std::make_unique<ShipCannonHandler>(context.JSL.get(), sprite);
-	SCH->initializeCannons(context.GTH->getShipTextures().getCannonTextureManagerByRegion(birthRegion).getTexture(shipClass), 
-						context.GTH->getShipTextures().getShipTextureManagerByRegion(region).getImage(shipClass), 
+	SCH->initializeCannons(Textures::shipTextures.getCannonTextureManagerByRegion(birthRegion).getTexture(shipClass), 
+						Textures::shipTextures.getShipTextureManagerByRegion(region).getImage(shipClass), 
 						shipProperties.numCannons, id.get(), scaling);
 
 	// Load the sail handler
 	SSH = std::make_unique<ShipSailHandler>();
-	SSH->loadSailPositions(context.GTH->getShipTextures().getSailTextureManagerByRegion(birthRegion).getTextureGroup(shipClass), context.GTH->getShipTextures().getShipTextureManagerByRegion(birthRegion).getImage(shipClass), scaling);
+	SSH->loadSailPositions(Textures::shipTextures.getSailTextureManagerByRegion(birthRegion).getTextureGroup(shipClass), Textures::shipTextures.getShipTextureManagerByRegion(birthRegion).getImage(shipClass), scaling);
 
 	// Execute custom ship setup
 	customShipSetUp();
@@ -49,7 +49,7 @@ void Ship::update(const sf::Vector2f& windDirection, const float windSpeed) {
 	// Update handlers
 	SCH->updateCannons(Globals::window, Clock::getDeltaTime());
 	SSH->update(sprite, SMH->getVelocity(), context.JSL->getGameData().gameConfig.shipData.maxSailRotationOffset);
-	SIH->update(context.GTH->getLandMassTextures().getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get(), windDirection, windSpeed);
+	SIH->update(Textures::landmassTextures.getMiscTextures().getTexture(MiscType::Cannonball), context.GIDM.get(), windDirection, windSpeed);
 	SMH->update(SSH->getAverageSailDirection(), Clock::getDeltaTime(), windDirection, windSpeed);
 
 	// 

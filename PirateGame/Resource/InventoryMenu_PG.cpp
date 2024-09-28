@@ -3,7 +3,7 @@
 using namespace PirateGame;
 
 void InventoryMenu::setUpMenu() {
-	menu.setTexture(context.GTH->getInventoryTextures().getBackground());
+	menu.setTexture(Textures::inventoryTextures.getBackground());
 
 	interactableTextSize = 25;
 
@@ -23,11 +23,11 @@ void InventoryMenu::setUpMenu() {
 	titleText.setFillColor(sf::Color::White);
 
 	// Prepare the ship display
-	shipDisplaySprite.setTexture(context.GTH->getShipTextures().getShipTextureManagerByRegion(ship->getBirthRegion()).getTexture(ship->getShipClass()));
-	shipDisplayBackground.setTexture(context.GTH->getInventoryTextures().getInventoryShipDisplay());
+	shipDisplaySprite.setTexture(Textures::shipTextures.getShipTextureManagerByRegion(ship->getBirthRegion()).getTexture(ship->getShipClass()));
+	shipDisplayBackground.setTexture(Textures::inventoryTextures.getInventoryShipDisplay());
 
 	// Prepare the inventory display background
-	inventoryDisplayBackground.setTexture(context.GTH->getInventoryTextures().getInventoryDisplay());
+	inventoryDisplayBackground.setTexture(Textures::inventoryTextures.getInventoryDisplay());
 
 	// Set up the scroll bar
 	scrollBar.setUpScrollBar(scrollBarPosition, inventoryDisplayBackground.getGlobalBounds().getSize().y, inventoryPosition, inventoryDisplayBackground.getGlobalBounds().getSize(), scale);
@@ -42,7 +42,7 @@ void InventoryMenu::addInteractablesToMenu() {
 	for (auto& item : inventory){
 		std::shared_ptr<TextDisplayBox> textDisplayBox = std::make_shared<TextDisplayBox>();
 		sf::Text text = sf::Text(item.name + ": " + std::to_string(item.amount), font, interactableTextSize);
-		textDisplayBox->createInteractable(context.GTH->getInventoryTextures().getInventoryItemDisplay(), text, scale);
+		textDisplayBox->createInteractable(Textures::inventoryTextures.getInventoryItemDisplay(), text, scale);
 		textDisplayBox->getText().setFillColor(sf::Color::Black);
 		inventoryBoxes.push_back(textDisplayBox);
 	}
@@ -54,7 +54,7 @@ void InventoryMenu::addInteractablesToMenu() {
 		"Health: " + floatToString(ship->getHealth()) + " / " + floatToString(ship->getSpecificShipProperties().maxHealth) + "\n"
 		"Speed: " + floatToString(ship->getSpecificShipProperties().baseSpeed) + "\n"
 		"Cannons: " + std::to_string(ship->getSpecificShipProperties().numCannons) + "\n", 
-		font, interactableTextSize), context.GTH->getInventoryTextures().getInventoryTextDisplay(), shipDisplayInfo, scale);
+		font, interactableTextSize), Textures::inventoryTextures.getInventoryTextDisplay(), shipDisplayInfo, scale);
 	shipDisplayInfo[0].getText().setFillColor(sf::Color::Black);
 }
 

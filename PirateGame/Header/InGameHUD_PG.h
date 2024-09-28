@@ -9,11 +9,11 @@
 namespace PirateGame {
 	class InGameHUD : public Menu {
 	public:
-		InGameHUD(GlobalContext& context, WindHandler& WH) : Menu(context), minimap(context.GTH->getHUDTextures().getMiniMap(), context.GTH->getHUDTextures().getMiniMapShipIcon()), WH(WH) {
-			healthBarGreenSprite.setTexture(context.GTH->getHUDTextures().getHealthBarGreen());
+		InGameHUD(GlobalContext& context, WindHandler& WH) : Menu(context), minimap(Textures::HUDTextures.getMiniMap(), Textures::HUDTextures.getMiniMapShipIcon()), WH(WH) {
+			healthBarGreenSprite.setTexture(Textures::HUDTextures.getHealthBarGreen());
 			healthBarGreenSprite.setScale(healthBarScale);
 
-			healthBarRedSprite.setTexture(context.GTH->getHUDTextures().getHealthBarRed());
+			healthBarRedSprite.setTexture(Textures::HUDTextures.getHealthBarRed());
 			healthBarRedSprite.setScale(healthBarScale);
 		};
 

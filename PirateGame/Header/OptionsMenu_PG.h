@@ -48,8 +48,8 @@ namespace PirateGame {
 		// Overriden function to 
 		void addDropDown(sf::Text text, sf::Texture& texture, std::vector<std::unique_ptr<Interactable>>& destination, std::vector<std::pair<std::function<void()>, std::string>> options, sf::Vector2f scale = sf::Vector2f(1.f, 1.f)) override {
 			std::unique_ptr<DropDown> dropDown = std::make_unique<DropDown>(options);
-			dropDown->createInteractable(context.GTH->getOptionsMenuTextures().getDropDown(), text);
-			dropDown->setOptionsBoxSprite(context.GTH->getOptionsMenuTextures().getRightInteractable());
+			dropDown->createInteractable(Textures::optionsMenuTextures.getDropDown(), text);
+			dropDown->setOptionsBoxSprite(Textures::optionsMenuTextures.getRightInteractable());
 			dropDown->setOptionTextColor(sf::Color::Black);
 			destination.push_back(std::move(dropDown));
 		}

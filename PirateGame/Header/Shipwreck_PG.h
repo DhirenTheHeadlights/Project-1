@@ -14,7 +14,7 @@ namespace PirateGame {
 		void createLandMass() override;
 
 		std::vector<ShopItem>& getLoot() { return loot; }
-		const sf::Image& getImage(GlobalContext& context) override { return context.GTH->getLandMassTextures().getShipwreckTextures().getImage(type); }
+		const sf::Image& getImage(GlobalContext& context) override { return Textures::landmassTextures.getShipwreckTextures().getImage(type); }
 		LandMassType getType() override { return LandMassType::Shipwreck; }
 	private:
 		ShipwreckType type = ShipwreckType::Shipwreck1;

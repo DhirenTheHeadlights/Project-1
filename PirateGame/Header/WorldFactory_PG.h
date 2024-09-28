@@ -1,7 +1,5 @@
 #pragma once
 
-/// Simple factory class for creating world objects
-
 #include "WorldDebug_PG.h"
 #include "WorldDefault_PG.h"
 #include "WorldLMAvoid_PG.h"
@@ -20,9 +18,9 @@ namespace PirateGame {
 
 	class SelectionButton {
 	public:
-		SelectionButton(const WorldType WT, const sf::Text text) : worldType(WT), buttonText(text) {};
+		SelectionButton(const WorldType WT, const sf::Text& text) : worldType(WT), buttonText(text) {};
 
-		void setPosition(float x, float y) {
+		void setPosition(const float x, const float y) {
 			buttonText.setPosition(x, y);
 		}
 
@@ -30,7 +28,7 @@ namespace PirateGame {
 			window->draw(buttonText);
 		}
 
-		bool isMouseOver(sf::RenderWindow* window) {
+		bool isMouseOver(const sf::RenderWindow* window) {
 			return buttonText.getGlobalBounds().contains(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 		}
 
@@ -86,7 +84,7 @@ namespace PirateGame {
 			window->display();
 		}
 
-		static std::string worldTypeToStr(WorldType worldType) {
+		static std::string worldTypeToStr(const WorldType worldType) {
 			switch (worldType) {
 			case WorldType::Default:
 				return "Default";
@@ -108,7 +106,7 @@ namespace PirateGame {
 		bool getHasSelectedWorld() const { return hasSelectedWorld; }
 
 	private:
-		static World* createWorld(WorldType worldType, sf::RenderWindow* window) {
+		static World* createWorld(const WorldType worldType, sf::RenderWindow* window) {
 			World* world = nullptr;
 			switch (worldType) {
 			case WorldType::Default:
